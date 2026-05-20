@@ -29,20 +29,29 @@ import {
     FileSignature,
     SearchCheck,
     Briefcase,
-    Users
+    Users,
+    FileSpreadsheet,
+    Globe,
+    SmartphoneNfc,
+    CheckSquare,
+    ChevronRight,
+    TrendingUp,
+    Scale,
+    Gem,
+    Cpu,
+    ShoppingBasket,
+    Clapperboard
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
-import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const BRAND_GREEN = "#22C55E";
-
-const TRUST_STRIP = "WORKS ON PHONES • NO INSTALLATION • DEPLOY IN 10 MINUTES • BUILT IN EXCEL • OPERATED THROUGH GOOGLE SHEETS";
+const TRUST_STRIP = "WORKS ON PHONES • NO APP INSTALL • ONE-TIME PURCHASE • DEPLOY IN 10 MINUTES • BUILT IN EXCEL • RUNS ON GOOGLE SHEETS";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -61,6 +70,7 @@ const HeroSection = () => {
                     src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
                     alt="Institutional Oversight"
                     className="h-full w-full object-cover opacity-20 grayscale"
+                    data-ai-hint="corporate office"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
             </div>
@@ -68,14 +78,19 @@ const HeroSection = () => {
             <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12 md:py-24">
                 <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-20 items-center">
                     <div className="space-y-8 md:space-y-12">
-                        <div className="space-y-4">
-                            <h1 className="text-[34px] md:text-[84px] lg:text-[90px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
-                                YOUR OPERATIONS <br />
-                                <span style={{ color: BRAND_GREEN }}>SHOULD NOT DEPEND</span> <br/>
+                        <div className="space-y-6">
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none">OPERATIONAL INFRASTRUCTURE</Badge>
+                            <h1 className="text-[34px] md:text-[74px] lg:text-[84px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
+                                YOUR BUSINESS <br />
+                                <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
                                 <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
                             <p className="text-lg md:text-[22px] italic font-medium text-zinc-400 max-w-2xl leading-tight">
-                                MoreMeets™ transforms SOPs into live daily execution. Track work, handovers, accountability, and compliance across your team using Excel + Google Sheets.
+                                Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
+                            </p>
+                            <p className="text-base md:text-lg text-zinc-500 font-bold italic">
+                                Built in Excel. Operated through Google Sheets. <br/>
+                                Your team already knows how to use it.
                             </p>
                         </div>
 
@@ -104,10 +119,11 @@ const HeroSection = () => {
                                 src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
                                 alt="Live Execution Ledger" 
                                 className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+                                data-ai-hint="operational spreadsheet"
                              />
                              <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black to-transparent">
                                  <Badge className="bg-primary/20 text-primary border-primary/30 uppercase font-black tracking-widest text-[9px] mb-2">LIVE RUNTIME</Badge>
-                                 <p className="text-white font-headline font-black italic uppercase text-xl">Sovereign Mission Ledger</p>
+                                 <p className="text-white font-headline font-black italic uppercase text-xl">Mission Execution Ledger</p>
                              </div>
                         </div>
                     </div>
@@ -128,89 +144,203 @@ export default function Home() {
             <main className="flex-1">
                 <HeroSection />
 
-                {/* --- SECTION 2: RELATABLE PAIN --- */}
-                <Section className="bg-zinc-50 border-y border-zinc-100" id="pain">
-                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-red-500 border-red-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-red-50/50">OPERATIONAL REALITY</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                WHAT BREAKS DAILY OPERATIONS
-                            </h2>
-                        </div>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {[
-                                { t: "Managers chasing confirmations", d: "“Done?” messages across WhatsApp all day because work isn't visible.", i: Smartphone },
-                                { t: "Shift handovers getting lost", d: "Critical instructions disappearing between teams during rotations.", i: History },
-                                { t: "SOPs existing only in folders", d: "Documentation exists. Execution does not.", i: ClipboardCheck },
-                                { t: "Operations depend on specific people", d: "When key staff resign, the standard leaves with them. Systems collapse.", i: Users }
-                            ].map((item, i) => (
-                                <div key={i} className="space-y-6 p-10 bg-white border border-zinc-200 rounded-[2rem] hover:shadow-xl transition-all group">
-                                    <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-red-500 transition-colors">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-lg font-black uppercase italic tracking-tight text-zinc-950 leading-tight">{item.t}</h4>
-                                        <p className="text-sm font-bold text-zinc-400 italic leading-relaxed">{item.d}</p>
-                                    </div>
+                {/* --- NOT ANOTHER SaaS TOOL --- */}
+                <Section className="bg-white" id="not-saas" noSpine>
+                    <div className="max-w-5xl mx-auto">
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-8">
+                                <div className="space-y-4">
+                                    <Badge className="bg-red-500/10 text-red-500 border-red-500/20 uppercase font-black tracking-widest text-[10px]">THE SaaS ANTIDOTE</Badge>
+                                    <h2 className="text-[34px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.9] uppercase italic tracking-tighter">
+                                        NOT ANOTHER <br/> <span className="text-red-600">SaaS TOOL.</span>
+                                    </h2>
+                                    <p className="text-xl text-zinc-500 italic font-medium leading-tight">
+                                        Most operational software fails because frontline teams never fully adopt it.
+                                    </p>
                                 </div>
-                            ))}
-                        </div>
-                        <div className="text-center pt-8 border-t border-zinc-200/50">
-                             <p className="text-xl md:text-3xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
-                                Most businesses do not have an SOP problem. <br/>
-                                <span className="text-red-500">They have an execution problem.</span>
-                             </p>
+                                
+                                <div className="space-y-4 border-l-2 border-zinc-100 pl-8">
+                                    {[
+                                        "Too complex",
+                                        "Too many logins",
+                                        "Too much training",
+                                        "Too much resistance"
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-4 text-zinc-400 font-bold italic uppercase tracking-tight">
+                                            <X className="w-5 h-5 text-red-300" />
+                                            <span>{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="p-8 bg-zinc-50 rounded-[2rem] border border-zinc-100 space-y-4">
+                                    <p className="text-zinc-950 font-black italic uppercase text-lg">MoreMeets™ works differently.</p>
+                                    <p className="text-zinc-500 font-medium italic">Your operational system is delivered as a pre-built Excel master file optimized for Google Sheets.</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { t: "DOWNLOAD", d: "Get your system", i: Download },
+                                    { t: "UPLOAD", d: "To Google Drive", i: Globe },
+                                    { t: "SHARE", d: "With your team", i: Users },
+                                    { t: "OPERATE", d: "Start running live", i: Activity }
+                                ].map((step, i) => (
+                                    <div key={i} className="p-8 bg-zinc-950 rounded-[2rem] flex flex-col items-center text-center space-y-3">
+                                        <step.i className="w-8 h-8 text-primary" />
+                                        <p className="text-white font-black italic uppercase tracking-tighter leading-none">{step.t}</p>
+                                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">{step.d}</p>
+                                    </div>
+                                ))}
+                                <div className="col-span-2 p-6 border-2 border-dashed border-zinc-200 rounded-[2rem] text-center">
+                                    <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.3em]">NO IT SETUP • NO CONSULTANTS • NO SaaS TAX</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- SECTION 3: THE BRIDGE --- */}
-                <Section className="bg-white" id="what-it-is">
-                    <div className="max-w-6xl mx-auto space-y-20">
-                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-primary/5">THE RESOLUTION</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">NOT SOFTWARE. <br/> OPERATIONAL INFRASTRUCTURE.</h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase max-w-2xl mx-auto text-center pt-4">
-                                MoreMeets™ gives teams a live operational system using tools they already know: Excel and Google Sheets.
+                {/* --- WHAT YOU ACTUALLY GET --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100" id="inclusions">
+                    <div className="max-w-6xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">WHAT YOU ACTUALLY GET</h2>
+                             <p className="text-zinc-400 font-bold italic uppercase tracking-widest">Every Operational Pack includes:</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6">
+                            {[
+                                { t: "Industry-specific SOPs pre-built", i: Target },
+                                { t: "Daily operational task system", i: ClipboardCheck },
+                                { t: "Shift handover tracking", i: History },
+                                { t: "Role-based accountability", i: FileSignature },
+                                { t: "Audit-ready execution logs", i: ShieldCheck },
+                                { t: "Incident management registers", i: ShieldAlert },
+                                { t: "Trainer notes for every dept", i: GraduationCap },
+                                { t: "Simple-language for staff", i: Smartphone },
+                                { t: "Audit-language for supervisors", i: Scale },
+                                { t: "Risks & consequences explained", i: AlertTriangle },
+                                { t: "Verification checkpoints", i: SearchCheck },
+                                { t: "Google Sheets deployment guide", i: FileSpreadsheet }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-start gap-4 group">
+                                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Check className="w-3 h-3 text-primary" />
+                                    </div>
+                                    <span className="text-sm md:text-base font-black uppercase italic tracking-tight text-zinc-950 group-hover:text-primary transition-colors">{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- REAL OPERATIONAL INTELLIGENCE --- */}
+                <Section className="bg-white">
+                    <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-white shadow-sm">FORENSIC ENGINEERING</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                BUILT USING REAL <br/> OPERATIONAL INTELLIGENCE
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center pt-4">
+                                This is not generic checklist software. Each system is built around how industries actually fail in real life.
                             </p>
                         </div>
 
-                        <div className="grid lg:grid-cols-2 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
-                            <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative text-left">
-                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {[
+                                {
+                                    title: "Hotel Operations",
+                                    icon: Building,
+                                    points: ["Room readiness failures", "Housekeeping coordination gaps", "Front desk ↔ housekeeping dependencies", "Multi-department breakdowns"]
+                                },
+                                {
+                                    title: "Restaurant Operations",
+                                    icon: Utensils,
+                                    points: ["Kitchen bottlenecks", "Cold chain failures", "Oil safety controls", "Table turnover delays"]
+                                },
+                                {
+                                    title: "Grocery Store Operations",
+                                    icon: ShoppingBasket,
+                                    points: ["Expiry management", "Spoilage prevention", "Cold storage compliance", "Shrinkage control"]
+                                },
+                                {
+                                    title: "Jewellery Store Operations",
+                                    icon: Gem,
+                                    points: ["Vault custody protocols", "Dual-signoff verification", "Gram-level inventory control", "CCTV-linked accountability"]
+                                },
+                                {
+                                    title: "Electronics Store Operations",
+                                    icon: Cpu,
+                                    points: ["IMEI / serial tracking", "Warranty fraud prevention", "Demo unit governance", "Return abuse control"]
+                                }
+                            ].map((sector, i) => (
+                                <div key={i} className="p-10 rounded-[2.5rem] bg-zinc-50 border border-zinc-100 space-y-6 hover:shadow-2xl transition-all group">
+                                    <div className="flex items-center gap-4">
+                                        <sector.icon className="w-8 h-8 text-primary/40 group-hover:text-primary transition-colors" />
+                                        <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{sector.title}</h3>
+                                    </div>
+                                    <ul className="space-y-4">
+                                        {sector.points.map((p, j) => (
+                                            <li key={j} className="flex items-start gap-3 text-xs md:text-sm font-bold text-zinc-400 italic leading-snug">
+                                                <div className="w-1 h-1 rounded-full bg-red-400 mt-1.5 shrink-0" />
+                                                <span>{p}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- NOT THE REAL PROBLEM --- */}
+                <Section className="bg-zinc-950 text-white" id="problem" noSpine>
+                    <div className="max-w-6xl mx-auto space-y-20">
+                         <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-primary/5">THE EXECUTION GAP</Badge>
+                            <h2 className="text-[34px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95]">
+                                YOUR SOPs ARE PROBABLY <br/> <span className="text-red-500">NOT THE REAL PROBLEM.</span>
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center pt-4">
+                                Most businesses already have SOP documents. But SOPs sitting in folders do not create execution.
+                            </p>
+                        </div>
+
+                        <div className="grid lg:grid-cols-2 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+                            <div className="p-10 md:p-20 bg-white/5 border-r border-white/10 relative text-left">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-600" />
                                 <div className="space-y-8">
-                                    <h3 className="text-2xl md:text-4xl font-black font-headline text-red-600 uppercase italic tracking-tighter">Without MoreMeets</h3>
+                                    <h3 className="text-2xl font-black font-headline text-red-500 uppercase italic tracking-tighter">Instead of:</h3>
                                     <ul className="space-y-6">
                                         {[
-                                            "SOP PDFs nobody opens",
-                                            "WhatsApp follow-ups",
+                                            "PDFs nobody opens",
+                                            "WhatsApp reminders",
+                                            "Verbal follow-ups",
                                             "Manual checking",
-                                            "Verbal handovers",
-                                            "No accountability trail",
-                                            "Training resets when staff leave"
+                                            "Dependency on individuals"
                                         ].map((text, i) => (
-                                            <li key={i} className="flex items-start gap-5 text-zinc-400 text-lg md:text-xl font-bold italic leading-snug">
-                                                <X className="w-6 h-6 text-red-300 shrink-0 mt-0.5" />
+                                            <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
+                                                <X className="w-6 h-6 text-red-500/30 shrink-0 mt-0.5" />
                                                 <span>{text}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
                             </div>
-                            <div className="p-10 md:p-20 bg-emerald-50/30 relative text-left">
+                            <div className="p-10 md:p-20 bg-emerald-500/5 relative text-left">
                                 <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary" />
                                 <div className="space-y-8">
-                                    <h3 className="text-2xl md:text-4xl font-black font-headline text-primary uppercase italic tracking-tighter">With MoreMeets</h3>
+                                    <h3 className="text-2xl font-black font-headline text-primary uppercase italic tracking-tighter">You Get:</h3>
                                     <ul className="space-y-6">
                                         {[
-                                            "Daily execution tracking",
-                                            "Live accountability visibility",
-                                            "Structured handovers",
-                                            "Built-in trainer notes",
-                                            "Audit-ready records",
-                                            "Institutional continuity"
+                                            "Daily execution visibility",
+                                            "Structured accountability",
+                                            "Permanent operational memory",
+                                            "Faster onboarding",
+                                            "Consistent branch standards",
+                                            "Audit-ready records"
                                         ].map((text, i) => (
-                                            <li key={i} className="flex items-start gap-5 text-zinc-950 text-lg md:text-xl font-black italic leading-snug uppercase">
+                                            <li key={i} className="flex items-start gap-5 text-white text-lg md:text-xl font-black italic leading-snug uppercase">
                                                 <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                                                 <span>{text}</span>
                                             </li>
@@ -222,18 +352,60 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- SECTION 4: HOW IT WORKS --- */}
+                {/* --- EVERY TASK EXPLAINED --- */}
+                <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                EVERY TASK IS EXPLAINED CLEARLY
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
+                                Your team does not need operational expertise to follow the system.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                            {[
+                                { t: "WHAT TO DO", i: Target },
+                                { t: "HOW TO DO IT", i: GraduationCap },
+                                { t: "WHY IT MATTERS", i: History },
+                                { t: "RISKS IF MISSED", i: AlertTriangle },
+                                { t: "ESCALATIONS", i: ShieldAlert },
+                                { t: "VERIFICATION", i: SearchCheck }
+                            ].map((item, i) => (
+                                <div key={i} className="p-8 rounded-[2rem] bg-zinc-50 border border-zinc-100 flex flex-col items-center text-center gap-4 group hover:border-primary transition-all">
+                                    <item.i className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
+                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] italic text-zinc-950">{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 text-center text-white space-y-8 shadow-2xl">
+                             <h3 className="text-2xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Built for frontline teams</h3>
+                             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                                {[
+                                    "Managers", "Supervisors", "Housekeeping", "Kitchen staff", "Retail floor staff", "Technicians", "Front desk", "Security", "Operations heads"
+                                ].map((role, i) => (
+                                    <Badge key={i} variant="outline" className="text-white/40 border-white/10 py-2 px-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest italic">{role}</Badge>
+                                ))}
+                             </div>
+                             <p className="text-zinc-400 font-bold italic text-base md:text-xl">If someone can use Google Sheets on a phone, they can operate MoreMeets™.</p>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- HOW DEPLOYMENT WORKS --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="how-it-works">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
-                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">DEPLOY IN 10 MINUTES</h2>
+                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">HOW DEPLOYMENT WORKS</h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
-                                { t: "Download", d: "Get your pre-built, industry-specific operational pack instantly." },
-                                { t: "Upload", d: "Upload your Excel Master to Google Drive for live team access." },
-                                { t: "Assign", d: "Map your branches and assign personnel roles once." },
-                                { t: "Run", d: "Daily operations begin live. No app rollout required." }
+                                { t: "DOWNLOAD", d: "Purchase and instantly download your operational system." },
+                                { t: "UPLOAD", d: "Upload the Excel master file to Google Drive." },
+                                { t: "SHARE", d: "Assign roles and share access with your team." },
+                                { t: "OPERATE", d: "Daily tasks begin updating live through Google Sheets." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
                                     <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
@@ -246,104 +418,161 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        <div className="text-center">
-                             <p className="text-lg md:text-2xl font-black text-zinc-400 uppercase italic tracking-tight">
-                                No app rollout. No IT setup. No retraining.
-                             </p>
+                    </div>
+                </Section>
+
+                {/* --- WHY EXCEL + SHEETS --- */}
+                <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-8">
+                            <div className="space-y-4">
+                                <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE ADOPTION ENGINE</Badge>
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
+                                    WHY EXCEL + <br/> GOOGLE SHEETS?
+                                </h2>
+                                <p className="text-lg text-zinc-500 font-bold italic">Because operational teams already understand it.</p>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="flex gap-4">
+                                    <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
+                                    <p className="text-zinc-500 text-sm md:text-base font-medium leading-relaxed italic">No behavioral resistance. No learning curve. No complicated software adoption cycle. Your team opens the sheet and starts working immediately.</p>
+                                </div>
+                                <div className="grid grid-cols-2 gap-8 pt-4">
+                                    <div className="space-y-3">
+                                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR MANAGERS</p>
+                                        <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Live visibility</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Execution records</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Continuity</li>
+                                        </ul>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR TEAMS</p>
+                                        <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Clear Priorities</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Simpler Ops</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Handovers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative group">
+                            <div className="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur-xl opacity-20"></div>
+                            <img src={PlaceHolderImages.find(i => i.id === 'sovereign-mobile')?.imageUrl} className="rounded-[2.5rem] shadow-2xl border border-zinc-100 relative z-10" data-ai-hint="mobile spreadsheet" />
                         </div>
                     </div>
                 </Section>
 
-                {/* --- SECTION 5: INCLUSIONS --- */}
-                <Section className="bg-white" id="inclusions">
+                {/* --- SINGLE VS MULTI --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100" id="who-it-is-for" noSpine>
+                    <div className="max-w-6xl mx-auto space-y-20">
+                         <div className="text-center space-y-4">
+                            <h2 className="text-[34px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95] text-zinc-950 text-center">
+                                BUILT FOR SINGLE LOCATIONS <br/> AND LARGE GROUPS
+                            </h2>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="p-12 md:p-16 rounded-[3rem] bg-white border border-zinc-200 space-y-8 relative overflow-hidden group hover:shadow-2xl transition-all">
+                                <div className="absolute top-0 right-0 p-8 opacity-5">
+                                    <Target className="w-48 h-48" />
+                                </div>
+                                <div className="space-y-6 relative z-10">
+                                    <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-950">Single-unit operators</h3>
+                                    <p className="text-zinc-500 text-lg font-bold italic leading-relaxed">
+                                        Run tighter daily operations without constantly chasing staff. Capture your expert knowledge so the business runs even when you aren't on the floor.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="p-12 md:p-16 rounded-[3rem] bg-primary text-black space-y-8 relative overflow-hidden shadow-xl hover:scale-[1.02] transition-all">
+                                <div className="absolute top-0 right-0 p-8 opacity-10">
+                                    <LayoutGrid className="w-48 h-48" />
+                                </div>
+                                <div className="space-y-6 relative z-10">
+                                    <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter">Multi-unit groups</h3>
+                                    <p className="text-black/70 text-lg font-bold italic leading-relaxed">
+                                        Standardize execution across branches. Protect operational quality, compliance, and brand consistency at scale across your entire network.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- OPERATIONAL PACKS --- */}
+                <Section className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
-                             <h2 className="text-[32px] md:text-[44px] font-black font-headline text-zinc-950 leading-tight tracking-tight uppercase italic text-center">EVERY PACK INCLUDES</h2>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">OPERATIONAL PACKS</h2>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                        
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                             {[
-                                { t: "Daily Task Register", i: Activity },
-                                { t: "Shift Handover System", i: History },
-                                { t: "Incident Log", i: ShieldAlert },
-                                { t: "SOP Library", i: LayoutGrid },
-                                { t: "Trainer Notes", i: GraduationCap },
-                                { t: "Consequences Of Failure", i: AlertTriangle },
-                                { t: "Audit Language Tasks", i: ShieldCheck },
-                                { t: "Mobile-Friendly Execution", i: Smartphone },
-                                { t: "Role-Based Accountability", i: FileSignature },
-                                { t: "Google Sheets Deployment Guide", i: Target }
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col items-center text-center p-8 bg-zinc-50 border border-zinc-100 rounded-2xl space-y-4 hover:border-primary transition-colors group">
-                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-primary transition-colors" />
-                                    <span className="text-[10px] font-black uppercase italic tracking-widest text-zinc-600 leading-tight">{item.t}</span>
+                                { cat: "Hospitality", items: ["Hotel Operations", "Restaurant Operations"], icon: Utensils },
+                                { cat: "Retail", items: ["Grocery Store Ops", "Fashion Store Ops", "Jewellery Store Ops", "Electronics Store Ops"], icon: ShoppingBag },
+                                { cat: "Healthcare", items: ["Hospital Operations"], icon: Hospital },
+                                { cat: "Education", items: ["School Operations"], icon: School },
+                                { cat: "Infrastructure", items: ["Facilities Operations"], icon: Building2 },
+                                { cat: "Entertainment", items: ["Multiplex Operations"], icon: Popcorn },
+                                { cat: "Franchise", items: ["Franchise Operations"], icon: Store }
+                            ].map((group, i) => (
+                                <div key={i} className="space-y-4 p-8 bg-zinc-50 rounded-[2rem] border border-zinc-100 group hover:border-primary transition-all">
+                                    <group.icon className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
+                                    <div className="space-y-2">
+                                        <h4 className="text-[10px] font-black text-primary uppercase tracking-[0.3em] font-headline">{group.cat}</h4>
+                                        <ul className="space-y-1.5">
+                                            {group.items.map((item, j) => (
+                                                <li key={j} className="text-[11px] font-black text-zinc-950 uppercase italic leading-tight">{item}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </Section>
 
-                {/* --- SECTION 6: SINGLE VS MULTI --- */}
-                <Section className="bg-zinc-950 text-white" id="who-it-is-for" noSpine>
-                    <div className="max-w-6xl mx-auto space-y-20">
-                         <div className="text-center space-y-4">
-                            <h2 className="text-[34px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95]">
-                                BUILT FOR SINGLE LOCATIONS <br/> AND MULTI-UNIT GROUPS
+                <FaqSection />
+
+                {/* --- ONE-TIME PURCHASE --- */}
+                <Section className="bg-zinc-950 text-white py-32" noSpine id="pricing">
+                    <div className="max-w-4xl mx-auto text-center space-y-12">
+                        <div className="space-y-4">
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95]">
+                                ONE-TIME PURCHASE. <br/> OWN FOREVER.
                             </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest">NO SaaS TAX • NO PER-USER PRICING • NO LOCK-IN</p>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-12">
-                            <div className="p-12 md:p-16 rounded-[3rem] bg-white/5 border border-white/10 space-y-8 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-8 opacity-5">
-                                    <Target className="w-48 h-48" />
-                                </div>
-                                <div className="space-y-6 relative z-10">
-                                    <Badge className="bg-emerald-500/20 text-emerald-500 border-emerald-500/30 uppercase font-black tracking-widest text-[9px]">SME OPERATORS</Badge>
-                                    <h3 className="text-3xl font-black font-headline italic uppercase tracking-tighter">Single-unit operators</h3>
-                                    <p className="text-zinc-400 text-lg font-bold italic leading-relaxed">
-                                        "Run tighter daily operations without constantly following up. Capture your expert knowledge so the business runs even when you aren't on the floor."
-                                    </p>
-                                </div>
+                        
+                        <div className="flex flex-col items-center gap-8">
+                            <div className="flex items-baseline gap-4">
+                                <p className="text-6xl md:text-8xl font-black italic text-primary">₹3,499</p>
+                                <span className="text-2xl md:text-4xl font-bold text-white/30 italic">/ $49</span>
                             </div>
-                            <div className="p-12 md:p-16 rounded-[3rem] bg-emerald-500 text-black space-y-8 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-8 opacity-10">
-                                    <LayoutGrid className="w-48 h-48" />
-                                </div>
-                                <div className="space-y-6 relative z-10">
-                                    <Badge className="bg-black/10 text-black border-black/20 uppercase font-black tracking-widest text-[9px]">ENTERPRISE GROUPS</Badge>
-                                    <h3 className="text-3xl font-black font-headline italic uppercase tracking-tighter">Multi-unit groups</h3>
-                                    <p className="text-black/70 text-lg font-bold italic leading-relaxed">
-                                        "Standardize execution across branches without losing visibility. One master engine to protect brand parity and royalty integrity across your entire network."
-                                    </p>
-                                </div>
-                            </div>
+                            
+                            <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-primary text-black font-black uppercase italic text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white hover:scale-[1.05] transition-all border-none group">
+                                <Link href="/library" className="flex items-center gap-6">Get Your Operational Pack <ArrowRight className="w-8 h-8 md:w-10 md:h-10" /></Link>
+                            </Button>
+                            
+                            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 italic">DEPLOY ONCE. OPERATE DAILY. OWN PERMANENTLY.</p>
                         </div>
                     </div>
                 </Section>
 
-                <TestimonialsSection />
-                <FaqSection />
-
-                {/* --- FINAL CTA --- */}
-                <Section className="bg-primary text-white text-center py-32 md:py-48 relative overflow-hidden" noSpine id="pricing">
-                    <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
-                    <div className="max-w-5xl mx-auto space-y-16 relative z-10 px-6">
-                        <div className="space-y-8">
-                            <h2 className="text-[48px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">STOP RUNNING OPERATIONS <br/> FROM MEMORY.</h2>
-                            <p className="text-xl md:text-[32px] text-black/60 font-bold italic text-center leading-tight">Deploy a live operational system your team can actually follow.</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-10 md:gap-14">
-                            <button className="h-16 md:h-24 px-12 md:px-20 rounded-[20px] md:rounded-[30px] bg-black text-white font-black uppercase italic text-lg md:text-3xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-6">
-                                <Link href="/library" className="flex items-center gap-6">Get Your Operational Pack <ArrowRight className="w-8 h-8 md:w-12 md:h-12" /></Link>
-                            </button>
-                            <div className="flex flex-col items-center gap-3">
-                                <div className="flex items-baseline gap-5">
-                                    <p className="text-[56px] md:text-[84px] font-black italic text-black">₹3,499</p>
-                                    <span className="text-2xl md:text-4xl font-bold text-black/40 italic">/ $49</span>
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="text-sm font-black uppercase tracking-[0.5em] text-black/60">One-time purchase • Own forever</p>
-                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-black/40">Built for single-unit operators and multi-unit groups.</p>
-                                </div>
-                            </div>
+                {/* --- FINAL MANDATE --- */}
+                <Section className="bg-primary text-white text-center py-32 md:py-48 relative overflow-hidden" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-12 relative z-10 px-6">
+                        <h2 className="text-[42px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">
+                            STOP RUNNING OPERATIONS THROUGH WHATSAPP, MEMORY, AND FOLLOW-UPS.
+                        </h2>
+                        <p className="text-xl md:text-[32px] text-black/60 font-bold italic text-center leading-tight">
+                            Deploy a live operational system your team can actually use. <br/>
+                            Built in Excel. Powered through Google Sheets. Ready in 10 minutes.
+                        </p>
+                        <div className="pt-8">
+                            <Button asChild size="lg" className="h-20 px-12 rounded-[20px] bg-black text-white font-black uppercase italic text-lg md:text-2xl hover:scale-[1.05] transition-all border-none">
+                                <Link href="/library">START YOUR DEPLOYMENT</Link>
+                            </Button>
                         </div>
                     </div>
                 </Section>
