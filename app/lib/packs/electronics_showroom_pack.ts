@@ -46,7 +46,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "E-MGR-07", technicalProtocol: "Staff Sobriety Pulse", floorAction: "Confirm zero alcohol odor for incoming tech-service leads.", priority: "High", riskLevel: "High", consequence: "Safety breach in repair workshop.", proof: "Briefing Log", verificationRequired: true, cadence: "daily" },
                 { id: "E-MGR-08", technicalProtocol: "Fire Exit Path Clearance", floorAction: "Physically clear the egress of discarded packing crates.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment during crisis.", proof: "Walkthrough", verificationRequired: true, cadence: "daily" },
                 { id: "E-MGR-09", technicalProtocol: "Activation Parity Audit", floorAction: "Match POS billing count vs Brand activation dashboard.", priority: "Medium", riskLevel: "Low", consequence: "Selling un-activated grey market stock.", proof: "System Sync", cadence: "weekly" },
-                { id: "E-MGR-10", technicalProtocol: "Daily MOD Summary", floorAction: "Final operational and safety status sign-off.", priority: "High", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary", verificationRequired: true, cadence: "daily" }
+                { id: "E-MGR-10", technicalProtocol: "Daily MOD Summary", floorAction: "Final daily operational and safety status sign-off.", priority: "High", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary", verificationRequired: true, cadence: "daily" }
             ]
         },
         {
