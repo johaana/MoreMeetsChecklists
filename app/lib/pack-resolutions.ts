@@ -18,6 +18,43 @@ export type PackResolution = {
 };
 
 export const packResolutions: Record<string, PackResolution> = {
+    'supermarket_grocery_retail_pack': {
+        heroTitle: "GROCERY OPERATIONS SYSTEM",
+        heroSubline: "Command Your Freshness. Protect Your Margins.",
+        strategicParagraph: "The definitive Sovereign v18.0 engine for grocery and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance.",
+        whyExecutionBreaksParagraph: "Grocery retail fails when cold storage vitals are unlogged, expiry sweeps are inconsistent, and cashier variance goes unmonitored by management.",
+        risks: [
+            { title: "Cold Chain Breach", description: "Unmonitored temp spikes in chillers/freezers leading to massive pathogen growth and total stock loss." },
+            { title: "Expiry Slip-ups", description: "Expired perishables remaining on shelves due to lack of daily FEFO (First-Expiry-First-Out) audits." },
+            { title: "Cashier Variance", description: "Internal till fraud and billing errors silently eroding 2-3% of daily net revenue." },
+            { title: "Inventory Shrinkage", description: "High-volume pilferage in alcohol, gourmet, and personal care categories due to weak patrol logs." }
+        ],
+        whatChangesDaily: [
+            "Refrigeration vitals become mandatory data",
+            "Expiry sweeps turn into auditable logs",
+            "Cashier variance is reconciled shift-wise",
+            "Receiving temperatures have a verified seal",
+            "Waste weights are logged for margin parity",
+            "Store managers gain live visibility into execution"
+        ],
+        mondayMorning: [
+            "Morning freshness cull is signed by 9 AM",
+            "Cold storage vitals are within green zones",
+            "High-shrinkage SKUs have been cycle-counted",
+            "Vendor SLAs for fresh protein are verified",
+            "Checkout till floats are reconciled and secured",
+            "The regional standard is visible to the head office"
+        ],
+        outcomes: [
+            "Pathogen risk mitigated",
+            "Margin leakage plugged",
+            "Statutory logs audit-ready",
+            "Shelf availability secured",
+            "FSSAI compliance verified"
+        ],
+        reassuranceTrustTitle: "STATION DISCIPLINE",
+        reassuranceTrustDescription: "Operational consistency customers notice across every aisle and chill-zone."
+    },
     'electronics_showroom_pack': {
         heroTitle: "ELECTRONICS OPERATIONS SYSTEM",
         heroSubline: "Command Your Device Integrity. Protect Your Inventory.",

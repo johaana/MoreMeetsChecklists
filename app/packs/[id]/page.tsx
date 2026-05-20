@@ -22,6 +22,7 @@ const descriptions: Record<string, string> = {
   'cinema_operations_pack': "Cinema operational SOPs for show readiness, concession control, crowd flow, projection checks, emergency readiness, and multi-screen operational consistency.",
   'fashion_and_apparel_retail': "Specialized operational system for fashion retail. Control inventory velocity, size-curve balancing, trial-room conversion, and return-fraud prevention with forensic SOPs.",
   'electronics_showroom_pack': "Sovereign electronics operations system. Control unique ID (IMEI/Serial) integrity, monitor demo asset safety, stop warranty fraud, and manage e-waste compliance.",
+  'supermarket_grocery_retail_pack': "Sovereign grocery operations system. Command cold chain integrity, monitor expiry sweeps, stop checkout variance, and manage high-volume FMCG logistics.",
 };
 
 export async function generateMetadata(
@@ -77,7 +78,7 @@ export default async function Page({ params }: Props) {
   }
 
   /**
-   * SOVEREIGN ASSET MAPPING v11.9
+   * SOVEREIGN ASSET MAPPING v12.1
    * Strategy: Background (Atmospheric/Architectural) + Squircle (Operational Battlefield)
    * Refined per "Institutional Infrastructure" mandate.
    */
@@ -119,6 +120,10 @@ export default async function Page({ params }: Props) {
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
       'electronics_showroom_pack': {
+          bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
+          squircle: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+      },
+      'supermarket_grocery_retail_pack': {
           bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
           squircle: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
       }

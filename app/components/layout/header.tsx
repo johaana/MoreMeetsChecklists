@@ -23,7 +23,8 @@ const ELITE_PACK_IDS = [
     'cinema_operations_pack',
     'retail_operations_system',
     'fashion_and_apparel_retail',
-    'electronics_showroom_pack'
+    'electronics_showroom_pack',
+    'supermarket_grocery_retail_pack'
 ];
 
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
