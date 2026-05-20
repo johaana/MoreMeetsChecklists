@@ -37,7 +37,8 @@ import {
     ShoppingBag,
     Clock,
     Scale,
-    Cpu
+    Cpu,
+    Gem
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
