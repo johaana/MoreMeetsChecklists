@@ -21,8 +21,8 @@ const ELITE_INDUSTRIES = [
     { name: "Hotel Operations", id: "hotels_and_resorts", icon: Building },
     { name: "Hospital Operations", id: "healthcare_and_hospital_operations", icon: Hospital },
     { name: "School Operations", id: "school_operations_pack", icon: School },
-    { name: "Multi-Unit Operations", id: "franchise_operations_pack", icon: Store },
-    { name: "Building Operations", id: "facility_management_blueprint", icon: Building2 },
+    { name: "Franchise Operations", id: "franchise_operations_pack", icon: Store },
+    { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
     { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
