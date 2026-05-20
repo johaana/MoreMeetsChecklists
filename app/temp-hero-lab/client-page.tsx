@@ -1,4 +1,3 @@
-'use server';
 'use client';
 
 import React from 'react';
@@ -22,7 +21,11 @@ import {
     LayoutGrid,
     ChevronRight,
     Terminal,
-    Monitor
+    Monitor,
+    GraduationCap,
+    FileSignature,
+    Users,
+    Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -65,6 +68,21 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
         </div>
         <div className="w-full relative overflow-hidden bg-black min-h-screen flex flex-col justify-center border-y border-white/5">
             {children}
+        </div>
+    </div>
+);
+
+const SovereignCTA = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-5", className)}>
+        <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group">
+            <Link href="/library">
+                DEPLOY THE SYSTEM <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+        </Button>
+        <div className="space-y-1 pl-1">
+             <p className="text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
+                {NARRATIVE.meta}
+            </p>
         </div>
     </div>
 );
@@ -371,18 +389,3 @@ export default function HeroLabClient() {
         </div>
     );
 }
-
-const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-5", className)}>
-        <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group">
-            <Link href="/library">
-                DEPLOY THE SYSTEM <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-        </Button>
-        <div className="space-y-1 pl-1">
-             <p className="text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
-                {NARRATIVE.meta}
-            </p>
-        </div>
-    </div>
-);
