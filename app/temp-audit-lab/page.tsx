@@ -21,7 +21,8 @@ import {
     ArrowRight,
     Target,
     Zap,
-    AlertTriangle
+    AlertTriangle,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { handleDownloadAuditPrototype } from './download-audit-prototype';
@@ -29,26 +30,26 @@ import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 const STABILITY_BENCHMARKS = [
     {
-        title: "Today-First UX",
-        desc: "Magic operational focus. The script forces a filtered view of today's tasks on every file open, hiding yearly complexity.",
+        title: "Magic Today-First UX",
+        desc: "Automation script forces the view to focus ONLY on today's tasks upon opening, hiding the complexity of a 365-day ledger.",
         icon: Target,
         status: "STABLE"
     },
     {
-        title: "Atomic Lock (P0)",
-        desc: "Concurrency shield. Script-level locks prevent data loss or duplicate records when 10+ staff members sync simultaneously.",
+        title: "Atomic Lock (Concurrency)",
+        desc: "Script-level locks prevent data loss or duplicate records when 10+ staff members sync initials simultaneously in Google Sheets.",
         icon: Lock,
         status: "VERIFIED"
     },
     {
         title: "Mobile Grid Polish",
-        desc: "Optimized column widths for 6.1\" screens. 'Done By' initials reachable with zero horizontal scrolling.",
+        desc: "Freeze panes (Rows 1-3, Columns A-C) and optimized widths ensure 'Done By' is reachable without horizontal scrolling on mobile.",
         icon: Smartphone,
         status: "OPTIMIZED"
     },
     {
         title: "Yearly Scale (365d)",
-        desc: "Simulation of 200 tasks over 12 months. Verified < 5s load time on mid-range Android devices.",
+        desc: "Trigger-aware generation (Weekly/Monthly/Quarterly) keeps row counts manageable for snappy mobile performance.",
         icon: Cpu,
         status: "LOAD-TESTED"
     }
@@ -76,10 +77,10 @@ export default function AuditLabPage() {
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[10px] bg-emerald-500/5 px-6 py-2">STABILIZATION PHASE: SOVEREIGN V3.1</Badge>
                         <h1 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-white leading-tight">
-                            The Institutional <span className="text-emerald-500">Perpetual Engine</span>
+                            The Yearly <span className="text-emerald-500">Perpetual Engine</span>
                         </h1>
                         <p className="text-secondary-text text-lg italic max-w-2xl mx-auto">
-                            Making long-life governance simple enough for every frontline team.
+                            High-gravity governance simple enough for every frontline team.
                         </p>
                     </div>
 
@@ -117,7 +118,7 @@ export default function AuditLabPage() {
                                 onClick={() => handleDownloadAuditPrototype()}
                                 className="h-16 px-10 bg-emerald-500 text-black font-black uppercase italic tracking-widest rounded-xl hover:scale-105 transition-all shadow-[0_0_50px_-10px_rgba(46,184,107,0.5)]"
                             >
-                                <Download className="mr-3 w-6 h-6" /> Generate V3.1 Perpetual Engine
+                                <Download className="mr-3 w-6 h-6" /> Generate V3.1 Yearly Engine
                             </Button>
                             
                             <div className="p-6 bg-zinc-950/50 rounded-2xl border border-white/5 text-left max-w-2xl space-y-3">
@@ -126,14 +127,14 @@ export default function AuditLabPage() {
                                     <p className="text-[10px] font-black uppercase tracking-widest">STRESS TEST: REAL-WORLD DENSITY</p>
                                 </div>
                                 <p className="text-xs text-zinc-400 font-medium italic leading-relaxed">
-                                    This prototype simulates 200 tasks over 12 months. It generates approximately 6,500 rows. We recommend testing on the low-end Android devices typical of frontline hotel/retail staff.
+                                    This prototype simulates a full 12-month operational cycle. It utilizes the "Trigger-Aware" generation logic where weekly and monthly tasks only appear when due, ensuring high-speed mobile performance.
                                 </p>
                             </div>
                         </div>
                     </Card>
 
                     {/* SCRIPT BLOCK */}
-                    <div className="space-y-6">
+                    <div className="space-y-6" id="script-source">
                         <div className="flex items-center justify-between">
                             <h3 className="text-xl font-black uppercase italic tracking-tighter text-white flex items-center gap-2">
                                 <Code2 className="w-6 h-6 text-emerald-500" /> Sovereign V3.1 Stabilized Script
@@ -142,7 +143,7 @@ export default function AuditLabPage() {
                                 Copy V3.1 Source
                             </Button>
                         </div>
-                        <pre className="p-8 bg-zinc-950 border border-white/5 rounded-2xl overflow-x-auto text-[11px] text-emerald-500/80 font-mono leading-relaxed max-h-[300px]">
+                        <pre className="p-8 bg-zinc-950 border border-white/5 rounded-2xl overflow-x-auto text-[11px] text-emerald-500/80 font-mono leading-relaxed max-h-[400px]">
                             {APPS_SCRIPT_SOURCE}
                         </pre>
                     </div>
@@ -153,8 +154,8 @@ export default function AuditLabPage() {
                             <ShieldAlert className="w-10 h-10 text-red-500" />
                             <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Institutional Protection Active</h3>
                          </div>
-                         <p className="text-zinc-400 max-w-2xl mx-auto font-medium italic">
-                            In V3.1, every workbook generates with **Active Sheet Protection**. To prevent staff from destroying formulas or cadence logic, only Yellow input cells are editable. Managers can unlock the file using the password 'sovereign_v3' in the Excel Review tab.
+                         <p className="text-zinc-400 max-w-2xl mx-auto font-medium italic leading-relaxed">
+                            In V3.1, the engine enforces **Operational Discipline**. All descriptions, formulas, and cadence headers are hard-locked. Only the Yellow input cells (`DONE BY`, `VERIFIED BY`) are editable. Managers can unlock the file for customization using the password <span className="text-white font-black underline">'sovereign_v3'</span>.
                          </p>
                     </div>
 
