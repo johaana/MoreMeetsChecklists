@@ -1,14 +1,14 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 
 /**
- * SOVEREIGN V2.1 AUDIT ENGINE - PROTOTYPE BUILD
+ * SOVEREIGN V2.1 AUDIT ENGINE - REFINED PROTOTYPE
  * ----------------------------------------------------------------------------
  * 1. DATED LEDGER: 30-day task window for mobile performance.
  * 2. APPEND-ONLY VAULT: The high-gravity [RECORDS] sheet.
  * 3. FUTURE-READY: TASK_ID, PACK_VERSION, and CADENCE columns included.
+ * 4. NON-DESTRUCTIVE: Visibility via filters, not row hiding.
  * ----------------------------------------------------------------------------
  */
 
@@ -73,12 +73,16 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "This system handles permanent history via a hidden append-only [RECORDS] vault.", s: { font: { italic: true } } }],
             [],
             [{ v: "MODE A: GOOGLE SHEETS (RECOMMENDED)", s: { font: { bold: true } } }],
-            [{ v: "• Install the provided Apps Script for auto-timestamping." }],
+            [{ v: "• Install the provided Apps Script for auto-timestamping and auto-archiving." }],
             [{ v: "• On opening, the sheet will automatically filter for TODAY's tasks." }],
+            [{ v: "• Every completion is invisibly saved to the [RECORDS] vault." }],
             [],
             [{ v: "MODE B: EXCEL-ONLY / OFFLINE", s: { font: { bold: true } } }],
             [{ v: "• Use CTRL + ; to manually enter a static date in the 'COMPLETED ON' column." }],
             [{ v: "• Use the filter icon on Column A (DATE) to see only today's work." }],
+            [],
+            [{ v: "⚠️ ACCESSING RECORDS", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "Managers can unhide the [RECORDS] sheet (View -> Hidden Sheets) to export evidence." }],
             [],
             [{ v: "⚠️ MAINTENANCE NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
             [{ v: "At the end of every 30 days, duplicate this file as an archive and reset the master." }]
@@ -98,8 +102,8 @@ export const handleDownloadAuditPrototype = () => {
             { v: "VERIFIED BY", s: headerStyle },
             { v: "STATUS", s: headerStyle },
             { v: "COMPLETED ON (STAMP)", s: headerStyle },
-            { v: "TASK_ID", s: headerStyle }, // Internal
-            { v: "CADENCE", s: headerStyle }  // Internal
+            { v: "TASK_ID", s: headerStyle },
+            { v: "CADENCE", s: headerStyle }
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
@@ -111,6 +115,7 @@ export const handleDownloadAuditPrototype = () => {
             { id: "T-04", t: "Cash Reconciliation", c: "Daily" }
         ];
 
+        // Generate 3 days of tasks for the prototype
         for (let d = 0; d < 3; d++) {
             const rowDate = new Date(today);
             rowDate.setDate(today.getDate() + d);
@@ -152,11 +157,34 @@ export const handleDownloadAuditPrototype = () => {
         recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 11 } }];
         utils.book_append_sheet(wb, recordWs, "RECORDS");
 
+        // --- 04. CUSTOMIZATION_GUIDE ---
+        const guideData = [
+            [{ v: "🛠️ V2.1 COMMAND MANUAL — GOVERNANCE MODE", s: bannerStyle }],
+            [],
+            [{ v: "1. HOW AUDIT LOGGING WORKS", s: { font: { bold: true } } }],
+            [{ v: "The system uses a 'Dual Ledger' approach. The [DAILY_TASKS] sheet is for your team's eyes. The [RECORDS] sheet is for your business's permanent memory." }],
+            [],
+            [{ v: "2. GOOGLE SHEETS AUTOMATION", s: { font: { bold: true } } }],
+            [{ v: "When you install the Sovereign Script, completions are timestamped automatically. This creates a high-fidelity audit trail that cannot be faked or backdated easily." }],
+            [],
+            [{ v: "3. EXCEL-ONLY / OFFLINE FALLBACK", s: { font: { bold: true } } }],
+            [{ v: "If operating without scripts, staff must manually enter the date. Shortcut: Select the cell and press CTRL + ; (Semicolon) to insert the current static date." }],
+            [],
+            [{ v: "4. ARCHIVING RECORDS", s: { font: { bold: true } } }],
+            [{ v: "At the end of the year, unhide the [RECORDS] sheet. Copy the entire contents to a new file named 'Archive_2025_Evidence.xlsx'. This keeps your primary working file lean and fast." }],
+            [],
+            [{ v: "5. EXPORTING FOR INSPECTION", s: { font: { bold: true } } }],
+            [{ v: "Download the file as .xlsx or .pdf. Since timestamps are saved as static text, they will be perfectly preserved for auditors." }]
+        ];
+        const guideWs = utils.aoa_to_sheet(guideData);
+        guideWs['!cols'] = [{ wch: 120 }];
+        utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
+
         // --- OTHER TABS ---
         utils.book_append_sheet(wb, utils.aoa_to_sheet([["SOP LIBRARY"]]), "SOP_LIB");
         utils.book_append_sheet(wb, utils.aoa_to_sheet([["TEAM CONFIG"]]), "TEAM_HUB");
         
-        writeFile(wb, `MoreMeets_Sovereign_V2_Prototype.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V2.1_Laboratory.xlsx`);
     } catch (e: any) {
         alert("Prototype Generation Failure: " + e.message);
     }
