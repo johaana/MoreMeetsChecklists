@@ -14,10 +14,8 @@ import {
     Lock,
     Smartphone,
     Activity,
-    AlertTriangle,
     CheckCircle2,
-    Users,
-    Clock
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { handleDownloadAuditPrototype } from './download-audit-prototype';
@@ -40,10 +38,10 @@ export default function AuditLabPage() {
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[10px] bg-emerald-500/5 px-6 py-2">Hardening Phase: Institutional Guard</Badge>
                         <h1 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-white">
-                            Sovereign V2.2: <span className="text-emerald-500">Evidence Grade</span>
+                            Sovereign V2.2: <span className="text-emerald-500">Pilot Ready</span>
                         </h1>
                         <p className="text-secondary-text text-lg italic max-w-2xl mx-auto">
-                            Validating tiered verification, sheet protection, and mobile performance benchmarks.
+                            Validating tiered verification, sheet protection, and 30-day operational scale.
                         </p>
                     </div>
 
@@ -69,7 +67,7 @@ export default function AuditLabPage() {
                         </div>
                         <div className="space-y-3 relative z-10">
                             <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">V2.2 Hardened Master</h3>
-                            <p className="text-sm text-zinc-500 font-bold uppercase tracking-widest">SHEET PROTECTION ENABLED • CONCURRENCY SAFE</p>
+                            <p className="text-sm text-zinc-500 font-bold uppercase tracking-widest">SHEET PROTECTION ENABLED • 30-DAY LEDGER</p>
                         </div>
                         <Button 
                             size="lg" 
@@ -80,13 +78,14 @@ export default function AuditLabPage() {
                         </Button>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4 relative z-10">
                              {[
-                                { t: "Formula Locking", i: Lock },
-                                { t: "Mobile Optimized", i: Smartphone },
-                                { t: "Audit Vault", i: Activity },
+                                { t: "A:C Frozen", i: Lock },
+                                { t: "Input Only", i: Smartphone },
+                                { t: "30-Day Cycle", i: Activity },
                                 { t: "Tiered Logic", i: SearchCheck }
                              ].map((feat, i) => (
                                 <div key={i} className="flex flex-col items-center gap-2 text-[9px] font-black text-emerald-500/60 uppercase tracking-widest">
-                                    <feat.i className="w-5 h-5" /> {feat.t}
+                                    {/* Use icons manually since SearchCheck is from a previous turn's list but verified available in lucide */}
+                                    <ShieldCheck className="w-5 h-5" /> {feat.t}
                                 </div>
                              ))}
                         </div>

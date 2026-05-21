@@ -13,14 +13,14 @@ function onEdit(e) {
   const col = range.getColumn();
   const row = range.getRow();
   
-  // TRIGGER: DAILY_TASKS Column F (6) - DONE BY
+  // TRIGGER: DAILY_TASKS Column F (6) - DONE BY (INIT)
   if (sheetName === "DAILY_TASKS" && col === 6 && row > 3) {
     const lock = LockService.getScriptLock();
     try {
       lock.waitLock(5000); // Concurrency protection for simultaneous edits
       
       const doneValue = range.getValue();
-      const timestampCell = sheet.getRange(row, 9); // Column I
+      const timestampCell = sheet.getRange(row, 9); // Column I (9) - COMPLETED ON
       
       if (doneValue !== "") {
         // 1. GENERATE STATIC TIMESTAMP (STRING VALUE)
@@ -31,7 +31,7 @@ function onEdit(e) {
         // 2. APPEND TO PERMANENT VAULT (RECORDS)
         const recordSheet = ss.getSheetByName("RECORDS");
         if (recordSheet) {
-          const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
+          const rowData = sheet.getRange(row, 1, 1, 15).getValues()[0];
           recordSheet.appendRow(rowData);
         }
         
@@ -63,7 +63,7 @@ function onOpen() {
   
   const lastRow = sheet.getLastRow();
   if (lastRow > 3) {
-    const range = sheet.getRange(3, 1, lastRow, 13);
+    const range = sheet.getRange(3, 1, lastRow, 15);
     const filter = range.createFilter();
     const criteria = SpreadsheetApp.newFilterCriteria()
       .whenTextContains(today)

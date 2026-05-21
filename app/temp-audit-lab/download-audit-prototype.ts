@@ -4,13 +4,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V2.2 HARDENED AUDIT ENGINE
+ * SOVEREIGN V2.2 HARDENED AUDIT ENGINE - PILOT READY
  * ----------------------------------------------------------------------------
- * 1. TIERED VERIFICATION: OPEN -> IN PROGRESS -> COMPLETE logic restored.
- * 2. FREEZE PANES: A1:C3 locked at generation for mobile consistency.
- * 3. AUTO-FILTERS: Applied to header row by default.
- * 4. RECORDS VAULT: Set to 'hidden' status with forensic meta-tags.
- * 5. CELL PROTECTION: Only yellow input cells are unlocked.
+ * 1. TIERED VERIFICATION: OPEN -> IN PROGRESS -> COMPLETE logic.
+ * 2. FREEZE PANES: Top 3 rows and Columns A:C locked.
+ * 3. SELECTIVE PROTECTION: Only yellow input cells (F, G) are unlocked.
+ * 4. 30-DAY LEDGER: Full month operational cycle generation.
+ * 5. VERSIONING: Immutable PACK_VERSION and ENGINE_VERSION per row.
  * ----------------------------------------------------------------------------
  */
 
@@ -26,8 +26,7 @@ export const handleDownloadAuditPrototype = () => {
             INPUT_YELLOW: "FEFCE8",
             TEXT_RISK: "991B1B",
             LOCKED_GREY: "F1F5F9",
-            VAULT_HEADER: "1E293B",
-            SUCCESS_BG: "F0FDF4"
+            VAULT_HEADER: "1E293B"
         };
 
         const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -62,11 +61,14 @@ export const handleDownloadAuditPrototype = () => {
             { id: "H-FIN-04", t: "Cash Reconciliation", c: "Daily", risk: "Revenue theft masking as error", instr: "Match POS X-reading to physical notes.", vReq: true }
         ];
 
+        const PACK_V = "LAB-V2.2";
+        const ENGINE_V = "SOVEREIGN-PRO-V2.2";
+
         // --- 01. START ---
         const startData = [
             [{ v: "🚀 SOVEREIGN V2.2 COMMAND CONSOLE — HARDENED", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "DEPLOYMENT STATUS: AUDIT-READY (V2.2)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "DEPLOYMENT STATUS: PILOT-READY (V2.2)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
             [{ v: "1. INSTALL AUTOMATION", s: { font: { bold: true } } }, { v: "Copy the script from the [CUSTOMIZATION_GUIDE] to enable auto-timestamps." }],
             [{ v: "2. PROTECTION ENABLED", s: { font: { bold: true } } }, { v: "Only yellow cells are editable. Formulas and headers are locked by default." }],
@@ -82,25 +84,28 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 02. DAILY_TASKS ---
         const taskHeaders = [
-            { v: "DATE", s: headerStyle },
-            { v: "BRANCH", s: headerStyle },
-            { v: "TECHNICAL TASK", s: headerStyle },
-            { v: "ROLE", s: headerStyle },
-            { v: "ASSIGNED TO", s: headerStyle },
-            { v: "DONE BY (INIT)", s: headerStyle },
-            { v: "VERIFIED BY", s: headerStyle },
-            { v: "STATUS", s: headerStyle },
-            { v: "COMPLETED ON (STAMP)", s: headerStyle },
-            { v: "CONSEQUENCE / RISK", s: headerStyle },
-            { v: "FLOOR INSTRUCTIONS", s: headerStyle },
-            { v: "TASK_ID", s: headerStyle },
-            { v: "CADENCE", s: headerStyle }
+            { v: "DATE", s: headerStyle },               // A
+            { v: "BRANCH", s: headerStyle },             // B
+            { v: "TECHNICAL TASK", s: headerStyle },     // C
+            { v: "ROLE", s: headerStyle },               // D
+            { v: "ASSIGNED TO", s: headerStyle },         // E
+            { v: "DONE BY (INIT)", s: headerStyle },     // F - UNLOCKED
+            { v: "VERIFIED BY", s: headerStyle },        // G - UNLOCKED
+            { v: "STATUS", s: headerStyle },             // H
+            { v: "COMPLETED ON (STAMP)", s: headerStyle }, // I
+            { v: "CONSEQUENCE / RISK", s: headerStyle }, // J
+            { v: "FLOOR INSTRUCTIONS", s: headerStyle }, // K
+            { v: "TASK_ID", s: headerStyle },            // L
+            { v: "CADENCE", s: headerStyle },            // M
+            { v: "PACK_VERSION", s: headerStyle },       // N
+            { v: "ENGINE_VERSION", s: headerStyle }      // O
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
         const today = new Date();
 
-        for (let d = 0; d < 3; d++) {
+        // GENERATE 30 DAYS (FULL OPERATIONAL CYCLE)
+        for (let d = 0; d < 30; d++) {
             const rowDate = new Date(today);
             rowDate.setDate(today.getDate() + d);
             const dateStr = rowDate.toISOString().split('T')[0];
@@ -108,7 +113,8 @@ export const handleDownloadAuditPrototype = () => {
             testTasks.forEach((task) => {
                 const rIdx = taskData.length + 1;
                 
-                // STATUS FORMULA (Hardened Concurrency)
+                // STATUS FORMULA: OPEN -> IN PROGRESS -> COMPLETE
+                // F = DONE BY, G = VERIFIED BY
                 const formula = task.vReq 
                     ? `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETE", IF(LEN(TRIM(F${rIdx}))>0, "IN PROGRESS", "OPEN"))`
                     : `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETE", "OPEN")`;
@@ -119,23 +125,28 @@ export const handleDownloadAuditPrototype = () => {
                     { v: task.t, s: { ...cellStyles.left, font: { bold: true } } },
                     { v: "Operations", s: cellStyles.center },
                     { v: "Assigned Staff", s: cellStyles.center },
-                    { v: "", s: cellStyles.input },
-                    { v: "", s: task.vReq ? cellStyles.input : cellStyles.locked },
+                    { v: "", s: cellStyles.input }, // F: UNLOCKED
+                    { v: "", s: task.vReq ? cellStyles.input : cellStyles.locked }, // G: UNLOCKED IF REQ
                     { t: 'f', f: formula, s: cellStyles.status },
                     { v: "", s: cellStyles.center },
                     { v: task.risk, s: { ...cellStyles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
                     { v: task.instr, s: cellStyles.left },
                     { v: task.id, s: cellStyles.center },
-                    { v: task.c, s: cellStyles.center }
+                    { v: task.c, s: cellStyles.center },
+                    { v: PACK_V, s: cellStyles.center },
+                    { v: ENGINE_V, s: cellStyles.center }
                 ]);
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [12, 15, 35, 15, 15, 12, 12, 15, 20, 30, 40, 10, 10].map(w => ({ wch: w }));
-        taskWs['!views'] = [{ state: 'frozen', xSplit: 3, ySplit: 3 }];
-        taskWs['!autofilter'] = { ref: "A3:M1000" };
+        taskWs['!cols'] = [12, 15, 35, 15, 15, 12, 12, 15, 20, 30, 40, 10, 10, 12, 18].map(w => ({ wch: w }));
         
-        // Active Sheet Protection
+        // HARDENED: FREEZE TOP 3 ROWS AND COLUMNS A:C
+        taskWs['!views'] = [{ state: 'frozen', xSplit: 3, ySplit: 3 }];
+        
+        taskWs['!autofilter'] = { ref: `A3:O${taskData.length}` };
+        
+        // ACTIVE SHEET PROTECTION
         taskWs['!protect'] = {
             password: "sovereign_guard",
             selectLockedCells: true,
@@ -152,7 +163,7 @@ export const handleDownloadAuditPrototype = () => {
         ];
         const recordWs = utils.aoa_to_sheet(recordData);
         recordWs['!cols'] = taskWs['!cols'];
-        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
+        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 14 } }];
         recordWs['!protect'] = { password: "sovereign_vault" };
         
         utils.book_append_sheet(wb, recordWs, "RECORDS");
@@ -160,7 +171,7 @@ export const handleDownloadAuditPrototype = () => {
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [] };
         wb.Workbook.Sheets[rIdx] = { Hidden: 1 };
 
-        // --- 04. CUSTOMIZATION_GUIDE (Hardened Instructions) ---
+        // --- 04. CUSTOMIZATION_GUIDE ---
         const guideData = [
             [{ v: "🛠️ COMMAND MANUAL — SOVEREIGN AUDIT LAYER", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
@@ -171,9 +182,6 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "Google Sheets:", s: { font: { bold: true } } }, { v: "1. View -> Hidden Sheets -> select RECORDS." }],
             [null, { v: "2. File -> Download -> Microsoft Excel (.xlsx) to export evidence." }],
             [{ v: "Excel (Offline):", s: { font: { bold: true } } }, { v: "1. Right-click any tab at bottom -> Unhide -> select RECORDS." }],
-            [],
-            [{ v: "SECTION 3: EXCEL-ONLY FALLBACK (OFFLINE)", s: { font: { bold: true } } }],
-            [{ v: "Use [CTRL + ;] to manually insert a static date in the 'COMPLETED ON' column." }],
             [],
             [{ v: "--- SCRIPT START ---", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }],
