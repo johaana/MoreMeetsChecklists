@@ -44,7 +44,7 @@ const STABILITY_BENCHMARKS = [
     },
     {
         title: "Symmetric Mobile Grid",
-        desc: "Increased row height (28pt) and calculated widths ensure tap-accuracy on standard 6.1\" smartphone viewports.",
+        desc: "Increased row height (35pt) and calculated widths ensure touch-accuracy on standard 6.1\" smartphone viewports.",
         icon: Smartphone,
         status: "OPTIMIZED"
     },

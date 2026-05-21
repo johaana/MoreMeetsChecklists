@@ -8,7 +8,7 @@ import { APPS_SCRIPT_SOURCE } from './apps-script-source';
  * ----------------------------------------------------------------------------
  * 1. SYMMETRIC FREEZE: A:D (Date/Day/Branch/Task) + Top 3 Rows.
  * 2. HARDENED PROTECTION: ONLY Yellow cells (F:G) are editable. 
- * 3. MOBILE DENSITY: 28pt row height for touch-accuracy.
+ * 3. MOBILE DENSITY: 35pt row height for touch-accuracy.
  * 4. INSTITUTIONAL METADATA: Immutable watermarking per row.
  * ----------------------------------------------------------------------------
  */
