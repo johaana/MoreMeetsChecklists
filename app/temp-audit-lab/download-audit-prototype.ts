@@ -10,6 +10,7 @@ import { APPS_SCRIPT_SOURCE } from './apps-script-source';
  * 2. HARDENED PROTECTION: ONLY Yellow cells (F:G) are editable. 
  * 3. MOBILE DENSITY: 35pt row height for touch-accuracy.
  * 4. INSTITUTIONAL METADATA: Immutable watermarking per row.
+ * 5. INTELLIGENT CADENCE: Trigger-aware row generation for yearly scale.
  * ----------------------------------------------------------------------------
  */
 
@@ -65,13 +66,13 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V3.2 PILOT — OPERATIONAL HARDENING", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🚀 SOVEREIGN V3.2 PERPETUAL — OPERATIONAL HARDENING", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "INSTITUTIONAL PERPETUAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "YEARLY INSTITUTIONAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "1. OPERATION MODE (DEFAULT)", s: { font: { bold: true } } }, { v: "Descriptions and formulas are LOCKED. Only Yellow cells (Done By / Verified By) are editable." }],
-            [{ v: "2. MOBILE FREEZE ARCHITECTURE", s: { font: { bold: true } } }, { v: "Rows 1-3 and Columns A-D are FROZEN. You will never lose task identity during scrolling." }],
-            [{ v: "3. AUTOMATED EVIDENCE", s: { font: { bold: true } } }, { v: "Every completion is silently mirrored to the hidden RECORDS vault with a static timestamp." }],
+            [{ v: "1. OPERATION MODE (LOCKED)", s: { font: { bold: true } } }, { v: "Descriptions and formulas are LOCKED. Only Yellow cells (Done By / Verified By) are editable." }],
+            [{ v: "2. IDENTITY FREEZE ARCHITECTURE", s: { font: { bold: true } } }, { v: "Rows 1-3 and Columns A-D are FROZEN. You will never lose task identity during scrolling." }],
+            [{ v: "3. PERMANENT EVIDENCE VAULT", s: { font: { bold: true } } }, { v: "Every completion is silently vaulted in the hidden RECORDS sheet with a non-volatile timestamp." }],
             [],
             [{ v: "🛠️ DESIGN MODE (FOR MANAGERS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: "To modify SOPs or Add Tasks: Review the [CUSTOMIZATION_GUIDE]. Password: 'sovereign_v3'." }]
@@ -95,13 +96,14 @@ export const handleDownloadAuditPrototype = () => {
             { v: "CONSEQUENCE / RISK", s: headerStyle }, // J
             { v: "FLOOR INSTRUCTIONS", s: headerStyle }, // K
             { v: "TASK_ID", s: headerStyle },            // L
-            { v: "PACK_VERSION", s: headerStyle }        // M
+            { v: "VERSION", s: headerStyle }             // M
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
         const rowConfigs: any[] = [{ hpt: 35 }, { hpt: 20 }, { hpt: 35 }];
         const startDate = new Date();
 
+        // 365-DAY INTELLIGENT GENERATION
         for (let d = 0; d < 365; d++) {
             const rowDate = new Date(startDate);
             rowDate.setDate(startDate.getDate() + d);
@@ -137,7 +139,7 @@ export const handleDownloadAuditPrototype = () => {
                         { v: task.id, s: cellStyles.center },
                         { v: PACK_V, s: cellStyles.center }
                     ]);
-                    rowConfigs.push({ hpt: 35 }); // Taller rows for mobile tap-accuracy
+                    rowConfigs.push({ hpt: 35 });
                 }
             });
         }
@@ -145,13 +147,13 @@ export const handleDownloadAuditPrototype = () => {
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [12, 6, 15, 40, 10, 18, 18, 15, 20, 35, 45, 10, 15].map(w => ({ wch: w }));
         taskWs['!rows'] = rowConfigs;
-        taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }]; // Freeze Identity (Date/Day/Branch/Task)
+        taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }]; // IDENTITY LOCK: Date/Day/Branch/Task
         taskWs['!autofilter'] = { ref: `A3:M${taskData.length}` };
         taskWs['!protect'] = { password: "sovereign_v3" };
         
         utils.book_append_sheet(wb, taskWs, "DAILY_TASKS");
 
-        // --- 03. RECORDS (Hidden Vault) ---
+        // --- 03. RECORDS (Hidden Evidence Vault) ---
         const recordData: any[][] = [
             [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED EVIDENCE | DO NOT EDIT MANUALLY", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
             [],
@@ -172,17 +174,17 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "🛠️ SYSTEM STABILIZATION GUIDE — SOVEREIGN V3.2", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
             [{ v: "SECTION 1: STAFF USAGE", s: { font: { bold: true } } }],
-            [{ v: "• Open the file daily. The script automatically filters for TODAY'S tasks." }],
-            [{ v: "• Only Yellow cells are editable. Enter your initials when a task is done." }],
+            [{ v: "• Open the file daily. The script automatically filters for TODAY'S mission." }],
+            [{ v: "• ONLY Yellow cells are editable. Enter your initials when a task is done." }],
             [],
             [{ v: "SECTION 2: MANAGER CUSTOMIZATION", s: { font: { bold: true } } }],
             [{ v: "• To modify SOPs: Right-click DAILY_TASKS -> Unprotect Sheet. Password: 'sovereign_v3'." }],
             [{ v: "• To view history: Go to View -> Hidden Sheets -> RECORDS." }],
             [],
-            [{ v: "SECTION 3: OFFLINE FALLBACK", s: { font: { bold: true } } }],
-            [{ v: "• If the script is offline: Enter initials, then use CTRL + ; to stamp the time in column I." }],
+            [{ v: "SECTION 3: AUDIT EVIDENCE EXPORT", s: { font: { bold: true } } }],
+            [{ v: "• Download the file as Excel or CSV to provide permanent evidence during inspections." }],
             [],
-            [{ v: "V3.2 SCRIPT SOURCE (STABILIZED CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "V3.2 SCRIPT SOURCE (ATOMIC CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
