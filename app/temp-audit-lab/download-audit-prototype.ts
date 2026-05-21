@@ -4,13 +4,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V2.2 HARDENED AUDIT ENGINE - PILOT READY
+ * SOVEREIGN V3 ARCHITECTURE — PERPETUAL LEDGER
  * ----------------------------------------------------------------------------
- * 1. TIERED VERIFICATION: OPEN -> IN PROGRESS -> COMPLETE logic.
- * 2. FREEZE PANES: Top 3 rows and Columns A:C locked.
- * 3. SELECTIVE PROTECTION: Only yellow input cells (F, G) are unlocked.
- * 4. 30-DAY LEDGER: Full month operational cycle generation.
- * 5. VERSIONING: Immutable PACK_VERSION and ENGINE_VERSION per row.
+ * 1. 12-MONTH DATED LEDGER: Full yearly operational cycle.
+ * 2. INTELLIGENT CADENCE: Conditional row generation (Daily/Weekly/Monthly/Quarterly).
+ * 3. TODAY-ONLY VIEW: Optimized for Google Sheets 'onOpen' script filtering.
+ * 4. INSTITUTIONAL METADATA: Immutable Task IDs and Versioning.
  * ----------------------------------------------------------------------------
  */
 
@@ -53,29 +52,29 @@ export const handleDownloadAuditPrototype = () => {
             status: { font: { ...baseFont, bold: true }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } }
         };
 
-        // --- MOCK PRODUCTION DATA ---
+        // --- V3 TASK DATA (INTELLIGENT CADENCE) ---
         const testTasks = [
-            { id: "H-VLT-01", t: "Open High-Value Vault", c: "Daily", risk: "Loss of primary property assets", instr: "Execute dual-key sequence with manager present.", vReq: true },
-            { id: "H-ENG-02", t: "Log Chiller Temperatures", c: "Daily", risk: "HVAC failure and guest heat complaints", instr: "Record discharge temp from BMS panel 1.", vReq: false },
-            { id: "H-SEC-03", t: "Perimeter Safety Sweep", c: "Daily", risk: "Unauthorized intruder access", instr: "Walk boundary fence; check 3 gates.", vReq: false },
-            { id: "H-FIN-04", t: "Cash Reconciliation", c: "Daily", risk: "Revenue theft masking as error", instr: "Match POS X-reading to physical notes.", vReq: true }
+            { id: "V3-D-01", t: "Daily Security Sweep", c: "Daily", risk: "Unauthorized intruder access", instr: "Walk perimeter and check locks.", vReq: false },
+            { id: "V3-W-02", t: "Weekly Deep Clean (Monday)", c: "Weekly", risk: "Hygiene breakdown", instr: "Steam clean carpets in lobby.", vReq: true, day: 1 }, // 1 = Monday
+            { id: "V3-M-03", t: "Monthly Pest Audit", c: "Monthly", risk: "Regulatory shutdown", instr: "Inspect bait stations.", vReq: true, dom: 1 }, // 1st of month
+            { id: "V3-Q-04", t: "Quarterly Fire Drill", c: "Quarterly", risk: "Evacuation chaos", instr: "Execute tabletop simulation.", vReq: true, qMonths: [0, 3, 6, 9] } // Jan, Apr, Jul, Oct
         ];
 
-        const PACK_V = "LAB-V2.2";
-        const ENGINE_V = "SOVEREIGN-PRO-V2.2";
+        const PACK_V = "V3-BLUEPRINT";
+        const ENGINE_V = "SOVEREIGN-V3.0";
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V2.2 COMMAND CONSOLE — HARDENED", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🚀 SOVEREIGN V3 COMMAND CONSOLE — PERPETUAL", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "DEPLOYMENT STATUS: PILOT-READY (V2.2)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "DEPLOYMENT STATUS: YEARLY PERPETUAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "1. INSTALL AUTOMATION", s: { font: { bold: true } } }, { v: "Copy the script from the [CUSTOMIZATION_GUIDE] to enable auto-timestamps." }],
-            [{ v: "2. PROTECTION ENABLED", s: { font: { bold: true } } }, { v: "Only yellow cells are editable. Formulas and headers are locked by default." }],
-            [{ v: "3. TIERED SIGN-OFF", s: { font: { bold: true } } }, { v: "High-risk tasks require both 'Done By' and 'Verified By' to reach COMPLETE." }],
+            [{ v: "1. ONE-YEAR LEDGER", s: { font: { bold: true } } }, { v: "This file is pre-populated for 12 months. No monthly regeneration needed." }],
+            [{ v: "2. INTELLIGENT TASKS", s: { font: { bold: true } } }, { v: "Weekly and Monthly tasks appear only when due. Keep focus on the current mission." }],
+            [{ v: "3. AUTO-FILTER TODAY", s: { font: { bold: true } } }, { v: "The script automatically hides everything except today's tasks on file open." }],
             [],
-            [{ v: "⚠️ FORENSIC VAULT NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "The [RECORDS] sheet is hidden and append-only. Access via View -> Hidden Sheets." }]
+            [{ v: "⚠️ MANAGEMENT PROTOCOL", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "At year-end, simply 'Make a Copy' to archive and start fresh." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
@@ -85,115 +84,107 @@ export const handleDownloadAuditPrototype = () => {
         // --- 02. DAILY_TASKS ---
         const taskHeaders = [
             { v: "DATE", s: headerStyle },               // A
-            { v: "BRANCH", s: headerStyle },             // B
-            { v: "TECHNICAL TASK", s: headerStyle },     // C
-            { v: "ROLE", s: headerStyle },               // D
-            { v: "ASSIGNED TO", s: headerStyle },         // E
-            { v: "DONE BY (INIT)", s: headerStyle },     // F - UNLOCKED
-            { v: "VERIFIED BY", s: headerStyle },        // G - UNLOCKED
+            { v: "DAY", s: headerStyle },                // B
+            { v: "MONTH", s: headerStyle },              // C
+            { v: "TECHNICAL TASK", s: headerStyle },     // D
+            { v: "CADENCE", s: headerStyle },            // E
+            { v: "DONE BY", s: headerStyle },            // F
+            { v: "VERIFIED BY", s: headerStyle },        // G
             { v: "STATUS", s: headerStyle },             // H
-            { v: "COMPLETED ON (STAMP)", s: headerStyle }, // I
-            { v: "CONSEQUENCE / RISK", s: headerStyle }, // J
-            { v: "FLOOR INSTRUCTIONS", s: headerStyle }, // K
+            { v: "COMPLETED ON", s: headerStyle },       // I
+            { v: "RISK IF MISSED", s: headerStyle },     // J
+            { v: "INSTRUCTIONS", s: headerStyle },       // K
             { v: "TASK_ID", s: headerStyle },            // L
-            { v: "CADENCE", s: headerStyle },            // M
-            { v: "PACK_VERSION", s: headerStyle },       // N
-            { v: "ENGINE_VERSION", s: headerStyle }      // O
+            { v: "PACK_VERSION", s: headerStyle }        // M
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
         const today = new Date();
 
-        // GENERATE 30 DAYS (FULL OPERATIONAL CYCLE)
-        for (let d = 0; d < 30; d++) {
+        // GENERATE 365 DAYS (FULL YEAR)
+        for (let d = 0; d < 365; d++) {
             const rowDate = new Date(today);
             rowDate.setDate(today.getDate() + d);
             const dateStr = rowDate.toISOString().split('T')[0];
+            const dayOfWeek = rowDate.getDay();
+            const dayOfMonth = rowDate.getDate();
+            const month = rowDate.getMonth();
+            const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][dayOfWeek];
+            const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month];
 
             testTasks.forEach((task) => {
-                const rIdx = taskData.length + 1;
-                
-                // STATUS FORMULA: OPEN -> IN PROGRESS -> COMPLETE
-                // F = DONE BY, G = VERIFIED BY
-                const formula = task.vReq 
-                    ? `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETE", IF(LEN(TRIM(F${rIdx}))>0, "IN PROGRESS", "OPEN"))`
-                    : `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETE", "OPEN")`;
+                // INTELLIGENT CADENCE LOGIC
+                let shouldAdd = false;
+                if (task.c === "Daily") shouldAdd = true;
+                if (task.c === "Weekly" && dayOfWeek === (task as any).day) shouldAdd = true;
+                if (task.c === "Monthly" && dayOfMonth === (task as any).dom) shouldAdd = true;
+                if (task.c === "Quarterly" && dayOfMonth === 1 && (task as any).qMonths.includes(month)) shouldAdd = true;
 
-                taskData.push([
-                    { v: dateStr, s: cellStyles.center },
-                    { v: "Main Branch", s: cellStyles.center },
-                    { v: task.t, s: { ...cellStyles.left, font: { bold: true } } },
-                    { v: "Operations", s: cellStyles.center },
-                    { v: "Assigned Staff", s: cellStyles.center },
-                    { v: "", s: cellStyles.input }, // F: UNLOCKED
-                    { v: "", s: task.vReq ? cellStyles.input : cellStyles.locked }, // G: UNLOCKED IF REQ
-                    { t: 'f', f: formula, s: cellStyles.status },
-                    { v: "", s: cellStyles.center },
-                    { v: task.risk, s: { ...cellStyles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                    { v: task.instr, s: cellStyles.left },
-                    { v: task.id, s: cellStyles.center },
-                    { v: task.c, s: cellStyles.center },
-                    { v: PACK_V, s: cellStyles.center },
-                    { v: ENGINE_V, s: cellStyles.center }
-                ]);
+                if (shouldAdd) {
+                    const rIdx = taskData.length + 1;
+                    const formula = task.vReq 
+                        ? `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETE", IF(LEN(TRIM(F${rIdx}))>0, "IN PROGRESS", "OPEN"))`
+                        : `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETE", "OPEN")`;
+
+                    taskData.push([
+                        { v: dateStr, s: cellStyles.center },
+                        { v: dayName, s: cellStyles.center },
+                        { v: monthName, s: cellStyles.center },
+                        { v: task.t, s: { ...cellStyles.left, font: { bold: true } } },
+                        { v: task.c, s: cellStyles.center },
+                        { v: "", s: cellStyles.input }, 
+                        { v: "", s: task.vReq ? cellStyles.input : cellStyles.locked },
+                        { t: 'f', f: formula, s: cellStyles.status },
+                        { v: "", s: cellStyles.center },
+                        { v: task.risk, s: { ...cellStyles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
+                        { v: task.instr, s: cellStyles.left },
+                        { v: task.id, s: cellStyles.center },
+                        { v: PACK_V, s: cellStyles.center }
+                    ]);
+                }
             });
         }
+
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [12, 15, 35, 15, 15, 12, 12, 15, 20, 30, 40, 10, 10, 12, 18].map(w => ({ wch: w }));
-        
-        // HARDENED: FREEZE TOP 3 ROWS AND COLUMNS A:C
-        taskWs['!views'] = [{ state: 'frozen', xSplit: 3, ySplit: 3 }];
-        
-        taskWs['!autofilter'] = { ref: `A3:O${taskData.length}` };
+        taskWs['!cols'] = [12, 10, 12, 35, 12, 15, 15, 15, 20, 30, 40, 10, 15].map(w => ({ wch: w }));
+        taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }];
+        taskWs['!autofilter'] = { ref: `A3:M${taskData.length}` };
         
         // ACTIVE SHEET PROTECTION
-        taskWs['!protect'] = {
-            password: "sovereign_guard",
-            selectLockedCells: true,
-            selectUnlockedCells: true
-        };
+        taskWs['!protect'] = { password: "sovereign_v3" };
         
         utils.book_append_sheet(wb, taskWs, "DAILY_TASKS");
 
         // --- 03. RECORDS (Hidden Vault) ---
         const recordData: any[][] = [
-            [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED HISTORY — DO NOT EDIT MANUALLY", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🛡️ FORENSIC AUDIT RECORD — PERPETUAL — DO NOT EDIT", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
             [],
             taskHeaders
         ];
         const recordWs = utils.aoa_to_sheet(recordData);
         recordWs['!cols'] = taskWs['!cols'];
-        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 14 } }];
+        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
         recordWs['!protect'] = { password: "sovereign_vault" };
-        
         utils.book_append_sheet(wb, recordWs, "RECORDS");
+        
         const rIdx = wb.SheetNames.indexOf("RECORDS");
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [] };
         wb.Workbook.Sheets[rIdx] = { Hidden: 1 };
 
         // --- 04. CUSTOMIZATION_GUIDE ---
         const guideData = [
-            [{ v: "🛠️ COMMAND MANUAL — SOVEREIGN AUDIT LAYER", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
+            [{ v: "🛠️ COMMAND MANUAL — SOVEREIGN V3", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
-            [{ v: "SECTION 1: INSTALLING AUTOMATION (GOOGLE SHEETS)", s: { font: { bold: true } } }],
-            [{ v: "Step 1: Extensions -> Apps Script. Paste the source below. Save & Authorize." }],
-            [],
-            [{ v: "SECTION 2: HOW TO UNHIDE AND DOWNLOAD AUDIT RECORDS", s: { font: { bold: true } } }],
-            [{ v: "Google Sheets:", s: { font: { bold: true } } }, { v: "1. View -> Hidden Sheets -> select RECORDS." }],
-            [null, { v: "2. File -> Download -> Microsoft Excel (.xlsx) to export evidence." }],
-            [{ v: "Excel (Offline):", s: { font: { bold: true } } }, { v: "1. Right-click any tab at bottom -> Unhide -> select RECORDS." }],
-            [],
-            [{ v: "--- SCRIPT START ---", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }],
-            [{ v: "--- SCRIPT END ---", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+            [{ v: "V3 SCRIPT SOURCE (COPY EVERYTHING BELOW)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
         guideWs['!cols'] = [{ wch: 120 }];
         guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
         utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
 
-        writeFile(wb, `MoreMeets_Sovereign_V2_2_Hardened.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V3_Prototype.xlsx`);
     } catch (e: any) {
-        alert("Hardening Generation Failure: " + e.message);
+        alert("Generation Failure: " + e.message);
     }
 }
