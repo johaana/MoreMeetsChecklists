@@ -4,12 +4,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V3.1 STABILIZED YEARLY ENGINE
+ * SOVEREIGN V3.2 PILOT-READY ENGINE
  * ----------------------------------------------------------------------------
- * 1. 365-DAY TRIGGER LEDGER: Intelligence built into the generation.
- * 2. TIERED VERIFICATION: OPEN -> IN PROGRESS -> COMPLETE logic.
- * 3. SYMMETRIC FREEZE: Headers (1-3) and Identity (A-C) frozen for mobile.
- * 4. HARDENED PROTECTION: Only operational input cells (Yellow) are unlocked.
+ * 1. SYMMETRIC FREEZE: A:D (Date/Day/Branch/Task) + Top 3 Rows.
+ * 2. HARDENED PROTECTION: ONLY Yellow cells (F:G) are editable. 
+ * 3. MOBILE DENSITY: 28pt row height for touch-accuracy.
+ * 4. INSTITUTIONAL METADATA: Immutable watermarking per row.
  * ----------------------------------------------------------------------------
  */
 
@@ -24,9 +24,9 @@ export const handleDownloadAuditPrototype = () => {
             BORDER: "E2E8F0",
             INPUT_YELLOW: "FEFCE8",
             TEXT_RISK: "991B1B",
-            LOCKED_GREY: "F1F5F9",
+            LOCKED_GREY: "F8FAFC",
             VAULT_HEADER: "1E293B",
-            IN_PROGRESS_AMBER: "D97706"
+            INACTIVE_TEXT: "CBD5E1"
         };
 
         const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -49,33 +49,32 @@ export const handleDownloadAuditPrototype = () => {
             left: { font: baseFont, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle, protect: { locked: true } },
             center: { font: baseFont, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
             input: { font: { ...baseFont, bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: false } },
-            locked: { font: { ...baseFont, color: { rgb: "CBD5E1" } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
+            locked: { font: { ...baseFont, color: { rgb: COLORS.INACTIVE_TEXT } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
             status: { font: { ...baseFont, bold: true }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } }
         };
 
-        // --- STABILIZED TASK SET (Mixed Risk Tiers) ---
         const testTasks = [
-            { id: "V3-D-01", t: "Daily Security Sweep", c: "Daily", risk: "Unauthorized intruder access", instr: "Walk perimeter and check locks.", vReq: false },
-            { id: "V3-D-02", t: "Vault Opening (Dual-Auth)", c: "Daily", risk: "Inventory theft window", instr: "Witness 2-key entry sequence.", vReq: true },
-            { id: "V3-W-03", t: "Weekly Deep Clean (Mon)", c: "Weekly", risk: "Hygiene breakdown", instr: "Steam clean lobby carpets.", vReq: true, day: 1 },
-            { id: "V3-M-04", t: "Monthly Pest Audit (1st)", c: "Monthly", risk: "Regulatory shutdown", instr: "Inspect all bait stations.", vReq: true, dom: 1 }
+            { id: "V3-D-01", t: "Vault Opening (Dual-Auth)", c: "Daily", risk: "Inventory theft window", instr: "Witness 2-key entry sequence.", vReq: true },
+            { id: "V3-D-02", t: "Chiller Temperature Log", c: "Daily", risk: "Mass food spoilage", instr: "Record digital reading from 12 walk-ins.", vReq: false },
+            { id: "V3-W-03", t: "Weekly Fire Drill (Fri)", c: "Weekly", risk: "Evacuation chaos liability", instr: "Execute tabletop simulation with evening shift.", vReq: true, day: 5 },
+            { id: "V3-M-04", t: "Monthly Pest Audit (1st)", c: "Monthly", risk: "Regulatory shutdown", instr: "Check 100% of bait stations.", vReq: true, dom: 1 }
         ];
 
-        const PACK_V = "V3.1-STABLE";
-        const ENGINE_V = "SOVEREIGN-V3.1";
+        const PACK_V = "V3.2-PILOT-READY";
+        const ENGINE_V = "SOVEREIGN-V3.2";
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V3.1 YEARLY ENGINE — INSTITUTIONAL GRADE", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🚀 SOVEREIGN V3.2 PILOT — OPERATIONAL HARDENING", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "ONE-YEAR PERPETUAL LEDGER: OPERATIONAL", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "INSTITUTIONAL PERPETUAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "1. TODAY-FIRST UX", s: { font: { bold: true } } }, { v: "The workbook automatically filters for TODAY's tasks on file open. No manual scrolling." }],
-            [{ v: "2. ATOMIC LOCKS", s: { font: { bold: true } } }, { v: "Concurrency protection handles up to 10 simultaneous staff edits without data loss." }],
-            [{ v: "3. TIERED VERIFICATION", s: { font: { bold: true } } }, { v: "High-risk tasks require both 'Done' and 'Verified' signatures to reach COMPLETE status." }],
+            [{ v: "1. OPERATION MODE (DEFAULT)", s: { font: { bold: true } } }, { v: "Descriptions and formulas are LOCKED. Only Yellow cells (Done By / Verified By) are editable." }],
+            [{ v: "2. MOBILE FREEZE ARCHITECTURE", s: { font: { bold: true } } }, { v: "Rows 1-3 and Columns A-D are FROZEN. You will never lose task identity during scrolling." }],
+            [{ v: "3. AUTOMATED EVIDENCE", s: { font: { bold: true } } }, { v: "Every completion is silently mirrored to the hidden RECORDS vault with a static timestamp." }],
             [],
-            [{ v: "⚠️ INSTITUTIONAL LOCK", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "Descriptions and formulas are PROTECTED. Only Yellow cells are editable. Pass: 'sovereign_v3'." }]
+            [{ v: "🛠️ DESIGN MODE (FOR MANAGERS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "To modify SOPs or Add Tasks: Review the [CUSTOMIZATION_GUIDE]. Password: 'sovereign_v3'." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 35 }, { wch: 95 }];
@@ -100,6 +99,7 @@ export const handleDownloadAuditPrototype = () => {
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
+        const rowConfigs: any[] = [{ hpt: 35 }, { hpt: 20 }, { hpt: 35 }];
         const startDate = new Date();
 
         for (let d = 0; d < 365; d++) {
@@ -137,14 +137,15 @@ export const handleDownloadAuditPrototype = () => {
                         { v: task.id, s: cellStyles.center },
                         { v: PACK_V, s: cellStyles.center }
                     ]);
+                    rowConfigs.push({ hpt: 35 }); // Taller rows for mobile tap-accuracy
                 }
             });
         }
 
         const taskWs = utils.aoa_to_sheet(taskData);
-        // Mobile-Optimized Grid
-        taskWs['!cols'] = [12, 6, 12, 35, 10, 15, 15, 15, 18, 30, 40, 10, 15].map(w => ({ wch: w }));
-        taskWs['!views'] = [{ state: 'frozen', xSplit: 3, ySplit: 3 }]; // Freeze Identity (Date/Branch/Task)
+        taskWs['!cols'] = [12, 6, 15, 40, 10, 18, 18, 15, 20, 35, 45, 10, 15].map(w => ({ wch: w }));
+        taskWs['!rows'] = rowConfigs;
+        taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }]; // Freeze Identity (Date/Day/Branch/Task)
         taskWs['!autofilter'] = { ref: `A3:M${taskData.length}` };
         taskWs['!protect'] = { password: "sovereign_v3" };
         
@@ -152,7 +153,7 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 03. RECORDS (Hidden Vault) ---
         const recordData: any[][] = [
-            [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED EVIDENCE", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED EVIDENCE | DO NOT EDIT MANUALLY", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
             [],
             taskHeaders
         ];
@@ -168,21 +169,28 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 04. CUSTOMIZATION_GUIDE ---
         const guideData = [
-            [{ v: "🛠️ SYSTEM STABILIZATION GUIDE — SOVEREIGN V3.1", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
+            [{ v: "🛠️ SYSTEM STABILIZATION GUIDE — SOVEREIGN V3.2", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
-            [{ v: "1. INSTALLATION", s: { font: { bold: true } } }, { v: "Copy the script below, go to Extensions -> Apps Script, and paste. Authorize all scopes." }],
-            [{ v: "2. RECORDS ACCESS", s: { font: { bold: true } } }, { v: "View -> Hidden Sheets -> RECORDS. Contains immutable audit history." }],
-            [{ v: "3. OFFLINE FALLBACK", s: { font: { bold: true } } }, { v: "Use CTRL + ; in the STAMP column for manual static dates if script is inactive." }],
+            [{ v: "SECTION 1: STAFF USAGE", s: { font: { bold: true } } }],
+            [{ v: "• Open the file daily. The script automatically filters for TODAY'S tasks." }],
+            [{ v: "• Only Yellow cells are editable. Enter your initials when a task is done." }],
             [],
-            [{ v: "V3 SCRIPT SOURCE (STABILIZED CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "SECTION 2: MANAGER CUSTOMIZATION", s: { font: { bold: true } } }],
+            [{ v: "• To modify SOPs: Right-click DAILY_TASKS -> Unprotect Sheet. Password: 'sovereign_v3'." }],
+            [{ v: "• To view history: Go to View -> Hidden Sheets -> RECORDS." }],
+            [],
+            [{ v: "SECTION 3: OFFLINE FALLBACK", s: { font: { bold: true } } }],
+            [{ v: "• If the script is offline: Enter initials, then use CTRL + ; to stamp the time in column I." }],
+            [],
+            [{ v: "V3.2 SCRIPT SOURCE (STABILIZED CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 40 }, { wch: 80 }];
+        guideWs['!cols'] = [{ wch: 45 }, { wch: 85 }];
         guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
 
-        writeFile(wb, `MoreMeets_Sovereign_V3_Yearly_Engine.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V3_2_Pilot.xlsx`);
     } catch (e: any) {
         alert("Generation Failure: " + e.message);
     }

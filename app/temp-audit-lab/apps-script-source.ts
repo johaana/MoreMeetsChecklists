@@ -1,10 +1,10 @@
 export const APPS_SCRIPT_SOURCE = `/**
- * MOREMEETS™ SOVEREIGN V3.1 STABILIZED PERPETUAL ENGINE
+ * MOREMEETS™ SOVEREIGN V3.2 PILOT-READY ENGINE
  * -----------------------------------------------------
- * 1. MAGIC FILTER: Focus on Today's tasks on open.
- * 2. ATOMIC LOCKING: Handles up to 10+ concurrent staff edits.
- * 3. DUPLICATE SHIELD: Prevents re-syncing records if initials are corrected.
- * 4. IMMUTABLE VAULT: Appends unique rows to hidden RECORDS sheet.
+ * 1. MAGIC FILTER: Clears stale state and forces Today-First view.
+ * 2. DUPLICATE SHIELD: Checks existing stamps before vaulting.
+ * 3. ATOMIC LOCKING: 30s queue for multi-staff concurrency.
+ * 4. CLEANUP: Gracefully handles blank/undo events.
  */
 
 function onOpen() {
@@ -12,25 +12,29 @@ function onOpen() {
   const sheet = ss.getSheetByName("DAILY_TASKS");
   if (!sheet) return;
   
-  // Clear stale states to ensure filter reliability
+  // 1. CLEANUP STALE FILTERS
   if (sheet.getFilter()) {
     sheet.getFilter().remove();
   }
   
-  // Apply Non-Destructive "Today-Only" View
+  // 2. APPLY TODAY MISSION VIEW
   const timezone = ss.getSpreadsheetTimeZone();
   const todayStr = Utilities.formatDate(new Date(), timezone, "yyyy-MM-dd");
   const lastRow = sheet.getLastRow();
   if (lastRow < 4) return;
   
-  const range = sheet.getRange(3, 1, lastRow - 2, 13);
-  const filter = range.createFilter();
-  const criteria = SpreadsheetApp.newFilterCriteria()
-    .whenTextEqualTo(todayStr)
-    .build();
-    
-  filter.setColumnFilterCriteria(1, criteria);
-  ss.toast("Sovereign V3.1: Today's Mission Active", "System Online");
+  try {
+    const range = sheet.getRange(3, 1, lastRow - 2, 13);
+    const filter = range.createFilter();
+    const criteria = SpreadsheetApp.newFilterCriteria()
+      .whenTextEqualTo(todayStr)
+      .build();
+      
+    filter.setColumnFilterCriteria(1, criteria); // Column A (DATE)
+    ss.toast("Sovereign V3.2: Today's Mission Loaded", "System Online");
+  } catch (err) {
+    ss.toast("Manual Filter Required: Date = " + todayStr, "Filter Error");
+  }
 }
 
 function onEdit(e) {
@@ -45,15 +49,15 @@ function onEdit(e) {
   if (sheetName === "DAILY_TASKS" && (col === 6 || col === 7) && row > 3) {
     const lock = LockService.getScriptLock();
     try {
-      // High-Gravity Concurrency Wait (30s)
-      lock.waitLock(30000); 
+      lock.waitLock(30000); // High-concurrency queue
       
       const statusValue = sheet.getRange(row, 8).getValue(); // Col H (STATUS)
       const stampCell = sheet.getRange(row, 9); // Col I (STAMP)
+      const existingStamp = stampCell.getValue();
       
       if (statusValue === "COMPLETE") {
         // DUPLICATE SHIELD: Only record if not already stamped
-        if (stampCell.getValue() === "") {
+        if (existingStamp === "") {
           const now = new Date();
           const timestamp = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
           stampCell.setValue(timestamp);
@@ -66,7 +70,7 @@ function onEdit(e) {
           }
         }
       } else if (col === 6 && range.getValue() === "") {
-        // Clear stamp if DONE BY is deleted
+        // CLEARANCE: Remove stamp if initials are deleted
         stampCell.clearContent();
       }
     } catch (err) {
