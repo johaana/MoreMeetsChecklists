@@ -19,6 +19,7 @@ import {
     Users,
     Clock
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { handleDownloadAuditPrototype } from './download-audit-prototype';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
