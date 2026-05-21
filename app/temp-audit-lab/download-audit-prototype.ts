@@ -4,10 +4,10 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V3.2 PILOT-READY ENGINE
+ * SOVEREIGN V3.2.1 PILOT-READY ENGINE
  * ----------------------------------------------------------------------------
- * 1. SYMMETRIC FREEZE: A:D (Date/Day/Branch/Task) + Top 3 Rows.
- * 2. HARDENED PROTECTION: ONLY Yellow cells (F:G) are editable. 
+ * 1. IDENTITY LOCK (P0): Frozen A:D (Date/Day/Branch/Task) + Top 3 Rows.
+ * 2. HARDENED PROTECTION (P0): ONLY Yellow cells (F:G) are editable. 
  * 3. MOBILE DENSITY: 35pt row height for touch-accuracy.
  * 4. INSTITUTIONAL METADATA: Immutable watermarking per row.
  * 5. INTELLIGENT CADENCE: Trigger-aware row generation for yearly scale.
@@ -61,12 +61,12 @@ export const handleDownloadAuditPrototype = () => {
             { id: "V3-M-04", t: "Monthly Pest Audit (1st)", c: "Monthly", risk: "Regulatory shutdown", instr: "Check 100% of bait stations.", vReq: true, dom: 1 }
         ];
 
-        const PACK_V = "V3.2-PILOT-READY";
-        const ENGINE_V = "SOVEREIGN-V3.2";
+        const PACK_V = "V3.2.1-PILOT-READY";
+        const ENGINE_V = "SOVEREIGN-V3.2.1";
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V3.2 PERPETUAL — OPERATIONAL HARDENING", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🚀 SOVEREIGN V3.2.1 PERPETUAL — OPERATIONAL HARDENING", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
             [{ v: "YEARLY INSTITUTIONAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
@@ -147,7 +147,18 @@ export const handleDownloadAuditPrototype = () => {
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [12, 6, 15, 40, 10, 18, 18, 15, 20, 35, 45, 10, 15].map(w => ({ wch: w }));
         taskWs['!rows'] = rowConfigs;
-        taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }]; // IDENTITY LOCK: Date/Day/Branch/Task
+        
+        // TRUE NATIVE FREEZE PANES (BINARY INJECTION)
+        taskWs['!views'] = [
+            {
+                state: 'frozen',
+                xSplit: 4, // Freeze A, B, C, D
+                ySplit: 3, // Freeze rows 1, 2, 3
+                topLeftCell: 'E4', // First scrollable cell (Operational Input)
+                activePane: 'bottomRight'
+            }
+        ];
+        
         taskWs['!autofilter'] = { ref: `A3:M${taskData.length}` };
         taskWs['!protect'] = { password: "sovereign_v3" };
         
@@ -171,7 +182,7 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 04. CUSTOMIZATION_GUIDE ---
         const guideData = [
-            [{ v: "🛠️ SYSTEM STABILIZATION GUIDE — SOVEREIGN V3.2", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
+            [{ v: "🛠️ SYSTEM STABILIZATION GUIDE — SOVEREIGN V3.2.1", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
             [{ v: "SECTION 1: STAFF USAGE", s: { font: { bold: true } } }],
             [{ v: "• Open the file daily. The script automatically filters for TODAY'S mission." }],
@@ -184,7 +195,7 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "SECTION 3: AUDIT EVIDENCE EXPORT", s: { font: { bold: true } } }],
             [{ v: "• Download the file as Excel or CSV to provide permanent evidence during inspections." }],
             [],
-            [{ v: "V3.2 SCRIPT SOURCE (ATOMIC CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "V3.2.1 SCRIPT SOURCE (ATOMIC CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
@@ -192,7 +203,7 @@ export const handleDownloadAuditPrototype = () => {
         guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
 
-        writeFile(wb, `MoreMeets_Sovereign_V3_2_Pilot.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V3_2_1_Pilot.xlsx`);
     } catch (e: any) {
         alert("Generation Failure: " + e.message);
     }
