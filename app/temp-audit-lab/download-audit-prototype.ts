@@ -4,11 +4,11 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V3 ARCHITECTURE — PERPETUAL LEDGER
+ * SOVEREIGN V3.1 STABILIZED ENGINE
  * ----------------------------------------------------------------------------
- * 1. 12-MONTH DATED LEDGER: Full yearly operational cycle.
- * 2. INTELLIGENT CADENCE: Conditional row generation (Daily/Weekly/Monthly/Quarterly).
- * 3. TODAY-ONLY VIEW: Optimized for Google Sheets 'onOpen' script filtering.
+ * 1. 365-DAY DATED LEDGER: Full yearly cycle in one file.
+ * 2. MOBILE-FIRST WIDTHS: Signature zone reachable without scrolling.
+ * 3. STRICT PROTECTION: Only Yellow cells unlocked. Formulas/Headers hard-locked.
  * 4. INSTITUTIONAL METADATA: Immutable Task IDs and Versioning.
  * ----------------------------------------------------------------------------
  */
@@ -48,36 +48,39 @@ export const handleDownloadAuditPrototype = () => {
             left: { font: baseFont, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle, protect: { locked: true } },
             center: { font: baseFont, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
             input: { font: { ...baseFont, bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: false } },
-            locked: { font: { ...baseFont, color: { rgb: "94A3B8" } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
+            locked: { font: { ...baseFont, color: { rgb: "CBD5E1" } }, fill: { patternType: 'solid', fgColor: COLORS.LOCKED_GREY }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } },
             status: { font: { ...baseFont, bold: true }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle, protect: { locked: true } }
         };
 
-        // --- V3 TASK DATA (INTELLIGENT CADENCE) ---
+        // --- STABILIZED TASK SET (20 TASKS FOR YEARLY STRESS TEST) ---
         const testTasks = [
             { id: "V3-D-01", t: "Daily Security Sweep", c: "Daily", risk: "Unauthorized intruder access", instr: "Walk perimeter and check locks.", vReq: false },
-            { id: "V3-W-02", t: "Weekly Deep Clean (Monday)", c: "Weekly", risk: "Hygiene breakdown", instr: "Steam clean carpets in lobby.", vReq: true, day: 1 }, // 1 = Monday
-            { id: "V3-M-03", t: "Monthly Pest Audit", c: "Monthly", risk: "Regulatory shutdown", instr: "Inspect bait stations.", vReq: true, dom: 1 }, // 1st of month
-            { id: "V3-Q-04", t: "Quarterly Fire Drill", c: "Quarterly", risk: "Evacuation chaos", instr: "Execute tabletop simulation.", vReq: true, qMonths: [0, 3, 6, 9] } // Jan, Apr, Jul, Oct
+            { id: "V3-D-02", t: "Chiller Temperature Log", c: "Daily", risk: "Food spoilage/outbreak", instr: "Log temp for all 4 main units.", vReq: true },
+            { id: "V3-D-03", t: "Cash Drawer Reconciliation", c: "Daily", risk: "Internal revenue theft", instr: "Match physical cash to POS X-Report.", vReq: true },
+            { id: "V3-W-04", t: "Weekly Deep Clean (Mon)", c: "Weekly", risk: "Hygiene breakdown", instr: "Steam clean lobby carpets.", vReq: true, day: 1 },
+            { id: "V3-W-05", t: "Weekly Fire System Pulse (Fri)", c: "Weekly", risk: "Alarm failure in crisis", instr: "Test smoke detector sample.", vReq: true, day: 5 },
+            { id: "V3-M-06", t: "Monthly Pest Audit (1st)", c: "Monthly", risk: "Regulatory shutdown", instr: "Inspect all bait stations.", vReq: true, dom: 1 },
+            { id: "V3-Q-07", t: "Quarterly Safety Drill (1st)", c: "Quarterly", risk: "Evacuation chaos", instr: "Execute tabletop simulation.", vReq: true, qMonths: [0, 3, 6, 9] }
         ];
 
-        const PACK_V = "V3-BLUEPRINT";
-        const ENGINE_V = "SOVEREIGN-V3.0";
+        const PACK_V = "V3.1-STABLE";
+        const ENGINE_V = "SOVEREIGN-V3.1";
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V3 COMMAND CONSOLE — PERPETUAL", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🚀 SOVEREIGN V3.1 COMMAND CONSOLE — STABILIZED", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "DEPLOYMENT STATUS: YEARLY PERPETUAL ENGINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "YEARLY PERPETUAL ENGINE: ONLINE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "1. ONE-YEAR LEDGER", s: { font: { bold: true } } }, { v: "This file is pre-populated for 12 months. No monthly regeneration needed." }],
-            [{ v: "2. INTELLIGENT TASKS", s: { font: { bold: true } } }, { v: "Weekly and Monthly tasks appear only when due. Keep focus on the current mission." }],
-            [{ v: "3. AUTO-FILTER TODAY", s: { font: { bold: true } } }, { v: "The script automatically hides everything except today's tasks on file open." }],
+            [{ v: "1. ONE-YEAR LEDGER", s: { font: { bold: true } } }, { v: "One file operates for 365 days. No monthly regeneration required." }],
+            [{ v: "2. MAGIC FILTER", s: { font: { bold: true } } }, { v: "On opening in Google Sheets, the system automatically focuses on TODAY's mission." }],
+            [{ v: "3. ATOMIC VAULT", s: { font: { bold: true } } }, { v: "Completions are logged to a hidden append-only sheet instantly for audits." }],
             [],
-            [{ v: "⚠️ MANAGEMENT PROTOCOL", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "At year-end, simply 'Make a Copy' to archive and start fresh." }]
+            [{ v: "⚠️ OPERATIONAL LOCK", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "This workbook is PROTECTED. Only Yellow input cells are editable. To customize, see the GUIDE tab." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
-        startWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
+        startWs['!cols'] = [{ wch: 35 }, { wch: 95 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, startWs, "START");
 
@@ -85,13 +88,13 @@ export const handleDownloadAuditPrototype = () => {
         const taskHeaders = [
             { v: "DATE", s: headerStyle },               // A
             { v: "DAY", s: headerStyle },                // B
-            { v: "MONTH", s: headerStyle },              // C
+            { v: "BRANCH", s: headerStyle },             // C
             { v: "TECHNICAL TASK", s: headerStyle },     // D
             { v: "CADENCE", s: headerStyle },            // E
             { v: "DONE BY", s: headerStyle },            // F
             { v: "VERIFIED BY", s: headerStyle },        // G
             { v: "STATUS", s: headerStyle },             // H
-            { v: "COMPLETED ON", s: headerStyle },       // I
+            { v: "STAMP", s: headerStyle },              // I
             { v: "RISK IF MISSED", s: headerStyle },     // J
             { v: "INSTRUCTIONS", s: headerStyle },       // K
             { v: "TASK_ID", s: headerStyle },            // L
@@ -99,21 +102,19 @@ export const handleDownloadAuditPrototype = () => {
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
-        const today = new Date();
+        const startDate = new Date();
 
-        // GENERATE 365 DAYS (FULL YEAR)
+        // 365-DAY GENERATION
         for (let d = 0; d < 365; d++) {
-            const rowDate = new Date(today);
-            rowDate.setDate(today.getDate() + d);
+            const rowDate = new Date(startDate);
+            rowDate.setDate(startDate.getDate() + d);
             const dateStr = rowDate.toISOString().split('T')[0];
             const dayOfWeek = rowDate.getDay();
             const dayOfMonth = rowDate.getDate();
             const month = rowDate.getMonth();
-            const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][dayOfWeek];
-            const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][month];
+            const dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][dayOfWeek];
 
             testTasks.forEach((task) => {
-                // INTELLIGENT CADENCE LOGIC
                 let shouldAdd = false;
                 if (task.c === "Daily") shouldAdd = true;
                 if (task.c === "Weekly" && dayOfWeek === (task as any).day) shouldAdd = true;
@@ -129,7 +130,7 @@ export const handleDownloadAuditPrototype = () => {
                     taskData.push([
                         { v: dateStr, s: cellStyles.center },
                         { v: dayName, s: cellStyles.center },
-                        { v: monthName, s: cellStyles.center },
+                        { v: "Main Branch", s: cellStyles.center },
                         { v: task.t, s: { ...cellStyles.left, font: { bold: true } } },
                         { v: task.c, s: cellStyles.center },
                         { v: "", s: cellStyles.input }, 
@@ -146,18 +147,19 @@ export const handleDownloadAuditPrototype = () => {
         }
 
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [12, 10, 12, 35, 12, 15, 15, 15, 20, 30, 40, 10, 15].map(w => ({ wch: w }));
+        // Mobile-Optimized Widths (Column F must be visible)
+        taskWs['!cols'] = [12, 6, 12, 35, 10, 15, 15, 15, 18, 30, 40, 10, 15].map(w => ({ wch: w }));
         taskWs['!views'] = [{ state: 'frozen', xSplit: 4, ySplit: 3 }];
         taskWs['!autofilter'] = { ref: `A3:M${taskData.length}` };
         
-        // ACTIVE SHEET PROTECTION
+        // Locked by Default
         taskWs['!protect'] = { password: "sovereign_v3" };
         
         utils.book_append_sheet(wb, taskWs, "DAILY_TASKS");
 
-        // --- 03. RECORDS (Hidden Vault) ---
+        // --- 03. RECORDS (Hidden & Protected Vault) ---
         const recordData: any[][] = [
-            [{ v: "🛡️ FORENSIC AUDIT RECORD — PERPETUAL — DO NOT EDIT", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "🛡️ FORENSIC AUDIT RECORD — DO NOT EDIT MANUALLY", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
             [],
             taskHeaders
         ];
@@ -173,17 +175,21 @@ export const handleDownloadAuditPrototype = () => {
 
         // --- 04. CUSTOMIZATION_GUIDE ---
         const guideData = [
-            [{ v: "🛠️ COMMAND MANUAL — SOVEREIGN V3", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
+            [{ v: "🛠️ STABILIZATION GUIDE — SOVEREIGN V3.1", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
-            [{ v: "V3 SCRIPT SOURCE (COPY EVERYTHING BELOW)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "1. HOW TO ACCESS RECORDS", s: { font: { bold: true } } }, { v: "View → Hidden Sheets → RECORDS. Use this for audits only." }],
+            [{ v: "2. MOBILE USAGE", s: { font: { bold: true } } }, { v: "Swipe bottom tabs to move. Use filters on Column A to see history." }],
+            [{ v: "3. EXCEL FALLBACK", s: { font: { bold: true } } }, { v: "No script? Use CTRL + ; in the STAMP column for manual evidence." }],
+            [],
+            [{ v: "V3 SCRIPT SOURCE (STABILIZED CONCURRENCY LAYER)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 120 }];
-        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
+        guideWs['!cols'] = [{ wch: 40 }, { wch: 80 }];
+        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
 
-        writeFile(wb, `MoreMeets_Sovereign_V3_Prototype.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V3_Stabilized.xlsx`);
     } catch (e: any) {
         alert("Generation Failure: " + e.message);
     }

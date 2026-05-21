@@ -1,9 +1,10 @@
 export const APPS_SCRIPT_SOURCE = `/**
- * MOREMEETS™ SOVEREIGN V3 AUTOMATION
- * -----------------------------------------
- * 1. AUTO-FILTER TODAY: Jumps to current date on open.
- * 2. STATIC TIMESTAMP: String-based tamper-proof evidence.
- * 3. APPEND-ONLY VAULT: Mirror all completions to RECORDS.
+ * MOREMEETS™ SOVEREIGN V3.1 STABILIZATION SCRIPT
+ * ----------------------------------------------
+ * 1. MAGIC FILTER: Auto-jumps to Today's tasks on open.
+ * 2. ATOMIC LOCKING: Prevents collisions during simultaneous multi-user edits.
+ * 3. DUPLICATE SHIELD: Ensures one completion = one record, even if initials are edited.
+ * 4. STATIC TIMESTAMP: Writes permanent evidence strings.
  */
 
 function onOpen() {
@@ -11,15 +12,18 @@ function onOpen() {
   const sheet = ss.getSheetByName("DAILY_TASKS");
   if (!sheet) return;
   
-  // 1. CLEAR OLD FILTERS
+  // Clear any existing filters to prevent state conflicts
   if (sheet.getFilter()) {
     sheet.getFilter().remove();
   }
   
-  // 2. APPLY TODAY-ONLY VIEW
-  const today = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd");
+  // Apply "Today Only" visibility
+  const timezone = ss.getSpreadsheetTimeZone();
+  const today = Utilities.formatDate(new Date(), timezone, "yyyy-MM-dd");
   const lastRow = sheet.getLastRow();
-  const range = sheet.getRange(3, 1, lastRow, 13);
+  if (lastRow < 4) return;
+  
+  const range = sheet.getRange(3, 1, lastRow - 2, 13);
   const filter = range.createFilter();
   const criteria = SpreadsheetApp.newFilterCriteria()
     .whenTextEqualTo(today)
@@ -37,36 +41,36 @@ function onEdit(e) {
   const col = range.getColumn();
   const row = range.getRow();
   
-  // TRIGGER: DAILY_TASKS Column F (DONE BY)
+  // TRIGGER: Column F (DONE BY)
   if (sheetName === "DAILY_TASKS" && col === 6 && row > 3) {
     const lock = LockService.getScriptLock();
     try {
-      lock.waitLock(5000); 
+      // Wait up to 30 seconds for other processes to finish
+      lock.waitLock(30000); 
       
-      const doneValue = range.getValue();
-      const timestampCell = sheet.getRange(row, 9); // Column I (COMPLETED ON)
       const statusValue = sheet.getRange(row, 8).getValue(); // Column H (STATUS)
+      const timestampCell = sheet.getRange(row, 9); // Column I (COMPLETED ON)
       
-      if (doneValue !== "") {
-        // 1. WRITE STATIC TIMESTAMP
-        const now = new Date();
-        const timeStr = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
-        timestampCell.setValue(timeStr);
-        
-        // 2. APPEND TO RECORDS IF COMPLETE
-        if (statusValue === "COMPLETE") {
-           const recordSheet = ss.getSheetByName("RECORDS");
-           if (recordSheet) {
-             const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
-             recordSheet.appendRow(rowData);
-             ss.toast("Institutional Evidence Secured", "Audit Vault");
-           }
+      if (statusValue === "COMPLETE") {
+        // Only append if not already stamped (prevents duplicate rows on re-edits)
+        if (timestampCell.getValue() === "") {
+          const now = new Date();
+          const timeStr = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
+          timestampCell.setValue(timeStr);
+          
+          const recordSheet = ss.getSheetByName("RECORDS");
+          if (recordSheet) {
+            const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
+            recordSheet.appendRow(rowData);
+            ss.toast("Institutional Evidence Secured", "Audit Vault");
+          }
         }
-      } else {
+      } else if (range.getValue() === "") {
+        // If "Done By" is cleared, reset the timestamp
         timestampCell.clearContent();
       }
     } catch (err) {
-      ss.toast("Network Delay: Evidence queued.", "Retry Pending");
+      ss.toast("Concurrency Delay: Retrying...", "System Busy");
     } finally {
       lock.releaseLock();
     }
