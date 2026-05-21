@@ -17,7 +17,9 @@ import {
     AlertTriangle,
     Database,
     Zap,
-    Smartphone
+    Smartphone,
+    SearchCheck,
+    Layers
 } from 'lucide-react';
 import { handleDownloadAuditPrototype } from './download-audit-prototype';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
@@ -25,7 +27,7 @@ import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 export default function AuditLabPage() {
     const copyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text);
-        alert("Script copied to clipboard.");
+        alert("Sovereign Script copied to clipboard.");
     };
 
     return (
@@ -37,72 +39,71 @@ export default function AuditLabPage() {
                     
                     {/* HEADER */}
                     <div className="text-center space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Research & Development</Badge>
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Development Freeze: Laboratory Mode</Badge>
                         <h1 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-white">
-                            Sovereign V2: <span className="text-primary">Audit Engine</span>
+                            Sovereign V2: <span className="text-primary">Evidence Vault</span>
                         </h1>
                         <p className="text-secondary-text text-lg italic max-w-2xl mx-auto">
-                            Testing permanent historical records, auto-timestamping, and date-driven task visibility.
+                            Prototyping append-only historical recording and non-destructive "Today-Only" filtering.
                         </p>
                     </div>
 
                     {/* PROTOTYPE DOWNLOAD */}
                     <Card className="p-10 border-white/10 bg-zinc-900/50 space-y-8 text-center relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-8 opacity-5">
-                            <Database className="w-48 h-48 text-primary" />
+                            <Layers className="w-64 h-64 text-primary" />
                         </div>
                         <div className="space-y-2 relative z-10">
-                            <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Download V2.0 Prototype</h3>
-                            <p className="text-sm text-zinc-500 font-medium">Built with the new 11-sheet architecture and hidden RECORDS vault.</p>
+                            <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white">V2.1 "Vault" Prototype</h3>
+                            <p className="text-sm text-zinc-500 font-medium">11-sheet architecture with strictly append-only RECORDS sheet and future-proof meta-fields.</p>
                         </div>
                         <Button 
                             size="lg" 
                             onClick={() => handleDownloadAuditPrototype()}
-                            className="h-16 px-10 bg-primary text-black font-black uppercase italic tracking-widest rounded-xl hover:scale-105 transition-all"
+                            className="h-16 px-10 bg-primary text-black font-black uppercase italic tracking-widest rounded-xl hover:scale-105 transition-all shadow-[0_0_50px_-10px_rgba(46,184,107,0.4)]"
                         >
-                            <Download className="mr-3 w-6 h-6" /> Generate Audit-Safe Workbook
+                            <Download className="mr-3 w-6 h-6" /> Generate V2.1 Laboratory Workbook
                         </Button>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 relative z-10">
                              {[
-                                { t: "Pre-Dated Rows", i: Clock },
-                                { t: "Hidden Records", i: ShieldCheck },
-                                { t: "Audit Filter", i: FileText },
-                                { t: "V2 Schema", i: Database }
+                                { t: "30-Day Ledger", i: Clock },
+                                { t: "Append-Only Vault", i: ShieldCheck },
+                                { t: "Non-Destructive Filter", i: FileText },
+                                { t: "Internal Meta-Fields", i: Database }
                              ].map((feat, i) => (
                                 <div key={i} className="flex items-center justify-center gap-2 text-[9px] font-black text-zinc-500 uppercase tracking-widest">
-                                    <feat.i className="w-3 h-3" /> {feat.t}
+                                    <feat.i className="w-3.5 h-3.5" /> {feat.t}
                                 </div>
                              ))}
                         </div>
                     </Card>
 
-                    {/* ARCHITECTURE STUDY */}
+                    {/* PILLARS OF EVIDENCE */}
                     <div className="grid md:grid-cols-2 gap-8">
                         <div className="space-y-6">
                             <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary flex items-center gap-2">
-                                <Zap className="w-5 h-5" /> The Visibility Logic
+                                <Zap className="w-5 h-5" /> The Visibility Protocol
                             </h3>
                             <div className="space-y-4 text-sm text-zinc-400 font-medium italic leading-relaxed">
-                                <p>We recommend **Option A (Dated Ledger)** for universal compatibility. The workbook pre-populates 30 days of tasks.</p>
+                                <p>Staff members see only today's tasks via the **Today-Only Filter**. This is non-destructive; it hides data to reduce mobile clutter while keeping records safe.</p>
                                 <div className="p-6 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                                    <p className="text-white font-black uppercase text-[10px] tracking-widest">STAFF WORKFLOW:</p>
+                                    <p className="text-white font-black uppercase text-[10px] tracking-widest">MOBILE USER FLOW:</p>
                                     <p>1. Open Google Sheets app.</p>
-                                    <p>2. Tap Filter Icon -> Select 'Today'.</p>
-                                    <p>3. Only 5-10 rows remain visible. Zero clutter.</p>
+                                    <p>2. Script triggers `onOpen` -> Auto-filters for `TODAY` on Column A.</p>
+                                    <p>3. Only relevant tasks remain. Zero-friction execution.</p>
                                 </div>
-                                <p>This avoids the "Script Dependency" trap, where Excel users find a broken system.</p>
                             </div>
                         </div>
 
                         <div className="space-y-6">
                             <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary flex items-center gap-2">
-                                <History className="w-5 h-5" /> The Recording Logic
+                                <SearchCheck className="w-5 h-5" /> The Records Protocol
                             </h3>
                             <div className="space-y-4 text-sm text-zinc-400 font-medium italic leading-relaxed">
-                                <p>To ensure **Static, Audit-Safe Timestamps**, we use a lightweight Google Apps Script. When a user fills "DONE BY", the script locks the current date into a hidden column.</p>
+                                <p>Every time a task is initialed, a new row is appended to the hidden **RECORDS** vault. This preserves evidence even if the daily ledger is modified or reset.</p>
                                 <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex gap-3">
                                     <AlertTriangle className="w-5 h-5 text-red-500 shrink-0" />
-                                    <p className="text-[11px] text-red-200">Formula-based timestamps (=NOW()) are volatile and will overwrite themselves tomorrow. They are invalid for audits.</p>
+                                    <p className="text-[11px] text-red-200 uppercase font-black leading-tight">MANDATE: NEVER OVERWRITE. NEVER DEDUPLICATE. EVERY COMPLETION IS A UNIQUE AUDIT EVENT.</p>
                                 </div>
                             </div>
                         </div>
@@ -112,16 +113,16 @@ export default function AuditLabPage() {
                     <div className="space-y-6">
                         <div className="flex items-center justify-between">
                             <h3 className="text-xl font-black uppercase italic tracking-tighter text-white flex items-center gap-2">
-                                <Code2 className="w-6 h-6 text-primary" /> Optional Automation Script
+                                <Code2 className="w-6 h-6 text-primary" /> Optional Automation Script (v2.1)
                             </h3>
                             <Button variant="outline" size="sm" onClick={() => copyToClipboard(APPS_SCRIPT_SOURCE)} className="text-[10px] font-black uppercase italic tracking-widest">
-                                Copy Source Code
+                                Copy Sovereign Source
                             </Button>
                         </div>
                         <pre className="p-8 bg-zinc-950 border border-white/5 rounded-2xl overflow-x-auto text-[11px] text-emerald-500/80 font-mono leading-relaxed max-h-[300px]">
                             {APPS_SCRIPT_SOURCE}
                         </pre>
-                        <p className="text-center text-[10px] text-zinc-600 font-black uppercase tracking-[0.3em]">PASTE INTO: EXTENSIONS > APPS SCRIPT</p>
+                        <p className="text-center text-[10px] text-zinc-600 font-black uppercase tracking-[0.3em]">MANDATORY FOR GOOGLE SHEETS MODE • OPTIONAL FOR EXCEL-ONLY MODE</p>
                     </div>
 
                 </div>

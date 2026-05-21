@@ -1,9 +1,9 @@
 
 export const APPS_SCRIPT_SOURCE = `/**
- * MOREMEETS™ SOVEREIGN V2 AUTOMATION ENGINE
+ * MOREMEETS™ SOVEREIGN V2.1 AUTOMATION ENGINE
  * -----------------------------------------
- * PURPOSE: Static Timestamping & Record Archiving
- * INSTALL: Extensions > Apps Script > Paste > Save
+ * PURPOSE: Append-Only Static Recording & Smart Visibility
+ * VERSION: PROTOTYPE-V2.1
  */
 
 function onEdit(e) {
@@ -13,7 +13,7 @@ function onEdit(e) {
   const col = range.getColumn();
   const row = range.getRow();
   
-  // CONFIG: DAILY_TASKS is our active trigger zone
+  // CONFIG: DAILY_TASKS TRIGGER
   // Column E (5) is "DONE BY"
   // Column H (8) is "COMPLETED ON"
   
@@ -27,28 +27,29 @@ function onEdit(e) {
       const timeStr = Utilities.formatDate(now, e.source.getSpreadsheetTimeZone(), "HH:mm:ss (dd-MMM)");
       timestampCell.setValue(timeStr);
       
-      // 2. APPEND TO PERMANENT RECORDS
+      // 2. APPEND TO PERMANENT VAULT (RECORDS)
       const recordSheet = e.source.getSheetByName("RECORDS");
       if (recordSheet) {
-        const rowData = sheet.getRange(row, 1, 1, 8).getValues()[0];
-        recordSheet.appendRow(rowData);
+        const rowData = sheet.getRange(row, 1, 1, 10).getValues()[0];
         
-        // 3. OPTIONAL: Lock the row in Records to prevent tampering
-        // (Requires advanced permissions)
+        // Push raw values to prevent formula migration
+        // Format: [DATE, BRANCH, TASK, ASSIGNED, DONE_BY, VERIFIED, STATUS, TIME, ID, CADENCE]
+        // Add placeholders for internal metadata: [PACK_VERSION, INCIDENT_FLAG]
+        recordSheet.appendRow([...rowData, "V2.1", "NO"]);
       }
       
-      // 4. UI FEEDBACK
-      e.source.toast("Audit Record Saved to Vault.", "Sovereign Engine", 3);
+      // 3. UI FEEDBACK
+      e.source.toast("Operational Evidence Secured in Vault.", "Sovereign Engine", 3);
     } else {
-      // Clear timestamp if Done By is deleted
+      // Clear timestamp if initials are removed
       timestampCell.clearContent();
     }
   }
 }
 
 /**
- * DAILY MAINTENANCE: Auto-Filter Today
- * Runs every time the sheet is opened
+ * DAILY VISIBILITY: Filter Today
+ * Runs on every sheet open to ensure "One Glance" efficiency
  */
 function onOpen() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -57,19 +58,19 @@ function onOpen() {
   
   const today = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd");
   
-  // Clear existing filters
+  // Clear existing filters non-destructively
   if (sheet.getFilter()) {
     sheet.getFilter().remove();
   }
   
   // Apply fresh filter for TODAY's date in Column A
-  const range = sheet.getRange(4, 1, sheet.getLastRow(), 8);
+  const range = sheet.getRange(3, 1, sheet.getLastRow(), 10);
   const filter = range.createFilter();
   const criteria = SpreadsheetApp.newFilterCriteria()
     .whenTextContains(today)
     .build();
   filter.setColumnFilterCriteria(1, criteria);
   
-  ss.toast("Filtered for: " + today, "Mission Ledger Active");
+  ss.toast("Mission Ledger: Filtering for " + today, "Sovereign Active");
 }
 `;
