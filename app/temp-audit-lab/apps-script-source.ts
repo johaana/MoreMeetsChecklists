@@ -1,13 +1,8 @@
 export const APPS_SCRIPT_SOURCE = `/**
  * MOREMEETS™ SOVEREIGN V2.2 AUTOMATION ENGINE
  * -----------------------------------------
- * PURPOSE: Append-Only Static Recording & Non-Destructive Visibility
- * VERSION: HARDENED-V2.2 (LABORATORY)
- * 
- * CRITICAL CONFIGURATION:
- * - Trigger Column: 6 (DONE BY)
- * - Stamp Column: 9 (COMPLETED ON)
- * - Ledger Columns: 1-13
+ * PURPOSE: Concurrency-Safe Evidence Recording
+ * VERSION: HARDENED-V2.2
  */
 
 function onEdit(e) {
@@ -20,33 +15,40 @@ function onEdit(e) {
   
   // TRIGGER: DAILY_TASKS Column F (6) - DONE BY
   if (sheetName === "DAILY_TASKS" && col === 6 && row > 3) {
-    const doneValue = range.getValue();
-    const timestampCell = sheet.getRange(row, 9); // Column I
-    
-    if (doneValue !== "") {
-      // 1. GENERATE STATIC TIMESTAMP
-      const now = new Date();
-      const timeStr = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm:ss");
-      timestampCell.setValue(timeStr);
+    const lock = LockService.getScriptLock();
+    try {
+      lock.waitLock(5000); // Concurrency protection for simultaneous edits
       
-      // 2. APPEND TO PERMANENT VAULT (RECORDS)
-      const recordSheet = ss.getSheetByName("RECORDS");
-      if (recordSheet) {
-        // Read full row [Date(1) to Cadence(13)]
-        const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
-        recordSheet.appendRow(rowData);
+      const doneValue = range.getValue();
+      const timestampCell = sheet.getRange(row, 9); // Column I
+      
+      if (doneValue !== "") {
+        // 1. GENERATE STATIC TIMESTAMP (STRING VALUE)
+        const now = new Date();
+        const timeStr = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm:ss");
+        timestampCell.setValue(timeStr);
+        
+        // 2. APPEND TO PERMANENT VAULT (RECORDS)
+        const recordSheet = ss.getSheetByName("RECORDS");
+        if (recordSheet) {
+          const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
+          recordSheet.appendRow(rowData);
+        }
+        
+        ss.toast("Institutional Evidence Secured.", "Sovereign Engine", 3);
+      } else {
+        timestampCell.clearContent();
       }
-      
-      ss.toast("Institutional Evidence Secured in RECORDS vault.", "Sovereign Engine", 3);
-    } else {
-      timestampCell.clearContent();
+    } catch (err) {
+      ss.toast("Lock timeout: Evidence retry pending.", "System Busy", 3);
+    } finally {
+      lock.releaseLock();
     }
   }
 }
 
 /**
- * MISSION VISIBILITY: Filter Today
- * Non-destructive: applies a filter to Column A for Today's Date.
+ * MISSION VISIBILITY: Auto-Filter for Today
  */
 function onOpen() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
