@@ -1,14 +1,15 @@
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
+import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V2.1 AUDIT ENGINE - REFINED PROTOTYPE
+ * SOVEREIGN V2.2 HARDENED AUDIT ENGINE
  * ----------------------------------------------------------------------------
- * 1. DATED LEDGER: 30-day task window for mobile performance.
- * 2. APPEND-ONLY VAULT: The high-gravity [RECORDS] sheet.
- * 3. FUTURE-READY: TASK_ID, PACK_VERSION, and CADENCE columns included.
- * 4. NON-DESTRUCTIVE: Visibility via filters, not row hiding.
+ * 1. TIERED VERIFICATION: OPEN -> IN PROGRESS -> COMPLETE logic restored.
+ * 2. FREEZE PANES: A1:C3 locked at generation for mobile consistency.
+ * 3. AUTO-FILTERS: Applied to header row by default.
+ * 4. RECORDS VAULT: Set to 'hidden' status with forensic meta-tags.
  * ----------------------------------------------------------------------------
  */
 
@@ -22,10 +23,10 @@ export const handleDownloadAuditPrototype = () => {
             WHITE: "FFFFFF",
             BORDER: "E2E8F0",
             INPUT_YELLOW: "FEFCE8",
-            RECORD_GREY: "F8FAFC",
             TEXT_RISK: "991B1B",
             LOCKED_GREY: "F1F5F9",
-            VAULT_HEADER: "1E293B"
+            VAULT_HEADER: "1E293B",
+            SUCCESS_BG: "F0FDF4"
         };
 
         const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -35,20 +36,6 @@ export const handleDownloadAuditPrototype = () => {
             bottom: { style: 'thin', color: { rgb: COLORS.BORDER } },
             left: { style: 'thin', color: { rgb: COLORS.BORDER } },
             right: { style: 'thin', color: { rgb: COLORS.BORDER } }
-        };
-
-        const bannerStyle = {
-            font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
-            fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } },
-            alignment: { horizontal: 'center', ...vCenter },
-            border: borderStyle
-        };
-
-        const vaultBannerStyle = {
-            font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 12 },
-            fill: { patternType: 'solid', fgColor: { rgb: COLORS.VAULT_HEADER } },
-            alignment: { horizontal: 'center', ...vCenter },
-            border: borderStyle
         };
 
         const headerStyle = {
@@ -62,33 +49,33 @@ export const handleDownloadAuditPrototype = () => {
             left: { font: baseFont, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle },
             center: { font: baseFont, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
             input: { font: { ...baseFont, bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
-            hidden: { font: { ...baseFont, color: { rgb: "CBD5E1" } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle }
+            locked: { font: { ...baseFont, color: { rgb: "94A3B8" } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
+            status: { font: { ...baseFont, bold: true }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle }
         };
+
+        // --- MOCK PRODUCTION DATA ---
+        const testTasks = [
+            { id: "H-VLT-01", t: "Open High-Value Vault", c: "Daily", risk: "Loss of primary property assets", instr: "Execute dual-key sequence with manager present.", vReq: true },
+            { id: "H-ENG-02", t: "Log Chiller Temperatures", c: "Daily", risk: "HVAC failure and guest heat complaints", instr: "Record discharge temp from BMS panel 1.", vReq: false },
+            { id: "H-SEC-03", t: "Perimeter Safety Sweep", c: "Daily", risk: "Unauthorized intruder access", instr: "Walk boundary fence; check 3 gates.", vReq: false },
+            { id: "H-FIN-04", t: "Cash Reconciliation", c: "Daily", risk: "Revenue theft masking as error", instr: "Match POS X-reading to physical notes.", vReq: true }
+        ];
 
         // --- 01. START ---
         const startData = [
-            [{ v: "🚀 SOVEREIGN V2.1 START GUIDE — AUDIT-READY", s: bannerStyle }],
+            [{ v: "🚀 SOVEREIGN V2.2 COMMAND CONSOLE — HARDENED", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
             [],
-            [{ v: "EVIDENCE INFRASTRUCTURE ENABLED", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "This system handles permanent history via a hidden append-only [RECORDS] vault.", s: { font: { italic: true } } }],
+            [{ v: "DEPLOYMENT STATUS: AUDIT-READY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "MODE A: GOOGLE SHEETS (RECOMMENDED)", s: { font: { bold: true } } }],
-            [{ v: "• Install the provided Apps Script for auto-timestamping and auto-archiving." }],
-            [{ v: "• On opening, the sheet will automatically filter for TODAY's tasks." }],
-            [{ v: "• Every completion is invisibly saved to the [RECORDS] vault." }],
+            [{ v: "1. INSTALL AUTOMATION", s: { font: { bold: true } } }, { v: "Copy the script from the [CUSTOMIZATION_GUIDE] to enable auto-timestamps." }],
+            [{ v: "2. ONE WORKBOOK PER BRANCH", s: { font: { bold: true } } }, { v: "This file is engineered for single-branch high-fidelity governance." }],
+            [{ v: "3. TIERED SIGN-OFF", s: { font: { bold: true } } }, { v: "High-risk tasks require both 'Done By' and 'Verified By' to reach COMPLETE." }],
             [],
-            [{ v: "MODE B: EXCEL-ONLY / OFFLINE", s: { font: { bold: true } } }],
-            [{ v: "• Use CTRL + ; to manually enter a static date in the 'COMPLETED ON' column." }],
-            [{ v: "• Use the filter icon on Column A (DATE) to see only today's work." }],
-            [],
-            [{ v: "⚠️ ACCESSING RECORDS", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "Managers can unhide the [RECORDS] sheet (View -> Hidden Sheets) to export evidence." }],
-            [],
-            [{ v: "⚠️ MAINTENANCE NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "At the end of every 30 days, duplicate this file as an archive and reset the master." }]
+            [{ v: "⚠️ FORENSIC VAULT NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "The [RECORDS] sheet is hidden and append-only. Do not edit it manually." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
-        startWs['!cols'] = [{ wch: 40 }, { wch: 80 }];
+        startWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, startWs, "START");
 
@@ -96,26 +83,22 @@ export const handleDownloadAuditPrototype = () => {
         const taskHeaders = [
             { v: "DATE", s: headerStyle },
             { v: "BRANCH", s: headerStyle },
-            { v: "TASK DESCRIPTION", s: headerStyle },
+            { v: "TECHNICAL TASK", s: headerStyle },
+            { v: "ROLE", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle },
-            { v: "DONE BY", s: headerStyle },
+            { v: "DONE BY (INIT)", s: headerStyle },
             { v: "VERIFIED BY", s: headerStyle },
             { v: "STATUS", s: headerStyle },
             { v: "COMPLETED ON (STAMP)", s: headerStyle },
+            { v: "CONSEQUENCE / RISK", s: headerStyle },
+            { v: "FLOOR INSTRUCTIONS", s: headerStyle },
             { v: "TASK_ID", s: headerStyle },
             { v: "CADENCE", s: headerStyle }
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
         const today = new Date();
-        const testTasks = [
-            { id: "T-01", t: "Open High-Value Vault", c: "Daily" },
-            { id: "T-02", t: "Record Chiller Temps", c: "Daily" },
-            { id: "T-03", t: "Security Perimeter Sweep", c: "Daily" },
-            { id: "T-04", t: "Cash Reconciliation", c: "Daily" }
-        ];
 
-        // Generate 3 days of tasks for the prototype
         for (let d = 0; d < 3; d++) {
             const rowDate = new Date(today);
             rowDate.setDate(today.getDate() + d);
@@ -123,69 +106,86 @@ export const handleDownloadAuditPrototype = () => {
 
             testTasks.forEach((task) => {
                 const rIdx = taskData.length + 1;
+                
+                // STATUS FORMULA (RESTORED P0)
+                // If verification required: IF(AND(DONE, VERIFIED), "COMPLETE", IF(DONE, "IN PROGRESS", "OPEN"))
+                // If not required: IF(DONE, "COMPLETE", "OPEN")
+                const formula = task.vReq 
+                    ? `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETE", IF(LEN(TRIM(F${rIdx}))>0, "IN PROGRESS", "OPEN"))`
+                    : `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETE", "OPEN")`;
+
                 taskData.push([
                     { v: dateStr, s: cellStyles.center },
                     { v: "Main Branch", s: cellStyles.center },
-                    { v: task.t, s: cellStyles.left },
+                    { v: task.t, s: { ...cellStyles.left, font: { bold: true } } },
+                    { v: "Operations", s: cellStyles.center },
                     { v: "Assigned Staff", s: cellStyles.center },
                     { v: "", s: cellStyles.input },
-                    { v: "", s: cellStyles.input },
-                    { t: 'f', f: `IF(LEN(E${rIdx})>0, "COMPLETE", "PENDING")`, s: cellStyles.center },
+                    { v: "", s: task.vReq ? cellStyles.input : cellStyles.locked },
+                    { t: 'f', f: formula, s: cellStyles.status },
                     { v: "", s: cellStyles.center },
-                    { v: task.id, s: cellStyles.hidden },
-                    { v: task.c, s: cellStyles.hidden }
+                    { v: task.risk, s: { ...cellStyles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
+                    { v: task.instr, s: cellStyles.left },
+                    { v: task.id, s: cellStyles.center },
+                    { v: task.c, s: cellStyles.center }
                 ]);
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [15, 20, 45, 20, 15, 15, 15, 25, 10, 10].map(w => ({ wch: w }));
+        taskWs['!cols'] = [12, 15, 40, 15, 15, 12, 12, 15, 25, 35, 45, 10, 10].map(w => ({ wch: w }));
+        
+        // FREEZE PANES (P0) - Freeze top 3 rows and A:C columns
+        taskWs['!views'] = [{ state: 'frozen', xSplit: 3, ySplit: 3 }];
+        
+        // AUTO-FILTER (P0)
+        taskWs['!autofilter'] = { ref: "A3:M1000" };
+        
         utils.book_append_sheet(wb, taskWs, "DAILY_TASKS");
 
-        // --- 03. RECORDS (THE VAULT) ---
-        const vaultHeaders = [
-            ...taskHeaders,
-            { v: "PACK_VERSION", s: headerStyle },
-            { v: "INCIDENT_FLAG", s: headerStyle }
-        ];
+        // --- 03. RECORDS (P0: HIDDEN VAULT) ---
         const recordData: any[][] = [
-            [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED HISTORY — DO NOT EDIT MANUALLY", s: vaultBannerStyle }],
+            [{ v: "🛡️ FORENSIC AUDIT RECORD — AUTO-GENERATED HISTORY — DO NOT EDIT MANUALLY", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.VAULT_HEADER } }, alignment: { horizontal: 'center' } } }],
             [],
-            vaultHeaders
+            taskHeaders
         ];
         const recordWs = utils.aoa_to_sheet(recordData);
-        recordWs['!cols'] = [15, 20, 45, 20, 15, 15, 15, 25, 10, 10, 15, 15].map(w => ({ wch: w }));
-        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 11 } }];
+        recordWs['!cols'] = taskWs['!cols'];
+        recordWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
+        
+        // Append to workbook and SET HIDDEN
         utils.book_append_sheet(wb, recordWs, "RECORDS");
+        const rIdx = wb.SheetNames.indexOf("RECORDS");
+        if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [] };
+        wb.Workbook.Sheets[rIdx] = { Hidden: 1 };
 
-        // --- 04. CUSTOMIZATION_GUIDE ---
+        // --- 04. CUSTOMIZATION_GUIDE (P1: SCRIPT INCLUSION) ---
         const guideData = [
-            [{ v: "🛠️ V2.1 COMMAND MANUAL — GOVERNANCE MODE", s: bannerStyle }],
+            [{ v: "🛠️ COMMAND MANUAL — SOVEREIGN AUDIT LAYER", s: { font: { bold: true, sz: 12, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
             [],
-            [{ v: "1. HOW AUDIT LOGGING WORKS", s: { font: { bold: true } } }],
-            [{ v: "The system uses a 'Dual Ledger' approach. The [DAILY_TASKS] sheet is for your team's eyes. The [RECORDS] sheet is for your business's permanent memory." }],
+            [{ v: "1. INSTALLING THE AUTOMATION (GOOGLE SHEETS)", s: { font: { bold: true } } }],
+            [{ v: "Step 1: Open your Google Sheet." }],
+            [{ v: "Step 2: Go to Extensions -> Apps Script." }],
+            [{ v: "Step 3: Delete any existing code and paste the block below exactly." }],
+            [{ v: "Step 4: Click 'Save' and authorize permissions when prompted." }],
             [],
-            [{ v: "2. GOOGLE SHEETS AUTOMATION", s: { font: { bold: true } } }],
-            [{ v: "When you install the Sovereign Script, completions are timestamped automatically. This creates a high-fidelity audit trail that cannot be faked or backdated easily." }],
+            [{ v: "--- SCRIPT START ---", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: APPS_SCRIPT_SOURCE, s: { font: { name: "Courier New", sz: 8 }, alignment: { wrapText: true } } }],
+            [{ v: "--- SCRIPT END ---", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [],
-            [{ v: "3. EXCEL-ONLY / OFFLINE FALLBACK", s: { font: { bold: true } } }],
-            [{ v: "If operating without scripts, staff must manually enter the date. Shortcut: Select the cell and press CTRL + ; (Semicolon) to insert the current static date." }],
+            [{ v: "2. EXCEL-ONLY FALLBACK (OFFLINE)", s: { font: { bold: true } } }],
+            [{ v: "Use [CTRL + ;] to manually insert a static date in the 'COMPLETED ON' column." }],
+            [{ v: "Use the filter icon on Column A to see today's tasks." }],
             [],
-            [{ v: "4. ARCHIVING RECORDS", s: { font: { bold: true } } }],
-            [{ v: "At the end of the year, unhide the [RECORDS] sheet. Copy the entire contents to a new file named 'Archive_2025_Evidence.xlsx'. This keeps your primary working file lean and fast." }],
-            [],
-            [{ v: "5. EXPORTING FOR INSPECTION", s: { font: { bold: true } } }],
-            [{ v: "Download the file as .xlsx or .pdf. Since timestamps are saved as static text, they will be perfectly preserved for auditors." }]
+            [{ v: "3. UNHIDING RECORDS", s: { font: { bold: true } } }],
+            [{ v: "Go to View -> Hidden Sheets -> select RECORDS to audit history." }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
         guideWs['!cols'] = [{ wch: 120 }];
+        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
         utils.book_append_sheet(wb, guideWs, "CUSTOMIZATION_GUIDE");
 
-        // --- OTHER TABS ---
-        utils.book_append_sheet(wb, utils.aoa_to_sheet([["SOP LIBRARY"]]), "SOP_LIB");
-        utils.book_append_sheet(wb, utils.aoa_to_sheet([["TEAM CONFIG"]]), "TEAM_HUB");
-        
-        writeFile(wb, `MoreMeets_Sovereign_V2.1_Laboratory.xlsx`);
+        writeFile(wb, `MoreMeets_Sovereign_V2_2_Hardened.xlsx`);
     } catch (e: any) {
-        alert("Prototype Generation Failure: " + e.message);
+        alert("Hardening Generation Failure: " + e.message);
     }
 }
