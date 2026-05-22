@@ -1,11 +1,10 @@
 /**
- * MOREMEETS™ SOVEREIGN TRIGGER AUDIT — V1.0
+ * MOREMEETS™ TRIGGER EXISTENCE AUDIT — V4.0 (ISOLATED)
  * -----------------------------------------------------------
- * PHASE C: TRIGGER EXISTENCE AUDIT
- * PURPOSE: PROVE THE SCRIPT FIRES AND CAN WRITE TO THE SHEET.
- * ACTION: OVERWRITES A1/A2 WITH STATUS ON ANY EDIT.
+ * PURPOSE: PROVE THE SCRIPT FIRES AND CAN WRITE TO AN ISOLATED SACRIFICIAL CELL.
+ * ACTION: WRITES TO Z1000/Z1001 ON ANY EDIT.
  * -----------------------------------------------------------
- * NO LOOPS. NO CONDITIONS. NO VAULT. NO COLUMN J.
+ * NO LOOPS. NO CONDITIONS. NO VAULT. NO GEOMETRY INTERFERENCE.
  */
 
 export const APPS_SCRIPT_SOURCE = `
@@ -13,34 +12,27 @@ function onEdit(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getActiveSheet();
   
-  // 1. IMMEDIATE VISUAL TOAST
-  ss.toast("TRIGGER_OK", "AUDIT");
+  // 1. TRIGGER SOURCE VALIDATION
+  if (sheet.getName() !== "DAILY_TASKS") return;
 
-  Logger.log("--- AUDIT_START ---");
+  // 2. IMMEDIATE VISUAL TOAST
+  ss.toast("TRIGGER_OK", "DIAGNOSTIC");
+
+  Logger.log("--- SCRIPT_STARTED ---");
   Logger.log("SPREADSHEET_ID: " + ss.getId());
-  Logger.log("SHEET_NAME: " + sheet.getName());
-  
-  try {
-    Logger.log("USER_IDENTITY: " + Session.getActiveUser().getEmail());
-  } catch (err) {
-    Logger.log("USER_IDENTITY_BLOCKED: " + err.toString());
-  }
-
-  // 2. ONLY TARGET DAILY_TASKS FOR AUDIT
-  if (sheet.getName() !== "DAILY_TASKS") {
-    Logger.log("EXIT: NOT_DAILY_TASKS");
-    return;
-  }
+  Logger.log("USER_EMAIL: " + Session.getActiveUser().getEmail());
 
   try {
-    Logger.log("BEFORE_A1_WRITE");
+    // 3. TARGET ISOLATED SACRIFICIAL CELLS (Z1000, Z1001)
+    const liveCell = sheet.getRange(1000, 26); // Z1000
+    const timeCell = sheet.getRange(1001, 26); // Z1001
     
-    // 3. GIGANTIC VISIBLE INDICATORS
-    sheet.getRange("A1").setValue("TRIGGER_WORKING");
-    sheet.getRange("A2").setValue("LAST_FIRE: " + new Date().toString());
+    Logger.log("BEFORE_Z1000_WRITE");
     
-    Logger.log("AFTER_A1_WRITE");
-    ss.toast("WRITE_SUCCESS", "AUDIT");
+    liveCell.setValue("LIVE");
+    timeCell.setValue(new Date().toString());
+    
+    Logger.log("AFTER_Z1000_WRITE");
     
   } catch (err) {
     Logger.log("CRITICAL_WRITE_FAILURE: " + err.toString());
