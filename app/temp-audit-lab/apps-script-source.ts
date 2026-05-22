@@ -1,6 +1,6 @@
 
 /**
- * MOREMEETS™ SOVEREIGN V4.0.1 — LAYOUT-AWARE GOVERNANCE
+ * MOREMEETS™ SOVEREIGN V4.0.2 — LAYOUT-AWARE GOVERNANCE
  * -----------------------------------------------------
  * CORE PRINCIPLE: The operational zone (A:I) is sovereign.
  * Automation operates on inputs (E:F) and targets overlay (J, Z+).
@@ -13,7 +13,7 @@ const CONFIG = {
   DONE_BY_COL: 5,      // E
   VERIFIED_BY_COL: 6,  // F
   STATUS_COL: 7,       // G
-  STAMP_COL: 10,       // J
+  STAMP_COL: 10,       // J (End of operational flow)
   
   // Overlay Projection (Z+)
   OVL_DATE_COL: 26,    // Z
@@ -27,6 +27,7 @@ function onOpen() {
   const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
   if (!sheet) return;
   
+  // Reset existing filters
   if (sheet.getFilter()) {
     sheet.getFilter().remove();
   }
@@ -43,6 +44,7 @@ function onOpen() {
       .whenTextEqualTo(todayStr)
       .build();
       
+    // Apply filter to the Overlay Date column (Column Z)
     filter.setColumnFilterCriteria(CONFIG.OVL_DATE_COL, criteria); 
     ss.toast("Sovereign V4.0: Today's Mission Loaded", "System Online");
   } catch (err) {
@@ -57,6 +59,7 @@ function onEdit(e) {
   const col = range.getColumn();
   const row = range.getRow();
   
+  // Trigger on signature cells (DONE BY or VERIFIED BY)
   if (sheet.getName() === CONFIG.SHEET_NAME && (col === CONFIG.DONE_BY_COL || col === CONFIG.VERIFIED_BY_COL) && row > 3) {
     const lock = LockService.getScriptLock();
     try {
@@ -65,12 +68,14 @@ function onEdit(e) {
       const statusValue = sheet.getRange(row, CONFIG.STATUS_COL).getValue();
       const stampCell = sheet.getRange(row, CONFIG.STAMP_COL); 
       
+      // Duplicate Shield: Only stamp and vault if not already stamped
       if (statusValue === "COMPLETE" && stampCell.getValue() === "") {
         const timestamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
         stampCell.setValue(timestamp);
         
         const vault = ss.getSheetByName(CONFIG.RECORDS_SHEET);
         if (vault) {
+          // Log the entire row state for forensic audit
           const rowData = sheet.getRange(row, 1, 1, 30).getValues()[0];
           vault.appendRow(rowData);
           ss.toast("Forensic Evidence Secured", "RECORDS_VAULT");

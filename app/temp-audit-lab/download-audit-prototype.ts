@@ -7,11 +7,11 @@ import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 import type { PremiumPack } from '@/lib/premium-packs';
 
 /**
- * SOVEREIGN V4.0.1 — ZERO-LOSS PATCH ENGINE
+ * SOVEREIGN V4.0.2 — ZERO-LOSS FULL FIDELITY ENGINE
  * ----------------------------------------------------------------------------
- * 1. INHERITANCE: Uses exact production logic for START, DASHBOARD, SOP_LIB, etc.
- * 2. GEOMETRY: Strictly preserves A:I operational zone in DAILY_TASKS.
- * 3. OVERLAY: Projects Dates/Days to Column Z+ and Stamp to Column J.
+ * 1. INHERITANCE: Uses exact production logic for all benchmark sheets.
+ * 2. GEOMETRY: strictly preserves A:I operational zone in DAILY_TASKS.
+ * 3. OVERLAY: Projects Yearly Dates/Days to Column Z+ and Stamp to Column J.
  * 4. HARDENING: Applies binary Freeze (A:D) and Protection (Unlock E,F only).
  * ----------------------------------------------------------------------------
  */
@@ -90,17 +90,21 @@ export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_samp
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         };
 
-        // --- 01. START (Parity) ---
+        // --- 01. START (Full Parity) ---
         const startWs = utils.aoa_to_sheet([
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
             [],
             [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }]
+            [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
+            [],
+            [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations in the yellow cells." }],
+            [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names and contact info." }],
+            [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }]
         ]);
         startWs['!cols'] = [{ wch: 40 }, { wch: 80 }];
         utils.book_append_sheet(wb, startWs, TABS.START);
 
-        // --- 02. DASHBOARD (Parity) ---
+        // --- 02. DASHBOARD (Full Parity) ---
         const dashData: any[][] = [
             [{ v: "📊 OPS DASHBOARD — REAL-TIME OPERATIONAL VITAL SIGNS", s: bannerStyle }],
             [],
@@ -109,20 +113,27 @@ export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_samp
             [{ v: "COMPLETION %:", s: { font: baseFont } }, { t: 'f', f: `IFERROR(TEXT(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$50000, "COMPLETE") / MAX(1, COUNTIFS(${TABS.DAILY_TASKS}!$G$4:$G$50000, "<>")), "0%"), "0%")`, s: { font: { bold: true } } }]
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
+        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }];
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS (PATCHED GEOMETRY) ---
+        // --- 03. DAILY_TASKS (Surgical Governance Overlay) ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const taskHeaders = [
-            { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
-            { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
-            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
-            { v: "STAMP", s: headerStyle } // J: Final operational col
+            { v: "BRANCH", s: headerStyle },         // A
+            { v: "ROLE", s: headerStyle },           // B
+            { v: "TECHNICAL TASK", s: headerStyle }, // C
+            { v: "ASSIGNED TO", s: headerStyle },    // D
+            { v: "DONE BY", s: headerStyle },        // E
+            { v: "VERIFIED BY", s: headerStyle },    // F
+            { v: "STATUS", s: headerStyle },         // G
+            { v: "CONSEQUENCE / RISK", s: headerStyle }, // H
+            { v: "FLOOR INSTRUCTIONS", s: headerStyle }, // I
+            { v: "STAMP", s: headerStyle }           // J (Far-right operation end)
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         
-        // YEARLY LEDGER PROJECTION
+        // 365-DAY YEARLY PROJECTION
         const today = new Date();
         for (let d = 0; d < 365; d++) {
             const curDate = new Date(today);
@@ -138,6 +149,7 @@ export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_samp
                         const styles = getStyles(roleIdx % 2 === 1);
                         const isV = t.verificationRequired === true;
 
+                        // SOVEREIGN GRID (A:I)
                         const row: any[] = [
                             { t: 'f', f: `IFERROR(${TABS.BRANCH_SETUP}!$A$4, "")`, s: styles.center }, // A: BRANCH
                             { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },     // B: ROLE
@@ -148,10 +160,10 @@ export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_samp
                             { t: 'f', f: `IF(AND(LEN(TRIM(E${rIdx}))>0, ${isV ? `LEN(TRIM(F${rIdx}))>0` : 'TRUE'}), "COMPLETE", "OPEN")`, s: { ...styles.center, font: { bold: true } } }, // G: STATUS
                             { v: t.consequence || "Risk Mitigation", s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } }, // H: CONSEQUENCE
                             { v: t.floorAction || t.trainerNotes || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }, // I: FLOOR INSTR
-                            { v: "", s: styles.locked } // J: STAMP (Reserved for Script)
+                            { v: "", s: styles.locked } // J: STAMP
                         ];
 
-                        // OVERLAY ZONE (START COLUMN Z)
+                        // OVERLAY LAYER (Z+)
                         while (row.length < 25) row.push({ v: "" });
                         row.push({ v: dateStr, s: styles.locked }); // Z: OVL_DATE
                         row.push({ v: dayName, s: styles.locked }); // AA: OVL_DAY
@@ -165,49 +177,74 @@ export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_samp
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 20].map(w => ({ wch: w }));
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily mission.");
         
-        // HARDENED BINARY FREEZE
+        // NATIVE BINARY FREEZE (Context Persistence)
         taskWs['!views'] = [{
             state: 'frozen',
-            xSplit: 4,      // Columns A-D
-            ySplit: 3,      // Rows 1-3
+            xSplit: 4,      // Columns A-D Locked
+            ySplit: 3,      // Rows 1-3 Locked
             topLeftCell: 'E4',
             activePane: 'bottomRight'
         }];
 
-        // HARDENED PROTECTION
+        // NATIVE BINARY PROTECTION
         taskWs['!protect'] = { password: "sovereign_v4" };
         
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
-        // --- 04. SOP_LIB (Parity) ---
-        const libWs = utils.aoa_to_sheet([[],[],[{v:"ROLE", s:headerStyle}, {v:"TECHNICAL SOP", s:headerStyle}, {v:"FLOOR ACTION", s:headerStyle}]]);
-        addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training.", 'C');
+        // --- 04. SOP_LIB (Full Parity) ---
+        const libData: any[][] = [[], [], [{v:"ROLE", s:headerStyle}, {v:"TECHNICAL SOP", s:headerStyle}, {v:"FLOOR ACTION", s:headerStyle}]];
+        item.checklists.forEach(cl => {
+            cl.tasks.forEach(t => {
+                libData.push([
+                    {v: cl.role, s: { font: baseFont, border: borderStyle }},
+                    {v: t.technicalProtocol || t.description, s: { font: { ...baseFont, bold: true }, border: borderStyle }},
+                    {v: t.floorAction || t.trainerNotes || t.description, s: { font: baseFont, border: borderStyle }}
+                ]);
+            });
+        });
+        const libWs = utils.aoa_to_sheet(libData);
+        libWs['!cols'] = [{ wch: 30 }, { wch: 50 }, { wch: 70 }];
+        addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'C');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
-        // --- 07. CUSTOMIZATION_GUIDE (Script Injection) ---
+        // --- 05. BRANCH_SETUP & 06. TEAM_HUB (Full Parity) ---
+        const branchWs = utils.aoa_to_sheet([[],[],[{v:"BRANCH NAME", s:headerStyle}, {v:"STATUS", s:headerStyle}], [{v:"Branch 1", s:getStyles(false).input}, {v:"ACTIVE", s:getStyles(false).input}]]);
+        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define locations.", 'B');
+        utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
+
+        const teamWs = utils.aoa_to_sheet([[],[],[{v:"ROLE", s:headerStyle}, {v:"PERSONNEL NAME", s:headerStyle}]]);
+        activeRoles.forEach(r => utils.sheet_add_aoa(teamWs, [[r, "[ENTER NAME]"]], { origin: -1 }));
+        addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign staff.", 'B');
+        utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
+
+        // --- 07. CUSTOMIZATION_GUIDE (Full Parity + Script) ---
         const guideData = [
             [{ v: "🛠️ CUSTOMIZATION GUIDE — HOW TO TAILOR YOUR SYSTEM", s: bannerStyle }],
             [],
-            [{ v: "STEP 1: ACTIVATE FORENSIC AUTOMATION (GOOGLE SHEETS)", s: { font: { bold: true } } }],
-            [{ v: "Copy the script below to Extensions > Apps Script to enable Today-First filters and auto-stamps." }],
+            [{ v: "STEP 1: ACTIVATE AUTOMATION (GOOGLE SHEETS)", s: { font: { bold: true } } }],
+            [{ v: "Copy the script below to Extensions > Apps Script to enable today-first filters and auto-stamps." }],
             [],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { family: 'Courier New', sz: 8 }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
+        guideWs['!cols'] = [{ wch: 100 }];
         utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
 
-        // --- GOVERNANCE NAMESPACE (Hidden) ---
-        utils.book_append_sheet(wb, utils.aoa_to_sheet([['TIMESTAMP','ID','ACTOR','PAYLOAD']]), TABS.RECORDS);
-        utils.book_append_sheet(wb, utils.aoa_to_sheet([['ENGINE_V4.0.1']]), TABS.SYS_ENGINE);
-        
-        [TABS.RECORDS, TABS.SYS_ENGINE].forEach(name => {
+        // --- 08. SYS_ENGINE (Full Parity) ---
+        const sysWs = utils.aoa_to_sheet([['ID','ROLE','KEY','PERSON']]);
+        utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
+
+        // HIDE GOVERNANCE NAMESPACE
+        [TABS.SYS_ENGINE, TABS.RECORDS].forEach(name => {
             const idx = wb.SheetNames.indexOf(name);
-            if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [] };
-            wb.Workbook.Sheets[idx] = { Hidden: 1 };
+            if (idx > -1) {
+                if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [] };
+                wb.Workbook.Sheets[idx] = { Hidden: 1 };
+            }
         });
 
         writeFile(wb, `TEMP_HOTEL_OVERLAY_V4.xlsx`);
     } catch (e: any) {
-        alert("Pilot Generation Failure: " + e.message);
+        alert("Sovereign Engine Error: " + e.message);
     }
 }
