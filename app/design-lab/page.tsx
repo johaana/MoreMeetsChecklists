@@ -90,8 +90,8 @@ export default function DesignLabV3() {
 
             <main className="flex-1">
                 
-                {/* --- SECTION 1: THE COMMAND HERO --- */}
-                <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
+                {/* --- SECTION 1: THE COMMAND HERO (DEEP NAVY) --- */}
+                <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-[#0A0F1A] text-white">
                     <div className="absolute inset-0 z-0">
                         <video 
                             src={VIDEO_URL} 
@@ -99,10 +99,12 @@ export default function DesignLabV3() {
                             loop 
                             muted 
                             playsInline 
-                            className="h-full w-full object-cover opacity-25 grayscale brightness-[0.4]"
+                            className="h-full w-full object-cover opacity-20 grayscale brightness-[0.4]"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/80 to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
+                        {/* Dynamic Rim Lighting */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,197,94,0.08)_0%,transparent_60%)]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1A] via-[#0A0F1A]/95 md:via-[#0A0F1A]/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/40 via-transparent to-[#0A0F1A]" />
                     </div>
 
                     <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
@@ -167,7 +169,7 @@ export default function DesignLabV3() {
                         </div>
                     </div>
 
-                    <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 border-t border-white/5 flex items-center shadow-2xl overflow-hidden">
+                    <div className="absolute bottom-0 w-full bg-[#050811]/90 backdrop-blur-xl h-10 md:h-12 border-t border-white/5 flex items-center shadow-2xl overflow-hidden">
                         <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                             {MARQUEE_SIGNALS.map((signal, i) => (
                                 <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
@@ -230,7 +232,8 @@ export default function DesignLabV3() {
                 </Section>
 
                 {/* --- SECTION 3: THE PROOF (THE SOVEREIGN LEDGER) --- */}
-                <Section className="bg-zinc-950 text-white" noSpine>
+                <Section className="bg-[#0A0F1A] text-white" noSpine>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.05)_0%,transparent_70%)]" />
                     <div className="max-w-[1400px] mx-auto space-y-16">
                         <div className="flex flex-col items-center text-center space-y-6">
                             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-3 rounded-none italic">THE INFRASTRUCTURE</Badge>
@@ -243,7 +246,7 @@ export default function DesignLabV3() {
                         </div>
 
                         {/* REPLICA GRID UI */}
-                        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_40px_100px_-20px_rgba(34,197,94,0.15)] bg-[#0A0F19] font-sans group">
+                        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_40px_100px_-20px_rgba(34,197,94,0.15)] bg-[#0D121F] font-sans group relative z-10">
                             <div className="bg-[#22C55E] text-black py-3 px-6 flex items-center justify-center gap-3 text-[11px] font-black uppercase tracking-[0.2em]">
                                 <Target className="w-4 h-4" />
                                 <span>Mission Control: Daily Execution Engine v18.1</span>
@@ -318,7 +321,7 @@ export default function DesignLabV3() {
                                     </div>
                                 ))}
                              </div>
-                             <div className="p-10 rounded-[3rem] bg-zinc-950 text-white space-y-8 shadow-2xl relative overflow-hidden">
+                             <div className="p-10 rounded-[3rem] bg-[#0A0F1A] text-white space-y-8 shadow-2xl relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-10">
                                     <Lock className="w-32 h-32" />
                                 </div>
