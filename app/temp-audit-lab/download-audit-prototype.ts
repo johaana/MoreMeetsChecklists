@@ -4,10 +4,11 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 
 /**
- * SOVEREIGN PARITY BASE — v17.5.1 CLONE
+ * SOVEREIGN LAB v4.0.3 — PHASE 2A: ISOLATED FREEZE PATCH
  * ----------------------------------------------------------------------------
- * This is an EXACT LITERATE CLONE of the production download.ts logic.
- * Purpose: Establish a 100% parity baseline before any governance patches.
+ * 1. PARITY BASE: 100% logic mirror of production v17.5.1.
+ * 2. SURGICAL PATCH: Apply !views to DAILY_TASKS after generation.
+ * 3. GEOMETRY: Strictly preserved A:I grid. No new columns or rows.
  * ----------------------------------------------------------------------------
  */
 
@@ -165,6 +166,16 @@ export const handleDownloadAuditPrototype = () => {
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
+        
+        // --- PHASE 2A: ISOLATED FREEZE PATCH ---
+        taskWs['!views'] = [{
+            state: 'frozen',
+            xSplit: 4,      // Frozen Columns: A, B, C, D (Branch, Role, Task, Assigned)
+            ySplit: 3,      // Frozen Rows: 1, 2, 3 (Headers)
+            topLeftCell: 'E4',
+            activePane: 'bottomRight'
+        }];
+
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
@@ -215,7 +226,6 @@ export const handleDownloadAuditPrototype = () => {
             const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
             activeRoles.forEach((role, idx) => {
                 const styles = getStyles(idx % 2 === 1);
-                const tRow = 4 + (i * activeRoles.length) + idx;
                 teamData.push([
                     { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
                     { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
@@ -275,7 +285,7 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Views[0].activeTab = 0; 
 
-        writeFile(wb, `TEMP_HOTEL_PARITY_AUDIT.xlsx`);
+        writeFile(wb, `TEMP_HOTEL_FREEZE_TEST.xlsx`);
     } catch (error: any) {
         console.error("Lab Failure:", error);
     }
