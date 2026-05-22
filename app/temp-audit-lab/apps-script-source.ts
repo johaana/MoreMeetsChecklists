@@ -1,15 +1,30 @@
-export const APPS_SCRIPT_SOURCE = `/**
- * MOREMEETS™ SOVEREIGN V3.2 PILOT-READY ENGINE
+/**
+ * MOREMEETS™ SOVEREIGN V4.0 — LAYOUT-AWARE GOVERNANCE
  * -----------------------------------------------------
- * 1. MAGIC FILTER: Clears stale state and forces Today-First view.
- * 2. DUPLICATE SHIELD: Checks existing stamps before vaulting.
- * 3. ATOMIC LOCKING: 30s queue for multi-staff concurrency.
- * 4. CLEANUP: Gracefully handles blank/undo events.
+ * CORE PRINCIPLE: The operational zone (A:I) is sovereign.
+ * The script operates primarily on the Overlay Zone (Z+).
  */
+
+const CONFIG = {
+  SHEET_NAME: "DAILY_TASKS",
+  // Operational Zone (Benchmark Geometry)
+  DONE_BY_COL: 5,      // E
+  VERIFIED_BY_COL: 6,  // F
+  STATUS_COL: 7,       // G
+  
+  // Overlay Zone (Governance Namespace)
+  OVL_DATE_COL: 26,    // Z
+  OVL_DAY_COL: 27,     // AA
+  OVL_STAMP_COL: 28,   // AB
+  OVL_TASK_ID_COL: 29, // AC
+  
+  RECORDS_SHEET: "_RECORDS_VAULT",
+  LOCK_TIMEOUT: 30000
+};
 
 function onOpen() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("DAILY_TASKS");
+  const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
   if (!sheet) return;
   
   // 1. CLEANUP STALE FILTERS
@@ -17,23 +32,23 @@ function onOpen() {
     sheet.getFilter().remove();
   }
   
-  // 2. APPLY TODAY MISSION VIEW
+  // 2. APPLY TODAY MISSION VIEW (Via Overlay Column Z)
   const timezone = ss.getSpreadsheetTimeZone();
   const todayStr = Utilities.formatDate(new Date(), timezone, "yyyy-MM-dd");
   const lastRow = sheet.getLastRow();
   if (lastRow < 4) return;
   
   try {
-    const range = sheet.getRange(3, 1, lastRow - 2, 13);
+    const range = sheet.getRange(3, 1, lastRow - 2, 30); // Coverage through Overlay
     const filter = range.createFilter();
     const criteria = SpreadsheetApp.newFilterCriteria()
       .whenTextEqualTo(todayStr)
       .build();
       
-    filter.setColumnFilterCriteria(1, criteria); // Column A (DATE)
-    ss.toast("Sovereign V3.2: Today's Mission Loaded", "System Online");
+    filter.setColumnFilterCriteria(CONFIG.OVL_DATE_COL, criteria); 
+    ss.toast("Sovereign V4.0: Today's Mission Loaded", "System Online");
   } catch (err) {
-    ss.toast("Manual Filter Required: Date = " + todayStr, "Filter Error");
+    ss.toast("Manual Filter Required: Overlay Date = " + todayStr, "Filter Error");
   }
 }
 
@@ -45,39 +60,36 @@ function onEdit(e) {
   const col = range.getColumn();
   const row = range.getRow();
   
-  // TARGET: DONE BY (Col 6) or VERIFIED BY (Col 7)
-  if (sheetName === "DAILY_TASKS" && (col === 6 || col === 7) && row > 3) {
+  // TRIGGER: DONE BY or VERIFIED BY in the Sovereign Operational Zone
+  if (sheetName === CONFIG.SHEET_NAME && (col === CONFIG.DONE_BY_COL || col === CONFIG.VERIFIED_BY_COL) && row > 3) {
     const lock = LockService.getScriptLock();
     try {
-      lock.waitLock(30000); // High-concurrency queue
+      lock.waitLock(CONFIG.LOCK_TIMEOUT); 
       
-      const statusValue = sheet.getRange(row, 8).getValue(); // Col H (STATUS)
-      const stampCell = sheet.getRange(row, 9); // Col I (STAMP)
+      const statusValue = sheet.getRange(row, CONFIG.STATUS_COL).getValue();
+      const stampCell = sheet.getRange(row, CONFIG.OVL_STAMP_COL); 
       const existingStamp = stampCell.getValue();
       
       if (statusValue === "COMPLETE") {
-        // DUPLICATE SHIELD: Only record if not already stamped
         if (existingStamp === "") {
           const now = new Date();
           const timestamp = Utilities.formatDate(now, ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
           stampCell.setValue(timestamp);
           
-          const recordSheet = ss.getSheetByName("RECORDS");
-          if (recordSheet) {
-            const rowData = sheet.getRange(row, 1, 1, 13).getValues()[0];
-            recordSheet.appendRow(rowData);
-            ss.toast("Institutional Evidence Secured", "Sovereign Vault");
+          const vault = ss.getSheetByName(CONFIG.RECORDS_SHEET);
+          if (vault) {
+            const rowData = sheet.getRange(row, 1, 1, 30).getValues()[0];
+            vault.appendRow(rowData);
+            ss.toast("Forensic Evidence Secured", "RECORDS_VAULT");
           }
         }
-      } else if (col === 6 && range.getValue() === "") {
-        // CLEARANCE: Remove stamp if initials are deleted
+      } else if (col === CONFIG.DONE_BY_COL && range.getValue() === "") {
         stampCell.clearContent();
       }
     } catch (err) {
-      ss.toast("System Busy: Record will sync on reconnect.", "Sync Delay");
+      ss.toast("Sync Delay: Record will update on reconnect.", "System Busy");
     } finally {
       lock.releaseLock();
     }
   }
 }
-`;
