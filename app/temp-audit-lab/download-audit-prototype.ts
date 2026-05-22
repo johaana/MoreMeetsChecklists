@@ -5,15 +5,6 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
-/**
- * SOVEREIGN LAB v4.1.0 — PHASE 3A: AUDIT INFRASTRUCTURE
- * ----------------------------------------------------------------------------
- * 1. PARITY BASE: 100% logic mirror of production v17.5.1.
- * 2. HIDDEN VAULT: Added _RECORDS_VAULT with audit headers.
- * 3. SCRIPT EMBED: Hardened Apps Script source added to GUIDE.
- * ----------------------------------------------------------------------------
- */
-
 export const handleDownloadAuditPrototype = () => {
     try {
         const wb = utils.book_new();
@@ -60,7 +51,6 @@ export const handleDownloadAuditPrototype = () => {
             return {
                 left: { font: baseFont, fill, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle },
                 center: { font: baseFont, fill, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
-                right: { font: baseFont, fill, alignment: { horizontal: 'right', ...vCenter }, border: borderStyle },
                 input: { font: { ...baseFont, color: "000000", bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
                 locked: { font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle }
             };
@@ -90,7 +80,7 @@ export const handleDownloadAuditPrototype = () => {
             RECORDS_VAULT: "_RECORDS_VAULT"
         };
 
-        // --- 01. START ---
+        // --- 01. START (Parity) ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
             [],
@@ -99,20 +89,14 @@ export const handleDownloadAuditPrototype = () => {
             [],
             [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations in the yellow cells." }],
             [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names, phone numbers, and emails." }],
-            [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }],
-            [],
-            [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
-            [{ v: "Replace all YELLOW cells with your own local details to begin." }],
-            [],
-            [{ v: "NAVIGATION NOTICE:", s: { font: { bold: true } } }],
-            [{ v: "Use the tab bar at the bottom of your screen to move between divisions." }]
+            [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, startWs, TABS.START);
 
-        // --- 02. DASHBOARD ---
+        // --- 02. DASHBOARD (Parity) ---
         const dashData: any[][] = [
             [{ v: "📊 OPS DASHBOARD — REAL-TIME OPERATIONAL VITAL SIGNS", s: bannerStyle }],
             [],
@@ -122,12 +106,11 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { ...baseFont, bold: true, alignment: { horizontal: 'right' } } }]
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
-        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 20 }, { wch: 20 }];
-        dashWs['!rows'] = [{ hpt: 30 }]; 
-        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }]; 
+        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }];
+        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS ---
+        // --- 03. DAILY_TASKS (Geometry Parity A:I) ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
@@ -152,15 +135,15 @@ export const handleDownloadAuditPrototype = () => {
                             : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
 
                         taskData.push([
-                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.left },
+                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
                             { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
                             { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
-                            { t: 'f', f: assignedFormula, s: styles.left },
+                            { t: 'f', f: assignedFormula, s: styles.center },
                             { v: "", s: styles.input },
                             { v: "", s: isV ? styles.input : styles.locked }, 
-                            { t: 'f', f: statusFormula, s: { ...centerCellStyle.center, font: { bold: true } } },
-                            { v: t.consequence || "Compliance Gap", s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                            { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                            { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
+                            { v: t.consequence || "Compliance Gap", s: styles.left },
+                            { v: t.floorAction || t.description || "", s: styles.left }
                         ]);
                     });
                 }
@@ -168,133 +151,97 @@ export const handleDownloadAuditPrototype = () => {
         }
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Geometry A:I Strictly Preserved.", 'I');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
-        // --- 04. SOP_LIB ---
+        // --- 04. SOP_LIB (Parity) ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
-        const libRows: any[] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 30 }];
-
         item.checklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
                 const styles = getStyles(cIdx % 2 === 1);
-                const txt = (t.technicalProtocol || "") + (t.floorAction || t.description || "");
-                const lines = Math.ceil(txt.length / 60);
-                libRows.push({ hpt: Math.max(35, lines * 18), customHeight: 1 });
-
                 libData.push([
-                    { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
-                    { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
+                    { v: c.role, s: styles.left },
+                    { v: t.technicalProtocol || t.description, s: styles.left },
                     { v: t.consequence || "Risk Mitigation", s: styles.left },
-                    { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                    { v: t.floorAction || t.description || "", s: styles.left }
                 ]);
             });
         });
         const libWs = utils.aoa_to_sheet(libData);
         libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
-        libWs['!rows'] = libRows;
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
-        // --- 05. BRANCH_SETUP ---
-        const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
-        const branchData: any[][] = [[], [], branchHeaders];
+        // --- 05. BRANCH_SETUP (Parity) ---
+        const branchData: any[][] = [[], [], [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }]];
         for (let i = 1; i <= 2; i++) {
-            branchData.push([
-                { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
-                { v: "Location", s: getStyles(false).input },
-                { v: "ACTIVE", s: getStyles(false).input }
-            ]);
+            branchData.push([{ v: `Branch ${i} [REPLACE]`, s: getStyles(false).input }, { v: "Location", s: getStyles(false).input }, { v: "ACTIVE", s: getStyles(false).input }]);
         }
         const branchWs = utils.aoa_to_sheet(branchData);
-        branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
-        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
+        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations.", 'C');
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
-        // --- 06. TEAM_HUB ---
-        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
+        // --- 06. TEAM_HUB (Parity) ---
+        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
         const teamData: any[][] = [[], [], teamHeaders];
         for (let i = 0; i < 2; i++) {
-            const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
             activeRoles.forEach((role, idx) => {
-                const styles = getStyles(idx % 2 === 1);
-                teamData.push([
-                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
-                    { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
-                    { v: "[ENTER NAME]", s: styles.input },
-                    { v: "[PHONE]", s: styles.input },
-                    { v: "[EMAIL]", s: styles.input }
-                ]);
+                const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
+                teamData.push([{ t: 'f', f: `IFERROR(${bRef}, "")`, s: getStyles(false).center }, { v: role, s: getStyles(false).left }, { v: "", s: getStyles(false).input }, { v: "", s: getStyles(false).input }, { v: "", s: getStyles(false).input }]);
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
-        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. CUSTOMIZATION_GUIDE ---
+        // --- 07. CUSTOMIZATION_GUIDE (Patch: Added Automation Section) ---
         const guideData: any[][] = [
-            [{ v: "🛠️ CUSTOMIZATION GUIDE — HOW TO TAILOR YOUR SYSTEM", s: bannerStyle }],
+            [{ v: "🛠️ CUSTOMIZATION GUIDE", s: bannerStyle }],
             [],
-            [{ v: "SECTION A: WHAT YOU CAN SAFELY EDIT", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "✅ Branch names & locations" }],
-            [{ v: "✅ Team member names, phone numbers & emails" }],
-            [{ v: "✅ SOP wording & technical descriptions" }],
-            [{ v: "✅ Adding or removing tasks within role blocks" }],
-            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
+            [{ v: "SECTION A: BASIC EDITING", s: { font: { bold: true } } }],
+            [{ v: "✅ Branch names, Staff names, and SOP wording." }],
             [],
-            [{ v: "SECTION B: AUTOMATION (GOOGLE SHEETS ONLY)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Copy and paste the code below into Extensions -> Apps Script to enable the hidden audit vault." }],
+            [{ v: "SECTION B: AUDIT AUTOMATION (GOOGLE SHEETS ONLY)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "Follow these steps to activate the hidden Records Vault:" }],
+            [{ v: "1. Open the file in Google Sheets." }],
+            [{ v: "2. Go to Extensions -> Apps Script." }],
+            [{ v: "3. Delete existing code and paste the block below." }],
+            [{ v: "4. Save and authorize the script." }],
             [],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 120 }];
         addSheetHeader(guideWs, TABS.CUSTOMIZATION_GUIDE, "System configuration manual.", 'A');
         utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
 
-        // --- 08. SYS_ENGINE ---
+        // --- 08. SYS_ENGINE (Parity) ---
         const sysData: any[][] = [];
         for (let i = 0; i < 2; i++) {
             activeRoles.forEach((role, rIdx) => {
                 const tRow = 4 + (i * activeRoles.length) + rIdx;
                 const sIdx = sysData.length + 1;
-                sysData.push([
-                    { t: 'f', f: `IFERROR(${TABS.BRANCH_SETUP}!$A$${4 + i}, "")` }, 
-                    { v: role },                                   
-                    { t: 'f', f: `A${sIdx}&"|"&B${sIdx}` },    
-                    { t: 'f', f: `${TABS.TEAM_HUB}!$C$${tRow}` }        
-                ]);
+                sysData.push([{ t: 'f', f: `IFERROR(${TABS.BRANCH_SETUP}!$A$${4 + i}, "")` }, { v: role }, { t: 'f', f: `A${sIdx}&"|"&B${sIdx}` }, { t: 'f', f: `${TABS.TEAM_HUB}!$C$${tRow}` }]);
             });
         }
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        // --- 09. _RECORDS_VAULT (Phase 3A) ---
-        const vaultHeaders = [
-            { v: "DATE", s: headerStyle },
-            { v: "TASK", s: headerStyle },
-            { v: "DONE_BY", s: headerStyle },
-            { v: "VERIFIED_BY", s: headerStyle },
-            { v: "STATUS", s: headerStyle },
-            { v: "STAMP", s: headerStyle }
-        ];
-        const vaultWs = utils.aoa_to_sheet([[], [], vaultHeaders]);
+        // --- 09. _RECORDS_VAULT (New: Infrastructure) ---
+        const vaultHeaders = [[{ v: "DATE", s: headerStyle }, { v: "TASK", s: headerStyle }, { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED_BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, { v: "STAMP", s: headerStyle }]];
+        const vaultWs = utils.aoa_to_sheet(vaultHeaders);
         vaultWs['!cols'] = [20, 45, 25, 25, 20, 25].map(w => ({ wch: w }));
         utils.book_append_sheet(wb, vaultWs, TABS.RECORDS_VAULT);
         
-        // --- FINAL HIDE & EXPORT ---
-        // Hide SYS_ENGINE (at index 7) and _RECORDS_VAULT (at index 8)
-        const sysIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
-        const vaultIdx = wb.SheetNames.indexOf(TABS.RECORDS_VAULT);
+        // Hide SYS_ENGINE and _RECORDS_VAULT
+        const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
+        const vIdx = wb.SheetNames.indexOf(TABS.RECORDS_VAULT);
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
-        wb.Workbook.Sheets[sysIdx] = { Hidden: 1 };
-        wb.Workbook.Sheets[vaultIdx] = { Hidden: 1 };
-        wb.Workbook.Views[0].activeTab = 0; 
+        wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
+        wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `TEMP_HOTEL_VAULT_TEST.xlsx`);
+        writeFile(wb, `TEMP_HOTEL_VAULT_FORENSIC.xlsx`);
     } catch (error: any) {
-        console.error("Lab Failure:", error);
+        console.error("Infrastructure Failure:", error);
     }
 }
