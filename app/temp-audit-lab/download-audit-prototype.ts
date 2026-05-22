@@ -5,11 +5,11 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER ENGINE V4.9 - PILOT RELEASE
+ * SOVEREIGN MASTER ENGINE V4.9 - SIMPLIFIED SETUP
  * --------------------------------------------------
  * 1. MANDATORY CONVERSION: Red alert on START tab.
  * 2. WEB BRIDGE: Link to the visual /deploy-guide page.
- * 3. GEOMETRY: Hardened 10-column A:J grid.
+ * 3. NO-TRIGGER FLOW: Clean instructions for Run/Authorize only.
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -87,21 +87,18 @@ export const handleDownloadAuditPrototype = () => {
             SYS_ENGINE: "SYS_ENGINE"
         };
 
-        // --- 01. START (Primary Human Shield) ---
+        // --- 01. START ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
             [],
             [{ v: "SECTION A — VERY IMPORTANT (MUST READ)", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.RISK_RED } } } }],
-            [{ v: "Apps Script logic (the Audit Heartbeat) DOES NOT WORK in Excel preview mode.", s: { font: { bold: true } } }],
+            [{ v: "Apps Script logic DOES NOT WORK in Excel mode.", s: { font: { bold: true } } }],
             [{ v: "STEP 0: Go to [File] -> [Save as Google Sheets].", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: "Only continue setup in the NEW file that opens. Discard this version." }],
             [],
             [{ v: "STEP 1: VIEW THE VISUAL DEPLOYMENT GUIDE", s: { font: { bold: true, sz: 12 } } }],
             [{ v: "For a step-by-step walkthrough with screenshots, visit:", s: { font: { italic: true } } }],
             [{ v: "https://www.moremeets.com/deploy-guide", l: { Target: "https://www.moremeets.com/deploy-guide" }, s: { font: { color: { rgb: "0000FF" }, underline: true } } }],
-            [],
-            [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Capture your operational memory and harden your standards daily.", s: { font: { italic: true } } }],
             [],
             [{ v: "GO TO SETUP_GUIDE TAB TO CONTINUE ->", s: { font: { bold: true } } }]
         ];
@@ -122,7 +119,7 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS (10-Col Parity) ---
+        // --- 03. DAILY_TASKS ---
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -164,7 +161,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'J');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
-        // --- 04. SOP_LIB (Restored Benchmark Content) ---
+        // --- 04. SOP_LIB ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
         item.checklists.forEach((c, cIdx) => {
@@ -183,7 +180,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
-        // --- 05. BRANCH_SETUP (Parity Styles) ---
+        // --- 05. BRANCH_SETUP ---
         const branchData: any[][] = [
             [], [],
             [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }],
@@ -195,7 +192,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
-        // --- 06. TEAM_HUB (Exact Spacing Parity) ---
+        // --- 06. TEAM_HUB ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
         const teamData: any[][] = [[], [], teamHeaders];
@@ -217,7 +214,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. SETUP_GUIDE (Direct Action Order) ---
+        // --- 07. SETUP_GUIDE ---
         const guideData: any[][] = [
             [{ v: "🛠️ SYSTEM SETUP & DEPLOYMENT GUIDE", s: bannerStyle }],
             [],
@@ -227,18 +224,11 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "3. In the NEW file, go to [Extensions] -> [Apps Script]." }],
             [{ v: "4. Delete any existing text and PASTE the code provided at the bottom of this sheet." }],
             [{ v: "5. Click the [Save] icon (floppy disk)." }],
-            [{ v: "6. Click the [Clock] icon (Triggers) on the left sidebar." }],
-            [{ v: "7. Click [+ Add Trigger]. Select: Function: 'onEdit', Source: 'From spreadsheet', Event: 'On edit'." }],
-            [{ v: "8. Authorize permissions. (Click 'Advanced' -> 'Go to Project (unsafe)' -> 'Allow')." }],
+            [{ v: "6. Click [Run] (Play icon) and authorize permissions." }],
             [],
             [{ v: "SECTION C — HOW TO VERIFY SYSTEM IS WORKING", s: { font: { bold: true, sz: 12 } } }],
             [{ v: "1. Go to the [DAILY_TASKS] sheet. Enter your initials in any [DONE BY] cell." }],
             [{ v: "2. Wait 2-4 seconds. A timestamp MUST appear in Column J (STAMP)." }],
-            [{ v: "3. A popup should appear: '1 audit records secured'." }],
-            [],
-            [{ v: "SECTION D — SAFE EDITING RULES", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "✓ SAFE: Edit task text, add new rows, or change roles." }],
-            [{ v: "✗ DO NOT: Delete formulas in Column G, delete hidden sheets, or rename the DAILY_TASKS tab." }],
             [],
             [{ v: "SUPPORT:", s: { font: { bold: true } } }, { v: "For visual help visit: www.moremeets.com/deploy-guide" }],
             [],
