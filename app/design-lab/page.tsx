@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -28,409 +29,391 @@ import {
     Zap,
     GraduationCap,
     Smartphone,
-    ShieldAlert
+    ShieldAlert,
+    Target,
+    ChevronRight,
+    History,
+    FileSignature,
+    Scale,
+    Cpu,
+    Gem,
+    ShoppingBag
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
-const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
+const BRAND_GREEN = "#22C55E";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
-const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-16 md:py-24", className)}>
-        <div className="container mx-auto max-w-[1200px] px-6">
+const MARQUEE_SIGNALS = [
+    "HACCP_SWEEP_COMPLETE", 
+    "REVENUE_LEAKAGE_PLUGGED", 
+    "COLD_STORAGE_STABLE", 
+    "OPENING_AUDIT_VERIFIED", 
+    "EXPIRY_LOG_VALIDATED", 
+    "VOID_BILL_MONITORING", 
+    "GAS_SHUTDOWN_CONFIRMED", 
+    "SOP_VERSION_V18.1", 
+    "SHIFT_COMPLIANCE_100%", 
+    "ROI_ENGINE_ACTIVE"
+];
+
+const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
+    <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
+        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
+        <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
     </section>
 );
 
-const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
-    const pingColors = {
-        green: "bg-emerald-500",
-        red: "bg-red-500",
-        blue: "bg-blue-500"
-    };
-
-    return (
-        <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
-            className
-        )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-1.5 w-1.5">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4.5]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", pingColors[color as keyof typeof pingColors])}></span>
-            </span>
-            <span className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
-        </div>
-    );
-};
-
-export default function DesignLabPage() {
+export default function DesignLabV2() {
     const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
+    useEffect(() => { setMounted(true); }, []);
     if (!mounted) return null;
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
+        <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - HIGH HORIZON Verticality */}
-                <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
-                    <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
-                            
-                            {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-8 relative z-20">
-                                <div className="space-y-1">
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
-                                        STOP CHASING YOUR TEAM.
+                {/* --- SECTION 1: THE COMMAND HERO --- */}
+                <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
+                    <div className="absolute inset-0 z-0">
+                        <video 
+                            src={VIDEO_URL} 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
+                            className="h-full w-full object-cover opacity-25 grayscale brightness-[0.4]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
+                    </div>
+
+                    <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
+                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-20 items-center">
+                            <div className="space-y-10 md:space-y-16">
+                                <div className="space-y-6">
+                                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5 italic">OPERATIONAL INFRASTRUCTURE</Badge>
+                                    <h1 className="text-[32px] md:text-[64px] lg:text-[78px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
+                                        STOP CHASING <br />
+                                        <span style={{ color: BRAND_GREEN }}>YOUR TEAM.</span> <br/>
+                                        <span className="text-zinc-500">SEE WORK DONE.</span>
                                     </h1>
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
-                                        SEE DAILY WORK GETTING DONE.
-                                    </h1>
-                                    <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-4">
-                                        Even when you’re not there.
+                                    <p className="text-lg md:text-2xl italic font-medium text-zinc-400 max-w-2xl leading-tight border-l-2 border-primary/40 pl-8">
+                                        Institutional-grade operational systems that turn tribal knowledge into permanent organizational assets. 
                                     </p>
                                 </div>
 
-                                <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-2 py-1">
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 w-full">
-                                    {[
-                                        "Pre-built, editable SOPs",
-                                        "Daily task tracking",
-                                        "Trainer notes (faster training)",
-                                        "Live dashboard visibility"
-                                    ].map((item, i) => (
-                                        <div className="flex items-center gap-3 group" key={i}>
-                                            <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
-                                                <Check className="w-3 h-3 text-[#0F3D2E]" />
-                                            </div>
-                                            <span className="text-sm font-bold text-[#0B0F14]">{item}</span>
+                                <div className="flex flex-col sm:flex-row gap-6 items-start md:items-center">
+                                    <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-lg shadow-[0_20px_60px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
+                                        <Link href="/library" className="flex items-center gap-4">
+                                            Deploy Your System <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
+                                        </Link>
+                                    </Button>
+                                    <div className="flex flex-col">
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-3xl font-black text-white italic tracking-tighter">₹3,499</span>
+                                            <span className="text-sm font-bold text-zinc-600 line-through">₹4,999</span>
                                         </div>
-                                    ))}
+                                        <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME • OWN FOREVER</span>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <div className="space-y-6 w-full pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-8">
-                                        <div className="flex flex-col items-center sm:items-start order-2 sm:order-1">
-                                            <div className="flex items-baseline gap-2">
-                                                <p className="text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
-                                                <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
-                                            </div>
-                                            <p className="text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
-                                        </div>
-                                        <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2">
-                                            <Link href="/library" className="flex items-center gap-3">
-                                                Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                            <div className="hidden lg:block relative">
+                                <div className="p-1 border-l border-white/10 space-y-8 pl-10">
+                                    <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">ELITE VERTICALS</p>
+                                    <div className="flex flex-col space-y-5">
+                                        {[
+                                            { n: "HOTEL OPERATIONS", id: "hotels_and_resorts" },
+                                            { n: "RESTAURANT OPERATIONS", id: "restaurants" },
+                                            { n: "GROCERY OPERATIONS", id: "supermarket_grocery_retail_pack" },
+                                            { n: "HOSPITAL OPERATIONS", id: "healthcare_and_hospital_operations" },
+                                            { n: "SCHOOL OPERATIONS", id: "school_operations_pack" }
+                                        ].map((ind) => (
+                                            <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between text-2xl font-black font-headline uppercase italic tracking-tighter text-white/20 hover:text-primary transition-all duration-300 hover:translate-x-3">
+                                                {ind.n}
+                                                <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                                             </Link>
-                                        </button>
+                                        ))}
                                     </div>
-
-                                    <p className="text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed">
-                                        Built on Excel • Runs on Google Sheets <br/>
-                                        No software required • Universal accessibility
+                                    <p className="text-[9px] text-zinc-700 font-black uppercase tracking-[0.3em] italic leading-tight pt-8 border-t border-white/5">
+                                        NO SaaS • WORKS ON PHONES • DEPLOY IN 10 MINS
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - HORIZONTALLY COMPRESSED lg:-ml-44 */}
-                            <div className="relative lg:-ml-44 lg:pt-16">
-                                <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
-                                    
-                                    <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
-                                        Missed tasks
-                                    </AnimatedAnnotation>
-
-                                    <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
-                                        Completed tasks
-                                    </AnimatedAnnotation>
-
-                                    <AnimatedAnnotation className="bottom-[18%] -left-6" color="blue" delay="1.5s">
-                                        Live dashboard
-                                    </AnimatedAnnotation>
-
-                                    <div className="rounded-[24px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative max-w-lg">
-                                        <div className="bg-[#0B0F14] h-10 w-full flex items-center px-4 gap-2">
-                                            <div className="flex gap-1.5">
-                                                <div className="w-2 h-2 rounded-full bg-red-500/30" />
-                                                <div className="w-2 h-2 rounded-full bg-amber-500/30" />
-                                                <div className="w-2 h-2 rounded-full bg-emerald-500/30" />
-                                            </div>
-                                            <div className="flex-1 flex justify-center">
-                                                <div className="bg-white/10 px-6 py-1 rounded text-[8px] font-black text-white/40 uppercase tracking-widest italic">
-                                                    MASTER_OPERATIONAL_SYSTEM_CONSOLE
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <img 
-                                            src={DASHBOARD_IMAGE} 
-                                            alt="Master Operational System" 
-                                            className="w-full h-auto object-cover grayscale-[0.05]" 
-                                        />
-                                    </div>
-                                    
-                                    <div className="mt-8 text-center">
-                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                            sample of restaurant operating dashboard
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                        <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
+                            {MARQUEE_SIGNALS.map((signal, i) => (
+                                <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
+                                    <span className="text-primary">[✓]</span>
+                                    <span className="opacity-70">{signal}</span>
+                                </span>
+                            ))}
+                            {/* Dupe for loop */}
+                            {MARQUEE_SIGNALS.map((signal, i) => (
+                                <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
+                                    <span className="text-primary">[✓]</span>
+                                    <span className="opacity-70">{signal}</span>
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* PROBLEM SECTION */}
-                <Section className="bg-white border-y border-[#E6E8EC]">
-                    <div className="max-w-[800px] mx-auto text-center space-y-10">
-                        <div className="space-y-4">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-2 gap-12 text-left">
-                            <div className="space-y-6">
-                                <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.3em]">Common Pitfalls</h4>
-                                <ul className="space-y-4">
-                                    {[
-                                        "Work depends on memory of key people",
-                                        "Tasks get skipped during busy shifts",
-                                        "Staff executes steps differently every time"
-                                    ].map((p, i) => (
-                                        <li className="flex items-start gap-4 text-[#5B6670] text-sm font-medium italic" key={i}>
-                                            <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
-                                            <span>{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                {/* --- SECTION 2: THE PROBLEM (MEMORY VS SYSTEM) --- */}
+                <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-8">
+                            <div className="space-y-4">
+                                <Badge className="bg-red-500/10 text-red-600 border-red-200 uppercase font-black tracking-widest text-[10px]">THE OPERATIONAL CEILING</Badge>
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                    WHY GROWTH <br/> <span className="text-red-600">FEELS CHAOTIC.</span>
+                                </h2>
+                                <p className="text-xl text-zinc-500 font-bold italic leading-relaxed">
+                                    Most businesses don't actually have systems. They have heroes who remember how things work.
+                                </p>
                             </div>
-                            <div className="space-y-6 p-8 rounded-2xl bg-[#FFF5F5] border border-red-100">
-                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.3em]">The Consequence</h4>
-                                <ul className="space-y-4">
-                                    {[
-                                        "Managers keep following up manually",
-                                        "No real-time visibility into completion",
-                                        "No proper records for audits"
-                                    ].map((p, i) => (
-                                        <li className="flex items-start gap-3 text-red-900 font-bold text-sm" key={i}>
-                                            <X className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
-                                            <span>{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                            <div className="space-y-6 border-l-2 border-zinc-100 pl-8">
+                                {[
+                                    { t: "The "Guesswork" Tax", d: "When staff are unsure, they improvise. Improvisation is the enemy of profit." },
+                                    { t: "Manager Burnout", d: "You spend 4 hours a day chasing updates that should be visible instantly." },
+                                    { t: "Institutional Amnesia", d: "When a key manager leaves, your standards leave with them. You start from zero." }
+                                ].map((item, i) => (
+                                    <div key={i} className="space-y-1">
+                                        <h4 className="font-black text-lg uppercase italic text-zinc-950">{item.t}</h4>
+                                        <p className="text-sm text-zinc-400 font-medium italic">{item.d}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        
-                        <p className="text-[22px] font-black text-[#0B0F14] pt-4 uppercase italic">
-                            Small misses. Every day. <br/>
-                            <span className="text-red-500">That’s where control is lost.</span>
-                        </p>
+                        <div className="bg-zinc-50 rounded-[3rem] p-12 md:p-16 border border-zinc-100 relative">
+                            <div className="absolute -top-6 -right-6 w-24 h-24 bg-red-600 flex items-center justify-center rounded-full text-white shadow-2xl -rotate-12">
+                                <AlertTriangle className="w-10 h-10" />
+                            </div>
+                            <div className="space-y-10">
+                                <p className="text-zinc-400 text-xs font-black uppercase tracking-[0.5em]">COMMON FAILURE POINTS</p>
+                                <div className="space-y-8">
+                                    {[
+                                        "Fridge temps logged at shift-end (Guesswork)",
+                                        "Closing checklists skipped during rush",
+                                        "Opening readiness assumed, not verified",
+                                        "Handover notes buried in WhatsApp chats"
+                                    ].map((fail, i) => (
+                                        <div key={i} className="flex items-center gap-4 text-zinc-950 font-black italic uppercase tracking-tighter text-lg">
+                                            <X className="w-6 h-6 text-red-400 shrink-0" />
+                                            <span>{fail}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </Section>
 
-                {/* SOLUTION SECTION - CINEMA IMPLEMENTATION PROOF */}
-                <Section className="bg-[#F3F4F6]">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-10">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">This changes everything.</h2>
-                            <div className="space-y-8">
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <ClipboardCheck className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Tasks are already defined</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">Over 120+ industry standard SOPs built-in.</p>
-                                    </div>
-                                </div>
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <Activity className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Work is updated daily</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">Team updates progress in seconds, not meetings.</p>
-                                    </div>
-                                </div>
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <CheckCircle2 className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Full visibility instantly</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">One glance shows you exactly what’s done vs missed.</p>
-                                    </div>
-                                </div>
+                {/* --- SECTION 3: THE PROOF (THE SOVEREIGN LEDGER) --- */}
+                <Section className="bg-zinc-950 text-white" noSpine>
+                    <div className="max-w-[1400px] mx-auto space-y-16">
+                        <div className="flex flex-col items-center text-center space-y-6">
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-3 rounded-none italic">THE INFRASTRUCTURE</Badge>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-white leading-[0.95] tracking-tight uppercase italic">
+                                THE SOVEREIGN LEDGER
+                            </h2>
+                            <p className="text-zinc-400 text-lg md:text-2xl font-bold italic max-w-3xl leading-tight">
+                                One master engine. Up to 10 branches. <br/> Zero ambiguity for every single role.
+                            </p>
+                        </div>
+
+                        {/* REPLICA GRID UI */}
+                        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_40px_100px_-20px_rgba(34,197,94,0.15)] bg-[#0A0F19] font-sans group">
+                            <div className="bg-[#22C55E] text-black py-3 px-6 flex items-center justify-center gap-3 text-[11px] font-black uppercase tracking-[0.2em]">
+                                <Target className="w-4 h-4" />
+                                <span>Mission Control: Daily Execution Engine v18.1</span>
                             </div>
-                            <div className="pt-8 border-t border-[#E6E8EC] space-y-3">
-                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
-                                    <CheckCircle2 className="w-5 h-5" /> No follow-ups required
-                                </p>
-                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
-                                    <CheckCircle2 className="w-5 h-5" /> No dependency on memory
-                                </p>
+
+                            <div className="overflow-x-auto no-scrollbar">
+                                <table className="w-full text-left border-collapse min-w-[1200px]">
+                                    <thead>
+                                        <tr className="bg-[#111827] text-zinc-500 border-b border-white/5">
+                                            {["BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", "DONE BY", "VERIFIED BY", "STATUS", "CONSEQUENCE / RISK", "STAMP"].map((h, i) => (
+                                                <th key={i} className="px-5 py-4 text-[9px] font-black uppercase tracking-[0.2em] border-r border-white/5 last:border-0">{h}</th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {[
+                                            { b: "BRANCH_01", r: "Kitchen Lead", t: "COLD STORAGE VITAL SYNC", a: "Anil K.", db: "AK", vb: "SK", s: "COMPLETE", c: "Mass stock loss & pathogen growth.", st: "2025-05-12 08:14" },
+                                            { b: "BRANCH_01", r: "Store Manager", t: "CASH-DROP SEAL WITNESS", a: "Sarah K.", db: "SK", vb: "", s: "COMPLETE", c: "Untraceable internal revenue theft.", st: "2025-05-12 11:22" },
+                                            { b: "BRANCH_02", r: "Security Chief", t: "FIRE EXIT CLEARANCE SCAN", a: "Rohan D.", db: "", vb: "", s: "OPEN", c: "Fatal entrapment during crisis event.", st: "" },
+                                            { b: "BRANCH_01", r: "Floor Sup", t: "RESTROOM HYGIENE PULSE", a: "Vikram S.", db: "VS", vb: "", s: "COMPLETE", c: "Primary driver of negative guest ratings.", st: "2025-05-12 14:02" }
+                                        ].map((row, idx) => (
+                                            <tr key={idx} className="border-b border-white/5 text-[11px] hover:bg-white/[0.02] transition-colors">
+                                                <td className="px-5 py-5 border-r border-white/5 text-zinc-500 font-mono">{row.b}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 font-bold text-zinc-400">{row.r}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 font-black text-white uppercase tracking-tight">{row.t}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 text-zinc-600 italic">{row.a}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 bg-[#FEFCE8]/5 font-black text-center text-primary">{row.db}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 font-black text-center text-blue-400/40">{row.vb || "—"}</td>
+                                                <td className="px-5 py-5 border-r border-white/5 font-black text-center">
+                                                    <span className={cn(row.s === "COMPLETE" ? "text-emerald-500" : "text-zinc-700")}>{row.s}</span>
+                                                </td>
+                                                <td className="px-5 py-5 border-r border-white/5 italic text-red-500/60 font-bold leading-tight max-w-[220px]">{row.c}</td>
+                                                <td className="px-5 py-5 text-zinc-700 font-mono text-[9px]">{row.st || "NULL_SIGNAL"}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div className="space-y-4">
-                            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
-                                 <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
-                            </div>
-                            <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
-                                sample daily tasks cinema product
+                        <div className="text-center">
+                            <p className="text-[11px] text-zinc-600 font-black uppercase tracking-[0.5em] italic">
+                                SYSTEM PROOF: WORKS IN EXCEL • OPERATED LIVE VIA GOOGLE SHEETS
                             </p>
                         </div>
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - BEST VERSION (EASE + CLARITY + POWER) */}
-                <Section className="bg-[#FFFFFF]">
-                    <div className="max-w-[1200px] mx-auto space-y-16">
-                        <div className="text-center space-y-2">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
+                {/* --- SECTION 4: THE RESIGNATION PILLAR --- */}
+                <Section className="bg-white border-y border-zinc-100" noSpine>
+                    <div className="max-w-5xl mx-auto p-12 md:p-24 rounded-[3rem] bg-zinc-50 border border-zinc-200 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <History className="w-80 h-80 text-zinc-950" />
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-16 items-center relative z-10">
+                            <div className="space-y-8 flex-1">
+                                <Badge variant="outline" className="text-zinc-400 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">ASSET PROTECTION</Badge>
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.9]">
+                                    WHEN SOMEONE <br/> RESIGNS: <br/> <span className="text-primary">THE SYSTEM STAYS.</span>
+                                </h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-relaxed border-l-4 border-primary/20 pl-10">
+                                    Don't let your operational standard leave with the individual. We convert tribal knowledge into permanent organizational infrastructure. 
+                                    <br/><br/>
+                                    New staff are 100% compliant from Day 1 because the instructions are built into the task.
+                                </p>
+                            </div>
+                            <div className="w-full md:w-[400px] shrink-0">
+                                 <div className="rounded-[2.5rem] overflow-hidden border border-zinc-200 shadow-2xl aspect-[4/5] bg-zinc-200 grayscale hover:grayscale-0 transition-all duration-1000">
+                                    <img 
+                                        src="https://i.postimg.cc/jdMQXJpq/resignation1.jpg" 
+                                        alt="Operational Risk" 
+                                        className="w-full h-full object-cover" 
+                                    />
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 5: THE SECTOR GRID --- */}
+                <Section className="bg-white">
+                    <div className="max-w-6xl mx-auto space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">SOVEREIGN SOLUTIONS</Badge>
+                            <h2 className="text-[34px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">CHOOSE YOUR SECTOR</h2>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {[
-                                { t: "Download your system", d: "Get your industry-specific file with pre-built SOPs — ready to use.", i: Download },
-                                { t: "Open in Google Sheets", d: "Upload once. Access from phone or desktop.", i: FileSpreadsheet },
-                                { t: "Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
-                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
-                            ].map((step, i) => (
-                                <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
-                                        {i+1}
+                                { t: "Hotel Operations", id: "hotels_and_resorts", i: Building, sub: "Housekeeping, Front Desk, Engineering." },
+                                { t: "Restaurant Ops", id: "restaurants", i: Utensils, sub: "Kitchen HACCP, Bar, FOH, Inventory." },
+                                { t: "Grocery Retail", id: "supermarket_grocery_retail_pack", i: ShoppingBasket, sub: "Cold Chain, Expiry, Shrinkage." },
+                                { t: "Jewellery Retail", id: "retail_jewellery_operations_pack", i: Gem, sub: "Vault, Custody, Hallmarking." },
+                                { t: "Fashion Retail", id: "fashion_and_apparel_retail", i: ShoppingBag, sub: "VM, Size-Curve, Trial Rooms." },
+                                { t: "Hospital Ops", id: "healthcare_and_hospital_operations", i: Hospital, sub: "Clinical, Nursing, Narcotics." },
+                                { t: "School Ops", id: "school_operations_pack", i: School, sub: "Transport, Safety, Admin." },
+                                { t: "Facilities Mgmt", id: "facility_management_blueprint", i: Building2, sub: "MEP, Safety, Energy, Vendor." },
+                                { t: "Cinema Ops", id: "cinema_operations_pack", i: Popcorn, sub: "Projection, Concession, Crowd." }
+                            ].map((item, i) => (
+                                <Link key={i} href={`/packs/${item.id}`} className="p-10 rounded-[2.5rem] bg-zinc-50 border border-zinc-100 space-y-6 hover:shadow-2xl transition-all group hover:border-primary">
+                                    <div className="flex items-center justify-between">
+                                        <item.i className="w-8 h-8 text-zinc-300 group-hover:text-primary transition-colors" />
+                                        <ChevronRight className="w-4 h-4 text-zinc-200 group-hover:text-primary" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="font-black text-lg uppercase italic leading-tight">{step.t}</h4>
-                                        <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
+                                        <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{item.t}</h3>
+                                        <p className="text-xs font-bold text-zinc-400 italic uppercase tracking-widest">{item.sub}</p>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
-                        </div>
-
-                        <div className="text-center pt-8">
-                            <p className="text-[20px] md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                                👉 That’s it. Your operations are now structured.
-                            </p>
                         </div>
                     </div>
                 </Section>
 
-                {/* WHAT YOU GET */}
-                <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
-                    <div className="max-w-[1200px] mx-auto space-y-16">
-                        <div className="text-center space-y-2">
-                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">What you get</h2>
+                {/* --- SECTION 6: THE SaaS ANTIDOTE --- */}
+                <Section className="bg-zinc-950 text-white" noSpine id="no-saas">
+                    <div className="max-w-4xl mx-auto space-y-16 text-center">
+                        <div className="space-y-6">
+                            <Badge className="bg-primary/10 text-primary border-primary/20 uppercase font-black tracking-widest text-[10px] px-8 py-2 rounded-none italic">THE SaaS ANTIDOTE</Badge>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
+                                NO LOGINS. NO TRAINING. <br/> <span className="text-primary">ZERO FRICTION.</span>
+                            </h2>
+                            <p className="text-xl text-zinc-400 font-bold italic leading-relaxed max-w-2xl mx-auto">
+                                Most operational apps fail because the frontline team resists them. MoreMeets uses the tool they already understand: The Spreadsheet.
+                            </p>
                         </div>
                         
                         <div className="grid md:grid-cols-3 gap-8">
                             {[
-                                { t: "120+ Pre-built SOPs", d: "Industry-standard protocols.", i: ClipboardCheck },
-                                { t: "Daily Execution Tracking", d: "Verifiable logs for every task.", i: Clock },
-                                { t: "Trainer Notes", d: "Action instructions for every task.", i: GraduationCap },
-                                { t: "Defined Consequences", d: "Built-in accountability metrics.", i: AlertTriangle },
-                                { t: "Live Dashboard", d: "One-screen operational pulse.", i: Activity },
-                                { t: "Admin Controls", d: "Lock formulas and structure.", i: Lock },
-                                { t: "Fully Editable System", d: "Universal accessibility forever.", i: FileSpreadsheet },
-                                { t: "Multi-Location View", d: "See all units in one place.", i: LayoutGrid }
+                                { t: "Works on Phones", d: "Google Sheets provides a native mobile experience for floor teams.", i: Smartphone },
+                                { t: "Own Your Data", d: "Zero SaaS dependency. You buy the master file once and keep it forever.", i: Lock },
+                                { t: "Ready in 10 Mins", d: "Instant download. No consultants, no IT setup, no cloud onboarding.", i: Zap }
                             ].map((item, i) => (
-                                <div className="flex gap-5 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0F3D2E] shrink-0 shadow-sm group-hover:scale-110 transition-transform">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-base font-black text-[#0B0F14] uppercase italic">{item.t}</h4>
-                                        <p className="text-[13px] text-[#5B6670] leading-snug font-medium italic">{item.d}</p>
-                                    </div>
+                                <div key={i} className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/5">
+                                    <item.i className="w-8 h-8 text-primary mx-auto" />
+                                    <h4 className="text-lg font-black uppercase italic text-white leading-none">{item.t}</h4>
+                                    <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest leading-relaxed">{item.d}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </Section>
 
-                {/* FINAL CTA */}
-                <Section className="bg-[#0F3D2E] text-white text-center py-32">
-                    <div className="max-w-[800px] mx-auto space-y-12">
-                        <div className="space-y-6">
-                            <h2 className="text-[40px] md:text-[64px] font-bold leading-[0.9] tracking-tighter uppercase italic">Start running your system today</h2>
-                            <p className="text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
-                        </div>
-                        
-                        <div className="flex flex-col items-center gap-8">
-                            <button className="h-[80px] px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group">
+                <FaqSection />
+
+                {/* --- FINAL MANDATE --- */}
+                <Section className="bg-primary text-black py-32 md:py-48" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-12 text-center">
+                        <h2 className="text-[48px] md:text-[96px] font-black leading-[0.85] tracking-tighter uppercase italic font-headline text-center drop-shadow-sm">
+                            STOP CHASSING. <br/> START RUNNING.
+                        </h2>
+                        <p className="text-xl md:text-[34px] font-black italic text-black/60 uppercase leading-none text-center">
+                            Less misses. More standards. Deploy now.
+                        </p>
+                        <div className="pt-8">
+                            <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-black text-white font-black uppercase italic text-xl hover:scale-[1.05] transition-all border-none shadow-2xl">
                                 <Link href="/library" className="flex items-center gap-4">
-                                    Get Your System Now <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
+                                    GET YOUR SYSTEM <ArrowRight className="w-8 h-8" />
                                 </Link>
-                            </button>
-                            
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-baseline gap-3">
-                                    <p className="text-[40px] font-black italic">₹2,999</p>
-                                    <span className="text-xl font-bold text-white/30 italic">/ $29</span>
-                                </div>
-                                <p className="text-[12px] font-black uppercase tracking-[0.3em] text-white/40">
-                                    One-time payment • Own forever
-                                </p>
-                            </div>
+                            </Button>
                         </div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.5em] text-black/40 italic">ONE-TIME INVESTMENT • INSTITUTIONAL GRADE</p>
                     </div>
                 </Section>
-
-                {/* FAQ */}
-                <Section className="bg-white">
-                    <div className="max-w-[800px] mx-auto space-y-16">
-                        <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] text-center uppercase italic tracking-tight">Questions & Answers</h2>
-                        
-                        <Accordion type="single" collapsible className="w-full space-y-4">
-                            <AccordionItem value="item-1" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
-                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Can my team break the system?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
-                                    No. You can lock formulas and key structures so only daily tasks can be updated. This ensures the technical engine remains bulletproof while allowing staff to log completion.
-                                </AccordionContent>
-                            </AccordionItem>
-                            
-                            <AccordionItem value="item-2" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
-                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Is this difficult to use?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
-                                    No. Your team already knows Excel / Google Sheets. There is no new software to learn, no separate passwords to manage, and no complex training required.
-                                </AccordionContent>
-                            </AccordionItem>
-
-                            <AccordionItem value="item-3" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
-                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Can I edit the system?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
-                                    Yes. It is 100% unlocked and customizable. You can add, delete, or modify any task to fit your specific brand standards. You own the file for life.
-                                </AccordionContent>
-                            </AccordionItem>
-
-                            <AccordionItem value="item-4" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
-                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">What if I need help?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
-                                    Full support and customization are available. We provide setup guidance and 1-on-1 discovery calls if you need a bespoke engine built for specialized requirements.
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
-                    </div>
-                </Section>
-
             </main>
             
             <Footer />
+
+            <style jsx global>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    display: flex;
+                    width: fit-content;
+                    animation: marquee 80s linear infinite;
+                }
+            `}</style>
         </div>
     );
 }
+
