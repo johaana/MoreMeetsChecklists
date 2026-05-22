@@ -4,11 +4,11 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 
 /**
- * SOVEREIGN LAB v4.0.3 — PHASE 2A: ISOLATED FREEZE PATCH
+ * SOVEREIGN LAB v4.0.4 — PHASE 2A.1: FORENSIC FREEZE TEST
  * ----------------------------------------------------------------------------
  * 1. PARITY BASE: 100% logic mirror of production v17.5.1.
- * 2. SURGICAL PATCH: Apply !views to DAILY_TASKS after generation.
- * 3. GEOMETRY: Strictly preserved A:I grid. No new columns or rows.
+ * 2. FORENSIC PATCH: Consolidate !views into a single final assignment.
+ * 3. LOGGING: Added telemetry to verify property state before serialization.
  * ----------------------------------------------------------------------------
  */
 
@@ -64,6 +64,7 @@ export const handleDownloadAuditPrototype = () => {
             };
         };
 
+        // MODIFIED: Removed internal !views assignment to prevent collisions
         const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
@@ -73,7 +74,6 @@ export const handleDownloadAuditPrototype = () => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
-            ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
         };
 
         const TABS = {
@@ -166,16 +166,6 @@ export const handleDownloadAuditPrototype = () => {
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
-        
-        // --- PHASE 2A: ISOLATED FREEZE PATCH ---
-        taskWs['!views'] = [{
-            state: 'frozen',
-            xSplit: 4,      // Frozen Columns: A, B, C, D (Branch, Role, Task, Assigned)
-            ySplit: 3,      // Frozen Rows: 1, 2, 3 (Headers)
-            topLeftCell: 'E4',
-            activePane: 'bottomRight'
-        }];
-
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
@@ -249,13 +239,7 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "✅ Team member names, phone numbers & emails" }],
             [{ v: "✅ SOP wording & technical descriptions" }],
             [{ v: "✅ Adding or removing tasks within role blocks" }],
-            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
-            [],
-            [{ v: "SECTION B: WHAT YOU SHOULD NOT EDIT", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "❌ Do not rename the core tab names (e.g. DAILY_TASKS, DASHBOARD)" }],
-            [{ v: "❌ Do not delete hidden sheets or modified formula logic" }],
-            [{ v: "❌ Do not insert columns inside the middle of the DAILY_TASKS ledger" }],
-            [{ v: "❌ Do not unhide or modify the [SYS_ENGINE] metadata tab" }]
+            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
         guideWs['!cols'] = [{ wch: 100 }];
@@ -285,7 +269,23 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Views[0].activeTab = 0; 
 
-        writeFile(wb, `TEMP_HOTEL_FREEZE_TEST.xlsx`);
+        // --- PHASE 2A.1: CONSOLIDATED FINAL PATCH ---
+        console.log("Forensic Audit: Initializing final view state for DAILY_TASKS...");
+        const targetWs = wb.Sheets[TABS.DAILY_TASKS];
+        
+        // Minimalist Object: 4 Columns (A,B,C,D), 3 Rows (1,2,3)
+        targetWs['!views'] = [{
+            state: 'frozen',
+            xSplit: 4,
+            ySplit: 3,
+            showGridLines: false // Preserve production sensory setting
+        }];
+
+        console.log("Forensic Audit: Serialized View State:", JSON.stringify(targetWs['!views']));
+        
+        writeFile(wb, `TEMP_HOTEL_FREEZE_FORENSIC.xlsx`);
+        console.log("Forensic Audit: Transmission complete.");
+        
     } catch (error: any) {
         console.error("Lab Failure:", error);
     }
