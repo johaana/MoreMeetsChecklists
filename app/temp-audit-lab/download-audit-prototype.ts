@@ -1,14 +1,16 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
+import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN LAB v4.0.4 — PHASE 2A.1: FORENSIC FREEZE TEST
+ * SOVEREIGN LAB v4.1.0 — PHASE 3A: AUDIT INFRASTRUCTURE
  * ----------------------------------------------------------------------------
  * 1. PARITY BASE: 100% logic mirror of production v17.5.1.
- * 2. FORENSIC PATCH: Consolidate !views into a single final assignment.
- * 3. LOGGING: Added telemetry to verify property state before serialization.
+ * 2. HIDDEN VAULT: Added _RECORDS_VAULT with audit headers.
+ * 3. SCRIPT EMBED: Hardened Apps Script source added to GUIDE.
  * ----------------------------------------------------------------------------
  */
 
@@ -64,7 +66,6 @@ export const handleDownloadAuditPrototype = () => {
             };
         };
 
-        // MODIFIED: Removed internal !views assignment to prevent collisions
         const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
@@ -74,6 +75,7 @@ export const handleDownloadAuditPrototype = () => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
+            ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
         };
 
         const TABS = {
@@ -84,7 +86,8 @@ export const handleDownloadAuditPrototype = () => {
             BRANCH_SETUP: "BRANCH_SETUP",
             TEAM_HUB: "TEAM_HUB",
             CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
-            SYS_ENGINE: "SYS_ENGINE"
+            SYS_ENGINE: "SYS_ENGINE",
+            RECORDS_VAULT: "_RECORDS_VAULT"
         };
 
         // --- 01. START ---
@@ -155,7 +158,7 @@ export const handleDownloadAuditPrototype = () => {
                             { t: 'f', f: assignedFormula, s: styles.left },
                             { v: "", s: styles.input },
                             { v: "", s: isV ? styles.input : styles.locked }, 
-                            { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
+                            { t: 'f', f: statusFormula, s: { ...centerCellStyle.center, font: { bold: true } } },
                             { v: t.consequence || "Compliance Gap", s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
                             { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                         ]);
@@ -239,10 +242,15 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "✅ Team member names, phone numbers & emails" }],
             [{ v: "✅ SOP wording & technical descriptions" }],
             [{ v: "✅ Adding or removing tasks within role blocks" }],
-            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }]
+            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
+            [],
+            [{ v: "SECTION B: AUTOMATION (GOOGLE SHEETS ONLY)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "Copy and paste the code below into Extensions -> Apps Script to enable the hidden audit vault." }],
+            [],
+            [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 100 }];
+        guideWs['!cols'] = [{ wch: 120 }];
         addSheetHeader(guideWs, TABS.CUSTOMIZATION_GUIDE, "System configuration manual.", 'A');
         utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
 
@@ -262,30 +270,30 @@ export const handleDownloadAuditPrototype = () => {
         }
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
+
+        // --- 09. _RECORDS_VAULT (Phase 3A) ---
+        const vaultHeaders = [
+            { v: "DATE", s: headerStyle },
+            { v: "TASK", s: headerStyle },
+            { v: "DONE_BY", s: headerStyle },
+            { v: "VERIFIED_BY", s: headerStyle },
+            { v: "STATUS", s: headerStyle },
+            { v: "STAMP", s: headerStyle }
+        ];
+        const vaultWs = utils.aoa_to_sheet([[], [], vaultHeaders]);
+        vaultWs['!cols'] = [20, 45, 25, 25, 20, 25].map(w => ({ wch: w }));
+        utils.book_append_sheet(wb, vaultWs, TABS.RECORDS_VAULT);
         
-        // Hide SYS_ENGINE
-        const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
+        // --- FINAL HIDE & EXPORT ---
+        // Hide SYS_ENGINE (at index 7) and _RECORDS_VAULT (at index 8)
+        const sysIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
+        const vaultIdx = wb.SheetNames.indexOf(TABS.RECORDS_VAULT);
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
-        wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
+        wb.Workbook.Sheets[sysIdx] = { Hidden: 1 };
+        wb.Workbook.Sheets[vaultIdx] = { Hidden: 1 };
         wb.Workbook.Views[0].activeTab = 0; 
 
-        // --- PHASE 2A.1: CONSOLIDATED FINAL PATCH ---
-        console.log("Forensic Audit: Initializing final view state for DAILY_TASKS...");
-        const targetWs = wb.Sheets[TABS.DAILY_TASKS];
-        
-        // Minimalist Object: 4 Columns (A,B,C,D), 3 Rows (1,2,3)
-        targetWs['!views'] = [{
-            state: 'frozen',
-            xSplit: 4,
-            ySplit: 3,
-            showGridLines: false // Preserve production sensory setting
-        }];
-
-        console.log("Forensic Audit: Serialized View State:", JSON.stringify(targetWs['!views']));
-        
-        writeFile(wb, `TEMP_HOTEL_FREEZE_FORENSIC.xlsx`);
-        console.log("Forensic Audit: Transmission complete.");
-        
+        writeFile(wb, `TEMP_HOTEL_VAULT_TEST.xlsx`);
     } catch (error: any) {
         console.error("Lab Failure:", error);
     }

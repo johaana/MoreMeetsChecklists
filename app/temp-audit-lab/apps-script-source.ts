@@ -1,56 +1,22 @@
 
 /**
- * MOREMEETS™ SOVEREIGN V4.0.2 — LAYOUT-AWARE GOVERNANCE
+ * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V3.0 (LAYOUT-AWARE)
  * -----------------------------------------------------
- * CORE PRINCIPLE: The operational zone (A:I) is sovereign.
- * Automation operates on inputs (E:F) and targets overlay (J, Z+).
+ * Trigger: fires on manual edit of DONE_BY or VERIFIED_BY.
+ * Action: Appends immutable evidence to hidden _RECORDS_VAULT.
  */
 
 export const APPS_SCRIPT_SOURCE = `
 const CONFIG = {
   SHEET_NAME: "DAILY_TASKS",
-  // Benchmark Layout Constants (v17.5.1 Alignment)
+  VAULT_NAME: "_RECORDS_VAULT",
+  // Benchmark Layout Constants (v17.5.1)
+  TASK_COL: 3,         // C
   DONE_BY_COL: 5,      // E
   VERIFIED_BY_COL: 6,  // F
   STATUS_COL: 7,       // G
-  STAMP_COL: 10,       // J (End of operational flow)
-  
-  // Overlay Projection (Z+)
-  OVL_DATE_COL: 26,    // Z
-  
-  RECORDS_SHEET: "_RECORDS_VAULT",
   LOCK_TIMEOUT: 30000
 };
-
-function onOpen() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
-  if (!sheet) return;
-  
-  // Reset existing filters
-  if (sheet.getFilter()) {
-    sheet.getFilter().remove();
-  }
-  
-  const timezone = ss.getSpreadsheetTimeZone();
-  const todayStr = Utilities.formatDate(new Date(), timezone, "yyyy-MM-dd");
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 4) return;
-  
-  try {
-    const range = sheet.getRange(3, 1, lastRow - 2, 30);
-    const filter = range.createFilter();
-    const criteria = SpreadsheetApp.newFilterCriteria()
-      .whenTextEqualTo(todayStr)
-      .build();
-      
-    // Apply filter to the Overlay Date column (Column Z)
-    filter.setColumnFilterCriteria(CONFIG.OVL_DATE_COL, criteria); 
-    ss.toast("Sovereign V4.0: Today's Mission Loaded", "System Online");
-  } catch (err) {
-    ss.toast("Check Date Filter: " + todayStr, "Filter Error");
-  }
-}
 
 function onEdit(e) {
   const ss = e.source;
@@ -66,21 +32,31 @@ function onEdit(e) {
       lock.waitLock(CONFIG.LOCK_TIMEOUT); 
       
       const statusValue = sheet.getRange(row, CONFIG.STATUS_COL).getValue();
-      const stampCell = sheet.getRange(row, CONFIG.STAMP_COL); 
       
-      // Duplicate Shield: Only stamp and vault if not already stamped
-      if (statusValue === "COMPLETE" && stampCell.getValue() === "") {
-        const timestamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm");
-        stampCell.setValue(timestamp);
-        
-        const vault = ss.getSheetByName(CONFIG.RECORDS_SHEET);
+      // Only log to vault if the mission is status-verified as COMPLETE
+      if (statusValue === "COMPLETE") {
+        const vault = ss.getSheetByName(CONFIG.VAULT_NAME);
         if (vault) {
-          // Log the entire row state for forensic audit
-          const rowData = sheet.getRange(row, 1, 1, 30).getValues()[0];
-          vault.appendRow(rowData);
-          ss.toast("Forensic Evidence Secured", "RECORDS_VAULT");
+          const timestamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm:ss");
+          const taskName = sheet.getRange(row, CONFIG.TASK_COL).getValue();
+          const doneBy = sheet.getRange(row, CONFIG.DONE_BY_COL).getValue();
+          const verifiedBy = sheet.getRange(row, CONFIG.VERIFIED_BY_COL).getValue();
+          
+          // Vault Headers: DATE | TASK | DONE_BY | VERIFIED_BY | STATUS | STAMP
+          vault.appendRow([
+            new Date(), // Excel-friendly date object
+            taskName,
+            doneBy,
+            verifiedBy,
+            statusValue,
+            timestamp  // Static string stamp
+          ]);
+          
+          ss.toast("Audit Evidence Secured in Vault", "SOVEREIGN SYSTEM");
         }
       }
+    } catch (err) {
+      console.error("Vault Logging Failed: " + err.toString());
     } finally {
       lock.releaseLock();
     }
