@@ -4,14 +4,6 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
-/**
- * SOVEREIGN MASTER V4.6 — PARITY RESTORATION
- * -----------------------------------------
- * 1. FIX: Reverted task loop to production benchmark (item.checklists.forEach).
- * 2. FIX: Restored exact TEAM_HUB column widths [20, 30, 35, 20, 40].
- * 3. GEOMETRY: Columns A:I immutable. Column J is STAMP.
- */
-
 export const handleDownloadAuditPrototype = () => {
     try {
         const wb = utils.book_new();
@@ -112,7 +104,7 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // 03. DAILY_TASKS (A:J) - Restored Production Benchmark Loop
+        // 03. DAILY_TASKS (A:J)
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -168,58 +160,49 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
         // 05. BRANCH_SETUP
-        const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
-        const branchData: any[][] = [[], [], branchHeaders];
+        const branchData: any[][] = [[], [], [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }]];
         for (let i = 1; i <= 2; i++) {
-            branchData.push([
-                { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
-                { v: "Location", s: getStyles(false).input },
-                { v: "ACTIVE", s: getStyles(false).input }
-            ]);
+            branchData.push([{ v: `Branch ${i}`, s: getStyles(false).input }, { v: "Location", s: getStyles(false).input }, { v: "ACTIVE", s: getStyles(false).input }]);
         }
         const branchWs = utils.aoa_to_sheet(branchData);
         branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
-        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
+        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations.", 'C');
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
-        // 06. TEAM_HUB - Exact Production Parity Restoration
+        // 06. TEAM_HUB
         const teamData: any[][] = [[], [], [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }]];
         const uniqueRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         for (let i = 0; i < 2; i++) {
             uniqueRoles.forEach((role) => {
                 const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
-                teamData.push([{ t: 'f', f: `IFERROR(${bRef}, "")` }, { v: role }, { v: "[ENTER NAME]", s: getStyles(false).input }, { v: "[PHONE]", s: getStyles(false).input }, { v: "[EMAIL]", s: getStyles(false).input }]);
+                teamData.push([{ t: 'f', f: `IFERROR(${bRef}, "")` }, { v: role }, { v: "", s: getStyles(false).input }, { v: "", s: getStyles(false).input }, { v: "", s: getStyles(false).input }]);
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
-        // RESTORED PRODUCTION WIDTHS: [20, 30, 35, 20, 40]
         teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
         // 07. CUSTOMIZATION_GUIDE
         const guideData: any[][] = [
-            [{ v: "🛠️ OPERATIONAL INTEGRITY & HEARTBEAT MANUAL", s: bannerStyle }],
+            [{ v: "🛠️ FORENSIC BYPASS TEST — V1.0", s: bannerStyle }],
             [],
-            [{ v: "SECTION 1: THE HEARTBEAT (COLUMN J)", s: { font: { bold: true } } }],
-            [{ v: "• When a task reaches 'COMPLETE', the system writes a digital timestamp in Column J (STAMP)." }],
-            [{ v: "• If Column J remains empty after completion, the audit engine is inactive." }],
+            [{ v: "PHASE A: WRITE ISOLATION TEST", s: { font: { bold: true } } }],
+            [{ v: "Goal: Prove the script can physically write to Column J without interference." }],
             [],
-            [{ v: "SECTION 2: INSTALLABLE TRIGGER SETUP (MANDATORY)", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "1. Extensions -> Apps Script." }],
+            [{ v: "INSTRUCTIONS:", s: { font: { bold: true } } }],
+            [{ v: "1. Open Extensions -> Apps Script." }],
             [{ v: "2. Paste the source code provided below." }],
-            [{ v: "3. Click 'Triggers' (Clock) icon -> '+ Add Trigger'." }],
-            [{ v: "4. Choose function: 'onEdit' | Event: 'On edit' | Run As: OWNER." }],
+            [{ v: "3. IMPORTANT: Set an Installable Trigger (Run as OWNER)." }],
+            [{ v: "4. Edit Column E (DONE BY) in 'DAILY_TASKS'." }],
+            [{ v: "5. If 'TEST_OK' appears in Column J, the pipe is open." }],
             [],
-            [{ v: "SECTION 3: RE-INSTALLATION NOTICE", s: { font: { bold: true } } }],
-            [{ v: "• WARNING: 'File > Make a copy' DOES NOT copy triggers. You must reinstall the script for every copy." }],
-            [],
-            [{ v: "SOVEREIGN ENGINE SOURCE CODE:", s: { font: { bold: true } } }],
+            [{ v: "SOURCE CODE:", s: { font: { bold: true } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
         ];
         const guideWs = utils.aoa_to_sheet(guideData);
         guideWs['!cols'] = [{ wch: 100 }];
-        addSheetHeader(guideWs, TABS.CUSTOMIZATION_GUIDE, "System configuration manual.", 'A');
+        addSheetHeader(guideWs, TABS.CUSTOMIZATION_GUIDE, "Diagnostic Manual", 'A');
         utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
 
         // 08. SYS_ENGINE
@@ -235,13 +218,8 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
         // 09. _RECORDS_VAULT
-        const vaultHeaders = [[
-            { v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, 
-            { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, 
-            { v: "STAMP", s: headerStyle }, { v: "USER_EMAIL", s: headerStyle }, { v: "SESSION_ID", s: headerStyle }
-        ]];
+        const vaultHeaders = [[{ v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, { v: "STAMP", s: headerStyle }]];
         const vaultWs = utils.aoa_to_sheet(vaultHeaders);
-        vaultWs['!cols'] = [18, 25, 25, 45, 18, 18, 15, 25, 30, 40].map(w => ({ wch: w }));
         utils.book_append_sheet(wb, vaultWs, TABS.RECORDS_VAULT);
         
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
@@ -250,8 +228,8 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `SOVEREIGN_V4.6_STABILIZED.xlsx`);
+        writeFile(wb, `SOVEREIGN_V1.0_BYPASS.xlsx`);
     } catch (error: any) {
-        console.error("Infrastructure Failure:", error);
+        console.error("Diagnostic failure:", error);
     }
 }
