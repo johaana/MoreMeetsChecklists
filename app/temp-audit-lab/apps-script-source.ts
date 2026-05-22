@@ -1,9 +1,9 @@
 /**
- * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.2 (STABILIZED)
+ * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.4 (ATOMIC RESILIENCE)
  * -----------------------------------------------------------
  * Trigger: fires on manual edit of DONE_BY or VERIFIED_BY.
- * Action: 1. Appends immutable evidence to hidden _RECORDS_VAULT.
- *         2. Writes forensic timestamp to Column J (Heartbeat).
+ * Action: 1. Writes visual forensic timestamp to Column J (Heartbeat).
+ *         2. Appends immutable evidence to hidden _RECORDS_VAULT.
  */
 
 export const APPS_SCRIPT_SOURCE = `
@@ -38,36 +38,39 @@ function onEdit(e) {
   if (!isRelevantEdit || startRow <= 3) return;
 
   const sessionId = Utilities.getUuid();
-  const userEmail = Session.getActiveUser().getEmail() || "Authorized_Staff";
+  const userEmail = Session.getActiveUser().getEmail() || "Anonymous/SimpleTrigger";
 
-  // Force calculation and wait for formula engine stability
+  // Force calculation stability
   SpreadsheetApp.flush();
   Utilities.sleep(800); 
   
   const lock = LockService.getScriptLock();
   let vaultedCount = 0;
   let heartbeatCount = 0;
+  let vaultFailureCount = 0;
+  let totalCompleteInRange = 0;
 
   try {
     lock.waitLock(CONFIG.LOCK_TIMEOUT); 
 
     const vault = ss.getSheetByName(CONFIG.VAULT_NAME);
-    if (!vault) {
-      ss.toast("Vault not found. Contact administrator.", "SYSTEM ERROR");
-      return;
-    }
-
     const dataRange = sheet.getRange(startRow, 1, numRows, CONFIG.STAMP_COL);
     const dataValues = dataRange.getValues();
-    const today = new Date().setHours(0,0,0,0);
+    const tz = ss.getSpreadsheetTimeZone();
+    const todayStr = Utilities.formatDate(new Date(), tz, "yyyy-MM-dd");
     
     // Uniqueness Cache (Last 500 records)
-    const lastRowVault = vault.getLastRow();
     let existingKeys = [];
-    if (lastRowVault > 1) {
-      const startScan = Math.max(2, lastRowVault - 500); 
-      const vaultData = vault.getRange(startScan, 1, (lastRowVault - startScan) + 1, 4).getValues();
-      existingKeys = vaultData.map(r => new Date(r[0]).setHours(0,0,0,0) + "|" + r[1] + "|" + r[2] + "|" + r[3]);
+    if (vault) {
+      const lastRowVault = vault.getLastRow();
+      if (lastRowVault > 1) {
+        const startScan = Math.max(2, lastRowVault - 500); 
+        const vaultData = vault.getRange(startScan, 1, (lastRowVault - startScan) + 1, 4).getValues();
+        existingKeys = vaultData.map(r => {
+           const d = Utilities.formatDate(new Date(r[0]), tz, "yyyy-MM-dd");
+           return d + "|" + r[1] + "|" + r[2] + "|" + r[3];
+        });
+      }
     }
 
     for (let i = 0; i < numRows; i++) {
@@ -76,32 +79,45 @@ function onEdit(e) {
       const currentStamp = rowData[9]; // Column J
 
       if (statusValue === "COMPLETE") {
+        totalCompleteInRange++;
         const branch = rowData[0];
         const role = rowData[1];
         const taskName = rowData[2];
         const doneBy = rowData[4];
         const verifiedBy = rowData[5];
-        const currentKey = today + "|" + branch + "|" + role + "|" + taskName;
+        const currentKey = todayStr + "|" + branch + "|" + role + "|" + taskName;
         
-        const timestamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd HH:mm:ss");
+        const timestamp = Utilities.formatDate(new Date(), tz, "yyyy-MM-dd HH:mm:ss");
 
-        // 1. Vault Write (Only if unique for today)
-        if (existingKeys.indexOf(currentKey) === -1) {
-          vault.appendRow([new Date(), branch, role, taskName, doneBy, verifiedBy, statusValue, timestamp, userEmail, sessionId]);
-          vaultedCount++;
-          existingKeys.push(currentKey);
-        }
-
-        // 2. Heartbeat Write (Always restore if J is empty but row is COMPLETE)
+        // 1. HEARTBEAT WRITE (Visual Proof First)
         if (!currentStamp || currentStamp === "") {
           sheet.getRange(startRow + i, CONFIG.STAMP_COL).setValue(timestamp);
           heartbeatCount++;
         }
+
+        // 2. VAULT WRITE (Atomic Isolation)
+        if (existingKeys.indexOf(currentKey) === -1) {
+          try {
+            if (vault) {
+              vault.appendRow([new Date(), branch, role, taskName, doneBy, verifiedBy, statusValue, timestamp, userEmail, sessionId]);
+              vaultedCount++;
+              existingKeys.push(currentKey);
+            } else {
+              throw new Error("Vault not found");
+            }
+          } catch (vaultErr) {
+            Logger.log("Vault failed for row " + (startRow + i) + ": " + vaultErr.toString());
+            vaultFailureCount++;
+          }
+        }
       }
     }
 
-    if (vaultedCount > 0 || heartbeatCount > 0) {
-      ss.toast(vaultedCount + " records vaulted. " + heartbeatCount + " heartbeats verified.", "SOVEREIGN SYSTEM");
+    // Comprehensive Feedback
+    if (totalCompleteInRange > 0) {
+      let msg = vaultedCount + "/" + totalCompleteInRange + " audit records secured.";
+      if (vaultFailureCount > 0) msg += " (" + vaultFailureCount + " FAILED)";
+      ss.toast(msg, "SOVEREIGN SYSTEM");
     }
 
   } catch (err) {

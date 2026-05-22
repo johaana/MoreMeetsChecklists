@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -6,11 +5,11 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER V4.3 — STABILIZATION PASS
+ * SOVEREIGN MASTER V4.5 — PARITY RESTORATION
  * -----------------------------------------
- * 1. DECISION: Decoupled Heartbeat from Vault-Only logic.
- * 2. ALIGNMENT: Restored BRANCH_SETUP to production parity.
- * 3. GEOMETRY: Columns A:I are immutable. Column J is Heartbeat.
+ * 1. FIX: Reverted DAILY_TASKS loop to production benchmark.
+ * 2. FIX: default verificationRequired to false if undefined.
+ * 3. GEOMETRY: Columns A:I immutable. Column J is STAMP.
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -113,8 +112,7 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // 03. DAILY_TASKS (A:J)
-        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+        // 03. DAILY_TASKS (A:J) - Restored Production Benchmark Loop
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -122,34 +120,34 @@ export const handleDownloadAuditPrototype = () => {
             { v: "STAMP", s: headerStyle } 
         ];
         const taskData: any[][] = [[], [], taskHeaders];
+        
         for (let b = 0; b < 2; b++) {
             const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + b}`;
-            activeRoles.forEach((role, roleIdx) => {
-                const roleChecklist = item.checklists.find(c => c.role === role);
-                if (roleChecklist) {
-                    roleChecklist.tasks.forEach(t => {
-                        const rIdx = taskData.length + 1;
-                        const styles = getStyles(roleIdx % 2 === 1);
-                        const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
-                        const isV = t.verificationRequired === true;
-                        const statusFormula = isV 
-                            ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
-                            : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
+            item.checklists.forEach((checklist, cIdx) => {
+                const role = checklist.role;
+                checklist.tasks.forEach(t => {
+                    const rIdx = taskData.length + 1;
+                    const styles = getStyles(cIdx % 2 === 1);
+                    const isV = t.verificationRequired === true; // Default false if missing
 
-                        taskData.push([
-                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
-                            { v: role, s: styles.left },
-                            { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
-                            { t: 'f', f: assignedFormula, s: styles.center },
-                            { v: "", s: styles.input },
-                            { v: "", s: styles.input }, 
-                            { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
-                            { v: t.consequence || "Compliance Gap", s: styles.left },
-                            { v: t.floorAction || t.description || "", s: styles.left },
-                            { v: "", s: styles.locked } 
-                        ]);
-                    });
-                }
+                    const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
+                    const statusFormula = isV 
+                        ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
+                        : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
+
+                    taskData.push([
+                        { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
+                        { v: role, s: styles.left },
+                        { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
+                        { t: 'f', f: assignedFormula, s: styles.center },
+                        { v: "", s: styles.input },
+                        { v: "", s: isV ? styles.input : styles.locked }, 
+                        { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
+                        { v: t.consequence || "Compliance Gap", s: styles.left },
+                        { v: t.floorAction || t.description || "", s: styles.left },
+                        { v: "", s: styles.locked } 
+                    ]);
+                });
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
@@ -169,7 +167,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
-        // 05. BRANCH_SETUP (Restore Production Alignment)
+        // 05. BRANCH_SETUP
         const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
         const branchData: any[][] = [[], [], branchHeaders];
         for (let i = 1; i <= 2; i++) {
@@ -186,8 +184,9 @@ export const handleDownloadAuditPrototype = () => {
 
         // 06. TEAM_HUB
         const teamData: any[][] = [[], [], [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }]];
+        const uniqueRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         for (let i = 0; i < 2; i++) {
-            activeRoles.forEach((role) => {
+            uniqueRoles.forEach((role) => {
                 const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
                 teamData.push([{ t: 'f', f: `IFERROR(${bRef}, "")` }, { v: role }, { v: "[ENTER NAME]", s: getStyles(false).input }, { v: "[PHONE]", s: getStyles(false).input }, { v: "[EMAIL]", s: getStyles(false).input }]);
             });
@@ -225,8 +224,8 @@ export const handleDownloadAuditPrototype = () => {
         // 08. SYS_ENGINE
         const sysData: any[][] = [];
         for (let i = 0; i < 2; i++) {
-            activeRoles.forEach((role, rIdx) => {
-                const tRow = 4 + (i * activeRoles.length) + rIdx;
+            uniqueRoles.forEach((role, rIdx) => {
+                const tRow = 4 + (i * uniqueRoles.length) + rIdx;
                 const sIdx = sysData.length + 1;
                 sysData.push([{ t: 'f', f: `IFERROR(${TABS.BRANCH_SETUP}!$A$${4 + i}, "")` }, { v: role }, { t: 'f', f: `A${sIdx}&"|"&B${sIdx}` }, { t: 'f', f: `${TABS.TEAM_HUB}!$C$${tRow}` }]);
             });
@@ -250,7 +249,7 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `TEMP_HOTEL_STABILIZED.xlsx`);
+        writeFile(wb, `SOVEREIGN_V4.5_STABILIZED.xlsx`);
     } catch (error: any) {
         console.error("Infrastructure Failure:", error);
     }
