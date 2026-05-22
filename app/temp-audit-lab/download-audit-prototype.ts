@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -6,11 +5,11 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V4.0.5 — AUDIT ENGINE PILOT
+ * SOVEREIGN V4.1 — RESILIENT AUDIT ENGINE
  * -----------------------------------------
  * 1. 100% Logic Parity with Production v17.5.1
- * 2. Post-Processing: Hidden RECORDS_VAULT + Bulk-Aware Apps Script
- * 3. NO GEOMETRY CHANGES: DAILY_TASKS A:I stays identical.
+ * 2. Atomic Try/Catch Isolation for Bulk Sign-offs
+ * 3. Expanded Vault Schema with Forensic Metadata
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -74,7 +73,6 @@ export const handleDownloadAuditPrototype = () => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
-            ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
         };
 
         const TABS = {
@@ -89,8 +87,6 @@ export const handleDownloadAuditPrototype = () => {
             RECORDS_VAULT: "_RECORDS_VAULT"
         };
 
-        // --- PRODUCTION LOGIC: REPLICATED FOR PARITY ---
-        
         // 01. START
         const startWs = utils.aoa_to_sheet([
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
@@ -191,23 +187,21 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // 07. CUSTOMIZATION_GUIDE (Hardened Script Patch)
+        // 07. CUSTOMIZATION_GUIDE (Operational Integrity Pass)
         const guideData: any[][] = [
-            [{ v: "🛠️ CUSTOMIZATION & AUTOMATION GUIDE", s: bannerStyle }],
+            [{ v: "🛠️ OPERATIONAL INTEGRITY & AUTOMATION MANUAL", s: bannerStyle }],
             [],
-            [{ v: "MANDATORY: INSTALLABLE TRIGGER SETUP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "To ensure every audit record is captured safely, you MUST set up an Installable Trigger:" }],
+            [{ v: "SECTION 1: INSTALLABLE TRIGGER SETUP (MANDATORY)", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "Simple triggers are restricted by Google security and will NOT write to the hidden vault for all users." }],
             [{ v: "1. Extensions -> Apps Script." }],
-            [{ v: "2. Paste the 'Sovereign Engine' source code provided below." }],
-            [{ v: "3. Click the 'Triggers' (Clock) icon in the left sidebar." }],
-            [{ v: "4. Click '+ Add Trigger'." }],
-            [{ v: "5. Choose function: 'onEdit'." }],
-            [{ v: "6. Event type: 'On edit'." }],
-            [{ v: "7. Important: Ensure 'Run as' is set to your Admin account." }],
-            [{ v: "8. Save and Authorize permissions." }],
+            [{ v: "2. Paste the source code provided below." }],
+            [{ v: "3. Click the 'Triggers' (Clock) icon -> '+ Add Trigger'." }],
+            [{ v: "4. Choose function: 'onEdit' | Event: 'On edit' | Run As: OWNER." }],
             [],
-            [{ v: "WHY THIS IS REQUIRED:", s: { font: { bold: true } } }],
-            [{ v: "Simple triggers cannot write to hidden sheets for non-admin users. The Installable Trigger ensures that even when staff log tasks, the Audit Vault is updated using your Admin authority." }],
+            [{ v: "SECTION 2: INTEGRITY VERIFICATION", s: { font: { bold: true } } }],
+            [{ v: "• TRIGGER CHECK: Enter initials in Column E. Look for the toast '1/1 records secured'." }],
+            [{ v: "• VAULT CHECK: Unhide '_RECORDS_VAULT' periodically to verify the immutable ledger." }],
+            [{ v: "• WARNING: 'File > Make a copy' DOES NOT copy triggers. You must reinstall for each copy." }],
             [],
             [{ v: "SOVEREIGN ENGINE SOURCE CODE:", s: { font: { bold: true } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -229,20 +223,31 @@ export const handleDownloadAuditPrototype = () => {
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        // 09. _RECORDS_VAULT
-        const vaultHeaders = [[{ v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED_BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, { v: "STAMP", s: headerStyle }]];
+        // 09. _RECORDS_VAULT (Expanded Forensic Schema)
+        const vaultHeaders = [[
+            { v: "DATE", s: headerStyle }, 
+            { v: "BRANCH", s: headerStyle }, 
+            { v: "ROLE", s: headerStyle }, 
+            { v: "TASK", s: headerStyle }, 
+            { v: "DONE_BY", s: headerStyle }, 
+            { v: "VERIFIED_BY", s: headerStyle }, 
+            { v: "STATUS", s: headerStyle }, 
+            { v: "STAMP", s: headerStyle },
+            { v: "USER_EMAIL", s: headerStyle },
+            { v: "SESSION_ID", s: headerStyle }
+        ]];
         const vaultWs = utils.aoa_to_sheet(vaultHeaders);
-        vaultWs['!cols'] = [20, 25, 25, 45, 20, 20, 15, 25].map(w => ({ wch: w }));
+        vaultWs['!cols'] = [18, 25, 25, 45, 18, 18, 15, 25, 30, 40].map(w => ({ wch: w }));
         utils.book_append_sheet(wb, vaultWs, TABS.RECORDS_VAULT);
         
-        // Hide logic sheets
+        // Hide metadata
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
         const vIdx = wb.SheetNames.indexOf(TABS.RECORDS_VAULT);
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `TEMP_HOTEL_VAULT_BULKAWARE.xlsx`);
+        writeFile(wb, `TEMP_HOTEL_VAULT_ATOMIC.xlsx`);
     } catch (error: any) {
         console.error("Infrastructure Failure:", error);
     }
