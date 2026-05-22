@@ -6,6 +6,7 @@
  * Automation operates on inputs (E:F) and targets overlay (J, Z+).
  */
 
+export const APPS_SCRIPT_SOURCE = `
 const CONFIG = {
   SHEET_NAME: "DAILY_TASKS",
   // Benchmark Layout Constants (v17.5.1 Alignment)
@@ -80,3 +81,4 @@ function onEdit(e) {
     }
   }
 }
+`;

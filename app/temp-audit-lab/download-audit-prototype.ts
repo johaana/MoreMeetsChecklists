@@ -2,7 +2,7 @@
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
-import { hotels_and_resorts } from '@/lib/packs/hotels_and_resorts';
+import { temp_hotel_sample } from '@/lib/packs/temp_hotel_sample';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 import type { PremiumPack } from '@/lib/premium-packs';
 
@@ -16,7 +16,7 @@ import type { PremiumPack } from '@/lib/premium-packs';
  * ----------------------------------------------------------------------------
  */
 
-export const handleDownloadAuditPrototype = (item: PremiumPack = hotels_and_resorts) => {
+export const handleDownloadAuditPrototype = (item: PremiumPack = temp_hotel_sample) => {
     try {
         const wb = utils.book_new();
 
