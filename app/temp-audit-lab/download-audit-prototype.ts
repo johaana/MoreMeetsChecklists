@@ -5,10 +5,10 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER V4.5 — PARITY RESTORATION
+ * SOVEREIGN MASTER V4.6 — PARITY RESTORATION
  * -----------------------------------------
- * 1. FIX: Reverted DAILY_TASKS loop to production benchmark.
- * 2. FIX: default verificationRequired to false if undefined.
+ * 1. FIX: Reverted task loop to production benchmark (item.checklists.forEach).
+ * 2. FIX: Restored exact TEAM_HUB column widths [20, 30, 35, 20, 40].
  * 3. GEOMETRY: Columns A:I immutable. Column J is STAMP.
  */
 
@@ -128,7 +128,7 @@ export const handleDownloadAuditPrototype = () => {
                 checklist.tasks.forEach(t => {
                     const rIdx = taskData.length + 1;
                     const styles = getStyles(cIdx % 2 === 1);
-                    const isV = t.verificationRequired === true; // Default false if missing
+                    const isV = t.verificationRequired === true;
 
                     const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
                     const statusFormula = isV 
@@ -182,7 +182,7 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
-        // 06. TEAM_HUB
+        // 06. TEAM_HUB - Exact Production Parity Restoration
         const teamData: any[][] = [[], [], [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }]];
         const uniqueRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         for (let i = 0; i < 2; i++) {
@@ -192,6 +192,8 @@ export const handleDownloadAuditPrototype = () => {
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
+        // RESTORED PRODUCTION WIDTHS: [20, 30, 35, 20, 40]
+        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
@@ -200,14 +202,13 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "🛠️ OPERATIONAL INTEGRITY & HEARTBEAT MANUAL", s: bannerStyle }],
             [],
             [{ v: "SECTION 1: THE HEARTBEAT (COLUMN J)", s: { font: { bold: true } } }],
-            [{ v: "• When you mark a task COMPLETE, the system generates a background audit record." }],
-            [{ v: "• Upon success, a digital timestamp appears in Column J (STAMP)." }],
-            [{ v: "• If STATUS is Green but STAMP is empty, the automation engine is inactive." }],
+            [{ v: "• When a task reaches 'COMPLETE', the system writes a digital timestamp in Column J (STAMP)." }],
+            [{ v: "• If Column J remains empty after completion, the audit engine is inactive." }],
             [],
             [{ v: "SECTION 2: INSTALLABLE TRIGGER SETUP (MANDATORY)", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
             [{ v: "1. Extensions -> Apps Script." }],
             [{ v: "2. Paste the source code provided below." }],
-            [{ v: "3. Click the 'Triggers' (Clock) icon -> '+ Add Trigger'." }],
+            [{ v: "3. Click 'Triggers' (Clock) icon -> '+ Add Trigger'." }],
             [{ v: "4. Choose function: 'onEdit' | Event: 'On edit' | Run As: OWNER." }],
             [],
             [{ v: "SECTION 3: RE-INSTALLATION NOTICE", s: { font: { bold: true } } }],
@@ -236,7 +237,7 @@ export const handleDownloadAuditPrototype = () => {
         // 09. _RECORDS_VAULT
         const vaultHeaders = [[
             { v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, 
-            { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED_BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, 
+            { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, 
             { v: "STAMP", s: headerStyle }, { v: "USER_EMAIL", s: headerStyle }, { v: "SESSION_ID", s: headerStyle }
         ]];
         const vaultWs = utils.aoa_to_sheet(vaultHeaders);
@@ -249,7 +250,7 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `SOVEREIGN_V4.5_STABILIZED.xlsx`);
+        writeFile(wb, `SOVEREIGN_V4.6_STABILIZED.xlsx`);
     } catch (error: any) {
         console.error("Infrastructure Failure:", error);
     }
