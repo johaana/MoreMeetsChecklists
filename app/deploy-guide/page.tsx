@@ -4,7 +4,6 @@ import React from 'react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { 
@@ -20,6 +19,19 @@ import {
     Trash2,
     FileCode
 } from 'lucide-react';
+
+const IMAGES = {
+    DRIVE_UPLOAD: "https://i.postimg.cc/F1tmz8ym/Screenshot-2026-05-23-034010.png",
+    EXCEL_PREVIEW: "https://i.postimg.cc/Th8G1FVf/Screenshot-2026-05-23-034053.png",
+    CONVERTED_SHEET: "https://i.postimg.cc/dDMv3p2J/Screenshot-2026-05-23-034117.png",
+    OPEN_SCRIPT: "https://i.postimg.cc/QVLsCwQX/Screenshot-2026-05-23-034358.png",
+    EMPTY_EDITOR: "https://i.postimg.cc/dDMv3p2t/Screenshot-2026-05-23-034427.png",
+    PASTED_CODE: "https://i.postimg.cc/kDr9GzQM/Screenshot-2026-05-23-034456.png",
+    SAVE_SCRIPT: "https://i.postimg.cc/Th8G1FVP/Screenshot-2026-05-23-034519.png",
+    ALLOW_SCREEN: "https://i.postimg.cc/jqD7WfHH/Screenshot-2026-05-23-035105.png",
+    SUCCESS_POPUP: "https://i.postimg.cc/wx1mtNXk/Screenshot-2026-05-23-035412.png",
+    FINAL_STAMP: "https://i.postimg.cc/MZnQcB75/Screenshot-2026-05-23-035444.png"
+};
 
 export default function DeployGuidePage() {
   return (
@@ -62,9 +74,9 @@ export default function DeployGuidePage() {
                     </div>
                 </div>
                 <div className="space-y-3 pt-4">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-red-400">VISUAL PROOF: CONVERTED FILE</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-red-400">VISUAL PROOF: CONVERTED FILE (NO .XLSX BADGE)</p>
                     <div className="rounded-2xl overflow-hidden border border-red-100 shadow-xl bg-white p-2">
-                        <img src="https://i.postimg.cc/dDMv3p2J/Screenshot-2026-05-23-034117.png" alt="Live Google Sheet" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.CONVERTED_SHEET} alt="Live Google Sheet" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
             </div>
@@ -73,120 +85,134 @@ export default function DeployGuidePage() {
           {/* SECTION B — SIMPLE SETUP */}
           <div className="space-y-16" id="section-b">
             <div className="flex flex-col items-center gap-4 text-center">
-                <Badge className="bg-zinc-900 text-white rounded-full px-6">SECTION B</Badge>
-                <h2 className="text-3xl font-black uppercase italic tracking-tighter">SIMPLE SETUP (NO TRIGGERS)</h2>
+                <Badge className="bg-zinc-900 text-white rounded-full px-6 uppercase font-black tracking-widest text-[10px]">SECTION B</Badge>
+                <h2 className="text-3xl font-black uppercase italic tracking-tighter">SIMPLE SETUP</h2>
             </div>
 
             <div className="space-y-32">
-                {/* 1 & 2 */}
+                {/* 1. Download */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black italic text-xl">1</div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Download & Upload</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Upload the .xlsx file to your Google Drive.</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Download File</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Download the Excel (.xlsx) file provided.</p>
                         </div>
                     </div>
-                    <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/F1tmz8ym/Screenshot-2026-05-23-034010.png" alt="Drive Upload" className="w-full h-auto rounded-xl" />
+                    <div className="p-12 bg-white rounded-3xl border border-zinc-100 shadow-sm flex items-center justify-center">
+                        <FileSpreadsheet className="w-24 h-24 text-zinc-200" />
                     </div>
                 </div>
 
-                {/* 4 */}
+                {/* 2. Upload */}
+                <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
+                    <div className="space-y-6 sticky top-32">
+                        <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black italic text-xl">2</div>
+                        <div className="space-y-2">
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Upload to Drive</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Upload the downloaded file into your Google Drive.</p>
+                        </div>
+                    </div>
+                    <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
+                        <img src={IMAGES.DRIVE_UPLOAD} alt="Drive Upload" className="w-full h-auto rounded-xl" />
+                    </div>
+                </div>
+
+                {/* 4. Convert */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black italic text-xl">4</div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Convert to Sheets</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Click File → Save as Google Sheets. A new tab opens. This is your LIVE file.</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Convert to Sheets</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Open the file and click File → Save as Google Sheets. A new tab opens. This is your LIVE file.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/Th8G1FVf/Screenshot-2026-05-23-034053.png" alt="Save as Sheets" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.EXCEL_PREVIEW} alt="Save as Sheets" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 5 */}
+                {/* 5. Open Apps Script */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black italic text-xl">5</div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Open Apps Script</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Go to Extensions → Apps Script to open the engine room.</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Open Apps Script</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">In the new tab, go to Extensions → Apps Script to open the engine room.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/QVLsCwQX/Screenshot-2026-05-23-034358.png" alt="Open Script" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.OPEN_SCRIPT} alt="Open Script" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 6 */}
+                {/* 6. Delete Code */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-red-500 text-white flex items-center justify-center font-black italic text-xl"><Trash2 /></div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Delete Old Code</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Select all existing text and delete it completely. The window must be blank.</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Delete Old Code</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Select all existing placeholder text and delete it. The window must be blank.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/dDMv3p2t/Screenshot-2026-05-23-034427.png" alt="Clear Editor" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.EMPTY_EDITOR} alt="Clear Editor" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 7 */}
+                {/* 7. Paste Code */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-black italic text-xl"><FileCode /></div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Paste Provided Code</h4>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Paste Master Code</h4>
                             <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Copy the code from your SETUP_GUIDE sheet and paste it here.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/kDr9GzQM/Screenshot-2026-05-23-034456.png" alt="Paste Code" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.PASTED_CODE} alt="Paste Code" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 8 */}
+                {/* 8. Save */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black italic text-xl"><Save /></div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Save Script</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Click the Save icon. You can name it "Sovereign Audit Engine".</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Save the Engine</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Click the Save icon. You can name the project "Sovereign Audit Engine".</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/Th8G1FVP/Screenshot-2026-05-23-034519.png" alt="Save Script" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.SAVE_SCRIPT} alt="Save Script" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 9 */}
+                {/* 9. Run & Authorize */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-primary text-black flex items-center justify-center font-black italic text-xl"><Play /></div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Run & Authorize</h4>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Run & Authorize</h4>
                             <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Click Run. Follow the prompts: Advanced → Go to Project (unsafe) → Allow.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/jqD7WfHH/Screenshot-2026-05-23-035105.png" alt="Authorize" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.ALLOW_SCREEN} alt="Authorize" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
 
-                {/* 10 */}
+                {/* 10. Success */}
                 <div className="grid md:grid-cols-[300px,1fr] gap-12 items-start group">
                     <div className="space-y-6 sticky top-32">
                         <div className="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-black italic text-xl"><CheckCircle2 /></div>
                         <div className="space-y-2">
-                            <h4 className="text-xl font-black uppercase italic tracking-tighter">Success</h4>
-                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Return to your sheet. The engine is now listening for your team's edits.</p>
+                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">System Active</h4>
+                            <p className="text-sm text-zinc-500 font-bold leading-relaxed italic">Return to your Google Sheet tab. The audit heartbeat is now operational.</p>
                         </div>
                     </div>
                     <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-white p-2">
-                        <img src="https://i.postimg.cc/MZnQcB75/Screenshot-2026-05-23-035444.png" alt="Live Sheet" className="w-full h-auto rounded-xl" />
+                        <img src={IMAGES.FINAL_STAMP} alt="Live Sheet" className="w-full h-auto rounded-xl" />
                     </div>
                 </div>
             </div>
@@ -195,27 +221,27 @@ export default function DeployGuidePage() {
           {/* SECTION C — HOW TO TEST */}
           <div className="space-y-12 py-20 border-t border-zinc-200" id="section-c">
             <div className="text-center space-y-4">
-                <Badge className="bg-emerald-500 text-black uppercase font-black px-6">SECTION C</Badge>
-                <h2 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter">HOW TO TEST SYSTEM</h2>
+                <Badge className="bg-emerald-500 text-black uppercase font-black px-6 tracking-widest text-[10px] rounded-full py-1">SECTION C</Badge>
+                <h2 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-900">HOW TO TEST SYSTEM</h2>
             </div>
             
             <div className="bg-white rounded-[2.5rem] border border-zinc-200 p-8 md:p-12 space-y-12 shadow-sm">
                 <div className="space-y-6">
                     <div className="flex items-center gap-3">
                         <Smartphone className="text-primary w-6 h-6" />
-                        <h4 className="text-xl font-black uppercase italic tracking-tighter">Perform the Heartbeat Test</h4>
+                        <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">Perform the Heartbeat Test</h4>
                     </div>
                     <p className="text-zinc-600 font-medium italic">Go to the <span className="text-zinc-950 font-black">DAILY_TASKS</span> sheet. Enter your initials into any <span className="text-zinc-950 font-black">DONE BY</span> cell.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400">1. WATCH FOR POPUP</p>
-                        <img src="https://i.postimg.cc/wx1mtNXk/Screenshot-2026-05-23-035412.png" alt="Success Popup" className="rounded-xl border border-zinc-100 shadow-lg" />
+                        <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400">1. WATCH FOR SUCCESS SIGNAL</p>
+                        <img src={IMAGES.SUCCESS_POPUP} alt="Success Popup" className="rounded-xl border border-zinc-100 shadow-lg" />
                     </div>
                     <div className="space-y-4">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400">2. VERIFY TIMESTAMP</p>
-                        <img src="https://i.postimg.cc/MZnQcB75/Screenshot-2026-05-23-035444.png" alt="Timestamp Audit" className="rounded-xl border border-zinc-100 shadow-lg" />
+                        <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400">2. VERIFY AUDIT STAMP</p>
+                        <img src={IMAGES.FINAL_STAMP} alt="Timestamp Audit" className="rounded-xl border border-zinc-100 shadow-lg" />
                     </div>
                 </div>
             </div>
@@ -223,7 +249,7 @@ export default function DeployGuidePage() {
 
           {/* Footer Navigation */}
           <div className="pt-20 text-center">
-            <Button asChild variant="outline" className="h-16 px-10 rounded-xl border-zinc-300 font-black uppercase italic tracking-widest bg-white">
+            <Button asChild variant="outline" className="h-16 px-10 rounded-xl border-zinc-300 font-black uppercase italic tracking-widest bg-white hover:bg-zinc-50 transition-colors">
                 <Link href="/library">Return to Systems Hub</Link>
             </Button>
           </div>
