@@ -1,10 +1,9 @@
 /**
- * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.1 (HEARTBEAT EDITION)
+ * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.2 (STABILIZED)
  * -----------------------------------------------------------
  * Trigger: fires on manual edit of DONE_BY or VERIFIED_BY.
- * Action: Appends immutable evidence to hidden _RECORDS_VAULT and
- *         writes a "Heartbeat" timestamp to Column J.
- * Features: Atomic row isolation, Session tracking, and Precise feedback.
+ * Action: 1. Appends immutable evidence to hidden _RECORDS_VAULT.
+ *         2. Writes forensic timestamp to Column J (Heartbeat).
  */
 
 export const APPS_SCRIPT_SOURCE = `
@@ -34,98 +33,80 @@ function onEdit(e) {
   const startCol = range.getColumn();
   const numCols = range.getNumCols();
   
+  // Detect if edit happened in DONE_BY (E) or VERIFIED_BY (F)
   const isRelevantEdit = (startCol <= CONFIG.VERIFIED_BY_COL && (startCol + numCols - 1) >= CONFIG.DONE_BY_COL);
   if (!isRelevantEdit || startRow <= 3) return;
 
-  // Generate Session Metadata
   const sessionId = Utilities.getUuid();
-  const userEmail = Session.getActiveUser().getEmail() || "Anonymous/SimpleTrigger";
+  const userEmail = Session.getActiveUser().getEmail() || "Authorized_Staff";
 
-  // Force sheet to calculate and wait for formula stability
+  // Force calculation and wait for formula engine stability
   SpreadsheetApp.flush();
-  Utilities.sleep(500); 
+  Utilities.sleep(800); 
   
   const lock = LockService.getScriptLock();
-  let successCount = 0;
-  let failureCount = 0;
-  let attemptCount = 0;
+  let vaultedCount = 0;
+  let heartbeatCount = 0;
 
   try {
     lock.waitLock(CONFIG.LOCK_TIMEOUT); 
 
     const vault = ss.getSheetByName(CONFIG.VAULT_NAME);
-    if (!vault) return;
+    if (!vault) {
+      ss.toast("Vault not found. Contact administrator.", "SYSTEM ERROR");
+      return;
+    }
 
-    const totalDataRange = sheet.getRange(startRow, 1, numRows, CONFIG.STAMP_COL);
-    const dataValues = totalDataRange.getValues();
+    const dataRange = sheet.getRange(startRow, 1, numRows, CONFIG.STAMP_COL);
+    const dataValues = dataRange.getValues();
     const today = new Date().setHours(0,0,0,0);
     
-    // Uniqueness Cache (Scan last 500 rows to prevent day-duplicates)
+    // Uniqueness Cache (Last 500 records)
     const lastRowVault = vault.getLastRow();
     let existingKeys = [];
     if (lastRowVault > 1) {
       const startScan = Math.max(2, lastRowVault - 500); 
       const vaultData = vault.getRange(startScan, 1, (lastRowVault - startScan) + 1, 4).getValues();
-      existingKeys = vaultData.map(r => {
-        return new Date(r[0]).setHours(0,0,0,0) + "|" + r[1] + "|" + r[2] + "|" + r[3];
-      });
+      existingKeys = vaultData.map(r => new Date(r[0]).setHours(0,0,0,0) + "|" + r[1] + "|" + r[2] + "|" + r[3]);
     }
 
-    // Atomic Iteration
     for (let i = 0; i < numRows; i++) {
       const rowData = dataValues[i];
-      const statusValue = rowData[6];
+      const statusValue = rowData[6]; // Column G
+      const currentStamp = rowData[9]; // Column J
 
       if (statusValue === "COMPLETE") {
-        attemptCount++;
-        try {
-          const branch = rowData[0];
-          const role = rowData[1];
-          const taskName = rowData[2];
-          const doneBy = rowData[4];
-          const verifiedBy = rowData[5];
-          const currentKey = today + "|" + branch + "|" + role + "|" + taskName;
-          
-          if (existingKeys.indexOf(currentKey) === -1) {
-            const stamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd HH:mm:ss");
-            
-            // 1. Vault Write (Hidden)
-            vault.appendRow([
-              new Date(), 
-              branch,
-              role,
-              taskName,
-              doneBy,
-              verifiedBy,
-              statusValue,
-              stamp,
-              userEmail,
-              sessionId
-            ]);
+        const branch = rowData[0];
+        const role = rowData[1];
+        const taskName = rowData[2];
+        const doneBy = rowData[4];
+        const verifiedBy = rowData[5];
+        const currentKey = today + "|" + branch + "|" + role + "|" + taskName;
+        
+        const timestamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd HH:mm:ss");
 
-            // 2. Heartbeat Write (Visible in Column J)
-            sheet.getRange(startRow + i, CONFIG.STAMP_COL).setValue(stamp);
+        // 1. Vault Write (Only if unique for today)
+        if (existingKeys.indexOf(currentKey) === -1) {
+          vault.appendRow([new Date(), branch, role, taskName, doneBy, verifiedBy, statusValue, timestamp, userEmail, sessionId]);
+          vaultedCount++;
+          existingKeys.push(currentKey);
+        }
 
-            successCount++;
-            existingKeys.push(currentKey);
-          }
-        } catch (rowErr) {
-          failureCount++;
-          Logger.log("Atomic Row Failure at Row " + (startRow + i) + ": " + rowErr.toString());
+        // 2. Heartbeat Write (Always restore if J is empty but row is COMPLETE)
+        if (!currentStamp || currentStamp === "") {
+          sheet.getRange(startRow + i, CONFIG.STAMP_COL).setValue(timestamp);
+          heartbeatCount++;
         }
       }
     }
 
-    // Precise Feedback Toast
-    if (attemptCount > 0) {
-      let message = successCount + "/" + attemptCount + " audit records secured.";
-      if (failureCount > 0) message += " (" + failureCount + " FAILED)";
-      ss.toast(message, "SOVEREIGN SYSTEM");
+    if (vaultedCount > 0 || heartbeatCount > 0) {
+      ss.toast(vaultedCount + " records vaulted. " + heartbeatCount + " heartbeats verified.", "SOVEREIGN SYSTEM");
     }
 
   } catch (err) {
     Logger.log("Sovereign Critical Error: " + err.toString());
-    ss.toast("Audit logging failed. Contact administrator.", "CRITICAL ERROR", 10);
+    ss.toast("Audit link interrupted. Try again.", "SYNC ERROR");
   } finally {
     lock.releaseLock();
   }
