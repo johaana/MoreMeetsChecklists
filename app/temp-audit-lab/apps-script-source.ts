@@ -2,10 +2,10 @@
  * MOREMEETS™ AUDIT ENGINE — FINAL STABLE
  * --------------------------------------
  * DAILY_TASKS
- * E = DONE BY (Col 5)
- * F = VERIFIED BY (Col 6)
- * G = STATUS (Col 7)
- * J = STAMP (Col 10)
+ * E = DONE BY
+ * F = VERIFIED BY
+ * G = STATUS
+ * J = STAMP
  */
 
 export const APPS_SCRIPT_SOURCE = `
