@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -37,12 +36,14 @@ import {
     Scale,
     Cpu,
     Gem,
-    ShoppingBag
+    ShoppingBag,
+    ShoppingBasket
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
+import { FaqSection } from '@/components/layout/faq-section';
 
 const BRAND_GREEN = "#22C55E";
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
@@ -60,7 +61,14 @@ const MARQUEE_SIGNALS = [
     "ROI_ENGINE_ACTIVE"
 ];
 
-const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
+interface SectionProps {
+    children: React.ReactNode;
+    className?: string;
+    id?: string;
+    noSpine?: boolean;
+}
+
+const Section = ({ children, className, id, noSpine = false }: SectionProps) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
@@ -71,8 +79,14 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 export default function DesignLabV2() {
     const [mounted, setMounted] = useState(false);
-    useEffect(() => { setMounted(true); }, []);
-    if (!mounted) return null;
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return null;
+    }
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
@@ -139,7 +153,7 @@ export default function DesignLabV2() {
                                         ].map((ind) => (
                                             <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between text-2xl font-black font-headline uppercase italic tracking-tighter text-white/20 hover:text-primary transition-all duration-300 hover:translate-x-3">
                                                 {ind.n}
-                                                <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-10 transition-opacity" />
                                             </Link>
                                         ))}
                                     </div>
@@ -151,7 +165,7 @@ export default function DesignLabV2() {
                         </div>
                     </div>
 
-                    <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                    <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 border-t border-white/5 flex items-center shadow-2xl overflow-hidden">
                         <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                             {MARQUEE_SIGNALS.map((signal, i) => (
                                 <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
@@ -159,7 +173,6 @@ export default function DesignLabV2() {
                                     <span className="opacity-70">{signal}</span>
                                 </span>
                             ))}
-                            {/* Dupe for loop */}
                             {MARQUEE_SIGNALS.map((signal, i) => (
                                 <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
                                     <span className="text-primary">[✓]</span>
@@ -185,7 +198,7 @@ export default function DesignLabV2() {
                             </div>
                             <div className="space-y-6 border-l-2 border-zinc-100 pl-8">
                                 {[
-                                    { t: "The "Guesswork" Tax", d: "When staff are unsure, they improvise. Improvisation is the enemy of profit." },
+                                    { t: "The \"Guesswork\" Tax", d: "When staff are unsure, they improvise. Improvisation is the enemy of profit." },
                                     { t: "Manager Burnout", d: "You spend 4 hours a day chasing updates that should be visible instantly." },
                                     { t: "Institutional Amnesia", d: "When a key manager leaves, your standards leave with them. You start from zero." }
                                 ].map((item, i) => (
@@ -383,7 +396,7 @@ export default function DesignLabV2() {
                 <Section className="bg-primary text-black py-32 md:py-48" noSpine>
                     <div className="max-w-5xl mx-auto space-y-12 text-center">
                         <h2 className="text-[48px] md:text-[96px] font-black leading-[0.85] tracking-tighter uppercase italic font-headline text-center drop-shadow-sm">
-                            STOP CHASSING. <br/> START RUNNING.
+                            STOP CHASING. <br/> START RUNNING.
                         </h2>
                         <p className="text-xl md:text-[34px] font-black italic text-black/60 uppercase leading-none text-center">
                             Less misses. More standards. Deploy now.
@@ -401,19 +414,6 @@ export default function DesignLabV2() {
             </main>
             
             <Footer />
-
-            <style jsx global>{`
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .animate-marquee {
-                    display: flex;
-                    width: fit-content;
-                    animation: marquee 80s linear infinite;
-                }
-            `}</style>
         </div>
     );
 }
-
