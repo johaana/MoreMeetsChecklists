@@ -1,8 +1,9 @@
 /**
- * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.0 (ATOMIC RESILIENCE)
+ * MOREMEETS™ SOVEREIGN AUDIT ENGINE — V4.1 (HEARTBEAT EDITION)
  * -----------------------------------------------------------
  * Trigger: fires on manual edit of DONE_BY or VERIFIED_BY.
- * Action: Appends immutable evidence to hidden _RECORDS_VAULT.
+ * Action: Appends immutable evidence to hidden _RECORDS_VAULT and
+ *         writes a "Heartbeat" timestamp to Column J.
  * Features: Atomic row isolation, Session tracking, and Precise feedback.
  */
 
@@ -10,13 +11,14 @@ export const APPS_SCRIPT_SOURCE = `
 const CONFIG = {
   SHEET_NAME: "DAILY_TASKS",
   VAULT_NAME: "_RECORDS_VAULT",
-  // Layout Constants (Sovereign v17.5.1 Parity)
+  // Layout Constants (Sovereign v17.5.1 Parity + Heartbeat J)
   BRANCH_COL: 1,       // A
   ROLE_COL: 2,         // B
   TASK_COL: 3,         // C
   DONE_BY_COL: 5,      // E
   VERIFIED_BY_COL: 6,  // F
   STATUS_COL: 7,       // G
+  STAMP_COL: 10,       // J (Heartbeat)
   LOCK_TIMEOUT: 20000  // 20 seconds
 };
 
@@ -39,6 +41,7 @@ function onEdit(e) {
   const sessionId = Utilities.getUuid();
   const userEmail = Session.getActiveUser().getEmail() || "Anonymous/SimpleTrigger";
 
+  // Force sheet to calculate and wait for formula stability
   SpreadsheetApp.flush();
   Utilities.sleep(500); 
   
@@ -53,11 +56,11 @@ function onEdit(e) {
     const vault = ss.getSheetByName(CONFIG.VAULT_NAME);
     if (!vault) return;
 
-    const totalDataRange = sheet.getRange(startRow, 1, numRows, CONFIG.STATUS_COL);
+    const totalDataRange = sheet.getRange(startRow, 1, numRows, CONFIG.STAMP_COL);
     const dataValues = totalDataRange.getValues();
     const today = new Date().setHours(0,0,0,0);
     
-    // Uniqueness Cache (Optimized Scan)
+    // Uniqueness Cache (Scan last 500 rows to prevent day-duplicates)
     const lastRowVault = vault.getLastRow();
     let existingKeys = [];
     if (lastRowVault > 1) {
@@ -84,7 +87,9 @@ function onEdit(e) {
           const currentKey = today + "|" + branch + "|" + role + "|" + taskName;
           
           if (existingKeys.indexOf(currentKey) === -1) {
-            const stamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "dd-MMM-yyyy HH:mm:ss");
+            const stamp = Utilities.formatDate(new Date(), ss.getSpreadsheetTimeZone(), "yyyy-MM-dd HH:mm:ss");
+            
+            // 1. Vault Write (Hidden)
             vault.appendRow([
               new Date(), 
               branch,
@@ -97,6 +102,10 @@ function onEdit(e) {
               userEmail,
               sessionId
             ]);
+
+            // 2. Heartbeat Write (Visible in Column J)
+            sheet.getRange(startRow + i, CONFIG.STAMP_COL).setValue(stamp);
+
             successCount++;
             existingKeys.push(currentKey);
           }
@@ -107,7 +116,7 @@ function onEdit(e) {
       }
     }
 
-    // Precise Feedback
+    // Precise Feedback Toast
     if (attemptCount > 0) {
       let message = successCount + "/" + attemptCount + " audit records secured.";
       if (failureCount > 0) message += " (" + failureCount + " FAILED)";

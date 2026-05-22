@@ -5,11 +5,11 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN V4.1 — RESILIENT AUDIT ENGINE
+ * SOVEREIGN V4.3 — HEARTBEAT EDITION
  * -----------------------------------------
- * 1. 100% Logic Parity with Production v17.5.1
- * 2. Atomic Try/Catch Isolation for Bulk Sign-offs
- * 3. Expanded Vault Schema with Forensic Metadata
+ * 1. 100% Geometry Parity for Columns A:I
+ * 2. Added Column J (STAMP) for visual heartbeat confirmation
+ * 3. Atomic Row Resilience in hidden _RECORDS_VAULT
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -113,12 +113,13 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // 03. DAILY_TASKS (Sovereign Geometry A:I)
+        // 03. DAILY_TASKS (Sovereign Geometry A:J)
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
-            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle }
+            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
+            { v: "STAMP", s: headerStyle } // New Column J (Heartbeat)
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         for (let b = 0; b < 2; b++) {
@@ -145,15 +146,16 @@ export const handleDownloadAuditPrototype = () => {
                             { v: "", s: styles.input }, 
                             { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
                             { v: t.consequence || "Compliance Gap", s: styles.left },
-                            { v: t.floorAction || t.description || "", s: styles.left }
+                            { v: t.floorAction || t.description || "", s: styles.left },
+                            { v: "", s: styles.locked } // Column J (STAMP)
                         ]);
                     });
                 }
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
+        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25].map(w => ({ wch: w }));
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'J');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // 04. SOP_LIB
@@ -187,21 +189,23 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // 07. CUSTOMIZATION_GUIDE (Operational Integrity Pass)
+        // 07. CUSTOMIZATION_GUIDE (Heartbeat Edition)
         const guideData: any[][] = [
-            [{ v: "🛠️ OPERATIONAL INTEGRITY & AUTOMATION MANUAL", s: bannerStyle }],
+            [{ v: "🛠️ OPERATIONAL INTEGRITY & HEARTBEAT MANUAL", s: bannerStyle }],
             [],
-            [{ v: "SECTION 1: INSTALLABLE TRIGGER SETUP (MANDATORY)", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "Simple triggers are restricted by Google security and will NOT write to the hidden vault for all users." }],
+            [{ v: "SECTION 1: THE HEARTBEAT (COLUMN J)", s: { font: { bold: true } } }],
+            [{ v: "• When you mark a task COMPLETE, the system generates a background audit record." }],
+            [{ v: "• Upon success, a digital timestamp appears in Column J (STAMP)." }],
+            [{ v: "• If STATUS is Green but STAMP is empty, the automation engine is inactive." }],
+            [],
+            [{ v: "SECTION 2: INSTALLABLE TRIGGER SETUP (MANDATORY)", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
             [{ v: "1. Extensions -> Apps Script." }],
             [{ v: "2. Paste the source code provided below." }],
             [{ v: "3. Click the 'Triggers' (Clock) icon -> '+ Add Trigger'." }],
             [{ v: "4. Choose function: 'onEdit' | Event: 'On edit' | Run As: OWNER." }],
             [],
-            [{ v: "SECTION 2: INTEGRITY VERIFICATION", s: { font: { bold: true } } }],
-            [{ v: "• TRIGGER CHECK: Enter initials in Column E. Look for the toast '1/1 records secured'." }],
-            [{ v: "• VAULT CHECK: Unhide '_RECORDS_VAULT' periodically to verify the immutable ledger." }],
-            [{ v: "• WARNING: 'File > Make a copy' DOES NOT copy triggers. You must reinstall for each copy." }],
+            [{ v: "SECTION 3: RE-INSTALLATION NOTICE", s: { font: { bold: true } } }],
+            [{ v: "• WARNING: 'File > Make a copy' DOES NOT copy triggers. You must reinstall the script for every copy." }],
             [],
             [{ v: "SOVEREIGN ENGINE SOURCE CODE:", s: { font: { bold: true } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -223,7 +227,7 @@ export const handleDownloadAuditPrototype = () => {
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        // 09. _RECORDS_VAULT (Expanded Forensic Schema)
+        // 09. _RECORDS_VAULT (Immutable Forensic Schema)
         const vaultHeaders = [[
             { v: "DATE", s: headerStyle }, 
             { v: "BRANCH", s: headerStyle }, 
