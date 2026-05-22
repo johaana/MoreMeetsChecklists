@@ -1,39 +1,46 @@
 /**
- * MOREMEETS™ SOVEREIGN FORENSIC BYPASS — V2.0
+ * MOREMEETS™ SOVEREIGN TRIGGER AUDIT — V1.0
  * -----------------------------------------------------------
- * PHASE B: HARD FORENSIC TRACE
- * PURPOSE: PROVE PHYSICAL WRITE ACCESS TO CELL J2.
- * ACTION: WRITES "LIVE" TO J2 ON ANY EDIT IN DAILY_TASKS.
+ * PHASE C: TRIGGER EXISTENCE AUDIT
+ * PURPOSE: PROVE THE SCRIPT FIRES AND CAN WRITE TO THE SHEET.
+ * ACTION: OVERWRITES A1/A2 WITH STATUS ON ANY EDIT.
  * -----------------------------------------------------------
- * NO LOOPS. NO VAULT. NO STATUS CHECKS.
+ * NO LOOPS. NO CONDITIONS. NO VAULT. NO COLUMN J.
  */
 
 export const APPS_SCRIPT_SOURCE = `
 function onEdit(e) {
-  const ss = e.source;
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getActiveSheet();
   
-  // 1. VISUAL TOAST - APPEARS INSTANTLY IF TRIGGER FIRES
-  ss.toast("SCRIPT_FIRED", "DIAGNOSTIC");
+  // 1. IMMEDIATE VISUAL TOAST
+  ss.toast("TRIGGER_OK", "AUDIT");
 
-  Logger.log("--- TRIGGER_START ---");
+  Logger.log("--- AUDIT_START ---");
+  Logger.log("SPREADSHEET_ID: " + ss.getId());
   Logger.log("SHEET_NAME: " + sheet.getName());
-  Logger.log("USER_IDENTITY: " + Session.getActiveUser().getEmail());
+  
+  try {
+    Logger.log("USER_IDENTITY: " + Session.getActiveUser().getEmail());
+  } catch (err) {
+    Logger.log("USER_IDENTITY_BLOCKED: " + err.toString());
+  }
 
-  // 2. TARGET ONLY DAILY_TASKS
+  // 2. ONLY TARGET DAILY_TASKS FOR AUDIT
   if (sheet.getName() !== "DAILY_TASKS") {
-    Logger.log("EXIT: NOT_DAILY_TASKS_SHEET");
+    Logger.log("EXIT: NOT_DAILY_TASKS");
     return;
   }
 
   try {
-    Logger.log("BEFORE_WRITE_J2");
+    Logger.log("BEFORE_A1_WRITE");
     
-    // 3. NAKED WRITE TEST - ATTEMPT TO MODIFY CELL J2
-    sheet.getRange("J2").setValue("LIVE");
+    // 3. GIGANTIC VISIBLE INDICATORS
+    sheet.getRange("A1").setValue("TRIGGER_WORKING");
+    sheet.getRange("A2").setValue("LAST_FIRE: " + new Date().toString());
     
-    Logger.log("AFTER_WRITE_J2");
-    ss.toast("WRITE_SUCCESS", "DIAGNOSTIC");
+    Logger.log("AFTER_A1_WRITE");
+    ss.toast("WRITE_SUCCESS", "AUDIT");
     
   } catch (err) {
     Logger.log("CRITICAL_WRITE_FAILURE: " + err.toString());
