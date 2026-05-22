@@ -57,7 +57,7 @@ function onEdit(e) {
     const dataValues = totalDataRange.getValues();
     const today = new Date().setHours(0,0,0,0);
     
-    // Uniqueness Cache
+    // Uniqueness Cache (Optimized Scan)
     const lastRowVault = vault.getLastRow();
     let existingKeys = [];
     if (lastRowVault > 1) {
