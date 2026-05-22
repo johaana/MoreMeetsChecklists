@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -7,37 +8,39 @@ import {
     Check, 
     X,
     ArrowRight, 
-    Download,
-    LayoutGrid,
-    ClipboardCheck,
-    Clock,
-    ShieldCheck,
-    Lock,
-    Users,
-    AlertTriangle,
     Activity,
-    FileSpreadsheet,
+    Lock,
+    ClipboardCheck,
+    Smartphone,
+    AlertTriangle,
+    GraduationCap,
+    ShieldCheck,
     CheckCircle2,
-    Building2,
     Utensils,
     Building,
     Hospital,
     School,
     Store,
+    Building2,
     Popcorn,
     Zap,
-    GraduationCap,
-    Smartphone,
+    History,
     ShieldAlert,
     Target,
-    ChevronRight,
-    History,
     FileSignature,
+    SearchCheck,
+    Users,
+    FileSpreadsheet,
+    Globe,
+    ChevronRight,
+    ShoppingBasket,
+    Download,
+    ShoppingBag,
+    Clock,
     Scale,
     Cpu,
     Gem,
-    ShoppingBag,
-    ShoppingBasket
+    LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -61,14 +64,7 @@ const MARQUEE_SIGNALS = [
     "ROI_ENGINE_ACTIVE"
 ];
 
-interface SectionProps {
-    children: React.ReactNode;
-    className?: string;
-    id?: string;
-    noSpine?: boolean;
-}
-
-const Section = ({ children, className, id, noSpine = false }: SectionProps) => (
+const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
@@ -77,7 +73,7 @@ const Section = ({ children, className, id, noSpine = false }: SectionProps) => 
     </section>
 );
 
-export default function DesignLabV2() {
+export default function DesignLabV3() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -119,9 +115,14 @@ export default function DesignLabV2() {
                                         <span style={{ color: BRAND_GREEN }}>YOUR TEAM.</span> <br/>
                                         <span className="text-zinc-500">SEE WORK DONE.</span>
                                     </h1>
-                                    <p className="text-lg md:text-2xl italic font-medium text-zinc-400 max-w-2xl leading-tight border-l-2 border-primary/40 pl-8">
-                                        Institutional-grade operational systems that turn tribal knowledge into permanent organizational assets. 
-                                    </p>
+                                    <div className="space-y-4">
+                                        <p className="text-lg md:text-2xl italic font-medium text-zinc-400 max-w-2xl leading-tight">
+                                            Institutional-grade operational systems that turn tribal knowledge into permanent organizational assets. 
+                                        </p>
+                                        <div className="border-l-2 border-primary/40 pl-8">
+                                            <p className="text-[10px] md:text-sm text-zinc-500 font-bold italic uppercase tracking-widest">Memory is a liability. Systems are an asset.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-6 items-start md:items-center">
@@ -147,7 +148,8 @@ export default function DesignLabV2() {
                                         {[
                                             { n: "HOTEL OPERATIONS", id: "hotels_and_resorts" },
                                             { n: "RESTAURANT OPERATIONS", id: "restaurants" },
-                                            { n: "GROCERY OPERATIONS", id: "supermarket_grocery_retail_pack" },
+                                            { n: "RETAIL OPERATIONS", id: "supermarket_grocery_retail_pack" },
+                                            { n: "MULTIPLEX OPERATIONS", id: "cinema_operations_pack" },
                                             { n: "HOSPITAL OPERATIONS", id: "healthcare_and_hospital_operations" },
                                             { n: "SCHOOL OPERATIONS", id: "school_operations_pack" }
                                         ].map((ind) => (
@@ -169,12 +171,6 @@ export default function DesignLabV2() {
                         <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                             {MARQUEE_SIGNALS.map((signal, i) => (
                                 <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
-                                    <span className="text-primary">[✓]</span>
-                                    <span className="opacity-70">{signal}</span>
-                                </span>
-                            ))}
-                            {MARQUEE_SIGNALS.map((signal, i) => (
-                                <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
                                     <span className="text-primary">[✓]</span>
                                     <span className="opacity-70">{signal}</span>
                                 </span>
@@ -217,10 +213,10 @@ export default function DesignLabV2() {
                                 <p className="text-zinc-400 text-xs font-black uppercase tracking-[0.5em]">COMMON FAILURE POINTS</p>
                                 <div className="space-y-8">
                                     {[
-                                        "Fridge temps logged at shift-end (Guesswork)",
-                                        "Closing checklists skipped during rush",
-                                        "Opening readiness assumed, not verified",
-                                        "Handover notes buried in WhatsApp chats"
+                                        "Opening checks becoming assumed, not verified",
+                                        "Technical SOPs buried in dead PDF folders",
+                                        "Shift handovers documented via WhatsApp chat",
+                                        "Critical safety vitals logged at end-of-shift"
                                     ].map((fail, i) => (
                                         <div key={i} className="flex items-center gap-4 text-zinc-950 font-black italic uppercase tracking-tighter text-lg">
                                             <X className="w-6 h-6 text-red-400 shrink-0" />
@@ -238,11 +234,11 @@ export default function DesignLabV2() {
                     <div className="max-w-[1400px] mx-auto space-y-16">
                         <div className="flex flex-col items-center text-center space-y-6">
                             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-3 rounded-none italic">THE INFRASTRUCTURE</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-white leading-[0.95] tracking-tight uppercase italic">
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-white leading-[0.95] tracking-tight uppercase italic text-center">
                                 THE SOVEREIGN LEDGER
                             </h2>
                             <p className="text-zinc-400 text-lg md:text-2xl font-bold italic max-w-3xl leading-tight">
-                                One master engine. Up to 10 branches. <br/> Zero ambiguity for every single role.
+                                Every task is assigned, timestamped, verifiable, and visible live across the team.
                             </p>
                         </div>
 
@@ -289,20 +285,91 @@ export default function DesignLabV2() {
                         </div>
                         <div className="text-center">
                             <p className="text-[11px] text-zinc-600 font-black uppercase tracking-[0.5em] italic">
-                                SYSTEM PROOF: WORKS IN EXCEL • OPERATED LIVE VIA GOOGLE SHEETS
+                                SYSTEM PROOF: BUILT IN EXCEL • OPERATED LIVE VIA GOOGLE SHEETS
                             </p>
                         </div>
                     </div>
                 </Section>
 
+                {/* --- SECTION 5: THE ADOPTION ENGINE (WHY SHEETS > APPS) --- */}
+                <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE ADOPTION ENGINE</Badge>
+                            <h2 className="text-[34px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">WHY SHEETS WINS.</h2>
+                            <p className="text-xl text-zinc-500 font-bold italic leading-relaxed max-w-2xl mx-auto">Frontline teams resist apps. They understand spreadsheets. We remove the learning curve to ensure 100% adoption.</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                             <div className="space-y-10">
+                                {[
+                                    { t: "Zero Training Required", d: "If your team can type their name in a cell, they are already fully trained.", i: CheckCircle2 },
+                                    { t: "No Native App Friction", d: "Google Sheets provides a native, high-speed mobile experience without installing new software.", i: Smartphone },
+                                    { t: "Institutional Memory Lock", d: "When a manager resigns, your standards don't leave with them. The system is the authority.", i: History }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-6">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-primary shrink-0 shadow-inner">
+                                            <item.i className="w-6 h-6" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{item.t}</h4>
+                                            <p className="text-sm text-zinc-400 font-medium italic">{item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                             </div>
+                             <div className="p-10 rounded-[3rem] bg-zinc-950 text-white space-y-8 shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-8 opacity-10">
+                                    <Lock className="w-32 h-32" />
+                                </div>
+                                <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">SOVEREIGN ADVANTAGE</p>
+                                <h3 className="text-2xl md:text-3xl font-black font-headline italic uppercase tracking-tighter leading-tight">NO SAAS. <br/> OWN YOUR DATA.</h3>
+                                <p className="text-zinc-400 italic text-sm font-medium leading-relaxed">Unlike a locked SaaS app, you own the master file forever. No recurring bills. No per-user pricing. No vendor lock-in. Permanent infrastructure for a one-time investment.</p>
+                                <div className="pt-4">
+                                     <Button asChild variant="outline" className="border-white/10 text-white hover:bg-white/5 rounded-xl uppercase font-black italic text-[10px] tracking-widest h-12">
+                                        <Link href="/library">Explore Sovereign Systems</Link>
+                                     </Button>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 6: SYSTEM ANATOMY --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100" noSpine>
+                    <div className="max-w-6xl mx-auto space-y-20">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px] italic bg-white shadow-sm">SYSTEM ANATOMY</Badge>
+                            <h2 className="text-[34px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">WHAT YOU GET.</h2>
+                        </div>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {[
+                                { t: "THE BRAIN (SOPs)", d: "Industry-specific Standard Operating Procedures pre-built into the logic.", i: GraduationCap },
+                                { t: "THE HEARTBEAT (TASKS)", d: "Daily, weekly, and monthly mission-ledgers assigned by role and branch.", i: ClipboardCheck },
+                                { t: "THE EYE (ANALYTICS)", d: "A live executive dashboard showing completion rates and risk alerts instantly.", i: Activity }
+                            ].map((item, i) => (
+                                <div key={i} className="p-12 rounded-[2.5rem] bg-white border border-zinc-200 space-y-6 hover:shadow-2xl transition-all group">
+                                    <div className="w-16 h-16 rounded-2xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                        <item.i className="w-8 h-8" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{item.t}</h3>
+                                        <p className="text-sm text-zinc-400 font-bold italic leading-relaxed">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
                 {/* --- SECTION 4: THE RESIGNATION PILLAR --- */}
-                <Section className="bg-white border-y border-zinc-100" noSpine>
+                <Section className="bg-white" noSpine>
                     <div className="max-w-5xl mx-auto p-12 md:p-24 rounded-[3rem] bg-zinc-50 border border-zinc-200 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
                             <History className="w-80 h-80 text-zinc-950" />
                         </div>
                         <div className="flex flex-col md:flex-row gap-16 items-center relative z-10">
-                            <div className="space-y-8 flex-1">
+                            <div className="space-y-8 flex-1 text-left">
                                 <Badge variant="outline" className="text-zinc-400 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">ASSET PROTECTION</Badge>
                                 <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.9]">
                                     WHEN SOMEONE <br/> RESIGNS: <br/> <span className="text-primary">THE SYSTEM STAYS.</span>
@@ -327,7 +394,7 @@ export default function DesignLabV2() {
                 </Section>
 
                 {/* --- SECTION 5: THE SECTOR GRID --- */}
-                <Section className="bg-white">
+                <Section className="bg-white border-t border-zinc-100">
                     <div className="max-w-6xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">SOVEREIGN SOLUTIONS</Badge>
@@ -338,53 +405,21 @@ export default function DesignLabV2() {
                             {[
                                 { t: "Hotel Operations", id: "hotels_and_resorts", i: Building, sub: "Housekeeping, Front Desk, Engineering." },
                                 { t: "Restaurant Ops", id: "restaurants", i: Utensils, sub: "Kitchen HACCP, Bar, FOH, Inventory." },
-                                { t: "Grocery Retail", id: "supermarket_grocery_retail_pack", i: ShoppingBasket, sub: "Cold Chain, Expiry, Shrinkage." },
-                                { t: "Jewellery Retail", id: "retail_jewellery_operations_pack", i: Gem, sub: "Vault, Custody, Hallmarking." },
-                                { t: "Fashion Retail", id: "fashion_and_apparel_retail", i: ShoppingBag, sub: "VM, Size-Curve, Trial Rooms." },
+                                { t: "Retail Ops", id: "retail_operations_system", i: ShoppingBag, sub: "Jewellery, Electronics, Grocery, Fashion." },
                                 { t: "Hospital Ops", id: "healthcare_and_hospital_operations", i: Hospital, sub: "Clinical, Nursing, Narcotics." },
                                 { t: "School Ops", id: "school_operations_pack", i: School, sub: "Transport, Safety, Admin." },
-                                { t: "Facilities Mgmt", id: "facility_management_blueprint", i: Building2, sub: "MEP, Safety, Energy, Vendor." },
-                                { t: "Cinema Ops", id: "cinema_operations_pack", i: Popcorn, sub: "Projection, Concession, Crowd." }
+                                { t: "Multiplex Ops", id: "cinema_operations_pack", i: Popcorn, sub: "Projection, Concession, Crowd." }
                             ].map((item, i) => (
                                 <Link key={i} href={`/packs/${item.id}`} className="p-10 rounded-[2.5rem] bg-zinc-50 border border-zinc-100 space-y-6 hover:shadow-2xl transition-all group hover:border-primary">
                                     <div className="flex items-center justify-between">
                                         <item.i className="w-8 h-8 text-zinc-300 group-hover:text-primary transition-colors" />
                                         <ChevronRight className="w-4 h-4 text-zinc-200 group-hover:text-primary" />
                                     </div>
-                                    <div className="space-y-2">
+                                    <div className="space-y-2 text-left">
                                         <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{item.t}</h3>
                                         <p className="text-xs font-bold text-zinc-400 italic uppercase tracking-widest">{item.sub}</p>
                                     </div>
                                 </Link>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- SECTION 6: THE SaaS ANTIDOTE --- */}
-                <Section className="bg-zinc-950 text-white" noSpine id="no-saas">
-                    <div className="max-w-4xl mx-auto space-y-16 text-center">
-                        <div className="space-y-6">
-                            <Badge className="bg-primary/10 text-primary border-primary/20 uppercase font-black tracking-widest text-[10px] px-8 py-2 rounded-none italic">THE SaaS ANTIDOTE</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
-                                NO LOGINS. NO TRAINING. <br/> <span className="text-primary">ZERO FRICTION.</span>
-                            </h2>
-                            <p className="text-xl text-zinc-400 font-bold italic leading-relaxed max-w-2xl mx-auto">
-                                Most operational apps fail because the frontline team resists them. MoreMeets uses the tool they already understand: The Spreadsheet.
-                            </p>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {[
-                                { t: "Works on Phones", d: "Google Sheets provides a native mobile experience for floor teams.", i: Smartphone },
-                                { t: "Own Your Data", d: "Zero SaaS dependency. You buy the master file once and keep it forever.", i: Lock },
-                                { t: "Ready in 10 Mins", d: "Instant download. No consultants, no IT setup, no cloud onboarding.", i: Zap }
-                            ].map((item, i) => (
-                                <div key={i} className="space-y-4 p-8 bg-white/5 rounded-[2rem] border border-white/5">
-                                    <item.i className="w-8 h-8 text-primary mx-auto" />
-                                    <h4 className="text-lg font-black uppercase italic text-white leading-none">{item.t}</h4>
-                                    <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest leading-relaxed">{item.d}</p>
-                                </div>
                             ))}
                         </div>
                     </div>
@@ -401,7 +436,7 @@ export default function DesignLabV2() {
                         <p className="text-xl md:text-[34px] font-black italic text-black/60 uppercase leading-none text-center">
                             Less misses. More standards. Deploy now.
                         </p>
-                        <div className="pt-8">
+                        <div className="pt-8 text-center">
                             <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-black text-white font-black uppercase italic text-xl hover:scale-[1.05] transition-all border-none shadow-2xl">
                                 <Link href="/library" className="flex items-center gap-4">
                                     GET YOUR SYSTEM <ArrowRight className="w-8 h-8" />
