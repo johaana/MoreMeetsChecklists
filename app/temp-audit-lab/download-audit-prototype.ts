@@ -5,12 +5,12 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN RESTORATION BUILD — PHASE 3K
+ * SOVEREIGN PRODUCTION BENCHMARK — v17.5.1 PARITY
  * -----------------------------------------------------------
- * 1. RESTORED A1:I1 MERGED HEADER (Parity with app/lib/download.ts)
- * 2. RESTORED 9-COLUMN GEOMETRY (A:I)
- * 3. NO COLUMN J (Isolated diagnostic at Z1000)
- * 4. 100% PRODUCTION LOOP & STYLE MATCH
+ * 1. 100% GEOMETRY PARITY (A:I)
+ * 2. NO COLUMN J
+ * 3. NO VAULT SHEET IN WORKBOOK
+ * 4. PURE REPLICA OF PRODUCTION HOTEL PACK
  * -----------------------------------------------------------
  */
 export const handleDownloadAuditPrototype = () => {
@@ -85,8 +85,7 @@ export const handleDownloadAuditPrototype = () => {
             BRANCH_SETUP: "BRANCH_SETUP",
             TEAM_HUB: "TEAM_HUB",
             CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
-            SYS_ENGINE: "SYS_ENGINE",
-            RECORDS_VAULT: "_RECORDS_VAULT"
+            SYS_ENGINE: "SYS_ENGINE"
         };
 
         // 01. START
@@ -110,7 +109,7 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // 03. DAILY_TASKS (A:I) - RESTORED 100% PARITY
+        // 03. DAILY_TASKS (A:I) - 100% PRODUCTION PARITY
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -148,7 +147,7 @@ export const handleDownloadAuditPrototype = () => {
         }
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "TRIGGER VALIDATION MODE");
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "TRIGGER EXISTENCE TEST");
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // 04. SOP_LIB
@@ -176,7 +175,7 @@ export const handleDownloadAuditPrototype = () => {
         const guideWs = utils.aoa_to_sheet([
             [{ v: "🛠️ DIAGNOSTIC MANUAL — TRIGGER VALIDATION", s: bannerStyle }],
             [],
-            [{ v: "GOAL: Prove the trigger can write to Z1000 without disrupting A:I.", s: { font: { bold: true } } }],
+            [{ v: "GOAL: Prove the trigger can write to L7:L9 without disrupting A:I.", s: { font: { bold: true } } }],
             [],
             [{ v: "APPS SCRIPT SOURCE:", s: { font: { bold: true } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -189,8 +188,8 @@ export const handleDownloadAuditPrototype = () => {
         const sysWs = utils.aoa_to_sheet([[]]);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        writeFile(wb, `SOVEREIGN_PHASE_3K_RESTORATION.xlsx`);
+        writeFile(wb, `SOVEREIGN_PHASE_3L_AUDIT.xlsx`);
     } catch (error: any) {
-        console.error("Restoration Failure:", error);
+        console.error("Audit Generation Failure:", error);
     }
 }
