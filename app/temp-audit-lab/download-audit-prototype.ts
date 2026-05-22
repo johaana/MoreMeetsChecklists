@@ -4,6 +4,14 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
+/**
+ * SOVEREIGN AUDIT ENGINE V4.8 - LABORATORY PROTOTYPE
+ * --------------------------------------------------
+ * 1. RESTORED: TEAM_HUB & SOP_LIB parity.
+ * 2. OPTIMIZED: Onboarding starts with "Save as Google Sheets".
+ * 3. HARDENED: 10-column A:J geometry.
+ */
+
 export const handleDownloadAuditPrototype = () => {
     try {
         const wb = utils.book_new();
@@ -56,7 +64,7 @@ export const handleDownloadAuditPrototype = () => {
             };
         };
 
-        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
+        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'J') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
                 [] 
@@ -79,20 +87,22 @@ export const handleDownloadAuditPrototype = () => {
             SYS_ENGINE: "SYS_ENGINE"
         };
 
-        // --- 01. START (High-Visibility Environment Warning) ---
+        // --- 01. START (High-Visibility Section A) ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
             [],
             [{ v: "SECTION A — VERY IMPORTANT (MUST READ)", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.RISK_RED } } } }],
             [{ v: "This file is currently an Excel (.XLSX) file. Apps Script DOES NOT WORK in this mode.", s: { font: { bold: true } } }],
-            [{ v: "STEP 0: Go to [File] -> [Save as Google Sheets].", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Only continue setup in the NEW file that opens. Discard this Excel version." }],
+            [{ v: "STEP 1: Go to [File] -> [Save as Google Sheets].", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+            [{ v: "STEP 2: Close this tab. Continue setup in the NEW file that opens." }],
             [],
             [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Follow the steps in the [SETUP_GUIDE] tab to activate your audit engine.", s: { font: { italic: true } } }]
+            [{ v: "Follow the steps in the [SETUP_GUIDE] tab to activate your audit engine.", s: { font: { italic: true } } }],
+            [],
+            [{ v: "GO TO SETUP_GUIDE TAB TO CONTINUE ->", s: { font: { bold: true } } }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
-        startWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
+        startWs['!cols'] = [{ wch: 40 }, { wch: 80 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, startWs, TABS.START);
 
@@ -108,7 +118,7 @@ export const handleDownloadAuditPrototype = () => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS (Exact Geometry Parity A:J) ---
+        // --- 03. DAILY_TASKS ---
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -150,14 +160,14 @@ export const handleDownloadAuditPrototype = () => {
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'J');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
-        // --- 04. SOP_LIB (Restored Benchmark Content) ---
+        // --- 04. SOP_LIB (Restored Content Parity) ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
         item.checklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
                 const styles = getStyles(cIdx % 2 === 1);
                 libData.push([
-                    { v: c.role, s: { ...styles.left, font: { bold: true } } },
+                    { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
                     { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
                     { v: t.consequence || "Risk Mitigation", s: styles.left },
                     { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
@@ -173,26 +183,43 @@ export const handleDownloadAuditPrototype = () => {
         const branchData: any[][] = [
             [], [],
             [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }],
-            [{ v: "Branch 1 [REPLACE ME]", s: getStyles(false).input }, { v: "Location", s: getStyles(false).input }, { v: "ACTIVE", s: getStyles(false).input }]
+            [{ v: "Bandra Main", s: getStyles(false).input }, { v: "Mumbai", s: getStyles(false).input }, { v: "ACTIVE", s: getStyles(false).input }],
+            [{ v: "Ghatkopar West", s: getStyles(false).input }, { v: "Mumbai", s: getStyles(false).input }, { v: "ACTIVE", s: getStyles(false).input }]
         ];
         const branchWs = utils.aoa_to_sheet(branchData);
         branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
         addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
-        // --- 06. TEAM_HUB ---
-        const teamWs = utils.aoa_to_sheet([[], [], [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }]]);
-        teamWs['!cols'] = [20, 30, 35, 20, 40].map(w => ({ wch: w }));
+        // --- 06. TEAM_HUB (Restored Content Parity) ---
+        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
+        const teamData: any[][] = [[], [], teamHeaders];
+        for (let i = 0; i < 2; i++) {
+            const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
+            activeRoles.forEach((role, idx) => {
+                const styles = getStyles(idx % 2 === 1);
+                teamData.push([
+                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
+                    { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
+                    { v: "[ENTER NAME]", s: styles.input },
+                    { v: "[PHONE]", s: styles.input },
+                    { v: "[EMAIL]", s: styles.input }
+                ]);
+            });
+        }
+        const teamWs = utils.aoa_to_sheet(teamData);
+        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. SETUP_GUIDE ---
+        // --- 07. SETUP_GUIDE (Refined Order) ---
         const guideData: any[][] = [
             [{ v: "🛠️ SYSTEM SETUP & DEPLOYMENT GUIDE", s: bannerStyle }],
             [],
             [{ v: "SECTION B — STEP-BY-STEP INSTALLATION", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "1. Download this file and upload it to your Google Drive." }],
-            [{ v: "2. Open it and perform the 'Save as Google Sheets' step from the START sheet." }],
+            [{ v: "1. Go to [File] -> [Save as Google Sheets]. (Critical: Code won't run in XLSX preview)." }],
+            [{ v: "2. Close this tab. Open the NEW file that just appeared." }],
             [{ v: "3. In the new file, go to [Extensions] -> [Apps Script]." }],
             [{ v: "4. Delete any existing text and PASTE the code provided below." }],
             [{ v: "5. Click the [Save] icon (floppy disk)." }],
@@ -220,7 +247,20 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, guideWs, TABS.SETUP_GUIDE);
 
         // --- 08. SYS_ENGINE ---
-        const sysWs = utils.aoa_to_sheet([[]]);
+        const sysData: any[][] = [];
+        for (let i = 0; i < 2; i++) {
+            activeRoles.forEach((role, rIdx) => {
+                const tRow = 3 + (i * activeRoles.length) + rIdx;
+                const sIdx = sysData.length + 1;
+                sysData.push([
+                    { t: 'f', f: `IFERROR(${TABS.BRANCH_SETUP}!$A$${4 + i}, "")` }, 
+                    { v: role },                                   
+                    { t: 'f', f: `A${sIdx}&"|"&B${sIdx}` },    
+                    { t: 'f', f: `${TABS.TEAM_HUB}!$C$${4 + rIdx + (i * activeRoles.length)}` }        
+                ]);
+            });
+        }
+        const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
         writeFile(wb, `SOVEREIGN_MASTER_V4.8.xlsx`);
