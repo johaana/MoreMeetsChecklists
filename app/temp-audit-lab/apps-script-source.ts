@@ -1,48 +1,43 @@
 /**
- * MOREMEETS™ SOVEREIGN FORENSIC BYPASS — V1.0
+ * MOREMEETS™ SOVEREIGN FORENSIC BYPASS — V2.0
  * -----------------------------------------------------------
- * PURPOSE: ISOLATE PHYSICAL WRITE ACCESS TO COLUMN J.
- * TRIGGER: FIRES ON ANY EDIT IN COLUMN E OR F.
- * ACTION: IMMEDIATELY WRITES "TEST_OK" TO COLUMN J.
+ * PHASE B: HARD FORENSIC TRACE
+ * PURPOSE: PROVE PHYSICAL WRITE ACCESS TO CELL J2.
+ * ACTION: WRITES "LIVE" TO J2 ON ANY EDIT IN DAILY_TASKS.
  * -----------------------------------------------------------
- * NO STATUS CHECKS. NO VAULT. NO COMPLEXITY.
+ * NO LOOPS. NO VAULT. NO STATUS CHECKS.
  */
 
 export const APPS_SCRIPT_SOURCE = `
 function onEdit(e) {
-  Logger.log("--- TRIGGER_START ---");
-  
   const ss = e.source;
   const sheet = ss.getActiveSheet();
-  const range = e.range;
   
-  if (sheet.getName() !== "DAILY_TASKS") {
-    Logger.log("EXIT: Wrong Sheet - " + sheet.getName());
-    return;
-  }
-  
-  const startRow = range.getRow();
-  const startCol = range.getColumn();
-  
-  Logger.log("COLS_CHECK: StartCol=" + startCol + " | Row=" + startRow);
+  // 1. VISUAL TOAST - APPEARS INSTANTLY IF TRIGGER FIRES
+  ss.toast("SCRIPT_FIRED", "DIAGNOSTIC");
 
-  // Watch zone: E (5) and F (6)
-  if (startCol < 5 || startCol > 6 || startRow <= 3) {
-    Logger.log("EXIT: Outside Watch Zone");
+  Logger.log("--- TRIGGER_START ---");
+  Logger.log("SHEET_NAME: " + sheet.getName());
+  Logger.log("USER_IDENTITY: " + Session.getActiveUser().getEmail());
+
+  // 2. TARGET ONLY DAILY_TASKS
+  if (sheet.getName() !== "DAILY_TASKS") {
+    Logger.log("EXIT: NOT_DAILY_TASKS_SHEET");
     return;
   }
 
   try {
-    Logger.log("BEFORE_STAMP_WRITE");
+    Logger.log("BEFORE_WRITE_J2");
     
-    // Attempt direct write to Column J (10)
-    sheet.getRange(startRow, 10).setValue("TEST_OK");
+    // 3. NAKED WRITE TEST - ATTEMPT TO MODIFY CELL J2
+    sheet.getRange("J2").setValue("LIVE");
     
-    Logger.log("AFTER_STAMP_WRITE");
-    ss.toast("FORENSIC SIGNAL SENT", "SYSTEM");
+    Logger.log("AFTER_WRITE_J2");
+    ss.toast("WRITE_SUCCESS", "DIAGNOSTIC");
     
   } catch (err) {
-    Logger.log("CRITICAL_FAILURE: " + err.toString());
+    Logger.log("CRITICAL_WRITE_FAILURE: " + err.toString());
+    ss.toast("WRITE_CRASHED: " + err.toString(), "ERROR");
   }
 }
 `;

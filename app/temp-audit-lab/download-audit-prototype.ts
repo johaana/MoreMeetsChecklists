@@ -50,6 +50,7 @@ export const handleDownloadAuditPrototype = () => {
             return {
                 left: { font: baseFont, fill, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle },
                 center: { font: baseFont, fill, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
+                right: { font: baseFont, fill, alignment: { horizontal: 'right', ...vCenter }, border: borderStyle },
                 input: { font: { ...baseFont, color: "000000", bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
                 locked: { font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle }
             };
@@ -179,23 +180,23 @@ export const handleDownloadAuditPrototype = () => {
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
-        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
+        teamWs['!cols'] = [20, 30, 35, 20, 40].map(w => ({ wch: w }));
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
         // 07. CUSTOMIZATION_GUIDE
         const guideData: any[][] = [
-            [{ v: "🛠️ FORENSIC BYPASS TEST — V1.0", s: bannerStyle }],
+            [{ v: "🛠️ FORENSIC BYPASS TEST — V2.0", s: bannerStyle }],
             [],
-            [{ v: "PHASE A: WRITE ISOLATION TEST", s: { font: { bold: true } } }],
-            [{ v: "Goal: Prove the script can physically write to Column J without interference." }],
+            [{ v: "PHASE B: HARD FORENSIC TRACE", s: { font: { bold: true } } }],
+            [{ v: "Goal: Prove Apps Script can physically write to Cell J2." }],
             [],
             [{ v: "INSTRUCTIONS:", s: { font: { bold: true } } }],
             [{ v: "1. Open Extensions -> Apps Script." }],
             [{ v: "2. Paste the source code provided below." }],
             [{ v: "3. IMPORTANT: Set an Installable Trigger (Run as OWNER)." }],
-            [{ v: "4. Edit Column E (DONE BY) in 'DAILY_TASKS'." }],
-            [{ v: "5. If 'TEST_OK' appears in Column J, the pipe is open." }],
+            [{ v: "4. Edit ANY cell in 'DAILY_TASKS'." }],
+            [{ v: "5. If 'LIVE' appears in Cell J2, the system is functional." }],
             [],
             [{ v: "SOURCE CODE:", s: { font: { bold: true } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -218,7 +219,7 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
         // 09. _RECORDS_VAULT
-        const vaultHeaders = [[{ v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, { v: "STAMP", s: headerStyle }]];
+        const vaultHeaders = [[{ v: "DATE", s: headerStyle }, { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TASK", s: headerStyle }, { v: "DONE_BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, { v: "STATUS", s: headerStyle }, { v: "STAMP", s: headerStyle }, { v: "USER_EMAIL", s: headerStyle }, { v: "SESSION_ID", s: headerStyle }]];
         const vaultWs = utils.aoa_to_sheet(vaultHeaders);
         utils.book_append_sheet(wb, vaultWs, TABS.RECORDS_VAULT);
         
@@ -228,7 +229,7 @@ export const handleDownloadAuditPrototype = () => {
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         wb.Workbook.Sheets[vIdx] = { Hidden: 1 };
 
-        writeFile(wb, `SOVEREIGN_V1.0_BYPASS.xlsx`);
+        writeFile(wb, `SOVEREIGN_PHASE_B_TRACE.xlsx`);
     } catch (error: any) {
         console.error("Diagnostic failure:", error);
     }
