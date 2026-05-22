@@ -5,11 +5,11 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER ENGINE V4.9 - SIMPLIFIED SETUP
+ * SOVEREIGN MASTER ENGINE V4.9 - LABORATORY BUILD
  * --------------------------------------------------
  * 1. MANDATORY CONVERSION: Red alert on START tab.
  * 2. WEB BRIDGE: Link to the visual /deploy-guide page.
- * 3. NO-TRIGGER FLOW: Clean instructions for Run/Authorize only.
+ * 3. SOP PARITY: Full content restoration from hotel benchmark.
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -92,15 +92,15 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
             [],
             [{ v: "SECTION A — VERY IMPORTANT (MUST READ)", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.RISK_RED } } } }],
-            [{ v: "Apps Script logic DOES NOT WORK in Excel mode.", s: { font: { bold: true } } }],
+            [{ v: "This file is an Excel preview. Apps Script DOES NOT WORK in this mode.", s: { font: { bold: true } } }],
             [{ v: "STEP 0: Go to [File] -> [Save as Google Sheets].", s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-            [{ v: "Only continue setup in the NEW file that opens. Discard this version." }],
+            [{ v: "Only continue setup in the NEW file that opens automatically. Discard this version." }],
             [],
             [{ v: "STEP 1: VIEW THE VISUAL DEPLOYMENT GUIDE", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "For a step-by-step walkthrough with screenshots, visit:", s: { font: { italic: true } } }],
+            [{ v: "For a step-by-step visual walkthrough with screenshots, visit:", s: { font: { italic: true } } }],
             [{ v: "https://www.moremeets.com/deploy-guide", l: { Target: "https://www.moremeets.com/deploy-guide" }, s: { font: { color: { rgb: "0000FF" }, underline: true } } }],
             [],
-            [{ v: "GO TO SETUP_GUIDE TAB TO CONTINUE ->", s: { font: { bold: true } } }]
+            [{ v: "GO TO SETUP_GUIDE TAB TO CONTINUE INSTALLATION ->", s: { font: { bold: true } } }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 45 }, { wch: 80 }];
@@ -120,6 +120,7 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
         // --- 03. DAILY_TASKS ---
+        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -193,7 +194,6 @@ export const handleDownloadAuditPrototype = () => {
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
         // --- 06. TEAM_HUB ---
-        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
         const teamData: any[][] = [[], [], teamHeaders];
         for (let i = 0; i < 2; i++) {
@@ -224,13 +224,12 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "3. In the NEW file, go to [Extensions] -> [Apps Script]." }],
             [{ v: "4. Delete any existing text and PASTE the code provided at the bottom of this sheet." }],
             [{ v: "5. Click the [Save] icon (floppy disk)." }],
-            [{ v: "6. Click [Run] (Play icon) and authorize permissions." }],
+            [{ v: "6. Click the [Clock] icon (Triggers) and add a trigger for 'onEdit' (On edit)." }],
+            [{ v: "7. Follow the visual guide at: www.moremeets.com/deploy-guide" }],
             [],
             [{ v: "SECTION C — HOW TO VERIFY SYSTEM IS WORKING", s: { font: { bold: true, sz: 12 } } }],
             [{ v: "1. Go to the [DAILY_TASKS] sheet. Enter your initials in any [DONE BY] cell." }],
             [{ v: "2. Wait 2-4 seconds. A timestamp MUST appear in Column J (STAMP)." }],
-            [],
-            [{ v: "SUPPORT:", s: { font: { bold: true } } }, { v: "For visual help visit: www.moremeets.com/deploy-guide" }],
             [],
             [{ v: "APPS SCRIPT SOURCE (COPY EVERYTHING BELOW THIS LINE):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
