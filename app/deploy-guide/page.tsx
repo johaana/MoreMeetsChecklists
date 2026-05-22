@@ -190,7 +190,7 @@ export default function DeployGuidePage() {
           <Card className="p-12 border-emerald-500/20 bg-emerald-50/50 rounded-[3rem] text-center space-y-8 shadow-inner">
              <div className="flex flex-col items-center gap-3">
                 <ShieldCheck className="w-16 h-16 text-emerald-500" />
-                <h2 className="text-3xl font-black uppercase italic tracking-tighter text-zinc-900">Deployment Successful</h2>
+                <h2 className="text-3xl font-black uppercase italic tracking-tighter text-zinc-950">Deployment Successful</h2>
              </div>
              <p className="text-zinc-500 font-medium italic max-w-xl mx-auto">
                 Once Column J is populating with timestamps, your institutional audit trail is secure. Your team can now operate live from their smartphones.
