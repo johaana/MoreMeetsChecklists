@@ -109,11 +109,11 @@ export default function DesignLab() {
                                 </span>
                             </div>
 
-                            {/* Headline: ExtraBold weight for sophisticated command. Adjusted for "One Glance" */}
+                            {/* Headline: ExtraBold weight for sophisticated command. Forced 2-line architecture */}
                             <h1 className="text-[34px] md:text-[54px] font-extrabold tracking-[-0.04em] leading-[0.95] uppercase text-[#111111] font-headline">
-                                YOUR BUSINESS SHOULD NOT DEPEND ON <br className="hidden lg:block" />
+                                YOUR BUSINESS SHOULD NOT <br className="hidden lg:block" />
                                 <span className="relative inline-block mt-2">
-                                    MEMORY.
+                                    DEPEND ON MEMORY.
                                     {/* Subdued Luxury Underline */}
                                     <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
                                 </span>
@@ -121,14 +121,9 @@ export default function DesignLab() {
                             
                             <div className="space-y-6">
                                 {/* Calm Body Text: Inter Regular, slate grey */}
-                                <div className="space-y-4">
-                                    <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
-                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, and clear execution tracking.
-                                    </p>
-                                    <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
-                                        So work gets done properly — even when managers are away, staff change, or operations get busy.
-                                    </p>
-                                </div>
+                                <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
+                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even when managers are away, staff change, or operations get busy.
+                                </p>
                                 
                                 {/* Refined Operational Trust Statements (Checklisted) */}
                                 <div className="flex flex-col gap-2.5 pt-2">
