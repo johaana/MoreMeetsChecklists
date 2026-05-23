@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -39,7 +40,6 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
@@ -67,8 +67,6 @@ export default function HomePage() {
 
     if (!mounted) return null;
 
-    const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id);
-
     return (
         <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#B89B5E]/10">
             <SiteHeader forceTheme="light" />
@@ -77,7 +75,7 @@ export default function HomePage() {
                 
                 {/* --- 1. THE SOVEREIGN HERO (HYBRID ARCHITECTURE) --- */}
                 
-                {/* MOBILE HERO: VARIATION 1.1 (EDITORIAL STACK) */}
+                {/* MOBILE HERO: SOVEREIGN STANDARD (Variation 1.1) */}
                 <section className="md:hidden relative w-full flex flex-col bg-[#F8F6F2]">
                     <div className="w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
                         <iframe 
@@ -247,10 +245,9 @@ export default function HomePage() {
                         <div className="relative max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl group bg-[#F8F6F2]">
                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
-                                src={getImage('sovereign-ledger')?.imageUrl} 
+                                src="https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg" 
                                 alt="Operational Synergy" 
                                 className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
-                                data-ai-hint={getImage('sovereign-ledger')?.imageHint}
                              />
                         </div>
                     </div>
@@ -269,20 +266,34 @@ export default function HomePage() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {[
-                                { t: "Unsearchable Chaos", d: "Critical instructions and handovers get buried under hundreds of chat messages.", i: SearchCheck },
-                                { t: "Memory Dependency", d: "If your manager is sick or resigns, the 'standard' disappears with them.", i: History },
-                                { t: "No Audit Trail", d: "When a mistake happens, there is zero verifiable proof of who was responsible.", i: AlertTriangle }
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col gap-4 p-8 bg-white border border-zinc-100 rounded-3xl text-center items-center shadow-sm">
-                                    <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-500">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <h4 className="text-sm font-black uppercase text-zinc-950 tracking-tighter italic">{item.t}</h4>
-                                    <p className="text-xs text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
+                        <div className="grid md:grid-cols-[1.2fr,0.8fr] gap-12 items-center">
+                            <div className="space-y-8">
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    {[
+                                        { t: "Unsearchable Chaos", d: "Critical instructions and handovers get buried under hundreds of chat messages.", i: SearchCheck },
+                                        { t: "Memory Dependency", d: "If your manager is sick or resigns, the 'standard' disappears with them.", i: History },
+                                        { t: "No Audit Trail", d: "When a mistake happens, there is zero verifiable proof of who was responsible.", i: AlertTriangle },
+                                        { t: "Reporting Fatigue", d: "Managers spend 40% of their time 'chasing' status instead of leading.", i: Activity }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex flex-col gap-4 p-8 bg-white border border-zinc-100 rounded-3xl text-left shadow-sm">
+                                            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
+                                                <item.i className="w-5 h-5" />
+                                            </div>
+                                            <div className="space-y-1">
+                                                <h4 className="text-sm font-black uppercase text-zinc-950 tracking-tighter italic">{item.t}</h4>
+                                                <p className="text-[11px] text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
+                            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
+                                <img 
+                                    src="https://i.postimg.cc/X77vqvg6/confused-business-woman-using-laptop-computer-phone.jpg" 
+                                    alt="Operational Chaos" 
+                                    className="w-full h-full object-cover grayscale-[0.2]" 
+                                />
+                            </div>
                         </div>
                     </div>
                 </Section>
@@ -293,10 +304,9 @@ export default function HomePage() {
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
                             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.8/1] bg-zinc-200 order-2 lg:order-1">
                                 <img 
-                                    src={getImage('sovereign-team')?.imageUrl} 
+                                    src="https://i.postimg.cc/fTZ9KZjq/three-factory-workers-safety-hats-discussing-manufacture-plan.jpg" 
                                     alt="Daily Execution" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
-                                    data-ai-hint={getImage('sovereign-team')?.imageHint}
                                 />
                             </div>
                             <div className="space-y-10 order-1 lg:order-2">
@@ -363,10 +373,9 @@ export default function HomePage() {
                             <div className="absolute -inset-4 bg-[#B89B5E]/5 rounded-[3rem] -rotate-2" />
                             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
                                 <img 
-                                    src={getImage('sovereign-dashboard')?.imageUrl} 
+                                    src="https://i.postimg.cc/Gt3b4Mvc/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" 
                                     alt="Resignation Risk" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
-                                    data-ai-hint={getImage('sovereign-dashboard')?.imageHint}
                                 />
                             </div>
                         </div>
@@ -449,10 +458,9 @@ export default function HomePage() {
                             <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full" />
                             <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
                                  <img 
-                                    src={getImage('sovereign-vitals')?.imageUrl} 
+                                    src="https://i.postimg.cc/J0QtgD5V/colleagues-real-estate-architecture-working-together-project-design-development.jpg" 
                                     alt="Sustainability Vitals" 
                                     className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
-                                    data-ai-hint={getImage('sovereign-vitals')?.imageHint}
                                  />
                                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                                  <div className="absolute bottom-10 left-10 space-y-2">
@@ -502,6 +510,15 @@ export default function HomePage() {
                 @keyframes zoom {
                     from { transform: scale(1); }
                     to { transform: scale(1.06); }
+                }
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    display: flex;
+                    width: fit-content;
+                    animation: marquee 60s linear infinite;
                 }
             `}</style>
         </div>
