@@ -123,7 +123,7 @@ export default function DesignLab() {
                                 {/* Calm Body Text: Inter Regular, slate grey */}
                                 <div className="space-y-4">
                                     <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
-                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, risks involved, timestamps, and accountability built in.
+                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, and clear execution tracking.
                                     </p>
                                     <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
                                         So work gets done properly — even when managers are away, staff change, or operations get busy.
@@ -134,7 +134,6 @@ export default function DesignLab() {
                                 <div className="flex flex-col gap-2.5 pt-2">
                                     {[
                                         "No new apps to learn.",
-                                        "No training headaches.",
                                         "Works directly on Google Sheets."
                                     ].map((text, i) => (
                                         <div key={i} className="flex items-center gap-3">
