@@ -6,19 +6,16 @@ import { Button } from '@/components/ui/button';
 import { 
     Check, 
     ArrowRight, 
-    ShieldCheck,
-    Smartphone,
-    History,
+    Target,
+    Activity,
     CheckCircle2,
-    ChevronRight,
     Users,
-    Zap,
+    History,
+    Lock,
     LayoutGrid,
-    Eye
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SiteHeader } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
@@ -31,15 +28,31 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
-const BenefitItem = ({ text }: { text: string }) => (
-    <div className="flex items-center gap-3">
-        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-            <Check className="w-2.5 h-2.5 text-[#1F6B52]" />
+const LocalHeader = () => (
+    <header className="px-8 lg:px-12 h-[72px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500 bg-white/10 backdrop-blur-md border-b border-black/5" style={{
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
+        backdropFilter: 'blur(14px)'
+    }}>
+        <div className="flex items-center gap-2.5">
+             <div className="w-6 h-6 rounded-md flex items-center justify-center text-white" style={{ backgroundColor: '#2E7D5A' }}>
+                <Check className="w-4 h-4" strokeWidth={3} />
+             </div>
+             <div className="flex flex-col">
+                <span className="font-headline text-lg font-bold leading-none tracking-tight text-[#111111]">MoreMeets™</span>
+                <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-[#6B7280] leading-none mt-1">Operational Standards</span>
+             </div>
         </div>
-        <span className="text-[13px] md:text-[14px] font-medium text-[#5F6368] italic">
-            {text}
-        </span>
-    </div>
+        <nav className="ml-auto hidden md:flex gap-10 items-center">
+            {['Solutions', 'Methodology', 'Intelligence', 'Contact'].map((item) => (
+                <Link key={item} href="#" className="text-[13px] font-medium text-[#2A2A2A]/85 hover:text-[#111111] transition-colors">
+                    {item}
+                </Link>
+            ))}
+            <button className="h-10 px-6 rounded-full bg-[#111111] text-white text-[11px] font-bold uppercase tracking-widest shadow-lg hover:translate-y-[-1px] transition-all">
+                Get System
+            </button>
+        </nav>
+    </header>
 );
 
 export default function DesignLab() {
@@ -49,14 +62,14 @@ export default function DesignLab() {
     if (!mounted) return null;
 
     return (
-        <div className="bg-[#F6F3EE] text-[#111111] font-sans antialiased selection:bg-[#1F6B52]/10">
-            <SiteHeader />
+        <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#1F6B52]/10">
+            <LocalHeader />
 
             <main className="flex-1">
                 
                 {/* --- 1. THE CINEMATIC HERO --- */}
-                <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-[#F6F3EE]">
-                    {/* Cinematic Video with Slow Zoom */}
+                <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-[#F8F6F2]">
+                    {/* Cinematic Video with Filter & Motion */}
                     <div className="absolute inset-0 z-0">
                         <div className="w-full h-full scale-[1.01] animate-[zoom_20s_ease-in-out_infinite_alternate]">
                             <iframe 
@@ -65,29 +78,36 @@ export default function DesignLab() {
                                 frameBorder="0" 
                                 allow="autoplay; fullscreen; picture-in-picture" 
                                 title="Operational Energy"
+                                style={{
+                                    filter: 'brightness(0.88) saturate(0.92) contrast(1.02)'
+                                }}
                             />
                         </div>
                         
                         {/* Film Grain Overlay */}
-                        <div className="absolute inset-0 z-10 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                        <div className="absolute inset-0 z-10 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                         
-                        {/* Light Warm Fog Overlay */}
+                        {/* Layered Gradient Architecture */}
                         <div 
                             className="absolute inset-0 z-20" 
                             style={{ 
-                                background: 'linear-gradient(90deg, rgba(246,243,238,0.95) 0%, rgba(246,243,238,0.85) 42%, rgba(246,243,238,0.2) 100%)' 
+                                background: 'linear-gradient(90deg, rgba(248,246,242,0.88) 0%, rgba(248,246,242,0.78) 38%, rgba(248,246,242,0.38) 58%, rgba(0,0,0,0.08) 100%)' 
                             }} 
                         />
                     </div>
 
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-16">
-                        <div className="max-w-[620px] space-y-8 md:space-y-10">
+                        <div className="max-w-[580px] space-y-10">
                             
-                            <p className="text-[11px] font-black uppercase tracking-[0.3em] text-[#5F6368] font-headline">
-                                Built for restaurants, hotels, hospitals & retail teams.
-                            </p>
+                            {/* Premium Eyebrow */}
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-px bg-[#8B6B3F] opacity-40" />
+                                <span className="text-[13px] font-medium uppercase tracking-[0.18em] text-[#8B6B3F] font-headline">
+                                    LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                                </span>
+                            </div>
 
-                            <h1 className="text-[42px] md:text-[68px] lg:text-[76px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase text-[#111111] font-headline">
+                            <h1 className="text-[48px] md:text-[68px] lg:text-[78px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase text-[#111111] font-headline">
                                 YOUR BUSINESS SHOULD NOT DEPEND ON <br className="hidden lg:block" />
                                 <span className="relative inline-block mt-2">
                                     MEMORY.
@@ -97,29 +117,38 @@ export default function DesignLab() {
                             
                             <div className="space-y-8">
                                 <div className="space-y-6">
-                                    <p className="text-[17px] md:text-[19px] font-medium leading-[1.6] text-[#5F6368] italic">
+                                    <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
                                         MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, timestamps, and accountability.
                                     </p>
-                                    <p className="text-[17px] md:text-[19px] font-medium leading-[1.6] text-[#5F6368] italic">
+                                    <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
                                         So work gets done properly — even when managers are away, staff change, or operations get busy.
                                     </p>
                                 </div>
                                 
-                                <div className="flex flex-col gap-3">
-                                    <BenefitItem text="No new apps to learn." />
-                                    <BenefitItem text="No training headaches." />
-                                    <BenefitItem text="Works directly on Google Sheets." />
+                                <div className="flex flex-col gap-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                        </div>
+                                        <span className="text-sm font-semibold text-[#111111] uppercase tracking-wide">No new apps to learn.</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                        </div>
+                                        <span className="text-sm font-semibold text-[#111111] uppercase tracking-wide">Works directly on Google Sheets.</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-8 pt-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
+                            <div className="flex flex-col sm:flex-row items-center gap-10 pt-4">
+                                <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center gap-3">
                                         See the system <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </button>
                                 <button className="group text-[#5F6368] font-bold uppercase text-[11px] tracking-[0.2em] transition-all hover:text-[#111111] flex items-center gap-3">
-                                    <Link href="#how-it-works">Watch How Teams Use It</Link>
+                                    <Link href="#how-it-works">Watch Teams Use It</Link>
                                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                                 </button>
                             </div>
@@ -129,10 +158,10 @@ export default function DesignLab() {
                 </section>
 
                 {/* --- 2. TRUST STRIP --- */}
-                <div className="w-full bg-[#FFFFFF] py-12 border-y border-zinc-100 relative z-40">
+                <div className="w-full bg-[#FFFFFF] py-12 border-y border-black/5 relative z-40">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24">
-                            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.4em] font-headline">OPERATIONAL VERTICALS</span>
+                            <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.4em] font-headline">OPERATIONAL VERTICALS</span>
                             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-40">
                                 {["Restaurants", "Hotels", "Retail", "Hospitals", "Schools", "Multiplexes"].map((ind) => (
                                     <span key={ind} className="text-xs md:text-sm font-bold text-[#111111] uppercase tracking-[0.1em] italic">{ind}</span>
@@ -146,14 +175,14 @@ export default function DesignLab() {
                 <Section id="how-it-works" className="bg-[#FFFFFF]">
                     <div className="max-w-5xl mx-auto space-y-24 md:space-y-40">
                         <div className="text-center space-y-6">
-                            <Badge variant="outline" className="text-[#1F6B52] border-[#1F6B52]/10 bg-[#1F6B52]/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2">DEPLOYMENT</Badge>
+                            <Badge variant="outline" className="text-[#1F6B52] border-[#1F6B52]/10 bg-[#1F6B52]/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2">METHODOLOGY</Badge>
                             <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">The Path to Clarity.</h2>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-16 md:gap-24">
                             {[
                                 { n: "01", t: "Select Your Pack", d: "Choose from specialized industry operational systems pre-built by experts." },
-                                { n: "02", t: "Assign Responsibilities", d: "Map staff names to specific roles in the master hub. No IT required." },
+                                { n: "02", t: "Assign Personnel", d: "Map staff names to specific roles in the master hub. No IT required." },
                                 { n: "03", t: "Track Execution", d: "Watch tasks turn green across your business from any mobile device." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-8 relative group text-center md:text-left">
@@ -171,15 +200,15 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 4. REAL INTERFACE --- */}
-                <Section className="bg-[#F9F9F7] border-y border-zinc-100">
+                <Section className="bg-[#F9F9F7] border-y border-black/5">
                     <div className="space-y-20 md:space-y-32">
                         <div className="text-center space-y-6 max-w-3xl mx-auto">
                             <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">The system is the product.</h2>
                             <p className="text-[#5F6368] text-base md:text-lg italic leading-relaxed">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
                         </div>
 
-                        <div className="relative max-w-6xl mx-auto rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-zinc-200 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] group bg-white">
-                             <div className="absolute inset-0 bg-gradient-to-t from-[#F6F3EE]/40 via-transparent to-transparent pointer-events-none z-10" />
+                        <div className="relative max-w-6xl mx-auto rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] group bg-white">
+                             <div className="absolute inset-0 bg-gradient-to-t from-[#F8F6F2]/40 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
                                 src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
                                 alt="Real Operational Ledger" 
@@ -214,8 +243,8 @@ export default function DesignLab() {
                                 i: ShieldCheck
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex gap-8 p-10 bg-zinc-50/50 rounded-[3rem] border border-zinc-100 hover:bg-white hover:shadow-2xl transition-all duration-700 group">
-                                <div className="w-16 h-16 rounded-2xl bg-white border border-zinc-100 flex items-center justify-center text-[#D6A85F] shrink-0 shadow-sm group-hover:bg-[#111111] group-hover:text-white transition-all">
+                            <div key={i} className="flex gap-8 p-10 bg-[#F8F6F2]/50 rounded-[3rem] border border-black/5 hover:bg-white hover:shadow-2xl transition-all duration-700 group">
+                                <div className="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-[#D6A85F] shrink-0 shadow-sm group-hover:bg-[#111111] group-hover:text-white transition-all">
                                     <item.i className="w-7 h-7" />
                                 </div>
                                 <div className="space-y-3">
