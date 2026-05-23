@@ -70,7 +70,7 @@ export default function DesignLab() {
             <main className="flex-1">
                 
                 {/* --- 1. THE CINEMATIC HERO: LAYERED GRADIENT ARCHITECTURE --- */}
-                <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-[#F8F6F2]">
+                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-start overflow-hidden bg-[#F8F6F2]">
                     {/* Cinematic Video with Filter & Motion */}
                     <div className="absolute inset-0 z-0">
                         <div className="w-full h-full scale-[1.01] animate-[zoom_20s_ease-in-out_infinite_alternate]">
@@ -93,13 +93,13 @@ export default function DesignLab() {
                         <div 
                             className="absolute inset-0 z-20" 
                             style={{ 
-                                background: 'linear-gradient(90deg, rgba(248,246,242,0.88) 0%, rgba(248,246,242,0.78) 38%, rgba(248,246,242,0.38) 58%, rgba(0,0,0,0.08) 100%)' 
+                                background: 'linear-gradient(90deg, rgba(248,246,242,0.92) 0%, rgba(248,246,242,0.78) 38%, rgba(248,246,242,0.38) 58%, rgba(0,0,0,0.08) 100%)' 
                             }} 
                         />
                     </div>
 
-                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-16">
-                        <div className="max-w-[580px] space-y-10">
+                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-32 md:pt-40">
+                        <div className="max-w-[580px] space-y-8">
                             
                             {/* Premium Editorial Eyebrow */}
                             <div className="flex items-center gap-4">
@@ -109,8 +109,8 @@ export default function DesignLab() {
                                 </span>
                             </div>
 
-                            {/* Headline: ExtraBold weight for sophisticated command */}
-                            <h1 className="text-[48px] md:text-[68px] lg:text-[78px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase text-[#111111] font-headline">
+                            {/* Headline: ExtraBold weight for sophisticated command. Adjusted for "One Glance" */}
+                            <h1 className="text-[34px] md:text-[54px] font-extrabold tracking-[-0.04em] leading-[0.95] uppercase text-[#111111] font-headline">
                                 YOUR BUSINESS SHOULD NOT DEPEND ON <br className="hidden lg:block" />
                                 <span className="relative inline-block mt-2">
                                     MEMORY.
@@ -119,37 +119,37 @@ export default function DesignLab() {
                                 </span>
                             </h1>
                             
-                            <div className="space-y-8">
+                            <div className="space-y-6">
                                 {/* Calm Body Text: Inter Regular, slate grey */}
-                                <div className="space-y-6">
-                                    <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
+                                <div className="space-y-4">
+                                    <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
                                         MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, risks involved, timestamps, and accountability built in.
                                     </p>
-                                    <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
+                                    <p className="text-[15px] md:text-[17px] font-normal leading-[1.65] text-[#4B5563]">
                                         So work gets done properly — even when managers are away, staff change, or operations get busy.
                                     </p>
                                 </div>
                                 
-                                {/* Refined Operational Trust Statements */}
-                                <div className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                {/* Refined Operational Trust Statements (Checklisted) */}
+                                <div className="flex flex-col gap-2.5 pt-2">
+                                    {[
+                                        "No new apps to learn.",
+                                        "No training headaches.",
+                                        "Works directly on Google Sheets."
+                                    ].map((text, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                            </div>
+                                            <span className="text-[13px] font-bold text-[#111111] uppercase tracking-wide italic">{text}</span>
                                         </div>
-                                        <span className="text-sm font-semibold text-[#111111] uppercase tracking-wide">No new apps to learn.</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
-                                        </div>
-                                        <span className="text-sm font-semibold text-[#111111] uppercase tracking-wide">Works directly on Google Sheets.</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
 
                             {/* Luxury Operational Buttons */}
                             <div className="flex flex-col sm:flex-row items-center gap-10 pt-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
+                                <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center gap-3">
                                         See the system <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
