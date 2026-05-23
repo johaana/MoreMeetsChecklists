@@ -39,7 +39,10 @@ import {
     Popcorn,
     Gem,
     ShieldAlert,
-    CheckSquare
+    CheckSquare,
+    ClipboardCheck,
+    HelpCircle,
+    MessagesSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -215,55 +218,122 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- 2. THE SYSTEM IS THE PRODUCT (ENVIRONMENT) --- */}
-                <Section className="bg-white border-y border-black/5" id="how-it-works">
-                    <div className="space-y-20 md:space-y-32">
-                        <div className="text-center space-y-6 max-w-3xl mx-auto">
-                            <SectionEyebrow text="THE INFRASTRUCTURE" />
-                            <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">
-                                Focus on Outcomes.
-                            </h2>
-                            <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
-                                Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets. Every task is timestamped, assigned, and verifiable.
-                            </p>
+                {/* --- 2. WHAT IS IT? (THE ENGINE EXPLAINED) --- */}
+                <Section className="bg-white" id="how-it-works">
+                    <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
+                        <div className="space-y-8 text-left">
+                            <div className="space-y-4">
+                                <SectionEyebrow text="WHAT IT IS" />
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
+                                    The Excel-to-Sheets <br/> Master Engine.
+                                </h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-8 leading-relaxed">
+                                    We provide a forensically engineered Excel Master file. You upload it to Google Drive, and it turns into a live mobile command center for your entire team.
+                                </p>
+                            </div>
+                            <div className="space-y-6">
+                                {[
+                                    { t: "NO NEW APPS", d: "Your team already knows how to use a spreadsheet. Zero learning curve.", i: Smartphone },
+                                    { t: "OWN THE DATA", d: "No monthly SaaS 'tax'. The system is yours forever. No logins to manage.", i: Lock }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm">
+                                            <item.i className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="text-sm font-black uppercase text-zinc-950 tracking-wide">{item.t}</h4>
+                                            <p className="text-xs text-zinc-500 font-medium italic">{item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-
-                        <div className="relative max-w-6xl mx-auto rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] group bg-[#F8F6F2]">
-                             <div className="absolute inset-0 bg-gradient-to-t from-[#F8F6F2]/40 via-transparent to-transparent pointer-events-none z-10" />
+                        <div className="relative max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl group bg-[#F8F6F2]">
+                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
-                                src="https://picsum.photos/seed/operational-flow/1200/800" 
-                                alt="Operational Efficiency" 
+                                src="https://picsum.photos/seed/operational-team-collab/1200/800" 
+                                alt="Operational Synergy" 
                                 className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
                                 data-ai-hint="operational teamwork"
                              />
-                             <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20">
-                                <Badge className="bg-emerald-500 text-white border-none px-6 py-2 uppercase font-black tracking-widest text-[10px] shadow-2xl">
-                                    VITALS_SECURED
-                                </Badge>
-                             </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 3. THE PROBLEM: WHATSAPP IS NOT A SYSTEM --- */}
+                <Section className="bg-zinc-50/50 border-y border-zinc-100">
+                    <div className="max-w-4xl mx-auto space-y-16">
+                        <div className="text-center space-y-6">
+                            <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL LIABILITY</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                WhatsApp is not a system.
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
+                                Verbal follow-ups and chat messages create a black hole of accountability.
+                            </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-12 md:gap-20 max-w-5xl mx-auto">
+                        <div className="grid md:grid-cols-3 gap-8">
                             {[
-                                { t: "SELECT YOUR PACK", d: "Choose from specialized industry systems pre-built by forensic experts." },
-                                { t: "ASSIGN PERSONNEL", d: "Map staff names to roles in the master hub. No IT required." },
-                                { t: "TRACK EXECUTION", d: "Watch tasks turn green across your business from any mobile device." }
-                            ].map((step, i) => (
-                                <div key={i} className="space-y-4 relative group">
-                                    <span className="text-[80px] font-black text-[#F8F6F2] absolute -top-12 -left-4 leading-none select-none">
-                                        0{i+1}
-                                    </span>
-                                    <div className="relative z-10 space-y-2">
-                                        <h3 className="text-xl font-bold uppercase tracking-tighter italic text-[#111111]">{step.t}</h3>
-                                        <p className="text-[#5F6368] text-sm md:text-base leading-relaxed font-medium italic">{step.d}</p>
+                                { t: "Unsearchable Chaos", d: "Critical instructions and handovers get buried under hundreds of chat messages.", i: SearchCheck },
+                                { t: "Memory Dependency", d: "If your manager is sick or resigns, the 'standard' disappears with them.", i: History },
+                                { t: "No Audit Trail", d: "When a mistake happens, there is zero verifiable proof of who was responsible.", i: AlertTriangle }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col gap-4 p-8 bg-white border border-zinc-100 rounded-3xl text-center items-center shadow-sm">
+                                    <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-500">
+                                        <item.i className="w-6 h-6" />
                                     </div>
+                                    <h4 className="text-sm font-black uppercase text-zinc-950 tracking-tighter italic">{item.t}</h4>
+                                    <p className="text-xs text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 3. RESIGNATION RISK (INSTITUTIONAL MEMORY) --- */}
+                {/* --- 4. THE MOAT: NO TRAINING REQUIRED --- */}
+                <Section className="bg-white">
+                    <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
+                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
+                            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.8/1] bg-zinc-200 order-2 lg:order-1">
+                                <img 
+                                    src="https://picsum.photos/seed/ops-execution/1200/800" 
+                                    alt="Daily Execution" 
+                                    className="w-full h-full object-cover grayscale-[0.2]" 
+                                    data-ai-hint="operational teamwork"
+                                />
+                            </div>
+                            <div className="space-y-10 order-1 lg:order-2">
+                                <div className="space-y-6">
+                                    <SectionEyebrow text="THE ADOPTION MOAT" />
+                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tighter uppercase italic">
+                                        Focus on <br/> Outcomes, <br/> not Apps.
+                                    </h2>
+                                    <p className="text-lg md:text-xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-emerald-500/20 pl-8">
+                                        The hardest part of operations is getting teams to use a new app. By using the spreadsheet interface they already know, adoption happens in minutes, not months.
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
+                                    {[
+                                        "Automated task recurrence (Daily/Weekly/Monthly)",
+                                        "Verifiable digital timestamps for every initial",
+                                        "Direct link to Master SOP Library",
+                                        "Live performance dashboard for management"
+                                    ].map((text, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                            </div>
+                                            <span className="text-[12px] font-bold text-[#111111] uppercase tracking-wide">{text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 5. RESIGNATION RISK (INSTITUTIONAL MEMORY) --- */}
                 <Section className="bg-[#F8F6F2]">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
                         <div className="space-y-10">
@@ -306,7 +376,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 4. THE ELITE VERTICALS (SECTOR GRID) --- */}
+                {/* --- 6. THE ELITE VERTICALS (SECTOR GRID) --- */}
                 <Section className="bg-white">
                     <div className="space-y-20 md:space-y-32">
                         <div className="text-center space-y-6 max-w-3xl mx-auto">
@@ -347,7 +417,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 5. SUSTAINABILITY THROUGH RIGOR --- */}
+                {/* --- 7. SUSTAINABILITY THROUGH RIGOR --- */}
                 <Section className="bg-[#111111] text-white">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
                         <div className="space-y-12">
@@ -399,7 +469,7 @@ export default function HomePage() {
 
                 <FaqSection />
 
-                {/* --- 6. FINAL MANDATE --- */}
+                {/* --- 8. FINAL MANDATE --- */}
                 <Section className="bg-[#F8F6F2] py-32 md:py-60 border-t border-black/5" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16 text-center">
                         <div className="space-y-6">

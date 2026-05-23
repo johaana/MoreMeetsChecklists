@@ -108,7 +108,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     return (
         <header className={cn(
             "px-8 lg:px-12 h-[64px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
-            (isScrolled || forceTheme === 'dark') ? "bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-2xl" : "bg-white/80 backdrop-blur-md border-b border-black/5"
+            (isScrolled || forceTheme === 'dark') ? "bg-black/30 backdrop-blur-2xl border-b border-white/5" : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )} style={!(isScrolled || forceTheme === 'dark') ? {
             background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
             backdropFilter: 'blur(14px)'
