@@ -41,12 +41,12 @@ const mainFont = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
 });
 
 const headlineFont = IBM_Plex_Sans({
   subsets: ['latin'],
-  weight: ['700'],
+  weight: ['400', '600', '700'],
   display: 'swap',
   variable: '--font-headline'
 });
