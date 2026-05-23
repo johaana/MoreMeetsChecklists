@@ -98,8 +98,8 @@ export default function DesignLab() {
                         />
                     </div>
 
-                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-32 md:pt-40">
-                        <div className="max-w-[580px] space-y-8">
+                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-20 md:pt-24">
+                        <div className="max-w-[580px] space-y-6 md:space-y-8">
                             
                             {/* Premium Editorial Eyebrow */}
                             <div className="flex items-center gap-4">
@@ -110,9 +110,9 @@ export default function DesignLab() {
                             </div>
 
                             {/* Headline: ExtraBold weight for sophisticated command. Forced 2-line architecture */}
-                            <h1 className="text-[34px] md:text-[54px] font-extrabold tracking-[-0.04em] leading-[0.95] uppercase text-[#111111] font-headline">
-                                YOUR BUSINESS SHOULD NOT <br className="hidden lg:block" />
-                                <span className="relative inline-block mt-2">
+                            <h1 className="text-[34px] md:text-[60px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase text-[#121212] font-headline">
+                                YOUR BUSINESS SHOULD NOT <br />
+                                <span className="relative inline-block mt-1">
                                     DEPEND ON MEMORY.
                                     {/* Subdued Luxury Underline */}
                                     <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
@@ -126,7 +126,7 @@ export default function DesignLab() {
                                 </p>
                                 
                                 {/* Refined Operational Trust Statements (Checklisted) */}
-                                <div className="flex flex-col gap-2.5 pt-2">
+                                <div className="flex flex-col gap-2.5 pt-1">
                                     {[
                                         "No new apps to learn.",
                                         "Works directly on Google Sheets."
@@ -142,7 +142,7 @@ export default function DesignLab() {
                             </div>
 
                             {/* Luxury Operational Buttons */}
-                            <div className="flex flex-col sm:flex-row items-center gap-10 pt-4">
+                            <div className="flex flex-col sm:flex-row items-center gap-10 pt-2">
                                 <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center gap-3">
                                         See the system <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
