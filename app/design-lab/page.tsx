@@ -107,14 +107,14 @@ export default function DesignLab() {
 
                             {/* Premium Action Buttons */}
                             <div className="flex flex-col sm:flex-row items-center gap-5 pt-4">
-                                <Button asChild className="h-14 md:h-16 px-8 md:px-10 rounded-[16px] bg-[#D6A85F] text-[#111827] font-bold uppercase text-[10px] md:text-xs tracking-widest shadow-[0_10px_30px_-5px_rgba(214,168,95,0.4)] transition-all hover:-translate-y-0.5 hover:bg-[#eec08a] border-none group">
+                                <button className="h-14 md:h-16 px-8 md:px-10 rounded-[16px] bg-[#D6A85F] text-[#111827] font-bold uppercase text-[10px] md:text-xs tracking-widest shadow-[0_10px_30px_-5px_rgba(214,168,95,0.4)] transition-all hover:-translate-y-0.5 hover:bg-[#eec08a] border-none group">
                                     <Link href="/library" className="flex items-center gap-3">
                                         See the system <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
-                                </Button>
-                                <Button asChild variant="outline" className="h-14 md:h-16 px-8 md:px-10 rounded-[16px] border-white/12 bg-white/5 backdrop-blur-[10px] text-white font-bold uppercase text-[10px] md:text-xs tracking-widest transition-all hover:bg-white/10">
+                                </button>
+                                <button className="h-14 md:h-16 px-8 md:px-10 rounded-[16px] border border-white/12 bg-white/5 backdrop-blur-[10px] text-white font-bold uppercase text-[10px] md:text-xs tracking-widest transition-all hover:bg-white/10">
                                     <Link href="#how-it-works">Watch How Teams Use It</Link>
-                                </Button>
+                                </button>
                             </div>
 
                         </div>
@@ -232,9 +232,9 @@ export default function DesignLab() {
                             </p>
                         </div>
                         <div className="pt-6">
-                            <Button asChild size="lg" className="h-16 md:h-20 px-12 md:px-16 rounded-full bg-[#D6A85F] text-black font-black uppercase text-[10px] md:text-sm tracking-widest hover:scale-[1.05] transition-all shadow-2xl border-none">
+                            <button className="h-16 md:h-20 px-12 md:px-16 rounded-full bg-[#D6A85F] text-black font-black uppercase text-[10px] md:text-sm tracking-widest hover:scale-[1.05] transition-all shadow-2xl border-none">
                                 <Link href="/library">Get Your System</Link>
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 </Section>
