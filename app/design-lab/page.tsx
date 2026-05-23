@@ -6,15 +6,19 @@ import { Button } from '@/components/ui/button';
 import { 
     Check, 
     ArrowRight, 
-    Activity,
     ShieldCheck,
-    Clock,
-    UserCheck,
     Smartphone,
     History,
-    Users,
+    CheckCircle2,
     ChevronRight,
-    Search
+    Search,
+    Target,
+    Activity,
+    ClipboardCheck,
+    FileSpreadsheet,
+    Zap,
+    LayoutGrid,
+    Eye
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -31,6 +35,17 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
+const BenefitItem = ({ text }: { text: string }) => (
+    <div className="flex items-center gap-3">
+        <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30 shadow-[0_0_10px_rgba(34,197,94,0.2)]">
+            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+        </div>
+        <span className="text-[11px] md:text-[13px] font-black text-[#D6A85F] uppercase tracking-[0.1em] italic">
+            {text}
+        </span>
+    </div>
+);
+
 export default function DesignLab() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -38,13 +53,13 @@ export default function DesignLab() {
     if (!mounted) return null;
 
     return (
-        <div className="bg-[#F6F3EE] text-[#111111] font-sans antialiased selection:bg-[#D6A85F]/10">
+        <div className="bg-[#0F1720] text-[#F8FAFC] font-sans antialiased selection:bg-[#D6A85F]/20">
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
                 {/* --- 1. THE ONE-GLANCE HERO: CINEMATIC ADVERTISING COMPOSITION --- */}
-                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-black">
+                <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
                     {/* Background Cinematic Video (Vimeo) */}
                     <div className="absolute inset-0 z-0">
                         <iframe 
@@ -54,17 +69,17 @@ export default function DesignLab() {
                             allow="autoplay; fullscreen; picture-in-picture" 
                             title="Operational Energy"
                         />
-                        {/* Split-Gradient Mask: Obsidian to Transparent */}
+                        {/* Split-Gradient Mask: Deep Navy Charcoal to Transparent */}
                         <div 
                             className="absolute inset-0 z-10" 
                             style={{ 
-                                background: 'linear-gradient(90deg, rgba(5,7,10,0.96) 0%, rgba(5,7,10,0.85) 45%, rgba(5,7,10,0.25) 100%)' 
+                                background: 'linear-gradient(90deg, rgba(15,23,32,0.96) 0%, rgba(15,23,32,0.85) 45%, rgba(15,23,32,0.25) 100%)' 
                             }} 
                         />
                     </div>
 
-                    <div className="relative z-20 container mx-auto max-w-[1250px] px-6 flex items-center h-full pt-16">
-                        <div className="max-w-4xl space-y-8 md:space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
+                    <div className="relative z-20 container mx-auto max-w-[1200px] px-6 flex items-center h-full pt-16">
+                        <div className="max-w-4xl space-y-6 md:space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
                             
                             {/* Eyebrow */}
                             <p className="text-[12px] font-black uppercase tracking-[0.4em] text-[#D6A85F] italic">
@@ -72,31 +87,23 @@ export default function DesignLab() {
                             </p>
 
                             {/* Tighter 2-Line Headline */}
-                            <h1 className="text-[44px] md:text-[68px] lg:text-[76px] font-black tracking-[-0.05em] leading-[0.9] uppercase text-white font-headline">
+                            <h1 className="text-[44px] md:text-[68px] lg:text-[76px] font-black tracking-[-0.05em] leading-[0.92] uppercase text-white font-headline">
                                 YOUR BUSINESS SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND ON MEMORY.
                             </h1>
                             
                             {/* Benefit-Driven Subtext */}
                             <div className="space-y-6 max-w-[620px]">
-                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.7] text-[#CBD5E1] italic">
                                     MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, risks involved, timestamps, and accountability built in.
                                 </p>
-                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.7] text-[#CBD5E1] italic">
                                     So work gets done properly — even when managers are away, staff change, or operations get busy.
                                 </p>
-                                <div className="space-y-2 pt-2">
-                                    {[
-                                        "No new apps to learn.",
-                                        "No training headaches.",
-                                        "Works directly on Google Sheets."
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <Check className="w-4 h-4 text-[#22C55E]" />
-                                            <span className="text-[14px] md:text-[16px] font-black text-[#D6A85F] uppercase tracking-[0.1em] italic">
-                                                {item}
-                                            </span>
-                                        </div>
-                                    ))}
+                                
+                                <div className="space-y-3 pt-2">
+                                    <BenefitItem text="No new apps to learn." />
+                                    <BenefitItem text="No training headaches." />
+                                    <BenefitItem text="Works directly on Google Sheets." />
                                 </div>
                             </div>
 
@@ -117,13 +124,13 @@ export default function DesignLab() {
                 </section>
 
                 {/* --- 2. TRUST STRIP --- */}
-                <div className="w-full bg-white py-12 border-y border-[#F6F3EE]">
+                <div className="w-full bg-[#111827] py-12 border-y border-white/5">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
-                            <span className="text-[10px] font-black text-[#5F6368] uppercase tracking-[0.4em]">Used for daily operations in</span>
+                            <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.4em]">Used for daily operations in</span>
                             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-30">
                                 {["Restaurants", "Hotels", "Multiplexes", "Retail", "Hospitals", "Schools"].map((ind) => (
-                                    <span key={ind} className="text-sm font-bold text-black uppercase tracking-[0.1em] italic">{ind}</span>
+                                    <span key={ind} className="text-sm font-bold text-white uppercase tracking-[0.1em] italic">{ind}</span>
                                 ))}
                             </div>
                         </div>
@@ -131,11 +138,11 @@ export default function DesignLab() {
                 </div>
 
                 {/* --- 3. THE PATH TO CLARITY --- */}
-                <Section id="how-it-works" className="bg-[#F6F3EE]">
+                <Section id="how-it-works" className="bg-[#0F1720]">
                     <div className="max-w-5xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-[#D6A85F] border-[#D6A85F]/20 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
-                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The Path to Clarity.</h2>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9] text-white">The Path to Clarity.</h2>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-16">
@@ -145,12 +152,12 @@ export default function DesignLab() {
                                 { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any mobile device." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-6 relative group">
-                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50 transition-colors group-hover:text-[#D6A85F]/10">
+                                    <span className="text-[80px] font-black text-white/5 absolute -top-12 -left-4 leading-none select-none transition-colors group-hover:text-[#D6A85F]/10">
                                         {step.n}
                                     </span>
                                     <div className="relative z-10 space-y-3">
-                                        <h3 className="text-2xl font-bold uppercase tracking-tighter italic">{step.t}</h3>
-                                        <p className="text-[#5F6368] leading-relaxed font-medium italic">{step.d}</p>
+                                        <h3 className="text-2xl font-bold uppercase tracking-tighter italic text-white">{step.t}</h3>
+                                        <p className="text-[#CBD5E1] leading-relaxed font-medium italic">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
@@ -159,26 +166,26 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 4. REAL INTERFACE --- */}
-                <Section className="bg-white">
+                <Section className="bg-[#111827]">
                     <div className="space-y-20">
                         <div className="text-center space-y-4 max-w-3xl mx-auto">
-                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The product is the system.</h2>
-                            <p className="text-[#5F6368] text-lg italic">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9] text-white">The product is the system.</h2>
+                            <p className="text-[#CBD5E1] text-lg italic">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
                         </div>
 
-                        <div className="relative max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden border border-black/5 shadow-[0_60px_100px_-20px_rgba(0,0,0,0.1)] group">
-                             <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none z-10" />
+                        <div className="relative max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden border border-white/5 shadow-[0_60px_100px_-20px_rgba(0,0,0,0.5)] group">
+                             <div className="absolute inset-0 bg-gradient-to-t from-[#0F1720] via-transparent to-transparent pointer-events-none z-10" />
                              <img 
                                 src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
                                 alt="Real Operational Ledger" 
-                                className="w-full h-auto grayscale-[0.1] hover:grayscale-0 transition-all duration-1000"
+                                className="w-full h-auto grayscale-[0.2] hover:grayscale-0 transition-all duration-1000"
                              />
                         </div>
                     </div>
                 </Section>
 
                 {/* --- 5. BENEFITS --- */}
-                <Section className="bg-[#F6F3EE]">
+                <Section className="bg-[#0F1720]">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         {[
                             {
@@ -189,7 +196,7 @@ export default function DesignLab() {
                             {
                                 t: "Daily accountability",
                                 d: "Know exactly who did what, when, and where. No more verbal guessing.",
-                                i: UserCheck
+                                i: CheckCircle2
                             },
                             {
                                 t: "Institutional memory",
@@ -202,13 +209,13 @@ export default function DesignLab() {
                                 i: ShieldCheck
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex gap-8 p-10 bg-white rounded-[3rem] border border-black/5 hover:shadow-2xl transition-all duration-700 group">
-                                <div className="w-16 h-16 rounded-2xl bg-[#F6F3EE] border border-black/5 flex items-center justify-center text-[#1F6B52] shrink-0 shadow-sm group-hover:bg-[#1F6B52] group-hover:text-white transition-colors">
+                            <div key={i} className="flex gap-8 p-10 bg-white/[0.02] rounded-[3rem] border border-white/5 hover:border-[#D6A85F]/20 transition-all duration-700 group">
+                                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#D6A85F] shrink-0 shadow-sm group-hover:bg-[#D6A85F] group-hover:text-black transition-colors">
                                     <item.i className="w-7 h-7" />
                                 </div>
                                 <div className="space-y-3">
-                                    <h3 className="text-2xl font-bold uppercase tracking-tighter italic">{item.t}</h3>
-                                    <p className="text-[#5F6368] text-lg leading-relaxed italic">{item.d}</p>
+                                    <h3 className="text-2xl font-bold uppercase tracking-tighter italic text-white">{item.t}</h3>
+                                    <p className="text-[#CBD5E1] text-lg leading-relaxed italic">{item.d}</p>
                                 </div>
                             </div>
                         ))}
@@ -216,18 +223,18 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 6. FINAL MANDATE --- */}
-                <Section className="bg-[#111111] text-white text-center py-40 md:py-60" noSpine>
+                <Section className="bg-black text-white text-center py-40 md:py-60" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-4">
                             <h2 className="text-[44px] md:text-[88px] font-black leading-[0.85] tracking-tighter uppercase italic font-headline">
                                 STOP CHASING. <br/> START RUNNING.
                             </h2>
-                            <p className="text-xl md:text-[28px] text-zinc-500 font-medium italic leading-tight">
+                            <p className="text-xl md:text-[28px] text-[#A7B0BE] font-medium italic leading-tight">
                                 Deploy operational excellence across your business today.
                             </p>
                         </div>
                         <div className="pt-8">
-                            <Button asChild size="lg" className="h-20 px-16 rounded-full bg-white text-black font-black uppercase text-sm tracking-widest hover:bg-[#F6F3EE] hover:scale-[1.05] transition-all shadow-2xl border-none">
+                            <Button asChild size="lg" className="h-20 px-16 rounded-full bg-[#D6A85F] text-black font-black uppercase text-sm tracking-widest hover:scale-[1.05] transition-all shadow-2xl border-none">
                                 <Link href="/library">Get Your System</Link>
                             </Button>
                         </div>
