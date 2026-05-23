@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Footer } from '@/components/layout/footer';
 import { 
     Check, 
     ArrowRight, 
@@ -68,7 +69,7 @@ export default function DesignLab() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE CINEMATIC HERO --- */}
+                {/* --- 1. THE CINEMATIC HERO: LAYERED GRADIENT ARCHITECTURE --- */}
                 <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-[#F8F6F2]">
                     {/* Cinematic Video with Filter & Motion */}
                     <div className="absolute inset-0 z-0">
@@ -88,7 +89,7 @@ export default function DesignLab() {
                         {/* Film Grain Overlay */}
                         <div className="absolute inset-0 z-10 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                         
-                        {/* Layered Gradient Architecture */}
+                        {/* LAYERED GRADIENT ARCHITECTURE: Ensures left-side text clarity while preserving right-side richness */}
                         <div 
                             className="absolute inset-0 z-20" 
                             style={{ 
@@ -100,7 +101,7 @@ export default function DesignLab() {
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-16">
                         <div className="max-w-[580px] space-y-10">
                             
-                            {/* Premium Eyebrow */}
+                            {/* Premium Editorial Eyebrow */}
                             <div className="flex items-center gap-4">
                                 <div className="w-12 h-px bg-[#8B6B3F] opacity-40" />
                                 <span className="text-[13px] font-medium uppercase tracking-[0.18em] text-[#8B6B3F] font-headline">
@@ -108,24 +109,28 @@ export default function DesignLab() {
                                 </span>
                             </div>
 
+                            {/* Headline: ExtraBold weight for sophisticated command */}
                             <h1 className="text-[48px] md:text-[68px] lg:text-[78px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase text-[#111111] font-headline">
                                 YOUR BUSINESS SHOULD NOT DEPEND ON <br className="hidden lg:block" />
                                 <span className="relative inline-block mt-2">
                                     MEMORY.
+                                    {/* Subdued Luxury Underline */}
                                     <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
                                 </span>
                             </h1>
                             
                             <div className="space-y-8">
+                                {/* Calm Body Text: Inter Regular, slate grey */}
                                 <div className="space-y-6">
                                     <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
-                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, timestamps, and accountability.
+                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, risks involved, timestamps, and accountability built in.
                                     </p>
                                     <p className="text-[17px] md:text-[19px] font-normal leading-[1.65] text-[#4B5563]">
                                         So work gets done properly — even when managers are away, staff change, or operations get busy.
                                     </p>
                                 </div>
                                 
+                                {/* Refined Operational Trust Statements */}
                                 <div className="flex flex-col gap-4">
                                     <div className="flex items-center gap-3">
                                         <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -142,6 +147,7 @@ export default function DesignLab() {
                                 </div>
                             </div>
 
+                            {/* Luxury Operational Buttons */}
                             <div className="flex flex-col sm:flex-row items-center gap-10 pt-4">
                                 <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center gap-3">
@@ -158,7 +164,7 @@ export default function DesignLab() {
                     </div>
                 </section>
 
-                {/* --- 2. TRUST STRIP --- */}
+                {/* --- 2. TRUST STRIP: ELITE VERTICALS --- */}
                 <div className="w-full bg-[#FFFFFF] py-12 border-y border-black/5 relative z-40">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24">
@@ -172,7 +178,7 @@ export default function DesignLab() {
                     </div>
                 </div>
 
-                {/* --- 3. THE PATH TO CLARITY --- */}
+                {/* --- 3. THE PATH TO CLARITY (Adoption Engine) --- */}
                 <Section id="how-it-works" className="bg-[#FFFFFF]">
                     <div className="max-w-5xl mx-auto space-y-24 md:space-y-40">
                         <div className="text-center space-y-6">
@@ -200,7 +206,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 4. REAL INTERFACE --- */}
+                {/* --- 4. REAL INTERFACE: THE MOAT --- */}
                 <Section className="bg-[#F9F9F7] border-y border-black/5">
                     <div className="space-y-20 md:space-y-32">
                         <div className="text-center space-y-6 max-w-3xl mx-auto">
@@ -219,7 +225,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 5. BENEFITS --- */}
+                {/* --- 5. BENEFITS: INSTITUTIONAL OUTCOMES --- */}
                 <Section className="bg-[#FFFFFF]">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto">
                         {[
@@ -258,7 +264,7 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 6. FINAL MANDATE --- */}
-                <Section className="bg-[#111111] text-white text-center py-32 md:py-60" noSpine>
+                <Section className="bg-[#111111] text-white text-center py-32 md:py-60">
                     <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
                         <div className="space-y-6">
                             <h2 className="text-[38px] md:text-[88px] font-extrabold leading-[0.85] tracking-tighter uppercase italic font-headline text-center">
