@@ -36,7 +36,12 @@ import {
     Search,
     ClipboardCheck,
     FileText,
-    Target
+    Target,
+    ChevronRight,
+    SearchCheck,
+    Database,
+    FileSignature,
+    Monitor
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -73,7 +78,7 @@ export default function HomePage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE SOVEREIGN HERO (DESKTOP) --- */}
+                {/* --- HERO SECTION (DESKTOP) --- */}
                 <section className="hidden md:flex relative w-full h-[100svh] flex-col justify-start overflow-hidden bg-[#F8F6F2]">
                     <div className="absolute inset-0 z-0">
                         <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
@@ -112,7 +117,7 @@ export default function HomePage() {
                                 </h1>
                                 
                                 <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-lg">
-                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly.
+                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking.
                                 </p>
                                 
                                 <div className="flex flex-col gap-2.5 pt-1">
@@ -203,122 +208,133 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- 2. THE INFRASTRUCTURE BRIDGE --- */}
-                <Section className="bg-white" id="the-bridge">
-                    <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
-                        <div className="space-y-8 text-left">
+                {/* --- SECTION 1: THE CORE TRUTH --- */}
+                <Section className="bg-white">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                        <div className="space-y-8">
                             <div className="space-y-4">
-                                <SectionEyebrow text="THE INFRASTRUCTURE BRIDGE" />
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
-                                    The Excel-to-Sheets <br/> Master Engine.
+                                <SectionEyebrow text="THE CORE TRUTH" />
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                    SOPs don’t fail <br/> because they are missing.
                                 </h2>
-                                <p className="text-zinc-500 text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-8 leading-relaxed">
-                                    You don't need expensive software. You need a better engine. We provide a forensically engineered Master Excel file that controls your entire operation.
+                                <p className="text-xl md:text-2xl font-black text-primary italic leading-none">
+                                    They fail because they are not executed.
                                 </p>
                             </div>
                             <div className="space-y-6">
-                                {[
-                                    { t: "OWNER COMMAND", d: "Manage the Master Excel file from your desk. Set the standards once.", i: Lock },
-                                    { t: "TEAM EXECUTION", d: "Your team operates through a live, mobile-optimized Ledger via Google Sheets.", i: Smartphone }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-5">
-                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm">
-                                            <item.i className="w-6 h-6 text-primary" />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <h4 className="text-sm font-black uppercase text-zinc-950 tracking-wide">{item.t}</h4>
-                                            <p className="text-xs text-zinc-500 font-medium italic">{item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="relative max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl group bg-[#F8F6F2]">
-                             <img 
-                                src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg" 
-                                alt="Operational Analytics" 
-                                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
-                             />
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 3. THE REALITY CHECK (PROBLEMS) --- */}
-                <Section className="bg-zinc-950 text-white border-y border-white/5" noSpine>
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="space-y-8">
-                                <div className="space-y-4">
-                                    <Badge className="bg-red-500 text-white uppercase font-black tracking-widest text-[9px] px-6 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
-                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline leading-[0.95] tracking-tight uppercase italic">
-                                        The high cost <br/> of improvisation.
-                                    </h2>
-                                    <p className="text-zinc-400 text-lg md:text-xl font-medium italic">
-                                        WhatsApp groups and verbal follow-ups are not systems. They are invitations for failure.
-                                    </p>
-                                </div>
-                                <div className="grid sm:grid-cols-2 gap-6">
+                                <p className="text-lg text-zinc-500 font-bold italic leading-relaxed">
+                                    Most businesses already have SOPs. But in reality:
+                                </p>
+                                <div className="grid gap-3">
                                     {[
-                                        { t: "The Reporting Chase", d: "Spending hours daily asking staff for status updates via chat.", i: Activity },
-                                        { t: "Audit Panic", d: "Scrambling to find proof of compliance during an inspection.", i: ShieldAlert },
-                                        { t: "Knowledge Leakage", d: "Losing your standards when a key manager resigns.", i: History },
-                                        { t: "Verbal Drift", d: "Instructions changing as they are passed shift-to-shift.", i: Zap }
-                                    ].map((item, i) => (
-                                        <div key={i} className="space-y-3 p-6 bg-white/[0.03] border border-white/10 rounded-2xl">
-                                            <item.i className="w-5 h-5 text-red-500" />
-                                            <h4 className="text-xs font-black uppercase tracking-widest text-white">{item.t}</h4>
-                                            <p className="text-[10px] text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
+                                        "They sit in unread PDFs",
+                                        "They depend on individual memory",
+                                        "They disappear under pressure",
+                                        "They are not verifiable"
+                                    ].map((point, i) => (
+                                        <div key={i} className="flex items-center gap-4">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                                            <span className="text-base font-black uppercase italic tracking-tighter text-zinc-900">{point}</span>
                                         </div>
                                     ))}
                                 </div>
+                                <p className="text-zinc-400 font-bold italic text-base pt-4">
+                                    MoreMeets turns static SOPs into a live operating system for execution.
+                                </p>
                             </div>
-                            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 aspect-[4/5] bg-zinc-900 group">
-                                <img 
-                                    src="https://i.postimg.cc/X77vqvg6/confused-business-woman-using-laptop-computer-phone.jpg" 
-                                    alt="Operational Stress" 
-                                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000" 
-                                />
-                            </div>
+                        </div>
+                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-100">
+                             <img 
+                                src="https://i.postimg.cc/s16xjkL7/people-stands-looks-documents.jpg" 
+                                alt="Operational Audit" 
+                                className="w-full h-full object-cover grayscale-[0.2]" 
+                             />
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 4. INSIDE THE ENGINE (WHAT YOU GET) --- */}
-                <Section className="bg-white">
-                    <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
-                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.5/1] bg-zinc-200">
+                {/* --- SECTION 2: WHAT THIS ACTUALLY IS --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
+                    <div className="max-w-5xl mx-auto space-y-20">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="THE SOP EXECUTION ENGINE" />
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                You don’t need new software. <br/> You need enforcement infrastructure.
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
+                                MoreMeets is a master control system built in Excel that runs your entire operation through Google Sheets.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {[
+                                { 
+                                    t: "OWNER COMMAND LAYER", 
+                                    d: "Set standards once. Control everything from a single master file.", 
+                                    i: Lock 
+                                },
+                                { 
+                                    t: "TEAM EXECUTION LAYER", 
+                                    d: "Staff complete daily work through a live, mobile-first execution ledger.", 
+                                    i: Smartphone 
+                                },
+                                { 
+                                    t: "REAL-TIME CONTROL LAYER", 
+                                    d: "Every task becomes visible, timestamped, and verifiable.", 
+                                    i: Activity 
+                                }
+                            ].map((layer, i) => (
+                                <div key={i} className="p-8 bg-white rounded-3xl border border-zinc-200 space-y-4 shadow-sm hover:shadow-xl transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                        <layer.i className="w-6 h-6" />
+                                    </div>
+                                    <h3 className="text-lg font-black uppercase italic tracking-tighter text-zinc-950">{layer.t}</h3>
+                                    <p className="text-sm text-zinc-500 font-bold italic leading-relaxed">{layer.d}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[16/7] bg-zinc-200">
                              <img 
-                                src="https://i.postimg.cc/J0QtgD5V/colleagues-real-estate-architecture-working-together-project-design-development.jpg" 
-                                alt="System Spec" 
+                                src="https://i.postimg.cc/Btk3w4kZ/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg" 
+                                alt="Command Center" 
                                 className="w-full h-full object-cover grayscale-[0.2]" 
                              />
                         </div>
-                        <div className="space-y-10">
-                            <div className="space-y-4">
-                                <SectionEyebrow text="THE TECHNICAL SPEC" />
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                    Inside the <br/> Master Engine.
+                    </div>
+                </Section>
+
+                {/* --- SECTION 3: WHY TRADITIONAL TOOLS FAIL --- */}
+                <Section className="bg-zinc-950 text-white" noSpine>
+                    <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 aspect-[4/5] bg-zinc-900">
+                             <img 
+                                src="https://i.postimg.cc/grQpBm5g/confused-business-woman-using-laptop-computer-phone.jpg" 
+                                alt="Operational Chaos" 
+                                className="w-full h-full object-cover grayscale-[0.3]" 
+                             />
+                        </div>
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <Badge className="bg-red-500 text-white uppercase font-black tracking-widest text-[9px] px-6 py-2 rounded-none italic">STRUCTURAL FAILURE</Badge>
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline leading-[0.95] tracking-tight uppercase italic">
+                                    Operational chaos <br/> is not random. <br/> It is structural.
                                 </h2>
-                                <p className="text-lg text-zinc-500 font-bold italic leading-relaxed">
-                                    Each Sovereign Master includes 5 forensically engineered chambers:
+                                <p className="text-zinc-400 text-lg md:text-xl font-medium italic">
+                                    WhatsApp and verbal management create invisible failure loops.
                                 </p>
                             </div>
-                            <div className="space-y-5">
+                            <div className="grid sm:grid-cols-2 gap-y-10 gap-x-12">
                                 {[
-                                    { t: "Executive Dashboard", d: "Real-time completion rates and P1 incident alerts.", i: Activity },
-                                    { t: "Live Execution Ledger", d: "Symmetric grid for 365-day task logging.", i: LayoutGrid },
-                                    { t: "Master SOP Library", d: "Institutional instructions for every specialized role.", i: FileText },
-                                    { t: "Personnel Hub", d: "Role-based personnel mapping and directory.", i: Users },
-                                    { t: "Incident Registry", d: "Audit-ready evidence logs for insurers.", i: ShieldCheck }
+                                    { t: "Reporting Chase", d: "Constant follow-ups for updates." },
+                                    { t: "Audit Panic", d: "No evidence trail when needed." },
+                                    { t: "Knowledge Leakage", d: "System breaks when people leave." },
+                                    { t: "Verbal Drift", d: "Instructions change across shifts." },
+                                    { t: "System Absence", d: "This is not inefficiency. It is absence." }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex items-start gap-4 group">
-                                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
-                                            <item.i className="w-4 h-4" />
-                                        </div>
-                                        <div className="space-y-0.5">
-                                            <h4 className="text-sm font-black uppercase text-zinc-950 tracking-tighter">{item.t}</h4>
-                                            <p className="text-[11px] text-zinc-500 font-bold italic leading-tight">{item.d}</p>
-                                        </div>
+                                    <div key={i} className="space-y-2 border-l border-red-500/30 pl-6">
+                                        <h4 className="text-sm font-black uppercase text-white tracking-widest">{item.t}</h4>
+                                        <p className="text-xs text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
                                     </div>
                                 ))}
                             </div>
@@ -326,66 +342,108 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 5. THE ADOPTION MOAT --- */}
-                <Section className="bg-zinc-50 border-y border-zinc-100">
-                    <div className="max-w-5xl mx-auto space-y-20 md:space-y-32">
-                        <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
+                {/* --- SECTION 4: THE ADOPTION MOAT --- */}
+                <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto space-y-20">
+                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
                             <div className="space-y-10">
-                                <div className="space-y-6">
+                                <div className="space-y-4">
                                     <SectionEyebrow text="THE ADOPTION MOAT" />
-                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tighter uppercase italic">
-                                        Zero training. <br/> Total adoption.
+                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                        Most systems fail <br/> at adoption.
                                     </h2>
-                                    <p className="text-lg md:text-xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-emerald-500/20 pl-8">
-                                        SaaS apps fail because of login friction. Spreadsheets succeed because your team already uses them every single day.
+                                    <p className="text-lg text-zinc-500 font-bold italic leading-relaxed border-l-4 border-emerald-500/20 pl-8">
+                                        MoreMeets works because it runs on behavior your team already has.
                                     </p>
                                 </div>
                                 <div className="space-y-4">
                                     {[
-                                        "Opens on any smartphone via Google Sheets",
+                                        "Opens in Google Sheets (no login friction)",
+                                        "Mobile-first execution grid",
                                         "Name-based verification only",
-                                        "No complex menu hierarchies",
+                                        "No complex dashboards to 'learn'",
                                         "Instant visual feedback on tasks"
                                     ].map((text, i) => (
                                         <div key={i} className="flex items-center gap-3">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                 <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
                                             </div>
-                                            <span className="text-[12px] font-bold text-[#111111] uppercase tracking-wide">{text}</span>
+                                            <span className="text-[13px] font-bold text-[#111111] uppercase tracking-wide">{text}</span>
                                         </div>
                                     ))}
                                 </div>
+                                <p className="text-xl font-black italic uppercase tracking-tighter text-zinc-950 pt-4">
+                                    If your team can use Excel, they can run MoreMeets.
+                                </p>
                             </div>
-                            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.6/1] bg-zinc-200">
-                                <img 
-                                    src="https://i.postimg.cc/fTZ9KZjq/three-factory-workers-safety-hats-discussing-manufacture-plan.jpg" 
+                            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
+                                 <img 
+                                    src="https://i.postimg.cc/Th71dzsn/three-factory-workers-safety-hats-discussing-manufacture-plan.jpg" 
                                     alt="Frontline Execution" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
-                                />
+                                 />
                             </div>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 6. RESIGNATION RISK --- */}
-                <Section className="bg-[#F8F6F2]">
+                {/* --- SECTION 5: THE SYSTEM CORE --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="INSIDE THE MASTER SYSTEM" />
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 tracking-tight uppercase italic leading-[0.95]">
+                                Not documentation. <br/> Operational enforcement.
+                            </h2>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {[
+                                { t: "Executive Dashboard", d: "Live compliance monitoring and P1 critical alerts.", i: Activity },
+                                { t: "Execution Ledger", d: "Daily task tracking through a high-density 365-day grid.", i: FileSignature },
+                                { t: "SOP Library", d: "Role-based technical instructions accessible on-floor.", i: FileText },
+                                { t: "Personnel Map", d: "Clear accountability and chain-of-command structure.", i: Users },
+                                { t: "Incident Registry", d: "Audit-ready evidence logs for liability and insurance.", i: ShieldCheck }
+                            ].map((item, i) => (
+                                <div key={i} className="p-8 bg-white rounded-3xl border border-zinc-200 space-y-4 shadow-sm hover:shadow-xl transition-all">
+                                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-400">
+                                        <item.i className="w-5 h-5" />
+                                    </div>
+                                    <h4 className="text-sm font-black uppercase text-zinc-950 tracking-wide leading-none">{item.t}</h4>
+                                    <p className="text-xs text-zinc-400 font-bold italic leading-relaxed">{item.d}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[2/1] bg-zinc-200">
+                             <img 
+                                src="https://i.postimg.cc/9wrWwfkJ/colleagues-real-estate-architecture-working-together-project-design-development.jpg" 
+                                alt="System Engineering" 
+                                className="w-full h-full object-cover grayscale-[0.2]" 
+                             />
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 6: OUTCOME LAYER --- */}
+                <Section className="bg-white">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
-                        <div className="space-y-10 order-2 lg:order-1">
+                        <div className="space-y-10">
                             <div className="space-y-6">
-                                <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2">ASSET PROTECTION</Badge>
+                                <Badge variant="outline" className="text-zinc-500 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2">ASSET PROTECTION</Badge>
                                 <h2 className="text-[38px] md:text-[68px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.85] text-[#111111]">
-                                    People resign. <br/> The system stays.
+                                    People change. <br/> The system stays.
                                 </h2>
                             </div>
                             <p className="text-lg md:text-2xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-[#B89B5E]/20 pl-8">
-                                Tribal knowledge is a liability. MoreMeets™ converts individual experience into permanent organizational infrastructure.
+                                MoreMeets converts tribal knowledge into permanent infrastructure. 
                             </p>
-                            <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="grid sm:grid-cols-2 gap-8">
                                 {[
-                                    { t: "Standardization", d: "Every site runs on your best manager's logic.", i: Target },
-                                    { t: "Fast Onboarding", d: "New hires are productive in hours, not weeks.", i: GraduationCap },
-                                    { t: "Role Continuity", d: "Responsibilities remain, even when faces change.", i: Users },
-                                    { t: "Legal Defense", d: "Continuous evidence of due-diligence.", i: ShieldCheck }
+                                    { t: "Standardization", d: "Consistency across multiple locations.", i: Target },
+                                    { t: "Fast Onboarding", d: "New staff productive in hours, not weeks.", i: GraduationCap },
+                                    { t: "Role Continuity", d: "Zero dependency on individual memory.", i: Users },
+                                    { t: "Legal Defense", d: "Audit-ready operational proof.", i: ShieldCheck }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-4">
                                         <item.i className="w-5 h-5 text-[#B89B5E] shrink-0" />
@@ -397,10 +455,10 @@ export default function HomePage() {
                                 ))}
                             </div>
                         </div>
-                        <div className="relative order-1 lg:order-2">
+                        <div className="relative">
                             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
                                 <img 
-                                    src="https://i.postimg.cc/Gt3b4Mvc/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" 
+                                    src="https://i.postimg.cc/DJN9DPCD/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" 
                                     alt="Personnel Resilience" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
                                 />
@@ -409,16 +467,16 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 7. ELITE VERTICALS --- */}
-                <Section className="bg-white">
+                {/* --- SECTION 7: USE CASES --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
                     <div className="space-y-20 md:space-y-32">
-                        <div className="text-center space-y-6 max-w-3xl mx-auto">
+                        <div className="text-center space-y-4">
                             <SectionEyebrow text="SECTOR SPECIFIC" />
                             <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">
-                                High-Gravity Verticals.
+                                High-Discipline Operations.
                             </h2>
                             <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
-                                Not generic templates. Forensically engineered operational systems for high-stakes environments.
+                                Not generic templates. Operational systems tailored for high-variability environments.
                             </p>
                         </div>
 
@@ -433,8 +491,8 @@ export default function HomePage() {
                                 { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn },
                                 { name: "Jewellery Retail", id: "retail_jewellery_operations_pack", icon: Gem }
                             ].map((ind, i) => (
-                                <Link key={i} href={`/packs/${ind.id}`} className="group p-8 rounded-[2rem] bg-[#F8F6F2]/50 border border-black/5 hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-center flex flex-col items-center gap-4">
-                                    <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-[#B89B5E] group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 shadow-inner">
+                                <Link key={i} href={`/packs/${ind.id}`} className="group p-8 rounded-[2rem] bg-white border border-zinc-200 hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-center flex flex-col items-center gap-4">
+                                    <div className="w-16 h-16 rounded-2xl bg-zinc-50 flex items-center justify-center text-[#B89B5E] group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 shadow-inner">
                                         <ind.icon className="w-7 h-7" />
                                     </div>
                                     <span className="text-sm md:text-base font-bold uppercase tracking-tighter italic text-[#111111] group-hover:text-[#2E7D5A] transition-colors">{ind.name}</span>
@@ -443,67 +501,26 @@ export default function HomePage() {
                         </div>
 
                         <div className="text-center pt-8">
-                            <button className="h-14 px-12 rounded-full border-2 border-black/5 text-[#111111] font-bold uppercase text-[11px] tracking-widest hover:bg-[#111111] hover:text-white transition-all">
-                                <Link href="/library">Explore All Systems</Link>
+                             <button className="h-14 px-12 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
+                                <Link href="/library" className="flex items-center justify-center gap-3">
+                                    Explore All Systems <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
                             </button>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 8. SUSTAINABILITY --- */}
-                <Section className="bg-[#111111] text-white">
-                    <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
-                        <div className="space-y-12">
-                            <div className="space-y-6">
-                                <Badge className="bg-emerald-500 text-white uppercase font-black tracking-widest text-[10px] px-6 py-2 rounded-none">OPERATIONAL ESG</Badge>
-                                <h2 className="text-[38px] md:text-[68px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.85]">
-                                    Sustainability <br/> through Rigor.
-                                </h2>
-                                <p className="text-zinc-400 text-lg md:text-xl italic font-medium leading-relaxed max-w-lg">
-                                    Environmental sustainability isn't a report. It's the byproduct of daily operational discipline.
-                                </p>
-                            </div>
-                            
-                            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
-                                {[
-                                    { t: "Energy Discipline", d: "Verified shutdown logs for lighting and HVAC.", i: Zap },
-                                    { t: "Resource Pulse", d: "Daily water meter parity to stop unmonitored leaks.", i: Leaf },
-                                    { t: "Waste Mitigation", d: "Yield monitoring to stop overproduction at source.", i: Recycle },
-                                    { t: "Asset Longevity", d: "Maintenance rigor that extends equipment lifespan.", i: Wrench }
-                                ].map((item, i) => (
-                                    <div key={i} className="space-y-3 group">
-                                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#B89B5E] group-hover:text-emerald-400 transition-colors">
-                                            <item.i className="w-5 h-5" />
-                                        </div>
-                                        <h4 className="text-base font-bold uppercase italic text-white">{item.t}</h4>
-                                        <p className="text-xs text-zinc-500 italic leading-relaxed">{item.d}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="relative">
-                            <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
-                                 <img 
-                                    src="https://i.postimg.cc/9MhmhXMR/facilities-management1.png" 
-                                    alt="Sustainability Vitals" 
-                                    className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
-                                 />
-                            </div>
                         </div>
                     </div>
                 </Section>
 
                 <FaqSection />
 
-                {/* --- 9. FINAL MANDATE --- */}
+                {/* --- FINAL CTA --- */}
                 <Section className="bg-[#F8F6F2] py-32 md:py-60 border-t border-black/5" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16 text-center">
                         <div className="space-y-6">
                             <h2 className="text-[38px] md:text-[88px] font-extrabold leading-[0.85] tracking-tighter uppercase italic font-headline text-[#111111]">
-                                STOP CHASING. <br/> START RUNNING.
+                                STOP MANAGING. <br/> START RUNNING SYSTEMS.
                             </h2>
                             <p className="text-lg md:text-[28px] text-[#5F6368] font-medium italic leading-tight max-w-2xl mx-auto">
-                                Deploy operational excellence across your business in the next 10 minutes.
+                                Deploy operational control across your business in the next 10 minutes.
                             </p>
                         </div>
                         <div className="flex flex-col items-center gap-6">
