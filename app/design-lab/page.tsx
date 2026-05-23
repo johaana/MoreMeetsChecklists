@@ -31,18 +31,6 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
-const GlassPanel = ({ children, className, delay = "0s" }: { children: React.ReactNode, className?: string, delay?: string }) => (
-    <div 
-        className={cn(
-            "bg-white/40 backdrop-blur-xl border border-white/40 rounded-[2rem] p-8 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] animate-in fade-in slide-in-from-bottom-8 duration-1000",
-            className
-        )}
-        style={{ animationDelay: delay }}
-    >
-        {children}
-    </div>
-);
-
 export default function DesignLab() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -50,12 +38,12 @@ export default function DesignLab() {
     if (!mounted) return null;
 
     return (
-        <div className="bg-[#F6F3EE] text-[#111111] font-sans antialiased selection:bg-[#1F6B52]/10">
+        <div className="bg-[#F6F3EE] text-[#111111] font-sans antialiased selection:bg-[#D6A85F]/10">
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
-                {/* --- 1. THE CINEMATIC HERO: MOVIE POSTER COMPOSITION --- */}
+                {/* --- 1. THE ONE-GLANCE HERO: CINEMATIC ADVERTISING COMPOSITION --- */}
                 <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-black">
                     {/* Background Cinematic Video (Vimeo) */}
                     <div className="absolute inset-0 z-0">
@@ -75,58 +63,57 @@ export default function DesignLab() {
                         />
                     </div>
 
-                    <div className="relative z-20 container mx-auto max-w-[1300px] px-6 flex items-center h-full pt-16">
-                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center w-full">
+                    <div className="relative z-20 container mx-auto max-w-[1250px] px-6 flex items-center h-full pt-16">
+                        <div className="max-w-4xl space-y-8 md:space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
                             
-                            {/* Left Side: Emotional Narrative */}
-                            <div className="space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
-                                <div className="space-y-8">
-                                    <div className="space-y-2">
-                                        <p className="text-[12px] font-black uppercase tracking-[0.4em] text-[#D6A85F] italic">
-                                            LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
-                                        </p>
-                                        <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
-                                            YOUR BUSINESS <br/> SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
-                                        </h1>
-                                    </div>
-                                    
-                                    <div className="space-y-6 max-w-[620px]">
-                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
-                                            MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, timestamps, and accountability built in.
-                                        </p>
-                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
-                                            So work gets done properly — even when managers are away, staff change, or operations get busy.
-                                        </p>
-                                        <div className="flex flex-col gap-1 pt-2">
-                                            <p className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.25em]">No new apps to learn • Works directly on Google Sheets</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            {/* Eyebrow */}
+                            <p className="text-[12px] font-black uppercase tracking-[0.4em] text-[#D6A85F] italic">
+                                LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                            </p>
 
-                                <div className="flex flex-col sm:flex-row items-center gap-6">
-                                    <Button asChild className="h-16 px-12 rounded-[16px] bg-[#D6A85F] text-[#111827] font-bold uppercase text-xs tracking-widest shadow-[0_20px_50px_-10px_rgba(214,168,95,0.3)] transition-all hover:-translate-y-1 hover:bg-[#eec08a]">
-                                        <Link href="/library">See the system</Link>
-                                    </Button>
-                                    <Button asChild variant="outline" className="h-16 px-12 rounded-[16px] border-white/12 bg-white/5 backdrop-blur-[10px] text-white font-bold uppercase text-xs tracking-widest transition-all hover:bg-white/10">
-                                        <Link href="#how-it-works">Watch How Teams Use It</Link>
-                                    </Button>
+                            {/* Tighter 2-Line Headline */}
+                            <h1 className="text-[44px] md:text-[68px] lg:text-[76px] font-black tracking-[-0.05em] leading-[0.9] uppercase text-white font-headline">
+                                YOUR BUSINESS SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND ON MEMORY.
+                            </h1>
+                            
+                            {/* Benefit-Driven Subtext */}
+                            <div className="space-y-6 max-w-[620px]">
+                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, risks involved, timestamps, and accountability built in.
+                                </p>
+                                <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                    So work gets done properly — even when managers are away, staff change, or operations get busy.
+                                </p>
+                                <div className="flex flex-col gap-1">
+                                    <p className="text-[14px] md:text-[16px] font-black text-[#D6A85F] uppercase tracking-[0.1em] italic">
+                                        No new apps to learn. No training headaches. <br className="hidden md:block" /> Works directly on Google Sheets.
+                                    </p>
                                 </div>
                             </div>
 
-                            {/* Right Side: Visual Air for Cinematic movement */}
-                            <div className="hidden lg:block"></div>
+                            {/* Premium Action Buttons */}
+                            <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                                <Button asChild className="h-16 px-10 rounded-[16px] bg-[#D6A85F] text-[#111827] font-bold uppercase text-xs tracking-widest shadow-[0_20px_50px_-10px_rgba(214,168,95,0.4)] transition-all hover:-translate-y-1 hover:bg-[#eec08a] border-none group">
+                                    <Link href="/library" className="flex items-center gap-3">
+                                        See the system <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </Link>
+                                </Button>
+                                <Button asChild variant="outline" className="h-16 px-10 rounded-[16px] border-white/12 bg-white/5 backdrop-blur-[10px] text-white font-bold uppercase text-xs tracking-widest transition-all hover:bg-white/10">
+                                    <Link href="#how-it-works">Watch How Teams Use It</Link>
+                                </Button>
+                            </div>
 
                         </div>
                     </div>
                 </section>
 
-                {/* --- 2. TRUST BAR: MINIMALIST --- */}
+                {/* --- 2. TRUST STRIP --- */}
                 <div className="w-full bg-white py-12 border-y border-[#F6F3EE]">
                     <div className="container mx-auto px-6">
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
-                            <span className="text-[10px] font-black text-[#5F6368] uppercase tracking-[0.4em]">Deployed in elite operations</span>
-                            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-30">
-                                {["Restaurants", "Hotels", "Multiplexes", "Retail", "Hospitals"].map((ind) => (
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
+                            <span className="text-[10px] font-black text-[#5F6368] uppercase tracking-[0.4em]">Used for daily operations in</span>
+                            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-30">
+                                {["Restaurants", "Hotels", "Multiplexes", "Retail", "Hospitals", "Schools"].map((ind) => (
                                     <span key={ind} className="text-sm font-bold text-black uppercase tracking-[0.1em] italic">{ind}</span>
                                 ))}
                             </div>
@@ -134,22 +121,22 @@ export default function DesignLab() {
                     </div>
                 </div>
 
-                {/* --- 3. THE PATH TO CLARITY: HOW IT WORKS --- */}
+                {/* --- 3. THE PATH TO CLARITY --- */}
                 <Section id="how-it-works" className="bg-[#F6F3EE]">
                     <div className="max-w-5xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-[#D6A85F] border-[#D6A85F]/20 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
                             <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The Path to Clarity.</h2>
-                            <p className="text-[#5F6368] text-lg italic">No complex rollout. Just operations in order.</p>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-16">
                             {[
-                                { n: "01", t: "Select Your Pack", d: "Choose from specialized industry operational systems." },
-                                { n: "02", t: "Assign Responsibilities", d: "Map staff names to specific roles in the master hub." },
-                                { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any device." }
+                                { n: "01", t: "Select Your Pack", d: "Choose from specialized industry operational systems pre-built by experts." },
+                                { n: "02", t: "Assign Responsibilities", d: "Map staff names to specific roles in the master hub. No IT required." },
+                                { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any mobile device." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-6 relative group">
-                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50 transition-colors group-hover:text-[#1F6B52]/10">
+                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50 transition-colors group-hover:text-[#D6A85F]/10">
                                         {step.n}
                                     </span>
                                     <div className="relative z-10 space-y-3">
@@ -162,11 +149,11 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 4. REAL INTERFACE: THE MOAT --- */}
+                {/* --- 4. REAL INTERFACE --- */}
                 <Section className="bg-white">
                     <div className="space-y-20">
                         <div className="text-center space-y-4 max-w-3xl mx-auto">
-                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The tool they already know.</h2>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The product is the system.</h2>
                             <p className="text-[#5F6368] text-lg italic">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
                         </div>
 
@@ -181,7 +168,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 5. BENEFITS: PREMIUM CARDS --- */}
+                {/* --- 5. BENEFITS --- */}
                 <Section className="bg-[#F6F3EE]">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         {[
@@ -219,7 +206,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 6. FINAL CTA: CINEMATIC MANDATE --- */}
+                {/* --- 6. FINAL MANDATE --- */}
                 <Section className="bg-[#111111] text-white text-center py-40 md:py-60" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-4">
@@ -243,4 +230,3 @@ export default function DesignLab() {
         </div>
     );
 }
-
