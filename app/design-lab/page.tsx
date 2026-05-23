@@ -21,7 +21,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1740391216/32823021-uhd_3840_2160_25fps_moxg0j.mp4";
+const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-24 md:py-40 relative overflow-hidden", className)}>
@@ -55,19 +55,18 @@ export default function DesignLab() {
 
             <main className="flex-1">
                 
-                {/* --- 1. MINIMAL HERO: CINEMATIC MANDATE --- */}
+                {/* --- 1. THE CINEMATIC HERO: MOVIE POSTER COMPOSITION --- */}
                 <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-black">
-                    {/* Background Cinematic Video */}
+                    {/* Background Cinematic Video (Vimeo) */}
                     <div className="absolute inset-0 z-0">
-                        <video 
-                            src={VIDEO_URL} 
-                            autoPlay 
-                            loop 
-                            muted 
-                            playsInline 
-                            className="w-full h-full object-cover scale-[1.05] opacity-90"
+                        <iframe 
+                            src={VIMEO_URL} 
+                            className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.35] pointer-events-none"
+                            frameBorder="0" 
+                            allow="autoplay; fullscreen; picture-in-picture" 
+                            title="Operational Energy"
                         />
-                        {/* Dark Split-Gradient Overlay */}
+                        {/* Split-Gradient Mask: Obsidian to Transparent */}
                         <div 
                             className="absolute inset-0 z-10" 
                             style={{ 
@@ -79,11 +78,11 @@ export default function DesignLab() {
                     <div className="relative z-20 container mx-auto max-w-[1300px] px-6 flex items-center h-full pt-16">
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center w-full">
                             
-                            {/* Left: Emotional Narrative */}
-                            <div className="space-y-12">
+                            {/* Left Side: Emotional Narrative */}
+                            <div className="space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
                                 <div className="space-y-8">
                                     <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
-                                        YOUR BUSINESS <br/> <span className="text-[#22C55E]">SHOULD</span> <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
+                                        YOUR BUSINESS <br/> SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
                                     </h1>
                                     <div className="space-y-6 max-w-[580px]">
                                         <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-zinc-400 italic">
@@ -106,7 +105,7 @@ export default function DesignLab() {
                                 </div>
                             </div>
 
-                            {/* Right Side Empty to show clear video */}
+                            {/* Right Side: Air for Video */}
                             <div className="hidden lg:block"></div>
 
                         </div>
@@ -127,70 +126,7 @@ export default function DesignLab() {
                     </div>
                 </div>
 
-                {/* --- 3. SYSTEM HEARTBEAT: THE PROOF OF LIFE --- */}
-                <Section className="bg-white">
-                    <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
-                        <div className="space-y-8">
-                            <Badge variant="outline" className="text-[#1F6B52] border-[#1F6B52]/20 bg-[#1F6B52]/5 px-6 py-2 uppercase font-black tracking-widest text-[10px]">Technical Proof</Badge>
-                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
-                                Real-time <br/> Accountability.
-                            </h2>
-                            <p className="text-lg text-[#5F6368] italic max-w-md leading-relaxed">
-                                Every action is timestamped, verified, and visible. No more "I forgot" or "I'll do it later." The system anchors the standard.
-                            </p>
-                            <div className="flex flex-col gap-6 pt-4">
-                                {[
-                                    { t: "Verification required for critical nodes", i: ShieldCheck },
-                                    { t: "Mobile-first initials logging", i: Smartphone },
-                                    { t: "Permanent audit history vault", i: History }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-4 items-center">
-                                        <div className="w-10 h-10 rounded-xl bg-[#F6F3EE] flex items-center justify-center text-[#1F6B52]">
-                                            <item.i className="w-5 h-5" />
-                                        </div>
-                                        <span className="text-sm font-bold uppercase italic tracking-tight">{item.t}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col gap-6 items-center lg:items-end">
-                            {/* Activity Pulse Panel */}
-                            <GlassPanel className="w-full max-w-[420px] bg-white shadow-2xl border-zinc-200">
-                                <div className="space-y-6">
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#1F6B52]">Daily Heartbeat</span>
-                                        <div className="w-2 h-2 rounded-full bg-[#1F6B52] animate-pulse" />
-                                    </div>
-                                    <div className="space-y-5">
-                                        {[
-                                            { t: "Opening Audit Verified", time: "08:14 AM", status: "ok" },
-                                            { t: "Cold Storage Temperature Logged", time: "09:02 AM", status: "ok" },
-                                            { t: "Fire Exit Inspection Pending", time: "Due in 12 mins", status: "warn" },
-                                            { t: "Kitchen Hygiene Sweep Complete", time: "11:27 AM", status: "ok" },
-                                            { t: "Shift Handover Signed", time: "12:01 PM", status: "ok" }
-                                        ].map((item, i) => (
-                                            <div key={i} className="flex gap-4 items-start pb-4 border-b border-black/5 last:border-0 last:pb-0">
-                                                <div className={cn(
-                                                    "w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5",
-                                                    item.status === 'ok' ? "bg-[#1F6B52]/10 text-[#1F6B52]" : "bg-[#C28B2C]/10 text-[#C28B2C]"
-                                                )}>
-                                                    {item.status === 'ok' ? <Check className="w-2.5 h-2.5" /> : <Clock className="w-2.5 h-2.5" />}
-                                                </div>
-                                                <div className="space-y-0.5">
-                                                    <p className="text-[14px] font-black leading-tight uppercase italic">{item.t}</p>
-                                                    <p className="text-[10px] font-bold text-[#5F6368] uppercase tracking-widest">{item.time}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </GlassPanel>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 4. HOW IT WORKS: 3 STEPS --- */}
+                {/* --- 3. THE PATH TO CLARITY: HOW IT WORKS --- */}
                 <Section id="how-it-works" className="bg-[#F6F3EE]">
                     <div className="max-w-5xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
@@ -201,11 +137,11 @@ export default function DesignLab() {
                         <div className="grid md:grid-cols-3 gap-16">
                             {[
                                 { n: "01", t: "Select Your Pack", d: "Choose from 12 specialized industry operational systems." },
-                                { n: "02", t: "Assign Ownership", d: "Map staff names to specific roles in the master hub." },
+                                { n: "02", t: "Assign Responsibilities", d: "Map staff names to specific roles in the master hub." },
                                 { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any device." }
                             ].map((step, i) => (
-                                <div key={i} className="space-y-6 relative">
-                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50">
+                                <div key={i} className="space-y-6 relative group">
+                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50 transition-colors group-hover:text-[#1F6B52]/10">
                                         {step.n}
                                     </span>
                                     <div className="relative z-10 space-y-3">
@@ -218,7 +154,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 5. REAL INTERFACE: THE MOAT --- */}
+                {/* --- 4. REAL INTERFACE: THE MOAT --- */}
                 <Section className="bg-white">
                     <div className="space-y-20">
                         <div className="text-center space-y-4 max-w-3xl mx-auto">
@@ -237,7 +173,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 6. BENEFITS: PREMIUM CARDS --- */}
+                {/* --- 5. BENEFITS: PREMIUM CARDS --- */}
                 <Section className="bg-[#F6F3EE]">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         {[
@@ -275,7 +211,7 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 7. FINAL CTA --- */}
+                {/* --- 6. FINAL CTA: CINEMATIC MANDATE --- */}
                 <Section className="bg-[#111111] text-white text-center py-40 md:py-60" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-4">
