@@ -33,11 +33,12 @@ import {
     Wrench, 
     Leaf, 
     Recycle, 
-    SearchCheck,
+    Search,
     ClipboardCheck,
     Database,
     FileText,
-    Trophy
+    Trophy,
+    Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -74,7 +75,7 @@ export default function HomePage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE SOVEREIGN HERO (HYBRID ARCHITECTURE) --- */}
+                {/* --- 1. THE SOVEREIGN HERO (VARIATION 1.1 MOBILE SYNC) --- */}
                 
                 {/* MOBILE HERO: SOVEREIGN STANDARD */}
                 <section className="md:hidden relative w-full flex flex-col bg-[#F8F6F2]">
@@ -104,7 +105,7 @@ export default function HomePage() {
                                 </span>
                             </h1>
                             <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
-                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts, staff changes, or manager absence.
+                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts.
                             </p>
                         </div>
 
@@ -169,7 +170,7 @@ export default function HomePage() {
                                 </h1>
                                 
                                 <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-lg">
-                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts, staff changes, or manager absence.
+                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly.
                                 </p>
                                 
                                 <div className="flex flex-col gap-2.5 pt-1">
@@ -285,7 +286,7 @@ export default function HomePage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                                 <div className="absolute bottom-10 left-10 p-6 bg-red-500/10 backdrop-blur-md border border-red-500/20 rounded-xl">
                                     <p className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-1">CURRENT_STATE</p>
-                                    <p className="text-xl font-black italic uppercase leading-none">Unmonitored Chaos</p>
+                                    <p className="text-2xl font-black italic uppercase leading-none">Unmonitored Chaos</p>
                                 </div>
                             </div>
                         </div>
