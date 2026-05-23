@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -209,7 +208,7 @@ export default function HomePage() {
 
                     <div className="absolute bottom-0 w-full bg-white/40 backdrop-blur-sm border-t border-black/5 py-4">
                         <div className="container mx-auto px-6">
-                            <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em] text-center italic">
+                            <p className="text-[9px] font-black text-[#8B6B3F] uppercase tracking-[0.4em] text-center italic">
                                 NO SaaS LOCK-IN • BUILT IN EXCEL • DEPLOY IN 10 MINUTES • WORKS ON PHONES
                             </p>
                         </div>
@@ -247,7 +246,7 @@ export default function HomePage() {
                         <div className="grid md:grid-cols-3 gap-12 md:gap-20 max-w-5xl mx-auto">
                             {[
                                 { t: "SELECT YOUR PACK", d: "Choose from specialized industry systems pre-built by forensic experts." },
-                                { t: "ASSIGN PERSONNEL", d: "Map staff names to specific roles in the master hub. No IT required." },
+                                { t: "ASSIGN PERSONNEL", d: "Map staff names to roles in the master hub. No IT required." },
                                 { t: "TRACK EXECUTION", d: "Watch tasks turn green across your business from any mobile device." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-4 relative group">

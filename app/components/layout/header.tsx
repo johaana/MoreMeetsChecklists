@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -147,7 +146,6 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                         </div>
                     )}
                 </div>
-                <Link href="/#how-it-works" className={navLinkClass} prefetch={false}>Methodology</Link>
                 <Link href="/blog" className={navLinkClass} prefetch={false}>Intelligence</Link>
                 <Link href="/contact" className={navLinkClass} prefetch={false}>Contact</Link>
                 
@@ -197,11 +195,6 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                             ))}
                                         </AccordionContent>
                                     </AccordionItem>
-                                    <div className="border-b border-black/5">
-                                        <Link href="/#how-it-works" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
-                                            Methodology
-                                        </Link>
-                                    </div>
                                     <div className="border-b border-black/5">
                                         <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             Intelligence
