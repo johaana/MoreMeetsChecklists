@@ -81,31 +81,39 @@ export default function DesignLab() {
                             {/* Left Side: Emotional Narrative */}
                             <div className="space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
                                 <div className="space-y-8">
-                                    <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
-                                        YOUR BUSINESS <br/> SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
-                                    </h1>
-                                    <div className="space-y-6 max-w-[580px]">
-                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-zinc-400 italic">
-                                            Ready-to-use live operational systems with daily tasks, built-in instructions, and accountability.
+                                    <div className="space-y-2">
+                                        <p className="text-[12px] font-black uppercase tracking-[0.4em] text-[#D6A85F] italic">
+                                            LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
                                         </p>
-                                        <div className="flex flex-col gap-2 pt-2">
-                                            <p className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.25em]">No new apps to learn • Works on Google Sheets</p>
+                                        <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
+                                            YOUR BUSINESS <br/> SHOULD <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
+                                        </h1>
+                                    </div>
+                                    
+                                    <div className="space-y-6 max-w-[620px]">
+                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                            MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, timestamps, and accountability built in.
+                                        </p>
+                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
+                                            So work gets done properly — even when managers are away, staff change, or operations get busy.
+                                        </p>
+                                        <div className="flex flex-col gap-1 pt-2">
+                                            <p className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.25em]">No new apps to learn • Works directly on Google Sheets</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col sm:flex-row items-center gap-8">
-                                    <Button asChild className="h-16 px-12 rounded-2xl bg-white text-black font-bold uppercase text-xs tracking-widest shadow-2xl transition-all hover:-translate-y-1 hover:bg-zinc-100">
+                                <div className="flex flex-col sm:flex-row items-center gap-6">
+                                    <Button asChild className="h-16 px-12 rounded-[16px] bg-[#D6A85F] text-[#111827] font-bold uppercase text-xs tracking-widest shadow-[0_20px_50px_-10px_rgba(214,168,95,0.3)] transition-all hover:-translate-y-1 hover:bg-[#eec08a]">
                                         <Link href="/library">See the system</Link>
                                     </Button>
-                                    <Link href="#how-it-works" className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-white/60 hover:text-white transition-colors">
-                                        Watch How Teams Use It
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </Link>
+                                    <Button asChild variant="outline" className="h-16 px-12 rounded-[16px] border-white/12 bg-white/5 backdrop-blur-[10px] text-white font-bold uppercase text-xs tracking-widest transition-all hover:bg-white/10">
+                                        <Link href="#how-it-works">Watch How Teams Use It</Link>
+                                    </Button>
                                 </div>
                             </div>
 
-                            {/* Right Side: Air for Video */}
+                            {/* Right Side: Visual Air for Cinematic movement */}
                             <div className="hidden lg:block"></div>
 
                         </div>
@@ -116,7 +124,7 @@ export default function DesignLab() {
                 <div className="w-full bg-white py-12 border-y border-[#F6F3EE]">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
-                            <span className="text-[10px] font-black text-[#5F6368] uppercase tracking-[0.4em]">Deployed in</span>
+                            <span className="text-[10px] font-black text-[#5F6368] uppercase tracking-[0.4em]">Deployed in elite operations</span>
                             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-30">
                                 {["Restaurants", "Hotels", "Multiplexes", "Retail", "Hospitals"].map((ind) => (
                                     <span key={ind} className="text-sm font-bold text-black uppercase tracking-[0.1em] italic">{ind}</span>
@@ -136,7 +144,7 @@ export default function DesignLab() {
 
                         <div className="grid md:grid-cols-3 gap-16">
                             {[
-                                { n: "01", t: "Select Your Pack", d: "Choose from 12 specialized industry operational systems." },
+                                { n: "01", t: "Select Your Pack", d: "Choose from specialized industry operational systems." },
                                 { n: "02", t: "Assign Responsibilities", d: "Map staff names to specific roles in the master hub." },
                                 { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any device." }
                             ].map((step, i) => (
@@ -235,3 +243,4 @@ export default function DesignLab() {
         </div>
     );
 }
+
