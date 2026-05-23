@@ -54,28 +54,28 @@ const MobileHeader = () => (
 );
 
 const BronzeEyebrow = ({ className }: { className?: string }) => (
-    <div className={cn("flex items-center gap-2.5", className)}>
-        <div className="w-8 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
-        <span className="text-[8px] font-black uppercase tracking-[0.15em] text-[#8B6B3F] font-headline whitespace-nowrap overflow-hidden text-ellipsis">
+    <div className={cn("flex items-center gap-2", className)}>
+        <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+        <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
             LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
         </span>
     </div>
 );
 
-const Headline = ({ className }: { className?: string }) => (
-    <h1 className={cn("text-[28px] font-extrabold font-headline leading-[0.95] uppercase italic tracking-tighter text-[#121212]", className)}>
-        YOUR BUSINESS <br />
-        SHOULD NOT <br />
+const Headline = ({ className, text1 = "YOUR BUSINESS", text2 = "SHOULD NOT", text3 = "DEPEND ON MEMORY." }: { className?: string, text1?: string, text2?: string, text3?: string }) => (
+    <h1 className={cn("text-[26px] font-extrabold font-headline leading-[0.95] uppercase italic tracking-tighter text-[#121212]", className)}>
+        {text1} <br />
+        {text2} <br />
         <span className="relative inline-block">
-            DEPEND ON MEMORY.
+            {text3}
             <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#D6A85F]/30 rounded-full" />
         </span>
     </h1>
 );
 
-const BodyText = ({ className }: { className?: string }) => (
+const BodyText = ({ className, text }: { className?: string, text?: string }) => (
     <p className={cn("text-[14px] font-normal leading-[1.6] text-[#4B5563]", className)}>
-        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking.
+        {text || "MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking."}
     </p>
 );
 
@@ -109,7 +109,7 @@ export default function MobileLabClient() {
             <PrototypeFrame 
                 id="1.1" 
                 label="Sovereign Standard" 
-                description="The pure editorial stack with strict web-parity components."
+                description="The pure editorial stack. Optimized for high-gravity institutional clarity."
             >
                 <div className="flex flex-col h-full bg-[#F6F1E8] overflow-y-auto no-scrollbar">
                     <MobileHeader />
@@ -127,103 +127,30 @@ export default function MobileLabClient() {
                             <p className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 mt-6 text-center italic">── OWN THE INFRASTRUCTURE FOREVER ──</p>
                         </div>
                     </div>
-                    {/* Device Home Bar */}
                     <div className="mt-auto py-2 flex justify-center">
                         <div className="w-32 h-1 rounded-full bg-black/10" />
                     </div>
                 </div>
             </PrototypeFrame>
 
-            {/* 1.2 THE LIVE STATUS HUD */}
-            <PrototypeFrame 
-                id="1.2" 
-                label="The Live Status HUD" 
-                description="Adds a technical layer with a 'System Active' pulse and higher density."
-            >
-                <div className="flex flex-col h-full bg-[#F6F1E8] overflow-y-auto no-scrollbar">
-                    <MobileHeader />
-                    <div className="w-full aspect-[1/1] bg-zinc-200 relative overflow-hidden">
-                        <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full scale-[1.3] brightness-[0.9]" frameBorder="0" allow="autoplay; fullscreen" />
-                        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 border border-white/10">
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-[8px] font-black text-white uppercase tracking-widest">SYSTEM_ACTIVE</span>
-                        </div>
-                    </div>
-                    <div className="p-8 space-y-6">
-                        <div className="space-y-4">
-                            <BronzeEyebrow />
-                            <Headline className="text-[26px]" />
-                            <div className="p-5 bg-white/50 border border-black/5 rounded-2xl">
-                                <BodyText />
-                            </div>
-                        </div>
-                        <TrustLine />
-                        <PrimaryCTA text="Deploy Infrastructure" className="bg-[#1F2937]" />
-                    </div>
-                    <div className="mt-auto py-2 flex justify-center">
-                        <div className="w-32 h-1 rounded-full bg-black/10" />
-                    </div>
-                </div>
-            </PrototypeFrame>
-
-            {/* 1.3 THE ARCHITECTURAL NARRATIVE */}
-            <PrototypeFrame 
-                id="1.3" 
-                label="The Architectural Narrative" 
-                description="Focuses on philosophy with an editorial inset and secondary bridge."
-            >
-                <div className="flex flex-col h-full bg-[#F6F1E8] overflow-y-auto no-scrollbar">
-                    <MobileHeader />
-                    <div className="w-full aspect-[4/3] bg-zinc-200 relative overflow-hidden">
-                        <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full scale-[1.5]" frameBorder="0" allow="autoplay; fullscreen" />
-                    </div>
-                    <div className="flex-1 flex flex-col p-8 gap-8">
-                        <div className="space-y-3">
-                            <BronzeEyebrow />
-                            <Headline />
-                        </div>
-                        
-                        <div className="space-y-6">
-                            <p className="text-[13px] font-medium leading-[1.6] text-zinc-500 italic border-l-2 border-[#D6A85F]/40 pl-6">
-                                Standardize execution so work gets done properly, even during busy shifts or staff changes.
-                            </p>
-                            <TrustLine />
-                        </div>
-
-                        <div className="mt-auto space-y-4">
-                            <PrimaryCTA />
-                            <button className="w-full py-4 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:text-black transition-all flex items-center justify-center gap-2">
-                                <Activity className="w-3 h-3 text-emerald-500" /> Watch Teams Use It
-                            </button>
-                        </div>
-                    </div>
-                    <div className="py-2 flex justify-center">
-                        <div className="w-32 h-1 rounded-full bg-black/10" />
-                    </div>
-                </div>
-            </PrototypeFrame>
-
-            {/* 1.4 THE CINEMATIC MERGE */}
+            {/* 1.4 THE CINEMATIC MERGE (ONE GLANCE) */}
             <PrototypeFrame 
                 id="1.4" 
                 label="The Cinematic Merge" 
-                description="Soft gradient blend between the operational life (video) and the technical narrative."
+                description="Soft gradient blend between motion and narrative. Optimized for the 'One Glance' mandate."
             >
                 <div className="flex flex-col h-full bg-[#F6F1E8] overflow-hidden">
                     <MobileHeader />
                     <div className="relative w-full aspect-[16/10] overflow-hidden bg-black">
                         <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full scale-[1.6] opacity-80" frameBorder="0" allow="autoplay; fullscreen" />
-                        {/* THE MERGE GRADIENT */}
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#F6F1E8]" />
                     </div>
                     
-                    <div className="px-8 pb-10 space-y-8 -mt-6 relative z-10">
-                        <div className="space-y-4">
+                    <div className="px-8 pb-10 space-y-7 -mt-6 relative z-10">
+                        <div className="space-y-3">
                             <BronzeEyebrow />
-                            <h1 className="text-[32px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-[#121212]">
-                                CAPTURE <br/> MEMORY.
-                            </h1>
-                            <p className="text-[15px] font-medium leading-relaxed text-[#4B5563] italic">
+                            <Headline text1="CAPTURE" text2="MEMORY." text3="" className="text-[34px] tracking-[-0.05em]" />
+                            <p className="text-[14px] font-medium leading-relaxed text-[#4B5563] italic">
                                 Institutional memory is an asset. Anything else is just luck. Build systems that stay when staff leave.
                             </p>
                         </div>
@@ -234,7 +161,7 @@ export default function MobileLabClient() {
                         </div>
                         
                         <div className="flex justify-center">
-                            <button className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-400 hover:text-zinc-600 transition-colors flex items-center gap-2">
+                            <button className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-400 flex items-center gap-2">
                                 <Smartphone className="w-3 h-3" /> MOBILE_ENGINE_ACTIVE
                             </button>
                         </div>
@@ -246,14 +173,13 @@ export default function MobileLabClient() {
                 </div>
             </PrototypeFrame>
 
-            {/* 1.5 THE COMMAND HUB */}
+            {/* 1.5 THE COMMAND HUB (APP FEEL) */}
             <PrototypeFrame 
                 id="1.5" 
                 label="The Command Hub" 
-                description="High-density app feel with a bottom menu tray and system status bar."
+                description="High-density app feel with a bottom menu tray and system status pulse."
             >
                 <div className="flex flex-col h-full bg-[#F6F1E8] relative">
-                    {/* STATUS BAR SIMULATION */}
                     <div className="px-8 h-8 flex items-center justify-between text-[8px] font-black text-zinc-500 uppercase tracking-widest bg-zinc-950/5">
                         <span>9:41 AM</span>
                         <div className="flex items-center gap-2">
@@ -270,35 +196,32 @@ export default function MobileLabClient() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                         </div>
                         
-                        <div className="p-8 space-y-8">
-                            <div className="space-y-3">
+                        <div className="p-8 space-y-7">
+                            <div className="space-y-2">
                                 <BronzeEyebrow />
-                                <h1 className="text-[28px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-[#121212]">
-                                    STOP THE <br/> <span className="text-emerald-700">REPORTING CHASE.</span>
-                                </h1>
+                                <Headline text1="STOP THE" text2="REPORTING" text3="CHASE." className="text-[28px]" />
                             </div>
                             
-                            <div className="p-6 bg-zinc-950 text-white rounded-3xl space-y-6 shadow-2xl relative overflow-hidden">
+                            <div className="p-6 bg-zinc-950 text-white rounded-3xl space-y-5 shadow-2xl relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-4 opacity-10">
-                                    <ShieldCheck className="w-20 h-20" />
+                                    <ShieldCheck className="w-16 h-16" />
                                 </div>
-                                <p className="text-sm font-bold italic leading-relaxed relative z-10">
-                                    MoreMeets gives your team ready-to-use live SOP systems with built-in instructions.
+                                <p className="text-xs font-bold italic leading-relaxed relative z-10">
+                                    Stop chasing staff on WhatsApp and start seeing real-time reporting from your phone.
                                 </p>
-                                <button className="h-12 bg-emerald-500 text-black font-black uppercase text-[10px] tracking-widest rounded-xl w-full relative z-10">
-                                    DEPLOY FOR ₹999
+                                <button className="h-12 bg-emerald-500 text-black font-black uppercase text-[9px] tracking-widest rounded-xl w-full relative z-10">
+                                    DEPLOY SYSTEM: ₹3,499
                                 </button>
                             </div>
                             
-                            <div className="space-y-4">
+                            <div className="space-y-3">
                                 <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">TRUST PROTOCOL</p>
                                 <TrustLine />
                             </div>
                         </div>
                     </div>
 
-                    {/* BOTTOM MENU TRAY */}
-                    <div className="absolute bottom-0 w-full bg-white/90 backdrop-blur-xl border-t border-black/5 px-8 pt-4 pb-8 flex justify-between items-center z-50">
+                    <div className="absolute bottom-0 w-full bg-white/95 backdrop-blur-xl border-t border-black/5 px-8 pt-4 pb-8 flex justify-between items-center z-50">
                         <div className="flex flex-col items-center gap-1">
                             <LayoutGrid className="w-5 h-5 text-emerald-600" />
                             <span className="text-[7px] font-black text-zinc-400 uppercase">TASKS</span>
