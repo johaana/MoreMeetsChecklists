@@ -22,14 +22,8 @@ import {
     GraduationCap,
     Zap,
     AlertTriangle,
-    FileSpreadsheet,
-    Eye,
-    Wrench,
-    Leaf,
-    Recycle,
-    SearchCheck,
-    FileSignature,
-    BoxSelect,
+    ShieldAlert,
+    CheckSquare,
     Building,
     Utensils,
     Hospital,
@@ -38,14 +32,14 @@ import {
     Building2,
     Popcorn,
     Gem,
-    ShieldAlert,
-    CheckSquare,
-    ClipboardCheck,
-    HelpCircle,
-    MessagesSquare
+    Wrench,
+    Leaf,
+    Recycle,
+    SearchCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
@@ -72,6 +66,8 @@ export default function HomePage() {
     useEffect(() => { setMounted(true); }, []);
 
     if (!mounted) return null;
+
+    const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id);
 
     return (
         <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#B89B5E]/10">
@@ -251,10 +247,10 @@ export default function HomePage() {
                         <div className="relative max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl group bg-[#F8F6F2]">
                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
-                                src="https://picsum.photos/seed/operational-team-collab/1200/800" 
+                                src={getImage('sovereign-ledger')?.imageUrl} 
                                 alt="Operational Synergy" 
                                 className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
-                                data-ai-hint="operational teamwork"
+                                data-ai-hint={getImage('sovereign-ledger')?.imageHint}
                              />
                         </div>
                     </div>
@@ -297,10 +293,10 @@ export default function HomePage() {
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
                             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.8/1] bg-zinc-200 order-2 lg:order-1">
                                 <img 
-                                    src="https://picsum.photos/seed/ops-execution/1200/800" 
+                                    src={getImage('sovereign-team')?.imageUrl} 
                                     alt="Daily Execution" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
-                                    data-ai-hint="operational teamwork"
+                                    data-ai-hint={getImage('sovereign-team')?.imageHint}
                                 />
                             </div>
                             <div className="space-y-10 order-1 lg:order-2">
@@ -367,9 +363,10 @@ export default function HomePage() {
                             <div className="absolute -inset-4 bg-[#B89B5E]/5 rounded-[3rem] -rotate-2" />
                             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
                                 <img 
-                                    src="https://i.postimg.cc/jdMQXJpq/resignation1.jpg" 
+                                    src={getImage('sovereign-dashboard')?.imageUrl} 
                                     alt="Resignation Risk" 
                                     className="w-full h-full object-cover grayscale-[0.2]" 
+                                    data-ai-hint={getImage('sovereign-dashboard')?.imageHint}
                                 />
                             </div>
                         </div>
@@ -452,10 +449,10 @@ export default function HomePage() {
                             <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full" />
                             <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
                                  <img 
-                                    src="https://picsum.photos/seed/green-infra/800/800" 
+                                    src={getImage('sovereign-vitals')?.imageUrl} 
                                     alt="Sustainability Vitals" 
                                     className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
-                                    data-ai-hint="sustainable building"
+                                    data-ai-hint={getImage('sovereign-vitals')?.imageHint}
                                  />
                                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                                  <div className="absolute bottom-10 left-10 space-y-2">
