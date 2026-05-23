@@ -84,10 +84,19 @@ export default function DesignLab() {
                                 <p className="text-[18px] md:text-[20px] font-normal leading-[1.6] text-zinc-400 italic">
                                     So work gets done properly — even when managers are away, staff change, or operations get busy.
                                 </p>
-                                <div className="flex flex-col gap-1">
-                                    <p className="text-[14px] md:text-[16px] font-black text-[#D6A85F] uppercase tracking-[0.1em] italic">
-                                        No new apps to learn. No training headaches. <br className="hidden md:block" /> Works directly on Google Sheets.
-                                    </p>
+                                <div className="space-y-2 pt-2">
+                                    {[
+                                        "No new apps to learn.",
+                                        "No training headaches.",
+                                        "Works directly on Google Sheets."
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <Check className="w-4 h-4 text-[#22C55E]" />
+                                            <span className="text-[14px] md:text-[16px] font-black text-[#D6A85F] uppercase tracking-[0.1em] italic">
+                                                {item}
+                                            </span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
