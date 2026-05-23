@@ -65,12 +65,18 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = () => (
+const BrandLogo = ({ forceTheme }: { forceTheme?: 'light' | 'dark' }) => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-[#22C55E]")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight text-white drop-shadow-sm")}>MoreMeets™</span>
-            <span className={cn("text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] leading-none mt-0.5 text-white/40")}>WHERE SOPs MEET EXECUTION</span>
+            <span className={cn(
+                "font-headline text-base md:text-lg font-bold leading-[1] tracking-tight",
+                forceTheme === 'dark' ? "text-white" : "text-slate-900"
+            )}>MoreMeets™</span>
+            <span className={cn(
+                "text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] leading-none mt-0.5",
+                forceTheme === 'dark' ? "text-white/40" : "text-slate-400"
+            )}>WHERE SOPs MEET EXECUTION</span>
         </div>
     </Link>
 );
@@ -95,16 +101,17 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     }, [pathname]);
 
     const navLinkClass = cn(
-        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all",
+        (isScrolled || forceTheme === 'dark') ? "text-white/90 hover:text-white" : "text-slate-600 hover:text-slate-900"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            (isScrolled || forceTheme === 'dark') ? "bg-black/90 backdrop-blur-2xl border-b border-white/10" : "bg-transparent border-b border-transparent"
+            (isScrolled || forceTheme === 'dark') ? "bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-2xl" : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )}>
             <div className="flex items-center">
-                <BrandLogo />
+                <BrandLogo forceTheme={(isScrolled || forceTheme === 'dark') ? 'dark' : 'light'} />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
@@ -115,21 +122,21 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn(navLinkClass, "flex items-center gap-1.5 py-6")}>
-                        Operational Packs <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                        Solutions <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
-                            <div className="bg-white rounded-xl shadow-2xl border border-black/10 flex flex-col overflow-hidden">
+                            <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
                                         <SolutionsList />
                                     </div>
                                 </ScrollArea>
                                 <div className="bg-black/[0.02] p-4 border-t border-black/5 flex items-center justify-between px-10">
-                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5">
+                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600 hover:text-emerald-700 transition-colors p-2 rounded-md hover:bg-black/5">
                                         View All Systems &rarr;
                                     </Link>
-                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
+                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-emerald-600 hover:text-emerald-700 transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
                                         <PawPrint className="w-3.5 h-3.5" /> Social Impact (Free)
                                     </Link>
                                 </div>
@@ -137,8 +144,8 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                         </div>
                     )}
                 </div>
-                <Link href="/#who-it-is-for" className={navLinkClass} prefetch={false}>Who It's For</Link>
                 <Link href="/#pricing" className={navLinkClass} prefetch={false}>Pricing</Link>
+                <Link href="/blog" className={navLinkClass} prefetch={false}>Intelligence</Link>
                 <Link href="/contact" className={navLinkClass} prefetch={false}>Contact</Link>
             </nav>
 
@@ -146,7 +153,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", "text-white/80 hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || forceTheme === 'dark') ? "text-white/80 hover:bg-white/10" : "text-slate-900 hover:bg-black/5")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
@@ -154,7 +161,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-white border-l-black/5 shadow-2xl">
                          <SheetHeader className="p-4 border-b border-black/5">
                             <SheetTitle>
-                                <BrandLogo />
+                                <BrandLogo forceTheme="light" />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
@@ -167,12 +174,12 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                     </div>
                                     <AccordionItem value="packs" className="border-b border-black/5">
                                         <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 hover:no-underline py-5">
-                                            Operational Packs
+                                            Operational Systems
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                 <div key={category} className="ml-4 pl-4 border-l border-black/5 mb-4">
-                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">{category}</h5>
+                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-emerald-600 mt-2 mb-2 font-headline">{category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
@@ -185,11 +192,6 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                             ))}
                                         </AccordionContent>
                                     </AccordionItem>
-                                    <div className="border-b border-black/5">
-                                        <Link href="/#who-it-is-for" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
-                                            Who It's For
-                                        </Link>
-                                    </div>
                                     <div className="border-b border-black/5">
                                         <Link href="/#pricing" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             Pricing

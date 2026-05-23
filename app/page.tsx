@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -38,7 +39,8 @@ import {
     Building2,
     Popcorn,
     Gem,
-    ShieldAlert
+    ShieldAlert,
+    CheckSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -46,8 +48,8 @@ import Link from 'next/link';
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-24 md:py-40 relative overflow-hidden", className)}>
-        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
+    <section id={id} className={cn("w-full py-20 md:py-32 relative overflow-hidden", className)}>
+        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-black/[0.03] z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
@@ -55,9 +57,9 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 );
 
 const SectionEyebrow = ({ text }: { text: string }) => (
-    <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-px bg-[#B89B5E] opacity-40" />
-        <span className="text-[11px] md:text-[13px] font-medium uppercase tracking-[0.2em] text-[#B89B5E] font-headline">
+    <div className="flex items-center gap-3 md:gap-4 mb-6">
+        <div className="w-8 md:w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-[#8B6B3F] font-headline whitespace-nowrap">
             {text}
         </span>
     </div>
@@ -76,10 +78,67 @@ export default function HomePage() {
             <main className="flex-1">
                 
                 {/* --- 1. THE SOVEREIGN HERO (HYBRID ARCHITECTURE) --- */}
-                <section className="relative w-full min-h-[90svh] md:h-[100svh] flex flex-col overflow-hidden bg-[#F8F6F2]">
-                    
-                    {/* DESKTOP BACKGROUND (GRADIENT + VIDEO) */}
-                    <div className="hidden md:block absolute inset-0 z-0">
+                
+                {/* MOBILE HERO: VARIATION 1.1 (EDITORIAL STACK) */}
+                <section className="md:hidden relative w-full flex flex-col bg-[#F8F6F2]">
+                    <div className="w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
+                        <iframe 
+                            src={VIMEO_URL} 
+                            className="absolute inset-0 w-full h-full scale-[1.8]" 
+                            frameBorder="0" 
+                            allow="autoplay; fullscreen" 
+                        />
+                        <div className="absolute inset-0 bg-black/5" />
+                    </div>
+                    <div className="p-8 space-y-8 flex flex-col justify-start">
+                        <div className="flex items-center gap-3">
+                            <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+                            <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
+                                LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                            </span>
+                        </div>
+                        
+                        <div className="space-y-3">
+                            <h1 className="text-[32px] font-extrabold font-headline leading-[0.95] uppercase italic tracking-tighter text-[#121212]">
+                                YOUR BUSINESS SHOULD NOT <br />
+                                <span className="relative inline-block mt-1">
+                                    DEPEND ON MEMORY.
+                                    <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#D6A85F]/30 rounded-full" />
+                                </span>
+                            </h1>
+                            <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
+                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-2.5">
+                            {[
+                                "Works directly on Google Sheets.",
+                                "No new apps to learn."
+                            ].map((text, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                        <Check className="w-2.5 h-2 text-[#2E7D5A]" />
+                                    </div>
+                                    <span className="text-[11px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="pt-2">
+                             <button className="h-14 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] w-full text-center">
+                                <Link href="/library">See the systems</Link>
+                            </button>
+                            <button className="w-full mt-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#5F6368] flex items-center justify-center gap-2 group">
+                                <Link href="#how-it-works">Watch Teams Use It</Link> <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                {/* DESKTOP HERO: THE DESIGN LAB MASTER */}
+                <section className="hidden md:flex relative w-full h-[100svh] flex-col justify-start overflow-hidden bg-[#F8F6F2]">
+                    <div className="absolute inset-0 z-0">
                         <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
                             <iframe 
                                 src={VIMEO_URL} 
@@ -97,32 +156,25 @@ export default function HomePage() {
                         />
                     </div>
 
-                    {/* MOBILE BACKGROUND (EDITORIAL STACK) */}
-                    <div className="md:hidden w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
-                        <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full scale-[1.8]" frameBorder="0" allow="autoplay; fullscreen" />
-                        <div className="absolute inset-0 bg-black/5" />
-                    </div>
-
-                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-12 md:py-0">
-                        <div className="max-w-[620px] space-y-6 md:space-y-8">
-                            
-                            <div className="flex items-center gap-3 md:gap-4">
-                                <div className="w-6 md:w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
-                                <span className="text-[7.5px] md:text-[11px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
-                                    LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
-                                </span>
-                            </div>
-
-                            <h1 className="text-[34px] md:text-[58px] font-extrabold font-headline leading-[0.95] uppercase text-[#121212] italic tracking-tighter">
-                                YOUR BUSINESS SHOULD NOT <br />
-                                <span className="relative inline-block mt-1">
-                                    DEPEND ON MEMORY.
-                                    <div className="absolute -bottom-1 left-0 w-full h-[4px] md:h-[6px] bg-[#D6A85F]/30 rounded-full" />
-                                </span>
-                            </h1>
-                            
+                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
+                        <div className="max-w-[620px] space-y-10">
                             <div className="space-y-6">
-                                <p className="text-[15px] md:text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-lg">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+                                    <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
+                                        LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                                    </span>
+                                </div>
+
+                                <h1 className="text-[58px] font-extrabold font-headline leading-[0.95] uppercase text-[#121212] italic tracking-tighter">
+                                    YOUR BUSINESS SHOULD NOT <br />
+                                    <span className="relative inline-block mt-1">
+                                        DEPEND ON MEMORY.
+                                        <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
+                                    </span>
+                                </h1>
+                                
+                                <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-lg">
                                     MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts, staff changes, or manager absence.
                                 </p>
                                 
@@ -135,14 +187,14 @@ export default function HomePage() {
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                 <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
                                             </div>
-                                            <span className="text-[11px] md:text-[13px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                            <span className="text-[13px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10 pt-4">
-                                <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group w-full sm:w-auto text-center flex items-center justify-center">
+                            <div className="flex items-center gap-10">
+                                <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center justify-center gap-3">
                                         See the systems <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
@@ -152,12 +204,10 @@ export default function HomePage() {
                                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                                 </button>
                             </div>
-
                         </div>
                     </div>
 
-                    {/* Trust Strip */}
-                    <div className="absolute bottom-0 w-full bg-white/40 backdrop-blur-sm border-t border-black/5 py-4 hidden md:block">
+                    <div className="absolute bottom-0 w-full bg-white/40 backdrop-blur-sm border-t border-black/5 py-4">
                         <div className="container mx-auto px-6">
                             <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em] text-center italic">
                                 NO SaaS LOCK-IN • BUILT IN EXCEL • DEPLOY IN 10 MINUTES • WORKS ON PHONES
