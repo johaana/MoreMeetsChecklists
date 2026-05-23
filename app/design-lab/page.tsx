@@ -17,7 +17,10 @@ import {
     School,
     Popcorn,
     ChevronRight,
-    Search
+    Search,
+    Smartphone,
+    History,
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -220,7 +223,7 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 4. REAL INTERFACE: THE MOAT --- */}
-                <Section className="bg-[#F6F3EE]" noSpine>
+                <Section className="bg-[#F6F3EE]">
                     <div className="space-y-20">
                         <div className="text-center space-y-4 max-w-3xl mx-auto">
                             <h2 className="text-[44px] font-black font-headline tracking-tighter uppercase italic leading-tight">The tool they already know.</h2>
@@ -277,7 +280,7 @@ export default function DesignLab() {
                 </Section>
 
                 {/* --- 6. FINAL CTA --- */}
-                <Section className="bg-[#111111] text-white text-center py-40 md:py-60" noSpine>
+                <Section className="bg-[#111111] text-white text-center py-40 md:py-60">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-4">
                             <h2 className="text-[44px] md:text-[88px] font-black leading-[0.85] tracking-tighter uppercase italic font-headline">
@@ -297,18 +300,6 @@ export default function DesignLab() {
             </main>
             
             <Footer />
-
-            <style jsx global>{`
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .animate-marquee {
-                    display: flex;
-                    width: fit-content;
-                    animation: marquee 40s linear infinite;
-                }
-            `}</style>
         </div>
     );
 }
