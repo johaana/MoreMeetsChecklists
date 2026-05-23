@@ -107,7 +107,7 @@ export default function HomePage() {
                                 </span>
                             </h1>
                             <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
-                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts.
+                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts, staff changes, or manager absence.
                             </p>
                         </div>
 
@@ -216,13 +216,13 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- 2. THE SYSTEM IS THE PRODUCT (INTERFACE) --- */}
+                {/* --- 2. THE SYSTEM IS THE PRODUCT (ENVIRONMENT) --- */}
                 <Section className="bg-white border-y border-black/5" id="how-it-works">
                     <div className="space-y-20 md:space-y-32">
                         <div className="text-center space-y-6 max-w-3xl mx-auto">
                             <SectionEyebrow text="THE INFRASTRUCTURE" />
                             <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">
-                                The system is the product.
+                                Focus on Outcomes.
                             </h2>
                             <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
                                 Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets. Every task is timestamped, assigned, and verifiable.
@@ -232,13 +232,14 @@ export default function HomePage() {
                         <div className="relative max-w-6xl mx-auto rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] group bg-[#F8F6F2]">
                              <div className="absolute inset-0 bg-gradient-to-t from-[#F8F6F2]/40 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
-                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
-                                alt="Real Operational Ledger" 
+                                src="https://picsum.photos/seed/operational-flow/1200/800" 
+                                alt="Operational Efficiency" 
                                 className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
+                                data-ai-hint="operational teamwork"
                              />
                              <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20">
                                 <Badge className="bg-emerald-500 text-white border-none px-6 py-2 uppercase font-black tracking-widest text-[10px] shadow-2xl">
-                                    LIVE_EXECUTION_GRID
+                                    VITALS_SECURED
                                 </Badge>
                              </div>
                         </div>
@@ -382,9 +383,10 @@ export default function HomePage() {
                             <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full" />
                             <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
                                  <img 
-                                    src="https://i.postimg.cc/9MhmhXMR/facilities-management1.png" 
+                                    src="https://picsum.photos/seed/green-infra/800/800" 
                                     alt="Sustainability Vitals" 
                                     className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
+                                    data-ai-hint="sustainable building"
                                  />
                                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                                  <div className="absolute bottom-10 left-10 space-y-2">

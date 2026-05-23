@@ -2,38 +2,38 @@
 [
   {
     "id": "sovereign-dashboard",
-    "description": "Master Operational Console Dashboard",
-    "imageUrl": "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png",
-    "imageHint": "operational dashboard"
+    "description": "Clean modern office command space",
+    "imageUrl": "https://picsum.photos/seed/office-view/1200/800",
+    "imageHint": "modern office"
   },
   {
     "id": "sovereign-mobile",
-    "description": "Staff Mobile Execution Ledger",
-    "imageUrl": "https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png",
-    "imageHint": "mobile execution"
+    "description": "Professional using mobile device in hospitality setting",
+    "imageUrl": "https://picsum.photos/seed/mobile-use/1200/800",
+    "imageHint": "mobile professional"
   },
   {
     "id": "sovereign-vitals",
-    "description": "Executive Command Vitals & Analytics",
-    "imageUrl": "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png",
-    "imageHint": "command vitals"
+    "description": "Clean architectural building exterior",
+    "imageUrl": "https://picsum.photos/seed/command/1200/800",
+    "imageHint": "modern architecture"
   },
   {
     "id": "sovereign-ledger",
-    "description": "Daily Mission Execution Ledger",
-    "imageUrl": "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png",
-    "imageHint": "daily ledger"
+    "description": "Operational team collaborating in a workspace",
+    "imageUrl": "https://picsum.photos/seed/ops-team/1200/800",
+    "imageHint": "operational teamwork"
   },
   {
     "id": "sovereign-finance",
-    "description": "Financial Shield & Unit Contribution Tracker",
-    "imageUrl": "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png",
-    "imageHint": "financial shield"
+    "description": "Minimalist high-end institutional interior",
+    "imageUrl": "https://picsum.photos/seed/luxury-interior/1200/800",
+    "imageHint": "minimalist interior"
   },
   {
     "id": "sovereign-team",
-    "description": "Team Hub & Personnel Mapping",
-    "imageUrl": "https://i.postimg.cc/t4v7FrP2/Screenshot-2026-05-11-171200.png",
-    "imageHint": "team hub"
+    "description": "Focused professional at work",
+    "imageUrl": "https://picsum.photos/seed/professional/1200/800",
+    "imageHint": "focused professional"
   }
 ]

@@ -108,7 +108,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
 
     return (
         <header className={cn(
-            "px-8 lg:px-12 h-[72px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
+            "px-8 lg:px-12 h-[64px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
             (isScrolled || forceTheme === 'dark') ? "bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-2xl" : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )} style={!(isScrolled || forceTheme === 'dark') ? {
             background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
@@ -124,11 +124,11 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                    <button className={cn(navLinkClass, "flex items-center gap-1.5 py-6")}>
+                    <button className={cn(navLinkClass, "flex items-center gap-1.5 py-5")}>
                         Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", (isScrolled || forceTheme === 'dark') ? "text-white/40" : "text-zinc-400")} />
                     </button>
                     {isDropdownOpen && (
-                        <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                        <div className="absolute top-[64px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                             <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
@@ -152,7 +152,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                 <Link href="/contact" className={navLinkClass} prefetch={false}>Contact</Link>
                 
                 <button className={cn(
-                    "h-11 px-7 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-lg hover:translate-y-[-1px] transition-all active:scale-95 ml-4",
+                    "h-10 px-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-lg hover:translate-y-[-1px] transition-all active:scale-95 ml-4",
                     (isScrolled || forceTheme === 'dark') ? "bg-white text-black" : "bg-[#111111] text-white"
                 )}>
                     <Link href="/library">Get System</Link>
@@ -226,4 +226,3 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
         </header>
     );
 }
-

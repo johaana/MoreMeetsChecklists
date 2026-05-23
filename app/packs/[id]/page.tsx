@@ -42,7 +42,7 @@ export async function generateMetadata(
   const title = `MoreMeets™ | ${pack.title}`;
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  const ogImage = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
+  const ogImage = "https://picsum.photos/seed/sovereign-ops/1200/630";
 
   return {
     metadataBase: new URL(siteUrl),
@@ -74,18 +74,17 @@ export default async function Page({ params }: Props) {
   const pack = premiumPacks.find((p) => p.id === id);
 
   if (!pack) {
-    notFound();
+    notfound();
   }
 
   /**
-   * SOVEREIGN ASSET MAPPING v12.1
-   * Strategy: Background (Atmospheric/Architectural) + Squircle (Operational Battlefield)
-   * Refined per "Institutional Infrastructure" mandate.
+   * SOVEREIGN ASSET MAPPING v12.2
+   * Removed all product screenshots in favor of high-gravity environmental photography.
    */
   const assetMap: Record<string, { bg: string, squircle: string }> = {
       'restaurants': {
           bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
-          squircle: "https://i.postimg.cc/66z9kXNJ/Back-of-House-BOH-Operations-restaurant.png"
+          squircle: "https://picsum.photos/seed/kitchen-ops/800/600"
       },
       'hotels_and_resorts': {
           bg: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp",
@@ -112,25 +111,25 @@ export default async function Page({ params }: Props) {
           squircle: "https://i.postimg.cc/NFNPhCzy/concession-area-cinema.jpg"
       },
       'retail_operations_system': {
-          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+          bg: "https://picsum.photos/seed/retail-exterior/1200/800",
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
       'fashion_and_apparel_retail': {
-          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+          bg: "https://picsum.photos/seed/fashion-studio/1200/800",
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
       'electronics_showroom_pack': {
-          bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
-          squircle: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+          bg: "https://picsum.photos/seed/tech-hub/1200/800",
+          squircle: "https://picsum.photos/seed/electronics/800/600"
       },
       'supermarket_grocery_retail_pack': {
-          bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
-          squircle: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+          bg: "https://picsum.photos/seed/grocery-store/1200/800",
+          squircle: "https://picsum.photos/seed/fresh-produce/800/600"
       }
   };
 
   const assets = assetMap[id] || { 
-      bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
+      bg: "https://picsum.photos/seed/operational-base/1200/800",
       squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
   };
 
