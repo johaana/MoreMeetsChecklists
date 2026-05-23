@@ -29,15 +29,25 @@ import {
     Recycle,
     SearchCheck,
     FileSignature,
-    BoxSelect
+    BoxSelect,
+    Building,
+    Utensils,
+    Hospital,
+    School,
+    Store,
+    Building2,
+    Popcorn,
+    Gem,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
-const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
+const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-24 md:py-40 relative overflow-hidden", className)}>
+        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
@@ -50,15 +60,6 @@ const SectionEyebrow = ({ text }: { text: string }) => (
         <span className="text-[11px] md:text-[13px] font-medium uppercase tracking-[0.2em] text-[#B89B5E] font-headline">
             {text}
         </span>
-    </div>
-);
-
-const SectionHeadline = ({ title, sub, centered = false }: { title: string, sub?: string, centered?: boolean }) => (
-    <div className={cn("space-y-4 md:space-y-6 max-w-4xl", centered && "mx-auto text-center")}>
-        <h2 className="text-[32px] md:text-[54px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.95] text-[#121212]">
-            {title}
-        </h2>
-        {sub && <p className="text-lg md:text-xl text-[#4B5563] font-medium italic leading-relaxed">{sub}</p>}
     </div>
 );
 
@@ -112,7 +113,7 @@ export default function HomePage() {
                                 </span>
                             </div>
 
-                            <h1 className="text-[34px] md:text-[58px] font-extrabold tracking-[-0.04em] leading-[0.95] uppercase text-[#121212] font-headline italic">
+                            <h1 className="text-[34px] md:text-[58px] font-extrabold font-headline leading-[0.95] uppercase text-[#121212] italic tracking-tighter">
                                 YOUR BUSINESS SHOULD NOT <br />
                                 <span className="relative inline-block mt-1">
                                     DEPEND ON MEMORY.
@@ -141,7 +142,7 @@ export default function HomePage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10 pt-4">
-                                <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group w-full sm:w-auto">
+                                <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group w-full sm:w-auto text-center flex items-center justify-center">
                                     <Link href="/library" className="flex items-center justify-center gap-3">
                                         See the systems <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
