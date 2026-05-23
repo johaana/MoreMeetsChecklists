@@ -5,13 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v17.5.1 PRODUCTION LOCK
+ * MOREMEETS™ SOVEREIGN ENGINE - v18.5.1 PRODUCTION LOCK (AUDIT READY)
  * ----------------------------------------------------------------------------
  * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
  * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
- * 4. CUSTOMIZATION GUIDE: Anti-breakage layer and onboarding logic.
- * 5. UX FLOW: START -> DASHBOARD -> DAILY_TASKS -> SOP_LIB -> SETUP -> HUB -> GUIDE
+ * 4. AUDIT HEARTBEAT: Column J (STAMP) for automated verifiable records.
+ * 5. SETUP GUIDE: Integrated Apps Script source for Hotel-tier deployment.
  * ----------------------------------------------------------------------------
  */
 
@@ -24,9 +24,73 @@ const TABS = {
     SOP_LIB: "SOP_LIB",
     BRANCH_SETUP: "BRANCH_SETUP",
     TEAM_HUB: "TEAM_HUB",
+    SETUP_GUIDE: "SETUP_GUIDE", // New tab for Audit activation
     CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
     SYS_ENGINE: "SYS_ENGINE"
 };
+
+// Stabilized Apps Script Source for Institutional Deployment
+const APPS_SCRIPT_SOURCE = `
+function onEdit(e) {
+  try {
+    const sheet = e.range.getSheet();
+    if (sheet.getName() !== "DAILY_TASKS") return;
+
+    const startRow = e.range.getRow();
+    const numRows = e.range.getNumRows();
+    const startCol = e.range.getColumn();
+    const endCol = startCol + e.range.getNumColumns() - 1;
+
+    // Only react to DONE BY (E) or VERIFIED BY (F) edits
+    if (endCol < 5 || startCol > 6) return;
+
+    SpreadsheetApp.flush();
+    let stamped = 0;
+
+    // Process every edited row in the range
+    for (let i = 0; i < numRows; i++) {
+      const row = startRow + i;
+      let status = "";
+
+      // Retry loop for formula latency (gives Sheets time to calculate COMPLETE)
+      for (let retry = 0; retry < 6; retry++) {
+        Utilities.sleep(500);
+        SpreadsheetApp.flush();
+        status = sheet.getRange(row, 7).getDisplayValue().trim();
+        if (status === "COMPLETE") break;
+      }
+
+      const stampCell = sheet.getRange(row, 10);
+      const existingStamp = stampCell.getValue();
+
+      // Stamp only if row is COMPLETE and no stamp exists yet
+      if (status === "COMPLETE" && !existingStamp) {
+        const timestamp = Utilities.formatDate(
+          new Date(),
+          Session.getScriptTimeZone(),
+          "yyyy-MM-dd HH:mm:ss"
+        );
+        stampCell.setValue(timestamp);
+        stamped++;
+      }
+    }
+
+    if (stamped > 0) {
+      SpreadsheetApp.getActiveSpreadsheet().toast(
+        stamped + " audit records secured",
+        "SUCCESS",
+        3
+      );
+    }
+  } catch (err) {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      "ERROR: " + err.toString(),
+      "AUDIT ENGINE",
+      5
+    );
+  }
+}
+`;
 
 const sanitizeRisk = (text: string) => {
     if (!text) return "";
@@ -46,6 +110,7 @@ export const handleDownload = (item: PremiumPack) => {
         }
 
         const wb = utils.book_new();
+        const isHotelPack = item.id === 'hotels_and_resorts';
 
         const COLORS = {
             PRIMARY_GREEN: "22C55E",  
@@ -57,7 +122,8 @@ export const handleDownload = (item: PremiumPack) => {
             TEXT_ACTION: "065F46", 
             TEXT_RISK: "991B1B",
             LOCKED_GREY: "F1F5F9",
-            BLOCK_ALT: "F8FAFC" // Soft grey for alternating role blocks
+            BLOCK_ALT: "F8FAFC",
+            RISK_RED: "DC2626"
         };
 
         const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -107,10 +173,6 @@ export const handleDownload = (item: PremiumPack) => {
             ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
         };
 
-        /**
-         * APPEND WORKBOOK SHEETS IN STRATEGIC UX ORDER
-         */
-
         // --- 01. START ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
@@ -118,18 +180,18 @@ export const handleDownload = (item: PremiumPack) => {
             [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
             [],
+            ...(isHotelPack ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. Only continue in the new file." }]] : []),
             [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations in the yellow cells." }],
             [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names, phone numbers, and emails." }],
             [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }],
             [],
-            [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
-            [{ v: "Replace all YELLOW cells with your own local details to begin." }],
+            ...(isHotelPack ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for instructions on securing timestamps." }]] : []),
             [],
-            [{ v: "NAVIGATION NOTICE:", s: { font: { bold: true } } }],
-            [{ v: "Use the tab bar at the bottom of your screen to move between divisions." }]
+            [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+            [{ v: "Replace all YELLOW cells with your own local details to begin." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
-        startWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
+        startWs['!cols'] = [{ wch: 35 }, { wch: 80 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         validateSheetName(TABS.START);
         utils.book_append_sheet(wb, startWs, TABS.START);
@@ -140,13 +202,12 @@ export const handleDownload = (item: PremiumPack) => {
             [],
             [{ v: "SYSTEM STATUS:", s: getStyles(false).left }, { v: "ONLINE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'right' } } }],
             [],
-            [{ v: "COMPLETION %:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(TEXT(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "COMPLETE") / MAX(1, COUNTIFS(${TABS.DAILY_TASKS}!$G$4:$G$5000, "<>")), "0%"), "0%")`, s: { ...baseFont, bold: true, alignment: { horizontal: 'right' } } }],
-            [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { ...baseFont, bold: true, alignment: { horizontal: 'right' } } }]
+            [{ v: "COMPLETION %:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(TEXT(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "COMPLETE") / MAX(1, COUNTIFS(${TABS.DAILY_TASKS}!$G$4:$G$5000, "<>")), "0%"), "0%")`, s: { font: { bold: true }, alignment: { horizontal: 'right' } } }],
+            [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { font: { bold: true }, alignment: { horizontal: 'right' } } }]
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
-        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 20 }, { wch: 20 }];
-        dashWs['!rows'] = [{ hpt: 30 }]; // Increased header height for vertical balance
-        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }]; // Expanded merge for horizontal clearance
+        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }];
+        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         validateSheetName(TABS.DASHBOARD);
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
@@ -155,69 +216,68 @@ export const handleDownload = (item: PremiumPack) => {
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
-            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle }
+            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
+            ...(isHotelPack ? [{ v: "STAMP", s: headerStyle }] : [])
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         
         for (let b = 0; b < 2; b++) {
             const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + b}`;
-            activeRoles.forEach((role, roleIdx) => {
-                const roleChecklist = item.checklists.find(c => c.role === role);
-                if (roleChecklist) {
-                    roleChecklist.tasks.forEach(t => {
-                        const rIdx = taskData.length + 1;
-                        const styles = getStyles(roleIdx % 2 === 1);
-                        const isV = t.verificationRequired === true;
+            item.checklists.forEach((checklist, cIdx) => {
+                const role = checklist.role;
+                checklist.tasks.forEach(t => {
+                    const rIdx = taskData.length + 1;
+                    const styles = getStyles(cIdx % 2 === 1);
+                    const isV = t.verificationRequired === true;
 
-                        const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
-                        const statusFormula = isV 
-                            ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
-                            : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
+                    const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
+                    const statusFormula = isV 
+                        ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
+                        : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
 
-                        taskData.push([
-                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.left },
-                            { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
-                            { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
-                            { t: 'f', f: assignedFormula, s: styles.left },
-                            { v: "", s: styles.input },
-                            { v: "", s: isV ? styles.input : styles.locked }, 
-                            { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
-                            { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                            { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
-                        ]);
-                    });
-                }
+                    const row: any[] = [
+                        { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
+                        { v: role, s: styles.left },
+                        { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
+                        { t: 'f', f: assignedFormula, s: styles.left },
+                        { v: "", s: styles.input },
+                        { v: "", s: isV ? styles.input : styles.locked }, 
+                        { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
+                        { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
+                        { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                    ];
+
+                    if (isHotelPack) {
+                        row.push({ v: "", s: styles.locked });
+                    }
+                    taskData.push(row);
+                });
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
+        const colWidths = [20, 25, 45, 25, 15, 15, 15, 45, 65];
+        if (isHotelPack) colWidths.push(25);
+        taskWs['!cols'] = colWidths.map(w => ({ wch: w }));
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", isHotelPack ? 'J' : 'I');
         validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
-        const libRows: any[] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 30 }];
-
         item.checklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
                 const styles = getStyles(cIdx % 2 === 1);
-                const txt = (t.technicalProtocol || "") + (t.floorAction || t.description || "");
-                const lines = Math.ceil(txt.length / 60);
-                libRows.push({ hpt: Math.max(35, lines * 18), customHeight: 1 });
-
                 libData.push([
                     { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
                     { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
                     { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: styles.left },
-                    { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                    { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                 ]);
             });
         });
         const libWs = utils.aoa_to_sheet(libData);
         libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
-        libWs['!rows'] = libRows;
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
         validateSheetName(TABS.SOP_LIB);
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
@@ -260,104 +320,35 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.TEAM_HUB);
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. CUSTOMIZATION_GUIDE ---
-        const guideData: any[][] = [
-            [{ v: "🛠️ CUSTOMIZATION GUIDE — HOW TO TAILOR YOUR SYSTEM", s: bannerStyle }],
-            [],
-            [{ v: "SECTION A: WHAT YOU CAN SAFELY EDIT", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "✅ Branch names & locations" }],
-            [{ v: "✅ Team member names, phone numbers & emails" }],
-            [{ v: "✅ SOP wording & technical descriptions" }],
-            [{ v: "✅ Adding or removing tasks within role blocks" }],
-            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
-            [],
-            [{ v: "SECTION B: WHAT YOU SHOULD NOT EDIT", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "❌ Do not rename the core tab names (e.g. DAILY_TASKS, DASHBOARD)" }],
-            [{ v: "❌ Do not delete hidden sheets or modified formula logic" }],
-            [{ v: "❌ Do not insert columns inside the middle of the DAILY_TASKS ledger" }],
-            [{ v: "❌ Do not unhide or modify the [SYS_ENGINE] metadata tab" }],
-            [],
-            [{ v: "SECTION C: HOW TO ADD NEW TASKS", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "To add a task, simply insert a row under the relevant ROLE block in [DAILY_TASKS]." }],
-            [{ v: "Note: High-risk tasks should have the 'Verified By' cell enabled in the formula logic." }],
-            [],
-            [{ v: "SECTION D: TASK FREQUENCY MODEL", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "The system is built to handle: DAILY | WEEKLY | MONTHLY | INCIDENT-BASED." }],
-            [],
-            [{ v: "SECTION E: MOBILE USAGE (GOOGLE SHEETS APP)", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "• Swipe the bottom tab bar to move between divisions." }],
-            [{ v: "• Use Filters in column headers to see only your own role's tasks." }],
-            [{ v: "• Zoom the sheet to 80-90% for maximum visibility." }],
-            [],
-            [{ v: "🔐 Google Sheets Protection Setup (Optional Admin Step)", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "Purpose: This step allows administrators to optionally protect system formulas and structure in Google Sheets." }],
-            [{ v: "The workbook is fully functional without this step. This is only recommended for teams with multiple editors." }],
-            [],
-            [{ v: "⚙️ Step-by-Step: Enable Protection in Google Sheets", s: { font: { bold: true } } }],
-            [{ v: "STEP 1 — Open Protection Panel", s: { font: { bold: true } } }],
-            [{ v: "1. Open the Google Sheet" }],
-            [{ v: "2. Go to the sheet you want to protect (e.g., DAILY_TASKS)" }],
-            [{ v: "3. Click Data → Protect sheets and ranges" }],
-            [],
-            [{ v: "STEP 2 — Protect the Sheet", s: { font: { bold: true } } }],
-            [{ v: "1. Click Add a sheet or range" }],
-            [{ v: "2. Select Sheet" }],
-            [{ v: "3. Choose: DAILY_TASKS" }],
-            [{ v: "4. Click Set permissions" }],
-            [],
-            [{ v: "STEP 3 — Set Editing Permissions", s: { font: { bold: true } } }],
-            [{ v: "Choose:" }],
-            [{ v: "❌ Restrict who can edit this range" }],
-            [{ v: "✅ Only you (recommended)" }],
-            [{ v: "Click Done" }],
-            [],
-            [{ v: "STEP 4 — Create Editable Input Zones (VERY IMPORTANT)", s: { font: { bold: true } } }],
-            [{ v: "Now allow editing only for input columns:" }],
-            [{ v: "1. Go back to Data → Protect sheets and ranges" }],
-            [{ v: "2. Click Add a range" }],
-            [{ v: "3. Add these ranges:" }],
-            [{ v: "• E2:E → Done By" }],
-            [{ v: "• F2:F → Verified By" }],
-            [{ v: "• Any yellow input columns (branch-specific fields)" }],
-            [{ v: "4. Set permissions: ✅ Allow editors to edit this range" }],
-            [],
-            [{ v: "STEP 5 — Repeat for SYSTEM SHEETS", s: { font: { bold: true } } }],
-            [{ v: "Apply the same protection to:" }],
-            [{ v: "• DASHBOARD (entire sheet)" }],
-            [{ v: "• SOP_LIB (formula sections only)" }],
-            [{ v: "• BRANCH_SETUP (config logic areas)" }],
-            [{ v: "• SYS_ENGINE (entire sheet — DO NOT EDIT)" }],
-            [],
-            [{ v: "⚠️ Important Rules", s: { font: { bold: true } } }],
-            [{ v: "* Grey cells = system logic → DO NOT EDIT" }],
-            [{ v: "* Yellow cells = input fields → SAFE TO EDIT" }],
-            [{ v: "* Formulas should not be modified manually" }],
-            [{ v: "* If unsure, do not change system cells" }],
-            [],
-            [{ v: "🧠 Recommended Protection Strategy", s: { font: { bold: true } } }],
-            [{ v: "Area", s: { font: { bold: true } } }, { v: "Protection Level", s: { font: { bold: true } } }],
-            [{ v: "SYS_ENGINE", s: { border: borderStyle } }, { v: "Fully locked", s: { border: borderStyle } }],
-            [{ v: "DASHBOARD formulas", s: { border: borderStyle } }, { v: "Fully locked", s: { border: borderStyle } }],
-            [{ v: "DAILY_TASKS formulas", s: { border: borderStyle } }, { v: "Locked", s: { border: borderStyle } }],
-            [{ v: "Yellow input cells", s: { border: borderStyle } }, { v: "Editable", s: { border: borderStyle } }],
-            [{ v: "BRANCH_SETUP inputs", s: { border: borderStyle } }, { v: "Editable", s: { border: borderStyle } }],
-            [],
-            [{ v: "💡 Optional Advanced Method (Admins Only)", s: { font: { bold: true } } }],
-            [{ v: "If your organization has technical staff: You can also useExtensions → Apps Script → Run Protection Script" }],
-            [{ v: "(This is provided separately in the CUSTOMIZATION_GUIDE)" }],
-            [],
-            [{ v: "🧭 Product Principle (IMPORTANT)", s: { font: { bold: true } } }],
-            [{ v: "This system is designed as: “Visual protection first, enforcement protection optional”" }],
-            [{ v: "So even without locking: system remains operational, dashboards remain stable, inputs remain safe" }],
-            [],
-            [{ v: "SYSTEM FLOW:", s: { font: { bold: true } } }],
-            [{ v: "BRANCH_SETUP → TEAM_HUB → SOP_LIB → DAILY_TASKS → DASHBOARD" }]
-        ];
-        const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 100 }];
-        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
-        validateSheetName(TABS.CUSTOMIZATION_GUIDE);
-        utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
+        // --- 07. SETUP_GUIDE (Audit Activation) ---
+        if (isHotelPack) {
+            const guideData: any[][] = [
+                [{ v: "🛠️ SYSTEM SETUP & AUDIT ENGINE ACTIVATION", s: bannerStyle }],
+                [],
+                [{ v: "SECTION A — MANDATORY CONVERSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RISK_RED } } } }],
+                [{ v: "1. Click [File] -> [Save as Google Sheets]. This is required for automation." }],
+                [{ v: "2. Close this tab. Only work in the NEW Google Sheets file." }],
+                [],
+                [{ v: "SECTION B — ACTIVATE THE AUDIT HEARTBEAT", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "1. In your new Google Sheet, go to [Extensions] -> [Apps Script]." }],
+                [{ v: "2. Delete all existing text in the editor." }],
+                [{ v: "3. Copy and Paste the code provided at the bottom of this sheet." }],
+                [{ v: "4. Click the [Save] icon (floppy disk) and name it 'AuditEngine'." }],
+                [{ v: "5. Click the [Clock] icon (Triggers) and add a trigger for 'onEdit' (On edit)." }],
+                [],
+                [{ v: "SECTION C — VERIFICATION", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "Go to [DAILY_TASKS] and enter your initials in the [DONE BY] column." }],
+                [{ v: "Wait 2-4 seconds. A secure timestamp MUST appear in Column J (STAMP)." }],
+                [],
+                [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+                [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
+            ];
+            const guideWs = utils.aoa_to_sheet(guideData);
+            guideWs['!cols'] = [{ wch: 110 }];
+            guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
+            validateSheetName(TABS.SETUP_GUIDE);
+            utils.book_append_sheet(wb, guideWs, TABS.SETUP_GUIDE);
+        }
 
         // --- 08. SYS_ENGINE ---
         const sysData: any[][] = [];
@@ -377,23 +368,23 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.SYS_ENGINE);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
-        // Final Range Lock to prevent Row-60 truncation
-        [startWs, dashWs, taskWs, libWs, branchWs, teamWs, guideWs, sysWs].forEach(ws => {
+        // Final Range Lock
+        [startWs, dashWs, taskWs, libWs, branchWs, teamWs, sysWs].forEach(ws => {
             const range = utils.decode_range(ws['!ref'] || "A1:A1");
             const dataRows = (ws as any)['!data'] ? (ws as any)['!data'].length : 100;
             range.e.r = Math.max(range.e.r, dataRows + 10);
             ws['!ref'] = utils.encode_range(range);
         });
 
-        // Hide SYS_ENGINE
+        // Hide Metadata
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
-        wb.Workbook.Views[0].activeTab = 0; // Force open on START
+        wb.Workbook.Views[0].activeTab = 0;
 
-        writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_v17.xlsx`);
+        writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v18.xlsx`);
     } catch (error: any) {
-        console.error("Sovereign Infrastructure Failure:", error);
+        console.error("Institutional Engine Failure:", error);
         alert(`Engine Error: ${error.message}`);
     }
 }
