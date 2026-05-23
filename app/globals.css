@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,75 +10,47 @@
     --card-foreground: 212 88% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 212 88% 13%;
-    --primary: 145 58% 42%; /* Hardened Executive Green */
+    --primary: 38 62% 61%; /* Gold Accent #D6A85F */
     --primary-foreground: 212 40% 4%;
-    --secondary: 35 92% 90%;
-    --secondary-foreground: 212 88% 13%;
-    --muted: 220 15% 65%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 38 92% 66%; /* Gold/Yellow */
+    --secondary: 212 40% 15%;
+    --secondary-foreground: 212 10% 95%;
+    --muted: 212 15% 30%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 38 62% 61%;
     --accent-foreground: 212 88% 13%;
     --destructive: 0 59% 54%;
     --destructive-foreground: 0 0% 98%;
-    --border: 212 40% 15%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 145 58% 42%;
+    --border: 212 30% 20%;
+    --input: 212 30% 20%;
+    --ring: 38 62% 61%;
     --radius: 0.5rem;
 
-    --bg-primary: 212 40% 4%;
-    --bg-secondary: 212 40% 10%;
-    --surface-card: 212 40% 8%;
-    --border-color: 212 40% 15%;
-    --text-primary: 0 0% 98%;
-    --text-secondary: 215.4 16.3% 81%;
-    --text-on-light: 215.4 16.3% 56.9%;
-    --authority-green: 145 58% 42%;
-    --accent-urgency: 0 59% 54%;
-    --alternate-background: 218 20% 6%;
-    --primary-text: 215 25% 95%;
-    --secondary-text: 220 15% 76%;
-    --muted-text: 220 15% 76%;
-    --high-contrast-green: 145 58% 42%;
-    --risk-accent: 0 59% 54%;
+    --brand-navy: 212 35% 9%; /* #0F1720 */
+    --brand-gold: 38 62% 61%; /* #D6A85F */
+    --brand-green: 145 58% 42%; /* #22C55E */
+    --brand-amber: 38 92% 50%; /* #F59E0B */
   }
 
   .dark {
-    --background: 212 40% 4%;
-    --foreground: 0 0% 98%;
-    --card: 212 40% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 212 40% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 145 58% 42%; /* Hardened Executive Green */
-    --primary-foreground: 212 40% 4%;
-    --secondary: 212 40% 10%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 212 40% 10%;
+    --background: 212 35% 9%;
+    --foreground: 210 40% 98%;
+    --card: 212 35% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 212 35% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 38 62% 61%;
+    --primary-foreground: 212 35% 9%;
+    --secondary: 212 35% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 212 35% 15%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 38 92% 66%; /* Gold/Yellow */
-    --accent-foreground: 212 88% 13%;
+    --accent: 38 62% 61%;
+    --accent-foreground: 212 35% 9%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 212 40% 15%;
-    --input: 212 40% 15%;
-    --ring: 145 58% 42%;
-    
-    --bg-primary: 212 40% 4%;
-    --bg-secondary: 212 40% 10%;
-    --surface-card: 212 40% 8%;
-    --border-color: 212 40% 15%;
-    --text-primary: 0 0% 98%;
-    --text-secondary: 215.4 16.3% 81%;
-    --text-on-light: 215.4 16.3% 56.9%;
-    --accent-authority: 145 58% 42%;
-    --accent-urgency: 0 59% 54%;
-    --alternate-background: 218 20% 6%;
-    --primary-text: 215 25% 95%;
-    --secondary-text: 220 15% 76%;
-    --muted-text: 220 15% 76%;
-    --authority-green: 145 58% 42%;
-    --high-contrast-green: 145 58% 42%;
-    --risk-accent: 0 59% 54%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 212 35% 15%;
+    --input: 212 35% 15%;
+    --ring: 38 62% 61%;
   }
 }
  
@@ -119,20 +90,20 @@ html {
   animation: marquee 80s linear infinite;
 }
 
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-shimmer {
-  animation: shimmer 3s infinite;
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
 }
 
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.05); }
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.98); }
 }
 
-.animate-pulse-soft {
-  animation: pulse-soft 2s infinite ease-in-out;
+.animate-soft-pulse {
+  animation: soft-pulse 3s infinite ease-in-out;
 }
