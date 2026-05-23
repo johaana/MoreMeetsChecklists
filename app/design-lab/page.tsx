@@ -11,7 +11,8 @@ import {
     CheckCircle2,
     Users,
     History,
-    Lock,
+    ShieldCheck,
+    Smartphone,
     LayoutGrid,
     ChevronRight
 } from 'lucide-react';
@@ -29,7 +30,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 );
 
 const LocalHeader = () => (
-    <header className="px-8 lg:px-12 h-[72px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500 bg-white/10 backdrop-blur-md border-b border-black/5" style={{
+    <header className="px-8 lg:px-12 h-[72px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500" style={{
         background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
         backdropFilter: 'blur(14px)'
     }}>
