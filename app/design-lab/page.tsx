@@ -49,12 +49,12 @@ export default function DesignLab() {
 
     return (
         <div className="bg-[#F6F3EE] text-[#111111] font-sans antialiased selection:bg-[#1F6B52]/10">
-            <SiteHeader forceTheme="light" />
+            <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
                 {/* --- 1. MINIMAL HERO: CINEMATIC MANDATE --- */}
-                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-[#F6F3EE]">
+                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-black">
                     {/* Background Cinematic Video */}
                     <div className="absolute inset-0 z-0">
                         <video 
@@ -65,11 +65,11 @@ export default function DesignLab() {
                             playsInline 
                             className="w-full h-full object-cover scale-[1.05] opacity-90"
                         />
-                        {/* Daylight Gradient Overlay */}
+                        {/* Dark Split-Gradient Overlay */}
                         <div 
                             className="absolute inset-0 z-10" 
                             style={{ 
-                                background: 'linear-gradient(90deg, rgba(246,243,238,0.96) 0%, rgba(246,243,238,0.85) 45%, rgba(246,243,238,0.25) 100%)' 
+                                background: 'linear-gradient(90deg, rgba(5,7,10,0.96) 0%, rgba(5,7,10,0.85) 45%, rgba(5,7,10,0.25) 100%)' 
                             }} 
                         />
                     </div>
@@ -80,48 +80,32 @@ export default function DesignLab() {
                             {/* Left: Emotional Narrative */}
                             <div className="space-y-12">
                                 <div className="space-y-8">
-                                    <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-[#111111] font-headline">
-                                        YOUR BUSINESS <br/> SHOULD NOT <br/> DEPEND <br/> ON MEMORY.
+                                    <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
+                                        YOUR BUSINESS <br/> <span className="text-[#22C55E]">SHOULD NOT</span> <br/> DEPEND <br/> ON MEMORY.
                                     </h1>
                                     <div className="space-y-6 max-w-[580px]">
-                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-[#5F6368] italic">
+                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-zinc-400 italic">
                                             Ready-to-use live operational systems with daily tasks, built-in instructions, and accountability.
                                         </p>
                                         <div className="flex flex-col gap-2 pt-2">
-                                            <p className="text-[11px] font-black text-[#1F6B52] uppercase tracking-[0.25em]">No new apps to learn • Works on Google Sheets</p>
+                                            <p className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.25em]">No new apps to learn • Works on Google Sheets</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row items-center gap-8">
-                                    <Button asChild className="h-16 px-12 rounded-2xl bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-2xl transition-all hover:-translate-y-1 hover:bg-black">
+                                    <Button asChild className="h-16 px-12 rounded-2xl bg-white text-black font-bold uppercase text-xs tracking-widest shadow-2xl transition-all hover:-translate-y-1 hover:bg-zinc-100">
                                         <Link href="/library">See the system</Link>
                                     </Button>
-                                    <Link href="#how-it-works" className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#111111]">
+                                    <Link href="#how-it-works" className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-white/60 hover:text-white transition-colors">
                                         Watch How Teams Use It
                                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </div>
                             </div>
 
-                            {/* Right: Minimalist Visual Anchor (The Moat Glimpse) */}
-                            <div className="hidden lg:flex flex-col items-end relative">
-                                <div className="relative group w-full max-w-[440px]">
-                                    <div className="absolute -inset-4 bg-[#1F6B52]/10 rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000" />
-                                    <GlassPanel className="p-2 overflow-hidden border-white/60">
-                                        <div className="rounded-[1.5rem] overflow-hidden bg-[#F6F3EE] aspect-[1.6/1]">
-                                            <img 
-                                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
-                                                alt="Operational Interface" 
-                                                className="w-full h-full object-cover grayscale-[0.4] opacity-40 blur-[1px] group-hover:blur-0 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
-                                            />
-                                        </div>
-                                    </GlassPanel>
-                                    <div className="mt-6 flex justify-end pr-4">
-                                         <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#5F6368]/40 italic">Digital Ledger Command Center</span>
-                                    </div>
-                                </div>
-                            </div>
+                            {/* Right Side Empty to show clear video */}
+                            <div className="hidden lg:block"></div>
 
                         </div>
                     </div>
