@@ -10,14 +10,6 @@ import {
     ShieldCheck,
     Clock,
     UserCheck,
-    Utensils,
-    Building,
-    ShoppingBag,
-    Hospital,
-    School,
-    Popcorn,
-    ChevronRight,
-    Search,
     Smartphone,
     History,
     Users
@@ -27,7 +19,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1740391216/32823021-uhd_3840_2160_25fps_moxg0j.mp4";
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-24 md:py-40 relative overflow-hidden", className)}>
@@ -61,8 +53,8 @@ export default function DesignLab() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: CINEMATIC ADVERTISING COMPOSITION --- */}
-                <section className="relative w-full h-[100svh] min-h-[750px] flex flex-col justify-center overflow-hidden bg-[#F6F3EE]">
+                {/* --- 1. MINIMAL HERO: CINEMATIC MANDATE --- */}
+                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-[#F6F3EE]">
                     {/* Background Cinematic Video */}
                     <div className="absolute inset-0 z-0">
                         <video 
@@ -88,19 +80,15 @@ export default function DesignLab() {
                             {/* Left: Emotional Narrative */}
                             <div className="space-y-12">
                                 <div className="space-y-8">
-                                    <h1 className="text-[64px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-[#111111] font-headline">
+                                    <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-[#111111] font-headline">
                                         YOUR BUSINESS <br/> SHOULD NOT <br/> DEPEND <br/> ON MEMORY.
                                     </h1>
-                                    <div className="space-y-6 max-w-[620px]">
-                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.6] text-[#5F6368]">
-                                            MoreMeets gives your team ready-to-use SOP systems with daily tasks, built-in instructions, timestamps, and accountability.
+                                    <div className="space-y-6 max-w-[580px]">
+                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-[#5F6368] italic">
+                                            Ready-to-use live operational systems with daily tasks, built-in instructions, and accountability.
                                         </p>
-                                        <p className="text-[18px] md:text-[22px] font-normal leading-[1.6] text-[#5F6368]">
-                                            So work gets done properly — even when managers are away, staff change, or operations get busy.
-                                        </p>
-                                        <div className="flex flex-col gap-2 pt-4">
-                                            <p className="text-xs font-bold text-[#1F6B52] uppercase tracking-[0.2em]">No new apps to learn.</p>
-                                            <p className="text-xs font-bold text-[#1F6B52] uppercase tracking-[0.2em]">Works directly on Google Sheets.</p>
+                                        <div className="flex flex-col gap-2 pt-2">
+                                            <p className="text-[11px] font-black text-[#1F6B52] uppercase tracking-[0.25em]">No new apps to learn • Works on Google Sheets</p>
                                         </div>
                                     </div>
                                 </div>
@@ -116,64 +104,23 @@ export default function DesignLab() {
                                 </div>
                             </div>
 
-                            {/* Right: The Proof Panels (translucent glass) */}
-                            <div className="hidden lg:flex flex-col gap-6 items-end relative">
-                                {/* Activity Pulse Panel */}
-                                <GlassPanel className="w-[380px] -mr-12" delay="0.2s">
-                                    <div className="space-y-6">
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#1F6B52]">Daily Heartbeat</span>
-                                            <div className="w-2 h-2 rounded-full bg-[#1F6B52] animate-pulse" />
+                            {/* Right: Minimalist Visual Anchor (The Moat Glimpse) */}
+                            <div className="hidden lg:flex flex-col items-end relative">
+                                <div className="relative group w-full max-w-[440px]">
+                                    <div className="absolute -inset-4 bg-[#1F6B52]/10 rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000" />
+                                    <GlassPanel className="p-2 overflow-hidden border-white/60">
+                                        <div className="rounded-[1.5rem] overflow-hidden bg-[#F6F3EE] aspect-[1.6/1]">
+                                            <img 
+                                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
+                                                alt="Operational Interface" 
+                                                className="w-full h-full object-cover grayscale-[0.4] opacity-40 blur-[1px] group-hover:blur-0 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                                            />
                                         </div>
-                                        <div className="space-y-5">
-                                            {[
-                                                { t: "Opening Checklist Completed", time: "08:14 AM", status: "ok" },
-                                                { t: "Cold Storage Logged", time: "09:02 AM", status: "ok" },
-                                                { t: "Fire Exit Check Pending", time: "Due in 12 mins", status: "warn" }
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex gap-4 items-start">
-                                                    <div className={cn(
-                                                        "w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5",
-                                                        item.status === 'ok' ? "bg-[#1F6B52]/10 text-[#1F6B52]" : "bg-[#C28B2C]/10 text-[#C28B2C]"
-                                                    )}>
-                                                        {item.status === 'ok' ? <Check className="w-2.5 h-2.5" /> : <Clock className="w-2.5 h-2.5" />}
-                                                    </div>
-                                                    <div className="space-y-0.5">
-                                                        <p className="text-[13px] font-bold leading-tight">{item.t}</p>
-                                                        <p className="text-[10px] font-medium text-[#5F6368] uppercase">{item.time}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                    </GlassPanel>
+                                    <div className="mt-6 flex justify-end pr-4">
+                                         <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#5F6368]/40 italic">Digital Ledger Command Center</span>
                                     </div>
-                                </GlassPanel>
-
-                                {/* Sheet Snippet Panel */}
-                                <GlassPanel className="w-[420px]" delay="0.4s">
-                                    <div className="space-y-4 opacity-80 blur-[0.5px]">
-                                        <div className="grid grid-cols-[1fr,80px] gap-4 pb-2 border-b border-black/5">
-                                            <span className="text-[9px] font-black uppercase text-[#5F6368]">Protocol</span>
-                                            <span className="text-[9px] font-black uppercase text-[#5F6368] text-right">Initials</span>
-                                        </div>
-                                        {[
-                                            { p: "Surface Sanitization", i: "AK" },
-                                            { p: "Cash Float Verified", i: "SK" },
-                                            { p: "HVAC Filter Check", i: "RD" }
-                                        ].map((row, idx) => (
-                                            <div key={idx} className="grid grid-cols-[1fr,80px] gap-4 items-center">
-                                                <span className="text-[11px] font-medium">{row.p}</span>
-                                                <div className="flex justify-end">
-                                                    <div className="w-8 h-8 rounded bg-[#F6F3EE] border border-black/5 flex items-center justify-center text-[10px] font-bold">
-                                                        {row.i}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="pt-4 flex justify-center">
-                                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#5F6368]/40 italic">Real Execution Ledger Snip</span>
-                                    </div>
-                                </GlassPanel>
+                                </div>
                             </div>
 
                         </div>
@@ -194,12 +141,75 @@ export default function DesignLab() {
                     </div>
                 </div>
 
-                {/* --- 3. HOW IT WORKS: 3 STEPS --- */}
-                <Section id="how-it-works" className="bg-white">
+                {/* --- 3. SYSTEM HEARTBEAT: THE PROOF OF LIFE --- */}
+                <Section className="bg-white">
+                    <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
+                        <div className="space-y-8">
+                            <Badge variant="outline" className="text-[#1F6B52] border-[#1F6B52]/20 bg-[#1F6B52]/5 px-6 py-2 uppercase font-black tracking-widest text-[10px]">Technical Proof</Badge>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
+                                Real-time <br/> Accountability.
+                            </h2>
+                            <p className="text-lg text-[#5F6368] italic max-w-md leading-relaxed">
+                                Every action is timestamped, verified, and visible. No more "I forgot" or "I'll do it later." The system anchors the standard.
+                            </p>
+                            <div className="flex flex-col gap-6 pt-4">
+                                {[
+                                    { t: "Verification required for critical nodes", i: ShieldCheck },
+                                    { t: "Mobile-first initials logging", i: Smartphone },
+                                    { t: "Permanent audit history vault", i: History }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-4 items-center">
+                                        <div className="w-10 h-10 rounded-xl bg-[#F6F3EE] flex items-center justify-center text-[#1F6B52]">
+                                            <item.i className="w-5 h-5" />
+                                        </div>
+                                        <span className="text-sm font-bold uppercase italic tracking-tight">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-6 items-center lg:items-end">
+                            {/* Activity Pulse Panel */}
+                            <GlassPanel className="w-full max-w-[420px] bg-white shadow-2xl border-zinc-200">
+                                <div className="space-y-6">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#1F6B52]">Daily Heartbeat</span>
+                                        <div className="w-2 h-2 rounded-full bg-[#1F6B52] animate-pulse" />
+                                    </div>
+                                    <div className="space-y-5">
+                                        {[
+                                            { t: "Opening Audit Verified", time: "08:14 AM", status: "ok" },
+                                            { t: "Cold Storage Temperature Logged", time: "09:02 AM", status: "ok" },
+                                            { t: "Fire Exit Inspection Pending", time: "Due in 12 mins", status: "warn" },
+                                            { t: "Kitchen Hygiene Sweep Complete", time: "11:27 AM", status: "ok" },
+                                            { t: "Shift Handover Signed", time: "12:01 PM", status: "ok" }
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex gap-4 items-start pb-4 border-b border-black/5 last:border-0 last:pb-0">
+                                                <div className={cn(
+                                                    "w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5",
+                                                    item.status === 'ok' ? "bg-[#1F6B52]/10 text-[#1F6B52]" : "bg-[#C28B2C]/10 text-[#C28B2C]"
+                                                )}>
+                                                    {item.status === 'ok' ? <Check className="w-2.5 h-2.5" /> : <Clock className="w-2.5 h-2.5" />}
+                                                </div>
+                                                <div className="space-y-0.5">
+                                                    <p className="text-[14px] font-black leading-tight uppercase italic">{item.t}</p>
+                                                    <p className="text-[10px] font-bold text-[#5F6368] uppercase tracking-widest">{item.time}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </GlassPanel>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 4. HOW IT WORKS: 3 STEPS --- */}
+                <Section id="how-it-works" className="bg-[#F6F3EE]">
                     <div className="max-w-5xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
-                            <h2 className="text-[44px] font-black font-headline tracking-tighter uppercase italic">The Path to Clarity.</h2>
-                            <p className="text-[#5F6368] text-lg">No complex rollout. Just operations in order.</p>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The Path to Clarity.</h2>
+                            <p className="text-[#5F6368] text-lg italic">No complex rollout. Just operations in order.</p>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-16">
@@ -209,7 +219,7 @@ export default function DesignLab() {
                                 { n: "03", t: "Track Live", d: "Watch tasks turn green across your business from any device." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-6 relative">
-                                    <span className="text-[80px] font-black text-[#F6F3EE] absolute -top-12 -left-4 leading-none select-none">
+                                    <span className="text-[80px] font-black text-white absolute -top-12 -left-4 leading-none select-none opacity-50">
                                         {step.n}
                                     </span>
                                     <div className="relative z-10 space-y-3">
@@ -222,12 +232,12 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 4. REAL INTERFACE: THE MOAT --- */}
-                <Section className="bg-[#F6F3EE]">
+                {/* --- 5. REAL INTERFACE: THE MOAT --- */}
+                <Section className="bg-white">
                     <div className="space-y-20">
                         <div className="text-center space-y-4 max-w-3xl mx-auto">
-                            <h2 className="text-[44px] font-black font-headline tracking-tighter uppercase italic leading-tight">The tool they already know.</h2>
-                            <p className="text-[#5F6368] text-lg">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
+                            <h2 className="text-[44px] md:text-[64px] font-black font-headline tracking-tighter uppercase italic leading-[0.9]">The tool they already know.</h2>
+                            <p className="text-[#5F6368] text-lg italic">Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets.</p>
                         </div>
 
                         <div className="relative max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden border border-black/5 shadow-[0_60px_100px_-20px_rgba(0,0,0,0.1)] group">
@@ -241,8 +251,8 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 5. BENEFITS: PREMIUM CARDS --- */}
-                <Section className="bg-white">
+                {/* --- 6. BENEFITS: PREMIUM CARDS --- */}
+                <Section className="bg-[#F6F3EE]">
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                         {[
                             {
@@ -266,8 +276,8 @@ export default function DesignLab() {
                                 i: ShieldCheck
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex gap-8 p-10 bg-[#F6F3EE]/50 rounded-[3rem] border border-black/5 hover:bg-white hover:shadow-2xl transition-all duration-700">
-                                <div className="w-16 h-16 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-[#1F6B52] shrink-0 shadow-sm">
+                            <div key={i} className="flex gap-8 p-10 bg-white rounded-[3rem] border border-black/5 hover:shadow-2xl transition-all duration-700 group">
+                                <div className="w-16 h-16 rounded-2xl bg-[#F6F3EE] border border-black/5 flex items-center justify-center text-[#1F6B52] shrink-0 shadow-sm group-hover:bg-[#1F6B52] group-hover:text-white transition-colors">
                                     <item.i className="w-7 h-7" />
                                 </div>
                                 <div className="space-y-3">
@@ -279,8 +289,8 @@ export default function DesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 6. FINAL CTA --- */}
-                <Section className="bg-[#111111] text-white text-center py-40 md:py-60">
+                {/* --- 7. FINAL CTA --- */}
+                <Section className="bg-[#111111] text-white text-center py-40 md:py-60" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-4">
                             <h2 className="text-[44px] md:text-[88px] font-black leading-[0.85] tracking-tighter uppercase italic font-headline">
