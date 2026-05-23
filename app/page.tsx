@@ -2,686 +2,387 @@
 
 import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { 
-    Check, 
-    X,
-    ArrowRight, 
-    Activity,
-    Lock,
-    ClipboardCheck,
-    Smartphone,
-    AlertTriangle,
-    GraduationCap,
-    ShieldCheck,
-    CheckCircle2,
-    Utensils,
-    Building,
-    Hospital,
-    School,
-    Store,
-    Building2,
-    Popcorn,
-    Zap,
-    History,
-    ShieldAlert,
-    Target,
-    FileSignature,
-    SearchCheck,
-    Users,
-    FileSpreadsheet,
-    Globe,
-    ChevronRight,
-    ShoppingBasket,
-    Download,
-    ShoppingBag,
-    Clock,
-    Scale,
-    Cpu,
-    Gem,
-    LayoutGrid
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import Link from 'next/link';
 import { FaqSection } from '@/components/layout/faq-section';
-import { Button } from '@/components/ui/button';
+import { 
+    Check, 
+    ArrowRight, 
+    Target,
+    Activity,
+    CheckCircle2,
+    Users,
+    History,
+    ShieldCheck,
+    Smartphone,
+    LayoutGrid,
+    ChevronRight,
+    Lock,
+    GraduationCap,
+    Zap,
+    AlertTriangle,
+    FileSpreadsheet,
+    Eye,
+    Wrench,
+    Leaf,
+    Recycle,
+    SearchCheck,
+    FileSignature,
+    BoxSelect
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
-const BRAND_GREEN = "#22C55E";
-const TRUST_STRIP = "WORKS ON PHONES • NO APP INSTALL • ONE-TIME PURCHASE • DEPLOY IN 10 MINUTES • BUILT IN EXCEL • RUNS ON GOOGLE SHEETS";
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
-const MARQUEE_SIGNALS = [
-    "HACCP_SWEEP_COMPLETE", 
-    "REVENUE_LEAKAGE_PLUGGED", 
-    "COLD_STORAGE_STABLE", 
-    "OPENING_AUDIT_VERIFIED", 
-    "EXPIRY_LOG_VALIDATED", 
-    "VOID_BILL_MONITORING", 
-    "GAS_SHUTDOWN_CONFIRMED", 
-    "SOP_VERSION_V18.1", 
-    "SHIFT_COMPLIANCE_100%", 
-    "ROI_ENGINE_ACTIVE"
-];
-
-const ELITE_INDUSTRIES = [
-    { name: "Hotel Operations", id: "hotels_and_resorts", sub: "Housekeeping • Front Desk • Engineering • Audit" },
-    { name: "Restaurant Operations", id: "restaurants", sub: "Kitchen • HACCP • Handover • Inventory" },
-    { name: "Jewellery Store Operations", id: "retail_jewellery_operations_pack", sub: "Vault • Verification • Custody • CCTV" },
-    { name: "Grocery Store Operations", id: "supermarket_grocery_retail_pack", sub: "Cold Chain • Expiry • Shrinkage • Replenishment" },
-    { name: "Hospital Operations", id: "healthcare_and_hospital_operations", sub: "Clinical • Nursing • Narcotics • Billing" },
-    { name: "School Operations", id: "school_operations_pack", sub: "Transport • Safety • Hygiene • Admin" },
-    { name: "Franchise Operations", id: "franchise_operations_pack", sub: "Brand • Royalty • Network • Compliance" },
-    { name: "Facilities Operations", id: "facility_management_blueprint", sub: "MEP • Safety • Energy • Vendor" },
-    { name: "Multiplex Operations", id: "cinema_operations_pack", sub: "Projection • Concession • Crowd • Safety" },
-    { name: "Fashion Store Operations", id: "fashion_and_apparel_retail", sub: "VM • Velocity • Trial Room • Returns" },
-    { name: "Electronics Store Operations", id: "electronics_showroom_pack", sub: "Serial • Demo • Warranty • E-Waste" }
-];
-
-const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
-        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
+const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
+    <section id={id} className={cn("w-full py-24 md:py-40 relative overflow-hidden", className)}>
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
     </section>
 );
 
-const HeroSection = () => {
+const SectionEyebrow = ({ text }: { text: string }) => (
+    <div className="flex items-center gap-4 mb-6">
+        <div className="w-12 h-px bg-[#B89B5E] opacity-40" />
+        <span className="text-[11px] md:text-[13px] font-medium uppercase tracking-[0.2em] text-[#B89B5E] font-headline">
+            {text}
+        </span>
+    </div>
+);
+
+const SectionHeadline = ({ title, sub, centered = false }: { title: string, sub?: string, centered?: boolean }) => (
+    <div className={cn("space-y-4 md:space-y-6 max-w-4xl", centered && "mx-auto text-center")}>
+        <h2 className="text-[32px] md:text-[54px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.95] text-[#121212]">
+            {title}
+        </h2>
+        {sub && <p className="text-lg md:text-xl text-[#4B5563] font-medium italic leading-relaxed">{sub}</p>}
+    </div>
+);
+
+export default function HomePage() {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => { setMounted(true); }, []);
+
+    if (!mounted) return null;
+
     return (
-        <section className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden bg-black pt-16">
-             <div className="absolute inset-0 z-0">
-                <video 
-                    src={VIDEO_URL} 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="h-full w-full object-cover opacity-20 grayscale"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/90 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
-            </div>
-            
-            <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12">
-                <div className="grid lg:grid-cols-[1fr,480px] gap-12 md:gap-20 items-center">
-                    <div className="space-y-8 md:space-y-12">
-                        <div className="space-y-4 md:space-y-5">
-                            <h1 className="text-[28px] md:text-[54px] lg:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
-                                YOUR BUSINESS <br />
-                                <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
-                                <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
+        <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#B89B5E]/10">
+            <SiteHeader forceTheme="light" />
+
+            <main className="flex-1">
+                
+                {/* --- 1. THE SOVEREIGN HERO (HYBRID ARCHITECTURE) --- */}
+                <section className="relative w-full min-h-[90svh] md:h-[100svh] flex flex-col overflow-hidden bg-[#F8F6F2]">
+                    
+                    {/* DESKTOP BACKGROUND (GRADIENT + VIDEO) */}
+                    <div className="hidden md:block absolute inset-0 z-0">
+                        <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
+                            <iframe 
+                                src={VIMEO_URL} 
+                                className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.4] pointer-events-none"
+                                frameBorder="0" 
+                                allow="autoplay; fullscreen" 
+                                style={{ filter: 'brightness(0.88) saturate(0.92) contrast(1.02)' }}
+                            />
+                        </div>
+                        <div 
+                            className="absolute inset-0 z-20" 
+                            style={{ 
+                                background: 'linear-gradient(90deg, rgba(248,246,242,0.92) 0%, rgba(248,246,242,0.85) 38%, rgba(248,246,242,0.4) 58%, rgba(0,0,0,0.05) 100%)' 
+                            }} 
+                        />
+                    </div>
+
+                    {/* MOBILE BACKGROUND (EDITORIAL STACK) */}
+                    <div className="md:hidden w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
+                        <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full scale-[1.8]" frameBorder="0" allow="autoplay; fullscreen" />
+                        <div className="absolute inset-0 bg-black/5" />
+                    </div>
+
+                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-12 md:py-0">
+                        <div className="max-w-[620px] space-y-6 md:space-y-8">
+                            
+                            <div className="flex items-center gap-3 md:gap-4">
+                                <div className="w-6 md:w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+                                <span className="text-[7.5px] md:text-[11px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
+                                    LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                                </span>
+                            </div>
+
+                            <h1 className="text-[34px] md:text-[58px] font-extrabold tracking-[-0.04em] leading-[0.95] uppercase text-[#121212] font-headline italic">
+                                YOUR BUSINESS SHOULD NOT <br />
+                                <span className="relative inline-block mt-1">
+                                    DEPEND ON MEMORY.
+                                    <div className="absolute -bottom-1 left-0 w-full h-[4px] md:h-[6px] bg-[#D6A85F]/30 rounded-full" />
+                                </span>
                             </h1>
-                            <div className="space-y-4 max-w-xl">
-                                <p className="text-base md:text-lg italic font-medium text-zinc-400 leading-tight">
-                                    Pre-built operational systems that turn SOPs into live daily execution.
+                            
+                            <div className="space-y-6">
+                                <p className="text-[15px] md:text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-lg">
+                                    MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts, staff changes, or manager absence.
                                 </p>
-                                <div className="border-l-2 border-primary/40 pl-4 py-0.5">
-                                    <p className="text-[11px] md:text-sm text-zinc-500 font-bold italic uppercase tracking-wider">
-                                        BUILT IN EXCEL • OPERATED THROUGH GOOGLE SHEETS <br/>
-                                        READY TO DEPLOY IN 10 MINUTES.
-                                    </p>
+                                
+                                <div className="flex flex-col gap-2.5 pt-1">
+                                    {[
+                                        "Works directly on Google Sheets.",
+                                        "No new apps to learn."
+                                    ].map((text, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                            </div>
+                                            <span className="text-[11px] md:text-[13px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="space-y-8">
-                             <div className="flex flex-col sm:flex-row gap-5 items-start md:items-center">
-                                <Button asChild size="lg" className="h-14 md:h-16 px-10 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_60px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
-                                    <Link href="/library" className="flex items-center gap-3">
-                                        Deploy System <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
+                            <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10 pt-4">
+                                <button className="h-14 md:h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group w-full sm:w-auto">
+                                    <Link href="/library" className="flex items-center justify-center gap-3">
+                                        See the systems <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
-                                </Button>
-                                <div className="flex flex-col pl-1">
-                                    <span className="text-[28px] md:text-3xl font-black text-white italic tracking-tighter leading-none">₹3,499</span>
-                                    <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME ACCESS</span>
-                                </div>
-                             </div>
-                             
-                             <div className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-md">
-                                {[
-                                    { t: "AUDIT-READY LOGS", i: ShieldCheck },
-                                    { t: "ROLE-BASED ACCOUNTABILITY", i: Users },
-                                    { t: "CONSEQUENCE-AWARE TASKS", i: AlertTriangle },
-                                    { t: "MOBILE SHEETS EXECUTION", i: Smartphone }
-                                ].map((spec, i) => (
-                                    <div key={i} className="flex items-center gap-2">
-                                        <spec.i className="w-3.5 h-3.5 text-primary/40" />
-                                        <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">{spec.t}</span>
-                                    </div>
-                                ))}
-                             </div>
+                                </button>
+                                <button className="group text-[#5F6368] font-bold uppercase text-[11px] tracking-[0.2em] transition-all hover:text-[#111111] flex items-center gap-3">
+                                    <Link href="#how-it-works">Watch Teams Use It</Link>
+                                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div className="relative group lg:border-l border-white/5 lg:pl-10 space-y-8">
-                        <div className="space-y-1">
-                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT VERTICAL</p>
-                            <div className="h-px w-16 bg-primary/30" />
+                    {/* Trust Strip */}
+                    <div className="absolute bottom-0 w-full bg-white/40 backdrop-blur-sm border-t border-black/5 py-4 hidden md:block">
+                        <div className="container mx-auto px-6">
+                            <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em] text-center italic">
+                                NO SaaS LOCK-IN • BUILT IN EXCEL • DEPLOY IN 10 MINUTES • WORKS ON PHONES
+                            </p>
                         </div>
-                        
-                        <div className="flex flex-col space-y-5">
-                            {ELITE_INDUSTRIES.map((ind) => (
-                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex flex-col items-start transition-all">
-                                    <div className="flex items-center justify-between w-full">
-                                        <span className="text-lg md:text-[20px] font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all duration-300">
-                                            {ind.name}
-                                        </span>
-                                        <ChevronRight className="w-3 h-3 text-white/5 group-hover:text-primary transition-all" />
-                                    </div>
-                                    <span className="text-[8px] font-black text-zinc-800 uppercase tracking-[0.2em] group-hover:text-zinc-600 transition-colors mt-0.5">
-                                        {ind.sub}
+                    </div>
+                </section>
+
+                {/* --- 2. THE SYSTEM IS THE PRODUCT (INTERFACE) --- */}
+                <Section className="bg-white border-y border-black/5" id="how-it-works">
+                    <div className="space-y-20 md:space-y-32">
+                        <div className="text-center space-y-6 max-w-3xl mx-auto">
+                            <SectionEyebrow text="THE INFRASTRUCTURE" />
+                            <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">
+                                The system is the product.
+                            </h2>
+                            <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
+                                Your team doesn't need to learn a new app. If they can use Google Sheets on a phone, they can operate MoreMeets. Every task is timestamped, assigned, and verifiable.
+                            </p>
+                        </div>
+
+                        <div className="relative max-w-6xl mx-auto rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] group bg-[#F8F6F2]">
+                             <div className="absolute inset-0 bg-gradient-to-t from-[#F8F6F2]/40 via-transparent to-transparent pointer-events-none z-10" />
+                             <img 
+                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
+                                alt="Real Operational Ledger" 
+                                className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
+                             />
+                             <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20">
+                                <Badge className="bg-emerald-500 text-white border-none px-6 py-2 uppercase font-black tracking-widest text-[10px] shadow-2xl">
+                                    LIVE_EXECUTION_GRID
+                                </Badge>
+                             </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-12 md:gap-20 max-w-5xl mx-auto">
+                            {[
+                                { t: "SELECT YOUR PACK", d: "Choose from specialized industry systems pre-built by forensic experts." },
+                                { t: "ASSIGN PERSONNEL", d: "Map staff names to specific roles in the master hub. No IT required." },
+                                { t: "TRACK EXECUTION", d: "Watch tasks turn green across your business from any mobile device." }
+                            ].map((step, i) => (
+                                <div key={i} className="space-y-4 relative group">
+                                    <span className="text-[80px] font-black text-[#F8F6F2] absolute -top-12 -left-4 leading-none select-none">
+                                        0{i+1}
                                     </span>
+                                    <div className="relative z-10 space-y-2">
+                                        <h3 className="text-xl font-bold uppercase tracking-tighter italic text-[#111111]">{step.t}</h3>
+                                        <p className="text-[#5F6368] text-sm md:text-base leading-relaxed font-medium italic">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 3. RESIGNATION RISK (INSTITUTIONAL MEMORY) --- */}
+                <Section className="bg-[#F8F6F2]">
+                    <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+                        <div className="space-y-10">
+                            <div className="space-y-6">
+                                <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2">ASSET PROTECTION</Badge>
+                                <h2 className="text-[38px] md:text-[68px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.85] text-[#111111]">
+                                    When staff leave, <br/> the standard stays.
+                                </h2>
+                            </div>
+                            <p className="text-lg md:text-2xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-[#B89B5E]/20 pl-8">
+                                Tribal knowledge is a liability. MoreMeets™ converts individual experience into permanent organizational infrastructure.
+                            </p>
+                            <div className="grid sm:grid-cols-2 gap-6">
+                                {[
+                                    { t: "Institutional Memory", d: "Capture 'how things work' forever.", i: History },
+                                    { t: "Zero-Friction Training", d: "Built-in notes for every task.", i: GraduationCap },
+                                    { t: "Role Continuity", d: "Roles are owned by the business.", i: Users },
+                                    { t: "Audit Readiness", d: "Continuous record of compliance.", i: ShieldCheck }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-4">
+                                        <item.i className="w-5 h-5 text-[#B89B5E] shrink-0" />
+                                        <div className="space-y-1">
+                                            <p className="text-sm font-bold uppercase text-[#121212]">{item.t}</p>
+                                            <p className="text-xs text-[#5F6368] italic">{item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="relative">
+                            <div className="absolute -inset-4 bg-[#B89B5E]/5 rounded-[3rem] -rotate-2" />
+                            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
+                                <img 
+                                    src="https://i.postimg.cc/jdMQXJpq/resignation1.jpg" 
+                                    alt="Resignation Risk" 
+                                    className="w-full h-full object-cover grayscale-[0.2]" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 4. THE ELITE VERTICALS (SECTOR GRID) --- */}
+                <Section className="bg-white">
+                    <div className="space-y-20 md:space-y-32">
+                        <div className="text-center space-y-6 max-w-3xl mx-auto">
+                            <SectionEyebrow text="SECTOR SPECIFIC" />
+                            <h2 className="text-[38px] md:text-[64px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.9] text-[#111111]">
+                                Engineered for Gravity.
+                            </h2>
+                            <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
+                                Not generic checklists. Forensically engineered operational systems for high-stakes environments.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                            {[
+                                { name: "Hotels & Resorts", id: "hotels_and_resorts", icon: Building },
+                                { name: "Restaurants", id: "restaurants", icon: Utensils },
+                                { name: "Hospitals", id: "healthcare_and_hospital_operations", icon: Hospital },
+                                { name: "Schools", id: "school_operations_pack", icon: School },
+                                { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
+                                { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
+                                { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn },
+                                { name: "Luxury Retail", id: "retail_jewellery_operations_pack", icon: Gem }
+                            ].map((ind, i) => (
+                                <Link key={i} href={`/packs/${ind.id}`} className="group p-8 rounded-[2rem] bg-[#F8F6F2]/50 border border-black/5 hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-center flex flex-col items-center gap-4">
+                                    <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-[#B89B5E] group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 shadow-inner">
+                                        <ind.icon className="w-7 h-7" />
+                                    </div>
+                                    <span className="text-sm md:text-base font-bold uppercase tracking-tighter italic text-[#111111] group-hover:text-[#2E7D5A] transition-colors">{ind.name}</span>
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="pt-8 border-t border-white/5">
-                             <p className="text-[8px] md:text-[10px] text-zinc-700 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] italic leading-tight">
-                                {TRUST_STRIP}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
-                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                    {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
-                            <span className="text-primary">[✓]</span>
-                            <span className="opacity-70">{signal}</span>
-                        </span>
-                    ))}
-                    {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
-                            <span className="text-primary">[✓]</span>
-                            <span className="opacity-70">{signal}</span>
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const SovereignLedgerSection = () => (
-    <Section className="bg-zinc-50/50" noSpine>
-        <div className="max-w-[1400px] mx-auto space-y-12">
-            <div className="flex flex-col items-center text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/20 bg-white uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic shadow-sm">SYSTEM INTERFACE</Badge>
-                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                    THE SOVEREIGN LEDGER
-                </h2>
-                <div className="space-y-2">
-                    <p className="text-zinc-950 font-black text-lg md:text-xl italic uppercase tracking-tighter">
-                        Every task is assigned, timestamped, verifiable, and visible live across the team.
-                    </p>
-                    <p className="text-zinc-400 text-sm italic font-medium">
-                        High-density operational command. Built in Excel for your team's immediate adoption.
-                    </p>
-                </div>
-            </div>
-
-            <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)] bg-[#f8f9fa] font-sans">
-                <div className="bg-[#22C55E] text-white py-2.5 px-4 flex items-center justify-center gap-2 text-[10px] md:text-[11px] font-bold">
-                    <span>📋</span>
-                    <span className="uppercase tracking-widest">DAILY TASKS – Update 'Done By' to complete daily work.</span>
-                </div>
-
-                <div className="overflow-x-auto no-scrollbar">
-                    <table className="w-full text-left border-collapse min-w-[1200px]">
-                        <thead>
-                            <tr className="bg-[#0F172A] text-white">
-                                {["BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", "DONE BY", "VERIFIED BY", "STATUS", "CONSEQUENCE / RISK", "FLOOR INSTRUCTIONS"].map((h, i) => (
-                                    <th key={i} className="px-3 py-3 text-[9px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                { b: "Pune Central", r: "Vault Custodian", t: "Vault Opening Verification", a: "Vikram S.", db: "VS", vb: "AM", s: "COMPLETE", c: "Unauthorized lone-person access leads to untraceable inventory exfiltration.", i: "Execute 2-key entry sequence with Secondary Custodian. Inspect safe handle for tamper-signs.", isV: true },
-                                { b: "Mumbai Phoenix", r: "Store Manager", t: "Gold Rate Sync (8 AM)", a: "Anjali M.", db: "AM", vb: "", s: "COMPLETE", c: "Selling at incorrect daily rates leading to significant margin loss.", i: "Verify POS rate matches physical board rate accurately." },
-                                { b: "Pune Central", r: "Display Manager", t: "Empty-Holder Anomaly Scan", a: "Rohan D.", db: "", vb: "", s: "OPEN", c: "Unauthorized piece removal gone unnoticed during peak waves.", i: "Identify and fill any empty display slots to prevent theft suspicion.", isAlt: true },
-                                { b: "Mumbai Phoenix", r: "Compliance", t: "BIS Hallmark Audit", a: "Suresh P.", db: "", vb: "", s: "OPEN", c: "Legal Metrology violation resulting in store sealing and heavy fines.", i: "Use loupe to verify 100% visibility of hallmark on all new stock items.", isAlt: true },
-                                { b: "Bangalore UB City", r: "Security", t: "Panic Button Pulse Test", a: "Karan I.", db: "KI", vb: "", s: "VERIFICATION PENDING", c: "Zero response from authorities during an active robbery event.", i: "Execute silent alarm trigger; verify 30s response from central monitoring.", isV: true },
-                                { b: "Hyderabad Jubilee", r: "Store Manager", t: "Shift Handover Sign-off", a: "Sarah K.", db: "SK", vb: "AM", s: "COMPLETE", c: "Communication gap resulting in service gridlock and lost instructions.", i: "Witness digital handover sign-off between morning and evening supervisors.", isV: true, isAlt: true }
-                            ].map((row, idx) => (
-                                <tr key={idx} className={cn("border-b border-zinc-200 text-[10px] md:text-[11px]", row.isAlt ? "bg-[#f8f9fa]" : "bg-white")}>
-                                    <td className="px-3 py-4 border-r border-zinc-200 text-zinc-500 font-bold">{row.b}</td>
-                                    <td className="px-3 py-4 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
-                                    <td className="px-3 py-4 border-r border-zinc-200 font-black text-zinc-950 uppercase">{row.t}</td>
-                                    <td className="px-3 py-4 border-r border-zinc-200 text-zinc-400 italic">{row.a}</td>
-                                    <td className="px-3 py-4 border-r border-zinc-200 bg-[#FEFCE8] font-black text-center text-zinc-900">{row.db}</td>
-                                    <td className={cn("px-3 py-4 border-r border-zinc-200 font-black text-center", row.isV ? "bg-[#EFF6FF] text-blue-700" : "bg-[#f1f5f9] text-zinc-300")}>{row.vb || "—"}</td>
-                                    <td className={cn(
-                                        "px-3 py-4 border-r border-zinc-200 font-black text-center",
-                                        row.s === "COMPLETE" ? "text-emerald-600" : row.s === "VERIFICATION PENDING" ? "text-amber-600" : "text-zinc-400"
-                                    )}>{row.s}</td>
-                                    <td className="px-3 py-4 border-r border-zinc-200 italic text-red-700 font-bold leading-tight max-w-[200px]">{row.c}</td>
-                                    <td className="px-3 py-4 text-emerald-800 font-medium leading-tight max-w-[300px]">{row.i}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div className="bg-white border-t border-zinc-200 px-4 py-1.5 flex items-center gap-1 overflow-hidden">
-                    <div className="flex items-center gap-1 pr-4 border-r border-zinc-200">
-                         <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400">＋</div>
-                         <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400 text-xs">≡</div>
-                    </div>
-                    {[
-                        { n: "START", active: false },
-                        { n: "DASHBOARD", active: false },
-                        { n: "DAILY_TASKS", active: true },
-                        { n: "SOP_LIB", active: false },
-                        { n: "BRANCH_SETUP", active: false },
-                        { n: "TEAM_HUB", active: false },
-                        { n: "INCIDENT_LOG", active: false }
-                    ].map((tab, i) => (
-                        <div key={i} className={cn(
-                            "px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap rounded-t-lg transition-colors cursor-pointer",
-                            tab.active ? "bg-white border-x border-t border-zinc-200 text-blue-600 -mb-[7px] pb-[8px] z-10" : "text-zinc-400 hover:bg-zinc-100"
-                        )}>
-                            {tab.n}
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="text-center">
-                 <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.4em] italic">
-                    TECHNICAL FIDELITY PREVIEW • REPLICA OF GOOGLE SHEETS INTERFACE
-                </p>
-            </div>
-        </div>
-    </Section>
-);
-
-export default function Home() {
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => { setMounted(true); }, []);
-    if (!mounted) return null;
-
-    return (
-        <div className="flex flex-col min-h-screen bg-white">
-            <SiteHeader />
-            <main className="flex-1">
-                <HeroSection />
-
-                <SovereignLedgerSection />
-
-                <Section className="bg-white" id="pedigree">
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE FORENSIC MOAT</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                EVERY TASK IS <br/> EXPLAINED CLEARLY.
-                            </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
-                                We establish the forensic pedigree behind every action, turning mechanical clicking into intentional execution.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                            {[
-                                { t: "WHAT TO DO", i: Target },
-                                { t: "HOW TO DO IT", i: GraduationCap },
-                                { t: "WHY IT MATTERS", i: History },
-                                { t: "RISKS IF MISSED", i: AlertTriangle },
-                                { t: "ESCALATIONS", i: ShieldAlert },
-                                { t: "VERIFICATION", i: SearchCheck }
-                            ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] bg-zinc-50 border border-zinc-100 flex flex-col items-center text-center gap-4 group hover:border-primary transition-all">
-                                    <item.i className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
-                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] italic text-zinc-950">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 text-center text-white space-y-8 shadow-2xl">
-                             <h3 className="text-2xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Built for frontline teams</h3>
-                             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-                                {[
-                                    "Managers", "Supervisors", "Housekeeping", "Kitchen staff", "Retail floor staff", "Technicians", "Front desk", "Security", "Operations heads"
-                                ].map((role, i) => (
-                                    <Badge key={i} variant="outline" className="text-white/40 border-white/10 py-2 px-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest italic">{role}</Badge>
-                                ))}
-                             </div>
-                             <p className="text-zinc-400 font-bold italic text-base md:text-xl">If someone can use Google Sheets on a phone, they can operate MoreMeets™.</p>
+                        <div className="text-center pt-8">
+                            <button className="h-14 px-12 rounded-full border-2 border-black/5 text-[#111111] font-bold uppercase text-[11px] tracking-widest hover:bg-[#111111] hover:text-white transition-all">
+                                <Link href="/library">Explore All 25+ Systems</Link>
+                            </button>
                         </div>
                     </div>
                 </Section>
 
-                <Section className="bg-white" id="not-saas" noSpine>
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="space-y-8">
-                                <div className="space-y-4">
-                                    <Badge className="bg-red-500/10 text-red-500 border-red-500/20 uppercase font-black tracking-widest text-[10px]">THE SaaS ANTIDOTE</Badge>
-                                    <h2 className="text-[34px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.9] uppercase italic tracking-tighter">
-                                        NOT ANOTHER <br/> <span className="text-red-600">SaaS TOOL.</span>
-                                    </h2>
-                                    <p className="text-xl text-zinc-950 font-black italic uppercase tracking-tighter">
-                                        Most operational software fails on the floor.
-                                    </p>
-                                </div>
-                                
-                                <div className="space-y-4 border-l-2 border-zinc-100 pl-8">
-                                    {[
-                                        "Too many logins.",
-                                        "Too much training.",
-                                        "Too much resistance."
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 text-zinc-400 font-bold italic uppercase tracking-tight">
-                                            <X className="w-5 h-5 text-red-300" />
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="p-8 bg-emerald-500/5 rounded-[2rem] border border-emerald-500/10 space-y-4">
-                                    <p className="text-zinc-950 font-black italic uppercase text-lg">MoreMeets™ works differently.</p>
-                                    <p className="text-zinc-500 font-medium italic">We use the tools your team already understands. Your operational system is a pre-built Excel master file optimized for live Google Sheets execution.</p>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                {[
-                                    { t: "DOWNLOAD", d: "Get your system", i: Download },
-                                    { t: "UPLOAD", d: "To Google Drive", i: Globe },
-                                    { t: "SHARE", d: "With your team", i: Users },
-                                    { t: "OPERATE", d: "Start running live", i: Activity }
-                                ].map((step, i) => (
-                                    <div key={i} className="p-8 bg-zinc-950 rounded-[2rem] flex flex-col items-center text-center space-y-3">
-                                        <step.i className="w-8 h-8 text-primary" />
-                                        <p className="text-white font-black italic uppercase tracking-tighter leading-none">{step.t}</p>
-                                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">{step.d}</p>
-                                    </div>
-                                ))}
-                                <div className="col-span-2 p-6 border-2 border-dashed border-zinc-200 rounded-[2rem] text-center">
-                                    <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.3em]">NO IT SETUP • NO CONSULTANTS • NO SaaS TAX</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-zinc-50 border-y border-zinc-100" id="inclusions">
-                    <div className="max-w-6xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">WHAT YOU ACTUALLY GET</h2>
-                             <p className="text-zinc-400 font-bold italic uppercase tracking-widest">Every Operational Pack includes:</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6">
-                            {[
-                                { t: "Industry-specific SOPs pre-built", i: Target },
-                                { t: "Daily operational task system", i: ClipboardCheck },
-                                { t: "Shift handover tracking", i: History },
-                                { t: "Role-based accountability", i: FileSignature },
-                                { t: "Audit-ready execution logs", i: ShieldCheck },
-                                { t: "Incident management registers", i: ShieldAlert },
-                                { t: "Trainer notes for every dept", i: GraduationCap },
-                                { t: "Simple-language for staff", i: Smartphone },
-                                { t: "Audit-language for supervisors", i: Scale },
-                                { t: "Risks & consequences explained", i: AlertTriangle },
-                                { t: "Verification checkpoints", i: SearchCheck },
-                                { t: "Google Sheets deployment guide", i: FileSpreadsheet }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-start gap-4 group">
-                                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                                        <Check className="w-3 h-3 text-primary" />
-                                    </div>
-                                    <span className="text-sm md:text-base font-black uppercase italic tracking-tight text-zinc-950 group-hover:text-primary transition-colors">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white">
-                    <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-white shadow-sm">OPERATIONAL INTELLIGENCE</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                BUILT USING REAL <br/> INDUSTRY EXPERTISE
-                            </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center pt-4">
-                                This is not generic checklist software. Each system is built around how industries actually fail in high-stakes environments.
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {[
-                                {
-                                    title: "Hotel Operations",
-                                    icon: Building,
-                                    points: ["Room readiness failures", "Housekeeping coordination gaps", "Front desk ↔ housekeeping dependencies", "Multi-department execution breakdowns"]
-                                },
-                                {
-                                    title: "Restaurant Operations",
-                                    icon: Utensils,
-                                    points: ["Kitchen bottlenecks", "Cold chain failures", "Oil safety controls", "Table turnover delays"]
-                                },
-                                {
-                                    title: "Grocery Store Operations",
-                                    icon: ShoppingBasket,
-                                    points: ["Expiry management", "Spoilage prevention", "Cold storage compliance", "Shrinkage control"]
-                                },
-                                {
-                                    title: "Jewellery Store Operations",
-                                    icon: Gem,
-                                    points: ["Vault custody protocols", "Dual-signoff verification", "Gram-level inventory control", "CCTV-linked accountability"]
-                                },
-                                {
-                                    title: "Electronics Store Operations",
-                                    icon: Cpu,
-                                    points: ["IMEI / serial tracking", "Warranty fraud prevention", "Demo unit governance", "Return abuse control"]
-                                }
-                            ].map((sector, i) => (
-                                <div key={i} className="p-10 rounded-[2.5rem] bg-zinc-50 border border-zinc-100 space-y-6 hover:shadow-2xl transition-all group">
-                                    <div className="flex items-center gap-4">
-                                        <sector.icon className="w-8 h-8 text-primary/40 group-hover:text-primary transition-colors" />
-                                        <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{sector.title}</h3>
-                                    </div>
-                                    <ul className="space-y-4">
-                                        {sector.points.map((p, j) => (
-                                            <li key={j} className="flex items-start gap-3 text-xs md:text-sm font-bold text-zinc-400 italic leading-snug">
-                                                <div className="w-1 h-1 rounded-full bg-red-400 mt-1.5 shrink-0" />
-                                                <span>{p}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-zinc-50 border-y border-zinc-100" id="how-it-works">
-                    <div className="max-w-[1200px] mx-auto space-y-24">
-                        <div className="text-center space-y-4">
-                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">HOW DEPLOYMENT WORKS</h2>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-                            {[
-                                { t: "DOWNLOAD", d: "Purchase and instantly download your operational system." },
-                                { t: "UPLOAD", d: "Upload the Excel master file to Google Drive." },
-                                { t: "SHARE", d: "Assign roles and share access with your team." },
-                                { t: "OPERATE", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
-                            ].map((step, i) => (
-                                <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
-                                        {i+1}
-                                    </div>
-                                    <div className="space-y-3">
-                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950 text-left">{step.t}</h4>
-                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed text-left">{step.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white">
-                    <div className="max-w-3xl mx-auto space-y-12 text-center">
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE ADOPTION ENGINE</Badge>
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                    WHY EXCEL + <br/> GOOGLE SHEETS?
+                {/* --- 5. SUSTAINABILITY THROUGH RIGOR --- */}
+                <Section className="bg-[#111111] text-white">
+                    <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <Badge className="bg-emerald-500 text-white uppercase font-black tracking-widest text-[10px] px-6 py-2 rounded-none">OPERATIONAL ESG</Badge>
+                                <h2 className="text-[38px] md:text-[68px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.85]">
+                                    Sustainability <br/> through Rigor.
                                 </h2>
-                                <p className="text-lg md:text-xl text-zinc-500 font-bold italic">Because operational teams already understand it.</p>
+                                <p className="text-zinc-400 text-lg md:text-xl italic font-medium leading-relaxed max-w-lg">
+                                    Environmental sustainability is the byproduct of daily operational discipline. Our systems automate the vitals.
+                                </p>
                             </div>
-                            <div className="space-y-10">
-                                <div className="flex flex-col items-center gap-5 max-w-2xl mx-auto">
-                                    <CheckCircle2 className="w-10 h-10 text-primary shrink-0" />
-                                    <p className="text-zinc-500 text-sm md:text-lg font-medium leading-relaxed italic">No behavioral resistance. No learning curve. No complicated software adoption cycle. Your team opens the sheet and starts working immediately.</p>
-                                </div>
-                                <div className="grid grid-cols-2 gap-8 md:gap-16 pt-4 border-t border-zinc-100">
-                                    <div className="space-y-4 text-left">
-                                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR MANAGERS</p>
-                                        <ul className="text-[11px] md:text-sm font-black text-zinc-950 uppercase italic space-y-3">
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Live visibility</li>
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Execution records</li>
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Operational continuity</li>
-                                        </ul>
+                            
+                            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+                                {[
+                                    { t: "Energy Discipline", d: "Verified shutdown logs for lighting and HVAC.", i: Zap },
+                                    { t: "Resource Pulse", d: "Daily water meter parity to stop unmonitored leaks.", i: Leaf },
+                                    { t: "Waste Mitigation", d: "Yield monitoring to stop overproduction at source.", i: Recycle },
+                                    { t: "Asset Longevity", d: "Maintenance rigor that extends equipment lifespan.", i: Wrench }
+                                ].map((item, i) => (
+                                    <div key={i} className="space-y-3 group">
+                                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#B89B5E] group-hover:text-emerald-400 transition-colors">
+                                            <item.i className="w-5 h-5" />
+                                        </div>
+                                        <h4 className="text-base font-bold uppercase italic text-white">{item.t}</h4>
+                                        <p className="text-xs text-zinc-500 italic leading-relaxed">{item.d}</p>
                                     </div>
-                                    <div className="space-y-4 text-left border-l border-zinc-100 pl-8 md:pl-16">
-                                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR TEAMS</p>
-                                        <ul className="text-[11px] md:text-sm font-black text-zinc-950 uppercase italic space-y-3">
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Clear instructions</li>
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Daily priorities</li>
-                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Structured handovers</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-zinc-50 border-y border-zinc-100" id="who-it-is-for" noSpine>
-                    <div className="max-w-6xl mx-auto space-y-20">
-                         <div className="text-center space-y-4">
-                            <h2 className="text-[34px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95] text-zinc-950 text-center">
-                                BUILT FOR SINGLE LOCATIONS <br/> AND LARGE GROUPS
-                            </h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-12">
-                            <div className="p-12 md:p-16 rounded-[3rem] bg-white border border-zinc-200 space-y-8 relative overflow-hidden group hover:shadow-2xl transition-all">
-                                <div className="absolute top-0 right-0 p-8 opacity-5">
-                                    <Target className="w-48 h-48" />
-                                </div>
-                                <div className="space-y-6 relative z-10">
-                                    <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-950">Single-unit operators</h3>
-                                    <p className="text-zinc-500 text-lg font-bold italic leading-relaxed">
-                                        Run tighter daily operations without constantly chasing staff. Capture your expert knowledge so the business runs even when you aren't on the floor.
-                                    </p>
-                                </div>
+                        <div className="relative">
+                            <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full" />
+                            <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
+                                 <img 
+                                    src="https://i.postimg.cc/9MhmhXMR/facilities-management1.png" 
+                                    alt="Sustainability Vitals" 
+                                    className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
+                                 />
+                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                                 <div className="absolute bottom-10 left-10 space-y-2">
+                                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">VITALS_SECURED</p>
+                                     <p className="text-2xl font-black italic uppercase">Infrastructure_Online</p>
+                                 </div>
                             </div>
-                            <div className="p-12 md:p-16 rounded-[3rem] bg-primary text-black space-y-8 relative overflow-hidden shadow-xl hover:scale-[1.02] transition-all">
-                                <div className="absolute top-0 right-0 p-8 opacity-10">
-                                    <LayoutGrid className="w-48 h-48" />
-                                </div>
-                                <div className="space-y-6 relative z-10">
-                                    <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter">Multi-unit groups</h3>
-                                    <p className="text-black/70 text-lg font-bold italic leading-relaxed">
-                                        Standardize execution across branches. Protect operational quality, compliance, and brand consistency at scale across your entire network.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white">
-                    <div className="max-w-6xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">OPERATIONAL PACKS</h2>
-                        </div>
-                        
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                            {[
-                                { cat: "Hospitality", items: ["Hotel Operations", "Restaurant Operations"], icon: Utensils },
-                                { cat: "Retail", items: ["Grocery Store Ops", "Fashion Store Ops", "Jewellery Store Ops", "Electronics Store Ops"], icon: ShoppingBag },
-                                { cat: "Healthcare", items: ["Hospital Operations"], icon: Hospital },
-                                { cat: "Education", items: ["School Operations"], icon: School },
-                                { cat: "Infrastructure", items: ["Facilities Operations"], icon: Building2 },
-                                { cat: "Entertainment", items: ["Multiplex Operations"], icon: Popcorn },
-                                { cat: "Franchise", items: ["Franchise Operations"], icon: Store }
-                            ].map((group, i) => (
-                                <div key={i} className="space-y-4 p-8 bg-zinc-50 rounded-[2rem] border border-zinc-100 group hover:border-primary transition-all">
-                                    <group.icon className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
-                                    <div className="space-y-2">
-                                        <h4 className="text-[10px] font-black text-primary uppercase tracking-[0.3em] font-headline">{group.cat}</h4>
-                                        <ul className="space-y-1.5">
-                                            {group.items.map((item, j) => (
-                                                <li key={j} className="text-[11px] font-black text-zinc-950 uppercase italic leading-tight">{item}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </Section>
 
                 <FaqSection />
 
-                <Section className="bg-zinc-950 text-white py-32" noSpine id="pricing">
-                    <div className="max-w-4xl mx-auto text-center space-y-12">
-                        <div className="space-y-4">
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95]">
-                                ONE-TIME PURCHASE. <br/> OWN FOREVER.
+                {/* --- 6. FINAL MANDATE --- */}
+                <Section className="bg-[#F8F6F2] py-32 md:py-60 border-t border-black/5" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-16 text-center">
+                        <div className="space-y-6">
+                            <h2 className="text-[38px] md:text-[88px] font-extrabold leading-[0.85] tracking-tighter uppercase italic font-headline text-[#111111]">
+                                STOP CHASING. <br/> START RUNNING.
                             </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest">NO SaaS TAX • NO PER-USER PRICING • NO LOCK-IN</p>
+                            <p className="text-lg md:text-[28px] text-[#5F6368] font-medium italic leading-tight max-w-2xl mx-auto">
+                                Deploy operational excellence across your business in the next 10 minutes.
+                            </p>
                         </div>
-                        
-                        <div className="flex flex-col items-center gap-8">
-                            <div className="flex items-baseline gap-4">
-                                <p className="text-6xl md:text-8xl font-black italic text-primary">₹3,499</p>
-                                <span className="text-2xl md:text-4xl font-bold text-white/30 italic">/ $49</span>
+                        <div className="flex flex-col items-center gap-6">
+                            <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group">
+                                <Link href="/library" className="flex items-center gap-6">
+                                    Get Your System <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
+                                </Link>
+                            </button>
+                            <div className="flex items-center gap-4 text-[9px] md:text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">
+                                <span>ONE-TIME PURCHASE</span>
+                                <div className="w-1 h-1 rounded-full bg-zinc-300" />
+                                <span>NO SaaS TAX</span>
+                                <div className="w-1 h-1 rounded-full bg-zinc-300" />
+                                <span>OWN YOUR DATA</span>
                             </div>
-                            
-                            <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-primary text-black font-black uppercase italic text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
-                                <Link href="/library" className="flex items-center gap-6">Get Your Operational Pack <ArrowRight className="w-8 h-8 md:w-10 md:h-10" /></Link>
-                            </Button>
-                            
-                            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 italic">DEPLOY ONCE. OPERATE DAILY. OWN PERMANENTLY.</p>
                         </div>
                     </div>
                 </Section>
 
-                <Section className="bg-primary text-white text-center py-32 md:py-48 relative overflow-hidden" noSpine>
-                    <div className="max-w-5xl mx-auto space-y-12 relative z-10 px-6">
-                        <h2 className="text-[42px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">
-                            STOP RUNNING OPERATIONS THROUGH WHATSAPP, MEMORY, AND FOLLOW-UPS.
-                        </h2>
-                        <p className="text-xl md:text-[32px] text-black/60 font-bold italic text-center leading-tight">
-                            Deploy a live operational system your team can actually use. <br/>
-                            Built in Excel. Powered through Google Sheets. Ready in 10 minutes.
-                        </p>
-                        <div className="pt-8">
-                            <Button asChild size="lg" className="h-20 px-12 rounded-[20px] bg-black text-white font-black uppercase italic text-lg md:text-2xl hover:scale-[1.05] transition-all border-none">
-                                <Link href="/library">START YOUR DEPLOYMENT</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </Section>
             </main>
+            
             <Footer />
 
             <style jsx global>{`
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .animate-marquee {
-                    display: flex;
-                    width: fit-content;
-                    animation: marquee 80s linear infinite;
+                @keyframes zoom {
+                    from { transform: scale(1); }
+                    to { transform: scale(1.06); }
                 }
             `}</style>
         </div>
