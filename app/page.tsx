@@ -35,9 +35,7 @@ import {
     Recycle, 
     Search,
     ClipboardCheck,
-    Database,
     FileText,
-    Trophy,
     Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -75,63 +73,7 @@ export default function HomePage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE SOVEREIGN HERO (VARIATION 1.1 MOBILE SYNC) --- */}
-                
-                {/* MOBILE HERO: SOVEREIGN STANDARD */}
-                <section className="md:hidden relative w-full flex flex-col bg-[#F8F6F2]">
-                    <div className="w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
-                        <iframe 
-                            src={VIMEO_URL} 
-                            className="absolute inset-0 w-full h-full scale-[1.8]" 
-                            frameBorder="0" 
-                            allow="autoplay; fullscreen" 
-                        />
-                        <div className="absolute inset-0 bg-black/5" />
-                    </div>
-                    <div className="p-8 space-y-8 flex flex-col justify-start">
-                        <div className="flex items-center gap-3">
-                            <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
-                            <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
-                                LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
-                            </span>
-                        </div>
-                        
-                        <div className="space-y-3">
-                            <h1 className="text-[32px] font-extrabold font-headline leading-[0.95] uppercase italic tracking-tighter text-[#121212]">
-                                YOUR BUSINESS SHOULD NOT <br />
-                                <span className="relative inline-block mt-1">
-                                    DEPEND ON MEMORY.
-                                    <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#D6A85F]/30 rounded-full" />
-                                </span>
-                            </h1>
-                            <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
-                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-col gap-2.5">
-                            {[
-                                "Works directly on Google Sheets.",
-                                "No new apps to learn."
-                            ].map((text, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                        <Check className="w-2.5 h-2 text-[#2E7D5A]" />
-                                    </div>
-                                    <span className="text-[11px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="pt-2">
-                             <button className="h-14 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] w-full text-center">
-                                <Link href="/library">See the systems</Link>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* DESKTOP HERO: THE DESIGN LAB MASTER */}
+                {/* --- 1. THE SOVEREIGN HERO (DESKTOP) --- */}
                 <section className="hidden md:flex relative w-full h-[100svh] flex-col justify-start overflow-hidden bg-[#F8F6F2]">
                     <div className="absolute inset-0 z-0">
                         <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
@@ -207,7 +149,61 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- 2. THE INFRASTRUCTURE BRIDGE: HOW IT WORKS --- */}
+                {/* MOBILE HERO (Variation 1.1) */}
+                <section className="md:hidden relative w-full flex flex-col bg-[#F8F6F2]">
+                    <div className="w-full aspect-[4/5] relative overflow-hidden bg-zinc-200">
+                        <iframe 
+                            src={VIMEO_URL} 
+                            className="absolute inset-0 w-full h-full scale-[1.8]" 
+                            frameBorder="0" 
+                            allow="autoplay; fullscreen" 
+                        />
+                        <div className="absolute inset-0 bg-black/5" />
+                    </div>
+                    <div className="p-8 space-y-8 flex flex-col justify-start">
+                        <div className="flex items-center gap-3">
+                            <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+                            <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
+                                LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
+                            </span>
+                        </div>
+                        
+                        <div className="space-y-3">
+                            <h1 className="text-[32px] font-extrabold font-headline leading-[0.95] uppercase italic tracking-tighter text-[#121212]">
+                                YOUR BUSINESS SHOULD NOT <br />
+                                <span className="relative inline-block mt-1">
+                                    DEPEND ON MEMORY.
+                                    <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#D6A85F]/30 rounded-full" />
+                                </span>
+                            </h1>
+                            <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
+                                MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-2.5">
+                            {[
+                                "Works directly on Google Sheets.",
+                                "No new apps to learn."
+                            ].map((text, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                        <Check className="w-2.5 h-2 text-[#2E7D5A]" />
+                                    </div>
+                                    <span className="text-[11px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="pt-2">
+                             <button className="h-14 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] w-full text-center">
+                                <Link href="/library">See the systems</Link>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- 2. THE INFRASTRUCTURE BRIDGE --- */}
                 <Section className="bg-white" id="the-bridge">
                     <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
                         <div className="space-y-8 text-left">
@@ -238,17 +234,16 @@ export default function HomePage() {
                             </div>
                         </div>
                         <div className="relative max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl group bg-[#F8F6F2]">
-                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10" />
                              <img 
-                                src="https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg" 
-                                alt="Operational Synergy" 
-                                className="w-full h-auto grayscale-[0.4] hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100"
+                                src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg" 
+                                alt="Operational Analytics" 
+                                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
                              />
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 3. THE REALITY CHECK: PROBLEMS WE SOLVE --- */}
+                {/* --- 3. THE REALITY CHECK (PROBLEMS) --- */}
                 <Section className="bg-zinc-950 text-white border-y border-white/5" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -264,7 +259,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     {[
-                                        { t: "Reporting Chase", d: "Spending 2 hours daily asking staff for status updates.", i: Activity },
+                                        { t: "The Reporting Chase", d: "Spending hours daily asking staff for status updates via chat.", i: Activity },
                                         { t: "Audit Panic", d: "Scrambling to find proof of compliance during an inspection.", i: ShieldAlert },
                                         { t: "Knowledge Leakage", d: "Losing your standards when a key manager resigns.", i: History },
                                         { t: "Verbal Drift", d: "Instructions changing as they are passed shift-to-shift.", i: Zap }
@@ -283,26 +278,20 @@ export default function HomePage() {
                                     alt="Operational Stress" 
                                     className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000" 
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                                <div className="absolute bottom-10 left-10 p-6 bg-red-500/10 backdrop-blur-md border border-red-500/20 rounded-xl">
-                                    <p className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-1">CURRENT_STATE</p>
-                                    <p className="text-2xl font-black italic uppercase leading-none">Unmonitored Chaos</p>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 4. INSIDE THE ENGINE: WHAT YOU GET --- */}
+                {/* --- 4. INSIDE THE ENGINE (WHAT YOU GET) --- */}
                 <Section className="bg-white">
                     <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
                         <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-black/5 aspect-[1.5/1] bg-zinc-200">
                              <img 
                                 src="https://i.postimg.cc/J0QtgD5V/colleagues-real-estate-architecture-working-together-project-design-development.jpg" 
-                                alt="System Design" 
+                                alt="System Spec" 
                                 className="w-full h-full object-cover grayscale-[0.2]" 
                              />
-                             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent" />
                         </div>
                         <div className="space-y-10">
                             <div className="space-y-4">
@@ -311,7 +300,7 @@ export default function HomePage() {
                                     Inside the <br/> Master Engine.
                                 </h2>
                                 <p className="text-lg text-zinc-500 font-bold italic leading-relaxed">
-                                    One file. Total control. Your Master Excel includes 5 forensically engineered chambers:
+                                    Each Sovereign Master includes 5 forensically engineered chambers:
                                 </p>
                             </div>
                             <div className="space-y-5">
@@ -320,7 +309,7 @@ export default function HomePage() {
                                     { t: "Live Execution Ledger", d: "Symmetric grid for 365-day task logging.", i: LayoutGrid },
                                     { t: "Master SOP Library", d: "Institutional instructions for every specialized role.", i: FileText },
                                     { t: "Personnel Hub", d: "Role-based personnel mapping and directory.", i: Users },
-                                    { t: "Incident Registry", d: "Audit-ready evidence logs for insurers and board.", i: ShieldCheck }
+                                    { t: "Incident Registry", d: "Audit-ready evidence logs for insurers.", i: ShieldCheck }
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
                                         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
@@ -337,7 +326,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 5. THE ADOPTION MOAT: WHY IT WORKS --- */}
+                {/* --- 5. THE ADOPTION MOAT --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-20 md:space-y-32">
                         <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
@@ -348,15 +337,15 @@ export default function HomePage() {
                                         Zero training. <br/> Total adoption.
                                     </h2>
                                     <p className="text-lg md:text-xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-emerald-500/20 pl-8">
-                                        SaaS apps fail because of login friction and learning curves. Spreadsheets succeed because your team already uses them every single day.
+                                        SaaS apps fail because of login friction. Spreadsheets succeed because your team already uses them every single day.
                                     </p>
                                 </div>
                                 <div className="space-y-4">
                                     {[
                                         "Opens on any smartphone via Google Sheets",
-                                        "Initial and Name-based verification only",
-                                        "No complex menu hierarchies for floor staff",
-                                        "Instant visual feedback (Red/Green) on tasks"
+                                        "Name-based verification only",
+                                        "No complex menu hierarchies",
+                                        "Instant visual feedback on tasks"
                                     ].map((text, i) => (
                                         <div key={i} className="flex items-center gap-3">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -378,7 +367,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 6. RESIGNATION RISK (INSTITUTIONAL MEMORY) --- */}
+                {/* --- 6. RESIGNATION RISK --- */}
                 <Section className="bg-[#F8F6F2]">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
                         <div className="space-y-10 order-2 lg:order-1">
@@ -409,7 +398,6 @@ export default function HomePage() {
                             </div>
                         </div>
                         <div className="relative order-1 lg:order-2">
-                            <div className="absolute -inset-4 bg-[#B89B5E]/5 rounded-[3rem] -rotate-2" />
                             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
                                 <img 
                                     src="https://i.postimg.cc/Gt3b4Mvc/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" 
@@ -421,7 +409,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- 7. THE ELITE VERTICALS (SECTOR GRID) --- */}
+                {/* --- 7. ELITE VERTICALS --- */}
                 <Section className="bg-white">
                     <div className="space-y-20 md:space-y-32">
                         <div className="text-center space-y-6 max-w-3xl mx-auto">
@@ -430,7 +418,7 @@ export default function HomePage() {
                                 High-Gravity Verticals.
                             </h2>
                             <p className="text-[#5F6368] text-lg md:text-xl italic leading-relaxed">
-                                Not generic templates. Forensically engineered operational systems for environments where mistakes are not an option.
+                                Not generic templates. Forensically engineered operational systems for high-stakes environments.
                             </p>
                         </div>
 
@@ -456,13 +444,13 @@ export default function HomePage() {
 
                         <div className="text-center pt-8">
                             <button className="h-14 px-12 rounded-full border-2 border-black/5 text-[#111111] font-bold uppercase text-[11px] tracking-widest hover:bg-[#111111] hover:text-white transition-all">
-                                <Link href="/library">Explore All 25+ Systems</Link>
+                                <Link href="/library">Explore All Systems</Link>
                             </button>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 8. SUSTAINABILITY THROUGH RIGOR --- */}
+                {/* --- 8. SUSTAINABILITY --- */}
                 <Section className="bg-[#111111] text-white">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
                         <div className="space-y-12">
@@ -472,7 +460,7 @@ export default function HomePage() {
                                     Sustainability <br/> through Rigor.
                                 </h2>
                                 <p className="text-zinc-400 text-lg md:text-xl italic font-medium leading-relaxed max-w-lg">
-                                    Environmental sustainability isn't a separate report. It's the byproduct of daily operational discipline.
+                                    Environmental sustainability isn't a report. It's the byproduct of daily operational discipline.
                                 </p>
                             </div>
                             
@@ -494,18 +482,12 @@ export default function HomePage() {
                             </div>
                         </div>
                         <div className="relative">
-                            <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full" />
                             <div className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-square shadow-2xl">
                                  <img 
-                                    src="https://i.postimg.cc/J0QtgD5V/colleagues-real-estate-architecture-working-together-project-design-development.jpg" 
+                                    src="https://i.postimg.cc/9MhmhXMR/facilities-management1.png" 
                                     alt="Sustainability Vitals" 
                                     className="w-full h-full object-cover grayscale-[0.2] brightness-75" 
                                  />
-                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                                 <div className="absolute bottom-10 left-10 space-y-2">
-                                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">VITALS_SECURED</p>
-                                     <p className="text-2xl font-black italic uppercase">Infrastructure_Online</p>
-                                 </div>
                             </div>
                         </div>
                     </div>
@@ -530,13 +512,6 @@ export default function HomePage() {
                                     Get Your System <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
                                 </Link>
                             </button>
-                            <div className="flex items-center gap-4 text-[9px] md:text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">
-                                <span>ONE-TIME PURCHASE</span>
-                                <div className="w-1 h-1 rounded-full bg-zinc-300" />
-                                <span>NO SaaS TAX</span>
-                                <div className="w-1 h-1 rounded-full bg-zinc-300" />
-                                <span>OWN YOUR DATA</span>
-                            </div>
                         </div>
                     </div>
                 </Section>
