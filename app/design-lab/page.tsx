@@ -12,7 +12,9 @@ import {
     UserCheck,
     Smartphone,
     History,
-    Users
+    Users,
+    ChevronRight,
+    Search
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -81,7 +83,7 @@ export default function DesignLab() {
                             <div className="space-y-12">
                                 <div className="space-y-8">
                                     <h1 className="text-[56px] md:text-[88px] lg:text-[104px] font-black tracking-[-0.06em] leading-[0.9] uppercase text-white font-headline">
-                                        YOUR BUSINESS <br/> <span className="text-[#22C55E]">SHOULD NOT</span> <br/> DEPEND <br/> ON MEMORY.
+                                        YOUR BUSINESS <br/> <span className="text-[#22C55E]">SHOULD</span> <span className="text-red-500">NOT</span> <br/> DEPEND <br/> ON MEMORY.
                                     </h1>
                                     <div className="space-y-6 max-w-[580px]">
                                         <p className="text-[18px] md:text-[22px] font-normal leading-[1.5] text-zinc-400 italic">
