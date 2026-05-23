@@ -7,30 +7,30 @@ import {
     Check, 
     ArrowRight, 
     ShieldCheck, 
-    Smartphone,
-    AlertTriangle,
-    History,
-    Users,
-    ClipboardCheck,
-    Target,
     Activity,
+    AlertTriangle,
+    Target,
     ChevronRight,
-    Circle,
     LayoutGrid,
-    SearchCheck,
     Zap,
-    Scale,
-    FileSpreadsheet,
-    Lock
+    Building,
+    Utensils,
+    Hospital,
+    School,
+    Store,
+    Popcorn,
+    ShoppingBag
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from 'next/link';
 
 const GOLD = "#D6A85F";
-const GREEN = "#22C55E";
-const AMBER = "#F59E0B";
+const NAVY = "#0F1720";
+const TEXT_PRIMARY = "#F8FAFC";
+const TEXT_SECONDARY = "#CBD5E1";
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-32 relative overflow-hidden", className)}>
@@ -47,9 +47,13 @@ const OperationalSignal = ({ status, text, time, pulse = false }: { status: 'com
     )}>
         <div className="flex items-center gap-3">
             {status === 'complete' ? (
-                <Check className="w-4 h-4 text-emerald-500" />
+                <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <Check className="w-2.5 h-2.5 text-emerald-500" />
+                </div>
             ) : (
-                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                <div className="w-4 h-4 rounded-full bg-amber-500/20 flex items-center justify-center">
+                    <AlertTriangle className="w-2.5 h-2.5 text-amber-500" />
+                </div>
             )}
             <span className="text-[11px] font-black uppercase tracking-widest text-white/90 italic">{text}</span>
         </div>
@@ -60,7 +64,7 @@ const OperationalSignal = ({ status, text, time, pulse = false }: { status: 'com
     </div>
 );
 
-export default function ProductionDesignLab() {
+export default function DesignLab() {
     const [mounted, setMounted] = useState(false);
     const [visibleFailure, setVisibleFailure] = useState(0);
 
@@ -93,37 +97,55 @@ export default function ProductionDesignLab() {
                 <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-center overflow-hidden bg-black">
                     {/* Background Treatment */}
                     <div className="absolute inset-0 z-0">
-                        <iframe 
-                            src="https://player.vimeo.com/video/1194885765?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" 
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115vw] h-[115vh] object-cover opacity-40 grayscale brightness-[0.4]"
-                            frameBorder="0" 
-                            allow="autoplay; fullscreen"
+                        <div style={{padding:'56.25% 0 0 0', position:'relative', height: '100%', width: '100%'}}>
+                            <iframe 
+                                src="https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&background=1&muted=1" 
+                                frameBorder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                style={{position:'absolute', top:'0', left:'0', width:'100%', height:'100%', objectFit: 'cover'}}
+                                title="Bustling Operation"
+                                className="opacity-40 grayscale brightness-[0.4]"
+                            ></iframe>
+                        </div>
+                        {/* Video Overlay */}
+                        <div 
+                            className="absolute inset-0 z-10" 
+                            style={{ 
+                                background: 'linear-gradient(180deg, rgba(7,10,14,0.74) 0%, rgba(7,10,14,0.60) 45%, rgba(7,10,14,0.84) 100%)' 
+                            }} 
                         />
-                        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(7,10,14,0.74) 0%, rgba(7,10,14,0.60) 45%, rgba(7,10,14,0.84) 100%)' }} />
                     </div>
 
                     <div className="relative z-20 container mx-auto max-w-[1300px] px-6 flex items-center h-full">
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center w-full">
                             
-                            {/* Left: Narrative */}
+                            {/* Left: Narrative (58%) */}
                             <div className="space-y-10 md:space-y-12">
                                 <div className="space-y-6">
                                     <p className="text-[12px] font-black uppercase tracking-[0.5em] italic" style={{ color: GOLD }}>
                                         LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
                                     </p>
-                                    <h1 className="text-[52px] md:text-[80px] lg:text-[100px] font-black tracking-[-0.06em] leading-[0.92] uppercase italic text-white drop-shadow-2xl">
+                                    <h1 className="text-[56px] md:text-[80px] lg:text-[100px] font-black tracking-[-0.06em] leading-[0.92] uppercase italic text-white drop-shadow-2xl">
                                         YOUR BUSINESS <br/> SHOULD NOT <br/> DEPEND <br/> ON MEMORY.
                                     </h1>
-                                    <p className="text-[18px] md:text-[20px] font-normal leading-[1.7] text-[#CBD5E1] max-w-[620px] italic">
-                                        MoreMeets gives your team ready-to-use live SOP systems with daily tasks, step-by-step instructions, and total accountability. <br/><br/>
-                                        No new apps to learn. No training headaches. <br/>
-                                        Works directly on Google Sheets.
-                                    </p>
+                                    <div className="space-y-6">
+                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.7] text-[#CBD5E1] max-w-[620px] italic">
+                                            MoreMeets gives your team ready-to-use live SOP systems with daily tasks, simple step-by-step instructions, risks involved, timestamps, and accountability built in.
+                                        </p>
+                                        <p className="text-[18px] md:text-[20px] font-normal leading-[1.7] text-[#CBD5E1] max-w-[620px] italic">
+                                            So work gets done properly — even when managers are away, staff change, or operations get busy.
+                                        </p>
+                                        <div className="space-y-1 pt-2">
+                                            <p className="text-sm font-bold text-white/40 uppercase tracking-widest">No new apps to learn.</p>
+                                            <p className="text-sm font-bold text-white/40 uppercase tracking-widest">No training headaches.</p>
+                                            <p className="text-sm font-bold text-white/40 uppercase tracking-widest">Works directly on Google Sheets.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-6">
                                     <Button asChild className="h-16 px-10 rounded-2xl text-zinc-950 font-bold uppercase italic text-sm tracking-widest shadow-2xl transition-all hover:-translate-y-1 hover:shadow-primary/20" style={{ backgroundColor: GOLD }}>
-                                        <Link href="/library">Get Your System <ArrowRight className="ml-3 w-5 h-5" /></Link>
+                                        <Link href="/library">Deploy Your System <ArrowRight className="ml-3 w-5 h-5" /></Link>
                                     </Button>
                                     <Button variant="outline" asChild className="h-16 px-10 rounded-2xl border-white/10 bg-white/[0.03] backdrop-blur-xl font-bold uppercase italic text-sm tracking-widest hover:bg-white/10 text-white">
                                         <Link href="#ledger">See the Interface</Link>
@@ -131,13 +153,16 @@ export default function ProductionDesignLab() {
                                 </div>
                             </div>
 
-                            {/* Right: Operational Terminal */}
+                            {/* Right: Live Operation Feed (42%) */}
                             <div className="hidden lg:block relative group">
                                 <div className="absolute -inset-10 bg-primary/10 blur-[100px] opacity-20 rounded-full group-hover:opacity-40 transition-opacity duration-1000" />
-                                <div className="relative p-10 rounded-[28px] border border-white/10 bg-[#0F1720]/60 backdrop-blur-[24px] space-y-8 shadow-2xl">
+                                <div 
+                                    className="relative p-10 rounded-[28px] border border-white/10 bg-[#0F1720]/60 backdrop-blur-[24px] space-y-8 shadow-2xl"
+                                    style={{ background: 'rgba(15,23,32,0.62)' }}
+                                >
                                     <div className="flex items-center justify-between border-b border-white/5 pb-6">
                                         <div className="space-y-1">
-                                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">TODAY'S OPERATIONS</p>
+                                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]" style={{ color: GOLD }}>TODAY'S OPERATIONS</p>
                                             <p className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">SOVEREIGN_ENGINE_v4.3</p>
                                         </div>
                                         <Activity className="w-5 h-5 text-emerald-500 animate-pulse" />
@@ -157,7 +182,7 @@ export default function ProductionDesignLab() {
                                                 <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0F1720] bg-zinc-800 flex items-center justify-center text-[10px] font-bold">ST</div>
                                             ))}
                                         </div>
-                                        <span className="text-[10px] font-black uppercase text-primary/40 italic">Live Coverage</span>
+                                        <span className="text-[10px] font-black uppercase text-white/20 italic tracking-widest">Live Coverage</span>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +206,7 @@ export default function ProductionDesignLab() {
                 <Section className="bg-[#121B26]">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.4em] font-black text-[10px]">THE OPERATIONAL COST</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.4em] font-black text-[10px]" style={{ color: GOLD, borderColor: GOLD }}>THE OPERATIONAL COST</Badge>
                             <h2 className="text-[44px] md:text-[72px] font-black font-headline text-white leading-[0.9] uppercase italic tracking-tighter">
                                 STOP CHASING <br/> STAFF <br/> FOR UPDATES.
                             </h2>
@@ -209,7 +234,7 @@ export default function ProductionDesignLab() {
                 <Section>
                     <div className="max-w-5xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.4em] font-black text-[10px]">THE INFRASTRUCTURE</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.4em] font-black text-[10px]" style={{ color: GOLD, borderColor: GOLD }}>THE INFRASTRUCTURE</Badge>
                             <h2 className="text-[34px] md:text-[60px] font-black font-headline text-white uppercase italic tracking-tight leading-none text-center">SYSTEM ANATOMY</h2>
                         </div>
 
@@ -220,13 +245,13 @@ export default function ProductionDesignLab() {
                                 { t: "The Guard", d: "Risk and consequence definitions attached to every critical action.", i: ShieldCheck },
                                 { t: "The Eye", d: "Live group-level dashboards for owners to see everything remotely.", i: LayoutGrid }
                             ].map((item, i) => (
-                                <Card key={i} className="bg-white/[0.04] border-white/5 p-10 space-y-6 hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-500 rounded-[24px]">
-                                    <item.i className="w-10 h-10 text-primary" strokeWidth={1.5} />
+                                <div key={i} className="p-10 space-y-6 bg-white/[0.04] border border-white/5 rounded-[24px] hover:bg-white/[0.08] hover:-translate-y-2 transition-all duration-500">
+                                    <item.i className="w-10 h-10 text-primary" strokeWidth={1.5} style={{ color: GOLD }} />
                                     <div className="space-y-2">
                                         <h3 className="text-xl font-black uppercase italic tracking-tighter text-white">{item.t}</h3>
                                         <p className="text-sm text-zinc-400 font-medium italic leading-relaxed">{item.d}</p>
                                     </div>
-                                </Card>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -236,7 +261,7 @@ export default function ProductionDesignLab() {
                 <Section className="bg-[#121B26]" id="ledger">
                     <div className="max-w-[1400px] mx-auto space-y-16">
                         <div className="flex flex-col items-center text-center space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-3 rounded-full italic">REAL-TIME INTERFACE</Padding>
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-3 rounded-full italic" style={{ color: GOLD, borderColor: GOLD }}>REAL-TIME INTERFACE</Badge>
                             <h2 className="text-[36px] md:text-[72px] font-black font-headline text-white leading-[0.95] tracking-tight uppercase italic text-center">
                                 THE SOVEREIGN LEDGER
                             </h2>
@@ -272,7 +297,7 @@ export default function ProductionDesignLab() {
                                                 <td className="px-6 py-8 border-r border-white/5 font-bold text-white uppercase italic">{row.r}</td>
                                                 <td className="px-6 py-8 border-r border-white/5 font-black text-white/90">{row.t}</td>
                                                 <td className="px-6 py-8 border-r border-white/5 text-zinc-400 italic">{row.a}</td>
-                                                <td className="px-6 py-8 border-r border-white/5 font-mono text-center text-primary">{row.db}</td>
+                                                <td className="px-6 py-8 border-r border-white/5 font-mono text-center text-primary" style={{ color: GOLD }}>{row.db}</td>
                                                 <td className="px-6 py-8 border-r border-white/5 font-mono text-center text-white/20">{row.vb || "—"}</td>
                                                 <td className="px-6 py-8 border-r border-white/5">
                                                     <span className={cn(
@@ -296,7 +321,7 @@ export default function ProductionDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- WHO IT IS FOR --- */}
+                {/* --- WHO IT’S FOR --- */}
                 <Section className="bg-white text-zinc-950">
                     <div className="max-w-6xl mx-auto space-y-24">
                         <div className="text-center space-y-4">
@@ -308,10 +333,13 @@ export default function ProductionDesignLab() {
                             {[
                                 { t: "RESTAURANT OPS", id: "restaurants", i: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg", sub: ["Kitchen hygiene", "Opening checks", "Inventory discipline", "Closing routines"] },
                                 { t: "HOTEL OPS", id: "hotels_and_resorts", i: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp", sub: ["Housekeeping parity", "Front desk compliance", "Engineering vitals", "Privacy audits"] },
-                                { t: "RETAIL OPS", id: "retail_operations_system", i: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp", sub: ["Loss prevention", "Stock integrity", "Metrology accuracy", "Visual standards"] }
+                                { t: "RETAIL OPS", id: "retail_operations_system", i: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp", sub: ["Loss prevention", "Stock integrity", "Metrology accuracy", "Visual standards"] },
+                                { t: "HOSPITAL OPS", id: "healthcare_and_hospital_operations", i: "https://i.postimg.cc/zvDqydKt/healthcare.jpg", sub: ["Clinical nursing", "Pharmacy audits", "Statutory compliance", "Billing governance"] },
+                                { t: "SCHOOL OPS", id: "school_operations_pack", i: "https://i.postimg.cc/pXGLFt00/school-safety.webp", sub: ["Transport safety", "Perimeter security", "Academic pacing", "Statutory logs"] },
+                                { t: "MULTIPLEX OPS", id: "cinema_operations_pack", i: "https://i.postimg.cc/VsXtn5MJ/view-3d-cinema-theatre-room.jpg", sub: ["Projection quality", "Concession yield", "Crowd flow", "Egress checks"] }
                             ].map((item, i) => (
                                 <Link key={i} href={`/packs/${item.id}`} className="relative h-[480px] rounded-[32px] overflow-hidden group">
-                                    <img src={item.i} alt={item.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                    <img src={item.i} alt={item.t} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2]" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F1720] via-[#0F1720]/40 to-transparent" />
                                     <div className="absolute inset-0 p-10 flex flex-col justify-end gap-4">
                                         <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase font-headline leading-none">{item.t}</h3>
@@ -321,7 +349,7 @@ export default function ProductionDesignLab() {
                                             ))}
                                         </ul>
                                         <div className="pt-4">
-                                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-zinc-950 group-hover:bg-primary transition-colors">
+                                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-zinc-950 group-hover:bg-primary transition-colors" style={{ backgroundColor: '#FFFFFF' }}>
                                                 <ArrowRight className="w-6 h-6" />
                                             </div>
                                         </div>
@@ -332,30 +360,24 @@ export default function ProductionDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- DEPLOYMENT GUIDE --- */}
-                <Section className="bg-[#121B26]" id="deploy">
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">ONBOARDING PROTOCOL</Padding>
-                             <h2 className="text-[34px] md:text-[60px] font-black font-headline text-white leading-[0.95] tracking-tight uppercase italic text-center">GO LIVE IN 10 MINUTES</h2>
+                {/* --- FAQ SECTION --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100" id="faq">
+                    <div className="max-w-3xl mx-auto space-y-12">
+                        <div className="text-center">
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">COMMON OBJECTIONS</h2>
                         </div>
-                        <div className="grid md:grid-cols-4 gap-8">
+                        <Accordion type="single" collapsible className="w-full">
                             {[
-                                { n: "01", t: "DOWNLOAD", d: "Instantly get your pre-built industry master file." },
-                                { n: "02", t: "UPLOAD", d: "Add to Google Drive for live cloud team access." },
-                                { n: "03", t: "ASSIGN", d: "Map staff to roles and set your control metrics." },
-                                { n: "04", t: "RUN", d: "Your business is now systemized. Watch live." }
-                            ].map((step, i) => (
-                                <div key={i} className="p-8 rounded-3xl bg-white/[0.03] border border-white/5 space-y-6 relative overflow-hidden group">
-                                    <span className="text-6xl font-black italic text-white/5 group-hover:text-primary/10 transition-colors absolute -top-2 -right-2">{step.n}</span>
-                                    <div className="space-y-2 relative z-10">
-                                        <p className="text-[10px] font-mono text-zinc-500 tracking-widest font-black uppercase">STEP_{step.n}</p>
-                                        <h4 className="text-xl font-black italic uppercase text-white font-headline">{step.t}</h4>
-                                        <p className="text-sm text-zinc-400 font-bold italic leading-relaxed">{step.d}</p>
-                                    </div>
-                                </div>
+                                { q: "We already have SOPs. Why do we need this?", a: "Most SOPs sit in folders and aren't followed. MoreMeets converts static manuals into a Live Operating System where work is assigned and execution is recorded in real time." },
+                                { q: "Is this difficult for non-technical staff?", a: "No. Your team already knows how to use a phone and a spreadsheet. There is no new software to learn, which is why adoption is nearly 100%." },
+                                { q: "Can we edit or add our own tasks?", a: "Yes. Unlike a locked SaaS app, you own the engine. You can add, delete, or modify any task to fit your unique brand protocols." }
+                            ].map((faq, i) => (
+                                <AccordionItem key={i} value={`item-${i}`} className="border-zinc-200">
+                                    <AccordionTrigger className="text-lg font-black uppercase italic tracking-tight text-zinc-950 hover:no-underline">{faq.q}</AccordionTrigger>
+                                    <AccordionContent className="text-zinc-500 font-medium italic text-base leading-relaxed">{faq.a}</AccordionContent>
+                                </AccordionItem>
                             ))}
-                        </div>
+                        </Accordion>
                     </div>
                 </Section>
 
@@ -366,7 +388,7 @@ export default function ProductionDesignLab() {
                             STOP CHASING. <br/> START RUNNING.
                         </h2>
                         <div className="space-y-4">
-                             <p className="text-xl md:text-[32px] font-black italic text-primary uppercase leading-tight text-center">
+                             <p className="text-xl md:text-[32px] font-black italic text-primary uppercase leading-tight text-center" style={{ color: GOLD }}>
                                 OPERATIONS PROPERLY.
                             </p>
                             <p className="text-sm md:text-lg text-zinc-500 font-bold italic uppercase tracking-widest max-w-sm mx-auto leading-relaxed">
