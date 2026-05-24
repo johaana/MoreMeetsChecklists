@@ -11,7 +11,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
  * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
  * 4. AUDIT HEARTBEAT: Column J (STAMP) for automated verifiable records.
- * 5. SETUP GUIDE: Integrated Apps Script source for Hotel-tier deployment.
+ * 5. SETUP GUIDE: Integrated Apps Script source for Institutional deployment.
  * ----------------------------------------------------------------------------
  */
 
@@ -24,7 +24,7 @@ const TABS = {
     SOP_LIB: "SOP_LIB",
     BRANCH_SETUP: "BRANCH_SETUP",
     TEAM_HUB: "TEAM_HUB",
-    SETUP_GUIDE: "SETUP_GUIDE", // New tab for Audit activation
+    SETUP_GUIDE: "SETUP_GUIDE", // Tab for Audit activation
     CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
     SYS_ENGINE: "SYS_ENGINE"
 };
@@ -110,7 +110,8 @@ export const handleDownload = (item: PremiumPack) => {
         }
 
         const wb = utils.book_new();
-        const isHotelPack = item.id === 'hotels_and_resorts';
+        // PROD AUDIT ENABLED PACKS
+        const isAuditEnabled = item.id === 'hotels_and_resorts' || item.id === 'restaurants';
 
         const COLORS = {
             PRIMARY_GREEN: "22C55E",  
@@ -180,12 +181,12 @@ export const handleDownload = (item: PremiumPack) => {
             [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
             [],
-            ...(isHotelPack ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. Only continue in the new file." }]] : []),
+            ...(isAuditEnabled ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. Only continue in the new file." }]] : []),
             [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations in the yellow cells." }],
             [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names, phone numbers, and emails." }],
             [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }],
             [],
-            ...(isHotelPack ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for instructions on securing timestamps." }]] : []),
+            ...(isAuditEnabled ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for instructions on securing timestamps." }]] : []),
             [],
             [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
             [{ v: "Replace all YELLOW cells with your own local details to begin." }]
@@ -217,7 +218,7 @@ export const handleDownload = (item: PremiumPack) => {
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
             { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
-            ...(isHotelPack ? [{ v: "STAMP", s: headerStyle }] : [])
+            ...(isAuditEnabled ? [{ v: "STAMP", s: headerStyle }] : [])
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         
@@ -247,7 +248,7 @@ export const handleDownload = (item: PremiumPack) => {
                         { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                     ];
 
-                    if (isHotelPack) {
+                    if (isAuditEnabled) {
                         row.push({ v: "", s: styles.locked });
                     }
                     taskData.push(row);
@@ -256,9 +257,9 @@ export const handleDownload = (item: PremiumPack) => {
         }
         const taskWs = utils.aoa_to_sheet(taskData);
         const colWidths = [20, 25, 45, 25, 15, 15, 15, 45, 65];
-        if (isHotelPack) colWidths.push(25);
+        if (isAuditEnabled) colWidths.push(25);
         taskWs['!cols'] = colWidths.map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", isHotelPack ? 'J' : 'I');
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", isAuditEnabled ? 'J' : 'I');
         validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
@@ -321,13 +322,13 @@ export const handleDownload = (item: PremiumPack) => {
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
         // --- 07. SETUP_GUIDE (Audit Activation) ---
-        if (isHotelPack) {
+        if (isAuditEnabled) {
             const guideData: any[][] = [
                 [{ v: "🛠️ SYSTEM SETUP & AUDIT ENGINE ACTIVATION", s: bannerStyle }],
                 [],
                 [{ v: "SECTION A — MANDATORY CONVERSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RISK_RED } } } }],
                 [{ v: "1. Click [File] -> [Save as Google Sheets]. This is required for automation." }],
-                [{ v: "2. Close this tab. Only work in the NEW Google Sheets file." }],
+                [{ v: "2. Close this tab. Only work in the NEW file." }],
                 [],
                 [{ v: "SECTION B — ACTIVATE THE AUDIT HEARTBEAT", s: { font: { bold: true, sz: 12 } } }],
                 [{ v: "1. In your new Google Sheet, go to [Extensions] -> [Apps Script]." }],
