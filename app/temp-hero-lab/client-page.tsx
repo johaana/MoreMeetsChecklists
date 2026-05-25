@@ -20,7 +20,8 @@ import {
     ShieldAlert,
     LayoutGrid,
     Clock,
-    UserCheck
+    UserCheck,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -44,14 +45,14 @@ const ELITE_INDUSTRIES = [
 const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
     <div className={cn("flex flex-col gap-4 md:gap-6", centered ? "items-center" : "items-start")}>
         <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto">
-            <Button asChild size="lg" className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl bg-primary text-black font-black uppercase italic text-[10px] md:text-[11px] tracking-widest shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:scale-[1.02] transition-all border-none group">
+            <button className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl bg-primary text-black font-black uppercase italic text-[10px] md:text-[11px] tracking-widest shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:scale-[1.02] transition-all border-none group">
                 <Link href="/library">SEE YOUR INDUSTRY SYSTEM</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl border-white/30 text-white/90 font-black uppercase italic text-[10px] md:text-[11px] tracking-widest hover:bg-zinc-800 hover:text-white transition-all bg-transparent">
+            </button>
+            <button className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 rounded-xl border border-white/30 text-white/90 font-black uppercase italic text-[10px] md:text-[11px] tracking-widest hover:bg-zinc-800 hover:text-white transition-all bg-transparent">
                 <Link href="#sovereign-ledger">SEE HOW IT WORKS</Link>
-            </Button>
+            </button>
         </div>
-        <div className="space-y-1.5 md:space-y-2 text-center lg:text-left">
+        <div className={cn("space-y-1.5 md:space-y-2", centered ? "text-center" : "text-left")}>
             <Link href={CALENDLY_URL} target="_blank" className="group flex items-center gap-2 text-[8px] md:text-[9px] font-black uppercase tracking-[0.15em] text-white/20 hover:text-primary transition-colors">
                 <span>Need help setting up multiple branches? Book Operational Walkthrough</span>
                 <ArrowRight className="w-2.5 h-2.5 md:w-3 md:h-3 transition-transform group-hover:translate-x-1" />
