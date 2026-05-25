@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -74,7 +73,7 @@ const LedgerSimulation = () => (
                         <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
                             <Check className="w-3 h-3" strokeWidth={5} />
                         </div>
-                        <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
+                        <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">HOTEL_OPERATIONS_MASTER_LEDGER_V14.2</span>
                     </div>
                     <div className="flex items-center gap-5 opacity-80">
                         <Search className="w-3.5 h-3.5" />
@@ -94,7 +93,7 @@ const LedgerSimulation = () => (
                                     { h: "TECHNICAL TASK", w: "160px" },
                                     { h: "DONE", w: "50px" },
                                     { h: "VERIFIED", w: "60px" },
-                                    { h: "STATUS", w: "90px" },
+                                    { h: "STATUS", w: "100px" },
                                     { h: "CONSEQUENCE / RISK", w: "200px" },
                                     { h: "STAMP", w: "140px" }
                                 ].map((col, i) => (
@@ -105,40 +104,40 @@ const LedgerSimulation = () => (
                         <tbody>
                             {[
                                 { 
-                                    b: "Colaba S.", r: "Med. Director", t: "SENTINEL EVENT TRIAGE", db: "AK", vb: "AK", s: "COMPLETE", 
-                                    c: "Fatal patient harm / Legal suit.", st: "2026-05-23 09:12", isDone: true 
+                                    b: "Colaba S.", r: "Gen. Manager", t: "LOBBY AMBIANCE AUDIT", db: "AK", vb: "AK", s: "COMPLETE", 
+                                    c: "Poor first-touch brand perception.", st: "2026-05-23 08:12", isDone: true 
                                 },
                                 { 
-                                    b: "Bandra Main", r: "Exec. Chef", t: "HACCP THERMAL LOG", db: "VS", vb: "", s: "COMPLETE", 
-                                    c: "Pathogen growth & stock loss.", st: "2026-05-23 08:05", isDone: true 
+                                    b: "Bandra Main", r: "HK Lead", t: "ROOM_RELEASE_VERIFIED", db: "VS", vb: "", s: "COMPLETE", 
+                                    c: "Guest refund risk / delayed check-in.", st: "2026-05-23 10:05", isDone: true 
                                 },
                                 { 
-                                    b: "Dadar West", r: "Shift Lead", t: "HANDOVER PULSE", db: "RK", vb: "", s: "PENDING", 
-                                    c: "Communication gap between shifts.", st: "—", isPending: true 
+                                    b: "Dadar West", r: "Security Lead", t: "FIRE_PANEL_HEALTH", db: "RK", vb: "", s: "IN PROGRESS", 
+                                    c: "Fatal delay in emergency response.", st: "—", isPending: true 
                                 },
                                 { 
-                                    b: "Borivali E.", r: "Security Lead", t: "EGRESS SAFETY SWEEP", db: "", vb: "", s: "OPEN", 
-                                    c: "Fatal entrapment during crisis.", st: "—", isOpen: true 
+                                    b: "Borivali E.", r: "Eng. Lead", t: "HVAC_THERMAL_LOG", db: "", vb: "", s: "OPEN", 
+                                    c: "Guest heat discomfort & energy waste.", st: "—", isOpen: true 
                                 },
                                 { 
-                                    b: "Colaba S.", r: "HK Lead", t: "VIP ROOM READINESS", db: "PD", vb: "", s: "COMPLETE", 
-                                    c: "Luxury brand decay & guest rage.", st: "2026-05-23 10:45", isDone: true 
+                                    b: "Colaba S.", r: "FO Manager", t: "C-FORM_COMPLIANCE", db: "PD", vb: "AK", s: "COMPLETE", 
+                                    c: "Legal violation and hospital closure.", st: "2026-05-23 09:45", isDone: true 
                                 },
                                 { 
-                                    b: "Bandra Main", r: "Pharmacist", t: "NARCOTICS VAULT COUNT", db: "SK", vb: "AK", s: "COMPLETE", 
-                                    c: "Drug diversion & criminal liability.", st: "2026-05-23 07:30", isDone: true 
+                                    b: "Bandra Main", r: "Gen. Manager", t: "VIP_ROOM_READINESS", db: "AK", vb: "", s: "COMPLETE", 
+                                    c: "Loss of high-LTV loyalty.", st: "2026-05-23 11:30", isDone: true 
                                 },
                                 { 
-                                    b: "Dadar West", r: "Eng. Lead", t: "BOILER THERMAL SCAN", db: "", vb: "", s: "OPEN", 
-                                    c: "Total utility failure & service halt.", st: "—", isOpen: true 
+                                    b: "Dadar West", r: "HK Lead", t: "POOL_CHEMISTRY_LOG", db: "VS", vb: "", s: "IN PROGRESS", 
+                                    c: "Pool infection risk & health hazard.", st: "—", isPending: true 
                                 },
                                 { 
-                                    b: "Borivali E.", r: "Admin Lead", t: "CASH DROP WITNESS", db: "MK", vb: "", s: "PENDING", 
-                                    c: "Internal embezzlement / theft.", st: "—", isPending: true 
+                                    b: "Borivali E.", r: "FO Manager", t: "MASTER_KEY_AUDIT", db: "", vb: "", s: "OPEN", 
+                                    c: "Unauthorized room entry liability.", st: "—", isOpen: true 
                                 },
                                 { 
-                                    b: "Colaba S.", r: "Quality Lead", t: "FSSAI BOARD AUDIT", db: "AK", vb: "", s: "COMPLETE", 
-                                    c: "Statutory closure & heavy fines.", st: "2026-05-23 11:15", isDone: true 
+                                    b: "Colaba S.", r: "Security Lead", t: "EGRESS_SAFETY_SWEEP", db: "MK", vb: "", s: "COMPLETE", 
+                                    c: "Fatal entrapment during crisis.", st: "2026-05-23 07:15", isDone: true 
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
@@ -151,7 +150,7 @@ const LedgerSimulation = () => (
                                         "px-2 py-3 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
                                         row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
                                     )}>
-                                        <span className={cn("px-2 py-1 rounded", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
+                                        <span className={cn("px-2 py-1 rounded whitespace-nowrap", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
                                     </td>
                                     <td className="px-3 py-3 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.c}</td>
                                     <td className="px-3 py-3 text-zinc-950 font-mono text-[9px] md:text-[11px] font-black text-center bg-zinc-50 border-l border-zinc-200">{row.st}</td>
