@@ -119,7 +119,8 @@ export const handleDownload = (item: PremiumPack) => {
             'facility_management_blueprint',
             'retail_jewellery_operations_pack',
             'fashion_and_apparel_retail',
-            'supermarket_grocery_retail_pack'
+            'supermarket_grocery_retail_pack',
+            'electronics_showroom_pack'
         ].includes(item.id);
 
         const COLORS = {
