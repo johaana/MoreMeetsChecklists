@@ -65,7 +65,7 @@ const LedgerSimulation = () => (
             <span>DAILY TASKS – Update 'Done By' to complete daily work.</span>
         </div>
 
-        {/* The Symmetric Grid */}
+        {/* The Grid - High Density Institutional Ledger */}
         <div className="overflow-x-auto no-scrollbar">
             <table className="w-full text-left border-collapse min-w-[1100px]">
                 <thead>
@@ -82,52 +82,24 @@ const LedgerSimulation = () => (
                 <tbody>
                     {[
                         { 
-                            b: "Bandra", 
-                            r: "General Manager", 
-                            t: "Revenue Reconcile", 
-                            a: "Aditi", 
-                            db: "AK", 
-                            vb: "AK", 
-                            s: "COMPLETE", 
-                            c: "Untraceable internal revenue theft.", 
-                            i: "Match daily total revenue against physical bank deposit slips.",
-                            st: "2026-05-23 19:53:25" 
+                            b: "Bandra Main", r: "Gen. Manager", t: "Revenue Reconcile", a: "Aditi", db: "AK", vb: "AK", s: "COMPLETE", 
+                            c: "Untraceable internal revenue theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53:25" 
                         },
                         { 
-                            b: "Bandra", 
-                            r: "General Manager", 
-                            t: "P1 Incident Triage", 
-                            a: "Aditi", 
-                            db: "", 
-                            vb: "", 
-                            s: "OPEN", 
-                            c: "Unmonitored liability and guest distress.", 
-                            i: "Review incident log for any technical halts > 5 mins.",
-                            st: "" 
+                            b: "Bandra Main", r: "Exec. Chef", t: "Cold-Chain Audit", a: "Vikram", db: "VS", vb: "", s: "COMPLETE", 
+                            c: "Pathogen growth & total stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12:04" 
                         },
                         { 
-                            b: "Bandra", 
-                            r: "Front Office Manager", 
-                            t: "C-Form Compliance", 
-                            a: "Sarah", 
-                            db: "SM", 
-                            vb: "", 
-                            s: "COMPLETE", 
-                            c: "Legal violation / premises shutdown.", 
-                            i: "Verify 100% ID registration for foreign nationals.",
-                            st: "2026-05-23 09:12:04" 
+                            b: "Ghatkopar W.", r: "Security Lead", t: "Egress Sweep", a: "Karan", db: "", vb: "", s: "OPEN", 
+                            c: "Fatal entrapment during emergency.", i: "Physically walk the fire exit paths.", st: "" 
                         },
                         { 
-                            b: "Bandra", 
-                            r: "Executive Chef", 
-                            t: "HACCP Thermal Pulse", 
-                            a: "Vikram", 
-                            db: "", 
-                            vb: "", 
-                            s: "OPEN", 
-                            c: "Mass food poisoning / total stock loss.", 
-                            i: "Log walk-in temperatures at 8 AM and 4 PM.",
-                            st: "" 
+                            b: "Bandra Main", r: "HK Lead", t: "Washroom 30-min", a: "Priya", db: "PD", vb: "", s: "COMPLETE", 
+                            c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45:11" 
+                        },
+                        { 
+                            b: "Ghatkopar W.", r: "Compliance", t: "FSSAI Board Audit", a: "Suresh", db: "", vb: "", s: "OPEN", 
+                            c: "Massive regulatory fine / Closure.", i: "Verify license visibility in lobby.", st: "" 
                         }
                     ].map((row, idx) => (
                         <tr key={idx} className={cn("border-b border-zinc-200 text-[11px]", idx % 2 === 0 ? "bg-white" : "bg-zinc-50")}>
