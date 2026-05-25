@@ -12,9 +12,29 @@ export const FaqSection = () => (
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
                     <AccordionItem value="item-1" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                           <p>SOPs are not the problem. <strong>Execution is.</strong></p>
-                           <p>Most SOPs sit in unread folders. MoreMeets turns static instructions into tracked daily work with real-time accountability and audit proof.</p>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-6 pb-8">
+                           <div className="space-y-4">
+                                <p>Most businesses already have SOPs.</p>
+                                <p>The challenge is that during real operations:</p>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>instructions become verbal</li>
+                                    <li>execution becomes inconsistent</li>
+                                    <li>managers lose visibility</li>
+                                    <li>accountability becomes difficult</li>
+                                    <li>audits become reactive instead of continuous</li>
+                                </ul>
+                                <p>MoreMeets turns SOPs into <strong>live daily execution systems.</strong></p>
+                                <p>Instead of static documents sitting in folders, teams work through structured operational ledgers with:</p>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>built-in instructions</li>
+                                    <li>audit-ready language</li>
+                                    <li>real-time task tracking</li>
+                                    <li>timestamped execution</li>
+                                    <li>accountability across shifts and teams</li>
+                                </ul>
+                                <p className="pt-2">The system is designed for real operational environments: <br/> <strong>simple enough for frontline teams, structured enough for management and audits.</strong></p>
+                                <p>All workflows remain editable and customizable to your operation.</p>
+                           </div>
                         </AccordionContent>
                     </AccordionItem>
 
