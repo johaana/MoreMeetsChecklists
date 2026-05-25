@@ -110,8 +110,14 @@ export const handleDownload = (item: PremiumPack) => {
         }
 
         const wb = utils.book_new();
-        // PROD AUDIT ENABLED PACKS
-        const isAuditEnabled = item.id === 'hotels_and_resorts' || item.id === 'restaurants' || item.id === 'healthcare_and_hospital_operations' || item.id === 'cinema_operations_pack';
+        // PROD AUDIT ENABLED PACKS - v18.0 PARITY LOCK
+        const isAuditEnabled = [
+            'hotels_and_resorts',
+            'restaurants',
+            'healthcare_and_hospital_operations',
+            'cinema_operations_pack',
+            'franchise_operations_pack'
+        ].includes(item.id);
 
         const COLORS = {
             PRIMARY_GREEN: "22C55E",  
