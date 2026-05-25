@@ -19,7 +19,8 @@ import {
     ChevronRight,
     History,
     CheckSquare,
-    Infinity as InfinityIcon
+    Infinity as InfinityIcon,
+    ClipboardCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -32,7 +33,7 @@ const SheetsLandscapeSimulation = () => (
                 <div className="w-4 h-4 rounded bg-white/20 flex items-center justify-center">
                     <Check className="w-2.5 h-2.5" strokeWidth={4} />
                 </div>
-                <span className="text-[9px] font-bold tracking-tight">DAILY_TASKS_SOVEREIGN_V11.9</span>
+                <span className="text-[9px] font-bold tracking-tight">MISSION_LEDGER_SOVEREIGN_V12.0</span>
              </div>
              <div className="ml-auto flex items-center gap-4">
                 <Search className="w-3 h-3 opacity-80" />
@@ -53,34 +54,33 @@ const SheetsLandscapeSimulation = () => (
                 </thead>
                 <tbody>
                     {[
-                         { a: "BRANCH", b: "ROLE", c: "TECHNICAL TASK", d: "ASSIGNED", e: "DONE BY", f: "VERIFIED", g: "STATUS", h: "RISK", i: "STAMP", isHeader: true },
-                         { a: "Bandra", b: "Manager", c: "Revenue Reconcile", d: "Aditi K.", e: "AK", f: "AK", g: "COMPLETE", h: "Theft", i: "2026-05-23 19:53", active: true },
-                         { a: "Bandra", b: "Chef", c: "Thaw-temp Audit", d: "Vikram S.", e: "VS", f: "", g: "COMPLETE", h: "Sepsis", i: "2026-05-23 08:45", active: true },
-                         { a: "Bandra", b: "Security", c: "Egress Sweep", d: "Suresh P.", e: "", f: "", g: "OPEN", h: "Entrap", i: "", input: true },
-                         { a: "Bandra", b: "HK Lead", c: "Washroom 30-min", d: "Priya D.", e: "PD", f: "", g: "COMPLETE", h: "Hygiene", i: "2026-05-23 10:45", active: true },
-                         { a: "Bandra", b: "Compliance", c: "FSSAI Board Audit", d: "Anjali M.", e: "", f: "", g: "OPEN", h: "Fine", i: "", input: true },
-                         { a: "Bandra", b: "Bar Lead", c: "Bottle Count", d: "Rohan D.", e: "RD", f: "AK", g: "COMPLETE", h: "Leakage", i: "2026-05-23 18:30", active: true },
-                         { a: "Bandra", b: "Eng. Lead", c: "DG Load Test", d: "Anil K.", e: "AK", f: "", g: "COMPLETE", h: "Blackout", i: "2026-05-23 07:15", active: true },
-                         { a: "Bandra", b: "Host", c: "VIP Arrival Prep", d: "Sarah K.", e: "", f: "", g: "OPEN", h: "Loyalty", i: "", input: true },
+                         { a: "BRANCH", b: "ROLE", c: "TECHNICAL TASK", d: "EASY WAY (HOW TO)", e: "DONE", f: "VERIFIED", g: "STATUS", h: "CONSEQUENCE", i: "STAMP", isHeader: true },
+                         { a: "Bandra", b: "Manager", c: "Revenue Reconcile", d: "Match POS settlements to bank slips.", e: "AK", f: "AK", g: "COMPLETE", h: "Undetected theft", i: "2026-05-23 19:53", active: true },
+                         { a: "Bandra", b: "Chef", c: "Thaw-temp Audit", d: "Log fridge temp at 8 AM and 4 PM.", e: "VS", f: "", g: "COMPLETE", h: "Pathogen risk", i: "2026-05-23 08:45", active: true },
+                         { a: "Bandra", b: "Security", c: "Egress Sweep", d: "Physically clear fire exit paths.", e: "", f: "", g: "OPEN", h: "Entrapment risk", i: "", input: true },
+                         { a: "Bandra", b: "HK Lead", c: "Washroom 30-min", d: "Refill hand soap and log sanitization.", e: "PD", f: "", g: "COMPLETE", h: "Hygiene decay", i: "2026-05-23 10:45", active: true },
+                         { a: "Bandra", b: "Compliance", c: "FSSAI Board Audit", d: "Verify license visibility in lobby.", e: "", f: "", g: "OPEN", h: "Regulatory fine", i: "", input: true },
+                         { a: "Bandra", b: "Bar Lead", c: "Bottle Count", d: "Witness blind count of spirits.", e: "RD", f: "AK", g: "COMPLETE", h: "Margin leakage", i: "2026-05-23 18:30", active: true },
+                         { a: "Bandra", b: "Eng. Lead", c: "DG Load Test", d: "Inspect fuel and start-test battery.", e: "AK", f: "", g: "COMPLETE", h: "Total blackout", i: "2026-05-23 07:15", active: true },
                     ].map((row, i) => (
                         <tr key={i} className="border-b border-zinc-100">
-                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[7px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black" : "text-zinc-500")}>{row.a}</td>
-                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[7px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black" : "font-bold text-zinc-900")}>{row.b}</td>
-                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[7px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black" : "font-black text-zinc-950 uppercase")}>{row.c}</td>
-                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6.5px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black" : "text-zinc-400 font-medium")}>{row.d}</td>
+                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "text-zinc-500")}>{row.a}</td>
+                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "font-bold text-zinc-900")}>{row.b}</td>
+                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "font-black text-zinc-950 uppercase")}>{row.c}</td>
+                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "text-emerald-700 italic font-medium")}>{row.d}</td>
                              <td className={cn(
-                                "px-1 py-1.5 border-r border-zinc-200 text-[8px] text-center font-black",
-                                row.isHeader ? "bg-[#0F172A] text-white font-black" : (row.input ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")
+                                "px-1 py-1.5 border-r border-zinc-200 text-[7px] text-center font-black",
+                                row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : (row.input ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")
                              )}>{row.e}</td>
-                             <td className={cn("px-1 py-1.5 border-r border-zinc-200 text-[8px] text-center font-black", row.isHeader ? "bg-[#0F172A] text-white font-black" : "bg-zinc-50")}>{row.f}</td>
+                             <td className={cn("px-1 py-1.5 border-r border-zinc-200 text-[7px] text-center font-black", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "bg-zinc-50")}>{row.f}</td>
                              <td className={cn(
-                                "px-1 py-1.5 border-r border-zinc-200 text-[7px] font-black text-center",
-                                row.isHeader ? "bg-[#0F172A] text-white font-black" : (row.g === "COMPLETE" ? "text-emerald-600" : "text-zinc-300")
+                                "px-1 py-1.5 border-r border-zinc-200 text-[6px] font-black text-center",
+                                row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : (row.g === "COMPLETE" ? "text-emerald-600" : "text-zinc-300")
                              )}>{row.g}</td>
-                             <td className={cn("px-1 py-1.5 border-r border-zinc-200 text-[6px] italic text-red-700 font-medium truncate", row.isHeader ? "bg-[#0F172A] text-white font-black" : "")}>{row.h}</td>
+                             <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] italic text-red-700 font-medium truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "")}>{row.h}</td>
                              <td className={cn(
-                                "px-1 py-1.5 text-[6px] font-mono text-center border-r border-zinc-200",
-                                row.isHeader ? "bg-[#0F172A] text-white font-black" : (row.active ? "text-emerald-500 font-bold" : "text-zinc-300")
+                                "px-1 py-1.5 text-[5.5px] font-mono text-center border-r border-zinc-200",
+                                row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : (row.active ? "text-emerald-500 font-bold" : "text-zinc-300")
                              )}>{row.i}</td>
                              <td className="bg-zinc-50 border-r border-zinc-100"></td>
                              <td className="bg-zinc-50"></td>
@@ -123,11 +123,11 @@ const HandheldLandscapePrototype = () => (
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 text-left px-4">
             <div className="space-y-3 pl-8 border-l border-emerald-500/30">
                 <p className="text-[11px] font-black text-emerald-500 uppercase tracking-widest">ZERO-CLIPPING GRID</p>
-                <p className="text-sm text-zinc-500 italic font-medium leading-relaxed">Calculated column widths ensure all critical operational strings fit perfectly in a 16:9 handheld view.</p>
+                <p className="text-sm text-zinc-500 italic font-medium leading-relaxed">Calculated column widths for Branch, Task, and Consequence ensure all critical data fits in a handheld view.</p>
             </div>
             <div className="space-y-3 pl-8 border-l border-emerald-500/30">
                 <p className="text-[11px] font-black text-emerald-500 uppercase tracking-widest">FORENSIC_HEARTBEAT</p>
-                <p className="text-sm text-zinc-500 italic font-medium leading-relaxed">Status-triggered completion stamps (Column I) generate permanent audit trails without manual entry.</p>
+                <p className="text-sm text-zinc-500 italic font-medium leading-relaxed">Status-triggered completion stamps generate permanent audit trails instantly without manual date entry.</p>
             </div>
             <div className="space-y-3 pl-8 border-l border-emerald-500/30">
                 <p className="text-[11px] font-black text-emerald-500 uppercase tracking-widest">ADOPTION_MOAT</p>
@@ -169,12 +169,14 @@ const IdentityMark = ({ title, tagline, icon: IconComponent, color, isHighlighte
             />
         </div>
 
-        <div className="space-y-6 relative z-10">
+        <div className="space-y-4 relative z-10">
             <div className="flex flex-col items-center">
                 <span className="text-4xl md:text-5xl font-black font-headline tracking-tighter uppercase italic leading-none text-white">{title}™</span>
-                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] leading-tight block pt-6 italic opacity-80" style={{ color: color }}>
-                    {tagline}
-                </span>
+                <div className="mt-4 bg-white/5 border border-white/10 px-6 py-1.5 rounded-full backdrop-blur-sm">
+                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.25em] leading-none block whitespace-nowrap" style={{ color: color }}>
+                        {tagline}
+                    </span>
+                </div>
             </div>
             {isHighlighted && (
                 <div className="flex gap-2 justify-center pt-2">
