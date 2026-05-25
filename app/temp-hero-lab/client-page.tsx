@@ -33,12 +33,12 @@ const SheetsLandscapeSimulation = () => (
                 <div className="w-4 h-4 rounded bg-white/20 flex items-center justify-center">
                     <Check className="w-2.5 h-2.5" strokeWidth={4} />
                 </div>
-                <span className="text-[9px] font-bold tracking-tight">MISSION_LEDGER_SOVEREIGN_V12.0</span>
+                <span className="text-[9px] font-bold tracking-tight uppercase">MISSION_LEDGER_SOVEREIGN_V12.0</span>
              </div>
              <div className="ml-auto flex items-center gap-4">
-                <Search className="w-3 h-3 opacity-80" />
-                <Share2 className="w-3 h-3 opacity-80" />
-                <MoreVertical className="w-3 h-3 opacity-80" />
+                <Search className="w-3.5 h-3.5 opacity-80" />
+                <Share2 className="w-3.5 h-3.5 opacity-80" />
+                <MoreVertical className="w-3.5 h-3.5 opacity-80" />
              </div>
         </div>
 
@@ -55,13 +55,13 @@ const SheetsLandscapeSimulation = () => (
                 <tbody>
                     {[
                          { a: "BRANCH", b: "ROLE", c: "TECHNICAL TASK", d: "EASY WAY (HOW TO)", e: "DONE", f: "VERIFIED", g: "STATUS", h: "CONSEQUENCE", i: "STAMP", isHeader: true },
-                         { a: "Bandra", b: "Manager", c: "Revenue Reconcile", d: "Match POS settlements to bank slips.", e: "AK", f: "AK", g: "COMPLETE", h: "Undetected theft", i: "2026-05-23 19:53", active: true },
-                         { a: "Bandra", b: "Chef", c: "Thaw-temp Audit", d: "Log fridge temp at 8 AM and 4 PM.", e: "VS", f: "", g: "COMPLETE", h: "Pathogen risk", i: "2026-05-23 08:45", active: true },
-                         { a: "Bandra", b: "Security", c: "Egress Sweep", d: "Physically clear fire exit paths.", e: "", f: "", g: "OPEN", h: "Entrapment risk", i: "", input: true },
-                         { a: "Bandra", b: "HK Lead", c: "Washroom 30-min", d: "Refill hand soap and log sanitization.", e: "PD", f: "", g: "COMPLETE", h: "Hygiene decay", i: "2026-05-23 10:45", active: true },
-                         { a: "Bandra", b: "Compliance", c: "FSSAI Board Audit", d: "Verify license visibility in lobby.", e: "", f: "", g: "OPEN", h: "Regulatory fine", i: "", input: true },
-                         { a: "Bandra", b: "Bar Lead", c: "Bottle Count", d: "Witness blind count of spirits.", e: "RD", f: "AK", g: "COMPLETE", h: "Margin leakage", i: "2026-05-23 18:30", active: true },
-                         { a: "Bandra", b: "Eng. Lead", c: "DG Load Test", d: "Inspect fuel and start-test battery.", e: "AK", f: "", g: "COMPLETE", h: "Total blackout", i: "2026-05-23 07:15", active: true },
+                         { a: "Bandra", b: "Manager", c: "Revenue Reconcile", d: "Match POS settlements to bank slips.", e: "AK", f: "AK", g: "COMPLETE", h: "Untraceable internal revenue theft.", i: "2026-05-23 19:53", active: true },
+                         { a: "Bandra", b: "Chef", c: "Thaw-temp Audit", d: "Log fridge temp at 8 AM and 4 PM.", e: "VS", f: "", g: "COMPLETE", h: "Pathogen growth & total stock loss.", i: "2026-05-23 08:45", active: true },
+                         { a: "Bandra", b: "Security", c: "Egress Sweep", d: "Physically clear fire exit paths.", e: "", f: "", g: "OPEN", h: "Fatal entrapment during emergency.", i: "", input: true },
+                         { a: "Bandra", b: "HK Lead", c: "Washroom 30-min", d: "Refill hand soap and log sanitization.", e: "PD", f: "", g: "COMPLETE", h: "Hygiene decay & guest rage.", i: "2026-05-23 10:45", active: true },
+                         { a: "Bandra", b: "Compliance", c: "FSSAI Board Audit", d: "Verify license visibility in lobby.", e: "", f: "", g: "OPEN", h: "Massive regulatory fine / Closure.", i: "", input: true },
+                         { a: "Bandra", b: "Bar Lead", c: "Bottle Count", d: "Witness blind count of spirits.", e: "RD", f: "AK", g: "COMPLETE", h: "Undetected margin leakage.", i: "2026-05-23 18:30", active: true },
+                         { a: "Bandra", b: "Eng. Lead", c: "DG Load Test", d: "Inspect fuel and start-test battery.", e: "AK", f: "", g: "COMPLETE", h: "Total blackout & service halt.", i: "2026-05-23 07:15", active: true },
                     ].map((row, i) => (
                         <tr key={i} className="border-b border-zinc-100">
                              <td className={cn("px-1.5 py-1.5 border-r border-zinc-200 text-[6px] truncate", row.isHeader ? "bg-[#0F172A] text-white font-black uppercase" : "text-zinc-500")}>{row.a}</td>
@@ -95,12 +95,13 @@ const SheetsLandscapeSimulation = () => (
              <span className="text-[7.5px] font-black text-[#22C55E] border-t-2 border-[#22C55E] h-full flex items-center px-3 whitespace-nowrap">MISSION_LEDGER</span>
              <span className="text-[7.5px] font-bold text-zinc-300 h-full flex items-center px-3 whitespace-nowrap">SOP_LIBRARY</span>
              <span className="text-[7.5px] font-bold text-zinc-300 h-full flex items-center px-3 whitespace-nowrap">DASHBOARD</span>
+             <span className="text-[7.5px] font-bold text-zinc-300 h-full flex items-center px-3 whitespace-nowrap">RECORDS_VAULT</span>
         </div>
     </div>
 );
 
 const HandheldLandscapePrototype = () => (
-    <div className="relative w-full max-w-[950px] mx-auto py-12">
+    <div className="relative w-full max-w-[1000px] mx-auto py-12">
         <div className="relative group">
             {/* The Ultra-Wide Phone Frame */}
             <div className="relative z-10 w-full aspect-[2.3/1] bg-zinc-950 rounded-[3rem] border-[12px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center ring-1 ring-white/10">
