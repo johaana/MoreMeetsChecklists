@@ -11,8 +11,7 @@ import {
     Store, 
     Building2, 
     Popcorn,
-    ChevronRight,
-    ShoppingBag
+    ChevronRight
 } from "lucide-react";
 import React from 'react';
 
@@ -28,7 +27,7 @@ const ELITE_INDUSTRIES = [
 
 const SYSTEM_SPECS = [
     "120+ PRE-BUILT SOPs",
-    "AUDIT-READY COMPLIANCE",
+    "WORKS DURING INTERNET DISRUPTIONS",
     "LIVE DASHBOARD",
     "NO SaaS. OWN YOUR DATA."
 ];
@@ -38,7 +37,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h
 
 export const HeroSection = () => (
     <section className="relative w-full overflow-hidden bg-black">
-        {/* --- MOBILE ARCHITECTURE: HIGH-DENSITY SOVEREIGN --- */}
+        {/* --- MOBILE ARCHITECTURE --- */}
         <div className="md:hidden flex flex-col min-h-[100dvh] relative">
             <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
                 <video 
@@ -66,7 +65,7 @@ export const HeroSection = () => (
                                 CAPTURE <br/><span className="text-primary">MEMORY.</span>
                             </h1>
                             <p className="text-[10px] text-white/40 italic font-medium max-w-[180px]">
-                                Institutional memory is an asset. Anything else is just luck.
+                                Your business should not depend on memory. Luck is not a strategy.
                             </p>
                         </div>
 
@@ -131,7 +130,7 @@ export const HeroSection = () => (
                 <div className="space-y-12">
                     <div className="space-y-6">
                         <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">CAPTURE<br /><span className="text-primary">MEMORY.</span></h1>
-                        <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">Institutional memory is an asset. <br /> Anything else is just luck.</p>
+                        <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">Your business should not depend on memory. <br /> Serious operations deserve more than improvisation.</p>
                     </div>
                     <div className="flex flex-col gap-5">
                         {SYSTEM_SPECS.map((spec, i) => (
