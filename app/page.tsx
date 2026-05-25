@@ -276,7 +276,7 @@ export default function HomePage() {
                                 { t: "Live Visibility", d: "Managers see progress instantly." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-6 text-center md:text-left group">
-                                    <div className="text-5xl md:text-7xl font-black text-zinc-100 group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-5xl md:text-7xl font-black text-zinc-200 group-hover:text-primary transition-colors leading-none">
                                         {i + 1}
                                     </div>
                                     <div className="space-y-2">
