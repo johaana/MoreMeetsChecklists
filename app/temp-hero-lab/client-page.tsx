@@ -149,18 +149,19 @@ interface IdentityMarkProps {
     icon: any;
     color: string;
     isHighlighted?: boolean;
+    luxuryMode?: boolean;
 }
 
-const IdentityMark = ({ title, tagline, icon: IconComponent, color, isHighlighted = false }: IdentityMarkProps) => (
+const IdentityMark = ({ title, tagline, icon: IconComponent, color, isHighlighted = false, luxuryMode = false }: IdentityMarkProps) => (
     <div className={cn(
         "p-10 md:p-12 rounded-[2.5rem] border transition-all duration-700 flex flex-col items-center text-center gap-8 group relative overflow-hidden",
         isHighlighted ? "bg-zinc-900 border-white/20 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]" : "bg-white/[0.02] border-white/5 hover:bg-white/[0.04]"
     )}>
-        {/* The Glow */}
+        {/* The Glow - Significantly reduced opacity in luxuryMode */}
         <div 
             className={cn(
-                "absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 blur-[80px] opacity-20 transition-all duration-1000",
-                isHighlighted ? "opacity-40 scale-125" : "group-hover:opacity-30 group-hover:scale-110"
+                "absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 blur-[80px] transition-all duration-1000",
+                luxuryMode ? "opacity-[0.04]" : (isHighlighted ? "opacity-20 scale-125" : "opacity-10 group-hover:opacity-15 group-hover:scale-110")
             )} 
             style={{ backgroundColor: color }} 
         />
@@ -178,16 +179,25 @@ const IdentityMark = ({ title, tagline, icon: IconComponent, color, isHighlighte
         <div className="space-y-4 relative z-10">
             <div className="flex flex-col items-center">
                 <div className="flex items-center gap-1">
-                    <span className="text-3xl md:text-4xl font-headline tracking-tighter text-white/50">More</span>
+                    <span className="text-3xl md:text-4xl font-headline tracking-tighter text-white/40 font-normal">More</span>
                     <span className="text-3xl md:text-4xl font-black font-headline tracking-tighter text-white">Meets™</span>
                 </div>
-                <div className="mt-4 bg-white/5 border border-white/10 px-6 py-1.5 rounded-full backdrop-blur-sm">
-                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.25em] leading-none block whitespace-nowrap" style={{ color: color }}>
+                
+                {/* Luxury Typography Style - No Pill */}
+                {luxuryMode ? (
+                    <span className="mt-4 text-[9px] font-black uppercase tracking-[0.3em] leading-none block whitespace-nowrap opacity-60 font-headline" style={{ color: color }}>
                         {tagline}
                     </span>
-                </div>
+                ) : (
+                    /* Original Pill Style */
+                    <div className="mt-4 bg-white/5 border border-white/10 px-6 py-1.5 rounded-full backdrop-blur-sm">
+                        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.25em] leading-none block whitespace-nowrap" style={{ color: color }}>
+                            {tagline}
+                        </span>
+                    </div>
+                )}
             </div>
-            {isHighlighted && (
+            {isHighlighted && !luxuryMode && (
                 <div className="flex gap-2 justify-center pt-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-700" />
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -204,6 +214,7 @@ export default function HeroLabClient() {
     if (!mounted) return null;
 
     const UNIFORM_TAGLINE = "WHERE SOPs MEET EXECUTION";
+    const HOSPITALITY_GOLD = "#B89B5E";
 
     return (
         <div className="bg-[#0A0A0A] text-white font-sans selection:bg-primary/30 pb-60">
@@ -221,7 +232,8 @@ export default function HeroLabClient() {
             </div>
 
             {/* --- BRAND IDENTITY LAB --- */}
-            <div className="container px-6 mx-auto">
+            <div className="container px-6 mx-auto space-y-20">
+                {/* Original/Untouched Row */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     <IdentityMark 
                         title="MoreMeets" 
@@ -244,26 +256,39 @@ export default function HeroLabClient() {
                         color="#FACC15" 
                         isHighlighted={true}
                     />
+                </div>
+
+                <div className="flex items-center gap-6">
+                    <div className="h-px flex-1 bg-zinc-800" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">LUXURY HOSPITALITY VARIATIONS</span>
+                    <div className="h-px flex-1 bg-zinc-800" />
+                </div>
+
+                {/* New Luxury Variations */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    <IdentityMark 
+                        title="MoreMeets" 
+                        tagline={UNIFORM_TAGLINE} 
+                        icon={CheckCircle2} 
+                        color={HOSPITALITY_GOLD} 
+                        luxuryMode={true}
+                        isHighlighted={true}
+                    />
+
+                    <IdentityMark 
+                        title="MoreMeets" 
+                        tagline={UNIFORM_TAGLINE} 
+                        icon={Shield} 
+                        color={HOSPITALITY_GOLD} 
+                        luxuryMode={true}
+                    />
 
                     <IdentityMark 
                         title="MoreMeets" 
                         tagline={UNIFORM_TAGLINE} 
                         icon={Zap} 
-                        color="#F97316" 
-                    />
-
-                    <IdentityMark 
-                        title="MoreMeets" 
-                        tagline={UNIFORM_TAGLINE} 
-                        icon={Target} 
-                        color="#E11D48" 
-                    />
-
-                    <IdentityMark 
-                        title="MoreMeets" 
-                        tagline={UNIFORM_TAGLINE} 
-                        icon={InfinityIcon} 
-                        color="#A855F7" 
+                        color={HOSPITALITY_GOLD} 
+                        luxuryMode={true}
                     />
                 </div>
             </div>
