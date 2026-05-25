@@ -31,7 +31,8 @@ import {
     Target,
     Database,
     X,
-    Wifi
+    Wifi,
+    Clock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -58,42 +59,91 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 
 const LedgerSimulation = () => (
     <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-2xl bg-[#f8f9fa] font-sans group">
-        <div className="bg-[#22C55E] text-white py-1.5 px-4 flex items-center justify-center gap-2 text-[10px] md:text-[11px] font-bold">
+        {/* Actual Sovereign Banner */}
+        <div className="bg-[#22C55E] text-white py-2 px-4 flex items-center justify-center gap-2 text-[10px] md:text-[11px] font-bold">
             <span>📋</span>
             <span>DAILY TASKS – Update 'Done By' to complete daily work.</span>
         </div>
+
+        {/* The Symmetric Grid */}
         <div className="overflow-x-auto no-scrollbar">
-            <table className="w-full text-left border-collapse min-w-[1000px]">
+            <table className="w-full text-left border-collapse min-w-[1100px]">
                 <thead>
                     <tr className="bg-[#0F172A] text-white">
-                        {["BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED", "DONE BY", "VERIFIED", "STATUS", "CONSEQUENCE / RISK", "STAMP"].map((h, i) => (
-                            <th key={i} className="px-3 py-2.5 text-[9px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
+                        {[
+                            "BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", 
+                            "DONE BY", "VERIFIED BY", "STATUS", 
+                            "CONSEQUENCE / RISK", "FLOOR INSTRUCTIONS", "STAMP"
+                        ].map((h, i) => (
+                            <th key={i} className="px-3 py-3 text-[9px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {[
-                        { b: "Bandra", r: "General Manager", t: "Revenue Reconcile", a: "Aditi", db: "AK", v: "AK", s: "COMPLETE", c: "Untraceable internal revenue theft.", st: "2026-05-23 19:53:25" },
-                        { b: "Bandra", r: "General Manager", t: "P1 Incident Triage", a: "Aditi", db: "", v: "", s: "OPEN", c: "Unmonitored liability and guest distress.", st: "" },
-                        { b: "Bandra", r: "Front Office Manager", t: "C-Form Compliance", a: "Sarah", db: "SM", v: "", s: "COMPLETE", c: "Legal violation / premises shutdown.", st: "2026-05-23 09:12:04" },
-                        { b: "Bandra", r: "Executive Chef", t: "HACCP Thermal Pulse", a: "Vikram", db: "", v: "", s: "OPEN", c: "Mass food poisoning / total stock loss.", st: "" }
+                        { 
+                            b: "Bandra", 
+                            r: "General Manager", 
+                            t: "Revenue Reconcile", 
+                            a: "Aditi", 
+                            db: "AK", 
+                            vb: "AK", 
+                            s: "COMPLETE", 
+                            c: "Untraceable internal revenue theft.", 
+                            i: "Match daily total revenue against physical bank deposit slips.",
+                            st: "2026-05-23 19:53:25" 
+                        },
+                        { 
+                            b: "Bandra", 
+                            r: "General Manager", 
+                            t: "P1 Incident Triage", 
+                            a: "Aditi", 
+                            db: "", 
+                            vb: "", 
+                            s: "OPEN", 
+                            c: "Unmonitored liability and guest distress.", 
+                            i: "Review incident log for any technical halts > 5 mins.",
+                            st: "" 
+                        },
+                        { 
+                            b: "Bandra", 
+                            r: "Front Office Manager", 
+                            t: "C-Form Compliance", 
+                            a: "Sarah", 
+                            db: "SM", 
+                            vb: "", 
+                            s: "COMPLETE", 
+                            c: "Legal violation / premises shutdown.", 
+                            i: "Verify 100% ID registration for foreign nationals.",
+                            st: "2026-05-23 09:12:04" 
+                        },
+                        { 
+                            b: "Bandra", 
+                            r: "Executive Chef", 
+                            t: "HACCP Thermal Pulse", 
+                            a: "Vikram", 
+                            db: "", 
+                            vb: "", 
+                            s: "OPEN", 
+                            c: "Mass food poisoning / total stock loss.", 
+                            i: "Log walk-in temperatures at 8 AM and 4 PM.",
+                            st: "" 
+                        }
                     ].map((row, idx) => (
-                        <tr key={idx} className={cn("border-b border-zinc-200 text-[10px]", idx % 2 === 0 ? "bg-white" : "bg-zinc-50")}>
-                            <td className="px-3 py-3 border-r border-zinc-200 text-zinc-400">{row.b}</td>
+                        <tr key={idx} className={cn("border-b border-zinc-200 text-[11px]", idx % 2 === 0 ? "bg-white" : "bg-zinc-50")}>
+                            <td className="px-3 py-3 border-r border-zinc-200 text-zinc-500">{row.b}</td>
                             <td className="px-3 py-3 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
                             <td className="px-3 py-3 border-r border-zinc-200 font-black text-zinc-950 uppercase">{row.t}</td>
                             <td className="px-3 py-3 border-r border-zinc-200 text-zinc-400">{row.a}</td>
                             <td className="px-3 py-3 border-r border-zinc-200 bg-[#FEFCE8] font-black text-center">{row.db}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 font-black text-center">{row.v}</td>
+                            <td className="px-3 py-3 border-r border-zinc-200 bg-[#EFF6FF] font-black text-center">{row.vb}</td>
                             <td className={cn(
                                 "px-3 py-3 border-r border-zinc-200 font-black text-center", 
                                 row.s === "COMPLETE" ? "text-emerald-600" : "text-zinc-300"
                             )}>{row.s}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 italic text-red-700 font-medium leading-tight max-w-[200px]">{row.c}</td>
-                            <td className="px-3 py-3 text-zinc-400 font-mono text-[9px] relative overflow-hidden">
-                                {row.st}
-                                {row.s === "COMPLETE" && <div className="absolute inset-y-0 right-0 w-1 bg-emerald-500" />}
-                            </td>
+                            <td className="px-3 py-3 border-r border-zinc-200 italic text-red-700 font-medium leading-tight max-w-[180px]">{row.c}</td>
+                            <td className="px-3 py-3 border-r border-zinc-200 text-emerald-700 font-medium leading-tight max-w-[250px]">{row.i}</td>
+                            <td className="px-3 py-3 text-zinc-400 font-mono text-[9px] text-center">{row.st}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -104,7 +154,7 @@ const LedgerSimulation = () => (
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">SOVEREIGN_ENGINE_STABLE</span>
              </div>
-             <span className="text-[8px] font-black text-zinc-300 uppercase tracking-widest">365-DAY AUDIT TRAIL</span>
+             <span className="text-[8px] font-black text-zinc-300 uppercase tracking-widest">PERMANENT AUDIT TRAIL ACTIVE</span>
         </div>
     </div>
 );
@@ -276,7 +326,7 @@ export default function HomePage() {
                                 { t: "Live Visibility", d: "Managers see progress instantly." }
                             ].map((step, i) => (
                                 <div key={i} className="space-y-6 text-center md:text-left group">
-                                    <div className="text-5xl md:text-7xl font-black text-zinc-200 group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black text-zinc-200 group-hover:text-primary transition-colors leading-none">
                                         {i + 1}
                                     </div>
                                     <div className="space-y-2">
@@ -335,7 +385,7 @@ export default function HomePage() {
                 <Section id="inside" className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
                         <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
-                            <div className="space-y-8">
+                            <div className="space-y-8 text-left">
                                 <div className="space-y-4">
                                     <SectionEyebrow text="INSIDE THE SYSTEM" />
                                     <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
