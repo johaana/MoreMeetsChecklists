@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -61,98 +62,108 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 );
 
 const LedgerSimulation = () => (
-    <div className="rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] bg-[#fdfdfd] font-sans group">
-        {/* Google Sheets Style Header */}
-        <div className="bg-[#22C55E] text-white py-2.5 px-6 flex items-center justify-between gap-4 shrink-0">
-             <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
-                    <Check className="w-3.5 h-3.5" strokeWidth={4} />
+    <div className="relative group max-w-[1000px] mx-auto">
+        {/* Landscape Mobile Frame */}
+        <div className="relative z-10 w-full aspect-[2.2/1] bg-zinc-950 rounded-[2.5rem] md:rounded-[3.5rem] border-[8px] md:border-[12px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+            
+            {/* Inner Content - The Sheet */}
+            <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden">
+                {/* Google Sheets Mobile Header */}
+                <div className="bg-[#22C55E] text-white py-1.5 md:py-2 px-6 flex items-center justify-between gap-4 shrink-0">
+                    <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded bg-white/20 flex items-center justify-center">
+                            <Check className="w-2.5 h-2.5" strokeWidth={5} />
+                        </div>
+                        <span className="text-[8px] md:text-[10px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
+                    </div>
+                    <div className="flex items-center gap-4 opacity-80">
+                        <Search className="w-3 h-3" />
+                        <Share2 className="w-3 h-3" />
+                        <MoreVertical className="w-3 h-3" />
+                    </div>
                 </div>
-                <span className="text-[10px] md:text-[11px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
-             </div>
-             <div className="flex items-center gap-4 opacity-80">
-                <Search className="w-3.5 h-3.5" />
-                <Share2 className="w-3.5 h-3.5" />
-                <MoreVertical className="w-3.5 h-3.5" />
-             </div>
+
+                {/* High Density Grid */}
+                <div className="flex-1 overflow-x-auto no-scrollbar bg-[#F8F9FA]">
+                    <table className="w-full text-left border-collapse min-w-[900px] table-fixed">
+                        <thead>
+                            <tr className="bg-[#0F172A] text-white">
+                                {[
+                                    { h: "BRANCH", w: "80px" },
+                                    { h: "ROLE", w: "100px" },
+                                    { h: "TECHNICAL TASK", w: "140px" },
+                                    { h: "DONE", w: "50px" },
+                                    { h: "VERIFIED", w: "60px" },
+                                    { h: "STATUS", w: "80px" },
+                                    { h: "CONSEQUENCE / RISK", w: "180px" },
+                                    { h: "EASY WAY (HOW TO)", w: "220px" },
+                                    { h: "STAMP", w: "120px" }
+                                ].map((col, i) => (
+                                    <th key={i} style={{ width: col.w }} className="px-2 py-2 text-[7px] md:text-[9px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {[
+                                { 
+                                    b: "Colaba S.", r: "Gen. Manager", t: "Revenue Reconcile", db: "AK", vb: "AK", s: "COMPLETE", 
+                                    c: "Untraceable internal theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53", isDone: true 
+                                },
+                                { 
+                                    b: "Bandra Main", r: "Exec. Chef", t: "Cold-Chain Audit", db: "VS", vb: "", s: "COMPLETE", 
+                                    c: "Pathogen growth & stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12", isDone: true 
+                                },
+                                { 
+                                    b: "Dadar West", r: "Shift Lead", t: "Handover Pulse", db: "RK", vb: "", s: "PENDING", 
+                                    c: "Communication gap between shifts.", i: "Review incident log with night team.", st: "", isPending: true 
+                                },
+                                { 
+                                    b: "Borivali E.", r: "Security Lead", t: "Egress Sweep", db: "", vb: "", s: "OPEN", 
+                                    c: "Fatal entrapment risk.", i: "Physically walk the fire exit paths.", st: "", isOpen: true 
+                                },
+                                { 
+                                    b: "Bandra Main", r: "HK Lead", t: "Washroom 30-min", db: "PD", vb: "", s: "COMPLETE", 
+                                    c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45", isDone: true 
+                                }
+                            ].map((row, idx) => (
+                                <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
+                                    <td className="px-2 py-2 border-r border-zinc-100 text-zinc-400 font-medium text-[8px] md:text-[10px] truncate">{row.b}</td>
+                                    <td className="px-2 py-2 border-r border-zinc-100 font-bold text-zinc-800 text-[8px] md:text-[10px] truncate">{row.r}</td>
+                                    <td className="px-2 py-2 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[8px] md:text-[10px] leading-none">{row.t}</td>
+                                    <td className={cn("px-1 py-2 border-r border-zinc-100 font-black text-center text-[9px] md:text-[11px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
+                                    <td className={cn("px-1 py-2 border-r border-zinc-100 font-black text-center text-[9px] md:text-[11px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
+                                    <td className={cn(
+                                        "px-1 py-2 border-r border-zinc-100 font-black text-center text-[7px] md:text-[8px]", 
+                                        row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
+                                    )}>
+                                        <span className={cn("px-1 py-0.5 rounded", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
+                                    </td>
+                                    <td className="px-2 py-2 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[8px] md:text-[10px]">{row.c}</td>
+                                    <td className="px-2 py-2 border-r border-zinc-100 text-emerald-700 font-medium leading-tight text-[8px] md:text-[10px]">{row.i}</td>
+                                    <td className="px-2 py-2 text-zinc-950 font-mono text-[8px] md:text-[10px] font-black text-center bg-zinc-50">{row.st}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {/* Status Bar */}
+                <div className="bg-white border-t border-zinc-100 h-6 flex items-center justify-between px-6 shrink-0">
+                    <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[7px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
+                    </div>
+                    <span className="text-[7px] font-black text-primary uppercase tracking-widest italic">FORENSIC_HEARTBEAT_ACTIVE</span>
+                </div>
+            </div>
         </div>
 
-        {/* The Grid - High Density Institutional Ledger */}
-        <div className="overflow-x-auto no-scrollbar">
-            <table className="w-full text-left border-collapse min-w-[1100px]">
-                <thead>
-                    <tr className="bg-[#0F172A] text-white">
-                        {[
-                            "BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", 
-                            "DONE BY", "VERIFIED BY", "STATUS", 
-                            "CONSEQUENCE / RISK", "EASY WAY (HOW TO)", "STAMP"
-                        ].map((h, i) => (
-                            <th key={i} className="px-3.5 py-4 text-[9px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{h}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {[
-                        { 
-                            b: "Colaba South", r: "Gen. Manager", t: "Revenue Reconcile", a: "Aditi", db: "AK", vb: "AK", s: "COMPLETE", 
-                            c: "Untraceable internal revenue theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53:25", isDone: true 
-                        },
-                        { 
-                            b: "Bandra Main", r: "Exec. Chef", t: "Cold-Chain Audit", a: "Vikram", db: "VS", vb: "", s: "COMPLETE", 
-                            c: "Pathogen growth & total stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12:04", isDone: true 
-                        },
-                        { 
-                            b: "Dadar West", r: "Shift Lead", t: "Handover Pulse", a: "Rahul", db: "RK", vb: "", s: "VERIFICATION PENDING", 
-                            c: "Communication gap between shifts.", i: "Review incident log with night team.", st: "2026-05-23 14:10:12", isPending: true 
-                        },
-                        { 
-                            b: "Borivali E.", r: "Security Lead", t: "Egress Sweep", a: "Karan", db: "", vb: "", s: "OPEN", 
-                            c: "Fatal entrapment during emergency.", i: "Physically walk the fire exit paths.", st: "", isOpen: true 
-                        },
-                        { 
-                            b: "Bandra Main", r: "HK Lead", t: "Washroom 30-min", a: "Priya", db: "PD", vb: "", s: "COMPLETE", 
-                            c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45:11", isDone: true 
-                        },
-                        { 
-                            b: "Borivali E.", r: "Compliance", t: "FSSAI Board Audit", a: "Suresh", db: "", vb: "", s: "OPEN", 
-                            c: "Massive regulatory fine / Closure.", i: "Verify license visibility in lobby.", st: "", isOpen: true 
-                        }
-                    ].map((row, idx) => (
-                        <tr key={idx} className={cn("border-b border-zinc-100 transition-colors hover:bg-zinc-50/50", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 text-zinc-400 font-medium text-[10px]">{row.b}</td>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 font-bold text-zinc-800 text-[10px]">{row.r}</td>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[10px] leading-tight">{row.t}</td>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 text-zinc-400 text-[10px]">{row.a}</td>
-                            <td className={cn("px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[10px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
-                            <td className={cn("px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[10px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
-                            <td className={cn(
-                                "px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[9px]", 
-                                row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
-                            )}>
-                                <span className={cn(
-                                    "px-2 py-0.5 rounded",
-                                    row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : "")
-                                )}>
-                                    {row.s}
-                                </span>
-                            </td>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 italic text-red-700 font-medium leading-tight max-w-[180px] text-[10px]">{row.c}</td>
-                            <td className="px-3.5 py-4 border-r border-zinc-100 text-emerald-700 font-medium leading-tight max-w-[250px] text-[10px]">{row.i}</td>
-                            <td className="px-3.5 py-4 text-zinc-400 font-mono text-[9px] text-center">{row.st}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-        <div className="bg-white border-t border-zinc-100 p-2.5 flex items-center justify-between px-6">
-             <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
-             </div>
-             <div className="flex items-center gap-6">
-                <span className="text-[9px] font-black text-zinc-300 uppercase tracking-widest">ENCRYPTED DATA CLOUD</span>
-                <span className="text-[9px] font-black text-primary uppercase tracking-widest italic">PERMANENT AUDIT TRAIL</span>
-             </div>
+        {/* Floating Infrastructure Labels */}
+        <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 z-20 flex flex-col gap-2 items-end">
+            <div className="bg-white px-4 py-2 rounded-xl shadow-2xl border border-zinc-100 flex items-center gap-3 animate-bounce">
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900">Live Sync Proof</span>
+            </div>
         </div>
     </div>
 );
@@ -266,7 +277,7 @@ export default function HomePage() {
                             <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
                             <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
                                 LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
-                            </span>
+                              </span>
                         </div>
                         
                         <div className="space-y-3">
@@ -379,41 +390,41 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- SECTION: INSIDE A LIVE OPERATION --- */}
+                {/* --- SECTION: INSIDE A LIVE OPERATION (Overhauled) --- */}
                 <Section id="inside" className="bg-white" noSpine>
-                    <div className="max-w-7xl mx-auto space-y-16 md:space-y-24">
-                        <div className="grid lg:grid-cols-[0.7fr,1.3fr] gap-12 lg:gap-20 items-center">
-                            <div className="space-y-10 text-left">
-                                <div className="space-y-4">
-                                    <SectionEyebrow text="INSIDE THE SYSTEM" />
-                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                        Real systems <br/> for real teams.
-                                    </h2>
-                                    <p className="text-zinc-500 text-lg md:text-xl font-medium italic border-l-4 border-primary/20 pl-8">
-                                        No fake dashboards. No polished mockups. We use real operational ledgers because that is what frontline teams trust and use daily.
-                                    </p>
-                                </div>
-                                <div className="grid gap-6">
-                                    {[
-                                        { t: "NO NEW APPS", d: "Staff use existing phones and Google accounts.", i: Smartphone },
-                                        { t: "AUTOMATIC TIMESTAMPS", d: "Verify exactly when a task was finished.", i: Activity },
-                                        { t: "BUILT-IN COACHING", d: "Step-by-step instructions for every task.", i: GraduationCap }
-                                    ].map((feat, i) => (
-                                        <div key={i} className="flex gap-4 group">
-                                            <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-primary transition-colors shadow-inner">
-                                                <feat.i className="w-6 h-6" />
-                                            </div>
-                                            <div className="space-y-1">
-                                                <p className="text-base font-black uppercase text-zinc-950 italic">{feat.t}</p>
-                                                <p className="text-xs text-zinc-400 font-bold uppercase tracking-widest leading-none">{feat.d}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                    <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
+                        <div className="text-center max-w-3xl mx-auto space-y-4">
+                            <SectionEyebrow text="INSIDE THE SYSTEM" />
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                FOR REAL TEAMS.
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic mx-auto">
+                                No fake dashboards. No polished mockups. We use real operational ledgers because that is what frontline teams trust and use daily.
+                            </p>
+                        </div>
+
+                        <div className="grid lg:grid-cols-[1fr,0.4fr] gap-12 lg:gap-20 items-center">
                             <div className="w-full relative">
-                                <div className="absolute -inset-4 bg-primary/5 rounded-[2.5rem] blur-2xl opacity-50"></div>
+                                <div className="absolute -inset-10 bg-emerald-500/5 rounded-[5rem] blur-3xl opacity-50"></div>
                                 <LedgerSimulation />
+                            </div>
+                            
+                            <div className="grid gap-12">
+                                {[
+                                    { t: "NO NEW APPS", d: "Staff use existing phones and Google accounts.", i: Smartphone },
+                                    { t: "AUTOMATIC TIMESTAMPS", d: "Verify exactly when a task was finished.", i: Activity },
+                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions for every task.", i: GraduationCap }
+                                ].map((feat, i) => (
+                                    <div key={i} className="flex gap-6 group text-left">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-primary transition-colors shadow-inner shrink-0">
+                                            <feat.i className="w-6 h-6" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-base md:text-lg font-black uppercase text-zinc-950 italic">{feat.t}</p>
+                                            <p className="text-[10px] md:text-[12px] text-zinc-400 font-bold uppercase tracking-widest leading-tight">{feat.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -570,4 +581,3 @@ export default function HomePage() {
         </div>
     );
 }
-
