@@ -116,7 +116,8 @@ export const handleDownload = (item: PremiumPack) => {
             'restaurants',
             'healthcare_and_hospital_operations',
             'cinema_operations_pack',
-            'franchise_operations_pack'
+            'franchise_operations_pack',
+            'facility_management_blueprint'
         ].includes(item.id);
 
         const COLORS = {
