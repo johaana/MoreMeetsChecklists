@@ -19,6 +19,22 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-training" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Do employees need technical training?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Very minimal. Most teams start using it immediately.</p>
+                            <p>Because the system runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions, acting as an on-the-job coach.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-multi" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can this work across multiple branches?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Yes. MoreMeets™ is engineered for <strong>multi-location operational control.</strong></p>
+                            <p>Management can track completion rates and incidents across several outlets from a single master dashboard, maintaining a group-wide standard of excellence.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-whatsapp" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not just use WhatsApp for tracking?</AccordionTrigger>
                         <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
