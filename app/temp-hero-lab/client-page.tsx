@@ -20,13 +20,14 @@ import {
     History,
     CheckSquare,
     Infinity as InfinityIcon,
-    ClipboardCheck
+    AlertTriangle,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const SheetsLandscapeSimulation = () => (
-    <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden scale-[1.1] origin-top">
+    <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden scale-[1.05] origin-top">
         {/* Google Sheets Header */}
         <div className="bg-[#22C55E] text-white py-1.5 px-6 flex items-center gap-4 shrink-0">
              <div className="flex items-center gap-2">
@@ -101,10 +102,10 @@ const SheetsLandscapeSimulation = () => (
 );
 
 const HandheldLandscapePrototype = () => (
-    <div className="relative w-full max-w-[1000px] mx-auto py-12">
+    <div className="relative w-full max-w-[1100px] mx-auto py-12">
         <div className="relative group">
             {/* The Ultra-Wide Phone Frame */}
-            <div className="relative z-10 w-full aspect-[2.3/1] bg-zinc-950 rounded-[3rem] border-[12px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center ring-1 ring-white/10">
+            <div className="relative z-10 w-full aspect-[2.4/1] bg-zinc-950 rounded-[3rem] border-[12px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center ring-1 ring-white/10">
                 <SheetsLandscapeSimulation />
             </div>
 
