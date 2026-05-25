@@ -8,7 +8,7 @@ import {
     ArrowRight, 
     CheckSquare,
     Shield,
-    Infinity,
+    Infinity as InfinityIcon,
     Smartphone,
     Target,
     Activity,
@@ -19,12 +19,10 @@ import {
     Lock,
     Search,
     ChevronRight,
-    Monitor
+    History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-
-const BRAND_GREEN = "#22C55E";
 
 const SheetsLandscapeSimulation = () => (
     <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden">
@@ -92,12 +90,12 @@ const SheetsLandscapeSimulation = () => (
 const HandheldLandscapePrototype = () => (
     <div className="relative w-full max-w-[600px] mx-auto py-12">
         <div className="relative group">
-            {/* The Hand & Phone Container (Visualizing the user's provided reference) */}
+            {/* The Hand & Phone Container */}
             <div className="relative z-10 w-full aspect-[16/9] bg-zinc-900 rounded-[2rem] border-[8px] border-zinc-800 shadow-2xl overflow-hidden flex items-center justify-center">
                 <SheetsLandscapeSimulation />
             </div>
 
-            {/* Simulated Hand Overlay Elements (Abstracted for UI) */}
+            {/* Simulated Hand Overlay Elements */}
             <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-32 h-64 bg-gradient-to-l from-white/10 to-transparent blur-3xl pointer-events-none" />
             
             {/* Context Labels */}
@@ -120,14 +118,23 @@ const HandheldLandscapePrototype = () => (
     </div>
 );
 
-const IdentityMark = ({ title, tagline, icon: Icon, color, bg = "bg-white/[0.02]", border = "border-white/5", secondary = "text-zinc-600" }: any) => (
+interface IdentityMarkProps {
+    title: string;
+    tagline: string;
+    icon: any;
+    color: string;
+    bg?: string;
+    border?: string;
+}
+
+const IdentityMark = ({ title, tagline, icon: IconComponent, color, bg = "bg-white/[0.02]", border = "border-white/5" }: IdentityMarkProps) => (
     <div className={cn(
         "p-10 rounded-[2.5rem] border transition-all duration-700 flex flex-col items-center text-center gap-8 group hover:scale-[1.02]",
         bg, border
     )}>
         <div className="relative">
             <div className="absolute -inset-6 blur-2xl opacity-10 group-hover:opacity-30 rounded-full transition-opacity duration-1000" style={{ backgroundColor: color }} />
-            <Icon className="w-16 h-16 relative z-10 transition-transform duration-700 group-hover:scale-110" style={{ color: color }} />
+            <IconComponent className="w-16 h-16 relative z-10 transition-transform duration-700 group-hover:scale-110" style={{ color: color }} />
         </div>
         <div className="space-y-3">
             <div className="flex flex-col items-center">
