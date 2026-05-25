@@ -62,85 +62,99 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 );
 
 const LedgerSimulation = () => (
-    <div className="relative group max-w-[1000px] mx-auto">
-        {/* Landscape Mobile Frame */}
-        <div className="relative z-10 w-full aspect-[2.2/1] bg-zinc-950 rounded-[2.5rem] md:rounded-[3.5rem] border-[8px] md:border-[12px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+    <div className="relative group max-w-[1100px] mx-auto">
+        {/* Landscape Mobile Frame - "Pro Max" Style */}
+        <div className="relative z-10 w-full aspect-[2.3/1] bg-zinc-950 rounded-[2.5rem] md:rounded-[4rem] border-[10px] md:border-[16px] border-zinc-900 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.6)] overflow-hidden ring-1 ring-white/10">
             
             {/* Inner Content - The Sheet */}
             <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden">
                 {/* Google Sheets Mobile Header */}
-                <div className="bg-[#22C55E] text-white py-1.5 md:py-2 px-6 flex items-center justify-between gap-4 shrink-0">
-                    <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 rounded bg-white/20 flex items-center justify-center">
-                            <Check className="w-2.5 h-2.5" strokeWidth={5} />
+                <div className="bg-[#22C55E] text-white py-2 md:py-3 px-8 flex items-center justify-between gap-4 shrink-0">
+                    <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
+                            <Check className="w-3 h-3" strokeWidth={5} />
                         </div>
-                        <span className="text-[8px] md:text-[10px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
+                        <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
                     </div>
-                    <div className="flex items-center gap-4 opacity-80">
-                        <Search className="w-3 h-3" />
-                        <Share2 className="w-3 h-3" />
-                        <MoreVertical className="w-3 h-3" />
+                    <div className="flex items-center gap-5 opacity-80">
+                        <Search className="w-3.5 h-3.5" />
+                        <Share2 className="w-3.5 h-3.5" />
+                        <MoreVertical className="w-3.5 h-3.5" />
                     </div>
                 </div>
 
                 {/* High Density Grid */}
-                <div className="flex-1 overflow-x-auto no-scrollbar bg-[#F8F9FA]">
-                    <table className="w-full text-left border-collapse min-w-[900px] table-fixed">
+                <div className="flex-1 overflow-x-auto no-scrollbar bg-[#F8F9FA] p-2">
+                    <table className="w-full text-left border-collapse min-w-[1000px] table-fixed rounded-lg overflow-hidden border border-zinc-200">
                         <thead>
                             <tr className="bg-[#0F172A] text-white">
                                 {[
-                                    { h: "BRANCH", w: "80px" },
-                                    { h: "ROLE", w: "100px" },
-                                    { h: "TECHNICAL TASK", w: "140px" },
+                                    { h: "BRANCH", w: "90px" },
+                                    { h: "ROLE", w: "110px" },
+                                    { h: "TECHNICAL TASK", w: "160px" },
                                     { h: "DONE", w: "50px" },
                                     { h: "VERIFIED", w: "60px" },
-                                    { h: "STATUS", w: "80px" },
-                                    { h: "CONSEQUENCE / RISK", w: "180px" },
-                                    { h: "EASY WAY (HOW TO)", w: "220px" },
-                                    { h: "STAMP", w: "120px" }
+                                    { h: "STATUS", w: "90px" },
+                                    { h: "CONSEQUENCE / RISK", w: "200px" },
+                                    { h: "STAMP", w: "140px" }
                                 ].map((col, i) => (
-                                    <th key={i} style={{ width: col.w }} className="px-2 py-2 text-[7px] md:text-[9px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
+                                    <th key={i} style={{ width: col.w }} className="px-3 py-3 text-[8px] md:text-[10px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
                             {[
                                 { 
-                                    b: "Colaba S.", r: "Gen. Manager", t: "Revenue Reconcile", db: "AK", vb: "AK", s: "COMPLETE", 
-                                    c: "Untraceable internal theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53", isDone: true 
+                                    b: "Colaba S.", r: "Med. Director", t: "SENTINEL EVENT TRIAGE", db: "AK", vb: "AK", s: "COMPLETE", 
+                                    c: "Fatal patient harm / Legal suit.", st: "2026-05-23 09:12", isDone: true 
                                 },
                                 { 
-                                    b: "Bandra Main", r: "Exec. Chef", t: "Cold-Chain Audit", db: "VS", vb: "", s: "COMPLETE", 
-                                    c: "Pathogen growth & stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12", isDone: true 
+                                    b: "Bandra Main", r: "Exec. Chef", t: "HACCP THERMAL LOG", db: "VS", vb: "", s: "COMPLETE", 
+                                    c: "Pathogen growth & stock loss.", st: "2026-05-23 08:05", isDone: true 
                                 },
                                 { 
-                                    b: "Dadar West", r: "Shift Lead", t: "Handover Pulse", db: "RK", vb: "", s: "PENDING", 
-                                    c: "Communication gap between shifts.", i: "Review incident log with night team.", st: "", isPending: true 
+                                    b: "Dadar West", r: "Shift Lead", t: "HANDOVER PULSE", db: "RK", vb: "", s: "PENDING", 
+                                    c: "Communication gap between shifts.", st: "—", isPending: true 
                                 },
                                 { 
-                                    b: "Borivali E.", r: "Security Lead", t: "Egress Sweep", db: "", vb: "", s: "OPEN", 
-                                    c: "Fatal entrapment risk.", i: "Physically walk the fire exit paths.", st: "", isOpen: true 
+                                    b: "Borivali E.", r: "Security Lead", t: "EGRESS SAFETY SWEEP", db: "", vb: "", s: "OPEN", 
+                                    c: "Fatal entrapment during crisis.", st: "—", isOpen: true 
                                 },
                                 { 
-                                    b: "Bandra Main", r: "HK Lead", t: "Washroom 30-min", db: "PD", vb: "", s: "COMPLETE", 
-                                    c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45", isDone: true 
+                                    b: "Colaba S.", r: "HK Lead", t: "VIP ROOM READINESS", db: "PD", vb: "", s: "COMPLETE", 
+                                    c: "Luxury brand decay & guest rage.", st: "2026-05-23 10:45", isDone: true 
+                                },
+                                { 
+                                    b: "Bandra Main", r: "Pharmacist", t: "NARCOTICS VAULT COUNT", db: "SK", vb: "AK", s: "COMPLETE", 
+                                    c: "Drug diversion & criminal liability.", st: "2026-05-23 07:30", isDone: true 
+                                },
+                                { 
+                                    b: "Dadar West", r: "Eng. Lead", t: "BOILER THERMAL SCAN", db: "", vb: "", s: "OPEN", 
+                                    c: "Total utility failure & service halt.", st: "—", isOpen: true 
+                                },
+                                { 
+                                    b: "Borivali E.", r: "Admin Lead", t: "CASH DROP WITNESS", db: "MK", vb: "", s: "PENDING", 
+                                    c: "Internal embezzlement / theft.", st: "—", isPending: true 
+                                },
+                                { 
+                                    b: "Colaba S.", r: "Quality Lead", t: "FSSAI BOARD AUDIT", db: "AK", vb: "", s: "COMPLETE", 
+                                    c: "Statutory closure & heavy fines.", st: "2026-05-23 11:15", isDone: true 
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
-                                    <td className="px-2 py-2 border-r border-zinc-100 text-zinc-400 font-medium text-[8px] md:text-[10px] truncate">{row.b}</td>
-                                    <td className="px-2 py-2 border-r border-zinc-100 font-bold text-zinc-800 text-[8px] md:text-[10px] truncate">{row.r}</td>
-                                    <td className="px-2 py-2 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[8px] md:text-[10px] leading-none">{row.t}</td>
-                                    <td className={cn("px-1 py-2 border-r border-zinc-100 font-black text-center text-[9px] md:text-[11px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
-                                    <td className={cn("px-1 py-2 border-r border-zinc-100 font-black text-center text-[9px] md:text-[11px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-zinc-400 font-medium text-[9px] md:text-[11px] truncate">{row.b}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 font-bold text-zinc-800 text-[9px] md:text-[11px] truncate">{row.r}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-none">{row.t}</td>
+                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
+                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
                                     <td className={cn(
-                                        "px-1 py-2 border-r border-zinc-100 font-black text-center text-[7px] md:text-[8px]", 
+                                        "px-2 py-3 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
                                         row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
                                     )}>
-                                        <span className={cn("px-1 py-0.5 rounded", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
+                                        <span className={cn("px-2 py-1 rounded", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
                                     </td>
-                                    <td className="px-2 py-2 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[8px] md:text-[10px]">{row.c}</td>
-                                    <td className="px-2 py-2 border-r border-zinc-100 text-emerald-700 font-medium leading-tight text-[8px] md:text-[10px]">{row.i}</td>
-                                    <td className="px-2 py-2 text-zinc-950 font-mono text-[8px] md:text-[10px] font-black text-center bg-zinc-50">{row.st}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.c}</td>
+                                    <td className="px-3 py-3 text-zinc-950 font-mono text-[9px] md:text-[11px] font-black text-center bg-zinc-50 border-l border-zinc-200">{row.st}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -148,21 +162,21 @@ const LedgerSimulation = () => (
                 </div>
                 
                 {/* Status Bar */}
-                <div className="bg-white border-t border-zinc-100 h-6 flex items-center justify-between px-6 shrink-0">
-                    <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-[7px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
+                <div className="bg-white border-t border-zinc-100 h-8 flex items-center justify-between px-8 shrink-0">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
                     </div>
-                    <span className="text-[7px] font-black text-primary uppercase tracking-widest italic">FORENSIC_HEARTBEAT_ACTIVE</span>
+                    <span className="text-[8px] font-black text-primary uppercase tracking-widest italic">FORENSIC_HEARTBEAT_ACTIVE</span>
                 </div>
             </div>
         </div>
 
         {/* Floating Infrastructure Labels */}
         <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 z-20 flex flex-col gap-2 items-end">
-            <div className="bg-white px-4 py-2 rounded-xl shadow-2xl border border-zinc-100 flex items-center gap-3 animate-bounce">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900">Live Sync Proof</span>
+            <div className="bg-white px-5 py-2.5 rounded-2xl shadow-2xl border border-zinc-100 flex items-center gap-3">
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-bounce" />
+                <span className="text-[11px] font-black uppercase tracking-widest text-zinc-900">Live Sync Proof</span>
             </div>
         </div>
     </div>
@@ -363,7 +377,7 @@ export default function HomePage() {
                             </div>
                             <div className="space-y-6">
                                 <p className="text-lg text-zinc-500 font-bold italic leading-relaxed">
-                                    Instructions are repeated daily, but teams still forget. Static documents don't drive execution. MoreMeets turns instructions into tracked daily work.
+                                    Instructions are repeated daily, but teams still forget. Static documents don't drive execution. MoreMeets turns instructions into tracked daily execution.
                                 </p>
                                 <div className="grid gap-4">
                                     {[
@@ -390,7 +404,7 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- SECTION: INSIDE A LIVE OPERATION (Overhauled) --- */}
+                {/* --- SECTION: INSIDE A LIVE OPERATION --- */}
                 <Section id="inside" className="bg-white" noSpine>
                     <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
                         <div className="text-center max-w-3xl mx-auto space-y-4">
