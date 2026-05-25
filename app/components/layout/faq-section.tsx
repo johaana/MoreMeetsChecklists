@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -13,7 +12,7 @@ export const FaqSection = () => (
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
                     <AccordionItem value="item-1" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                            <p>SOPs are not the problem. <strong>Execution is.</strong></p>
                            <p>Most SOPs sit in unread folders. MoreMeets turns static instructions into tracked daily work with real-time accountability and audit proof.</p>
                         </AccordionContent>
@@ -21,7 +20,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-training" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Do employees need technical training?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>Very minimal. Most teams start using it immediately.</p>
                             <p>Because the system runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions, acting as an on-the-job coach.</p>
                         </AccordionContent>
@@ -29,7 +28,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-multi" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can this work across multiple branches?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>Yes. MoreMeets™ is engineered for <strong>multi-location operational control.</strong></p>
                             <p>Management can track completion rates and incidents across several outlets from a single master dashboard, maintaining a group-wide standard of excellence.</p>
                         </AccordionContent>
@@ -37,7 +36,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-whatsapp" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not just use WhatsApp for tracking?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>WhatsApp is a chat tool, not infrastructure.</p>
                             <p>It cannot enforce structure, maintain history, or provide verifiable evidence for audits. MoreMeets™ provides a <strong>single source of truth</strong> that WhatsApp cannot offer.</p>
                         </AccordionContent>
@@ -45,7 +44,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-difficulty" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Is this difficult for non-technical staff?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                           <p>No. It runs inside <strong>Google Sheets</strong>.</p>
                           <p>There is no new software to install. If your team can use a phone and enter their name, they can operate the system. No training required.</p>
                         </AccordionContent>
@@ -53,7 +52,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-edit" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can we customize or add our own tasks?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                           <p>Yes. Every system is <strong>100% editable</strong>.</p>
                           <p>It works like a master template. You can add, delete, or modify any technical task to fit your unique brand protocols forever.</p>
                         </AccordionContent>
@@ -61,7 +60,7 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-staffleave" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">What happens when key staff leave?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                           <p>The <strong>System stays.</strong></p>
                           <p>Their operational knowledge remains embedded in the master ledger and library. MoreMeets™ ensures your standards are owned by the business, not the individual.</p>
                         </AccordionContent>

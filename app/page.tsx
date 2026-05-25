@@ -141,14 +141,14 @@ const LedgerSimulation = () => (
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
-                                    <td className="px-3 py-3 border-r border-zinc-100 text-zinc-400 font-medium text-[9px] md:text-[11px] truncate">{row.b}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-zinc-500 font-medium text-[9px] md:text-[11px] truncate">{row.b}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 font-bold text-zinc-800 text-[9px] md:text-[11px] truncate">{row.r}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-none">{row.t}</td>
                                     <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
                                     <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
                                     <td className={cn(
                                         "px-2 py-3 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
-                                        row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
+                                        row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-400")
                                     )}>
                                         <span className={cn("px-2 py-1 rounded whitespace-nowrap", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
                                     </td>
@@ -164,7 +164,7 @@ const LedgerSimulation = () => (
                 <div className="bg-white border-t border-zinc-100 h-8 flex items-center justify-between px-8 shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
+                        <span className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
                     </div>
                     <span className="text-[8px] font-black text-primary uppercase tracking-widest italic">FORENSIC_HEARTBEAT_ACTIVE</span>
                 </div>
@@ -353,7 +353,7 @@ export default function HomePage() {
                                     </div>
                                     <div className="space-y-2">
                                         <h4 className="text-sm font-black uppercase italic text-zinc-950">{step.t}</h4>
-                                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wide leading-tight">{step.d}</p>
+                                        <p className="text-[10px] text-zinc-600 font-bold uppercase tracking-wide leading-tight">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
@@ -375,7 +375,7 @@ export default function HomePage() {
                                 </p>
                             </div>
                             <div className="space-y-6">
-                                <p className="text-lg text-zinc-500 font-bold italic leading-relaxed">
+                                <p className="text-lg text-zinc-600 font-bold italic leading-relaxed">
                                     Instructions are repeated daily, but teams still forget. Static documents don't drive execution. MoreMeets turns instructions into tracked daily execution.
                                 </p>
                                 <div className="grid gap-4">
@@ -411,7 +411,7 @@ export default function HomePage() {
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                                 FOR REAL TEAMS.
                             </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic mx-auto">
+                            <p className="text-zinc-600 text-lg md:text-xl font-medium italic mx-auto">
                                 No fake dashboards. No polished mockups. We use real operational ledgers because that is what frontline teams trust and use daily.
                             </p>
                         </div>
@@ -429,12 +429,12 @@ export default function HomePage() {
                                     { t: "BUILT-IN COACHING", d: "Step-by-step instructions for every task.", i: GraduationCap }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-6 group text-left">
-                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-primary transition-colors shadow-inner shrink-0">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors shadow-inner shrink-0">
                                             <feat.i className="w-6 h-6" />
                                         </div>
                                         <div className="space-y-1">
                                             <p className="text-base md:text-lg font-black uppercase text-zinc-950 italic">{feat.t}</p>
-                                            <p className="text-[10px] md:text-[12px] text-zinc-400 font-bold uppercase tracking-widest leading-tight">{feat.d}</p>
+                                            <p className="text-[10px] md:text-[12px] text-zinc-500 font-bold uppercase tracking-widest leading-tight">{feat.d}</p>
                                         </div>
                                     </div>
                                 ))}
