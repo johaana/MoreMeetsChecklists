@@ -17,7 +17,10 @@ import {
     Activity,
     GraduationCap,
     FileSignature,
-    ShieldAlert
+    ShieldAlert,
+    LayoutGrid,
+    Clock,
+    UserCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -35,9 +38,7 @@ const ELITE_INDUSTRIES = [
     { name: "School Operations", id: "school_operations_pack" },
     { name: "Franchise Operations", id: "franchise_operations_pack" },
     { name: "Facilities Operations", id: "facility_management_blueprint" },
-    { name: "Multiplex Operations", id: "cinema_operations_pack" },
-    { name: "Fashion Store Operations", id: "fashion_and_apparel_retail" },
-    { name: "Electronics Store Operations", id: "electronics_showroom_pack" }
+    { name: "Multiplex Operations", id: "cinema_operations_pack" }
 ];
 
 const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
@@ -106,6 +107,68 @@ const AtmosphericHero = ({ children, id, label }: { children: React.ReactNode, i
     </div>
 );
 
+const MobileFrame = ({ children }: { children: React.ReactNode }) => (
+    <div className="relative mx-auto w-full max-w-[280px] h-[580px] md:max-w-[320px] md:h-[650px] bg-[#0F172A] rounded-[3rem] border-[8px] border-[#1E293B] shadow-[0_0_100px_-20px_rgba(34,197,94,0.2)] overflow-hidden flex flex-col">
+        {/* Device Top Bar */}
+        <div className="h-6 flex items-center justify-between px-8 pt-2">
+            <span className="text-[8px] font-bold text-white/30">9:41</span>
+            <div className="flex gap-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            </div>
+        </div>
+        {/* Screen Content */}
+        <div className="flex-1 overflow-y-auto no-scrollbar bg-[#f8f9fa]">
+            {children}
+        </div>
+        {/* Device Home Indicator */}
+        <div className="h-6 flex justify-center items-center pb-2">
+            <div className="w-20 h-1 rounded-full bg-white/10" />
+        </div>
+    </div>
+);
+
+const MobileLedgerPreview = () => (
+    <div className="flex flex-col">
+        <div className="bg-[#22C55E] text-white p-3 flex items-center justify-center gap-2">
+            <CheckSquare className="w-3 h-3" />
+            <span className="text-[9px] font-bold uppercase tracking-tight">DAILY_TASKS_LEDGER</span>
+        </div>
+        
+        <div className="p-4 space-y-3">
+            {[
+                { r: "General Manager", t: "Revenue Reconcile", s: "COMPLETE", st: "19:53:25" },
+                { r: "Front Office", t: "C-Form Compliance", s: "COMPLETE", st: "09:12:04" },
+                { r: "Chef", t: "HACCP Thermal Pulse", s: "OPEN", st: "" },
+                { r: "Security", t: "Egress Safety Sweep", s: "COMPLETE", st: "08:15:30" },
+                { r: "Housekeeping", t: "Room Release Audit", s: "OPEN", st: "" }
+            ].map((task, i) => (
+                <div key={i} className="bg-white border border-zinc-200 rounded-xl p-3 shadow-sm flex flex-col gap-2 relative overflow-hidden">
+                    {task.s === "COMPLETE" && <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500" />}
+                    <div className="flex justify-between items-start">
+                        <div className="space-y-0.5">
+                            <p className="text-[7px] font-black text-zinc-400 uppercase tracking-widest leading-none">{task.r}</p>
+                            <p className="text-[11px] font-black text-zinc-950 uppercase italic leading-tight">{task.t}</p>
+                        </div>
+                        <Badge className={cn(
+                            "text-[7px] font-black uppercase px-1.5 py-0.5 rounded-none",
+                            task.s === "COMPLETE" ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "bg-zinc-100 text-zinc-400 border-zinc-200"
+                        )}>
+                            {task.s}
+                        </Badge>
+                    </div>
+                    <div className="flex justify-between items-center pt-1 border-t border-zinc-100">
+                         <span className="text-[8px] font-mono text-zinc-300 italic">{task.st ? `STAMP: ${task.st}` : "AWAITING_INITIALS"}</span>
+                         <div className="w-6 h-6 rounded bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-300 text-[8px] font-black">
+                            {task.s === "COMPLETE" ? "✓" : ""}
+                         </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
 export default function HeroLabClient() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -121,116 +184,172 @@ export default function HeroLabClient() {
     ];
 
     return (
-        <div className="bg-[#050505] text-white font-sans selection:bg-emerald-500/30 pb-20">
+        <div className="bg-[#050505] text-white font-sans selection:bg-emerald-500/30 pb-40">
             
             <div className="container px-6 pt-24 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v23.0
+                    SOVEREIGN DESIGN LAB v24.0
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-black font-headline italic uppercase tracking-tighter text-white">
-                    Operational <span className="text-emerald-500">Design Selection</span>
+                    Institutional <span className="text-emerald-500">Choice Engine</span>
                 </h1>
+                <p className="text-zinc-500 italic font-medium max-w-xl mx-auto">Select the identity and mobile architecture that matches your operational gravity.</p>
             </div>
 
-            {/* --- VAR 1: THE MONOLITH --- */}
-            <AtmosphericHero id="01" label="The Centered Monolith">
-                <div className="max-w-4xl mx-auto text-center space-y-10">
-                    <div className="space-y-4">
-                        <h1 className="text-[36px] md:text-[72px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter">
-                            YOUR BUSINESS <br/> SHOULD NOT RUN <br/> <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
-                        </h1>
-                        <p className="text-base md:text-2xl italic font-medium text-zinc-400 max-w-2xl mx-auto leading-tight">
-                            Stop depending on memory and verbal follow-ups. <br/>
-                            Daily operations your staff will actually follow.
-                        </p>
-                    </div>
-                    <ActionBlock centered />
+            {/* --- LOGO DESIGN LAB --- */}
+            <div className="container px-6 py-20 mx-auto space-y-12 border-b border-white/5">
+                <div className="text-center space-y-3">
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">BRAND IDENTITY OPTIONS</Badge>
+                    <h2 className="text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Choose Your Vision</h2>
                 </div>
-            </AtmosphericHero>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    {[
+                        { label: "Standard", desc: "Reliable Baseline", icon: CheckSquare },
+                        { label: "Pivot", desc: "Geometric Command", icon: Command },
+                        { label: "Shield", desc: "Risk Governance", icon: Shield },
+                        { label: "Continuity", desc: "Sovereign Memory", icon: Infinity },
+                        { label: "The Mandate", desc: "WHERE SOPs MEET EXECUTION", icon: CheckCircle2, accent: true }
+                    ].map((opt, i) => (
+                        <div key={i} className={cn(
+                            "p-8 rounded-3xl border flex flex-col items-center text-center gap-4 transition-all duration-500 group relative",
+                            opt.accent ? "bg-emerald-500/5 border-emerald-500/30 shadow-[0_0_50px_-10px_rgba(34,197,94,0.2)]" : "bg-white/[0.02] border-white/5 hover:border-primary/30"
+                        )}>
+                            <opt.icon className={cn(
+                                "w-10 h-10 transition-all duration-700",
+                                opt.accent ? "text-emerald-500" : "text-primary/40 group-hover:text-primary group-hover:scale-110"
+                            )} />
+                            <div className="space-y-2">
+                                <div className="flex flex-col">
+                                    <span className="text-[12px] font-black font-headline uppercase leading-none tracking-tight text-white">{opt.label}</span>
+                                    <span className="text-[7px] font-black uppercase tracking-[0.2em] text-zinc-500 mt-1">MoreMeets™</span>
+                                </div>
+                                <p className={cn(
+                                    "text-[9px] font-bold uppercase tracking-widest leading-relaxed",
+                                    opt.accent ? "text-emerald-400" : "text-zinc-600"
+                                )}>{opt.desc}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-            {/* --- VAR 7: THE REPORTING CHASE (WINNER ARCHEOTYPE) --- */}
-            <AtmosphericHero id="07" label="The Reporting Chase (Winner)">
+            {/* --- MOBILE ARCHITECTURE LAB --- */}
+            <div className="container px-6 py-20 mx-auto space-y-16 border-b border-white/5">
+                <div className="text-center space-y-3">
+                    <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[10px]">MOBILE SYMMETRIC GRID</Badge>
+                    <h2 className="text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Device Interaction Frames</h2>
+                </div>
+                
+                <div className="grid lg:grid-cols-3 gap-20">
+                    {[
+                        { t: "The Ledger", d: "High-density task focus for staff logging." },
+                        { t: "The Dashboard", d: "Executive vitals view for owners." },
+                        { t: "The Instructions", d: "Hidden-layer SOP guidance view." }
+                    ].map((opt, i) => (
+                        <div key={i} className="space-y-8 flex flex-col items-center">
+                            <MobileFrame>
+                                {i === 0 && <MobileLedgerPreview />}
+                                {i === 1 && (
+                                    <div className="p-6 space-y-8 bg-zinc-50 h-full">
+                                        <div className="flex items-center gap-3 mb-4">
+                                             <Activity className="w-5 h-5 text-emerald-600" />
+                                             <span className="text-xs font-black uppercase tracking-widest text-zinc-900">SYSTEM_VITALS</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            {[
+                                                { l: "COMPLETION", v: "87%", c: "text-emerald-600" },
+                                                { l: "PENDING", v: "04", c: "text-amber-500" },
+                                                { l: "ESCALATIONS", v: "02", c: "text-red-500" },
+                                                { l: "STAFF_SYNC", v: "LIVE", c: "text-blue-500" }
+                                            ].map((s, j) => (
+                                                <div key={j} className="bg-white p-4 rounded-xl shadow-sm border border-zinc-100 flex flex-col gap-1">
+                                                    <span className="text-[7px] font-black text-zinc-400 uppercase tracking-widest">{s.l}</span>
+                                                    <span className={cn("text-xl font-black italic", s.c)}>{s.v}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="bg-white p-5 rounded-2xl border border-zinc-200 shadow-sm space-y-3">
+                                            <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">REGIONAL DRIFT</p>
+                                            <div className="h-2 w-full bg-zinc-100 rounded-full overflow-hidden">
+                                                <div className="h-full bg-emerald-500 w-[87%]" />
+                                            </div>
+                                            <p className="text-[10px] font-bold text-zinc-600 italic">"Ghatkopar West lagging in evening sweep compliance."</p>
+                                        </div>
+                                    </div>
+                                )}
+                                {i === 2 && (
+                                    <div className="p-8 bg-zinc-950 h-full text-white space-y-8">
+                                         <div className="space-y-2 pt-4">
+                                            <Badge variant="outline" className="text-primary border-primary/20 uppercase text-[8px] font-black">J-VLT-01 • INSTRUCTIONS</Badge>
+                                            <h3 className="text-xl font-black italic uppercase tracking-tighter">Vault Opening (Dual Auth)</h3>
+                                         </div>
+                                         <div className="space-y-6">
+                                            <div className="space-y-1.5">
+                                                <p className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">STEP-BY-STEP ACTION</p>
+                                                <p className="text-xs font-medium italic text-zinc-400 leading-relaxed">Execute 2-key entry sequence with Secondary Custodian. Physically inspect safe handle for any tamper-signs from previous night. Log exact entry timestamp.</p>
+                                            </div>
+                                            <div className="p-5 bg-red-500/10 border-l-2 border-red-500 rounded-r-xl space-y-1.5">
+                                                <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">RISK IF MISSED</p>
+                                                <p className="text-[10px] font-black italic uppercase leading-tight text-white/90">Unauthorized lone-person access leads to untraceable inventory exfiltration.</p>
+                                            </div>
+                                         </div>
+                                         <button className="h-10 border border-white/10 rounded-xl w-full text-[9px] font-black uppercase tracking-widest text-zinc-500">
+                                            Return to Ledger
+                                         </button>
+                                    </div>
+                                )}
+                            </MobileFrame>
+                            <div className="text-center space-y-1">
+                                <p className="text-sm font-black uppercase italic tracking-tighter text-white">{opt.t}</p>
+                                <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest leading-none">{opt.d}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* --- HERO VAR: THE REPORTING CHASE --- */}
+            <AtmosphericHero id="07" label="The Reporting Chase (Target Segment)">
                 <div className="relative">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] gap-6 lg:gap-16 items-start lg:items-center h-full">
                         
-                        {/* Narrative Block - Headline & Subheadline */}
                         <div className="order-1 space-y-3 md:space-y-6">
                             <h1 className="text-[26px] md:text-[60px] font-black font-headline leading-[1] md:leading-[0.9] uppercase italic tracking-tighter">
                                 <span className="md:hidden block whitespace-nowrap">STOP THE REPORTING <span className="text-red-500">CHASE.</span></span>
                                 <span className="hidden md:inline">STOP THE <br/> REPORTING <br/> <span className="text-red-500">CHASE.</span></span>
                             </h1>
-                            <p className="text-zinc-400 text-[14px] md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 max-w-xl">
+                            <p className="text-zinc-400 text-[14px] md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 max-w-xl leading-relaxed">
                                 Stop chasing staff on calls or WhatsApp and start seeing real-time reporting from your phone. Even when you aren't there.
                             </p>
                         </div>
                         
-                        {/* Mandate & Proof Panel - High-Fidelity Mobile Optimization */}
                         <div className="order-2 lg:order-none relative w-full lg:col-start-2 lg:row-start-1 lg:row-span-2">
                              <div className="absolute inset-0 bg-primary/5 rounded-2xl md:rounded-3xl lg:-rotate-1" />
                              <div className="relative p-6 md:p-10 rounded-2xl md:rounded-[2rem] border border-white/10 bg-white/[0.02] backdrop-blur-3xl space-y-4 md:space-y-8 overflow-hidden shadow-2xl">
                                 <div className="space-y-1.5 md:space-y-2">
-                                    <p className="text-[8px] md:text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE MANDATE</p>
+                                    <p className="text-[8px] md:text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline leading-none">THE MANDATE</p>
                                     <p className="text-[12px] md:text-sm font-black italic uppercase text-white/90 leading-tight">YOUR BUSINESS SHOULD NOT RUN ON MEMORY.</p>
                                 </div>
                                 
-                                {/* DESKTOP LIST (UNCHANGED) */}
-                                <div className="hidden lg:flex flex-col gap-y-4 pt-1">
-                                    {proofPoints.map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4">
-                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                <Check className="w-2.5 h-2.5 text-primary" />
-                                            </div>
-                                            <span className="text-[11px] font-bold text-zinc-300 uppercase tracking-widest italic leading-tight">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* MOBILE HIGH-DENSITY GLASS LIST (NEW) */}
-                                <div className="lg:hidden flex flex-col gap-2 pt-2">
+                                <div className="flex flex-col gap-2 pt-2">
                                     {proofPoints.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 bg-white/[0.03] px-4 py-3 rounded-xl border border-white/5 shadow-inner">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                 <Check className="w-2.5 h-2.5 text-primary" />
                                             </div>
-                                            <span className="text-[10px] font-black uppercase tracking-widest italic text-zinc-300 leading-none">{item}</span>
+                                            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest italic text-zinc-300 leading-none">{item}</span>
                                         </div>
                                     ))}
                                 </div>
                              </div>
                         </div>
 
-                        {/* CTA Block - Final Order on Mobile */}
                         <div className="order-3 lg:order-none w-full lg:col-start-1 lg:row-start-2 pt-2 lg:pt-0">
                             <ActionBlock />
                         </div>
                     </div>
                 </div>
             </AtmosphericHero>
-
-            {/* --- LOGO DESIGN LAB --- */}
-            <div className="container px-6 py-32 mx-auto space-y-12">
-                <div className="text-center space-y-3">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">BRAND IDENTITY LAB</Badge>
-                    <h2 className="text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Choose Your Vision</h2>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    {[
-                        { label: "Option A", desc: "Reliable Standard", icon: CheckSquare },
-                        { label: "Option B", desc: "Geometric Pivot", icon: Command },
-                        { label: "Option C", desc: "Command Shield", icon: Shield },
-                        { label: "Option D", desc: "Operational Continuity", icon: Infinity },
-                        { label: "Option E", desc: "Precision Grid", icon: Grid3X3 }
-                    ].map((opt, i) => (
-                        <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center gap-3 group hover:border-primary/30 transition-all">
-                            <opt.icon className="w-8 h-8 text-primary/40 group-hover:text-primary group-hover:scale-110 transition-all" />
-                            <div className="space-y-1">
-                                <p className="text-[10px] font-black uppercase text-primary">{opt.label}</p>
-                                <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">{opt.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
 
             <style jsx global>{`
                 @keyframes marquee {
