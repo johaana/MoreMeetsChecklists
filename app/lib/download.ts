@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -118,7 +117,8 @@ export const handleDownload = (item: PremiumPack) => {
             'cinema_operations_pack',
             'franchise_operations_pack',
             'facility_management_blueprint',
-            'retail_jewellery_operations_pack'
+            'retail_jewellery_operations_pack',
+            'fashion_and_apparel_retail'
         ].includes(item.id);
 
         const COLORS = {
