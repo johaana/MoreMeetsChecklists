@@ -32,7 +32,10 @@ import {
     Database,
     X,
     Wifi,
-    Clock
+    Clock,
+    Search,
+    MoreVertical,
+    Share2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -58,11 +61,20 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 );
 
 const LedgerSimulation = () => (
-    <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-2xl bg-[#f8f9fa] font-sans group">
-        {/* Actual Sovereign Banner */}
-        <div className="bg-[#22C55E] text-white py-2 px-4 flex items-center justify-center gap-2 text-[10px] md:text-[11px] font-bold">
-            <span>📋</span>
-            <span>DAILY TASKS – Update 'Done By' to complete daily work.</span>
+    <div className="rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] bg-[#fdfdfd] font-sans group">
+        {/* Google Sheets Style Header */}
+        <div className="bg-[#22C55E] text-white py-2.5 px-6 flex items-center justify-between gap-4 shrink-0">
+             <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
+                    <Check className="w-3.5 h-3.5" strokeWidth={4} />
+                </div>
+                <span className="text-[10px] md:text-[11px] font-black tracking-tight uppercase">SOVEREIGN_MASTER_LEDGER_V14.2</span>
+             </div>
+             <div className="flex items-center gap-4 opacity-80">
+                <Search className="w-3.5 h-3.5" />
+                <Share2 className="w-3.5 h-3.5" />
+                <MoreVertical className="w-3.5 h-3.5" />
+             </div>
         </div>
 
         {/* The Grid - High Density Institutional Ledger */}
@@ -73,60 +85,74 @@ const LedgerSimulation = () => (
                         {[
                             "BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", 
                             "DONE BY", "VERIFIED BY", "STATUS", 
-                            "CONSEQUENCE / RISK", "FLOOR INSTRUCTIONS", "STAMP"
+                            "CONSEQUENCE / RISK", "EASY WAY (HOW TO)", "STAMP"
                         ].map((h, i) => (
-                            <th key={i} className="px-3 py-3 text-[9px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
+                            <th key={i} className="px-3.5 py-4 text-[9px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{h}</th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {[
                         { 
-                            b: "Bandra Main", r: "Gen. Manager", t: "Revenue Reconcile", a: "Aditi", db: "AK", vb: "AK", s: "COMPLETE", 
-                            c: "Untraceable internal revenue theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53:25" 
+                            b: "Colaba South", r: "Gen. Manager", t: "Revenue Reconcile", a: "Aditi", db: "AK", vb: "AK", s: "COMPLETE", 
+                            c: "Untraceable internal revenue theft.", i: "Match POS settlements to bank slips.", st: "2026-05-23 19:53:25", isDone: true 
                         },
                         { 
                             b: "Bandra Main", r: "Exec. Chef", t: "Cold-Chain Audit", a: "Vikram", db: "VS", vb: "", s: "COMPLETE", 
-                            c: "Pathogen growth & total stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12:04" 
+                            c: "Pathogen growth & total stock loss.", i: "Log fridge temp at 8 AM and 4 PM.", st: "2026-05-23 08:12:04", isDone: true 
                         },
                         { 
-                            b: "Ghatkopar W.", r: "Security Lead", t: "Egress Sweep", a: "Karan", db: "", vb: "", s: "OPEN", 
-                            c: "Fatal entrapment during emergency.", i: "Physically walk the fire exit paths.", st: "" 
+                            b: "Dadar West", r: "Shift Lead", t: "Handover Pulse", a: "Rahul", db: "RK", vb: "", s: "VERIFICATION PENDING", 
+                            c: "Communication gap between shifts.", i: "Review incident log with night team.", st: "2026-05-23 14:10:12", isPending: true 
+                        },
+                        { 
+                            b: "Borivali E.", r: "Security Lead", t: "Egress Sweep", a: "Karan", db: "", vb: "", s: "OPEN", 
+                            c: "Fatal entrapment during emergency.", i: "Physically walk the fire exit paths.", st: "", isOpen: true 
                         },
                         { 
                             b: "Bandra Main", r: "HK Lead", t: "Washroom 30-min", a: "Priya", db: "PD", vb: "", s: "COMPLETE", 
-                            c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45:11" 
+                            c: "Hygiene decay & guest rage.", i: "Refill soap and log sanitization.", st: "2026-05-23 10:45:11", isDone: true 
                         },
                         { 
-                            b: "Ghatkopar W.", r: "Compliance", t: "FSSAI Board Audit", a: "Suresh", db: "", vb: "", s: "OPEN", 
-                            c: "Massive regulatory fine / Closure.", i: "Verify license visibility in lobby.", st: "" 
+                            b: "Borivali E.", r: "Compliance", t: "FSSAI Board Audit", a: "Suresh", db: "", vb: "", s: "OPEN", 
+                            c: "Massive regulatory fine / Closure.", i: "Verify license visibility in lobby.", st: "", isOpen: true 
                         }
                     ].map((row, idx) => (
-                        <tr key={idx} className={cn("border-b border-zinc-200 text-[11px]", idx % 2 === 0 ? "bg-white" : "bg-zinc-50")}>
-                            <td className="px-3 py-3 border-r border-zinc-200 text-zinc-500">{row.b}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 font-black text-zinc-950 uppercase">{row.t}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 text-zinc-400">{row.a}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 bg-[#FEFCE8] font-black text-center">{row.db}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 bg-[#EFF6FF] font-black text-center">{row.vb}</td>
+                        <tr key={idx} className={cn("border-b border-zinc-100 transition-colors hover:bg-zinc-50/50", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 text-zinc-400 font-medium text-[10px]">{row.b}</td>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 font-bold text-zinc-800 text-[10px]">{row.r}</td>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[10px] leading-tight">{row.t}</td>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 text-zinc-400 text-[10px]">{row.a}</td>
+                            <td className={cn("px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[10px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
+                            <td className={cn("px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[10px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
                             <td className={cn(
-                                "px-3 py-3 border-r border-zinc-200 font-black text-center", 
-                                row.s === "COMPLETE" ? "text-emerald-600" : "text-zinc-300"
-                            )}>{row.s}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 italic text-red-700 font-medium leading-tight max-w-[180px]">{row.c}</td>
-                            <td className="px-3 py-3 border-r border-zinc-200 text-emerald-700 font-medium leading-tight max-w-[250px]">{row.i}</td>
-                            <td className="px-3 py-3 text-zinc-400 font-mono text-[9px] text-center">{row.st}</td>
+                                "px-3.5 py-4 border-r border-zinc-100 font-black text-center text-[9px]", 
+                                row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-200")
+                            )}>
+                                <span className={cn(
+                                    "px-2 py-0.5 rounded",
+                                    row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : "")
+                                )}>
+                                    {row.s}
+                                </span>
+                            </td>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 italic text-red-700 font-medium leading-tight max-w-[180px] text-[10px]">{row.c}</td>
+                            <td className="px-3.5 py-4 border-r border-zinc-100 text-emerald-700 font-medium leading-tight max-w-[250px] text-[10px]">{row.i}</td>
+                            <td className="px-3.5 py-4 text-zinc-400 font-mono text-[9px] text-center">{row.st}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-        <div className="bg-white border-t border-zinc-200 p-2 flex items-center justify-between px-4">
-             <div className="flex items-center gap-2">
+        <div className="bg-white border-t border-zinc-100 p-2.5 flex items-center justify-between px-6">
+             <div className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">SOVEREIGN_ENGINE_STABLE</span>
+                <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
              </div>
-             <span className="text-[8px] font-black text-zinc-300 uppercase tracking-widest">PERMANENT AUDIT TRAIL ACTIVE</span>
+             <div className="flex items-center gap-6">
+                <span className="text-[9px] font-black text-zinc-300 uppercase tracking-widest">ENCRYPTED DATA CLOUD</span>
+                <span className="text-[9px] font-black text-primary uppercase tracking-widest italic">PERMANENT AUDIT TRAIL</span>
+             </div>
         </div>
     </div>
 );
@@ -144,7 +170,7 @@ export default function HomePage() {
             <main className="flex-1">
                 
                 {/* --- 1. THE CINEMATIC HERO --- */}
-                <section className="hidden md:flex relative w-full h-[100svh] min-h-[700px] flex-col justify-start overflow-hidden bg-[#F8F6F2]">
+                <section className="hidden md:flex relative w-full h-[100svh] min-h-[700px] flex flex-col justify-start overflow-hidden bg-[#F8F6F2]">
                     <div className="absolute inset-0 z-0">
                         <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
                             <iframe 
@@ -354,10 +380,10 @@ export default function HomePage() {
                 </Section>
 
                 {/* --- SECTION: INSIDE A LIVE OPERATION --- */}
-                <Section id="inside" className="bg-white">
-                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
-                        <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
-                            <div className="space-y-8 text-left">
+                <Section id="inside" className="bg-white" noSpine>
+                    <div className="max-w-7xl mx-auto space-y-16 md:space-y-24">
+                        <div className="grid lg:grid-cols-[0.7fr,1.3fr] gap-12 lg:gap-20 items-center">
+                            <div className="space-y-10 text-left">
                                 <div className="space-y-4">
                                     <SectionEyebrow text="INSIDE THE SYSTEM" />
                                     <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
@@ -374,18 +400,19 @@ export default function HomePage() {
                                         { t: "BUILT-IN COACHING", d: "Step-by-step instructions for every task.", i: GraduationCap }
                                     ].map((feat, i) => (
                                         <div key={i} className="flex gap-4 group">
-                                            <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-primary transition-colors shadow-inner">
-                                                <feat.i className="w-5 h-5" />
+                                            <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:text-primary transition-colors shadow-inner">
+                                                <feat.i className="w-6 h-6" />
                                             </div>
                                             <div className="space-y-1">
-                                                <p className="text-sm font-black uppercase text-zinc-950 italic">{feat.t}</p>
-                                                <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest leading-none">{feat.d}</p>
+                                                <p className="text-base font-black uppercase text-zinc-950 italic">{feat.t}</p>
+                                                <p className="text-xs text-zinc-400 font-bold uppercase tracking-widest leading-none">{feat.d}</p>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="w-full">
+                            <div className="w-full relative">
+                                <div className="absolute -inset-4 bg-primary/5 rounded-[2.5rem] blur-2xl opacity-50"></div>
                                 <LedgerSimulation />
                             </div>
                         </div>
@@ -543,3 +570,4 @@ export default function HomePage() {
         </div>
     );
 }
+
