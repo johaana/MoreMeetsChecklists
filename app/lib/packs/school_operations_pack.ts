@@ -1,6 +1,4 @@
 
-/** SOVEREIGN PRO v18.0 - DEVELOPMENT FREEZE: FROZEN VERIFICATION CANDIDATE **/
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const school_operations_pack: PremiumPack = {
@@ -13,7 +11,7 @@ export const school_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Education",
-    description: "The definitive Sovereign v18.0 engine for K-12 and multi-campus institutions. Hardening 200 technical control points across Student Safety, Academic Continuity, and Statutory Compliance.",
+    description: "The definitive Sovereign v18.0 engine for K-12 and multi-campus institutions. Hardening 200 technical control points across Student Safety, Academic Continuity, and Statutory Compliance. [Frozen Verification Candidate]",
     heroHeadline: "Protect Your Students. Secure Your Institution.",
     heroSubheadline: "Track academic pacing, monitor student safety, and stay in control of campus operations—across 20 specialized institutional roles.",
     pricingUrgency: "A single safety 'never event' or one board accreditation failure costs 100x more than this entire system.",
@@ -195,7 +193,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Infirmary & Student Health",
             department: "Medical",
             frequency: "Daily",
-            role: "Infirmary & Student Health Officer",
+            role: "School Nurse",
             summary: "Zero-fail readiness for on-campus medical events.",
             icon: "heart-pulse",
             tasks: [
@@ -275,7 +273,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Parent Relations & PR",
             department: "Front Office",
             frequency: "Daily",
-            role: "Front Office & Parent Relations Executive",
+            role: "Parent Relations Executive",
             summary: "Protects institutional reputation and enquiry conversion.",
             icon: "megaphone",
             tasks: [
@@ -315,7 +313,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Janitorial & Sanitation",
             department: "Housekeeping",
             frequency: "Hourly",
-            role: "Housekeeping & Hygiene Supervisor",
+            role: "Hygiene Supervisor",
             summary: "Hourly hygiene command for high-traffic student zones.",
             icon: "sparkles",
             tasks: [
@@ -335,7 +333,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Perimeter Security",
             department: "Security",
             frequency: "Daily",
-            role: "Security Supervisor",
+            role: "Security Chief",
             summary: "Hardens the perimeter and protects student safety.",
             icon: "shield-check",
             tasks: [
@@ -375,12 +373,12 @@ export const school_operations_pack: PremiumPack = {
             title: "Sports & Activities",
             department: "Student Support",
             frequency: "Daily",
-            role: "Sports & Activities Coordinator",
+            role: "Sports Coordinator",
             summary: "Equipment safety and pitch infrastructure command.",
             icon: "volleyball",
             tasks: [
                 { id: "S-SPT-01", technicalProtocol: "Equipment Safety Scan", floorAction: "Inspect posts and gymnastics mats for tears/cracks.", priority: "High", riskLevel: "High", consequence: "Student injury during PE.", proof: "Safety Log", verificationRequired: true, cadence: "daily" },
-                { id: "S-SPT-02", technicalProtocol: "Field-side Med Kit", floorAction: "Confirm presence and seal of stocked trauma bag.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat pitch injuries.", proof: "Kit Inventory", cadence: "daily" },
+                { id: "S-SPT-02", technicalProtocol: "Field-side Med Kit", floorAction: "Confirm presence and seal of stocked trauma bag.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat pitch-side injuries.", proof: "Kit Inventory", cadence: "daily" },
                 { id: "S-SPT-03", technicalProtocol: "Aquatic Chemistry Pulse", floorAction: "Log Pool pH and Chlorine (Target pH 7.4).", priority: "High", riskLevel: "High", consequence: "Skin infection outbreak.", proof: "Water Log", verificationRequired: true, cadence: "hourly" },
                 { id: "S-SPT-04", technicalProtocol: "Lifeguard Readiness", floorAction: "Verify on-site position of 2 certified rescue staff.", priority: "High", riskLevel: "High", consequence: "Fatal drowning liability.", proof: "Roster Match", verificationRequired: true, cadence: "daily" },
                 { id: "S-SPT-05", technicalProtocol: "Pool Deck Friction", floorAction: "Inspect for algae or slick zones pre-swim sessions.", priority: "High", riskLevel: "High", consequence: "Slip and fall litigation.", proof: "Patrol Log", verificationRequired: true, cadence: "daily" },
@@ -395,13 +393,13 @@ export const school_operations_pack: PremiumPack = {
             title: "Inclusive Access & ESG",
             department: "ESG",
             frequency: "Weekly",
-            role: "ESG & Sustainability Officer",
+            role: "Sustainability Officer",
             summary: "Environmental discipline and resource tracking.",
             icon: "leaf",
             tasks: [
                 { id: "S-ESG-01", technicalProtocol: "Paper Usage Pulse", floorAction: "Log reams used vs recycling weight per semester.", priority: "Low", riskLevel: "Low", consequence: "Inefficient waste.", proof: "Weight Slip", cadence: "monthly" },
                 { id: "S-ESG-02", technicalProtocol: "Electricity Benchmark", floorAction: "Compare daily KWH meter vs occupancy load.", priority: "Medium", riskLevel: "Low", consequence: "Unmonitored energy wastage.", proof: "Meter Match", cadence: "daily" },
-                { id: "S-ESG-03", technicalProtocol: "Water Leakage Patrol", floorAction: "Check 3 AM meter for zero-usage baseline.", priority: "High", riskLevel: "Medium", consequence: "Structural damage.", proof: "Leak Log", verificationRequired: true, cadence: "daily" },
+                { id: "S-ESG-03", technicalProtocol: "Water Leakage Patrol", floorAction: "Check 3 AM meter for zero-usage baseline.", priority: "High", riskLevel: "Medium", consequence: "Resource waste and structural damage.", proof: "Leak Log", verificationRequired: true, cadence: "daily" },
                 { id: "S-ESG-04", technicalProtocol: "Inclusive Access Audit", floorAction: "Verify 100% functionality of braille signage and lifts.", priority: "Medium", riskLevel: "Low", consequence: "Non-inclusive campus perception.", proof: "Visual Audit", cadence: "monthly" },
                 { id: "S-ESG-05", technicalProtocol: "Student Green-Talk", floorAction: "Log completion of monthly 'Eco-Awareness' assembly.", priority: "Low", riskLevel: "Low", consequence: "Loss of ESG data points.", proof: "Registry Entry", cadence: "monthly" },
                 { id: "S-ESG-06", technicalProtocol: "Vendor Ethics Vetting", floorAction: "Audit 5 random invoices for 'Sustainable Sourcing' flags.", priority: "Low", riskLevel: "Low", consequence: "Supply chain ethical drift.", proof: "Sample Check", cadence: "monthly" },

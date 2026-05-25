@@ -120,7 +120,8 @@ export const handleDownload = (item: PremiumPack) => {
             'retail_jewellery_operations_pack',
             'fashion_and_apparel_retail',
             'supermarket_grocery_retail_pack',
-            'electronics_showroom_pack'
+            'electronics_showroom_pack',
+            'school_operations_pack'
         ].includes(item.id);
 
         const COLORS = {
