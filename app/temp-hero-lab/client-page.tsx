@@ -7,6 +7,7 @@ import {
     Check, 
     ArrowRight, 
     Shield,
+    ShieldCheck,
     Smartphone,
     Target,
     Activity,
@@ -112,7 +113,7 @@ const IdentityMark = ({ title, icon: IconComponent, color, isHighlighted = false
                     </span>
                 ) : (
                     <div className="mt-3 bg-white/5 border border-white/10 px-4 py-1 rounded-full backdrop-blur-sm">
-                        <span className="text-[7px] font-black uppercase tracking-[0.2em] leading-none block whitespace-nowrap" style={{ color: color }}>
+                        <span className="text-[7px] font-black uppercase tracking-[0.2em] masonry-inline block whitespace-nowrap" style={{ color: color }}>
                             {UNIFORM_TAGLINE}
                         </span>
                     </div>
