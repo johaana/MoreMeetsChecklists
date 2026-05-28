@@ -127,7 +127,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6">
                             <div className="flex flex-col">
                                 <h3 className="text-[48px] md:text-6xl font-black text-white italic tracking-tighter leading-none pt-1">
-                                    {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                    {region === 'INDIA' ? `₹2,499` : `$${pack.priceUSD}`}
                                 </h3>
                             </div>
                             <div className="hidden md:block w-px h-16 bg-white/10" />
@@ -169,7 +169,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="pt-2">
                                     <p className="text-[12px] md:text-sm font-medium text-zinc-400 italic">Full system deployment</p>
                                     <p className="text-2xl md:text-3xl font-black text-white italic tracking-tighter pt-0.5">
-                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                        {region === 'INDIA' ? `₹2,499` : `$${pack.priceUSD}`}
                                     </p>
                                 </div>
                             </div>
