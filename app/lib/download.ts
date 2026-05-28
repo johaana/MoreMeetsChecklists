@@ -5,14 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v18.5.2 PRODUCTION LOCK (AUDIT READY)
+ * MOREMEETS™ SOVEREIGN ENGINE - v18.6.0 PILOT LOCK
  * ----------------------------------------------------------------------------
- * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
- * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
- * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
- * 4. AUDIT HEARTBEAT: Column J (STAMP) for automated verifiable records.
- * 5. EVIDENCE LAYER: Appended PROOF and REFERENCE columns (K:L).
- * 6. SETUP GUIDE: Integrated Apps Script source + Beginner-friendly instructions.
+ * 1. APPEND-ONLY GEOMETRY: Columns K (PROOF) and L (REFERENCE) appended.
+ * 2. STABLE HEARTBEAT: Columns E:F (Triggers), G (Status), and J (Stamp) remain locked.
+ * 3. NON-TECHNICAL GUIDE: Simple explain-to-child instructions for field teams.
+ * 4. NO STRUCTURAL CONTROLS: Freeze panes and protections removed per pilot rules.
  * ----------------------------------------------------------------------------
  */
 
@@ -25,8 +23,7 @@ const TABS = {
     SOP_LIB: "SOP_LIB",
     BRANCH_SETUP: "BRANCH_SETUP",
     TEAM_HUB: "TEAM_HUB",
-    SETUP_GUIDE: "SETUP_GUIDE", // Tab for Audit activation
-    CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
+    SETUP_GUIDE: "SETUP_GUIDE", 
     SYS_ENGINE: "SYS_ENGINE"
 };
 
@@ -111,7 +108,7 @@ export const handleDownload = (item: PremiumPack) => {
         }
 
         const wb = utils.book_new();
-        // PROD AUDIT ENABLED PACKS - v18.0 PARITY LOCK
+        // PROD AUDIT ENABLED PACKS
         const isAuditEnabled = [
             'hotels_and_resorts',
             'restaurants',
@@ -184,7 +181,8 @@ export const handleDownload = (item: PremiumPack) => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
-            ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
+            // NO FREEZE PANES PER PILOT RULES
+            ws['!views'] = [{ showGridLines: false }];
         };
 
         // --- 01. START ---
@@ -207,7 +205,6 @@ export const handleDownload = (item: PremiumPack) => {
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 35 }, { wch: 80 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-        validateSheetName(TABS.START);
         utils.book_append_sheet(wb, startWs, TABS.START);
 
         // --- 02. DASHBOARD ---
@@ -222,7 +219,6 @@ export const handleDownload = (item: PremiumPack) => {
         const dashWs = utils.aoa_to_sheet(dashData);
         dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }];
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-        validateSheetName(TABS.DASHBOARD);
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
         // --- 03. DAILY_TASKS ---
@@ -267,8 +263,8 @@ export const handleDownload = (item: PremiumPack) => {
                     if (isAuditEnabled) {
                         row.push({ v: "", s: styles.locked });
                     }
-                    row.push({ v: "", s: styles.input }); // PROOF / EVIDENCE
-                    row.push({ v: "", s: styles.input }); // REFERENCE IMAGE
+                    row.push({ v: "", s: styles.input }); 
+                    row.push({ v: "", s: styles.input }); 
                     taskData.push(row);
                 });
             });
@@ -276,12 +272,11 @@ export const handleDownload = (item: PremiumPack) => {
         const taskWs = utils.aoa_to_sheet(taskData);
         const colWidths = [20, 25, 45, 25, 15, 15, 15, 45, 65];
         if (isAuditEnabled) colWidths.push(25);
-        colWidths.push(30); // PROOF
-        colWidths.push(30); // REFERENCE
+        colWidths.push(30); 
+        colWidths.push(30); 
         taskWs['!cols'] = colWidths.map(w => ({ wch: w }));
         const lastCol = isAuditEnabled ? 'L' : 'K';
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", lastCol);
-        validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
@@ -301,7 +296,6 @@ export const handleDownload = (item: PremiumPack) => {
         const libWs = utils.aoa_to_sheet(libData);
         libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
-        validateSheetName(TABS.SOP_LIB);
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
         // --- 05. BRANCH_SETUP ---
@@ -317,7 +311,6 @@ export const handleDownload = (item: PremiumPack) => {
         const branchWs = utils.aoa_to_sheet(branchData);
         branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
         addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
-        validateSheetName(TABS.BRANCH_SETUP);
         utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
 
         // --- 06. TEAM_HUB ---
@@ -339,7 +332,6 @@ export const handleDownload = (item: PremiumPack) => {
         const teamWs = utils.aoa_to_sheet(teamData);
         teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
-        validateSheetName(TABS.TEAM_HUB);
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
         // --- 07. SETUP_GUIDE (Audit Activation) ---
@@ -382,7 +374,10 @@ export const handleDownload = (item: PremiumPack) => {
                 [{ v: "1. MAKING BACKUPS: Every week, go to [File] -> [Make a copy] to save a snapshot of your records." }],
                 [{ v: "2. ADDING TASKS: You can safely insert new rows or edit task text in Column C." }],
                 [{ v: "3. DO NOT TOUCH: Never delete or move Columns G (STATUS) or J (STAMP) as it will break the engine." }],
-                [{ v: "4. VIEWING AUDITS: Right-click any tab -> [Unhide] to see any raw record vaults if present." }],
+                [{ v: "4. VIEWING AUDITS: Right-click any tab -> [Unhide] to see raw record vaults if present." }],
+                [],
+                [{ v: "SECTION G — RECOMMENDED VIEW (OPTIONAL)", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "To keep headers visible while scrolling, select Row 4 and go to: [View] -> [Freeze] -> [Up to row 3]." }],
                 [],
                 [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
                 [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -390,7 +385,6 @@ export const handleDownload = (item: PremiumPack) => {
             const guideWs = utils.aoa_to_sheet(guideData);
             guideWs['!cols'] = [{ wch: 110 }];
             guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
-            validateSheetName(TABS.SETUP_GUIDE);
             utils.book_append_sheet(wb, guideWs, TABS.SETUP_GUIDE);
         }
 
@@ -409,7 +403,6 @@ export const handleDownload = (item: PremiumPack) => {
             });
         }
         const sysWs = utils.aoa_to_sheet(sysData);
-        validateSheetName(TABS.SYS_ENGINE);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
         // Final Range Lock
