@@ -67,14 +67,12 @@ const LedgerSimulation = () => (
     <div className="relative group max-w-[1100px] mx-auto">
         <div className="absolute -top-12 left-0 z-20">
             <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 italic">
-                This is what real operational control looks like.
+                Verifiable operational records.
             </p>
         </div>
         
-        {/* Landscape Mobile Frame - "Pro Max" Style */}
         <div className="relative z-10 w-full aspect-[2.3/1] bg-zinc-950 rounded-[2.5rem] md:rounded-[4rem] border-[10px] md:border-[16px] border-zinc-900 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.6)] overflow-hidden ring-1 ring-white/10">
             
-            {/* Inner Content - The Sheet */}
             <div className="w-full h-full bg-white flex flex-col font-sans overflow-hidden">
                 {/* Google Sheets Mobile Header */}
                 <div className="bg-[#22C55E] text-white py-2 md:py-3 px-8 flex items-center justify-between gap-4 shrink-0">
@@ -82,7 +80,7 @@ const LedgerSimulation = () => (
                         <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
                             <Check className="w-3 h-3" strokeWidth={5} />
                         </div>
-                        <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">HOTEL_OPERATIONS_MASTER_LEDGER_V14.2</span>
+                        <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">DAILY_EXECUTION_LEDGER_V18.1</span>
                     </div>
                     <div className="flex items-center gap-5 opacity-80">
                         <Search className="w-3.5 h-3.5" />
@@ -114,40 +112,24 @@ const LedgerSimulation = () => (
                         <tbody>
                             {[
                                 { 
-                                    b: "Colaba S.", r: "Gen. Manager", t: "LOBBY AMBIANCE AUDIT", db: "AK", vb: "AK", s: "COMPLETE", 
+                                    b: "Site 01", r: "Gen. Manager", t: "LOBBY AMBIANCE AUDIT", db: "AK", vb: "AK", s: "COMPLETE", 
                                     c: "Poor first-touch brand perception.", st: "2026-05-23 08:12", isDone: true, hasProof: true 
                                 },
                                 { 
-                                    b: "Bandra Main", r: "HK Lead", t: "ROOM_RELEASE_VERIFIED", db: "VS", vb: "", s: "COMPLETE", 
-                                    c: "Guest refund risk / delayed check-in.", st: "2026-05-23 10:05", isDone: true, hasProof: true 
+                                    b: "Site 02", r: "Supervisor", t: "FACILITY_SAFETY_SWEEP", db: "VS", vb: "", s: "COMPLETE", 
+                                    c: "Delayed check-in / safety risk.", st: "2026-05-23 10:05", isDone: true, hasProof: true 
                                 },
                                 { 
-                                    b: "Dadar West", r: "Security Lead", t: "FIRE_PANEL_HEALTH", db: "RK", vb: "", s: "IN PROGRESS", 
-                                    c: "Fatal delay in emergency response.", st: "—", isPending: true 
+                                    b: "Site 03", r: "Security", t: "FIRE_PANEL_HEALTH", db: "RK", vb: "", s: "IN PROGRESS", 
+                                    c: "Fatal delay in response.", st: "—", isPending: true 
                                 },
                                 { 
-                                    b: "Borivali E.", r: "Eng. Lead", t: "HVAC_THERMAL_LOG", db: "", vb: "", s: "OPEN", 
-                                    c: "Guest heat discomfort & energy waste.", st: "—", isOpen: true 
+                                    b: "Site 01", r: "Engineer", t: "HVAC_THERMAL_LOG", db: "", vb: "", s: "OPEN", 
+                                    c: "Discomfort & energy waste.", st: "—", isOpen: true 
                                 },
                                 { 
-                                    b: "Colaba S.", r: "FO Manager", t: "C-FORM_COMPLIANCE", db: "PD", vb: "AK", s: "COMPLETE", 
-                                    c: "Legal violation and hospital closure.", st: "2026-05-23 09:45", isDone: true, hasProof: true 
-                                },
-                                { 
-                                    b: "Bandra Main", r: "Gen. Manager", t: "VIP_ROOM_READINESS", db: "AK", vb: "", s: "COMPLETE", 
-                                    c: "Loss of high-LTV loyalty.", st: "2026-05-23 11:30", isDone: true, hasProof: true 
-                                },
-                                { 
-                                    b: "Dadar West", r: "HK Lead", t: "POOL_CHEMISTRY_LOG", db: "VS", vb: "", s: "IN PROGRESS", 
-                                    c: "Pool infection risk & health hazard.", st: "—", isPending: true 
-                                },
-                                { 
-                                    b: "Borivali E.", r: "FO Manager", t: "MASTER_KEY_AUDIT", db: "", vb: "", s: "OPEN", 
-                                    c: "Unauthorized room entry liability.", st: "—", isOpen: true 
-                                },
-                                { 
-                                    b: "Colaba S.", r: "Security Lead", t: "EGRESS_SAFETY_SWEEP", db: "MK", vb: "", s: "COMPLETE", 
-                                    c: "Fatal entrapment during crisis.", st: "2026-05-23 07:15", isDone: true, hasProof: true 
+                                    b: "Site 02", r: "Admin", t: "COMPLIANCE_KYC_SYNC", db: "PD", vb: "AK", s: "COMPLETE", 
+                                    c: "Legal violation / closure risk.", st: "2026-05-23 09:45", isDone: true, hasProof: true 
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
@@ -330,7 +312,7 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- SECTION: HOW IT WORKS (Apple-Minimalist) --- */}
+                {/* --- SECTION: HOW IT WORKS --- */}
                 <Section id="how-it-works" className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-24">
                         <div className="text-center space-y-6">
@@ -404,50 +386,8 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- SECTION: GRAVITY-BASED FILTERING --- */}
-                <Section className="bg-white" id="gravity-filter">
-                    <div className="max-w-6xl mx-auto space-y-20">
-                        <div className="text-center space-y-4">
-                            <SectionEyebrow text="HIGH-STAKES GOVERNANCE" />
-                            <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-none text-center">
-                                WHERE FAILURE HAS CONSEQUENCES
-                            </h2>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                            {[
-                                { s: "Hotels", c: "Miss a daily safety or cleanliness check → risk massive fines, guest complaints, or brand loss.", i: Building },
-                                { s: "Restaurants", c: "Skip inventory or food safety inspections → spoiled stock, legal liability, and unhappy diners.", i: Utensils },
-                                { s: "Healthcare", c: "Missed handovers or patient checks → clinical errors, regulatory risk, and reputational damage.", i: Hospital },
-                                { s: "Facilities & Retail", c: "Missed equipment maintenance or audit → asset downtime, internal theft, and financial loss.", i: Building2 },
-                                { s: "Multi-location Groups", c: "Cannot track multiple units from HQ → operational errors compound and accountability disappears.", i: LayoutGrid }
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-6 p-8 bg-zinc-50 rounded-3xl border border-zinc-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
-                                    <div className="w-12 h-12 rounded-2xl bg-white border border-zinc-100 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors shadow-inner shrink-0">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-xl font-black uppercase italic text-zinc-950 leading-none">{item.s}</h4>
-                                        <p className="text-zinc-500 text-sm md:text-base font-bold italic leading-tight">{item.c}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="max-w-3xl mx-auto p-10 rounded-[3rem] bg-zinc-950 text-white text-center space-y-6 relative overflow-hidden shadow-2xl">
-                            <div className="absolute top-0 right-0 p-8 opacity-5">
-                                <ShieldCheck className="w-32 h-32" />
-                            </div>
-                            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-500">EXPERT VALIDATION</p>
-                            <p className="text-xl md:text-2xl font-bold italic leading-relaxed text-zinc-300">
-                                "Engineered using real operational patterns from 15+ years of hospitality, healthcare, and retail oversight. Trusted by frontline teams, designed for real-world execution."
-                            </p>
-                        </div>
-                    </div>
-                </Section>
-
                 {/* --- SECTION: INSIDE A LIVE OPERATION --- */}
-                <Section id="inside" className="bg-zinc-50/50" noSpine>
+                <Section id="inside" className="bg-white" noSpine>
                     <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
                         <div className="text-center max-w-3xl mx-auto space-y-4">
                             <SectionEyebrow text="INSIDE THE SYSTEM" />
@@ -465,16 +405,16 @@ export default function HomePage() {
                                 <LedgerSimulation />
                             </div>
                             
-                            <div className="grid gap-12">
+                            <div className="grid gap-8">
                                 {[
                                     { t: "NO NEW APPS", d: "Staff use existing phones and Google accounts. No app-adoption battle.", i: Smartphone },
                                     { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
-                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap },
-                                    { t: "VISUAL VERIFICATION", d: "Managers attach reference standards and request photo proof for critical tasks.", i: Eye }
+                                    { t: "VISUAL VERIFICATION", d: "Managers attach reference standards and request photo proof for critical tasks.", i: Eye },
+                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-6 group text-left">
-                                        <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors shadow-sm shrink-0">
-                                            <feat.i className="w-6 h-6" />
+                                        <div className="w-12 h-12 rounded-xl bg-[#F8F6F2] border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm">
+                                            <feat.i className="w-6 h-6 text-zinc-400 group-hover:text-emerald-500 transition-colors" />
                                         </div>
                                         <div className="space-y-1">
                                             <p className="text-base md:text-lg font-black uppercase text-zinc-950 italic">{feat.t}</p>
@@ -495,7 +435,7 @@ export default function HomePage() {
                                 <SectionEyebrow text="OPERATIONAL CONTINUITY" />
                                 <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-white font-headline">Operations shouldn't stop for software.</h3>
                                 <p className="text-zinc-400 text-lg italic leading-relaxed font-medium">
-                                    Our systems are built for real-world environments, including unstable connectivity in basements, kitchens, and remote sites. Execution never waits for a login screen.
+                                    Our systems are built for real-world environments, including unstable connectivity in basements, kitchens, and warehouses. Sync resumes automatically when connection stabilizes.
                                 </p>
                                 <div className="flex items-center gap-4 text-emerald-500 font-black italic uppercase">
                                     <Wifi className="w-6 h-6 opacity-40" />
@@ -512,48 +452,6 @@ export default function HomePage() {
                                     <Database className="w-6 h-6 opacity-40" />
                                     <span>Permanent access. Zero SaaS dependency.</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- SECTION: THE RESIGNATION SHIELD --- */}
-                <Section className="bg-white">
-                    <div className="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
-                        <div className="space-y-10">
-                            <div className="space-y-6">
-                                <SectionEyebrow text="THE OUTCOME" />
-                                <h2 className="text-[38px] md:text-[68px] font-extrabold font-headline tracking-tighter uppercase italic leading-[0.85] text-[#111111]">
-                                    OPERATIONS SHOULD SURVIVE STAFF TURNOVER.
-                                </h2>
-                            </div>
-                            <p className="text-lg md:text-2xl text-[#4B5563] font-medium leading-[1.4] italic border-l-4 border-[#B89B5E]/20 pl-8">
-                                When your smartest manager resigns, your standards shouldn't leave with them. We transform tribal knowledge into permanent infrastructure.
-                            </p>
-                            <div className="grid sm:grid-cols-2 gap-8">
-                                {[
-                                    { t: "Standardization", d: "Across all locations", i: Target },
-                                    { t: "Fast Onboarding", d: "Hours, not weeks", i: GraduationCap },
-                                    { t: "Audit-ready", d: "Permanent proof", i: ShieldCheck },
-                                    { t: "Resignation Shield", d: "Standards stay", i: History }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-4">
-                                        <item.i className="w-5 h-5 text-[#B89B5E] shrink-0" />
-                                        <div className="space-y-1">
-                                            <p className="text-sm font-bold uppercase text-[#121212]">{item.t}</p>
-                                            <p className="text-xs text-[#5F6368] italic uppercase font-black tracking-widest">{item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="relative">
-                            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 aspect-[4/5] bg-zinc-200">
-                                <img 
-                                    src="https://i.postimg.cc/Gt3b4Mvc/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" 
-                                    alt="Personnel Resilience Narrative" 
-                                    className="w-full h-full object-cover grayscale-[0.2]" 
-                                />
                             </div>
                         </div>
                     </div>
@@ -604,18 +502,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-const ShieldAlertIcon = ({ className }: { className?: string }) => (
-    <svg 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        className={className}
-    >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-        <path d="M12 8v4" /><path d="M12 16h.01" />
-    </svg>
-);

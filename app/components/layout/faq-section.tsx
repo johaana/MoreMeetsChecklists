@@ -31,7 +31,7 @@ export const FaqSection = () => (
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Do employees need technical training?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>Very minimal. Most teams start using it immediately.</p>
-                            <p>Because it runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions and reference images, acting as an on-the-job coach.</p>
+                            <p>Because it runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions and reference images, acting as an on-the-job coach. Tasks can still be logged during unstable connectivity and sync automatically once internet resumes.</p>
                         </AccordionContent>
                     </AccordionItem>
 
