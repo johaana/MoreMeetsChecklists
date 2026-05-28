@@ -528,7 +528,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
 
             {/* --- 8. PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
-            <PricingClient pack={pack} />
+            <PricingClient pack={premiumPacks[0]} />
 
             {/* --- 9. CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
@@ -563,14 +563,10 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         <div className="space-y-8 md:space-y-12 text-center lg:text-left">
                             <div className="space-y-5">
                                 <h2 className="text-[36px] md:text-[64px] font-black tracking-tighter uppercase italic leading-[0.9]">
-                                    {res.ctaTitle?.split('\n').map((line, i) => (
-                                        <React.Fragment key={i}>{line}<br/></React.Fragment>
-                                    )) || (
-                                        <>BRING STRUCTURE <br/> BACK TO <br/> <span className="text-emerald-500">OPERATIONS.</span></>
-                                    )}
+                                    BRING STRUCTURE <br/> BACK TO <br/> <span className="text-emerald-500">OPERATIONS.</span>
                                 </h2>
                                 <p className="text-base md:text-[26px] text-white/40 font-bold italic leading-tight">
-                                    {res.ctaSubline || "LESS CHASING. MORE VISIBILITY. CALMER MORNINGS."}
+                                    LESS CHASING. MORE VISIBILITY. CALMER MORNINGS.
                                 </p>
                             </div>
                             
@@ -590,7 +586,13 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         <div className="bg-white/[0.03] border border-white/10 backdrop-blur-xl p-8 md:p-10 rounded-[2rem] space-y-6 shadow-2xl">
                              <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">OPERATIONAL OUTCOMES</p>
                              <div className="space-y-3">
-                                {res.outcomes.map((outcome, i) => (
+                                {[
+                                    "Visibility secured instantly",
+                                    "Teams aligned daily",
+                                    "Managers stop chasing",
+                                    "Execution tracked via proof",
+                                    "Compliance verified automatically"
+                                ].map((outcome, i) => (
                                     <div key={i} className="flex items-center gap-3 group">
                                         <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                             <Check className="w-2.5 h-2.5 text-[#22C55E]" />

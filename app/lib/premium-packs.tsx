@@ -1,4 +1,3 @@
-
 import { allPacks } from "./packs/all_packs";
 
 export type ChecklistTask = {
@@ -71,10 +70,10 @@ export const premiumPacks: PremiumPack[] = [
         if ((processedPack.priceINR ?? 0) > 0 || (processedPack.priceUSD ?? 0) > 0) {
             processedPack = {
                 ...processedPack,
-                priceINR: 3499,
-                anchorPriceINR: undefined,
-                priceUSD: 49,
-                anchorPriceUSD: undefined,
+                priceINR: 2499,
+                anchorPriceINR: 4999,
+                priceUSD: 29,
+                anchorPriceUSD: 59,
                 competitorPriceUSD: 599
             }
         }

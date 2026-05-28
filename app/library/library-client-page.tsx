@@ -44,7 +44,6 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => {
     const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
-    const displayTasks = Math.floor(totalTasks / 10) * 10;
 
     return (
         <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-2xl hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl relative group">
