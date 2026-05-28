@@ -1,16 +1,18 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v18.5.1 PRODUCTION LOCK (AUDIT READY)
+ * MOREMEETS™ SOVEREIGN ENGINE - v18.5.2 PRODUCTION LOCK (AUDIT READY)
  * ----------------------------------------------------------------------------
  * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
  * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
  * 4. AUDIT HEARTBEAT: Column J (STAMP) for automated verifiable records.
- * 5. SETUP GUIDE: Integrated Apps Script source for Institutional deployment.
+ * 5. EVIDENCE LAYER: Appended PROOF and REFERENCE columns (K:L).
+ * 6. SETUP GUIDE: Integrated Apps Script source + Beginner-friendly instructions.
  * ----------------------------------------------------------------------------
  */
 
@@ -229,8 +231,11 @@ export const handleDownload = (item: PremiumPack) => {
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
             { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
-            ...(isAuditEnabled ? [{ v: "STAMP", s: headerStyle }] : [])
         ];
+        if (isAuditEnabled) taskHeaders.push({ v: "STAMP", s: headerStyle });
+        taskHeaders.push({ v: "PROOF / EVIDENCE", s: headerStyle });
+        taskHeaders.push({ v: "REFERENCE IMAGE", s: headerStyle });
+
         const taskData: any[][] = [[], [], taskHeaders];
         
         for (let b = 0; b < 2; b++) {
@@ -262,6 +267,8 @@ export const handleDownload = (item: PremiumPack) => {
                     if (isAuditEnabled) {
                         row.push({ v: "", s: styles.locked });
                     }
+                    row.push({ v: "", s: styles.input }); // PROOF / EVIDENCE
+                    row.push({ v: "", s: styles.input }); // REFERENCE IMAGE
                     taskData.push(row);
                 });
             });
@@ -269,8 +276,11 @@ export const handleDownload = (item: PremiumPack) => {
         const taskWs = utils.aoa_to_sheet(taskData);
         const colWidths = [20, 25, 45, 25, 15, 15, 15, 45, 65];
         if (isAuditEnabled) colWidths.push(25);
+        colWidths.push(30); // PROOF
+        colWidths.push(30); // REFERENCE
         taskWs['!cols'] = colWidths.map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", isAuditEnabled ? 'J' : 'I');
+        const lastCol = isAuditEnabled ? 'L' : 'K';
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", lastCol);
         validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
@@ -351,6 +361,28 @@ export const handleDownload = (item: PremiumPack) => {
                 [{ v: "SECTION C — VERIFICATION", s: { font: { bold: true, sz: 12 } } }],
                 [{ v: "Go to [DAILY_TASKS] and enter your initials in the [DONE BY] column." }],
                 [{ v: "Wait 2-4 seconds. A secure timestamp MUST appear in Column J (STAMP)." }],
+                [],
+                [{ v: "SECTION D — HOW TO ADD PHOTO PROOF", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "DESKTOP:" }],
+                [{ v: "1. Click the cell under PROOF / EVIDENCE." }],
+                [{ v: "2. Paste a link (like Google Drive or a website) OR" }],
+                [{ v: "3. Go to top menu: [Insert] -> [Image] -> [Image in cell] to upload a file." }],
+                [],
+                [{ v: "MOBILE (Google Sheets App):", s: { font: { bold: true } } }],
+                [{ v: "1. Tap the empty cell." }],
+                [{ v: "2. Tap the [+] icon at the top of your screen." }],
+                [{ v: "3. Tap [Image] then choose [From camera] to take a live photo," }],
+                [{ v: "   OR [From photos] to select one from your gallery." }],
+                [],
+                [{ v: "SECTION E — HOW TO USE REFERENCE IMAGES", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "Managers can insert images of the 'Ideal Standard' (e.g., a perfect room setup) here." }],
+                [{ v: "Staff can then compare their live work against this visual benchmark." }],
+                [],
+                [{ v: "SECTION F — SYSTEM MAINTENANCE & TIPS", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "1. MAKING BACKUPS: Every week, go to [File] -> [Make a copy] to save a snapshot of your records." }],
+                [{ v: "2. ADDING TASKS: You can safely insert new rows or edit task text in Column C." }],
+                [{ v: "3. DO NOT TOUCH: Never delete or move Columns G (STATUS) or J (STAMP) as it will break the engine." }],
+                [{ v: "4. VIEWING AUDITS: Right-click any tab -> [Unhide] to see any raw record vaults if present." }],
                 [],
                 [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
                 [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
