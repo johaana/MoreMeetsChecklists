@@ -5,12 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v18.6.0 PILOT LOCK
+ * MOREMEETS™ SOVEREIGN ENGINE - v18.8.0 PRODUCTION ROLLOUT
  * ----------------------------------------------------------------------------
  * 1. APPEND-ONLY GEOMETRY: Columns K (PROOF) and L (REFERENCE) appended.
  * 2. STABLE HEARTBEAT: Columns E:F (Triggers), G (Status), and J (Stamp) remain locked.
  * 3. NON-TECHNICAL GUIDE: Simple explain-to-child instructions for field teams.
- * 4. NO STRUCTURAL CONTROLS: Freeze panes and protections removed per pilot rules.
+ * 4. OPTIONAL ADMIN CONTROLS: Section G added for manual hardening.
+ * 5. NO STRUCTURAL CONTROLS: Freeze panes and protections removed for zero-friction.
  * ----------------------------------------------------------------------------
  */
 
@@ -95,12 +96,6 @@ const sanitizeRisk = (text: string) => {
     return text.replace(/\[?Risk:\s?\[?/gi, "").replace(/\]/g, "").trim();
 };
 
-const validateSheetName = (name: string) => {
-    if (!SAFE_SHEET_NAME.test(name)) {
-        throw new Error(`Sovereign Security Violation: Invalid sheet name detected: "${name}".`);
-    }
-};
-
 export const handleDownload = (item: PremiumPack) => {
     try {
         if (!item) {
@@ -108,20 +103,9 @@ export const handleDownload = (item: PremiumPack) => {
         }
 
         const wb = utils.book_new();
-        // PROD AUDIT ENABLED PACKS
-        const isAuditEnabled = [
-            'hotels_and_resorts',
-            'restaurants',
-            'healthcare_and_hospital_operations',
-            'cinema_operations_pack',
-            'franchise_operations_pack',
-            'facility_management_blueprint',
-            'retail_jewellery_operations_pack',
-            'fashion_and_apparel_retail',
-            'supermarket_grocery_retail_pack',
-            'electronics_showroom_pack',
-            'school_operations_pack'
-        ].includes(item.id);
+        
+        // ALL PREMIUM PACKS ENABLED FOR AUDIT UPGRADE
+        const isAuditEnabled = item.priceINR > 0 || (item.priceUSD && item.priceUSD > 0);
 
         const COLORS = {
             PRIMARY_GREEN: "22C55E",  
@@ -172,7 +156,7 @@ export const handleDownload = (item: PremiumPack) => {
             };
         };
 
-        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
+        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'L') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
                 [] 
@@ -181,7 +165,6 @@ export const handleDownload = (item: PremiumPack) => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
-            // NO FREEZE PANES PER PILOT RULES
             ws['!views'] = [{ showGridLines: false }];
         };
 
@@ -221,16 +204,16 @@ export const handleDownload = (item: PremiumPack) => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS ---
+        // --- 03. DAILY_TASKS (APPEND-ONLY UPGRADE) ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
             { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
+            { v: "STAMP", s: headerStyle },
+            { v: "PROOF / EVIDENCE", s: headerStyle },
+            { v: "REFERENCE IMAGE", s: headerStyle }
         ];
-        if (isAuditEnabled) taskHeaders.push({ v: "STAMP", s: headerStyle });
-        taskHeaders.push({ v: "PROOF / EVIDENCE", s: headerStyle });
-        taskHeaders.push({ v: "REFERENCE IMAGE", s: headerStyle });
 
         const taskData: any[][] = [[], [], taskHeaders];
         
@@ -248,7 +231,7 @@ export const handleDownload = (item: PremiumPack) => {
                         ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
                         : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
 
-                    const row: any[] = [
+                    taskData.push([
                         { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
                         { v: role, s: styles.left },
                         { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
@@ -257,26 +240,17 @@ export const handleDownload = (item: PremiumPack) => {
                         { v: "", s: isV ? styles.input : styles.locked }, 
                         { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
                         { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                        { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
-                    ];
-
-                    if (isAuditEnabled) {
-                        row.push({ v: "", s: styles.locked });
-                    }
-                    row.push({ v: "", s: styles.input }); 
-                    row.push({ v: "", s: styles.input }); 
-                    taskData.push(row);
+                        { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } },
+                        { v: "", s: styles.locked }, // J: STAMP
+                        { v: "", s: styles.input },  // K: PROOF / EVIDENCE
+                        { v: "", s: styles.input }   // L: REFERENCE IMAGE
+                    ]);
                 });
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        const colWidths = [20, 25, 45, 25, 15, 15, 15, 45, 65];
-        if (isAuditEnabled) colWidths.push(25);
-        colWidths.push(30); 
-        colWidths.push(30); 
-        taskWs['!cols'] = colWidths.map(w => ({ wch: w }));
-        const lastCol = isAuditEnabled ? 'L' : 'K';
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", lastCol);
+        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25, 30, 30].map(w => ({ wch: w }));
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'L');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
@@ -299,8 +273,7 @@ export const handleDownload = (item: PremiumPack) => {
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
         // --- 05. BRANCH_SETUP ---
-        const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
-        const branchData: any[][] = [[], [], branchHeaders];
+        const branchData: any[][] = [[], [], [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }]];
         for (let i = 1; i <= 2; i++) {
             branchData.push([
                 { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
@@ -334,7 +307,7 @@ export const handleDownload = (item: PremiumPack) => {
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. SETUP_GUIDE (Audit Activation) ---
+        // --- 07. SETUP_GUIDE (EXPANDED INSTRUCTIONS) ---
         if (isAuditEnabled) {
             const guideData: any[][] = [
                 [{ v: "🛠️ SYSTEM SETUP & AUDIT ENGINE ACTIVATION", s: bannerStyle }],
@@ -347,43 +320,21 @@ export const handleDownload = (item: PremiumPack) => {
                 [{ v: "1. In your new Google Sheet, go to [Extensions] -> [Apps Script]." }],
                 [{ v: "2. Delete all existing text in the editor." }],
                 [{ v: "3. Copy and Paste the code provided at the bottom of this sheet." }],
-                [{ v: "4. Click the [Save] icon (floppy disk) and name it 'AuditEngine'." }],
+                [{ v: "4. Click the [Save] icon and name it 'AuditEngine'." }],
                 [{ v: "5. Click the [Clock] icon (Triggers) and add a trigger for 'onEdit' (On edit)." }],
                 [],
-                [{ v: "SECTION C — VERIFICATION", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "Go to [DAILY_TASKS] and enter your initials in the [DONE BY] column." }],
-                [{ v: "Wait 2-4 seconds. A secure timestamp MUST appear in Column J (STAMP)." }],
+                [{ v: "SECTION C — HOW TO ADD PHOTO PROOF", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "Desktop: Click PROOF cell -> Insert -> Image -> Image in cell." }],
+                [{ v: "Mobile (Google Sheets App): Tap cell -> Tap [+] -> Image -> From camera/gallery." }],
                 [],
-                [{ v: "SECTION D — HOW TO ADD PHOTO PROOF", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "DESKTOP:" }],
-                [{ v: "1. Click the cell under PROOF / EVIDENCE." }],
-                [{ v: "2. Paste a link (like Google Drive or a website) OR" }],
-                [{ v: "3. Go to top menu: [Insert] -> [Image] -> [Image in cell] to upload a file." }],
-                [],
-                [{ v: "MOBILE (Google Sheets App):", s: { font: { bold: true } } }],
-                [{ v: "1. Tap the empty cell." }],
-                [{ v: "2. Tap the [+] icon at the top of your screen." }],
-                [{ v: "3. Tap [Image] then choose [From camera] to take a live photo," }],
-                [{ v: "   OR [From photos] to select one from your gallery." }],
-                [],
-                [{ v: "SECTION E — HOW TO USE REFERENCE IMAGES", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "Managers can insert images of the 'Ideal Standard' (e.g., a perfect room setup) here." }],
-                [{ v: "Staff can then compare their live work against this visual benchmark." }],
-                [],
-                [{ v: "SECTION F — SYSTEM MAINTENANCE & TIPS", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "1. MAKING BACKUPS: Every week, go to [File] -> [Make a copy] to save a snapshot of your records." }],
-                [{ v: "2. ADDING TASKS: You can safely insert new rows or edit task text in Column C." }],
-                [{ v: "3. DO NOT TOUCH: Never delete or move Columns G (STATUS) or J (STAMP) as it will break the engine." }],
-                [{ v: "4. VIEWING AUDITS: Right-click any tab -> [Unhide] to see raw record vaults if present." }],
+                [{ v: "SECTION D — MAINTENANCE & BACKUPS", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "1. Weekly Backup: Go to [File] -> [Make a copy] to save your audit history." }],
+                [{ v: "2. Safe Editing: You can edit Task Text (Col C) but never move STATUS (Col G) or STAMP (Col J)." }],
                 [],
                 [{ v: "SECTION G — OPTIONAL ADMIN CONTROLS", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "Managers can manually add protections and freezes for structural stability:" }],
-                [{ v: "1. HOW TO FREEZE ROWS: Go to [View] -> [Freeze] -> [Up to row 3]. This keeps headers visible." }],
-                [{ v: "2. HOW TO FREEZE COLUMNS: Go to [View] -> [Freeze] -> [Up to column C]. This keeps tasks visible." }],
-                [{ v: "3. HOW TO PROTECT FORMULAS: Go to [Data] -> [Protect sheets and ranges]." }],
-                [{ v: "4. RECOMMENDED PROTECTION: Lock columns A, D, G, and J to prevent accidental deletion." }],
-                [{ v: "5. ⚠️ CRITICAL WARNING: DO NOT protect columns E, F, or K. They MUST remain editable for staff." }],
-                [{ v: "6. NOTE: Protections are optional. We recommend training staff before adding strict controls." }],
+                [{ v: "1. How to Freeze: View -> Freeze -> 3 rows (Header) / Up to Column C (Task identity)." }],
+                [{ v: "2. How to Protect: Data -> Protect sheets and ranges. Lock A, D, G, J." }],
+                [{ v: "3. ⚠️ IMPORTANT: Never protect E, F, or K. These must stay open for staff and mobile uploads." }],
                 [],
                 [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
                 [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -411,15 +362,6 @@ export const handleDownload = (item: PremiumPack) => {
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
-        // Final Range Lock
-        [startWs, dashWs, taskWs, libWs, branchWs, teamWs, sysWs].forEach(ws => {
-            const range = utils.decode_range(ws['!ref'] || "A1:A1");
-            const dataRows = (ws as any)['!data'] ? (ws as any)['!data'].length : 100;
-            range.e.r = Math.max(range.e.r, dataRows + 10);
-            ws['!ref'] = utils.encode_range(range);
-        });
-
-        // Hide Metadata
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
         if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
@@ -428,6 +370,5 @@ export const handleDownload = (item: PremiumPack) => {
         writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v18.xlsx`);
     } catch (error: any) {
         console.error("Institutional Engine Failure:", error);
-        alert(`Engine Error: ${error.message}`);
     }
 }
