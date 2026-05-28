@@ -1,3 +1,4 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -5,12 +6,13 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER ENGINE V4.9.1 - LABORATORY BUILD
+ * SOVEREIGN MASTER ENGINE V4.9.2 - LABORATORY BUILD
  * --------------------------------------------------
  * 1. MANDATORY CONVERSION: Red alert on START tab.
  * 2. WEB BRIDGE: Link to the visual /deploy-guide page.
  * 3. SOP PARITY: Full content restoration from hotel benchmark.
  * 4. EVIDENCE LAYER: Optional proof and reference columns (K:L).
+ * 5. ADMIN CONTROLS: Manual freeze/protect instructions in Section G.
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -74,7 +76,8 @@ export const handleDownloadAuditPrototype = () => {
             const endCIdx = utils.decode_col(endCol);
             if (!ws['!merges']) ws['!merges'] = [];
             ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
-            ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
+            // NO AUTO-FREEZE PER PILOT RULES
+            ws['!views'] = [{ showGridLines: false }];
         };
 
         const TABS = {
@@ -252,6 +255,21 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "Managers/trainers can upload: ideal room setup, food plating standards, cleaning benchmarks, engineering reference images, safety examples." }],
             [{ v: "Use the REFERENCE IMAGE column for visual training standards so staff can compare: Expected Standard ↔ Actual Execution." }],
             [],
+            [{ v: "SECTION F — SYSTEM MAINTENANCE & TIPS", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "1. MAKING BACKUPS: Every week, go to [File] -> [Make a copy] to save a snapshot of your records." }],
+            [{ v: "2. ADDING TASKS: You can safely insert new rows or edit task text in Column C." }],
+            [{ v: "3. DO NOT TOUCH: Never delete or move Columns G (STATUS) or J (STAMP) as it will break the engine." }],
+            [{ v: "4. VIEWING AUDITS: Right-click any tab -> [Unhide] to see raw record vaults if present." }],
+            [],
+            [{ v: "SECTION G — OPTIONAL ADMIN CONTROLS", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "Managers can manually add protections and freezes for structural stability:" }],
+            [{ v: "1. HOW TO FREEZE ROWS: Go to [View] -> [Freeze] -> [3 rows]. This keeps headers visible." }],
+            [{ v: "2. HOW TO FREEZE COLUMNS: Go to [View] -> [Freeze] -> [Up to column C]. This keeps tasks visible." }],
+            [{ v: "3. HOW TO PROTECT FORMULAS: Go to [Data] -> [Protect sheets and ranges]." }],
+            [{ v: "4. RECOMMENDED PROTECTION: Lock columns A, D, G, and J to prevent accidental deletion." }],
+            [{ v: "5. ⚠️ CRITICAL WARNING: DO NOT protect columns E, F, or K. They MUST remain editable for staff." }],
+            [{ v: "6. NOTE: Protections are optional. We recommend training staff before adding strict controls." }],
+            [],
             [{ v: "⚠️ IMPORTANT NOTE", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }],
             [{ v: "Photo proof is OPTIONAL unless management requires it for specific tasks. The system stays lightweight and fast even without images." }],
             [],
@@ -280,7 +298,7 @@ export const handleDownloadAuditPrototype = () => {
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        writeFile(wb, `SOVEREIGN_MASTER_V4.9.1.xlsx`);
+        writeFile(wb, `SOVEREIGN_MASTER_V4.9.2.xlsx`);
     } catch (error: any) {
         console.error("Master Generation Failure:", error);
     }
