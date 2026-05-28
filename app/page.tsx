@@ -66,7 +66,7 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 );
 
 const LedgerSimulation = () => (
-    <div className="relative group max-w-[1100px] mx-auto">
+    <div className="relative group max-w-[1250px] mx-auto">
         <div className="absolute -top-12 left-0 z-20">
             <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 italic">
                 Verifiable operational records.
@@ -80,7 +80,7 @@ const LedgerSimulation = () => (
                 <div className="bg-[#22C55E] text-white py-2 md:py-3 px-8 flex items-center justify-between gap-4 shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
-                            <Check className="w-3 h-3" strokeWidth={5} />
+                            <Check className="w-3.5 h-3.5" strokeWidth={5} />
                         </div>
                         <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">DAILY_EXECUTION_LEDGER_V18.5</span>
                     </div>
@@ -91,24 +91,24 @@ const LedgerSimulation = () => (
                     </div>
                 </div>
 
-                {/* High Density Grid - Symmetric Build */}
+                {/* High Density Grid - Symmetric Build with All 12 Columns */}
                 <div className="flex-1 overflow-x-auto no-scrollbar bg-[#F8F9FA] p-2">
-                    <table className="w-full text-left border-collapse min-w-[1400px] table-fixed rounded-lg overflow-hidden border border-zinc-200">
+                    <table className="w-full text-left border-collapse min-w-[1600px] table-fixed rounded-lg overflow-hidden border border-zinc-200">
                         <thead>
                             <tr className="bg-[#0F172A] text-white">
                                 {[
                                     { h: "BRANCH", w: "90px" },
-                                    { h: "ROLE", w: "120px" },
-                                    { h: "TECHNICAL TASK", w: "250px" },
+                                    { h: "ROLE", w: "130px" },
+                                    { h: "TECHNICAL TASK", w: "240px" },
                                     { h: "ASSIGNED TO", w: "110px" },
-                                    { h: "DONE BY", w: "80px" },
-                                    { h: "VERIFIED BY", w: "80px" },
-                                    { h: "STATUS", w: "100px" },
-                                    { h: "CONSEQUENCE / RISK", w: "200px" },
-                                    { h: "FLOOR INSTRUCTIONS", w: "250px" },
+                                    { h: "DONE BY", w: "90px" },
+                                    { h: "VERIFIED BY", w: "90px" },
+                                    { h: "STATUS", w: "110px" },
+                                    { h: "CONSEQUENCE / RISK", w: "220px" },
+                                    { h: "FLOOR INSTRUCTIONS", w: "280px" },
                                     { h: "STAMP", w: "140px" },
-                                    { h: "PROOF", w: "80px" },
-                                    { h: "REFERENCE", w: "80px" }
+                                    { h: "PROOF", w: "90px" },
+                                    { h: "REFERENCE", w: "90px" }
                                 ].map((col, i) => (
                                     <th key={i} style={{ width: col.w }} className="px-3 py-3 text-[8px] md:text-[10px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
                                 ))}
@@ -142,7 +142,9 @@ const LedgerSimulation = () => (
                                     <td className="px-3 py-3 border-r border-zinc-100 font-bold text-zinc-800 text-[9px] md:text-[11px] truncate">{row.r}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-tight">{row.t}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 text-zinc-400 font-bold text-[10px] md:text-[12px]">{row.a}</td>
+                                    {/* DONE BY - Pale Yellow Background */}
                                     <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px] bg-[#FEFCE8]")}>{row.db}</td>
+                                    {/* VERIFIED BY - Light Blue Background for completions */}
                                     <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", row.isDone ? "bg-[#EFF6FF]" : "")}>{row.vb}</td>
                                     <td className={cn(
                                         "px-2 py-3 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
@@ -586,4 +588,3 @@ export default function HomePage() {
         </div>
     );
 }
-
