@@ -5,11 +5,12 @@ import { hotels_and_resorts as item } from '@/lib/packs/hotels_and_resorts';
 import { APPS_SCRIPT_SOURCE } from './apps-script-source';
 
 /**
- * SOVEREIGN MASTER ENGINE V4.9 - LABORATORY BUILD
+ * SOVEREIGN MASTER ENGINE V4.9.1 - LABORATORY BUILD
  * --------------------------------------------------
  * 1. MANDATORY CONVERSION: Red alert on START tab.
  * 2. WEB BRIDGE: Link to the visual /deploy-guide page.
  * 3. SOP PARITY: Full content restoration from hotel benchmark.
+ * 4. EVIDENCE LAYER: Optional proof and reference columns (K:L).
  */
 
 export const handleDownloadAuditPrototype = () => {
@@ -64,7 +65,7 @@ export const handleDownloadAuditPrototype = () => {
             };
         };
 
-        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'J') => {
+        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'L') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
                 [] 
@@ -125,7 +126,9 @@ export const handleDownloadAuditPrototype = () => {
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
             { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
-            { v: "STAMP", s: headerStyle }
+            { v: "STAMP", s: headerStyle },
+            { v: "PROOF / EVIDENCE", s: headerStyle },
+            { v: "REFERENCE IMAGE", s: headerStyle }
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         
@@ -152,14 +155,16 @@ export const handleDownloadAuditPrototype = () => {
                         { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
                         { v: t.consequence || "Compliance Gap", s: styles.left },
                         { v: t.floorAction || t.description || "", s: styles.left },
-                        { v: "", s: styles.locked } 
+                        { v: "", s: styles.locked },
+                        { v: "", s: styles.input }, // K: PROOF / EVIDENCE
+                        { v: "", s: styles.input }  // L: REFERENCE IMAGE
                     ]);
                 });
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'J');
+        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25, 30, 30].map(w => ({ wch: w }));
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'L');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
@@ -231,6 +236,25 @@ export const handleDownloadAuditPrototype = () => {
             [{ v: "1. Go to the [DAILY_TASKS] sheet. Enter your initials in any [DONE BY] cell." }],
             [{ v: "2. Wait 2-4 seconds. A timestamp MUST appear in Column J (STAMP)." }],
             [],
+            [{ v: "SECTION D — HOW TO ADD PHOTO PROOF", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "Desktop:" }],
+            [{ v: "1. Click the PROOF / EVIDENCE cell" }],
+            [{ v: "2. Paste a Google Drive image link OR Go to: Insert → Image → Image in Cell" }],
+            [],
+            [{ v: "Mobile (Google Sheets App):" }],
+            [{ v: "1. Tap the PROOF / EVIDENCE cell" }],
+            [{ v: "2. Tap Insert (+), tap Image" }],
+            [{ v: "3. Choose: Camera (take live photo) or Gallery / Photos (upload existing image)" }],
+            [],
+            [{ v: "Use this to upload: cleaning proof, maintenance proof, damaged item proof, inventory proof, VIP setup proof." }],
+            [],
+            [{ v: "SECTION E — HOW TO ADD REFERENCE IMAGES", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "Managers/trainers can upload: ideal room setup, food plating standards, cleaning benchmarks, engineering reference images, safety examples." }],
+            [{ v: "Use the REFERENCE IMAGE column for visual training standards so staff can compare: Expected Standard ↔ Actual Execution." }],
+            [],
+            [{ v: "⚠️ IMPORTANT NOTE", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }],
+            [{ v: "Photo proof is OPTIONAL unless management requires it for specific tasks. The system stays lightweight and fast even without images." }],
+            [],
             [{ v: "APPS SCRIPT SOURCE (COPY EVERYTHING BELOW THIS LINE):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
         ];
@@ -256,7 +280,7 @@ export const handleDownloadAuditPrototype = () => {
         const sysWs = utils.aoa_to_sheet(sysData);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
 
-        writeFile(wb, `SOVEREIGN_MASTER_V4.9.xlsx`);
+        writeFile(wb, `SOVEREIGN_MASTER_V4.9.1.xlsx`);
     } catch (error: any) {
         console.error("Master Generation Failure:", error);
     }
