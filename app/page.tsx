@@ -142,9 +142,7 @@ const LedgerSimulation = () => (
                                     <td className="px-3 py-4 border-r border-zinc-100 font-bold text-zinc-800 text-[9px] md:text-[11px] truncate">{row.r}</td>
                                     <td className="px-3 py-4 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-tight">{row.t}</td>
                                     <td className="px-3 py-4 border-r border-zinc-100 text-zinc-400 font-bold text-[10px] md:text-[12px]">{row.a}</td>
-                                    {/* DONE BY - Pale Yellow Background */}
                                     <td className={cn("px-2 py-4 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px] bg-[#FEFCE8]")}>{row.db}</td>
-                                    {/* VERIFIED BY - Light Blue Background for completions */}
                                     <td className={cn("px-2 py-4 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", row.isDone ? "bg-[#EFF6FF]" : "")}>{row.vb}</td>
                                     <td className={cn(
                                         "px-2 py-4 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
