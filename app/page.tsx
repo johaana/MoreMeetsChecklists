@@ -91,21 +91,24 @@ const LedgerSimulation = () => (
                     </div>
                 </div>
 
-                {/* High Density Grid */}
+                {/* High Density Grid - Symmetric Build */}
                 <div className="flex-1 overflow-x-auto no-scrollbar bg-[#F8F9FA] p-2">
-                    <table className="w-full text-left border-collapse min-w-[1000px] table-fixed rounded-lg overflow-hidden border border-zinc-200">
+                    <table className="w-full text-left border-collapse min-w-[1400px] table-fixed rounded-lg overflow-hidden border border-zinc-200">
                         <thead>
                             <tr className="bg-[#0F172A] text-white">
                                 {[
                                     { h: "BRANCH", w: "90px" },
-                                    { h: "ROLE", w: "110px" },
-                                    { h: "TECHNICAL TASK", w: "160px" },
-                                    { h: "DONE", w: "50px" },
-                                    { h: "VERIFIED", w: "60px" },
+                                    { h: "ROLE", w: "120px" },
+                                    { h: "TECHNICAL TASK", w: "250px" },
+                                    { h: "ASSIGNED TO", w: "110px" },
+                                    { h: "DONE BY", w: "80px" },
+                                    { h: "VERIFIED BY", w: "80px" },
                                     { h: "STATUS", w: "100px" },
+                                    { h: "CONSEQUENCE / RISK", w: "200px" },
+                                    { h: "FLOOR INSTRUCTIONS", w: "250px" },
+                                    { h: "STAMP", w: "140px" },
                                     { h: "PROOF", w: "80px" },
-                                    { h: "CONSEQUENCE / RISK", w: "180px" },
-                                    { h: "STAMP", w: "140px" }
+                                    { h: "REFERENCE", w: "80px" }
                                 ].map((col, i) => (
                                     <th key={i} style={{ width: col.w }} className="px-3 py-3 text-[8px] md:text-[10px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
                                 ))}
@@ -114,38 +117,42 @@ const LedgerSimulation = () => (
                         <tbody>
                             {[
                                 { 
-                                    b: "Site 01", r: "Gen. Manager", t: "LOBBY AMBIANCE AUDIT", db: "AK", vb: "AK", s: "COMPLETE", 
-                                    c: "Poor first-touch brand perception.", st: "2026-05-23 08:12", isDone: true, hasProof: true 
+                                    b: "Bandra", r: "Store Manager", t: "REVENUE RECONCILE", a: "Aditi", db: "A", vb: "A", s: "COMPLETE", 
+                                    c: "Untraceable internal revenue theft.", i: "Match total group cash-on-hand against bank deposit slips.", st: "2026-05-23 08:12", isDone: true, hasProof: true 
                                 },
                                 { 
-                                    b: "Site 02", r: "Supervisor", t: "FACILITY_SAFETY_SWEEP", db: "VS", vb: "", s: "COMPLETE", 
-                                    c: "Delayed check-in / safety risk.", st: "2026-05-23 10:05", isDone: true, hasProof: true 
+                                    b: "Bandra", r: "Vault Custodian", t: "DUAL-KEY VAULT ENTRY", a: "Imraan", db: "I", vb: "A", s: "COMPLETE", 
+                                    c: "Single-point vault theft window.", i: "Execute 2-key entry sequence with secondary custodian witness.", st: "2026-05-23 09:05", isDone: true, hasProof: true 
                                 },
                                 { 
-                                    b: "Site 03", r: "Security", t: "FIRE_PANEL_HEALTH", db: "RK", vb: "", s: "IN PROGRESS", 
-                                    c: "Fatal delay in response.", st: "—", isPending: true 
+                                    b: "Bandra", r: "Sales Assoc.", t: "DISPLAY INTEGRITY SWEEP", a: "Karan", db: "K", vb: "", s: "IN PROGRESS", 
+                                    c: "Undetected item-swap theft.", i: "Walk showcases every 60m to verify piece-to-holder match.", st: "—", isPending: true 
                                 },
                                 { 
-                                    b: "Site 01", r: "Engineer", t: "HVAC_THERMAL_LOG", db: "", vb: "", s: "OPEN", 
-                                    c: "Discomfort & energy waste.", st: "—", isOpen: true 
+                                    b: "Bandra", r: "Floor Super.", t: "OPENING READINESS SEAL", a: "Sarah", db: "S", vb: "A", s: "COMPLETE", 
+                                    c: "Delayed opening & lost sales.", i: "Verify 100% of station readiness protocols are signed.", st: "2026-05-23 08:00", isDone: true, hasProof: true 
                                 },
                                 { 
-                                    b: "Site 02", r: "Admin", t: "COMPLIANCE_KYC_SYNC", db: "PD", vb: "AK", s: "COMPLETE", 
-                                    c: "Legal violation / closure risk.", st: "2026-05-23 09:45", isDone: true, hasProof: true 
+                                    b: "Bandra", r: "CCTV Officer", t: "PERIMETER SCAN", a: "Imraan", db: "", vb: "", s: "OPEN", 
+                                    c: "Unmonitored intrusion points.", i: "Verify 30-day recording backup and focal point sync.", st: "—", isOpen: true 
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
                                     <td className="px-3 py-3 border-r border-zinc-100 text-zinc-500 font-medium text-[9px] md:text-[11px] truncate">{row.b}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 font-bold text-zinc-800 text-[9px] md:text-[11px] truncate">{row.r}</td>
-                                    <td className="px-3 py-3 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-none">{row.t}</td>
-                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.db ? "bg-[#FEFCE8]" : "bg-white text-zinc-900")}>{row.db}</td>
-                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", !row.vb && row.isDone ? "bg-[#EFF6FF]" : "bg-white")}>{row.vb}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 font-black text-zinc-950 uppercase text-[9px] md:text-[11px] leading-tight">{row.t}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-zinc-400 font-bold text-[10px] md:text-[12px]">{row.a}</td>
+                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px] bg-[#FEFCE8]")}>{row.db}</td>
+                                    <td className={cn("px-2 py-3 border-r border-zinc-100 font-black text-center text-[10px] md:text-[12px]", row.isDone ? "bg-[#EFF6FF]" : "")}>{row.vb}</td>
                                     <td className={cn(
                                         "px-2 py-3 border-r border-zinc-100 font-black text-center text-[8px] md:text-[10px]", 
                                         row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-400")
                                     )}>
                                         <span className={cn("px-2 py-1 rounded whitespace-nowrap", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
                                     </td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.c}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-emerald-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.i}</td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-zinc-950 font-mono text-[9px] md:text-[11px] font-black text-center bg-zinc-50">{row.st}</td>
                                     <td className="px-3 py-3 border-r border-zinc-100 text-center">
                                         {row.hasProof && (
                                             <div className="flex items-center justify-center gap-1.5">
@@ -154,8 +161,9 @@ const LedgerSimulation = () => (
                                             </div>
                                         )}
                                     </td>
-                                    <td className="px-3 py-3 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.c}</td>
-                                    <td className="px-3 py-3 text-zinc-950 font-mono text-[9px] md:text-[11px] font-black text-center bg-zinc-50 border-l border-zinc-200">{row.st}</td>
+                                    <td className="px-3 py-3 text-center">
+                                        {row.isDone && <div className="flex items-center justify-center"><Eye className="w-3.5 h-3.5 text-blue-500 opacity-50" /></div>}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -322,15 +330,15 @@ export default function HomePage() {
                         <div className="space-y-6">
                             <h2 className="text-xl md:text-2xl text-zinc-900 font-bold leading-tight italic">
                                 Most businesses already have SOPs. <br/>
-                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, and the manager being physically present.</span>
+                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, WhatsApp messages, and whether the manager is physically present.</span>
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
                                     "Tasks get missed regularly.",
                                     "Instructions change between shifts.",
-                                    "Managers keep calling for updates.",
+                                    "Managers keep calling teams for updates.",
                                     "New staff take weeks to train.",
-                                    "Nobody knows what was actually done."
+                                    "Nobody knows what was actually completed."
                                 ].map((text, i) => (
                                     <div key={i} className="flex items-center gap-3">
                                         <X className="w-4 h-4 text-red-500" />
@@ -340,18 +348,18 @@ export default function HomePage() {
                             </div>
                         </div>
 
-                        <div className="space-y-8 pt-12 border-t border-zinc-100">
+                        <div className="space-y-12 pt-12 border-t border-zinc-100">
                             <div className="space-y-4">
                                 <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
                                     MoreMeets fixes this using a system your team already understands.
                                 </h3>
                                 <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
-                                    We provide pre-built systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, and live tracking — all running directly through Google Sheets.
+                                    We provide pre-built operational systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, timestamps, and live tracking — all running directly through Google Sheets.
                                 </p>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12">
-                                <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-6 shadow-2xl">
+                            <div className="space-y-12">
+                                <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-6 shadow-2xl w-full">
                                     <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">FOR FRONT-LINE TEAMS</p>
                                     <div className="space-y-2">
                                         <p className="text-base font-bold italic leading-relaxed text-emerald-500">
@@ -361,7 +369,7 @@ export default function HomePage() {
                                             Staff simply open the sheet on their phone and complete tasks step-by-step. No new habits to learn.
                                         </p>
                                     </div>
-                                    <div className="space-y-3">
+                                    <div className="grid sm:grid-cols-2 gap-3">
                                          {[
                                             "No new software habits.",
                                             "No app downloads required.",
@@ -377,17 +385,17 @@ export default function HomePage() {
 
                                 <div className="space-y-6">
                                     <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">FOR MANAGEMENT</p>
-                                    <div className="grid grid-cols-1 gap-3">
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                          {[
                                             "see live progress instantly",
-                                            "request photo proof for critical nodes",
-                                            "attach reference standards",
+                                            "request photo proof",
+                                            "attach reference images",
                                             "verify execution timestamps",
                                             "monitor multiple departments",
                                             "standardize operations across branches"
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                            <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50/50">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                                                 <span className="text-sm font-black uppercase italic tracking-tighter text-zinc-900">{item}</span>
                                             </div>
                                         ))}
@@ -446,13 +454,13 @@ export default function HomePage() {
                             </p>
                         </div>
 
-                        <div className="grid lg:grid-cols-[1fr,0.4fr] gap-12 lg:gap-20 items-center">
+                        <div className="flex flex-col gap-12 lg:gap-20">
                             <div className="w-full relative">
                                 <div className="absolute -inset-10 bg-emerald-500/5 rounded-[5rem] blur-3xl opacity-50"></div>
                                 <LedgerSimulation />
                             </div>
                             
-                            <div className="grid gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                                 {[
                                     { t: "NO APP ADOPTION BATTLE", d: "Staff use existing phones and tools they understand. Zero friction for the front-line.", i: Smartphone },
                                     { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
@@ -578,3 +586,4 @@ export default function HomePage() {
         </div>
     );
 }
+
