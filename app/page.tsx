@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -37,7 +36,9 @@ import {
     Search,
     MoreVertical,
     Share2,
-    ShieldAlert
+    ShieldAlert,
+    Camera,
+    Eye
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -102,7 +103,8 @@ const LedgerSimulation = () => (
                                     { h: "DONE", w: "50px" },
                                     { h: "VERIFIED", w: "60px" },
                                     { h: "STATUS", w: "100px" },
-                                    { h: "CONSEQUENCE / RISK", w: "200px" },
+                                    { h: "PROOF", w: "60px" },
+                                    { h: "CONSEQUENCE / RISK", w: "180px" },
                                     { h: "STAMP", w: "140px" }
                                 ].map((col, i) => (
                                     <th key={i} style={{ width: col.w }} className="px-3 py-3 text-[8px] md:text-[10px] font-black uppercase tracking-tight border-r border-white/5 last:border-0">{col.h}</th>
@@ -113,11 +115,11 @@ const LedgerSimulation = () => (
                             {[
                                 { 
                                     b: "Colaba S.", r: "Gen. Manager", t: "LOBBY AMBIANCE AUDIT", db: "AK", vb: "AK", s: "COMPLETE", 
-                                    c: "Poor first-touch brand perception.", st: "2026-05-23 08:12", isDone: true 
+                                    c: "Poor first-touch brand perception.", st: "2026-05-23 08:12", isDone: true, hasProof: true 
                                 },
                                 { 
                                     b: "Bandra Main", r: "HK Lead", t: "ROOM_RELEASE_VERIFIED", db: "VS", vb: "", s: "COMPLETE", 
-                                    c: "Guest refund risk / delayed check-in.", st: "2026-05-23 10:05", isDone: true 
+                                    c: "Guest refund risk / delayed check-in.", st: "2026-05-23 10:05", isDone: true, hasProof: true 
                                 },
                                 { 
                                     b: "Dadar West", r: "Security Lead", t: "FIRE_PANEL_HEALTH", db: "RK", vb: "", s: "IN PROGRESS", 
@@ -129,11 +131,11 @@ const LedgerSimulation = () => (
                                 },
                                 { 
                                     b: "Colaba S.", r: "FO Manager", t: "C-FORM_COMPLIANCE", db: "PD", vb: "AK", s: "COMPLETE", 
-                                    c: "Legal violation and hospital closure.", st: "2026-05-23 09:45", isDone: true 
+                                    c: "Legal violation and hospital closure.", st: "2026-05-23 09:45", isDone: true, hasProof: true 
                                 },
                                 { 
                                     b: "Bandra Main", r: "Gen. Manager", t: "VIP_ROOM_READINESS", db: "AK", vb: "", s: "COMPLETE", 
-                                    c: "Loss of high-LTV loyalty.", st: "2026-05-23 11:30", isDone: true 
+                                    c: "Loss of high-LTV loyalty.", st: "2026-05-23 11:30", isDone: true, hasProof: true 
                                 },
                                 { 
                                     b: "Dadar West", r: "HK Lead", t: "POOL_CHEMISTRY_LOG", db: "VS", vb: "", s: "IN PROGRESS", 
@@ -145,7 +147,7 @@ const LedgerSimulation = () => (
                                 },
                                 { 
                                     b: "Colaba S.", r: "Security Lead", t: "EGRESS_SAFETY_SWEEP", db: "MK", vb: "", s: "COMPLETE", 
-                                    c: "Fatal entrapment during crisis.", st: "2026-05-23 07:15", isDone: true 
+                                    c: "Fatal entrapment during crisis.", st: "2026-05-23 07:15", isDone: true, hasProof: true 
                                 }
                             ].map((row, idx) => (
                                 <tr key={idx} className={cn("border-b border-zinc-100", idx % 2 === 0 ? "bg-white" : "bg-[#f9fafb]")}>
@@ -159,6 +161,9 @@ const LedgerSimulation = () => (
                                         row.isDone ? "text-emerald-600" : (row.isPending ? "text-amber-500" : "text-zinc-400")
                                     )}>
                                         <span className={cn("px-2 py-1 rounded whitespace-nowrap", row.isDone ? "bg-emerald-50" : (row.isPending ? "bg-amber-50" : ""))}>{row.s}</span>
+                                    </td>
+                                    <td className="px-3 py-3 border-r border-zinc-100 text-center">
+                                        {row.hasProof && <Camera className="w-3.5 h-3.5 mx-auto text-emerald-500 opacity-60" />}
                                     </td>
                                     <td className="px-3 py-3 border-r border-zinc-100 italic text-red-700 font-medium leading-tight text-[9px] md:text-[11px]">{row.c}</td>
                                     <td className="px-3 py-3 text-zinc-950 font-mono text-[9px] md:text-[11px] font-black text-center bg-zinc-50 border-l border-zinc-200">{row.st}</td>
@@ -232,7 +237,7 @@ export default function HomePage() {
                                 </h1>
                                 
                                 <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-xl">
-                                    MoreMeets turns SOPs into live operational systems with daily tasks, built-in instructions, and proof of completion — so work gets done properly even when managers are absent.
+                                    MoreMeets turns SOPs into live operational systems with daily tasks, built-in instructions, and timestamped + photo-backed proof of execution — so work gets done properly even when managers are absent.
                                 </p>
                                 
                                 <div className="flex flex-col gap-2.5 pt-1">
@@ -463,8 +468,9 @@ export default function HomePage() {
                             <div className="grid gap-12">
                                 {[
                                     { t: "NO NEW APPS", d: "Staff use existing phones and Google accounts. No app-adoption battle.", i: Smartphone },
-                                    { t: "AUTOMATIC AUDIT", d: "Tamper-resistant timestamps verify exactly when a task was finished.", i: Activity },
-                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap }
+                                    { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
+                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap },
+                                    { t: "VISUAL VERIFICATION", d: "Managers attach reference standards and request photo proof for critical tasks.", i: Eye }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-6 group text-left">
                                         <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors shadow-sm shrink-0">

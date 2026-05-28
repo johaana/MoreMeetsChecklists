@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -16,7 +15,7 @@ export const FaqSection = () => (
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-8">
                             <p>Most businesses already have SOPs. The problem is execution.</p>
-                            <p>Instructions become verbal. Managers lose visibility. Accountability disappears. MoreMeets converts SOPs into <strong>live daily execution systems</strong> with timestamps and audit-ready proof, so standards are followed even when you're absent.</p>
+                            <p>Instructions become verbal. Managers lose visibility. Accountability disappears. MoreMeets converts SOPs into <strong>live daily execution systems</strong> with timestamps and audit-ready proof, so standards are followed even when you're absent. Reference images help standardize execution across teams and locations.</p>
                         </AccordionContent>
                     </AccordionItem>
 
@@ -32,7 +31,7 @@ export const FaqSection = () => (
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Do employees need technical training?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>Very minimal. Most teams start using it immediately.</p>
-                            <p>Because it runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions, acting as an on-the-job coach.</p>
+                            <p>Because it runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions and reference images, acting as an on-the-job coach.</p>
                         </AccordionContent>
                     </AccordionItem>
 

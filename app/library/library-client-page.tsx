@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Search, ArrowRight, X, ChevronDown, LayoutGrid, Target } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown, LayoutGrid, Target, Camera } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -74,7 +74,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
             <CardContent className="px-6 md:px-12 py-0 flex-1">
                 <div className="grid grid-cols-2 gap-4 text-[7px] md:text-[9px] font-black text-white/20 uppercase tracking-[0.2em] border-y border-white/5 py-4 md:py-6">
                     <span className="flex items-center gap-2"><LayoutGrid className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {pack.checklists.length} DIVISIONS</span>
-                    <span className="flex items-center gap-2"><Target className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {displayTasks}+ SOPs</span>
+                    <span className="flex items-center gap-2"><Camera className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> EVIDENCE-READY</span>
                 </div>
             </CardContent>
 

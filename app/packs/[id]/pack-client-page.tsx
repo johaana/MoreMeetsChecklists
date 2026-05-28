@@ -25,7 +25,8 @@ import {
     Wrench,
     LayoutGrid,
     Eye,
-    ChevronRight
+    ChevronRight,
+    Camera
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -210,7 +211,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 <div className="grid grid-cols-2 lg:grid-cols-2 gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-4">
                                     {[
                                         { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
-                                        { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
+                                        { t: "PHOTO-BACKED VERIFICATION", i: Camera },
                                         { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
@@ -227,11 +228,11 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             </div>
 
                             <div className="hidden lg:flex flex-row items-center gap-6 md:gap-10 pt-2">
-                                <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
-                                    <Link href="#pricing">
+                                <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
+                                    <Link href="#pricing" className="flex items-center gap-4">
                                         LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                     </Link>
-                                </Button>
+                                </button>
                                 <div className="flex items-baseline gap-3">
                                     <span className="text-[38px] md:text-[50px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
                                     <div className="flex flex-col">
