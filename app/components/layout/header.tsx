@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -77,7 +76,7 @@ const BrandLogo = ({ forceTheme }: { forceTheme?: 'light' | 'dark' }) => (
             <span className={cn(
                 "text-[9px] font-bold uppercase tracking-[0.1em] leading-none mt-1",
                 forceTheme === 'dark' ? "text-white/40" : "text-[#6B7280]"
-            )}>Operational Standards</span>
+            )}>Spreadsheet-Native Infra</span>
         </div>
     </Link>
 );
@@ -85,12 +84,12 @@ const BrandLogo = ({ forceTheme }: { forceTheme?: 'light' | 'dark' }) => (
 export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-    const [isScrolled, setIsScrolled] = React.useState(false);
+    const [isScrolled, ReactSetIsScrolled] = React.useState(false);
     const pathname = usePathname();
 
     React.useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            ReactSetIsScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);

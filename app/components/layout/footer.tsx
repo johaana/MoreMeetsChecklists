@@ -11,7 +11,7 @@ export function Footer() {
                         <Logo className="h-6 w-6 text-primary" />
                         <div className="flex flex-col">
                             <span className="font-headline text-lg font-bold text-zinc-950 leading-none tracking-tight">MoreMeets™</span>
-                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-500 leading-none mt-1">Operational Infrastructure</span>
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-500 leading-none mt-1">Spreadsheet-Native Infrastructure</span>
                         </div>
                     </Link>
                     <p className="text-xs text-zinc-500 max-w-xs pt-4 font-bold italic leading-relaxed">

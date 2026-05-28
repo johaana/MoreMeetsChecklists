@@ -226,7 +226,8 @@ export default function HomePage() {
                                 </h1>
                                 
                                 <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-xl">
-                                    MoreMeets turns SOPs into live operational systems with daily tasks, built-in instructions, and timestamped + photo-backed proof of execution — so work gets done properly even when managers are absent.
+                                    MoreMeets turns SOPs into live operational systems with daily tasks, built-in instructions, and timestamped + photo-backed proof of execution. <br/><br/>
+                                    <span className="font-bold text-[#111111]">Think of it as a live operational control sheet for your entire business.</span>
                                 </p>
                                 
                                 <div className="flex flex-col gap-2.5 pt-1">
@@ -248,21 +249,13 @@ export default function HomePage() {
                             <div className="flex flex-col items-start gap-4">
                                 <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
                                     <Link href="/library" className="flex items-center justify-center gap-3">
-                                        GO LIVE IN 10 MINUTES: ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        DEPLOY FOR LIFE: ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </button>
                                 <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
                                     ONE-TIME PURCHASE • OWN FOREVER • FULLY EDITABLE
                                 </p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="absolute bottom-0 w-full bg-white/40 backdrop-blur-sm border-t border-black/5 py-4">
-                        <div className="container mx-auto px-6">
-                            <p className="text-[9px] font-black text-[#8B6B3F] uppercase tracking-[0.4em] text-center italic">
-                                NO SaaS LOCK-IN • BUILT IN EXCEL • DEPLOY IN 10 MINUTES • WORKS ON PHONES
-                            </p>
                         </div>
                     </div>
                 </section>
@@ -295,7 +288,7 @@ export default function HomePage() {
                                 </span>
                             </h1>
                             <p className="text-[14px] font-normal leading-[1.6] text-[#4B5563]">
-                                MoreMeets turns SOPs into live operational systems. Teams get daily tasks and built-in instructions to ensure standards survive busy shifts.
+                                MoreMeets turns SOPs into live operational systems. Think of it as a live control sheet for your business.
                             </p>
                         </div>
 
@@ -327,17 +320,17 @@ export default function HomePage() {
                 <Section className="bg-white border-b border-zinc-100" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="space-y-6">
-                            <p className="text-xl md:text-2xl text-zinc-900 font-bold leading-tight italic">
+                            <h2 className="text-xl md:text-2xl text-zinc-900 font-bold leading-tight italic">
                                 Most businesses already have SOPs. <br/>
-                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, WhatsApp messages, and whether the manager is physically present.</span>
-                            </p>
+                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, and the manager being physically present.</span>
+                            </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
-                                    "Tasks get missed.",
+                                    "Tasks get missed regularly.",
                                     "Instructions change between shifts.",
-                                    "Managers keep calling teams for updates.",
+                                    "Managers keep calling for updates.",
                                     "New staff take weeks to train.",
-                                    "Nobody knows what was actually completed."
+                                    "Nobody knows what was actually done."
                                 ].map((text, i) => (
                                     <div key={i} className="flex items-center gap-3">
                                         <X className="w-4 h-4 text-red-500" />
@@ -349,25 +342,30 @@ export default function HomePage() {
 
                         <div className="space-y-8 pt-12 border-t border-zinc-100">
                             <div className="space-y-4">
-                                <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
+                                <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
                                     MoreMeets fixes this using a system your team already understands.
                                 </h3>
                                 <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
-                                    We provide pre-built operational systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, timestamps, and live tracking — all running directly through Google Sheets.
+                                    We provide pre-built systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, and live tracking — all running directly through Google Sheets.
                                 </p>
                             </div>
 
                             <div className="grid lg:grid-cols-2 gap-12">
                                 <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-6 shadow-2xl">
                                     <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">FOR FRONT-LINE TEAMS</p>
-                                    <p className="text-base font-bold italic leading-relaxed">
-                                        Staff simply open the sheet on their phone and complete tasks step-by-step.
-                                    </p>
+                                    <div className="space-y-2">
+                                        <p className="text-base font-bold italic leading-relaxed text-emerald-500">
+                                            NO APP-ADOPTION BATTLE.
+                                        </p>
+                                        <p className="text-sm font-medium text-zinc-400 italic">
+                                            Staff simply open the sheet on their phone and complete tasks step-by-step. No new habits to learn.
+                                        </p>
+                                    </div>
                                     <div className="space-y-3">
                                          {[
-                                            "No new software.",
-                                            "No app downloads.",
-                                            "No complicated training."
+                                            "No new software habits.",
+                                            "No app downloads required.",
+                                            "No retraining your workforce."
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-3">
                                                 <Check className="w-4 h-4 text-emerald-500" />
@@ -400,7 +398,7 @@ export default function HomePage() {
 
                         <div className="space-y-6 pt-12 border-t border-zinc-100 text-center">
                             <p className="text-lg text-zinc-500 font-bold italic leading-relaxed max-w-2xl mx-auto">
-                                Everything is 100% editable and customizable to your business. The formulas, tracking logic, and audit structure are already built and ready.
+                                Everything is 100% editable for your business. The formulas, tracking logic, and audit structure are already built and ready.
                             </p>
                             <div className="flex flex-col md:flex-row justify-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 italic">
                                 <span className="flex items-center gap-2 justify-center"><Wifi className="w-4 h-4 opacity-40" /> Works Offline</span>
@@ -415,7 +413,7 @@ export default function HomePage() {
                 <Section className="bg-[#F8F6F2]" noSpine>
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-4">
-                            <SectionEyebrow text="THE OUTCOME" />
+                            <SectionEyebrow text="FROM CHAOS TO CLARITY" />
                             <h2 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">THE MORNING REALITY</h2>
                         </div>
                         <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-zinc-200 relative">
@@ -423,7 +421,7 @@ export default function HomePage() {
                             <div className="space-y-8 italic">
                                 <p className="text-lg md:text-xl text-zinc-700 leading-tight">
                                     "A restaurant owner with 3 branches used to spend every morning calling managers for updates. 
-                                    'Was stock checked?' 'Did housekeeping finish?' 'Did the freezer temperature get logged?' 'Was the opening checklist completed?'"
+                                    'Was stock checked?' 'Did housekeeping finish?' 'Did the freezer temperature get logged?'"
                                 </p>
                                 <div className="h-px w-20 bg-zinc-200 mx-auto" />
                                 <p className="text-lg md:text-xl text-zinc-900 font-bold leading-tight">
@@ -456,7 +454,7 @@ export default function HomePage() {
                             
                             <div className="grid gap-8">
                                 {[
-                                    { t: "NO NEW APPS", d: "Staff use existing phones and Google accounts. No app-adoption battle.", i: Smartphone },
+                                    { t: "NO APP ADOPTION BATTLE", d: "Staff use existing phones and tools they understand. Zero friction for the front-line.", i: Smartphone },
                                     { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
                                     { t: "VISUAL VERIFICATION", d: "Managers attach reference images and request photo proof for critical tasks.", i: Eye },
                                     { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap }
