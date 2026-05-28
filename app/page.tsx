@@ -312,6 +312,97 @@ export default function HomePage() {
                     </div>
                 </section>
 
+                {/* --- NEW SECTION: THE OPERATIONAL GAP --- */}
+                <Section className="bg-white border-b border-zinc-100" noSpine>
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="space-y-6">
+                            <p className="text-xl md:text-2xl text-zinc-900 font-bold leading-tight italic">
+                                Most businesses already have SOPs. <br/>
+                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, WhatsApp messages, and whether the manager is physically present.</span>
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {[
+                                    "Tasks get missed.",
+                                    "Instructions change between shifts.",
+                                    "Managers keep calling teams for updates.",
+                                    "New staff take weeks to train.",
+                                    "Nobody knows what was actually completed."
+                                ].map((text, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <X className="w-4 h-4 text-red-500" />
+                                        <span className="text-sm md:text-base font-black uppercase italic tracking-tighter text-zinc-900">{text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-8 pt-12 border-t border-zinc-100">
+                            <div className="space-y-4">
+                                <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
+                                    MoreMeets fixes this using a system your team already understands.
+                                </h3>
+                                <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
+                                    We provide pre-built operational systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, timestamps, and live tracking — all running directly through Google Sheets.
+                                </p>
+                            </div>
+
+                            <div className="grid lg:grid-cols-2 gap-12">
+                                <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-6 shadow-2xl">
+                                    <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">FOR FRONT-LINE TEAMS</p>
+                                    <p className="text-base font-bold italic leading-relaxed">
+                                        Staff simply open the sheet on their phone and complete tasks step-by-step.
+                                    </p>
+                                    <div className="space-y-3">
+                                         {[
+                                            "No new software.",
+                                            "No app downloads.",
+                                            "No complicated training."
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-center gap-3">
+                                                <Check className="w-4 h-4 text-emerald-500" />
+                                                <span className="text-xs font-black uppercase italic tracking-widest text-zinc-300">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-6">
+                                    <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">FOR MANAGEMENT</p>
+                                    <div className="grid grid-cols-1 gap-3">
+                                         {[
+                                            "see live progress",
+                                            "request photo proof",
+                                            "attach reference images",
+                                            "verify execution timestamps",
+                                            "monitor multiple departments",
+                                            "standardize operations across branches"
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-center gap-3">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                                <span className="text-sm font-black uppercase italic tracking-tighter text-zinc-900">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-6 pt-12 border-t border-zinc-100 text-center">
+                            <p className="text-lg text-zinc-500 font-bold italic leading-relaxed max-w-2xl mx-auto">
+                                Everything is editable and customizable to your business. The formulas, tracking logic, audit structure, and workflows are already built and ready.
+                            </p>
+                            <div className="flex flex-col md:flex-row justify-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 italic">
+                                <span className="flex items-center gap-2 justify-center"><Wifi className="w-4 h-4 opacity-40" /> Works Offline</span>
+                                <span className="flex items-center gap-2 justify-center"><History className="w-4 h-4 opacity-40" /> Permanent History</span>
+                                <span className="flex items-center gap-2 justify-center"><Lock className="w-4 h-4 opacity-40" /> Full Data Ownership</span>
+                            </div>
+                            <p className="text-lg md:text-xl font-black text-zinc-950 uppercase italic pt-4">
+                                Instead of buying another SaaS subscription, you deploy a practical operational system your team can actually use from Day 1.
+                            </p>
+                        </div>
+                    </div>
+                </Section>
+
                 {/* --- SECTION: HOW IT WORKS --- */}
                 <Section id="how-it-works" className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-24">
