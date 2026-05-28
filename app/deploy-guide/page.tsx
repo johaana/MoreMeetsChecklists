@@ -19,7 +19,11 @@ import {
     Users,
     ClipboardCheck,
     Cpu,
-    Target
+    Target,
+    Image as ImageIcon,
+    Camera,
+    Settings2,
+    Maximize2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -57,10 +61,10 @@ export default function DeployGuidePage() {
           <div className="text-center space-y-4 pb-12 border-b border-zinc-100">
             <Badge variant="outline" className="text-emerald-600 border-emerald-200 bg-emerald-50 px-6 py-2 uppercase font-black tracking-widest text-[10px] italic">Institutional Deployment Hub</Badge>
             <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter text-zinc-900 leading-[0.9]">
-                Audit Engine <br/><span className="text-emerald-500">Onboarding Manual</span>
+                Sovereign Engine <br/><span className="text-emerald-500">Deployment Manual</span>
             </h1>
             <p className="text-zinc-500 text-lg md:text-xl italic font-medium max-w-2xl mx-auto pt-4 leading-tight">
-              Sovereign Tier Deployment Guide for MoreMeets™ Audit Infrastructure.
+              A comprehensive guide to activating audit trails, visual standards, and administrative controls.
             </p>
           </div>
 
@@ -76,7 +80,7 @@ export default function DeployGuidePage() {
                 
                 <div className="space-y-6 text-zinc-700">
                     <p className="font-bold italic text-base leading-relaxed">
-                        Apps Script does NOT run inside Excel (.XLSX) mode. You MUST perform this conversion first:
+                        Automation scripts do NOT run inside standard Excel (.XLSX) mode. You MUST perform this conversion first:
                     </p>
                     <div className="p-6 bg-white border-l-4 border-red-500 rounded-r-xl shadow-inner space-y-4">
                         <p className="font-black text-zinc-950 text-lg uppercase italic">👉 Click File → Save as Google Sheets</p>
@@ -141,80 +145,106 @@ export default function DeployGuidePage() {
             </div>
           </ManualSection>
 
-          {/* SECTION C — HOW TO TEST */}
-          <ManualSection title="VERIFY SYSTEM HEARTBEAT" badge="SECTION C">
-            <div className="p-8 bg-zinc-50 rounded-[2rem] border border-zinc-100 space-y-6">
-                <p className="font-black text-zinc-950 uppercase italic tracking-tighter text-lg">Testing the execution logic:</p>
-                <div className="space-y-4 text-sm font-bold italic text-zinc-500">
-                    <p>1. Go to the <span className="text-zinc-950 font-black underline">DAILY_TASKS</span> sheet.</p>
-                    <p>2. Enter your initials in any <span className="text-emerald-600 font-black">DONE BY</span> column cell.</p>
-                    <p>3. Wait 2–4 seconds. A timestamp MUST appear in <span className="text-zinc-950 font-black">Column J (STAMP)</span>.</p>
-                    <p>4. Watch for the success signal: <span className="text-zinc-950 font-black">“1 audit record secured”</span>.</p>
-                </div>
-            </div>
-          </ManualSection>
-
-          {/* SECTION D — AUDIT HISTORY */}
-          <ManualSection title="AUDIT HISTORY ACCESS" badge="SECTION D">
-            <p className="text-zinc-500 font-bold italic leading-relaxed">
-                The full audit trail is stored in a secure, hidden layer. To view:
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4">
-                <div className="p-6 bg-white border border-zinc-100 rounded-xl space-y-2">
-                    <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none">HOW TO ACCESS</p>
-                    <p className="text-sm font-black text-zinc-950 uppercase italic">Right-click any tab → Unhide → _RECORDS_VAULT</p>
-                </div>
-                <div className="p-6 bg-white border border-zinc-100 rounded-xl space-y-2">
-                    <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none">GOVERNANCE RULE</p>
-                    <p className="text-sm font-black text-zinc-950 uppercase italic">Do NOT edit vault manually. It is append-only history.</p>
-                </div>
-            </div>
-          </ManualSection>
-
-          {/* SECTION E — SAFE USAGE */}
-          <ManualSection title="SAFE USAGE RULES" badge="SECTION E">
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                    <p className="text-xs font-black text-emerald-600 uppercase tracking-widest">SAFE TO DO</p>
-                    <ul className="space-y-3">
-                        {["Edit task text", "Add new rows", "Duplicate existing rows"].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm font-black text-zinc-950 uppercase italic">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-500" /> {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="space-y-4">
-                    <p className="text-xs font-black text-red-600 uppercase tracking-widest">PROHIBITED ACTIONS</p>
-                    <ul className="space-y-3">
-                        {["Delete formulas (Col G)", "Overwrite full rows", "Delete hidden sheets", "Bulk sort entire sheet"].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3 text-sm font-black text-zinc-400 uppercase italic">
-                                <AlertTriangle className="w-4 h-4 text-red-300" /> {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-          </ManualSection>
-
-          {/* SECTION F — ADMIN PROTECTION */}
-          <ManualSection title="ADMIN PROTECTION GUIDE" badge="SECTION F">
+          {/* NEW: SECTION C — EVIDENCE & REFERENCE LAYER */}
+          <ManualSection title="THE EVIDENCE LAYER" badge="SECTION C">
             <div className="space-y-8">
-                <p className="text-zinc-500 font-bold italic leading-relaxed">Recommended structural hardening for administrators:</p>
+                <p className="text-zinc-500 font-bold italic leading-relaxed">
+                    The Sovereign system includes two high-gravity columns to capture institutional memory and verify execution.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="p-8 bg-zinc-50 rounded-3xl border border-zinc-100 space-y-4">
+                        <div className="flex items-center gap-3 text-emerald-600">
+                            <Target className="w-5 h-5" />
+                            <h4 className="font-black uppercase italic tracking-tighter">Column K: PROOF</h4>
+                        </div>
+                        <p className="text-sm text-zinc-500 font-medium italic">
+                            Used by teams to optionally paste Drive links, photo links, or maintenance proof. This turns "Done" into "Verifiable."
+                        </p>
+                    </div>
+                    <div className="p-8 bg-zinc-50 rounded-3xl border border-zinc-100 space-y-4">
+                        <div className="flex items-center gap-3 text-blue-600">
+                            <ImageIcon className="w-5 h-5" />
+                            <h4 className="font-black uppercase italic tracking-tighter">Column L: REFERENCE</h4>
+                        </div>
+                        <p className="text-sm text-zinc-500 font-medium italic">
+                            Used by managers to place "Ideal Standard" images. Staff can compare the expected benchmark against their actual work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </ManualSection>
+
+          {/* NEW: SECTION D — PHOTO EVIDENCE PROTOCOL */}
+          <ManualSection title="HOW TO ADD PHOTO PROOF" badge="SECTION D">
+            <div className="grid md:grid-cols-2 gap-12">
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <ImageIcon className="w-5 h-5 text-zinc-400" />
+                        <h4 className="font-black uppercase italic tracking-tighter">Desktop Instructions</h4>
+                    </div>
+                    <ul className="space-y-4 text-sm font-bold italic text-zinc-500">
+                        <li className="flex items-start gap-3"><span className="text-zinc-950 font-black">1.</span> Click the PROOF / EVIDENCE cell.</li>
+                        <li className="flex items-start gap-3"><span className="text-zinc-950 font-black">2.</span> Paste a Google Drive image link.</li>
+                        <li className="flex items-start gap-3"><span className="text-zinc-950 font-black">3.</span> OR: Go to Insert → Image → Image in Cell.</li>
+                    </ul>
+                </div>
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <Camera className="w-5 h-5 text-emerald-500" />
+                        <h4 className="font-black uppercase italic tracking-tighter">Mobile App Instructions</h4>
+                    </div>
+                    <ul className="space-y-4 text-sm font-bold italic text-zinc-500">
+                        <li className="flex items-start gap-3"><span className="text-emerald-500 font-black">1.</span> Tap the PROOF / EVIDENCE cell.</li>
+                        <li className="flex items-start gap-3"><span className="text-emerald-500 font-black">2.</span> Tap the [+] icon at the top right.</li>
+                        <li className="flex items-start gap-3"><span className="text-emerald-500 font-black">3.</span> Tap Image → From Camera or Gallery.</li>
+                    </ul>
+                </div>
+            </div>
+          </ManualSection>
+
+          {/* REFINED: SECTION F — ADMIN PROTECTION */}
+          <ManualSection title="OPTIONAL ADMIN CONTROLS" badge="SECTION E">
+            <div className="space-y-8">
+                <p className="text-zinc-500 font-bold italic leading-relaxed">
+                    Most teams should start by operating the sheet normally. Once trained, use these native Google Sheets tools to harden the grid:
+                </p>
+                
                 <div className="grid gap-6">
+                    {/* Visual Stability */}
                     <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-6">
-                        <div className="grid sm:grid-cols-3 gap-8">
+                        <div className="flex items-center gap-3 text-emerald-500">
+                            <Maximize2 className="w-5 h-5" />
+                            <h4 className="text-lg font-black uppercase italic tracking-tighter">VISUAL STABILITY (FREEZE)</h4>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-8">
                             <div className="space-y-2">
-                                <p className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">01. FREEZE</p>
-                                <p className="text-xs font-bold italic text-zinc-400">Freeze headers for scroll stability.</p>
+                                <p className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">01. FREEZE HEADERS</p>
+                                <p className="text-sm font-bold italic text-white/70">View → Freeze → 3 Rows. Keeps instructions visible while scrolling.</p>
                             </div>
                             <div className="space-y-2">
-                                <p className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">02. PROTECT</p>
-                                <p className="text-xs font-bold italic text-zinc-400">Lock Column G and hidden vault sheets.</p>
+                                <p className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">02. FREEZE TASKS</p>
+                                <p className="text-sm font-bold italic text-white/70">View → Freeze → Up to Column C. Keeps task names visible while scrolling right.</p>
                             </div>
-                            <div className="space-y-2">
-                                <p className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">03. INPUTS</p>
-                                <p className="text-xs font-bold italic text-zinc-400">Keep only DONE BY / VERIFIED BY columns editable.</p>
+                        </div>
+                    </div>
+
+                    {/* Logic Hardening */}
+                    <div className="p-8 bg-zinc-50 border border-zinc-200 rounded-[2rem] space-y-6">
+                        <div className="flex items-center gap-3 text-zinc-950">
+                            <Lock className="w-5 h-5" />
+                            <h4 className="text-lg font-black uppercase italic tracking-tighter">LOGIC HARDENING (PROTECT)</h4>
+                        </div>
+                        <div className="space-y-4">
+                            <p className="text-sm font-bold italic text-zinc-500">Go to Data → Protect sheets and ranges to lock the following:</p>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="p-4 bg-white border border-zinc-100 rounded-xl">
+                                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">RECOMMENDED LOCKS</p>
+                                    <p className="text-xs font-bold text-zinc-400 mt-1 italic">Columns A, D, G, J (Formulas & Timestamps)</p>
+                                </div>
+                                <div className="p-4 bg-white border border-red-100 rounded-xl">
+                                    <p className="text-[10px] font-black text-red-600 uppercase tracking-widest">⚠️ NEVER PROTECT</p>
+                                    <p className="text-xs font-bold text-zinc-400 mt-1 italic">Columns E, F, K (Done By, Verified By, Proof)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
