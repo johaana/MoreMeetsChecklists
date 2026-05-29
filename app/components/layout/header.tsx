@@ -141,8 +141,8 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                 
                 <button className={cn(
                     "h-10 px-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-lg hover:translate-y-[-1px] transition-all active:scale-95 ml-4",
-                    isDarkHeader ? "bg-white text-black" : "bg-[#111111] text-white"
-                )} style={!isDarkHeader ? { backgroundColor: '#B89B5E', color: '#000' } : {}}>
+                    isDarkHeader ? "bg-white text-black" : "bg-[#B89B5E] text-black"
+                )}>
                     <Link href="/library">Get System</Link>
                 </button>
             </nav>
@@ -199,7 +199,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                             </div>
                          </ScrollArea>
                         <div className="p-6 bg-zinc-50 border-t">
-                            <Button asChild className="w-full h-14 rounded-xl text-white font-bold uppercase text-xs tracking-widest shadow-lg" style={{ backgroundColor: '#B89B5E', color: '#000' }}>
+                            <Button asChild className="w-full h-14 rounded-xl text-black font-bold uppercase text-xs tracking-widest shadow-lg" style={{ backgroundColor: '#B89B5E' }}>
                                 <Link href="/library">Get Your System</Link>
                             </Button>
                         </div>

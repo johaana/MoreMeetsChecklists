@@ -162,7 +162,6 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     const getVerticalParts = (p: PremiumPack) => {
         const displayTitle = getDisplayTitle(p.id, p.title);
         const parts = displayTitle.toUpperCase().split(' ');
-        // We ensure at least 2 parts for the UI layout
         if (parts.length === 1) return [parts[0], "OPERATIONS", "SYSTEM."];
         if (parts.length === 2) return [parts[0], parts[1], ""];
         return [parts[0], parts.slice(1).join(' '), ""];
@@ -228,9 +227,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             </div>
 
                             <div className="hidden lg:flex flex-row items-center gap-6 md:gap-10 pt-2">
-                                <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
+                                <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: "#B89B5E" }}>
                                     <Link href="#pricing" className="flex items-center gap-4">
-                                        LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                     </Link>
                                 </button>
                                 <div className="flex items-baseline gap-3">
@@ -273,9 +272,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <span className="text-[32px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
                                     <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME</span>
                                 </div>
-                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: BRAND_GREEN }}>
+                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: "#B89B5E" }}>
                                     <Link href="#pricing">
-                                        LIVE IN 10 MINUTES <ArrowRight className="w-4 h-4 ml-3" />
+                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 ml-3" />
                                     </Link>
                                 </Button>
                             </div>
@@ -528,7 +527,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
 
             {/* --- 8. PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
-            <PricingClient pack={premiumPacks[0]} />
+            <PricingClient pack={pack} />
 
             {/* --- 9. CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
@@ -571,9 +570,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             </div>
                             
                             <div className="flex flex-col items-center lg:items-start gap-4">
-                                <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl bg-[#F4A261] text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center">
+                                <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center" style={{ backgroundColor: "#B89B5E" }}>
                                     <Link href="#pricing" className="flex items-center gap-3">
-                                        LIVE IN 10 MINUTES NOW <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
+                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
                                     </Link>
                                 </button>
                                 <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.2em] text-emerald-500/60 italic">

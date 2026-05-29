@@ -40,7 +40,11 @@ import {
     Camera,
     Eye,
     ChevronRight,
-    MousePointer2
+    MousePointer2,
+    Award,
+    HardHat,
+    Scale,
+    Landmark
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -70,6 +74,8 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 
 const LedgerSimulation = () => (
     <div className="relative group max-w-[1250px] mx-auto">
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none" />
+        
         <div className="absolute -top-12 left-0 z-20">
             <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 italic">
                 Verifiable operational records.
@@ -77,7 +83,6 @@ const LedgerSimulation = () => (
         </div>
         
         <div className="relative z-10 w-full bg-zinc-950 rounded-[2.5rem] md:rounded-[4rem] border-[10px] md:border-[16px] border-zinc-900 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.6)] overflow-hidden ring-1 ring-white/10">
-            {/* Google Sheets Header Simulation */}
             <div className="bg-[#22C55E] text-white py-2 md:py-3 px-8 flex items-center justify-between gap-4 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
@@ -92,7 +97,6 @@ const LedgerSimulation = () => (
                 </div>
             </div>
 
-            {/* THE ACTUAL PRODUCT SCREENSHOT */}
             <div className="w-full relative overflow-hidden bg-white">
                 <img 
                     src="https://i.postimg.cc/5y3hF93d/Screenshot-2026-05-28-202324.png" 
@@ -101,7 +105,6 @@ const LedgerSimulation = () => (
                 />
             </div>
             
-            {/* Status Bar */}
             <div className="bg-white border-t border-zinc-100 h-10 flex items-center justify-between px-8 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -155,10 +158,10 @@ export default function HomePage() {
                                     </span>
                                 </div>
 
-                                <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
-                                    YOUR BUSINESS SHOULD NOT <br />
+                                <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
+                                    CAPTURE <br />
                                     <span className="relative inline-block mt-1">
-                                        DEPEND ON MEMORY.
+                                        MEMORY.
                                         <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                     </span>
                                 </h1>
@@ -184,9 +187,9 @@ export default function HomePage() {
                             </div>
 
                             <div className="flex flex-col items-start gap-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
+                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="/library" className="flex items-center justify-center gap-3">
-                                        DEPLOY SYSTEM: ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </button>
                                 <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
@@ -196,6 +199,30 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
+
+                {/* --- STATUTORY TRUST STRIP --- */}
+                <div className="w-full bg-white py-12 border-b border-zinc-100 relative z-40">
+                    <div className="container mx-auto px-6">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                            <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.4em] font-headline">STATUTORY ALIGNMENT</span>
+                            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-30 grayscale">
+                                {[
+                                    { label: "ISO 9001", icon: ShieldCheck },
+                                    { label: "HACCP", icon: Activity },
+                                    { label: "FSSAI", icon: Scale },
+                                    { label: "OSHA", icon: HardHat },
+                                    { label: "NABH", icon: Award },
+                                    { label: "JCI", icon: Landmark }
+                                ].map((standard) => (
+                                    <div key={standard.label} className="flex items-center gap-2">
+                                        <standard.icon className="w-4 h-4" />
+                                        <span className="text-xs font-black uppercase italic tracking-tighter">{standard.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* --- 2. OPERATIONAL CONTEXT --- */}
                 <Section className="bg-white border-b border-zinc-100" noSpine>
@@ -428,7 +455,7 @@ export default function HomePage() {
                         <div className="flex flex-col items-center gap-10">
                             <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group" style={{ backgroundColor: BRAND_GOLD, color: '#000' }}>
                                 <Link href="/library" className="flex items-center gap-6">
-                                    Get System: ₹2,499 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
+                                    DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
                                 </Link>
                             </button>
                             <p className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.5em] text-zinc-400 italic">
