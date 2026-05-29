@@ -254,9 +254,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     </h1>
                                     
                                     <div className="space-y-4">
-                                        <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
+                                        <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
                                             {res.heroSubline} <br/>
-                                            <span className="text-zinc-400 text-base">{res.strategicParagraph}</span>
+                                            <span className="text-zinc-500 text-base">{res.strategicParagraph}</span>
                                         </p>
                                     </div>
                                     
