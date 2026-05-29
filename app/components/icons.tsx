@@ -5,6 +5,10 @@ import { cn } from '@/lib/utils';
 
 export const ICONS = LucideIcons;
 
+// --- BRAND COLOR DEFINITIONS ---
+export const BRAND_GREEN = "#1F3A34";
+export const BRAND_GOLD = "#B89B5E";
+
 type LogoProps = {
   variant?: 'light' | 'dark';
   className?: string;
@@ -12,8 +16,6 @@ type LogoProps = {
 
 export const Logo = ({ variant = 'light', className }: LogoProps) => {
   const isDark = variant === 'dark';
-  const BRAND_GOLD = "#B89B5E";
-  const BRAND_GREEN = "#1F3A34";
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
