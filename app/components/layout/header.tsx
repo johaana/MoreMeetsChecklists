@@ -67,11 +67,11 @@ const SolutionsList = () => (
 
 const BrandLogo = () => (
      <Link href="/" className="group" prefetch={false}>
-        <div className="h-11 w-28 md:w-32 bg-zinc-950 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg overflow-hidden transition-transform group-hover:scale-[1.02]">
+        <div className="h-11 w-28 md:w-32 bg-zinc-950 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg overflow-hidden transition-transform group-hover:scale-[1.02] ring-1 ring-white/5">
             <img 
                 src={LOGO_URL} 
                 alt="MoreMeets Logo" 
-                className="h-full w-auto object-contain scale-[1.3]" 
+                className="h-full w-auto object-contain scale-[1.6]" 
             />
         </div>
     </Link>

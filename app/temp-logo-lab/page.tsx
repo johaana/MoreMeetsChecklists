@@ -5,11 +5,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight,
-    Check,
-    Monitor,
-    Smartphone,
-    Layout,
-    Eye
+    Search,
+    Maximize,
+    ZoomIn,
+    Crop,
+    Monitor
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -17,7 +17,6 @@ import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
 const MASTER_LOGO_URL = "https://i.postimg.cc/L55mTYQP/Whats-App-Image-2026-05-29-at-15-05-10.jpg";
-const DESCRIPTOR = "SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE";
 
 interface LogoOptionProps {
     id: string;
@@ -25,37 +24,31 @@ interface LogoOptionProps {
     description: string;
     className: string;
     imgClassName?: string;
-    showDescriptor?: boolean;
 }
 
-const LogoOption = ({ id, title, description, className, imgClassName, showDescriptor = true }: LogoOptionProps) => (
+const LogoOption = ({ id, title, description, className, imgClassName }: LogoOptionProps) => (
     <div className="flex flex-col gap-6 p-8 rounded-[2.5rem] border border-zinc-100 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group">
         <div className="space-y-1">
             <div className="flex items-center justify-between">
                 <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">OPTION {id}</span>
-                <Badge variant="outline" className="text-[8px] font-black uppercase tracking-widest border-zinc-200">PROTOTYPE</Badge>
+                <Badge variant="outline" className="text-[8px] font-black uppercase tracking-widest border-zinc-200">REFINED ZOOM</Badge>
             </div>
             <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{title}</h3>
             <p className="text-xs text-zinc-500 font-medium italic leading-relaxed">{description}</p>
         </div>
 
-        {/* PREVIEW AREA (Simulating Header context) */}
-        <div className="h-40 bg-[#F8F6F2] rounded-2xl border border-zinc-100 flex flex-col items-center justify-center relative overflow-hidden">
+        {/* PREVIEW AREA */}
+        <div className="h-48 bg-[#F8F6F2] rounded-2xl border border-zinc-100 flex flex-col items-center justify-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-px bg-zinc-200/50" />
             
             <div className="flex flex-col items-center gap-2">
-                <div className={cn("overflow-hidden transition-all duration-500", className)}>
+                <div className={cn("overflow-hidden flex items-center justify-center transition-all duration-500", className)}>
                     <img 
                         src={MASTER_LOGO_URL} 
                         alt="MoreMeets Logo" 
-                        className={cn("h-full w-auto object-contain", imgClassName)} 
+                        className={cn("h-full w-auto object-contain transition-transform duration-500", imgClassName)} 
                     />
                 </div>
-                {showDescriptor && (
-                    <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 leading-none">
-                        {DESCRIPTOR}
-                    </span>
-                )}
             </div>
         </div>
     </div>
@@ -76,14 +69,14 @@ export default function LogoLabPage() {
                     {/* Header */}
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.6em] font-black text-[10px] px-10 py-3 rounded-none bg-white shadow-sm italic">
-                            IDENTITY IMPLEMENTATION LAB V4.0
+                            IDENTITY IMPLEMENTATION LAB V5.0
                         </Badge>
                         <div className="space-y-2">
                             <h1 className="text-5xl md:text-[6rem] font-black font-headline italic uppercase tracking-tighter text-zinc-900 leading-[0.85]">
-                                Framing <span className="text-zinc-300">Options.</span>
+                                High-Vis <span className="text-zinc-300">Framing.</span>
                             </h1>
                             <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest max-w-2xl mx-auto pt-4">
-                                Testing how to best house the master asset in the daylight header.
+                                Optimized zoom & cropping for institutional authority.
                             </p>
                         </div>
                     </div>
@@ -93,51 +86,50 @@ export default function LogoLabPage() {
                         
                         <LogoOption 
                             id="01"
-                            title="The Matte Capsule"
-                            description="A dark container that blends the logo's black background, creating a unified 'button' feel."
-                            className="h-10 px-6 bg-zinc-950 rounded-full flex items-center justify-center shadow-lg group-hover:scale-105"
-                            imgClassName="scale-125"
+                            title="Refined Matte Capsule"
+                            description="Increased zoom factor (1.4x) to ensure 'MoreMeets' text fills the container height properly."
+                            className="h-11 w-32 bg-zinc-950 rounded-full shadow-lg"
+                            imgClassName="scale-[1.4]"
                         />
 
                         <LogoOption 
                             id="02"
-                            title="The Refined Pill"
-                            description="An evolution of your current design. Larger padding and a subtle border to make it feel more intentional."
-                            className="h-12 px-8 bg-white border border-zinc-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-zinc-50"
-                            imgClassName="scale-110"
+                            title="Refined Pill"
+                            description="Standardized white pill with a 1.2x zoom. Cleanest approach for secondary nav elements."
+                            className="h-11 w-32 bg-white border border-zinc-200 rounded-full"
+                            imgClassName="scale-[1.2]"
                         />
 
                         <LogoOption 
                             id="03"
-                            title="The Gold Stamp"
-                            description="Adding a hairline gold border to anchor the logo and connect it to the brand's primary accent color."
-                            className="h-11 px-6 bg-zinc-950 rounded-xl border border-[#B89B5E]/30 flex items-center justify-center shadow-xl"
-                            imgClassName="scale-125"
+                            title="Refined Gold Stamp"
+                            description="1.3x zoom with a gold accent border. Strong connection to industry-specific coloring."
+                            className="h-11 w-32 bg-zinc-950 rounded-xl border border-[#B89B5E]/40 shadow-xl"
+                            imgClassName="scale-[1.3]"
                         />
 
                         <LogoOption 
                             id="04"
-                            title="The Edge-to-Edge"
-                            description="Minimalist approach. Removing the container entirely and using a larger scale to emphasize the built-in tagline."
-                            className="h-10 flex items-center justify-center"
-                            imgClassName="scale-[1.75]"
-                            showDescriptor={false}
+                            title="Max Edge-to-Edge"
+                            description="Aggressive crop (2.2x zoom) removing all excess black background. Pure focus on the wordmark."
+                            className="h-12 w-40"
+                            imgClassName="scale-[2.2]"
                         />
 
                         <LogoOption 
                             id="05"
-                            title="The Floating Block"
-                            description="A modern square-rounded block with a high-contrast shadow. Good for tech-heavy positioning."
-                            className="h-14 w-32 bg-zinc-950 rounded-2xl flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
-                            imgClassName="scale-150"
+                            title="REFINED FLOATING BLOCK"
+                            description="The selected direction. Software-grade 1.6x zoom within a high-gravity squircle container. Maximum content visibility."
+                            className="h-14 w-32 bg-zinc-950 rounded-2xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.4)] ring-1 ring-white/5"
+                            imgClassName="scale-[1.6]"
                         />
 
                         <LogoOption 
                             id="06"
-                            title="The Glass Vault"
-                            description="A semi-transparent blur container. Best for headers that scroll over imagery or varied content."
-                            className="h-11 px-8 bg-zinc-950/90 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center"
-                            imgClassName="scale-110"
+                            title="Refined Glass Vault"
+                            description="1.3x zoom within a blurred translucent frame. Best for high-motion hero sections."
+                            className="h-11 w-32 bg-zinc-950/90 backdrop-blur-md rounded-xl border border-white/10"
+                            imgClassName="scale-[1.3]"
                         />
 
                     </div>
@@ -146,7 +138,7 @@ export default function LogoLabPage() {
                     <div className="pt-20 border-t border-zinc-100 flex flex-col items-center gap-10">
                         <div className="space-y-4 text-center">
                             <p className="text-[11px] font-black text-zinc-300 uppercase tracking-[1em] italic">SOVEREIGN_SYSTEM_MARKS_2025</p>
-                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which framing commands most <span className="text-emerald-600">Authority?</span></h3>
+                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which crop commands most <span className="text-emerald-600">Authority?</span></h3>
                         </div>
                         
                         <div className="flex gap-6">
