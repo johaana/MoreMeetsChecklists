@@ -13,6 +13,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { cn } from "@/lib/utils";
 import { getDisplayTitle } from "@/lib/ui-mappings";
 
+const LOGO_URL = "https://i.postimg.cc/L55mTYQP/Whats-App-Image-2026-05-29-at-15-05-10.jpg";
+
 const ELITE_PACK_IDS = [
     'restaurants',
     'hotels_and_resorts',
@@ -63,20 +65,14 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ forceTheme }: { forceTheme?: 'light' | 'dark' }) => (
-     <Link href="/" className="flex items-center justify-center gap-2.5 group" prefetch={false}>
-        <div className="w-6 h-6 rounded-md flex items-center justify-center text-white" style={{ backgroundColor: '#2E7D5A' }}>
-            <Check className="w-4 h-4" strokeWidth={3} />
-        </div>
-        <div className="flex flex-col">
-            <span className={cn(
-                "font-headline text-lg font-bold leading-none tracking-tight",
-                forceTheme === 'dark' ? "text-white" : "text-[#111111]"
-            )}>MoreMeets™</span>
-            <span className={cn(
-                "text-[9px] font-bold uppercase tracking-[0.1em] leading-none mt-1",
-                forceTheme === 'dark' ? "text-white/40" : "text-[#6B7280]"
-            )}>Spreadsheet-Native Infra</span>
+const BrandLogo = () => (
+     <Link href="/" className="group" prefetch={false}>
+        <div className="h-11 w-28 md:w-32 bg-zinc-950 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg overflow-hidden transition-transform group-hover:scale-[1.02]">
+            <img 
+                src={LOGO_URL} 
+                alt="MoreMeets Logo" 
+                className="h-full w-auto object-contain scale-[1.3]" 
+            />
         </div>
     </Link>
 );
@@ -107,14 +103,14 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
 
     return (
         <header className={cn(
-            "px-8 lg:px-12 h-[64px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
+            "px-6 lg:px-12 h-[64px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
             (isScrolled || forceTheme === 'dark') ? "bg-black/30 backdrop-blur-2xl border-b border-white/5" : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )} style={!(isScrolled || forceTheme === 'dark') ? {
             background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
             backdropFilter: 'blur(14px)'
         } : {}}>
             <div className="flex items-center">
-                <BrandLogo forceTheme={(isScrolled || forceTheme === 'dark') ? 'dark' : 'light'} />
+                <BrandLogo />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
@@ -169,7 +165,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-white border-l-black/5 shadow-2xl">
                          <SheetHeader className="p-4 border-b border-black/5">
                             <SheetTitle>
-                                <BrandLogo forceTheme="light" />
+                                <BrandLogo />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
@@ -208,11 +204,11 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                 </Accordion>
                             </div>
                          </ScrollArea>
-                         <div className="p-4 bg-zinc-50 border-t">
-                            <Button asChild className="w-full h-14 rounded-xl bg-[#111111] text-white font-bold uppercase text-xs tracking-widest">
+                        <div className="p-6 bg-zinc-50 border-t">
+                            <Button asChild className="w-full h-14 rounded-xl bg-[#111111] text-white font-bold uppercase text-xs tracking-widest shadow-lg">
                                 <Link href="/library">Get Your System</Link>
                             </Button>
-                         </div>
+                        </div>
                     </SheetContent>
                 </Sheet>
             </div>
