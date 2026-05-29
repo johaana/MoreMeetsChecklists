@@ -77,10 +77,6 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  /**
-   * SOVEREIGN ASSET MAPPING v14.0
-   * Updated with user-provided high-fidelity situational photography.
-   */
   const assetMap: Record<string, { bg: string, squircle: string }> = {
       'restaurants': {
           bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
@@ -134,8 +130,8 @@ export default async function Page({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <SiteHeader forceTheme="dark" />
+    <div className="min-h-screen flex flex-col bg-[#F8F6F2]">
+      <SiteHeader forceTheme="light" />
       <main className="flex-1">
         <PackClientPage pack={pack} backgroundUrl={assets.bg} squircleUrl={assets.squircle} />
         <FaqSection />
