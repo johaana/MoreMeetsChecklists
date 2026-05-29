@@ -143,7 +143,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
-                        <div className="max-w-[650px] space-y-10">
+                        <div className="max-w-[700px] space-y-10">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
@@ -160,8 +160,8 @@ export default function HomePage() {
                                     </span>
                                 </h1>
                                 
-                                <p className="text-[18px] font-normal leading-[1.6] text-[#4B5563] max-w-xl">
-                                    Think of it as a live operational control sheet for your entire business. MoreMeets turns SOPs into live operational systems with daily tasks, built-in instructions, and timestamped + photo-backed proof of execution.
+                                <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#D6A85F]/20 pl-8 italic">
+                                    MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
                                 </p>
                                 
                                 <div className="flex flex-col gap-2.5 pt-1">

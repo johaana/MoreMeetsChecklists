@@ -34,10 +34,10 @@ export const Logo = ({ variant = 'light', className }: LogoProps) => {
           MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS</span>
         </h2>
         <span className={cn(
-          "text-[6px] md:text-[8px] font-black uppercase tracking-[0.25em] md:tracking-[0.35em] italic mt-1.5 md:mt-2 leading-none whitespace-nowrap",
+          "text-[6px] md:text-[7.5px] font-black uppercase tracking-[0.25em] md:tracking-[0.35em] italic mt-1.5 md:mt-2 leading-none whitespace-nowrap",
           isDark ? "text-white/40" : "text-zinc-400"
         )}>
-          WHERE SOPs MEET EXECUTION
+          SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
         </span>
       </div>
     </div>

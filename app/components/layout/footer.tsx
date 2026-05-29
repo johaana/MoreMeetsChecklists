@@ -14,10 +14,6 @@ export function Footer() {
                         Spreadsheet-native operational infrastructure for real-world businesses. 
                         Because memory is not a system.
                     </p>
-                    <div className="pt-4 hidden md:block">
-                        <p className="text-[9px] font-black uppercase tracking-widest text-zinc-400">Operational Manifesto:</p>
-                        <p className="text-[10px] italic font-medium text-zinc-500 mt-1">Systems serve people. People run systems. Luck is not a strategy.</p>
-                    </div>
                 </div>
                 <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
                     <h3 className="font-black mb-2 text-zinc-950 text-[10px] tracking-[0.3em]">RESOURCES</h3>
