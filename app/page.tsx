@@ -47,6 +47,9 @@ import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
 
+const BRAND_GREEN = "#1F3A34";
+const BRAND_GOLD = "#B89B5E";
+
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-20 md:py-32 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-black/[0.03] z-0 hidden lg:block" />}
@@ -58,8 +61,8 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const SectionEyebrow = ({ text }: { text: string }) => (
     <div className="flex items-center gap-3 md:gap-4 mb-6">
-        <div className="w-8 md:w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
-        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-[#8B6B3F] font-headline whitespace-nowrap">
+        <div className="w-8 md:w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
+        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-[#B89B5E] font-headline whitespace-nowrap">
             {text}
         </span>
     </div>
@@ -146,13 +149,13 @@ export default function HomePage() {
                         <div className="max-w-[850px] space-y-10">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
-                                    <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
-                                        WHERE SOPs MEET EXECUTION
+                                    <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
+                                    <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
+                                        SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
                                     </span>
                                 </div>
 
-                                <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase text-[#121212] tracking-[-0.04em] max-w-4xl">
+                                <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
                                     YOUR BUSINESS SHOULD NOT <br />
                                     <span className="relative inline-block mt-1">
                                         DEPEND ON MEMORY.
@@ -181,7 +184,7 @@ export default function HomePage() {
                             </div>
 
                             <div className="flex flex-col items-start gap-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group">
+                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="/library" className="flex items-center justify-center gap-3">
                                         DEPLOY SYSTEM: ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
@@ -423,7 +426,7 @@ export default function HomePage() {
                             </p>
                         </div>
                         <div className="flex flex-col items-center gap-10">
-                            <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group">
+                            <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group" style={{ backgroundColor: BRAND_GOLD, color: '#000' }}>
                                 <Link href="/library" className="flex items-center gap-6">
                                     Get System: ₹2,499 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
                                 </Link>
