@@ -186,7 +186,7 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    {/* --- DESKTOP ARCHITECTURE (Launch Standard) --- */}
+                    {/* --- DESKTOP ARCHITECTURE (Launch Standard with restored Ivory Gradient) --- */}
                     <div className="hidden md:block relative w-full h-[100svh] min-h-[700px]">
                         <div className="absolute inset-0 z-0">
                             <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
@@ -198,6 +198,7 @@ export default function HomePage() {
                                     style={{ filter: 'brightness(0.88) saturate(0.92) contrast(1.02)' }}
                                 />
                             </div>
+                            {/* Restored Layered Ivory Gradient */}
                             <div 
                                 className="absolute inset-0 z-20" 
                                 style={{ 

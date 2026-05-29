@@ -489,6 +489,33 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
+            {/* --- 6. OPERATIONAL SUSTAINABILITY (NEW SECTION ABOVE CTA) --- */}
+            <Section className="bg-[#1F3A34] text-white py-20 md:py-32" noSpine>
+                <div className="max-w-4xl mx-auto space-y-16">
+                    <div className="space-y-6 text-center">
+                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
+                        <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-center">Operational <br/> Sustainability.</h2>
+                        <p className="text-white/60 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 mx-auto max-w-xl text-center">
+                            Environmental sustainability is the byproduct of daily operational discipline and resource visibility.
+                        </p>
+                    </div>
+                    
+                    <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
+                        {sectorData.sustainability.map((item, i) => (
+                            <div key={i} className="flex flex-col gap-4 items-start group">
+                                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-[#B89B5E] group-hover:text-black transition-all duration-500 shadow-inner">
+                                    <item.i className="w-6 h-6" style={{ color: i % 2 === 0 ? BRAND_GOLD : '#10B981' }} />
+                                </div>
+                                <div className="space-y-2">
+                                    <h4 className="text-lg font-black uppercase italic text-white leading-tight text-left">{item.t}</h4>
+                                    <p className="text-zinc-400 text-[11px] font-bold italic uppercase leading-relaxed text-left">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+
             {/* --- 8. PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
