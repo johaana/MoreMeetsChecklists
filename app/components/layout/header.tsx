@@ -71,7 +71,7 @@ const BrandLogo = () => (
             <img 
                 src={LOGO_URL} 
                 alt="MoreMeets Logo" 
-                className="h-full w-auto object-contain scale-[1.6]" 
+                className="h-full w-auto object-contain scale-[2.4] brightness-125 contrast-125" 
             />
         </div>
     </Link>

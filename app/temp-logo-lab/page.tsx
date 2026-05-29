@@ -46,7 +46,7 @@ const LogoOption = ({ id, title, description, className, imgClassName }: LogoOpt
                     <img 
                         src={MASTER_LOGO_URL} 
                         alt="MoreMeets Logo" 
-                        className={cn("h-full w-auto object-contain transition-transform duration-500", imgClassName)} 
+                        className={cn("h-full w-auto object-contain transition-all duration-500", imgClassName)} 
                     />
                 </div>
             </div>
@@ -69,14 +69,14 @@ export default function LogoLabPage() {
                     {/* Header */}
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.6em] font-black text-[10px] px-10 py-3 rounded-none bg-white shadow-sm italic">
-                            IDENTITY IMPLEMENTATION LAB V5.0
+                            IDENTITY IMPLEMENTATION LAB V6.2
                         </Badge>
                         <div className="space-y-2">
                             <h1 className="text-5xl md:text-[6rem] font-black font-headline italic uppercase tracking-tighter text-zinc-900 leading-[0.85]">
-                                High-Vis <span className="text-zinc-300">Framing.</span>
+                                High-Vis <span className="text-zinc-300">Refinement.</span>
                             </h1>
                             <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest max-w-2xl mx-auto pt-4">
-                                Optimized zoom & cropping for institutional authority.
+                                Optimized contrast and ultra-zoom for boardroom authority.
                             </p>
                         </div>
                     </div>
@@ -118,10 +118,10 @@ export default function LogoLabPage() {
 
                         <LogoOption 
                             id="05"
-                            title="REFINED FLOATING BLOCK"
-                            description="The selected direction. Software-grade 1.6x zoom within a high-gravity squircle container. Maximum content visibility."
+                            title="REFINED FLOATING BLOCK (PRO)"
+                            description="The selected direction. Enhanced 2.4x zoom with 125% contrast/brightness boost to make the gold pop."
                             className="h-14 w-32 bg-zinc-950 rounded-2xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.4)] ring-1 ring-white/5"
-                            imgClassName="scale-[1.6]"
+                            imgClassName="scale-[2.4] brightness-125 contrast-125"
                         />
 
                         <LogoOption 
