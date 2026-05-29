@@ -2,18 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { IconComponent } from "@/components/icons";
+import { Logo, IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Menu, ChevronDown, Check } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import { getDisplayTitle } from "@/lib/ui-mappings";
-
-const LOGO_URL = "https://i.postimg.cc/L55mTYQP/Whats-App-Image-2026-05-29-at-15-05-10.jpg";
 
 const ELITE_PACK_IDS = [
     'restaurants',
@@ -65,18 +63,6 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = () => (
-     <Link href="/" className="group" prefetch={false}>
-        <div className="h-11 w-28 md:w-32 bg-zinc-950 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg overflow-hidden transition-transform group-hover:scale-[1.02] ring-1 ring-white/5">
-            <img 
-                src={LOGO_URL} 
-                alt="MoreMeets Logo" 
-                className="h-full w-auto object-contain scale-[2.4] brightness-125 contrast-125" 
-            />
-        </div>
-    </Link>
-);
-
 export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -96,16 +82,24 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
         setIsDropdownOpen(false);
     }, [pathname]);
 
+    const isDarkHeader = isScrolled || forceTheme === 'dark';
+
     const navLinkClass = cn(
         "text-[13px] font-medium transition-all",
-        (isScrolled || forceTheme === 'dark') ? "text-white/85 hover:text-white" : "text-[#2A2A2A]/85 hover:text-[#111111]"
+        isDarkHeader ? "text-white/85 hover:text-white" : "text-[#2A2A2A]/85 hover:text-[#111111]"
+    );
+
+    const BrandLogo = () => (
+         <Link href="/" className="group" prefetch={false}>
+            <Logo variant={isDarkHeader ? 'dark' : 'light'} />
+        </Link>
     );
 
     return (
         <header className={cn(
-            "px-6 lg:px-12 h-[64px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
-            (isScrolled || forceTheme === 'dark') ? "bg-black/30 backdrop-blur-2xl border-b border-white/5" : "bg-white/80 backdrop-blur-md border-b border-black/5"
-        )} style={!(isScrolled || forceTheme === 'dark') ? {
+            "px-6 lg:px-12 h-[72px] flex items-center fixed top-0 w-full z-[100] transition-all duration-500",
+            isDarkHeader ? "bg-black/30 backdrop-blur-2xl border-b border-white/5" : "bg-white/80 backdrop-blur-md border-b border-black/5"
+        )} style={!isDarkHeader ? {
             background: 'linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.18) 100%)',
             backdropFilter: 'blur(14px)'
         } : {}}>
@@ -120,10 +114,10 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn(navLinkClass, "flex items-center gap-1.5 py-5")}>
-                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", (isScrolled || forceTheme === 'dark') ? "text-white/40" : "text-zinc-400")} />
+                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", isDarkHeader ? "text-white/40" : "text-zinc-400")} />
                     </button>
                     {isDropdownOpen && (
-                        <div className="absolute top-[64px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                        <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                             <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
@@ -131,10 +125,10 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                     </div>
                                 </ScrollArea>
                                 <div className="bg-black/[0.02] p-4 border-t border-black/5 flex items-center justify-between px-10">
-                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-600 hover:text-emerald-700 transition-colors p-2 rounded-md hover:bg-black/5">
+                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-[#1F3A34] hover:text-[#B89B5E] transition-colors p-2 rounded-md hover:bg-black/5">
                                         View All Systems &rarr;
                                     </Link>
-                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-emerald-600 hover:text-emerald-700 transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
+                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-[#1F3A34] hover:text-[#B89B5E] transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
                                         Social Impact (Free)
                                     </Link>
                                 </div>
@@ -147,7 +141,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                 
                 <button className={cn(
                     "h-10 px-6 rounded-full font-bold uppercase text-[11px] tracking-widest shadow-lg hover:translate-y-[-1px] transition-all active:scale-95 ml-4",
-                    (isScrolled || forceTheme === 'dark') ? "bg-white text-black" : "bg-[#111111] text-white"
+                    isDarkHeader ? "bg-white text-black" : "bg-[#111111] text-white"
                 )}>
                     <Link href="/library">Get System</Link>
                 </button>
@@ -157,15 +151,15 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || forceTheme === 'dark') ? "text-white/80 hover:bg-white/10" : "text-slate-900 hover:bg-black/5")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", isDarkHeader ? "text-white/80 hover:bg-white/10" : "text-slate-900 hover:bg-black/5")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-white border-l-black/5 shadow-2xl">
-                         <SheetHeader className="p-4 border-b border-black/5">
+                         <SheetHeader className="p-6 border-b border-black/5">
                             <SheetTitle>
-                                <BrandLogo />
+                                <Logo variant="light" />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
@@ -178,7 +172,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                 <div key={category} className="ml-4 pl-4 border-l border-black/5 mb-4">
-                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-emerald-600 mt-2 mb-2 font-headline">{category}</h5>
+                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-[#1F3A34] mt-2 mb-2 font-headline">{category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">

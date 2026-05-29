@@ -1,9 +1,48 @@
 "use client";
 
 import * as LucideIcons from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export const ICONS = LucideIcons;
-export const Logo = LucideIcons.CheckSquare;
+
+type LogoProps = {
+  variant?: 'light' | 'dark';
+  className?: string;
+};
+
+export const Logo = ({ variant = 'light', className }: LogoProps) => {
+  const isDark = variant === 'dark';
+  const BRAND_GOLD = "#B89B5E";
+  const BRAND_GREEN = "#1F3A34";
+
+  return (
+    <div className={cn("flex items-center gap-3", className)}>
+      <div className={cn(
+        "w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg transition-transform group-hover:scale-105 duration-500",
+        isDark ? "bg-white/5 border border-white/10 backdrop-blur-md" : "bg-[#1F3A34]"
+      )}>
+        <LucideIcons.ShieldCheck 
+          className="w-5 h-5 md:w-6 md:h-6" 
+          style={{ color: BRAND_GOLD }} 
+        />
+      </div>
+      <div className="flex flex-col">
+        <h2 className={cn(
+          "text-lg md:text-2xl font-black italic tracking-tighter uppercase flex items-center leading-none",
+          isDark ? "text-white" : "text-[#1F3A34]"
+        )}>
+          MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS</span>
+        </h2>
+        <span className={cn(
+          "text-[6px] md:text-[8px] font-black uppercase tracking-[0.25em] md:tracking-[0.35em] italic mt-1.5 md:mt-2 leading-none whitespace-nowrap",
+          isDark ? "text-white/40" : "text-zinc-400"
+        )}>
+          WHERE SOPs MEET EXECUTION
+        </span>
+      </div>
+    </div>
+  );
+};
 
 type IconComponentProps = {
   name?: string;
