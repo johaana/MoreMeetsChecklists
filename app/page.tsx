@@ -129,72 +129,131 @@ export default function HomePage() {
             <main className="flex-1">
                 
                 {/* --- 1. THE CINEMATIC HERO --- */}
-                <section className="relative w-full h-[100svh] min-h-[700px] flex flex-col justify-start overflow-hidden bg-[#F8F6F2]">
-                    <div className="absolute inset-0 z-0">
-                        <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
-                            <iframe 
+                <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
+                    
+                    {/* --- MOBILE ARCHITECTURE (Variation 1.1: Sovereign Standard) --- */}
+                    <div className="md:hidden flex flex-col bg-white">
+                        <div className="w-full aspect-[4/5] bg-zinc-900 relative overflow-hidden">
+                             <iframe 
                                 src={VIMEO_URL} 
-                                className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.4] pointer-events-none"
+                                className="absolute inset-0 w-full h-full scale-[1.8] brightness-[0.9]" 
                                 frameBorder="0" 
                                 allow="autoplay; fullscreen" 
-                                style={{ filter: 'brightness(0.88) saturate(0.92) contrast(1.02)' }}
-                            />
+                             />
+                             <div className="absolute inset-0 bg-black/5" />
                         </div>
-                        <div 
-                            className="absolute inset-0 z-20" 
-                            style={{ 
-                                background: 'linear-gradient(90deg, rgba(248,246,242,0.92) 0%, rgba(248,246,242,0.85) 38%, rgba(248,246,242,0.4) 58%, rgba(0,0,0,0.05) 100%)' 
-                            }} 
-                        />
-                    </div>
-
-                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
-                        <div className="max-w-[850px] space-y-10">
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
-                                    <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
+                        <div className="p-8 space-y-7 flex flex-col justify-start">
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
+                                    <span className="text-[7.5px] font-black uppercase tracking-[0.15em] text-[#B89B5E] font-headline whitespace-nowrap">
                                         SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
                                     </span>
                                 </div>
-
-                                <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
-                                    CAPTURE <br />
+                                <h1 className="text-[2.2rem] font-bold font-headline leading-[0.9] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
+                                    YOUR BUSINESS <br />
                                     <span className="relative inline-block mt-1">
-                                        MEMORY.
-                                        <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
+                                        SHOULD NOT <br/> DEPEND ON MEMORY.
+                                        <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#B89B5E]/30 rounded-full" />
                                     </span>
                                 </h1>
-                                
-                                <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                    MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
-                                </p>
-                                
-                                <div className="flex flex-col gap-2.5 pt-1">
-                                    {[
-                                        "Works directly on Google Sheets.",
-                                        "No app-adoption battle.",
-                                        "Works during internet disruptions."
-                                    ].map((text, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
-                                            </div>
-                                            <span className="text-[13px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
-
-                            <div className="flex flex-col items-start gap-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
-                                    <Link href="/library" className="flex items-center justify-center gap-3">
-                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </Link>
+                            <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
+                                MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                            </p>
+                            <div className="flex flex-col gap-2.5">
+                                {[
+                                    "Works directly on Google Sheets.",
+                                    "No app-adoption battle.",
+                                    "Works during internet disruptions."
+                                ].map((text, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2 md:w-2.5 h-2 md:h-2.5 text-[#2E7D5A]" />
+                                        </div>
+                                        <span className="text-[10px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="pt-2 space-y-4">
+                                <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
+                                    <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499</Link>
                                 </button>
-                                <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
-                                    ONE-TIME PURCHASE • OWN FOREVER • FULLY EDITABLE
-                                </p>
+                                <button className="w-full text-[11px] font-black uppercase tracking-[0.2em] text-zinc-950 flex items-center justify-center gap-3 group italic">
+                                    <Link href="#inside" className="flex items-center gap-2">WATCH TEAMS OPERATE <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" /></Link>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* --- DESKTOP ARCHITECTURE (Standard Command) --- */}
+                    <div className="hidden md:block relative w-full h-[100svh] min-h-[700px]">
+                        <div className="absolute inset-0 z-0">
+                            <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
+                                <iframe 
+                                    src={VIMEO_URL} 
+                                    className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.4] pointer-events-none"
+                                    frameBorder="0" 
+                                    allow="autoplay; fullscreen" 
+                                    style={{ filter: 'brightness(0.88) saturate(0.92) contrast(1.02)' }}
+                                />
+                            </div>
+                            <div 
+                                className="absolute inset-0 z-20" 
+                                style={{ 
+                                    background: 'linear-gradient(90deg, rgba(248,246,242,0.92) 0%, rgba(248,246,242,0.85) 38%, rgba(248,246,242,0.4) 58%, rgba(0,0,0,0.05) 100%)' 
+                                }} 
+                            />
+                        </div>
+
+                        <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
+                            <div className="max-w-[850px] space-y-10">
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
+                                        <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
+                                            SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
+                                        </span>
+                                    </div>
+
+                                    <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
+                                        CAPTURE <br />
+                                        <span className="relative inline-block mt-1">
+                                            MEMORY.
+                                            <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
+                                        </span>
+                                    </h1>
+                                    
+                                    <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
+                                        MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                                    </p>
+                                    
+                                    <div className="flex flex-col gap-2.5 pt-1">
+                                        {[
+                                            "Works directly on Google Sheets.",
+                                            "No app-adoption battle.",
+                                            "Works during internet disruptions."
+                                        ].map((text, i) => (
+                                            <div key={i} className="flex items-center gap-3">
+                                                <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                    <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                                </div>
+                                                <span className="text-[13px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col items-start gap-4">
+                                    <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
+                                        <Link href="/library" className="flex items-center justify-center gap-3">
+                                            DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        </Link>
+                                    </button>
+                                    <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
+                                        ONE-TIME PURCHASE • OWN FOREVER • FULLY EDITABLE
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
