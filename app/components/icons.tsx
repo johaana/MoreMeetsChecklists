@@ -13,7 +13,6 @@ type LogoProps = {
 export const Logo = ({ variant = 'light', className }: LogoProps) => {
   const isDark = variant === 'dark';
   const BRAND_GOLD = "#B89B5E";
-  const BRAND_GREEN = "#1F3A34";
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
@@ -28,17 +27,11 @@ export const Logo = ({ variant = 'light', className }: LogoProps) => {
       </div>
       <div className="flex flex-col">
         <h2 className={cn(
-          "text-lg md:text-2xl font-black italic tracking-tighter uppercase flex items-center leading-none",
+          "text-xl md:text-2xl font-black italic tracking-tighter uppercase flex items-center leading-none",
           isDark ? "text-white" : "text-[#1F3A34]"
         )}>
           MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS</span>
         </h2>
-        <span className={cn(
-          "text-[6px] md:text-[7.5px] font-black uppercase tracking-[0.25em] md:tracking-[0.35em] italic mt-1.5 md:mt-2 leading-none whitespace-nowrap",
-          isDark ? "text-white/40" : "text-zinc-400"
-        )}>
-          SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
-        </span>
       </div>
     </div>
   );

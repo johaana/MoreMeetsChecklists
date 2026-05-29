@@ -143,7 +143,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
-                        <div className="max-w-[700px] space-y-10">
+                        <div className="max-w-[850px] space-y-10">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
@@ -152,10 +152,10 @@ export default function HomePage() {
                                     </span>
                                 </div>
 
-                                <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[0.95] uppercase text-[#121212] tracking-[-0.04em]">
-                                    YOUR BUSINESS SHOULD NOT <br />
+                                <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase text-[#121212] tracking-[-0.04em] max-w-4xl">
+                                    YOUR BUSINESS SHOULD NOT DEPEND <br />
                                     <span className="relative inline-block mt-1">
-                                        DEPEND ON MEMORY.
+                                        ON MEMORY.
                                         <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
                                     </span>
                                 </h1>
