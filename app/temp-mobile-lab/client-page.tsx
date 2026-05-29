@@ -20,6 +20,7 @@ import {
     MoreHorizontal
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
@@ -29,7 +30,7 @@ const PrototypeFrame = ({ children, id, label, description }: { children: React.
         <div className="container px-6 mx-auto mb-10">
             <div className="space-y-1 pl-4 border-l-4 border-emerald-500">
                 <h2 className="text-sm font-black uppercase tracking-tighter text-zinc-950">Variation {id}: {label}</h2>
-                <p className="text-xs text-zinc-600 italic font-medium">{description}</p>
+                <p className="text-xs text-zinc-700 italic font-bold">{description}</p>
             </div>
         </div>
         {/* Device Frame Simulation */}
@@ -49,18 +50,18 @@ const MobileHeader = () => (
             </div>
             <div className="flex flex-col">
                 <span className="font-headline text-xs font-bold leading-none tracking-tight text-[#111111]">MoreMeets™</span>
-                <span className="text-[7px] font-bold uppercase tracking-[0.1em] text-zinc-600 leading-none mt-0.5">Sovereign Pro</span>
+                <span className="text-[7px] font-bold uppercase tracking-[0.1em] text-zinc-800 leading-none mt-0.5">Sovereign Pro</span>
             </div>
         </div>
         <div className="ml-auto">
-            <Menu className="w-5 h-5 text-zinc-500" />
+            <Menu className="w-5 h-5 text-zinc-600" />
         </div>
     </header>
 );
 
 const BronzeEyebrow = ({ className }: { className?: string }) => (
     <div className={cn("flex items-center gap-2", className)}>
-        <div className="w-6 h-px bg-[#8B6B3F] opacity-40 shrink-0" />
+        <div className="w-6 h-px bg-[#8B6B3F] opacity-60 shrink-0" />
         <span className="text-[7.5px] font-black uppercase tracking-[0.12em] text-[#8B6B3F] font-headline whitespace-nowrap">
             LIVE SOP SYSTEMS FOR REAL-WORLD OPERATIONS
         </span>
@@ -78,7 +79,7 @@ const Headline = ({ className }: { className?: string }) => (
 );
 
 const BodyText = ({ className }: { className?: string }) => (
-    <p className={cn("text-[14px] font-medium leading-[1.6] text-zinc-700", className)}>
+    <p className={cn("text-[14px] font-bold leading-[1.6] text-zinc-800", className)}>
         MoreMeets gives your team ready-to-use live SOP systems with daily tasks, built-in instructions, and clear execution tracking — so work gets done properly, even during busy shifts.
     </p>
 );
@@ -111,8 +112,8 @@ const ShareSheet = () => (
             <div className="w-12 h-1.5 rounded-full bg-zinc-100" />
         </div>
         <div className="flex items-center justify-between">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">Institutional Share</h4>
-            <X className="w-4 h-4 text-zinc-300" />
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Institutional Share</h4>
+            <X className="w-4 h-4 text-zinc-400" />
         </div>
         
         <div className="grid grid-cols-4 gap-4">
@@ -126,16 +127,16 @@ const ShareSheet = () => (
                     <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center transition-transform active:scale-90 shadow-sm", option.color)}>
                         <option.icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[8px] font-black uppercase tracking-widest text-zinc-500">{option.label}</span>
+                    <span className="text-[8px] font-black uppercase tracking-widest text-zinc-600">{option.label}</span>
                 </div>
             ))}
         </div>
 
         <div className="space-y-3 pt-2">
-            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400">RECIPIENT ACCESS</p>
+            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500">RECIPIENT ACCESS</p>
             <div className="p-4 rounded-xl border border-zinc-100 bg-zinc-50 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <Smartphone className="w-4 h-4 text-zinc-400" />
+                    <Smartphone className="w-4 h-4 text-zinc-500" />
                     <span className="text-[10px] font-bold uppercase italic text-zinc-900">Mobile Ledger v18.5</span>
                 </div>
                 <Badge variant="outline" className="text-[8px] font-black uppercase border-emerald-500/20 text-emerald-600 bg-emerald-50 px-2 py-0.5">READ-ONLY</Badge>
@@ -152,7 +153,7 @@ export default function MobileLabClient() {
                 <h1 className="text-3xl font-black font-headline italic uppercase tracking-tighter text-[#111111]">
                     Mobile <span className="text-[#1F3A34]">Sync Lab</span>
                 </h1>
-                <p className="text-zinc-600 italic font-medium text-sm">Testing institutional archetypes and visibility protocols.</p>
+                <p className="text-zinc-800 italic font-bold text-sm">Testing institutional archetypes and visibility protocols.</p>
             </div>
 
             {/* 1.6 THE SHARE PROTOCOL */}
@@ -198,11 +199,11 @@ export default function MobileLabClient() {
                     <div className="p-8 space-y-6 flex flex-col justify-start">
                         <BronzeEyebrow />
                         <Headline />
-                        <BodyText className="text-zinc-800" />
+                        <BodyText />
                         <TrustLine />
                         <div className="pt-2">
                             <PrimaryCTA />
-                            <button className="w-full mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-600 flex items-center justify-center gap-2 group">
+                            <button className="w-full mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-800 flex items-center justify-center gap-2 group">
                                 Watch Teams Use It <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                             </button>
                         </div>
@@ -239,7 +240,7 @@ export default function MobileLabClient() {
                         </div>
                         
                         <div className="flex justify-center">
-                            <button className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500 flex items-center gap-2">
+                            <button className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-800 flex items-center gap-2">
                                 <Smartphone className="w-3 h-3" /> MOBILE_ENGINE_ACTIVE
                             </button>
                         </div>
@@ -258,7 +259,7 @@ export default function MobileLabClient() {
                 description="Software-first layout with high-visibility status telemetry."
             >
                 <div className="flex flex-col h-full bg-[#F8F6F2] relative">
-                    <div className="px-8 h-8 flex items-center justify-between text-[8px] font-black text-zinc-600 uppercase tracking-widest bg-zinc-950/5">
+                    <div className="px-8 h-8 flex items-center justify-between text-[8px] font-black text-zinc-800 uppercase tracking-widest bg-zinc-950/5">
                         <span>9:41 AM</span>
                         <div className="flex items-center gap-2">
                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -293,7 +294,7 @@ export default function MobileLabClient() {
                             </div>
                             
                             <div className="space-y-3">
-                                <p className="text-[8px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">TRUST PROTOCOL</p>
+                                <p className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.4em] italic">TRUST PROTOCOL</p>
                                 <TrustLine />
                             </div>
                         </div>
@@ -302,19 +303,19 @@ export default function MobileLabClient() {
                     <div className="absolute bottom-0 w-full bg-white/95 backdrop-blur-xl border-t border-black/5 px-8 pt-4 pb-8 flex justify-between items-center z-50">
                         <div className="flex flex-col items-center gap-1">
                             <LayoutGrid className="w-5 h-5 text-emerald-600" />
-                            <span className="text-[7px] font-black text-zinc-600 uppercase">TASKS</span>
+                            <span className="text-[7px] font-black text-zinc-800 uppercase">TASKS</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 opacity-40">
-                            <Activity className="w-5 h-5 text-zinc-500" />
-                            <span className="text-[7px] font-black text-zinc-600 uppercase">VITALS</span>
+                            <Activity className="w-5 h-5 text-zinc-600" />
+                            <span className="text-[7px] font-black text-zinc-800 uppercase">VITALS</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 opacity-40">
-                            <ClipboardCheck className="w-5 h-5 text-zinc-500" />
-                            <span className="text-[7px] font-black text-zinc-600 uppercase">AUDIT</span>
+                            <ClipboardCheck className="w-5 h-5 text-zinc-600" />
+                            <span className="text-[7px] font-black text-zinc-800 uppercase">AUDIT</span>
                         </div>
                         <div className="flex flex-col items-center gap-1">
                             <Share2 className="w-5 h-5 text-emerald-600" />
-                            <span className="text-[7px] font-black text-zinc-600 uppercase">SHARE</span>
+                            <span className="text-[7px] font-black text-zinc-800 uppercase">SHARE</span>
                         </div>
                     </div>
                 </div>
