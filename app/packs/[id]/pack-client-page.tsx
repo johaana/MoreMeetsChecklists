@@ -177,7 +177,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             {/* --- HERO SECTION: THE DAYLIGHT COMMAND --- */}
             <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                 
-                {/* --- MOBILE ARCHITECTURE (Variation 1.1: Sovereign Standard) --- */}
+                {/* --- MOBILE ARCHITECTURE --- */}
                 <div className="md:hidden flex flex-col bg-white">
                     <div className="w-full aspect-[4/5] bg-zinc-900 relative overflow-hidden">
                         <img 
@@ -227,17 +227,17 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
 
                 {/* --- DESKTOP ARCHITECTURE --- */}
-                <div className="hidden md:block relative w-full h-[100svh] min-h-[700px]">
+                <div className="hidden md:block relative w-full min-h-[700px] pt-24 pb-12">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={backgroundUrl} 
                             alt="" 
-                            className="w-full h-full object-cover opacity-10 grayscale-[0.2] brightness-[1.1]" 
+                            className="w-full h-full object-cover opacity-30 grayscale-[0.2] brightness-[1.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#F8F6F2] via-[#F8F6F2]/90 to-transparent pointer-events-none z-10" />
                     </div>
 
-                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
+                    <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
                             <div className="space-y-10 w-full">
                                 <div className="space-y-6">
@@ -302,8 +302,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
                 </div>
 
-                {/* --- TELEMETRY MARQUEE: INSTITUTIONAL TERMINAL --- */}
-                <div className="absolute bottom-0 w-full bg-[#111] h-10 md:h-12 overflow-hidden border-t border-[#B89B5E]/30 flex items-center shadow-2xl">
+                {/* --- TELEMETRY MARQUEE: COMMAND RED --- */}
+                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
@@ -403,10 +403,10 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 <h4 className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">
                                     What your team actually uses
                                 </h4>
-                                <div className="p-6 bg-[#1F3A34] rounded-xl border-l-4 border-[#B89B5E] shadow-2xl">
+                                <div className="p-6 bg-zinc-950 rounded-xl border-l-4 border-emerald-500 shadow-2xl">
                                     <p className="text-white text-sm md:text-base font-bold italic leading-relaxed">
                                         Your team does not need new software, logins, or technical training. <br/><br/>
-                                        <span className="text-[#B89B5E] uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
+                                        <span className="text-emerald-500 uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
                                     </p>
                                 </div>
                                 <div className="space-y-3 pt-2">
@@ -414,7 +414,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <div className="flex flex-wrap gap-2">
                                         {["Audit Standards", "Fire Safety", "FSSAI/HACCP", "LOTO", "Personnel Certs"].map((item, i) => (
                                             <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
-                                                <ShieldCheck className="w-3 h-3 text-[#1F3A34]" />
+                                                <ShieldCheck className="w-3 h-3 text-primary" />
                                                 <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
                                             </div>
                                         ))}
