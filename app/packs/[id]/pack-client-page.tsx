@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -220,7 +219,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         </div>
                         <div className="pt-2">
                             <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
-                                <Link href="#pricing">DEPLOY IN 10 MINUTES • ₹2,499</Link>
+                                <Link href="#pricing">DEPLOY IN 10 MINUTES • ₹2,499 / $29</Link>
                             </button>
                         </div>
                     </div>
@@ -281,7 +280,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 <div className="flex flex-col items-start gap-4">
                                     <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
                                         <Link href="#pricing" className="flex items-center justify-center gap-3">
-                                            DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                            DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </button>
                                     <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
@@ -537,7 +536,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             <div className="flex flex-col items-center lg:items-start gap-4">
                                 <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center" style={{ backgroundColor: "#B89B5E" }}>
                                     <Link href="#pricing" className="flex items-center gap-3">
-                                        DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
+                                        DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
                                     </Link>
                                 </button>
                                 <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.2em] text-emerald-500/60 italic">

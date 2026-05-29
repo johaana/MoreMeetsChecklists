@@ -150,7 +150,7 @@ export default function HomePage() {
                                         SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
                                     </span>
                                 </div>
-                                <h1 className="text-[2.2rem] font-bold font-headline leading-[0.9] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
+                                <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
                                     YOUR BUSINESS <br />
                                     <span className="relative inline-block mt-1">
                                         SHOULD NOT <br/> DEPEND ON MEMORY.
@@ -177,7 +177,7 @@ export default function HomePage() {
                             </div>
                             <div className="pt-2 space-y-4">
                                 <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
-                                    <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499</Link>
+                                    <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499 / $29</Link>
                                 </button>
                                 <button className="w-full text-[11px] font-black uppercase tracking-[0.2em] text-zinc-950 flex items-center justify-center gap-3 group italic">
                                     <Link href="#inside" className="flex items-center gap-2">WATCH TEAMS OPERATE <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" /></Link>
@@ -186,7 +186,7 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    {/* --- DESKTOP ARCHITECTURE (Standard Command) --- */}
+                    {/* --- DESKTOP ARCHITECTURE (Launch Standard) --- */}
                     <div className="hidden md:block relative w-full h-[100svh] min-h-[700px]">
                         <div className="absolute inset-0 z-0">
                             <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
@@ -217,9 +217,9 @@ export default function HomePage() {
                                     </div>
 
                                     <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
-                                        CAPTURE <br />
+                                        YOUR BUSINESS SHOULD NOT <br />
                                         <span className="relative inline-block mt-1">
-                                            MEMORY.
+                                            DEPEND ON MEMORY.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                         </span>
                                     </h1>
@@ -247,7 +247,7 @@ export default function HomePage() {
                                 <div className="flex flex-col items-start gap-4">
                                     <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
                                         <Link href="/library" className="flex items-center justify-center gap-3">
-                                            DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                            DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </button>
                                     <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
@@ -423,7 +423,7 @@ export default function HomePage() {
                                     { t: "NO APP ADOPTION BATTLE", d: "Staff use existing phones and tools they understand. Zero friction for the front-line.", i: Smartphone },
                                     { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
                                     { t: "VISUAL VERIFICATION", d: "Managers attach reference images and request photo proof for critical tasks.", i: Eye },
-                                    { t: "BUILT-IN COACHING", d: "Step-by-step instructions ensure work is done right every time.", i: GraduationCap }
+                                    { t: "BUILT-IN COACHING", d: "Actionable instructions embedded in every task.", i: GraduationCap }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex flex-col gap-5 text-left group">
                                         <div className="w-14 h-14 rounded-2xl bg-[#F8F6F2] border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-[#111111] group-hover:border-emerald-500/30">
@@ -514,7 +514,7 @@ export default function HomePage() {
                         <div className="flex flex-col items-center gap-10">
                             <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group" style={{ backgroundColor: BRAND_GOLD, color: '#000' }}>
                                 <Link href="/library" className="flex items-center gap-6">
-                                    DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
+                                    DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
                                 </Link>
                             </button>
                             <p className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.5em] text-zinc-400 italic">
