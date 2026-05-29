@@ -5,16 +5,16 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight,
-    Search,
-    Maximize,
-    ZoomIn,
-    Crop,
-    Monitor,
-    Check,
     ShieldCheck,
     CheckSquare,
     Command,
-    Fingerprint
+    Fingerprint,
+    Search,
+    Activity,
+    Layers,
+    Target,
+    Cpu,
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -23,51 +23,40 @@ import Link from 'next/link';
 
 const MASTER_LOGO_URL = "https://i.postimg.cc/L55mTYQP/Whats-App-Image-2026-05-29-at-15-05-10.jpg";
 
-interface LogoOptionProps {
-    id: string;
+// --- INSTITUTIONAL PALETTE ---
+const BRAND_GREEN = "#1F3A34"; // Deep Forest Green from reference
+const BRAND_GOLD = "#B89B5E";  // Muted Institutional Gold
+const LIGHT_BG = "#F8F6F2";    // Cream/Ivory for Daylight Mode
+
+interface ConceptCardProps {
     title: string;
     description: string;
-    className: string;
-    imgClassName?: string;
+    variant: string;
+    children: React.ReactNode;
+    bg?: string;
+    isDark?: boolean;
 }
 
-const LogoOption = ({ id, title, description, className, imgClassName }: LogoOptionProps) => (
-    <div className="flex flex-col gap-6 p-8 rounded-[2.5rem] border border-zinc-100 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group">
-        <div className="space-y-1">
-            <div className="flex items-center justify-between">
-                <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">OPTION {id}</span>
-                <Badge variant="outline" className="text-[8px] font-black uppercase tracking-widest border-zinc-200">EXISTING ASSET</Badge>
-            </div>
-            <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{title}</h3>
-            <p className="text-xs text-zinc-500 font-medium italic leading-relaxed">{description}</p>
-        </div>
-
-        <div className="h-48 bg-[#F8F6F2] rounded-2xl border border-zinc-100 flex flex-col items-center justify-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-px bg-zinc-200/50" />
-            <div className={cn("overflow-hidden flex items-center justify-center transition-all duration-500", className)}>
-                <img 
-                    src={MASTER_LOGO_URL} 
-                    alt="MoreMeets Logo" 
-                    className={cn("h-full w-auto object-contain transition-all duration-500", imgClassName)} 
-                />
-            </div>
-        </div>
-    </div>
-);
-
-const ConceptCard = ({ title, color, children, description, variant }: { title: string, color: string, children: React.ReactNode, description: string, variant: string }) => (
-    <div className="flex flex-col gap-6 p-8 rounded-[2.5rem] border border-zinc-100 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group">
+const ConceptCard = ({ title, description, variant, children, bg = "bg-white", isDark = false }: ConceptCardProps) => (
+    <div className={cn(
+        "flex flex-col gap-6 p-8 rounded-[2.5rem] border transition-all duration-500 group",
+        isDark ? "border-white/10 shadow-2xl" : "border-zinc-100 shadow-sm hover:shadow-xl",
+        bg
+    )}>
         <div className="space-y-1 text-left">
             <div className="flex items-center justify-between">
-                <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">{variant}</span>
-                <Badge className="text-[8px] font-black uppercase tracking-widest rounded-none" style={{ backgroundColor: color }}>PROPOSED CONCEPT</Badge>
+                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em]", isDark ? "text-white/40" : "text-zinc-300")}>{variant}</span>
+                <Badge variant="outline" className={cn("text-[8px] font-black uppercase tracking-widest", isDark ? "border-white/10 text-white/60" : "border-zinc-200 text-zinc-500")}>PROPOSED</Badge>
             </div>
-            <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{title}</h3>
-            <p className="text-xs text-zinc-500 font-medium italic leading-relaxed">{description}</p>
+            <h3 className={cn("text-xl font-black uppercase italic tracking-tighter", isDark ? "text-white" : "text-zinc-950")}>{title}</h3>
+            <p className={cn("text-xs font-medium italic leading-relaxed", isDark ? "text-white/60" : "text-zinc-500")}>{description}</p>
         </div>
-        <div className="h-56 bg-zinc-950 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group-hover:bg-black transition-colors duration-700">
-             {/* Background Detail */}
-             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+        <div className={cn(
+            "h-56 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden transition-colors duration-700",
+            isDark ? "bg-[#142823] group-hover:bg-[#1a332d]" : "bg-zinc-50 group-hover:bg-zinc-100"
+        )}>
+             {/* Subtle Texture */}
+             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#888_1px,transparent_1px)] [background-size:20px_20px]" />
              {children}
         </div>
     </div>
@@ -88,180 +77,161 @@ export default function LogoLabPage() {
                     {/* Header */}
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.6em] font-black text-[10px] px-10 py-3 rounded-none bg-white shadow-sm italic">
-                            IDENTITY IMPLEMENTATION LAB V7.0
+                            IDENTITY IMPLEMENTATION LAB V8.0
                         </Badge>
                         <div className="space-y-2">
                             <h1 className="text-5xl md:text-[6rem] font-black font-headline italic uppercase tracking-tighter text-zinc-900 leading-[0.85]">
-                                Brand <span className="text-zinc-300">Evolution.</span>
+                                Palette <span style={{ color: BRAND_GOLD }}>Control.</span>
                             </h1>
-                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest max-w-2xl mx-auto pt-4">
-                                Testing crops of existing assets and exploring new institutional concepts.
+                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest max-w-2xl mx-auto pt-4 leading-tight">
+                                Testing Forest Green & Muted Gold across Institutional environments.
                             </p>
                         </div>
                     </div>
 
-                    {/* SECTION 1: EXISTING ASSET REFINEMENTS */}
+                    {/* SECTION 1: DAYLIGHT MODE (WHITE BACKGROUNDS) */}
                     <div className="space-y-12">
                         <div className="flex items-center gap-6">
                             <div className="h-px flex-1 bg-zinc-200" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400">ASSET REFINEMENT</span>
-                            <div className="h-px flex-1 bg-zinc-200" />
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <LogoOption 
-                                id="01"
-                                title="Standard 1.4x Zoom"
-                                description="Balanced framing for secondary navigation pages."
-                                className="h-11 w-32 bg-zinc-950 rounded-full shadow-lg"
-                                imgClassName="scale-[1.4]"
-                            />
-                            <LogoOption 
-                                id="05"
-                                title="REFINED FLOATING BLOCK (PRO)"
-                                description="2.4x aggressive zoom with high-contrast filter for maximum legibility."
-                                className="h-14 w-32 bg-zinc-950 rounded-2xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.4)] ring-1 ring-white/5"
-                                imgClassName="scale-[2.4] brightness-125 contrast-125"
-                            />
-                            <LogoOption 
-                                id="04"
-                                title="Ultra Edge-to-Edge"
-                                description="Extreme 2.8x zoom focusing purely on the wordmark."
-                                className="h-12 w-40"
-                                imgClassName="scale-[2.8]"
-                            />
-                        </div>
-                    </div>
-
-                    {/* SECTION 2: NEW DESIGN CONCEPTS (CODE-BASED) */}
-                    <div className="space-y-12">
-                        <div className="flex items-center gap-6">
-                            <div className="h-px flex-1 bg-zinc-200" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400">NEW CONCEPTS (GOLD)</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400">DAYLIGHT MODE (ON WHITE)</span>
                             <div className="h-px flex-1 bg-zinc-200" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             
-                            {/* Concept 1: The Sovereign Shield */}
+                            {/* Variation 1: The Sovereign Shield */}
                             <ConceptCard 
-                                title="The Sovereign Shield"
-                                color="#D4AF37"
                                 variant="CONCEPT A"
-                                description="Focuses on the 'Governance' aspect. A minimal shield with integrated checkmark."
+                                title="The Shield"
+                                description="Deep Green shield with Muted Gold check. High authority, audit-grade visual."
                             >
                                 <div className="flex flex-col items-center gap-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center border-2 border-[#D4AF37] text-[#D4AF37]">
-                                            <ShieldCheck className="w-6 h-6" />
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#1F3A34] text-[#B89B5E] shadow-xl">
+                                            <ShieldCheck className="w-7 h-7" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <div className="flex items-center gap-1">
-                                                <span className="text-xl font-normal text-white/40 tracking-tighter">More</span>
-                                                <span className="text-xl font-black text-white tracking-tighter uppercase italic">Meets™</span>
-                                            </div>
-                                            <span className="text-[6px] font-black text-[#D4AF37] uppercase tracking-[0.4em] mt-0.5 leading-none">WHERE SOPs MEET EXECUTION</span>
+                                            <h2 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-[#1F3A34] leading-none">MoreMeets™</h2>
+                                            <span className="text-[7px] font-black text-zinc-400 uppercase tracking-[0.4em] mt-1.5 leading-none">SPREADSHEET-NATIVE INFRASTRUCTURE</span>
                                         </div>
                                     </div>
                                 </div>
                             </ConceptCard>
 
-                            {/* Concept 2: The Modern Executive */}
+                            {/* Variation 2: Modern Executive */}
                             <ConceptCard 
-                                title="Modern Executive"
-                                color="#C5A059"
                                 variant="CONCEPT B"
-                                description="A clean, typographic approach using Champagne Gold and a thin 'Logic' divider."
+                                title="Modern Executive"
+                                description="Typographic focus using the Forest Green for the wordmark and Gold for the logic divider."
                             >
                                 <div className="flex flex-col items-center gap-2">
-                                    <h2 className="text-3xl font-black italic tracking-tighter uppercase text-white flex items-center">
-                                        MORE<span className="text-[#C5A059] ml-1">MEETS</span>
+                                    <h2 className="text-3xl font-black italic tracking-tighter uppercase text-[#1F3A34] flex items-center">
+                                        MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS</span>
                                     </h2>
-                                    <div className="w-full flex items-center gap-3">
-                                        <div className="h-px flex-1 bg-white/10" />
-                                        <span className="text-[7px] font-black text-zinc-500 uppercase tracking-[0.5em] italic whitespace-nowrap">WHERE SOPs MEET EXECUTION</span>
-                                        <div className="h-px flex-1 bg-white/10" />
+                                    <div className="w-full flex items-center gap-3 px-4">
+                                        <div className="h-px flex-1 bg-zinc-200" />
+                                        <span className="text-[7px] font-black text-zinc-400 uppercase tracking-[0.3em] italic whitespace-nowrap">WHERE SOPs MEET EXECUTION</span>
+                                        <div className="h-px flex-1 bg-zinc-200" />
                                     </div>
                                 </div>
                             </ConceptCard>
 
-                            {/* Concept 3: The Technical Grid */}
+                            {/* Variation 3: The Technical Grid */}
                             <ConceptCard 
-                                title="The Technical Grid"
-                                color="#B89B5E"
                                 variant="CONCEPT C"
-                                description="Emphasizes 'Spreadsheet-Native' origins using a square grid motif."
+                                title="Technical Grid"
+                                description="Emphasis on 'Spreadsheet-Native' origins using a 2x2 grid in primary Green."
                             >
                                 <div className="flex flex-col items-center gap-4">
-                                    <div className="grid grid-cols-2 gap-1 mb-1">
-                                        <div className="w-3 h-3 rounded-sm bg-[#B89B5E]" />
-                                        <div className="w-3 h-3 rounded-sm bg-[#B89B5E]/40" />
-                                        <div className="w-3 h-3 rounded-sm bg-[#B89B5E]/40" />
-                                        <div className="w-3 h-3 rounded-sm bg-[#B89B5E]/40" />
+                                    <div className="grid grid-cols-2 gap-1.5">
+                                        <div className="w-3.5 h-3.5 rounded-sm bg-[#1F3A34]" />
+                                        <div className="w-3.5 h-3.5 rounded-sm bg-[#B89B5E]" />
+                                        <div className="w-3.5 h-3.5 rounded-sm bg-[#B89B5E]/30" />
+                                        <div className="w-3.5 h-3.5 rounded-sm bg-[#1F3A34]" />
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <span className="text-2xl font-black uppercase tracking-[-0.05em] italic text-white leading-none">MoreMeets™</span>
-                                        <span className="text-[8px] font-bold text-[#B89B5E] uppercase tracking-[0.2em] mt-2">WHERE SOPs MEET EXECUTION</span>
+                                        <span className="text-2xl font-black uppercase tracking-[-0.05em] italic text-[#1F3A34] leading-none">MoreMeets™</span>
+                                        <span className="text-[8px] font-bold text-zinc-400 uppercase tracking-[0.2em] mt-2">OPERATIONAL INFRASTRUCTURE</span>
                                     </div>
                                 </div>
                             </ConceptCard>
 
-                            {/* Concept 4: The Minimalist Sans */}
+                            {/* Variation 4: Minimalist Sans */}
                             <ConceptCard 
-                                title="Minimalist Sans"
-                                color="#E3B448"
                                 variant="CONCEPT D"
-                                description="A luxury-grade typographic mark focusing on the contrast of heavy vs light weights."
+                                title="Minimalist Green"
+                                description="Clean, high-end sans typography using Green for 'More' and Gold for 'Meets'."
                             >
                                 <div className="flex flex-col items-center">
                                     <div className="flex items-center gap-1">
-                                        <span className="text-3xl font-black italic uppercase tracking-tighter text-white">MORE</span>
-                                        <span className="text-3xl font-light italic uppercase tracking-tighter text-[#E3B448]">MEETS</span>
+                                        <span className="text-3xl font-black italic uppercase tracking-tighter text-[#1F3A34]">MORE</span>
+                                        <span className="text-3xl font-light italic uppercase tracking-tighter text-[#B89B5E]">MEETS</span>
                                     </div>
-                                    <span className="text-[7px] font-black text-white/20 uppercase tracking-[0.6em] mt-3 border-t border-white/10 pt-2">OPERATIONAL INFRASTRUCTURE</span>
+                                    <div className="mt-4 flex items-center gap-3">
+                                        <div className="w-8 h-px bg-zinc-200" />
+                                        <span className="text-[7px] font-black text-zinc-400 uppercase tracking-[0.5em] leading-none">INSTITUTIONAL GRADE</span>
+                                        <div className="w-8 h-px bg-zinc-200" />
+                                    </div>
                                 </div>
                             </ConceptCard>
 
-                             {/* Concept 5: The Command Dot */}
-                             <ConceptCard 
-                                title="The Command Dot"
-                                color="#D6A85F"
+                            {/* Variation 5: The Command Dot */}
+                            <ConceptCard 
                                 variant="CONCEPT E"
-                                description="Uses a 'Live Status' pulse motif. Simple, bold, and high-impact."
+                                title="Command Pulse"
+                                description="Forest Green wordmark with a Muted Gold 'Live Status' pulse. Simple and iconic."
                             >
                                 <div className="flex flex-col items-center gap-1">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-[#D6A85F] shadow-[0_0_10px_rgba(214,168,95,0.5)]" />
-                                        <span className="text-4xl font-black font-headline text-white uppercase italic tracking-tighter">MoreMeets</span>
+                                    <div className="flex items-center gap-2.5">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#B89B5E] shadow-[0_0_15px_rgba(184,155,94,0.5)] animate-pulse" />
+                                        <span className="text-4xl font-black font-headline text-[#1F3A34] uppercase italic tracking-tighter">MoreMeets</span>
                                     </div>
-                                    <span className="text-[8px] font-black text-zinc-500 uppercase tracking-[0.4em] italic mt-2">WHERE SOPs MEET EXECUTION</span>
+                                    <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em] italic mt-2">SPREADSHEET-NATIVE</span>
                                 </div>
                             </ConceptCard>
 
-                            {/* Concept 6: The Forensic Mark */}
+                        </div>
+                    </div>
+
+                    {/* SECTION 2: COMMAND MODE (DARK GREEN BACKGROUND) */}
+                    <div className="space-y-12">
+                        <div className="flex items-center gap-6">
+                            <div className="h-px flex-1 bg-zinc-200" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400">COMMAND MODE (ON FOREST GREEN)</span>
+                            <div className="h-px flex-1 bg-zinc-200" />
+                        </div>
+                        
+                        <div className="max-w-3xl mx-auto">
                             <ConceptCard 
-                                title="The Forensic Mark"
-                                color="#A5915F"
-                                variant="CONCEPT F"
-                                description="Monospace technical look, mimicking operational ledgers and print-outs."
+                                variant="SOVEREIGN PRIMARY"
+                                title="The Institutional Standard"
+                                description="Optimized for dark-theme hero sections. White/Gold on Deep Forest Green."
+                                bg="bg-[#1F3A34]"
+                                isDark={true}
                             >
-                                <div className="flex flex-col items-start bg-white/[0.03] p-6 border border-white/5 rounded-xl">
-                                    <div className="flex flex-col">
-                                        <span className="text-2xl font-black font-mono uppercase text-white leading-none tracking-tighter">MORE_MEETS_V1.0</span>
-                                        <div className="h-1 w-full bg-[#A5915F] mt-1" />
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="flex items-center gap-6">
+                                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 text-white shadow-2xl backdrop-blur-md">
+                                            <CheckSquare className="w-8 h-8" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <h2 className="text-4xl font-black font-headline italic uppercase tracking-tighter text-white leading-none">MoreMeets<span className="text-[#B89B5E]">™</span></h2>
+                                            <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.6em] mt-3 leading-none">OPERATIONAL INFRASTRUCTURE</span>
+                                        </div>
                                     </div>
-                                    <span className="text-[8px] font-mono text-white/40 mt-4 leading-none">[STATUS: VERIFIED_EXECUTION]</span>
-                                    <span className="text-[8px] font-mono text-[#A5915F] mt-1 leading-none">WHERE_SOPs_MEET_EXECUTION</span>
+                                    <div className="mt-4 pt-4 border-t border-white/5 w-full flex justify-center">
+                                         <p className="text-[8px] font-mono text-[#B89B5E] uppercase tracking-[0.2em]">[ SYSTEM_STATUS: VERIFIED_EXECUTION ]</p>
+                                    </div>
                                 </div>
                             </ConceptCard>
-
                         </div>
                     </div>
 
                     {/* Branding Footer */}
                     <div className="pt-20 border-t border-zinc-100 flex flex-col items-center gap-10">
                         <div className="space-y-4 text-center">
-                            <p className="text-[11px] font-black text-zinc-300 uppercase tracking-[1em] italic">SOVEREIGN_SYSTEM_MARKS_2025</p>
-                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which identity commands most <span className="text-emerald-600">Authority?</span></h3>
+                            <p className="text-[11px] font-black text-zinc-300 uppercase tracking-[1em] italic">SOVEREIGN_SYSTEM_DESIGN_2025</p>
+                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which identity commands most <span style={{ color: BRAND_GOLD }}>Authority?</span></h3>
                         </div>
                         
                         <div className="flex gap-6">
