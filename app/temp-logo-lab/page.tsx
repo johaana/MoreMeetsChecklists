@@ -4,131 +4,59 @@ import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
-    Check, 
-    CheckSquare, 
-    Shield, 
-    ShieldCheck, 
-    Activity, 
-    CheckCircle2, 
-    Target, 
-    Zap, 
-    Layers, 
-    Cpu, 
-    Crown, 
-    BarChart3, 
-    Lock,
-    ShieldAlert,
-    ArrowRight
+    ArrowRight,
+    Check,
+    Monitor,
+    Smartphone,
+    Layout,
+    Eye
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
-const TAGLINE = "WHERE SOPs MEET EXECUTION";
-const CATEGORY = "Spreadsheet-Native Operational Infrastructure";
+const MASTER_LOGO_URL = "https://i.postimg.cc/L55mTYQP/Whats-App-Image-2026-05-29-at-15-05-10.jpg";
+const DESCRIPTOR = "SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE";
 
-const LOGO_DESIGNS = [
-    { 
-        title: "The Institutional Standard", 
-        desc: "A high-gravity, solid mark representing reliability.",
-        icon: CheckSquare, 
-        color: "#2E7D5A", 
-        category: "CORE" 
-    },
-    { 
-        title: "Sovereign Shield", 
-        desc: "Focus on audit-readiness and verifiable proof.",
-        icon: ShieldCheck, 
-        color: "#1E293B", 
-        category: "COMPLIANCE" 
-    },
-    { 
-        title: "Hospitality Gold", 
-        desc: "Minimalist luxury for high-end resorts and retail.",
-        icon: Check, 
-        color: "#B89B5E", 
-        category: "LUXURY",
-        isHighlighted: true 
-    },
-    { 
-        title: "Execution Pulse", 
-        desc: "Active motion representing live daily tasks.",
-        icon: Activity, 
-        color: "#D97706", 
-        category: "EXECUTION" 
-    },
-    { 
-        title: "System Engine", 
-        desc: "Technical mark for spreadsheet-native logic.",
-        icon: Cpu, 
-        color: "#0284C7", 
-        category: "ENGINE" 
-    },
-    { 
-        title: "Outcome Emerald", 
-        desc: "Focus on results and 'Less Misses'.",
-        icon: Target, 
-        color: "#059669", 
-        category: "CORE" 
-    },
-    { 
-        title: "Audit Ruby", 
-        desc: "High-contrast mark for safety-critical sectors.",
-        icon: ShieldAlert, 
-        color: "#BE123C", 
-        category: "COMPLIANCE" 
-    },
-    { 
-        title: "Momentum Amber", 
-        desc: "Energy and speed for high-volume restaurants.",
-        icon: Zap, 
-        color: "#F59E0B", 
-        category: "EXECUTION" 
-    }
-];
+interface LogoOptionProps {
+    id: string;
+    title: string;
+    description: string;
+    className: string;
+    imgClassName?: string;
+    showDescriptor?: boolean;
+}
 
-const LogoCard = ({ design }: { design: typeof LOGO_DESIGNS[0] }) => (
-    <div className={cn(
-        "p-10 rounded-[3rem] border transition-all duration-700 flex flex-col items-center text-center gap-8 group relative overflow-hidden h-full bg-white",
-        design.isHighlighted ? "border-zinc-200 shadow-xl" : "border-zinc-100 hover:border-zinc-200 hover:shadow-lg"
-    )}>
-        {/* Subdued Glow */}
-        <div 
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 blur-[80px] opacity-[0.03] transition-all duration-1000 group-hover:opacity-[0.06]" 
-            style={{ backgroundColor: design.color }} 
-        />
-
-        <div className="relative">
-            <div 
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg transition-transform duration-700 group-hover:scale-110" 
-                style={{ backgroundColor: design.color }}
-            >
-                <design.icon className="w-9 h-9" strokeWidth={2.5} />
+const LogoOption = ({ id, title, description, className, imgClassName, showDescriptor = true }: LogoOptionProps) => (
+    <div className="flex flex-col gap-6 p-8 rounded-[2.5rem] border border-zinc-100 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group">
+        <div className="space-y-1">
+            <div className="flex items-center justify-between">
+                <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.3em]">OPTION {id}</span>
+                <Badge variant="outline" className="text-[8px] font-black uppercase tracking-widest border-zinc-200">PROTOTYPE</Badge>
             </div>
+            <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{title}</h3>
+            <p className="text-xs text-zinc-500 font-medium italic leading-relaxed">{description}</p>
         </div>
 
-        <div className="space-y-4 relative z-10">
-            <div className="flex flex-col items-center">
-                <div className="flex items-center gap-1.5">
-                    <span className="text-2xl font-headline tracking-tighter text-zinc-300 font-normal">More</span>
-                    <span className="text-2xl font-black font-headline tracking-tighter text-zinc-950">Meets™</span>
-                </div>
-                <div className="mt-3 px-4 py-1 rounded-full border border-zinc-100 bg-zinc-50/50">
-                    <span className="text-[7.5px] font-black uppercase tracking-[0.25em] leading-none block whitespace-nowrap text-zinc-400">
-                        {TAGLINE}
-                    </span>
-                </div>
-            </div>
+        {/* PREVIEW AREA (Simulating Header context) */}
+        <div className="h-40 bg-[#F8F6F2] rounded-2xl border border-zinc-100 flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-px bg-zinc-200/50" />
             
-            <div className="pt-4 space-y-1">
-                <p className="text-[10px] font-black text-zinc-900 uppercase tracking-widest">{design.title}</p>
-                <p className="text-[10px] text-zinc-400 italic font-medium max-w-[200px] leading-tight">{design.desc}</p>
+            <div className="flex flex-col items-center gap-2">
+                <div className={cn("overflow-hidden transition-all duration-500", className)}>
+                    <img 
+                        src={MASTER_LOGO_URL} 
+                        alt="MoreMeets Logo" 
+                        className={cn("h-full w-auto object-contain", imgClassName)} 
+                    />
+                </div>
+                {showDescriptor && (
+                    <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 leading-none">
+                        {DESCRIPTOR}
+                    </span>
+                )}
             </div>
-        </div>
-
-        <div className="mt-auto pt-6 border-t border-zinc-50 w-full">
-            <span className="text-[8px] font-black text-zinc-300 uppercase tracking-[0.4em]">{design.category}</span>
         </div>
     </div>
 );
@@ -148,30 +76,77 @@ export default function LogoLabPage() {
                     {/* Header */}
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.6em] font-black text-[10px] px-10 py-3 rounded-none bg-white shadow-sm italic">
-                            IDENTITY LAB V3.0
+                            IDENTITY IMPLEMENTATION LAB V4.0
                         </Badge>
                         <div className="space-y-2">
                             <h1 className="text-5xl md:text-[6rem] font-black font-headline italic uppercase tracking-tighter text-zinc-900 leading-[0.85]">
-                                Visual <span className="text-zinc-300">Anchors.</span>
+                                Framing <span className="text-zinc-300">Options.</span>
                             </h1>
                             <p className="text-zinc-500 text-lg md:text-xl font-bold italic uppercase tracking-widest max-w-2xl mx-auto pt-4">
-                                {CATEGORY}
+                                Testing how to best house the master asset in the daylight header.
                             </p>
                         </div>
                     </div>
 
                     {/* Logo Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {LOGO_DESIGNS.map((design, i) => (
-                            <LogoCard key={i} design={design} />
-                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <LogoOption 
+                            id="01"
+                            title="The Matte Capsule"
+                            description="A dark container that blends the logo's black background, creating a unified 'button' feel."
+                            className="h-10 px-6 bg-zinc-950 rounded-full flex items-center justify-center shadow-lg group-hover:scale-105"
+                            imgClassName="scale-125"
+                        />
+
+                        <LogoOption 
+                            id="02"
+                            title="The Refined Pill"
+                            description="An evolution of your current design. Larger padding and a subtle border to make it feel more intentional."
+                            className="h-12 px-8 bg-white border border-zinc-200 rounded-full flex items-center justify-center shadow-sm group-hover:bg-zinc-50"
+                            imgClassName="scale-110"
+                        />
+
+                        <LogoOption 
+                            id="03"
+                            title="The Gold Stamp"
+                            description="Adding a hairline gold border to anchor the logo and connect it to the brand's primary accent color."
+                            className="h-11 px-6 bg-zinc-950 rounded-xl border border-[#B89B5E]/30 flex items-center justify-center shadow-xl"
+                            imgClassName="scale-125"
+                        />
+
+                        <LogoOption 
+                            id="04"
+                            title="The Edge-to-Edge"
+                            description="Minimalist approach. Removing the container entirely and using a larger scale to emphasize the built-in tagline."
+                            className="h-10 flex items-center justify-center"
+                            imgClassName="scale-[1.75]"
+                            showDescriptor={false}
+                        />
+
+                        <LogoOption 
+                            id="05"
+                            title="The Floating Block"
+                            description="A modern square-rounded block with a high-contrast shadow. Good for tech-heavy positioning."
+                            className="h-14 w-32 bg-zinc-950 rounded-2xl flex items-center justify-center shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
+                            imgClassName="scale-150"
+                        />
+
+                        <LogoOption 
+                            id="06"
+                            title="The Glass Vault"
+                            description="A semi-transparent blur container. Best for headers that scroll over imagery or varied content."
+                            className="h-11 px-8 bg-zinc-950/90 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center"
+                            imgClassName="scale-110"
+                        />
+
                     </div>
 
                     {/* Branding Footer */}
                     <div className="pt-20 border-t border-zinc-100 flex flex-col items-center gap-10">
                         <div className="space-y-4 text-center">
-                            <p className="text-[11px] font-black text-zinc-300 uppercase tracking-[1em] italic">STABLE_SYSTEM_MARKS_2025</p>
-                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which direction feels most <span className="text-emerald-600">Institutional?</span></h3>
+                            <p className="text-[11px] font-black text-zinc-300 uppercase tracking-[1em] italic">SOVEREIGN_SYSTEM_MARKS_2025</p>
+                            <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter text-zinc-900">Which framing commands most <span className="text-emerald-600">Authority?</span></h3>
                         </div>
                         
                         <div className="flex gap-6">
