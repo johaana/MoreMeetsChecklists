@@ -33,7 +33,10 @@ import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 import { getDisplayTitle } from '@/lib/ui-mappings';
 
-// --- SECTOR METADATA: THE SOVEREIGN TELEMETRY ---
+// --- INSTITUTIONAL PALETTE ---
+const BRAND_GREEN = "#1F3A34";
+const BRAND_GOLD = "#B89B5E";
+
 const SECTOR_METADATA: Record<string, {
     marquee: string[];
     sustainability: { t: string; d: string; i: any }[];
@@ -120,8 +123,6 @@ const DEFAULT_SUSTAINABILITY = [
     { t: "ASSET LONGEVITY", d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", i: Wrench }
 ];
 
-const BRAND_GREEN = "#22C55E";
-
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
@@ -189,16 +190,16 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
 
                             <div className="space-y-3 md:space-y-5">
-                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[64px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[64px] leading-[0.9] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
                                     {titleParts[0]} <br/> 
-                                    <span style={{ color: BRAND_GREEN }}>{titleParts[1]}</span> <br/>
-                                    <span style={{ color: BRAND_GREEN }}>{titleParts[2]}</span>
+                                    {titleParts[1]} <br/>
+                                    {titleParts[2]}
                                 </h1 >
                                 <div className="space-y-2 md:space-y-4">
                                     <p className="text-[13px] md:text-[18px] font-medium text-white max-w-2xl leading-tight">
                                         {res.heroSubline}
                                     </p>
-                                    <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
+                                    <div className="border-l-[2px] md:border-l-[3px] border-[#B89B5E]/40 pl-4 md:pl-8 py-0.5">
                                         <p className="text-[13px] md:text-sm lg:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             {res.strategicParagraph}
                                         </p>
@@ -215,10 +216,10 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-2 md:gap-4 group">
-                                            <div className="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
-                                                <Check className="w-2.5 md:w-3 h-2.5 md:h-3 text-emerald-400" />
+                                            <div className="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-[#B89B5E]/20 flex items-center justify-center shrink-0 border border-[#B89B5E]/30">
+                                                <Check className="w-2.5 md:w-3 h-2.5 md:h-3 text-[#B89B5E]" />
                                             </div>
-                                            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
+                                            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-[#B89B5E] transition-colors">
                                                 {item.t}
                                             </span>
                                         </div>
@@ -227,7 +228,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             </div>
 
                             <div className="hidden lg:flex flex-row items-center gap-6 md:gap-10 pt-2">
-                                <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: "#B89B5E" }}>
+                                <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(184,155,94,0.4)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="#pricing" className="flex items-center gap-4">
                                         DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                     </Link>
@@ -244,7 +245,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         
                         <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
                             <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
-                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="absolute -inset-1 bg-gradient-to-b from-[#B89B5E]/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                                 <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.8/1] shadow-2xl bg-zinc-950">
                                     <img 
                                         src={squircleUrl} 
@@ -272,7 +273,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <span className="text-[32px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
                                     <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME</span>
                                 </div>
-                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: "#B89B5E" }}>
+                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="#pricing">
                                         DEPLOY IN 10 MINUTES • ₹2,499 <ArrowRight className="w-4 h-4 ml-3" />
                                     </Link>
@@ -283,7 +284,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
 
                 {/* --- TELEMETRY MARQUEE: INSTITUTIONAL TERMINAL --- */}
-                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
+                <div className="absolute bottom-0 w-full bg-[#111] h-10 md:h-12 overflow-hidden border-t border-[#B89B5E]/30 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
@@ -291,7 +292,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             return (
                                 <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
                                     {isAlert && <span className="text-[#C86565]">[!]</span>}
-                                    {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
+                                    {isVerified && <span className="text-[#B89B5E]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
                                 </span>
@@ -304,7 +305,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             return (
                                 <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
                                     {isAlert && <span className="text-[#C86565]">[!]</span>}
-                                    {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
+                                    {isVerified && <span className="text-[#B89B5E]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
                                 </span>
@@ -356,7 +357,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/20 bg-[#B89B5E]/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
                         <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                             How the system restores control
                         </h2>
@@ -364,14 +365,14 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
 
                     <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        <div className="space-y-6 p-8 border-l-4 border-primary bg-white shadow-sm rounded-r-[1.5rem] text-left">
-                            <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">
+                        <div className="space-y-6 p-8 border-l-4 border-[#B89B5E] bg-white shadow-sm rounded-r-[1.5rem] text-left">
+                            <p className="text-[9px] font-black text-[#B89B5E] uppercase tracking-[0.4em] italic font-headline">
                                 WHAT CHANGES DAILY
                             </p>
                             <div className="space-y-4">
                                 {res.whatChangesDaily.map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
-                                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                        <CheckCircle2 className="w-5 h-5 text-[#B89B5E] shrink-0 mt-0.5" />
                                         <span className="text-zinc-950 font-black text-base md:text-lg leading-tight italic uppercase">{item}</span>
                                     </div>
                                 ))}
@@ -383,10 +384,10 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 <h4 className="text-xl md:text-2xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">
                                     What your team actually uses
                                 </h4>
-                                <div className="p-6 bg-zinc-950 rounded-xl border-l-4 border-emerald-500 shadow-2xl">
+                                <div className="p-6 bg-[#1F3A34] rounded-xl border-l-4 border-[#B89B5E] shadow-2xl">
                                     <p className="text-white text-sm md:text-base font-bold italic leading-relaxed">
                                         Your team does not need new software, logins, or technical training. <br/><br/>
-                                        <span className="text-emerald-500 uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
+                                        <span className="text-[#B89B5E] uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
                                     </p>
                                 </div>
                                 <div className="space-y-3 pt-2">
@@ -394,7 +395,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <div className="flex flex-wrap gap-2">
                                         {["Audit Standards", "Fire Safety", "FSSAI/HACCP", "LOTO", "Personnel Certs"].map((item, i) => (
                                             <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
-                                                <ShieldCheck className="w-3 h-3 text-primary" />
+                                                <ShieldCheck className="w-3 h-3 text-[#1F3A34]" />
                                                 <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
                                             </div>
                                         ))}
@@ -441,7 +442,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-zinc-50/50">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
                         <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95] text-center">
                             Built for real teams
                         </h2>
@@ -457,7 +458,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
-                                <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-[#B89B5E] group-hover:bg-[#B89B5E] group-hover:text-white transition-all shadow-inner">
                                     <item.i className="w-6 h-6" />
                                 </div>
                                 <div className="space-y-2 text-left">
@@ -474,7 +475,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-white border-y border-zinc-100" id="guide">
                  <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
+                            <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">Go live in 10 minutes</h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
@@ -485,7 +486,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-[#B89B5E] transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -533,10 +534,10 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
-                        <Sparkles className="w-48 h-48 text-primary" />
+                        <Sparkles className="w-48 h-48 text-[#B89B5E]" />
                     </div>
                     <div className="relative z-10 space-y-3">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
                         <h2 className="text-2xl md:text-4xl font-black font-headline italic uppercase tracking-tighter leading-tight">
                             Need this system tailored <br/> to your specific brand?
                         </h2>
@@ -545,7 +546,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         </p>
                     </div>
                     <div className="relative z-10 flex flex-col items-center gap-4">
-                        <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-primary text-black font-black uppercase italic text-xs shadow-2xl hover:scale-105 transition-all border-none">
+                        <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-[#B89B5E] text-black font-black uppercase italic text-xs shadow-2xl hover:scale-105 transition-all border-none">
                             <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
                                 BOOK CUSTOMIZATION DISCOVERY <ArrowRight className="ml-2 w-4 h-4" />
                             </Link>
@@ -556,7 +557,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             </Section>
 
             {/* --- 10. FINAL MANDATE --- */}
-            <Section className="bg-[#0F3D2E] text-white py-20 md:py-32" noSpine>
+            <Section className="bg-[#1F3A34] text-white py-20 md:py-32" noSpine>
                 <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 md:gap-20 items-center">
                         <div className="space-y-8 md:space-y-12 text-center lg:text-left">
