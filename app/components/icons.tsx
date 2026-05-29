@@ -13,15 +13,16 @@ type LogoProps = {
 export const Logo = ({ variant = 'light', className }: LogoProps) => {
   const isDark = variant === 'dark';
   const BRAND_GOLD = "#B89B5E";
+  const BRAND_GREEN = "#1F3A34";
 
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <div className={cn(
-        "w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg transition-transform group-hover:scale-105 duration-500",
+        "w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg transition-transform group-hover:scale-105 duration-500",
         isDark ? "bg-white/5 border border-white/10 backdrop-blur-md" : "bg-[#1F3A34]"
       )}>
         <LucideIcons.ShieldCheck 
-          className="w-5 h-5 md:w-6 md:h-6" 
+          className="w-6 h-6 md:w-7 md:h-7" 
           style={{ color: BRAND_GOLD }} 
         />
       </div>
@@ -123,17 +124,17 @@ export const ComplianceIcon = (props: React.ComponentProps<typeof IconComponent>
     }
     const s = standard.toUpperCase();
     if (s.includes('NABH')) return <IconComponent name="Star" {...rest} className="text-green-600" />;
-    if (s.includes('JCI')) return <IconComponent name="Globe" {...rest} className="text-blue-600" />;
-    if (s.includes('WHO')) return <IconComponent name="HeartPulse" {...rest} className="text-cyan-600" />;
-    if (s.includes('ISO 9001')) return <IconComponent name="Award" {...rest} className="text-yellow-600" />;
-    if (s.includes('ISO 45001')) return <IconComponent name="HardHat" {...rest} className="text-orange-600" />;
-    if (s.includes('ISO 27001')) return <IconComponent name="ShieldCheck" {...rest} className="text-purple-600" />;
-    if (s.includes('ISO 22000')) return <IconComponent name="Utensils" {...rest} className="text-blue-500" />;
-    if (s.includes('HACCP')) return <IconComponent name="ShieldCheck" {...rest} className="text-red-600" />;
-    if (s.includes('OSHA')) return <IconComponent name="HardHat" {...rest} className="text-orange-600" />;
-    if (s.includes('PGA')) return <IconComponent name="Film" {...rest} className="text-yellow-500" />;
-    if (s.includes('FIA')) return <IconComponent name="Award" {...rest} className="text-blue-500" />;
-    if (s.includes('IAAPA')) return <IconComponent name="FerrisWheel" {...rest} className="text-purple-500" />;
-    if (s.includes('NIST')) return <IconComponent name="BriefcaseBusiness" {...rest} className="text-gray-600" />;
+    if (s.includes('JCI')) return <Globe className="w-4 h-4 text-blue-600" />;
+    if (s.includes('WHO')) return <HeartPulse className="w-4 h-4 text-cyan-600" />;
+    if (s.includes('ISO 9001')) return <Award className="w-4 h-4 text-yellow-600" />;
+    if (s.includes('ISO 45001')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('ISO 27001')) return <ShieldCheck className="w-4 h-4 text-purple-600" />;
+    if (s.includes('ISO 22000')) return <Utensils className="w-4 h-4 text-blue-500" />;
+    if (s.includes('HACCP')) return <ShieldCheck className="w-4 h-4 text-red-600" />;
+    if (s.includes('OSHA')) return <HardHat className="w-4 h-4 text-orange-600" />;
+    if (s.includes('PGA')) return <Film className="w-4 h-4 text-yellow-500" />;
+    if (s.includes('FIA')) return <Award className="w-4 h-4 text-blue-500" />;
+    if (s.includes('IAAPA')) return <FerrisWheel className="w-4 h-4 text-purple-500" />;
+    if (s.includes('NIST')) return <BriefcaseBusiness className="w-4 h-4 text-gray-600" />;
     return <IconComponent name="Landmark" {...rest} className="text-gray-500" />;
 };

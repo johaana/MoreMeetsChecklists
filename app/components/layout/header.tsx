@@ -85,8 +85,8 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const isDarkHeader = isScrolled || forceTheme === 'dark';
 
     const navLinkClass = cn(
-        "text-[13px] font-medium transition-all",
-        isDarkHeader ? "text-white/85 hover:text-white" : "text-[#2A2A2A]/85 hover:text-[#111111]"
+        "text-[13px] font-bold uppercase tracking-widest transition-all",
+        isDarkHeader ? "text-white/85 hover:text-white" : "text-[#1F3A34] hover:text-black"
     );
 
     const BrandLogo = () => (
@@ -114,7 +114,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn(navLinkClass, "flex items-center gap-1.5 py-5")}>
-                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", isDarkHeader ? "text-white/40" : "text-zinc-400")} />
+                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", isDarkHeader ? "text-white/40" : "text-[#1F3A34]/40")} />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
@@ -175,7 +175,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                                     <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-[#1F3A34] mt-2 mb-2 font-headline">{category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
-                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
+                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-1.5 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
                                                                 <IconComponent name={pack.icon} className="w-3.5 h-3.5 shrink-0" />
                                                                 <span>{getDisplayTitle(pack.id, pack.title)}</span>
                                                             </Link>

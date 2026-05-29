@@ -10,24 +10,24 @@
     --card-foreground: 212 88% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 212 88% 13%;
-    --primary: 38 62% 61%; /* Gold Accent #D6A85F */
+    --primary: 41 38% 55%; /* Muted Institutional Gold #B89B5E */
     --primary-foreground: 212 40% 4%;
     --secondary: 212 40% 15%;
     --secondary-foreground: 212 10% 95%;
     --muted: 212 15% 30%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 38 62% 61%;
+    --accent: 41 38% 55%;
     --accent-foreground: 212 88% 13%;
     --destructive: 0 59% 54%;
     --destructive-foreground: 0 0% 98%;
     --border: 212 30% 20%;
     --input: 212 30% 20%;
-    --ring: 38 62% 61%;
+    --ring: 41 38% 55%;
     --radius: 0.5rem;
 
     --brand-navy: 212 35% 9%; /* #0F1720 */
-    --brand-gold: 38 62% 61%; /* #D6A85F */
-    --brand-green: 145 58% 42%; /* #22C55E */
+    --brand-gold: 41 38% 55%; /* #B89B5E */
+    --brand-green: 167 30% 17%; /* #1F3A34 */
     --brand-amber: 38 92% 50%; /* #F59E0B */
   }
 
@@ -38,19 +38,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 212 35% 9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 38 62% 61%;
+    --primary: 41 38% 55%;
     --primary-foreground: 212 35% 9%;
     --secondary: 212 35% 15%;
     --secondary-foreground: 210 40% 98%;
     --muted: 212 35% 15%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 38 62% 61%;
+    --accent: 41 38% 55%;
     --accent-foreground: 212 35% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 212 35% 15%;
     --input: 212 35% 15%;
-    --ring: 38 62% 61%;
+    --ring: 41 38% 55%;
   }
 }
  

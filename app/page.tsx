@@ -153,14 +153,14 @@ export default function HomePage() {
                                 </div>
 
                                 <h1 className="text-[34px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase text-[#121212] tracking-[-0.04em] max-w-4xl">
-                                    YOUR BUSINESS SHOULD NOT DEPEND <br />
+                                    YOUR BUSINESS SHOULD NOT <br />
                                     <span className="relative inline-block mt-1">
-                                        ON MEMORY.
-                                        <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#D6A85F]/30 rounded-full" />
+                                        DEPEND ON MEMORY.
+                                        <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                     </span>
                                 </h1>
                                 
-                                <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#D6A85F]/20 pl-8 italic">
+                                <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-[#4B5563] max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
                                     MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
                                 </p>
                                 
@@ -181,7 +181,7 @@ export default function HomePage() {
                             </div>
 
                             <div className="flex flex-col items-start gap-4">
-                                <button className="h-16 px-10 rounded-[16px] bg-[#111111] text-white font-bold uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] group">
+                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group">
                                     <Link href="/library" className="flex items-center justify-center gap-3">
                                         DEPLOY SYSTEM: ₹2,499 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
