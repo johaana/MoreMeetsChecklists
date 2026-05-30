@@ -68,6 +68,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const [isScrolled, ReactSetIsScrolled] = React.useState(false);
     const pathname = usePathname();
+    const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -81,6 +82,20 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
         setIsSheetOpen(false);
         setIsDropdownOpen(false);
     }, [pathname]);
+
+    const handleMouseEnter = () => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+        }
+        setIsDropdownOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        closeTimeoutRef.current = setTimeout(() => {
+            setIsDropdownOpen(false);
+        }, 200); // Institutional grade delay (200ms)
+    };
 
     const isDarkHeader = isScrolled || forceTheme === 'dark';
 
@@ -107,17 +122,21 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                 <BrandLogo />
             </div>
 
-            <nav className="ml-auto hidden md:flex gap-10 items-center">
+            <nav className="ml-auto hidden md:flex gap-10 items-center h-full">
                 <div 
-                    className="group static"
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
+                    className="group static h-full flex items-center"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                 >
                     <button className={cn(navLinkClass, "flex items-center gap-1.5 py-5")}>
-                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform group-hover:rotate-180", isDarkHeader ? "text-white/40" : "text-[#1F3A34]/40")} />
+                        Solutions <ChevronDown className={cn("w-3 h-3 transition-transform", isDropdownOpen ? "rotate-180" : "", isDarkHeader ? "text-white/40" : "text-[#1F3A34]/40")} />
                     </button>
                     {isDropdownOpen && (
-                        <div className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                        <div 
+                            className="absolute top-[72px] left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-0 z-20"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
                             <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
