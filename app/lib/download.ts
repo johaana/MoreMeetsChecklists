@@ -1,20 +1,17 @@
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
-import type { PremiumPack } from "@/lib/premium-packs";
+import type { PremiumPack, Checklist } from "@/lib/premium-packs";
+import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v18.8.0 PRODUCTION ROLLOUT
+ * MOREMEETS™ SOVEREIGN ENGINE - v18.8.1 PRODUCTION ROLLOUT
  * ----------------------------------------------------------------------------
- * 1. APPEND-ONLY GEOMETRY: Columns K (PROOF) and L (REFERENCE) appended.
- * 2. STABLE HEARTBEAT: Columns E:F (Triggers), G (Status), and J (Stamp) remain locked.
- * 3. NON-TECHNICAL GUIDE: Simple explain-to-child instructions for field teams.
- * 4. OPTIONAL ADMIN CONTROLS: Section G added for manual hardening.
- * 5. NO STRUCTURAL CONTROLS: Freeze panes and protections removed for zero-friction.
+ * 1. UNION SUPPORT: Handlers added for PremiumPack | IndividualChecklist
+ * 2. NORMALIZATION: Flat checklists are wrapped for symmetric engine processing
+ * 3. STABLE HEARTBEAT: Columns E:F (Triggers), G (Status), and J (Stamp) remain locked
  * ----------------------------------------------------------------------------
  */
-
-const SAFE_SHEET_NAME = /^[A-Z][A-Z0-9_]*$/;
 
 const TABS = {
     START: "START",
@@ -27,7 +24,6 @@ const TABS = {
     SYS_ENGINE: "SYS_ENGINE"
 };
 
-// Stabilized Apps Script Source for Institutional Deployment
 const APPS_SCRIPT_SOURCE = `
 function onEdit(e) {
   try {
@@ -39,17 +35,14 @@ function onEdit(e) {
     const startCol = e.range.getColumn();
     const endCol = startCol + e.range.getNumColumns() - 1;
 
-    // Only react to DONE BY (E) or VERIFIED BY (F) edits
     if (endCol < 5 || startCol > 6) return;
 
     SpreadsheetApp.flush();    let stamped = 0;
 
-    // Process every edited row in the range
     for (let i = 0; i < numRows; i++) {
       const row = startRow + i;
       let status = "";
 
-      // Retry loop for formula latency (gives Sheets time to calculate COMPLETE)
       for (let retry = 0; retry < 6; retry++) {
         Utilities.sleep(500);
         SpreadsheetApp.flush();
@@ -60,7 +53,6 @@ function onEdit(e) {
       const stampCell = sheet.getRange(row, 10);
       const existingStamp = stampCell.getValue();
 
-      // Stamp only if row is COMPLETE and no stamp exists yet
       if (status === "COMPLETE" && !existingStamp) {
         const timestamp = Utilities.formatDate(
           new Date(),
@@ -94,7 +86,7 @@ const sanitizeRisk = (text: string) => {
     return text.replace(/\[?Risk:\s?\[?/gi, "").replace(/\]/g, "").trim();
 };
 
-export const handleDownload = (item: PremiumPack, type?: string) => {
+export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: string) => {
     try {
         if (!item) {
             throw new Error("Operational data not found.");
@@ -102,8 +94,7 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
 
         const wb = utils.book_new();
         
-        // ALL PREMIUM PACKS ENABLED FOR AUDIT UPGRADE
-        const isAuditEnabled = item.priceINR > 0 || (item.priceUSD && item.priceUSD > 0);
+        const isAuditEnabled = item.priceINR > 0 || (item.priceUSD !== undefined && item.priceUSD > 0);
 
         const COLORS = {
             PRIMARY_GREEN: "22C55E",  
@@ -166,6 +157,19 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
             ws['!views'] = [{ showGridLines: false }];
         };
 
+        // Normalize checklists for both PremiumPack and IndividualChecklist
+        const normalizedChecklists: Checklist[] = 'checklists' in item 
+            ? item.checklists 
+            : [{
+                title: item.title,
+                department: item.category,
+                frequency: "As Required",
+                role: "Operator",
+                summary: item.description,
+                icon: item.icon,
+                tasks: item.tasks
+            }];
+
         // --- 01. START ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
@@ -202,8 +206,8 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. DAILY_TASKS (APPEND-ONLY UPGRADE) ---
-        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+        // --- 03. DAILY_TASKS ---
+        const activeRoles = Array.from(new Set(normalizedChecklists.map(c => c.role)));
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -217,7 +221,7 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
         
         for (let b = 0; b < 2; b++) {
             const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + b}`;
-            item.checklists.forEach((checklist, cIdx) => {
+            normalizedChecklists.forEach((checklist, cIdx) => {
                 const role = checklist.role;
                 checklist.tasks.forEach(t => {
                     const rIdx = taskData.length + 1;
@@ -239,9 +243,9 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
                         { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
                         { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
                         { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } },
-                        { v: "", s: styles.locked }, // J: STAMP
-                        { v: "", s: styles.input },  // K: PROOF / EVIDENCE
-                        { v: "", s: styles.input }   // L: REFERENCE IMAGE
+                        { v: "", s: styles.locked },
+                        { v: "", s: styles.input },  
+                        { v: "", s: styles.input }   
                     ]);
                 });
             });
@@ -254,7 +258,7 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
         // --- 04. SOP_LIB ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
-        item.checklists.forEach((c, cIdx) => {
+        normalizedChecklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
                 const styles = getStyles(cIdx % 2 === 1);
                 libData.push([
@@ -305,7 +309,7 @@ export const handleDownload = (item: PremiumPack, type?: string) => {
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
-        // --- 07. SETUP_GUIDE (EXPANDED INSTRUCTIONS) ---
+        // --- 07. SETUP_GUIDE ---
         if (isAuditEnabled) {
             const guideData: any[][] = [
                 [{ v: "🛠️ SYSTEM SETUP & AUDIT ENGINE ACTIVATION", s: bannerStyle }],

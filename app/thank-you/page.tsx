@@ -4,7 +4,7 @@ import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2, HelpCircle, ShieldCheck, Lock, MonitorSmartphone, Settings2 } from "lucide-react";
+import { Download, AlertTriangle, Loader2, MonitorSmartphone, Settings2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { verifyRazorpayPayment } from '@/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
@@ -12,25 +12,16 @@ import { handleDownload } from '@/lib/download';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogFooter,
-} from '@/components/ui/alert-dialog';
 import { Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 function ThankYouContent() {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
-  const [verifiedItem, setVerifiedItem] = React.useState<any | null>(null);
+  const [verifiedItem, setVerifiedItem] = React.useState<PremiumPack | IndividualChecklist | null>(null);
   const [itemType, setItemType] = React.useState<'pack' | 'individual' | null>(null);
-  const [showDownloadConfirm, setShowDownloadConfirm] = React.useState(false);
   const hasTriggeredDownload = React.useRef(false);
 
   React.useEffect(() => {
@@ -55,8 +46,7 @@ function ThankYouContent() {
         setVerifiedItem(result.item);
         setItemType(result.type);
         if (!hasTriggeredDownload.current) {
-            handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type);
-            setShowDownloadConfirm(true);
+            handleDownload(result.item, result.type);
             hasTriggeredDownload.current = true;
         }
       } else {
@@ -73,7 +63,6 @@ function ThankYouContent() {
             setItemType('pack');
              if (!hasTriggeredDownload.current) {
                 handleDownload(item, 'pack');
-                setShowDownloadConfirm(true);
                 hasTriggeredDownload.current = true;
             }
         }

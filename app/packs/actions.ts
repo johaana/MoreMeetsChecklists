@@ -1,10 +1,8 @@
-
 "use server";
 
 import { z } from "zod";
-import crypto from 'crypto';
-import { premiumPacks } from "../lib/premium-packs";
-import { individualChecklists } from "../lib/individual-checklists";
+import { premiumPacks, type PremiumPack } from "../lib/premium-packs";
+import { individualChecklists, type IndividualChecklist } from "../lib/individual-checklists";
 
 const brevoApiKey = process.env.BREVO_API_KEY;
 const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
@@ -58,7 +56,7 @@ export async function addContact(input: { email: string, packId: string }): Prom
   }
 }
 
-export async function verifyRazorpayPayment(paymentId: string, packId: string | null, checklistId: string | null): Promise<{ success: boolean; item?: any; type?: 'pack' | 'individual', error?: string }> {
+export async function verifyRazorpayPayment(paymentId: string, packId: string | null, checklistId: string | null): Promise<{ success: boolean; item?: PremiumPack | IndividualChecklist; type?: 'pack' | 'individual', error?: string }> {
     if (!razorpayKeySecret) {
         return { success: false, error: 'Payment gateway not configured.' };
     }
@@ -67,8 +65,8 @@ export async function verifyRazorpayPayment(paymentId: string, packId: string | 
         return { success: false, error: 'No product ID provided.' };
     }
 
-    let item: any = null;
-    let type: 'pack' | 'individual' | null = null;
+    let item: PremiumPack | IndividualChecklist | undefined = undefined;
+    let type: 'pack' | 'individual' | undefined = undefined;
     
     if (packId) {
         item = premiumPacks.find(p => p.id === packId);
