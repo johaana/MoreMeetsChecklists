@@ -33,7 +33,7 @@ export const Logo = ({ variant = 'light', className }: LogoProps) => {
           "text-xl md:text-2xl font-black italic tracking-tighter uppercase flex items-center leading-none",
           isDark ? "text-white" : "text-[#1F3A34]"
         )}>
-          MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS</span>
+          MORE<span style={{ color: BRAND_GOLD }} className="ml-1">MEETS™</span>
         </h2>
       </div>
     </div>

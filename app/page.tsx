@@ -45,7 +45,8 @@ import {
     Award,
     HardHat,
     Scale,
-    Landmark
+    Landmark,
+    Presentation
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -160,7 +161,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -226,7 +227,7 @@ export default function HomePage() {
                                     </h1>
                                     
                                     <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                        MoreMeets provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                                        MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
                                     </p>
                                     
                                     <div className="flex flex-col gap-2.5 pt-1">
@@ -284,7 +285,7 @@ export default function HomePage() {
                     </div>
                 </div>
 
-                {/* --- 2. WHY SOPS SECTION (H1 COMMIT) --- */}
+                {/* --- 2. WHY SOPS SECTION --- */}
                 <WhySopsSection />
 
                 {/* --- 3. THE MORNING REALITY (STORY) --- */}
@@ -316,7 +317,7 @@ export default function HomePage() {
                 {/* --- 4. INSIDE THE SYSTEM (LEDGER SCREENSHOT) --- */}
                 <Section id="inside" className="bg-white" noSpine>
                     <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
-                        <div className="text-center max-w-3xl mx-auto space-y-4">
+                        <div className="text-center max-w-3xl mx-auto space-y-6">
                             <SectionEyebrow text="THE SYSTEM IS THE PRODUCT" />
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                                 INSTITUTIONAL GRADE.
@@ -324,6 +325,14 @@ export default function HomePage() {
                             <p className="text-zinc-600 text-lg md:text-xl font-medium italic mx-auto text-center">
                                 Instead of buying another SaaS subscription, you deploy a practical operational system your team can actually use from Day 1.
                             </p>
+                            <div className="flex justify-center pt-4">
+                                <Button asChild variant="outline" className="h-14 px-8 rounded-xl border-[#B89B5E]/30 text-[#B89B5E] hover:bg-[#B89B5E] hover:text-white transition-all font-black uppercase italic text-xs tracking-widest gap-3 group">
+                                    <Link href="https://gamma.app/public/MoreMeets-Operational-SOP-Systems-5i5z5v5z5v5z5v5" target="_blank">
+                                        <Presentation className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                        See Full System Walkthrough
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-20">
@@ -367,7 +376,7 @@ export default function HomePage() {
                             </h2>
                         </div>
                         <div className="max-w-2xl mx-auto space-y-8">
-                            <p className="text-xl md:text-3xl font-bold italic leading-tight text-white/40">
+                            <p className="text-xl md:text-[26px] font-bold italic leading-tight text-white/40">
                                 Basements. Kitchens. Warehouses. Remote sites.
                             </p>
                             <div className="space-y-2">
@@ -382,8 +391,39 @@ export default function HomePage() {
                     </div>
                 </div>
 
-                {/* --- 6. OWNERSHIP & EDITABILITY --- */}
-                <Section className="bg-white" noSpine>
+                {/* --- 6. DEPLOYMENT PROTOCOL (NUMBERED FRAMEWORK) --- */}
+                <Section className="bg-white border-b border-zinc-100" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="DEPLOYMENT PROTOCOL" />
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                Go live in 10 minutes
+                            </h2>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
+                            {[
+                                { t: "Purchase", d: "Instant access to your industry master engine." },
+                                { t: "Receive System", d: "Direct download link delivered via secure email." },
+                                { t: "Import to Sheets", d: "Upload to Drive for live multi-user collaboration." },
+                                { t: "Assign Teams", d: "Map staff names to roles in the central hub." },
+                                { t: "Start Daily Execution", d: "Standards are followed via live, verifiable logs." }
+                            ].map((step, i) => (
+                                <div className="space-y-6 group text-left" key={i}>
+                                    <div className="text-4xl md:text-6xl font-black italic text-zinc-100 group-hover:text-[#B89B5E] transition-colors leading-none">
+                                        0{i+1}
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="font-black text-sm uppercase italic leading-tight font-headline text-zinc-950">{step.t}</h4>
+                                        <p className="text-[10px] text-zinc-500 font-bold italic leading-relaxed uppercase tracking-wider">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 7. OWNERSHIP & EDITABILITY --- */}
+                <Section className="bg-[#F8F6F2]/50" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-32">
                         <div className="grid md:grid-cols-2 gap-16 md:gap-32">
                             <div className="space-y-8">

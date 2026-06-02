@@ -10,10 +10,14 @@ export function Footer() {
                     <Link href="/" className="group" prefetch={false}>
                         <Logo variant="light" />
                     </Link>
-                    <p className="text-xs text-zinc-500 max-w-xs pt-2 font-bold italic leading-relaxed">
-                        Spreadsheet-native operational infrastructure for real-world businesses. 
-                        Because memory is not a system.
-                    </p>
+                    <div className="space-y-1 pt-2">
+                        <p className="text-xs text-zinc-500 max-w-xs font-bold italic leading-relaxed">
+                            Spreadsheet-Native Operational Infrastructure™ for real-world businesses. 
+                        </p>
+                        <p className="text-[10px] text-zinc-400 font-medium italic">
+                            Audit-ready daily execution systems built for operations leaders.
+                        </p>
+                    </div>
                 </div>
                 <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
                     <h3 className="font-black mb-2 text-zinc-950 text-[10px] tracking-[0.3em]">RESOURCES</h3>
