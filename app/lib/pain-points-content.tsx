@@ -108,6 +108,7 @@ import {
     Banknote,
     Smile,
     Smartphone,
+    ShieldAlert,
     TrendingUp as RevenueIcon
 } from 'lucide-react';
 
