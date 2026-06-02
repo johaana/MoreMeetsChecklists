@@ -64,8 +64,8 @@ export const HeroSection = () => (
                             <h1 className="text-[2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
                                 CAPTURE <br/><span className="text-primary">MEMORY.</span>
                             </h1>
-                            <p className="text-[10px] text-white/40 italic font-medium max-w-[180px]">
-                                Your business should not depend on memory. Luck is not a strategy.
+                            <p className="text-[10px] text-white/40 italic font-medium">
+                                Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
                             </p>
                         </div>
 
@@ -130,7 +130,9 @@ export const HeroSection = () => (
                 <div className="space-y-12">
                     <div className="space-y-6">
                         <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">CAPTURE<br /><span className="text-primary">MEMORY.</span></h1>
-                        <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">Your business should not depend on memory. <br /> Serious operations deserve more than improvisation.</p>
+                        <p className="text-xl text-white/40 italic font-medium max-w-2xl border-l border-white/20 pl-10 leading-relaxed">
+                            Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
+                        </p>
                     </div>
                     <div className="flex flex-col gap-5">
                         {SYSTEM_SPECS.map((spec, i) => (

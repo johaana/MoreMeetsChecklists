@@ -168,7 +168,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                Stop the daily struggle of chasing updates. Deploy industry-specific instructions and systems that your team will actually follow.
+                                Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -230,7 +230,7 @@ export default function HomePage() {
                                     </h1>
                                     
                                     <p className="text-[16px] md:text-[18px] font-medium leading-[1.5] text-zinc-800 max-w-3xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                        Stop the daily struggle of chasing updates. Deploy industry-specific instructions and systems that your team will actually follow.
+                                        Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
                                     </p>
                                     
                                     <div className="flex flex-col gap-2.5 pt-1">
@@ -410,7 +410,7 @@ export default function HomePage() {
                                     </h2>
                                     <p className="text-lg text-zinc-700 italic font-medium leading-relaxed">
                                         MoreMeets provides industry-specific SOP systems that are already structured and ready to use. 
-                                        Instead of starting from a blank page, you receive a complete system built around real business workflows.
+                                        Instead of starting from a blank page, you receive a complete operational system built around real business workflows.
                                     </p>
                                 </div>
                                 <div className="space-y-4">
