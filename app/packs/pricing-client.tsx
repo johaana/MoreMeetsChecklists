@@ -22,6 +22,7 @@ import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { cn } from "@/lib/utils";
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -185,7 +186,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         onChange={(e) => setAgreedToTerms(e.target.checked)}
                                     />
                                     <label htmlFor="agree-terms" className="text-[10px] text-zinc-400 font-medium leading-none">
-                                        I agree to the <Link href="/terms" target="_blank" className="underline hover:text-white">Terms</Link> & <Link href="/refund" target="_blank" className="underline hover:text-white">Refund Policy</Link>
+                                        I agree to the <Link href="/terms" target="_blank" className="underline hover:text-white">Terms</Link> & <Link href="/refund" target="_blank" className="underline hover:text-primary">Refund Policy</Link>
                                     </label>
                                 </div>
 
