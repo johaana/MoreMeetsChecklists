@@ -30,7 +30,8 @@ import {
     ShoppingBag,
     Award,
     Wrench,
-    Eye
+    Eye,
+    Truck
 } from 'lucide-react';
 
 export const painPointsContent = {
@@ -100,7 +101,7 @@ export const painPointsContent = {
         points: [
             { icon: <Siren />, title: "Uphaar Cinema Fire (Delhi, 1997)", description: "59 people died, not from fire, but from suffocation due to blocked exits. Our 'Fire Safety' checklist mandates daily exit checks, making such a tragedy impossible." },
             { icon: <Bug />, title: "AMC Theater Bed Bug Infestation (USA, 2010)", description: "A viral news story about bed bugs led to a PR nightmare and costly pest control. Our 'Auditorium Cleaning' SOP includes checks for pests, preventing such outbreaks." },
-            { icon: <Projector />, title: "Interstellar Projection Error (Global, 2014)", description: "Many cinemas showed the film with incorrect sound mixing, ruining the experience. Our 'Projection & Sound QC' checklist ensures all technical aspects are perfect before every show." },
+            { icon: <Projector />, title: "Interstellar Projection Error (Global, 2014)", description: "Many cinemas showed the film with incorrect sound mixing, ruining the experience. Our 'Projection & Sound QC' checklist ensures all technical aspects be perfect before every show." },
             { icon: <Users />, title: "Aurora Movie Theater Shooting (USA, 2012)", description: "While a horrific criminal act, this tragedy led to enhanced security protocols worldwide. Our 'Crowd Management & Security' checklists help manage entry points and monitor for suspicious behavior." }
         ]
     },
