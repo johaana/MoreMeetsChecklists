@@ -30,7 +30,7 @@ export default function HeroLabPage() {
                 <div className="bg-zinc-950 text-white py-20 border-b border-white/10">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <Badge className="bg-primary text-black mb-4 px-4 py-1">SOVEREIGN DESIGN LAB</Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">Identity & Media Test Route</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter text-white">Identity & Media Test Route</h1>
                         <p className="text-zinc-400 mt-4 max-w-2xl italic">Testing visual parity for headline stacking and video framing. No production code was modified to generate this page.</p>
                     </div>
                 </div>
@@ -41,14 +41,23 @@ export default function HeroLabPage() {
                         <h2 className="text-2xl font-black uppercase italic tracking-tighter mb-10 text-zinc-400 border-l-4 border-primary pl-6">SECTION 1: DESKTOP HERO VARIANTS (HIDDEN ON MOBILE)</h2>
                     </div>
 
-                    {/* VARIANT A */}
+                    {/* VARIANT A: CURRENT PRODUCTION BASELINE */}
                     <div className="mb-32">
                         <div className="container mx-auto max-w-[1200px] px-6 mb-6">
                             <Badge variant="outline" className="border-zinc-300 bg-white text-zinc-600 font-black">VARIANT A: CURRENT PRODUCTION BASELINE (ITALIC / 8XL)</Badge>
                         </div>
                         <div className="hidden md:flex flex-row items-center h-[650px] relative bg-black overflow-hidden border-y border-zinc-200">
-                            <div className="absolute inset-0 z-0">
-                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                            <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                                <video 
+                                    src={VIDEO_URL} 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline 
+                                    preload="auto"
+                                    className="w-full h-full object-cover opacity-30 grayscale will-change-transform" 
+                                    style={{ transform: 'translate3d(0,0,0)' }}
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
                             </div>
                             <div className="container px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">
@@ -65,14 +74,23 @@ export default function HeroLabPage() {
                         </div>
                     </div>
 
-                    {/* VARIANT B */}
+                    {/* VARIANT B: APPROVED IMPERATIVE - MAX-W-5XL */}
                     <div className="mb-32">
                         <div className="container mx-auto max-w-[1200px] px-6 mb-6">
                             <Badge variant="outline" className="border-zinc-300 bg-white text-zinc-600 font-black">VARIANT B: NON-ITALIC | TEXT-7XL | MAX-W-5XL</Badge>
                         </div>
                         <div className="hidden md:flex flex-row items-center h-[650px] relative bg-black overflow-hidden border-y border-zinc-200">
-                            <div className="absolute inset-0 z-0">
-                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                            <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                                <video 
+                                    src={VIDEO_URL} 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline 
+                                    preload="auto"
+                                    className="w-full h-full object-cover opacity-30 grayscale will-change-transform" 
+                                    style={{ transform: 'translate3d(0,0,0)' }}
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
                             </div>
                             <div className="container px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">
@@ -92,14 +110,23 @@ export default function HeroLabPage() {
                         </div>
                     </div>
 
-                    {/* VARIANT C */}
+                    {/* VARIANT C: APPROVED IMPERATIVE - MAX-W-4XL */}
                     <div className="mb-20">
                         <div className="container mx-auto max-w-[1200px] px-6 mb-6">
                             <Badge variant="outline" className="border-zinc-300 bg-white text-zinc-600 font-black">VARIANT C: NON-ITALIC | TEXT-7XL | MAX-W-4XL</Badge>
                         </div>
                         <div className="hidden md:flex flex-row items-center h-[650px] relative bg-black overflow-hidden border-y border-zinc-200">
-                            <div className="absolute inset-0 z-0">
-                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                            <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                                <video 
+                                    src={VIDEO_URL} 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline 
+                                    preload="auto"
+                                    className="w-full h-full object-cover opacity-30 grayscale will-change-transform" 
+                                    style={{ transform: 'translate3d(0,0,0)' }}
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
                             </div>
                             <div className="container px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">
@@ -128,30 +155,20 @@ export default function HeroLabPage() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 lg:gap-20">
                             
-                            {/* VERSION 1 */}
+                            {/* VERSION 1: CURRENT PRODUCTION */}
                             <div className="space-y-8">
                                 <Badge variant="secondary" className="px-6 py-1">VERSION 1: CURRENT PRODUCTION</Badge>
                                 <div className="mx-auto w-[320px] h-[568px] border-[12px] border-zinc-900 rounded-[3rem] bg-black relative overflow-hidden shadow-2xl ring-1 ring-black/10">
-                                    <div className="absolute inset-0 z-0">
-                                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
-                                        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
-                                    </div>
-                                    <div className="relative z-10 p-6 pt-12 text-left">
-                                        <h1 className="text-2xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">CAPTURE <br/><span className="text-primary">MEMORY.</span></h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* VERSION 2 */}
-                            <div className="space-y-8">
-                                <Badge variant="secondary" className="px-6 py-1">VERSION 2: CENTER 10% (TILT UP)</Badge>
-                                <div className="mx-auto w-[320px] h-[568px] border-[10px] border-zinc-900 rounded-[2.5rem] bg-black relative overflow-hidden shadow-2xl ring-1 ring-black/10">
-                                    <div className="absolute inset-0 z-0">
+                                    <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
                                         <video 
                                             src={VIDEO_URL} 
-                                            autoPlay loop muted playsInline 
-                                            className="w-full h-full object-cover opacity-20 grayscale" 
-                                            style={{ objectPosition: 'center 10%' }}
+                                            autoPlay 
+                                            loop 
+                                            muted 
+                                            playsInline 
+                                            preload="auto"
+                                            className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
+                                            style={{ transform: 'translate3d(0,0,0)' }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
                                     </div>
@@ -161,16 +178,37 @@ export default function HeroLabPage() {
                                 </div>
                             </div>
 
-                            {/* VERSION 3 */}
+                            {/* VERSION 2: CENTER 10% (TILT UP) */}
                             <div className="space-y-8">
-                                <Badge variant="secondary" className="px-6 py-1">VERSION 3: CENTER 20% (MAX TILT)</Badge>
+                                <Badge variant="secondary" className="px-6 py-1">VERSION 2: CENTER 10% (TILT UP)</Badge>
                                 <div className="mx-auto w-[320px] h-[568px] border-[10px] border-zinc-900 rounded-[2.5rem] bg-black relative overflow-hidden shadow-2xl ring-1 ring-black/10">
-                                    <div className="absolute inset-0 z-0">
+                                    <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
                                         <video 
                                             src={VIDEO_URL} 
                                             autoPlay loop muted playsInline 
-                                            className="w-full h-full object-cover opacity-20 grayscale" 
-                                            style={{ objectPosition: 'center 20%' }}
+                                            preload="auto"
+                                            className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
+                                            style={{ transform: 'translate3d(0,0,0)', objectPosition: 'center 10%' }}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+                                    </div>
+                                    <div className="relative z-10 p-6 pt-12 text-left">
+                                        <h1 className="text-2xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">CAPTURE <br/><span className="text-primary">MEMORY.</span></h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* VERSION 3: CENTER 20% (MAX TILT) */}
+                            <div className="space-y-8">
+                                <Badge variant="secondary" className="px-6 py-1">VERSION 3: CENTER 20% (MAX TILT)</Badge>
+                                <div className="mx-auto w-[320px] h-[568px] border-[10px] border-zinc-900 rounded-[2.5rem] bg-black relative overflow-hidden shadow-2xl ring-1 ring-black/10">
+                                    <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                                        <video 
+                                            src={VIDEO_URL} 
+                                            autoPlay loop muted playsInline 
+                                            preload="auto"
+                                            className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
+                                            style={{ transform: 'translate3d(0,0,0)', objectPosition: 'center 20%' }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
                                     </div>
