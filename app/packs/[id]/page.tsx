@@ -38,7 +38,11 @@ export async function generateMetadata(
   }
   
   const siteUrl = 'https://www.moremeets.com';
-  const title = `${pack.title} | MoreMeets™`;
+  
+  // CLEAN TITLE FOR METADATA: Strips version numbers (e.g., v19.2) and marketing suffixes for cleaner SEO
+  const cleanTitle = pack.title.split(/v\d+/)[0].trim();
+  const title = `${cleanTitle} | MoreMeets™`;
+  
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
   const ogImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
