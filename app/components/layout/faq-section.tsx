@@ -19,11 +19,35 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-whatsapp" className="border-zinc-200">
-                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can’t I just use WhatsApp to track tasks?</AccordionTrigger>
+                    <AccordionItem value="item-sheets" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why Google Sheets instead of dedicated software?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>WhatsApp is communication, not execution.</p>
-                            <p>Messages are easy to miss, forget, or misinterpret. MoreMeets provides <strong>timestamped proof</strong>, live audit tracking, and multi-shift visibility—without the noise and app fatigue of chat tools.</p>
+                            <p>Software often fails in the real world because of "app fatigue" and the friction of learning new interfaces.</p>
+                            <p>Google Sheets is a tool your team already knows. It works offline, supports real-time collaboration, and integrates perfectly with your existing workspace. It ensures the system is actually followed, which is the only thing that matters in operations.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-templates" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Are these just spreadsheet templates?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>No. MoreMeets delivers complete <strong>operational systems</strong>.</p>
+                            <p>A template is a static document; a MoreMeets system includes technical protocols, frequency mapping, accountability structures, and built-in audit trails. We are selling the engineering of your operations; Google Sheets is just the layer where that engineering lives.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-excel" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can I use Excel instead of Google Sheets?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Yes. Our systems are delivered in Excel (.xlsx) format.</p>
+                            <p>While we recommend Google Sheets for its superior real-time collaboration and mobile ease-of-use, the system remains fully functional in desktop Excel or other spreadsheet environments.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-ai" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not generate SOPs with AI?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>AI is excellent at writing general text, but it lacks the <strong>forensic operational experience</strong> to build a fail-safe execution system.</p>
+                            <p>Our SOPs are engineered from 30 years of high-stakes field exposure. We define the consequences of failure, the specific proof required for an audit, and the exact floor actions needed—details that generic AI cannot reliably produce for real-world risk management.</p>
                         </AccordionContent>
                     </AccordionItem>
 
@@ -40,14 +64,6 @@ export const FaqSection = () => (
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
                             <p>Yes. MoreMeets™ is engineered for <strong>multi-location operational control.</strong></p>
                             <p>Management can track completion rates and incidents across several outlets from a single master dashboard, maintaining a group-wide standard of excellence.</p>
-                        </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="item-edit" className="border-zinc-200">
-                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can we customize or add our own tasks?</AccordionTrigger>
-                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                          <p>Yes. Every system is <strong>100% editable</strong>.</p>
-                          <p>It works like a master template. You can add, delete, or modify any technical task to fit your unique brand protocols forever.</p>
                         </AccordionContent>
                     </AccordionItem>
 

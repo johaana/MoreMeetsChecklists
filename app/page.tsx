@@ -161,7 +161,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof.
+                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -218,7 +218,7 @@ export default function HomePage() {
                                     <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
                                         YOUR BUSINESS <br />
                                         <span className="relative inline-block mt-1">
-                                            DEPEND ON MEMORY.
+                                            SHOULD NOT <br/> DEPEND ON MEMORY.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                         </span>
                                     </h1>
@@ -326,7 +326,7 @@ export default function HomePage() {
                                 <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black hover:bg-primary/90 transition-all font-black uppercase italic text-xs tracking-widest gap-4 group shadow-xl">
                                     <Link href="https://gamma.app/public/MoreMeets-Operational-SOP-Systems-5i5z5v5z5v5z5v5" target="_blank">
                                         <Presentation className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                        See Full System Walkthrough
+                                        Download MoreMeets Presentation
                                     </Link>
                                 </Button>
                             </div>
