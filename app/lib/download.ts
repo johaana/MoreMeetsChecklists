@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -363,9 +362,11 @@ export const handleDownload = (item: PremiumPack) => {
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
-        if (!wb.Workbook) wb.Workbook = { Sheets: [], Views: [{ activeTab: 0 }] };
-        wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
-        wb.Workbook.Views[0].activeTab = 0;
+        if (sIdx > -1) {
+            if (!wb.Workbook) wb.Workbook = { Sheets: [] };
+            if (!wb.Workbook.Sheets) wb.Workbook.Sheets = [];
+            wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
+        }
 
         writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v18.xlsx`);
     } catch (error: any) {

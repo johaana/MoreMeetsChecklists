@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@firebase/vertexai-preview": "^0.0.4",
     "@genkit-ai/google-genai": "1.26.0",
     "@genkit-ai/next": "1.26.0",
     "@hookform/resolvers": "3.9.0",
