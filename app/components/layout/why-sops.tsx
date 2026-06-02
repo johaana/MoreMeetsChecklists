@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -10,8 +11,7 @@ import {
     Target,
     ShieldCheck,
     Smartphone,
-    LayoutGrid,
-    SearchCheck
+    LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -126,7 +126,7 @@ export const WhySopsSection = () => {
                                 { label: "100% EDITABLE", icon: Zap },
                                 { label: "OWN FOREVER", icon: History },
                                 { label: "NO SAAS TAX", icon: ShieldCheck },
-                                { label: "AUDIT READY", icon: SearchCheck }
+                                { label: "AUDIT READY", icon: ShieldCheck }
                             ].map((item, i) => (
                                 <div key={i} className="p-6 rounded-2xl bg-zinc-50 border border-zinc-100 flex flex-col items-center gap-3">
                                     <item.icon className="w-5 h-5 text-[#B89B5E]" />
