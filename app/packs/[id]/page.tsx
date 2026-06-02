@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -39,7 +38,7 @@ export async function generateMetadata(
   }
   
   const siteUrl = 'https://www.moremeets.com';
-  const title = `MoreMeets™ | ${pack.title}`;
+  const title = `${pack.title} | MoreMeets™`;
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
   const ogImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
@@ -48,6 +47,9 @@ export async function generateMetadata(
     metadataBase: new URL(siteUrl),
     title: title,
     description: description,
+    alternates: {
+      canonical: `${siteUrl}/packs/${pack.id}`,
+    },
     openGraph: {
       title: title,
       description: description,

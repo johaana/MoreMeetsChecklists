@@ -8,13 +8,16 @@ import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'MoreMeets™ | Operational SOP Systems';
-const siteDescription = 'MoreMeets™ helps businesses stop chasing teams and start seeing daily operations clearly. Pre-built industry-specific operational SOPs with live dashboards, trainer notes, audit-ready tracking, and no SaaS subscriptions. Built in Excel. Shared through Google Sheets.';
+const siteDescription = 'MoreMeets™: Spreadsheet-native operational infrastructure for real-world businesses. Deploy audit-ready SOPs and live dashboards in 10 minutes. No SaaS fees.';
 const socialImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: siteTitle,
   description: siteDescription,
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: 'website',
     url: siteUrl,
@@ -73,6 +76,35 @@ export default function RootLayout({
             gtag('config', 'G-ZE6F71Y2CM');
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "MoreMeets Operational SOP Systems",
+              "operatingSystem": "Windows, MacOS, Android, iOS",
+              "applicationCategory": "BusinessApplication",
+              "publisher": {
+                "@type": "Organization",
+                "name": "MoreMeets",
+                "url": "https://www.moremeets.com",
+                "logo": "https://www.moremeets.com/api/og"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "MoreMeets",
+              "url": "https://www.moremeets.com"
+            })
+          }}
+        />
       </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
