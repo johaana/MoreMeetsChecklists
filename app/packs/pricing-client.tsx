@@ -20,6 +20,7 @@ import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -64,6 +65,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>(hasINR ? 'INDIA' : 'GLOBAL');
+    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
     
     const rawCount = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
     const displayTasks = Math.floor(rawCount / 10) * 10;
@@ -173,20 +175,38 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
 
-                            <div className="w-full flex flex-col items-center gap-4">
+                            <div className="w-full flex flex-col items-center gap-6">
+                                <div className="flex items-center space-x-3 bg-white/5 p-3 rounded-xl border border-white/5 w-full">
+                                    <input 
+                                        type="checkbox" 
+                                        id="agree-terms" 
+                                        className="w-4 h-4 rounded border-white/20 bg-black/40 text-primary focus:ring-primary/20"
+                                        checked={agreedToTerms}
+                                        onChange={(e) => setAgreedToTerms(e.target.checked)}
+                                    />
+                                    <label htmlFor="agree-terms" className="text-[10px] text-zinc-400 font-medium leading-none">
+                                        I agree to the <Link href="/terms" target="_blank" className="underline hover:text-white">Terms</Link> & <Link href="/refund" target="_blank" className="underline hover:text-white">Refund Policy</Link>
+                                    </label>
+                                </div>
+
                                 {region === 'INDIA' && hasINR ? (
-                                    <div className="w-full relative max-w-[320px] flex justify-center">
+                                    <div className={cn("w-full relative max-w-[320px] flex justify-center", !agreedToTerms && "opacity-40 pointer-events-none")}>
                                         <RazorpayButton 
                                             paymentId={pack.paymentId} 
                                             className="w-full flex justify-center min-h-[60px]" 
                                         />
                                     </div>
                                 ) : (
-                                    <button className="w-full h-14 text-[#0B0F14] font-black text-sm rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 group max-w-[320px] bg-primary">
-                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
+                                    <Button asChild size="lg" className="w-full h-16 text-[#0B0F14] font-black text-sm rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 group max-w-[320px] bg-primary" disabled={!agreedToTerms}>
+                                        <Link 
+                                            href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center gap-3"
+                                        >
                                             Deploy Now <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
                                         </Link>
-                                    </button>
+                                    </Button>
                                 )}
                                 
                                 <div className="space-y-1.5 text-center">

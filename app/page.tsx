@@ -134,17 +134,17 @@ export default function HomePage() {
                 <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                     
                     {/* --- MOBILE ARCHITECTURE --- */}
-                    <div className="md:hidden flex flex-col bg-white">
-                        <div className="w-full aspect-[4/5] bg-zinc-900 relative overflow-hidden">
+                    <div className="md:hidden flex flex-col bg-[#F8F6F2]">
+                        <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                              <iframe 
                                 src={VIMEO_URL} 
-                                className="absolute inset-0 w-full h-full scale-[1.8] brightness-[0.9]" 
+                                className="absolute inset-0 w-full h-full scale-[1.2] brightness-[0.9]" 
                                 frameBorder="0" 
                                 allow="autoplay; fullscreen" 
                              />
                              <div className="absolute inset-0 bg-black/5" />
                         </div>
-                        <div className="p-8 space-y-7 flex flex-col justify-start">
+                        <div className="p-6 pt-8 space-y-7 flex flex-col justify-start">
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
@@ -161,7 +161,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
+                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -169,15 +169,15 @@ export default function HomePage() {
                                     "No app-adoption battle.",
                                     "Works during internet disruptions."
                                 ].map((text, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                    <div key={i} className="flex items-center gap-2.5">
+                                        <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                             <Check className="w-2 md:w-2.5 h-2 md:h-2.5 text-[#2E7D5A]" />
                                         </div>
                                         <span className="text-[10px] font-bold text-[#121212] uppercase tracking-wide">{text}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="pt-2 space-y-4">
+                            <div className="pt-2">
                                 <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499 / $29</Link>
                                 </button>

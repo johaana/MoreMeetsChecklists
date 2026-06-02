@@ -157,8 +157,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                 
                 {/* --- MOBILE ARCHITECTURE --- */}
-                <div className="md:hidden flex flex-col bg-white">
-                    <div className="w-full aspect-[4/5] bg-zinc-900 relative overflow-hidden">
+                <div className="md:hidden flex flex-col bg-[#F8F6F2]">
+                    <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                         <img 
                             src={squircleUrl} 
                             alt={pack.title} 
@@ -166,7 +166,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         />
                         <div className="absolute inset-0 bg-black/5" />
                     </div>
-                    <div className="p-8 space-y-7 flex flex-col justify-start">
+                    <div className="p-6 pt-8 space-y-7 flex flex-col justify-start">
                         <div className="space-y-3">
                             <div className="flex items-center gap-2">
                                 <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
