@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { FaqSection } from '@/components/layout/faq-section';
+import { WhySopsSection } from '@/components/layout/why-sops';
 import { 
     Check, 
     ArrowRight, 
@@ -131,7 +132,7 @@ export default function HomePage() {
                 {/* --- 1. THE CINEMATIC HERO --- */}
                 <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                     
-                    {/* --- MOBILE ARCHITECTURE (Variation 1.1: Sovereign Standard) --- */}
+                    {/* --- MOBILE ARCHITECTURE --- */}
                     <div className="md:hidden flex flex-col bg-white">
                         <div className="w-full aspect-[4/5] bg-zinc-900 relative overflow-hidden">
                              <iframe 
@@ -217,7 +218,7 @@ export default function HomePage() {
                                     </div>
 
                                     <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
-                                        YOUR BUSINESS SHOULD NOT <br />
+                                        YOUR BUSINESS <br />
                                         <span className="relative inline-block mt-1">
                                             DEPEND ON MEMORY.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
@@ -283,95 +284,8 @@ export default function HomePage() {
                     </div>
                 </div>
 
-                {/* --- 2. OPERATIONAL CONTEXT --- */}
-                <Section className="bg-white border-b border-zinc-100" noSpine>
-                    <div className="max-w-4xl mx-auto space-y-12">
-                        <div className="space-y-6">
-                            <h2 className="text-xl md:text-3xl text-zinc-900 font-bold leading-tight italic">
-                                Most businesses already have SOPs. <br/>
-                                <span className="text-zinc-400">The real problem is that daily operations still depend on memory, verbal follow-ups, WhatsApp messages, and whether the manager is physically present.</span>
-                            </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                                {[
-                                    "Tasks get missed.",
-                                    "Instructions change between shifts.",
-                                    "Managers keep calling teams for updates.",
-                                    "New staff take weeks to train.",
-                                    "Nobody knows what was actually completed."
-                                ].map((text, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <X className="w-5 h-5 text-red-500" />
-                                        <span className="text-sm md:text-base font-black uppercase italic tracking-tighter text-zinc-900">{text}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="space-y-12 pt-12 border-t border-zinc-100">
-                            <div className="space-y-4">
-                                <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
-                                    MoreMeets fixes this using a system your team already understands.
-                                </h3>
-                                <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
-                                    We provide pre-built operational systems with ready SOPs, daily task ledgers, built-in instructions, consequences, photo verification, timestamps, and live tracking — all running directly through Google Sheets.
-                                </p>
-                            </div>
-
-                            <div className="p-8 bg-zinc-950 text-white rounded-[2rem] space-y-8 shadow-2xl w-full">
-                                <div className="space-y-3">
-                                    <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">DEPLOYMENT ADVANTAGE</p>
-                                    <h4 className="text-2xl font-black italic uppercase text-white">NO APP-ADOPTION BATTLE.</h4>
-                                </div>
-                                <div className="grid sm:grid-cols-2 gap-8">
-                                    <div className="space-y-6">
-                                        <p className="text-sm font-medium text-zinc-400 italic">
-                                            Staff simply open the sheet on their phone and complete tasks step-by-step.
-                                        </p>
-                                        <div className="space-y-3">
-                                            {[
-                                                "No new software.",
-                                                "No app downloads.",
-                                                "No complicated training."
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex items-center gap-3">
-                                                    <Check className="w-5 h-5 text-emerald-500" />
-                                                    <span className="text-[11px] font-black uppercase italic tracking-widest text-zinc-300">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="space-y-4 border-l border-white/10 pl-8">
-                                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic">MANAGERS CAN:</p>
-                                        <ul className="space-y-2">
-                                            {[
-                                                "see live progress",
-                                                "request photo proof",
-                                                "attach reference images",
-                                                "verify execution timestamps",
-                                                "monitor multiple departments",
-                                                "standardize operations across branches"
-                                            ].map((item, i) => (
-                                                <li key={i} className="flex items-center gap-3 text-sm font-bold italic text-white/80 uppercase">
-                                                    <div className="w-1 h-1 rounded-full bg-primary" />
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="space-y-6 pt-12 border-t border-zinc-100 text-center">
-                            <p className="text-xl text-zinc-900 font-bold italic leading-relaxed max-w-2xl mx-auto">
-                                The formulas, tracking logic, audit structure, and workflows are already built and ready.
-                            </p>
-                            <p className="text-lg text-zinc-500 font-medium italic">
-                                You pay once. You own the system forever. Your operational history stays in your own Google or Excel environment.
-                            </p>
-                        </div>
-                    </div>
-                </Section>
+                {/* --- 2. WHY SOPS SECTION (H1 COMMIT) --- */}
+                <WhySopsSection />
 
                 {/* --- 3. THE MORNING REALITY (STORY) --- */}
                 <Section className="bg-[#F8F6F2]" noSpine>
@@ -385,12 +299,12 @@ export default function HomePage() {
                                 <Activity className="w-64 h-64" />
                             </div>
                             <div className="space-y-8 italic relative z-10">
-                                <p className="text-lg md:text-xl text-zinc-700 leading-tight">
+                                <p className="text-lg md:text-xl text-zinc-700 leading-tight text-center">
                                     "A restaurant owner with 3 branches used to spend every morning calling managers for updates. 
                                     'Was stock checked?' 'Did housekeeping finish?' 'Did the freezer temperature get logged?'"
                                 </p>
                                 <div className="h-px w-20 bg-zinc-200 mx-auto" />
-                                <p className="text-lg md:text-xl text-zinc-900 font-bold leading-tight">
+                                <p className="text-lg md:text-xl text-zinc-900 font-bold leading-tight text-center">
                                     Now the team updates one live operational ledger from their phones. <br/><br/>
                                     <span className="text-emerald-600 uppercase">Managers stop chasing. Teams stop guessing. The owner sees live execution instantly.</span>
                                 </p>
@@ -407,7 +321,7 @@ export default function HomePage() {
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                                 INSTITUTIONAL GRADE.
                             </h2>
-                            <p className="text-zinc-600 text-lg md:text-xl font-medium italic mx-auto">
+                            <p className="text-zinc-600 text-lg md:text-xl font-medium italic mx-auto text-center">
                                 Instead of buying another SaaS subscription, you deploy a practical operational system your team can actually use from Day 1.
                             </p>
                         </div>
@@ -537,18 +451,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-const Sparkles = ({ className }: { className?: string }) => (
-    <svg 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        className={className}
-    >
-        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z" />
-        <path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" />
-    </svg>
-);
