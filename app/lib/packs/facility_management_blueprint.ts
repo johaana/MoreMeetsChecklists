@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const facility_management_blueprint: PremiumPack = {
@@ -9,7 +8,7 @@ export const facility_management_blueprint: PremiumPack = {
     competitorPriceUSD: 999,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/ab64c7a0-4341-40a8-bb54-871074a22d10',
     category: "Corporate & Tech",
     description: "The definitive Sovereign v18.1 technical engine for multi-site infrastructure command. Hardening 200 technical control points across MEP, Safety, Energy, and Contractor Governance.",
     heroHeadline: "Prevent Downtime, Liability, and Infrastructure Failure.",
@@ -61,7 +60,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-BOM-02", technicalProtocol: "Zero-Gap Handover", floorAction: "Verify digital sign-off between AM/PM facility shift managers.", priority: "High", riskLevel: "Medium", consequence: "Lost instructions / Gridlock.", proof: "Handover Log", verificationRequired: true, cadence: "daily" },
                 { id: "FM-BOM-03", technicalProtocol: "Lobby Grooming Standards", floorAction: "Spot check reception staff for uniforms and name-tags.", priority: "Low", riskLevel: "Low", consequence: "Professional brand dilution.", proof: "Briefing Log", cadence: "daily" },
                 { id: "FM-BOM-04", technicalProtocol: "VIP Visit Readiness", floorAction: "Audit porch and meeting room setup for scheduled visitors.", priority: "Medium", riskLevel: "Low", consequence: "Loss of high-value stakeholder trust.", proof: "Photo", cadence: "daily" },
-                { id: "FM-BOM-05", technicalProtocol: "Emergency Comms Test", floorAction: "Test dial-tone between Lobby and Security Booth.", priority: "High", riskLevel: "Medium", consequence: "Communication fail during crisis.", proof: "Dial Test", verificationRequired: true, cadence: "daily" },
+                { id: "FM-BOM-05", technicalProtocol: "Emergency Comms Test", floorAction: "Test dial-tone between Lobby and Security Booth.", priority: "High", riskLevel: "Medium", consequence: "Communication fail during crisis.", proof: "Dial Test", cadence: "daily" },
                 { id: "FM-BOM-06", technicalProtocol: "Lobby Floor Safety", floorAction: "Verify zero trip hazards at mat transitions or cable runs.", priority: "High", riskLevel: "High", consequence: "Visitor slip/fall litigation.", proof: "Visual Audit", verificationRequired: true, cadence: "daily" },
                 { id: "FM-BOM-07", technicalProtocol: "Parking Density Pulse", floorAction: "Identify and clear 100% of vehicles in fire-engine lanes.", priority: "High", riskLevel: "High", consequence: "Blocked emergency access.", proof: "Patrol Log", verificationRequired: true, cadence: "daily" },
                 { id: "FM-BOM-08", technicalProtocol: "Visitor ID Integrity", floorAction: "Audit register for 100% ID verification at the main gate.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit", verificationRequired: true, cadence: "daily" },
@@ -165,7 +164,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-FSO-06", technicalProtocol: "Fire Door Tension", floorAction: "Verify 100% closure of stairwell doors.", priority: "High", riskLevel: "High", consequence: "Rapid smoke spread between floors.", proof: "Walkthrough", verificationRequired: true, cadence: "daily" },
                 { id: "FM-FSO-07", technicalProtocol: "Emergency Signage Lux", floorAction: "Check night visibility of exit signs.", priority: "Medium", riskLevel: "High", consequence: "Disorientation during smoke.", proof: "Visual Audit", cadence: "weekly" },
                 { id: "FM-FSO-08", technicalProtocol: "Fire Extinguisher Seal", floorAction: "Check 10 units for intact safety pins and tags.", priority: "Low", riskLevel: "Low", consequence: "Tampered equipment.", proof: "Visual Check", cadence: "daily" },
-                { id: "FM-FSO-09", technicalProtocol: "Sprinkler Chain-Lock", floorAction: "Verify main OS&Y valve is locked in OPEN state.", priority: "High", riskLevel: "High", consequence: "No water for sprinklers.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" },
+                { id: "FM-FSO-09", technicalProtocol: "Sprinkler Main Valve", floorAction: "Verify main OS&Y valve is locked in OPEN state.", priority: "High", riskLevel: "High", consequence: "No water for sprinklers.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" },
                 { id: "FM-FSO-10", technicalProtocol: "Fire Drills Scheduled", floorAction: "Verify timeline for next campus-wide evacuation simulation.", priority: "Medium", riskLevel: "Low", consequence: "Lack of muscle memory.", proof: "Training Log", cadence: "monthly" }
             ]
         },

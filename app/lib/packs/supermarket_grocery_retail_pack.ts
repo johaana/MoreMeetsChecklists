@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const supermarket_grocery_retail_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
     competitorPriceUSD: 899,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
     category: "Retail",
     description: "The definitive Sovereign v18.0 engine for high-volume grocery, supermarkets, and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance. [Frozen Verification Candidate]",
     heroHeadline: "Command Your Freshness. Protect Your Margins.",
@@ -99,7 +98,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
             tasks: [
                 { id: "GR-RIS-01", technicalProtocol: "Inbound Temp Verify", floorAction: "Scan internal temp of incoming frozen trucks (Target < -18°C).", priority: "High", riskLevel: "High", consequence: "Accepting compromised cold-chain stock.", proof: "Receipt Log", verificationRequired: true, cadence: "daily" },
                 { id: "GR-RIS-02", technicalProtocol: "GRN Weight Matching", floorAction: "Test 1 random loose crate for weight vs invoice match.", priority: "High", riskLevel: "Medium", consequence: "Systemic supplier short-weight fraud.", proof: "Scale Match", verificationRequired: true, cadence: "daily" },
-                { id: "GR-RIS-03", technicalProtocol: "FSSAI License Vetting", floorAction: "Verify validity of fresh meat supplier certification.", priority: "High", riskLevel: "High", consequence: "Institutional legal liability.", proof: "License File", verificationRequired: true, cadence: "weekly" },
+                { id: "GR-RIS-03", technicalProtocol: "FSSAI License Vetting", floorAction: "Verify validity of fresh meat supplier certification.", priority: "High", riskLevel: "High", consequence: "Legal liability for unsafe sourcing.", proof: "License File", verificationRequired: true, cadence: "weekly" },
                 { id: "GR-RIS-04", technicalProtocol: "Cross-Dock Velocity", floorAction: "Move 100% of dairy arrivals to chill-vault < 15 mins.", priority: "High", riskLevel: "High", consequence: "Ambient exposure spoilage.", proof: "Time Stamp", verificationRequired: true, cadence: "daily" },
                 { id: "GR-RIS-05", technicalProtocol: "Packaging Integrity Scan", floorAction: "Reject 100% of boxes with crushed or damp corners.", priority: "Medium", riskLevel: "Low", consequence: "Hidden pest entry or damage.", proof: "Rejection Note", cadence: "daily" },
                 { id: "GR-RIS-06", technicalProtocol: "Barcode Readability", floorAction: "Test scan 10 random incoming SKUs for system match.", priority: "Low", riskLevel: "Low", consequence: "Inventory disorganization.", proof: "Scan Log", cadence: "daily" },
@@ -122,7 +121,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "GR-IRL-03", technicalProtocol: "FIFO Stocking Audit", floorAction: "Verify older stock is moved to front-facing during fill.", priority: "High", riskLevel: "Medium", consequence: "Hidden expiry write-offs.", proof: "Sample Check", cadence: "daily" },
                 { id: "GR-IRL-04", technicalProtocol: "Dead-Rack Identification", floorAction: "Flag 5 SKUs with zero movement in > 14 days.", priority: "Low", riskLevel: "Low", consequence: "Blocked prime shelf-space.", proof: "Aging Report", cadence: "weekly" },
                 { id: "GR-IRL-05", technicalProtocol: "Promo-End Pull", floorAction: "Remove signage and excess stock for expired offers < 8 AM.", priority: "Medium", riskLevel: "Low", consequence: "Billing disputes.", proof: "Walkthrough", cadence: "daily" },
-                { id: "GR-IRL-06", technicalProtocol: "Crate Retrieval", floorAction: "Remove 100% of empty blue crates from customer floor.", priority: "Low", riskLevel: "Medium", consequence: "Tripping hazard and clutter.", proof: "Visual Check", cadence: "hourly" },
+                { id: "GR-IRL-06", technicalProtocol: "Crate De-clutter", floorAction: "Remove 100% of restock crates from public floor.", priority: "Low", riskLevel: "Medium", consequence: "Tripping hazard and clutter.", proof: "Walkthrough", cadence: "hourly" },
                 { id: "GR-IRL-07", technicalProtocol: "Private Label Push", floorAction: "Verify 100% shelf-depth for store-brand hero items.", priority: "Low", riskLevel: "Low", consequence: "Lower net margin capture.", proof: "Visual Audit", cadence: "daily" },
                 { id: "GR-IRL-08", technicalProtocol: "OOS Alert Loop", floorAction: "Update 'Out-of-Stock' tags for confirmed supplier gaps.", priority: "Low", riskLevel: "Low", consequence: "Customer frustration.", proof: "Tag Audit", cadence: "daily" },
                 { id: "GR-IRL-09", technicalProtocol: "Price Label Check", floorAction: "Replace all torn or illegible shelf-edge labels.", priority: "Low", riskLevel: "Low", consequence: "Price ambiguity.", proof: "Visual Check", cadence: "daily" },
@@ -320,7 +319,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "GR-CSL-01", technicalProtocol: "Issue Loop Closure", floorAction: "Resolve 100% of floor complaints < 15 minutes.", priority: "High", riskLevel: "Low", consequence: "Escalated viral complaints.", proof: "Incident Log", cadence: "daily" },
                 { id: "GR-CSL-02", technicalProtocol: "Feedback Kiosk Charge", floorAction: "Ensure tablets are operational and app is active.", priority: "Low", riskLevel: "Low", consequence: "Lost survey data.", proof: "Device Check", cadence: "daily" },
                 { id: "GR-CSL-03", technicalProtocol: "Greeting Audit", floorAction: "Observe 10 guest interactions for brand greeting.", priority: "Low", riskLevel: "Low", consequence: "Cold service culture.", proof: "Audit Score", cadence: "daily" },
-                { id: "GR-CSL-04", technicalProtocol: "Lost Item Triage", floorAction: "Verify 100% of found items are tagged and logged.", priority: "Medium", riskLevel: "Low", consequence: "Liability for lost property.", proof: "Registry Audit", cadence: "daily" },
+                { id: "GR-CSL-04", technicalProtocol: "Found Item Triage", floorAction: "Verify 100% of found items are tagged and logged.", priority: "Medium", riskLevel: "Low", consequence: "Liability for lost property.", proof: "Registry Audit", cadence: "daily" },
                 { id: "GR-CSL-05", technicalProtocol: "Loyalty Registration", floorAction: "Offer program to 10 random non-member guests.", priority: "Low", riskLevel: "Low", consequence: "Lower LTV capture.", proof: "POS Record", cadence: "daily" },
                 { id: "GR-CSL-06", technicalProtocol: "Service Recovery Call", floorAction: "Call 3 'detractor' guests to initiate recovery loop.", priority: "Medium", riskLevel: "Low", consequence: "Loss of high-LTV customers.", proof: "Call Log", cadence: "weekly" },
                 { id: "GR-CSL-07", technicalProtocol: "Queue Engagement", floorAction: "Acknowledge next guest in line if wait > 5 mins.", priority: "Low", riskLevel: "Low", consequence: "Guest irritation.", proof: "Supervisor Obs", cadence: "hourly" },

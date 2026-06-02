@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const franchise_operations_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const franchise_operations_pack: PremiumPack = {
     competitorPriceUSD: 1200,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/5ace95d6-b828-4c17-8be8-52c09c011361',
     category: "Franchise",
     description: "The definitive Sovereign v18.0 multi-unit governance engine. Hardening 181 technical control points across Brand Consistency, Royalty Integrity, and Regional Compliance.",
     heroHeadline: "Scale Without Losing Control. Standardize Every Unit.",
@@ -40,10 +39,10 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-EXE-01", technicalProtocol: "Royalty Variance Review", floorAction: "Review group-level P&L for units with >3% variance in reported sales.", priority: "High", riskLevel: "High", consequence: "Significant royalty leakage and internal revenue fraud.", proof: "Dashboard Match", verificationRequired: true, cadence: "daily" },
                 { id: "FR-EXE-02", technicalProtocol: "Network Risk Triage", floorAction: "Analyze 'Red Flag' alerts from Area Managers regarding unit distress.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored unit collapse damaging the network.", proof: "Incident Log", verificationRequired: true, cadence: "daily" },
                 { id: "FR-EXE-03", technicalProtocol: "Brand Equity Guard", floorAction: "Review weekly ORM trends and guest score parity across clusters.", priority: "Medium", riskLevel: "Low", consequence: "Slow brand dilution and rating drop.", proof: "Sentiment Report", cadence: "daily" },
-                { id: "FR-EXE-04", technicalProtocol: "Statutory Affiliation Sync", floorAction: "Verify validity of master franchise licenses and insurance covers.", priority: "High", riskLevel: "High", consequence: "Global legal injunction and business halt.", proof: "Registry File", verificationRequired: true, cadence: "daily" },
+                { id: "FR-EXE-04", technicalProtocol: "Statutory License Sync", floorAction: "Verify validity of master franchise licenses and insurance covers.", priority: "High", riskLevel: "High", consequence: "Global legal injunction and business halt.", proof: "Registry File", verificationRequired: true, cadence: "daily" },
                 { id: "FR-EXE-05", technicalProtocol: "Market Cap Projection", floorAction: "Review pipeline of upcoming unit openings vs. fit-out timelines.", priority: "Low", riskLevel: "Low", consequence: "Capital inefficiency.", proof: "Expansion Log", cadence: "weekly" },
                 { id: "FR-EXE-06", technicalProtocol: "Royalty Rate Audit", floorAction: "Review 10 random royalty invoices for agreement adherence.", priority: "High", riskLevel: "Medium", consequence: "Contractual disputes.", proof: "Invoice Match", cadence: "monthly" },
-                { id: "FR-EXE-07", technicalProtocol: "Crisis Comm Prep", floorAction: "Verify emergency contact list for all franchisee partners.", priority: "Medium", riskLevel: "Low", consequence: "Delayed response to PR crisis.", proof: "Contact List", cadence: "weekly" },
+                { id: "FR-EXE-07", technicalProtocol: "Crisis Comms Prep", floorAction: "Verify emergency contact list for all franchisee partners.", priority: "Medium", riskLevel: "Low", consequence: "Delayed response to PR crisis.", proof: "Contact List", cadence: "weekly" },
                 { id: "FR-EXE-08", technicalProtocol: "Legal Compliance Pulse", floorAction: "Review summary of active lawsuits or labor disputes in the group.", priority: "High", riskLevel: "High", consequence: "Institutional legal collapse.", proof: "Legal Dashboard", verificationRequired: true, cadence: "monthly" },
                 { id: "FR-EXE-09", technicalProtocol: "Group ESG Benchmark", floorAction: "Compare group energy consumption vs industry sustainability targets.", priority: "Low", riskLevel: "Low", consequence: "Poor ESG rating.", proof: "ESG Report", cadence: "monthly" }
             ]
@@ -133,7 +132,7 @@ export const franchise_operations_pack: PremiumPack = {
             icon: "timer",
             tasks: [
                 { id: "FR-SH-01", technicalProtocol: "Zero-Gap Handover", floorAction: "Verify data transfer in the shift handover digital registry.", priority: "High", riskLevel: "Medium", consequence: "Lost instructions between teams.", proof: "Handover Log", verificationRequired: true, cadence: "daily" },
-                { id: "FR-SH-02", technicalProtocol: "Queue TAT Monitor", floorAction: "Ensure average wait-time < 5 mins during rush.", priority: "Medium", riskLevel: "Low", consequence: "Guest walk-outs.", proof: "Stopwatch Note", cadence: "daily" },
+                { id: "FR-SH-02", technicalProtocol: "Queue TAT Monitor", floorAction: "Ensure average wait-time < 5 mins during rush.", priority: "Medium", riskLevel: "Low", consequence: "Guest walk-outs.", proof: "Stopwatch Log", cadence: "daily" },
                 { id: "FR-SH-03", technicalProtocol: "Order-Accuracy Pulse", floorAction: "Sample check 5 bags for item vs receipt match.", priority: "Medium", riskLevel: "Low", consequence: "High refund cost.", proof: "Audit Note", cadence: "daily" },
                 { id: "FR-SH-04", technicalProtocol: "Floor Lighting Scan", floorAction: "Replace all non-functional spotlight bulbs pre-6 PM.", priority: "Low", riskLevel: "Low", consequence: "Poor visual brand impact.", proof: "Visual Check", cadence: "daily" },
                 { id: "FR-SH-05", technicalProtocol: "Emergency Comms Sync", floorAction: "Confirm radio/phone connectivity to Security Booth.", priority: "High", riskLevel: "Medium", consequence: "Zero response during crisis.", proof: "Dial Test", cadence: "daily" },
@@ -222,7 +221,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Atomic procedural audits for safety and parity.",
             icon: "search",
             tasks: [
-                { id: "FR-QA-01", technicalProtocol: "ATP Surface Pulse", floorAction: "Execute 1 RLU test of high-touch OPD/FOH counters.", priority: "Medium", riskLevel: "High", consequence: "Outbreak liability.", proof: "Test Result", cadence: "weekly" },
+                { id: "FR-QA-01", technicalProtocol: "ATP Surface Pulse", floorAction: "Execute 1 RLU test of high-touch OPD/FOH counters.", priority: "Medium", riskLevel: "High", consequence: "Infection transmission outbreaks.", proof: "Test Result", cadence: "weekly" },
                 { id: "FR-QA-02", technicalProtocol: "HACCP Thermal Audit", floorAction: "Audit 7-day temp trends for main walk-ins.", priority: "High", riskLevel: "High", consequence: "Systemic food safety failure.", proof: "Trend Report", verificationRequired: true, cadence: "weekly" },
                 { id: "FR-QA-03", technicalProtocol: "Packaging Integrity Scan", floorAction: "Verify 100% use of approved brand takeaway containers.", priority: "Low", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Check", cadence: "weekly" },
                 { id: "FR-QA-04", technicalProtocol: "Water Purity Pulse", floorAction: "Log TDS at unit RO point (Target < 100).", priority: "High", riskLevel: "High", consequence: "Water-borne disease risk.", proof: "TDS Reading", verificationRequired: true, cadence: "daily" },
@@ -387,9 +386,9 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-ESG-01", technicalProtocol: "Energy Intensity Benchmark", floorAction: "Compare unit KWH consumption vs regional cluster average.", priority: "High", riskLevel: "Low", consequence: "Unmonitored energy wastage.", proof: "Meter Match", cadence: "daily" },
                 { id: "FR-ESG-02", technicalProtocol: "Plastic-Free Audit", floorAction: "Verify zero prohibited plastics in use at packaging stations.", priority: "High", riskLevel: "High", consequence: "Hefty environmental fines.", proof: "Visual Audit", verificationRequired: true, cadence: "daily" },
                 { id: "FR-ESG-03", technicalProtocol: "Water Leakage Patrol", floorAction: "Check main unit meters at 2 AM (Target: Zero usage).", priority: "High", riskLevel: "Medium", consequence: "Resource waste / structural damage.", proof: "Leak Log", verificationRequired: true, cadence: "daily" },
-                { id: "FR-ESG-04", technicalProtocol: "Packaging Segregation", floorAction: "Verify 100% separation of plastic vs paper at source.", priority: "Low", riskLevel: "Low", consequence: "Environmental score drop.", proof: "Visual Check", cadence: "daily" },
+                { id: "GR-FPM-10", technicalProtocol: "Packaging Segregation", floorAction: "Verify 100% separation of plastic vs paper at source.", priority: "Low", riskLevel: "Low", consequence: "Environmental score drop.", proof: "Visual Check", cadence: "daily" },
                 { id: "FR-ESG-05", technicalProtocol: "CSR Activity Log", floorAction: "Document monthly unit-level community/charity engagement.", priority: "Low", riskLevel: "Low", consequence: "Loss of ESG data points.", proof: "Registry Entry", cadence: "monthly" },
-                { id: "FR-ESG-06", technicalProtocol: "Vendor Sustainability", floorAction: "Verify 10 random supplier invoices for 'Green Sourcing' flags.", priority: "Medium", riskLevel: "Low", consequence: "Supply chain ethical drift.", proof: "Sample Check", cadence: "monthly" },
+                { id: "FR-ESG-06", technicalProtocol: "Vendor Sustainability", floorAction: "Verify 100% check of supplier invoices for 'Green Sourcing' flags.", priority: "Low", riskLevel: "Low", consequence: "Supply chain ethical drift.", proof: "Sample Check", cadence: "monthly" },
                 { id: "FR-ESG-07", technicalProtocol: "Food Waste Weight", floorAction: "Log KG of wet-waste sent to bio-recycling.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient procurement.", proof: "Weight Slip", cadence: "daily" },
                 { id: "FR-ESG-08", technicalProtocol: "EOD Safety Walk", floorAction: "Witness lock of chemical store and main electrical bank.", priority: "High", riskLevel: "High", consequence: "Fire / Theft risk.", proof: "Closure Log", verificationRequired: true, cadence: "daily" }
             ]

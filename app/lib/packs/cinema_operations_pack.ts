@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const cinema_operations_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const cinema_operations_pack: PremiumPack = {
     competitorPriceUSD: 899,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/0acf829c-e492-4f66-ae74-0231bfe0bc82',
     category: "Entertainment & Events",
     family: "retail",
     sub_type: "cinema",
@@ -191,7 +190,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-GXP-01", technicalProtocol: "Digital Review Response", floorAction: "Reply to all Google/Zomato mentions from last 12h.", priority: "Medium", riskLevel: "Low", consequence: "Viral rating drop.", proof: "ORM Dashboard", cadence: "daily" },
                 { id: "C-GXP-02", technicalProtocol: "Escalated Dispute Loop", floorAction: "Resolve all refund/service claims < 4 hours.", priority: "High", riskLevel: "Medium", consequence: "Escalated legal threats.", proof: "Registry Audit", verificationRequired: true, cadence: "daily" },
                 { id: "C-GXP-03", technicalProtocol: "Wait-list Engagement", floorAction: "Manage expectations for 100% of sold-out show inquiries.", priority: "Low", riskLevel: "Low", consequence: "Rude brand perception.", proof: "Visual Audit", cadence: "daily" },
-                { id: "C-GXP-04", technicalProtocol: "Feedback Kiosk Charge", floorAction: "Ensure tablets are operational and app is active.", priority: "Low", riskLevel: "Low", consequence: "Loss of survey data.", proof: "Device Check", cadence: "daily" },
+                { id: "C-GXP-04", technicalProtocol: "Feedback Kiosk Charge", floorAction: "Ensure tablets are operational and app is active.", priority: "Low", riskLevel: "Low", consequence: "Lost survey data.", proof: "Device Check", cadence: "daily" },
                 { id: "C-GXP-05", technicalProtocol: "VIP Lounge Readiness", floorAction: "Inspect amenities and HVAC in premium waiting zone.", priority: "Medium", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Photo", cadence: "daily" },
                 { id: "C-GXP-06", technicalProtocol: "Accessibility Support", floorAction: "Verify wheelchair readiness and elevator access pre-arrival.", priority: "High", riskLevel: "Medium", consequence: "Legal discrimination claims.", proof: "Visual Audit", cadence: "daily" },
                 { id: "C-GXP-07", technicalProtocol: "Loyalty Portal Triage", floorAction: "Resolve all points-mismatch claims < 24h.", priority: "Low", riskLevel: "Low", consequence: "Member attrition.", proof: "System Log", cadence: "daily" },
@@ -355,7 +354,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-SEC-03", technicalProtocol: "Panic Button Pulse", floorAction: "Test silent alarm to Mall Security / Police.", priority: "High", riskLevel: "High", consequence: "Zero response during emergency.", proof: "Signal Test", verificationRequired: true, cadence: "daily" },
                 { id: "C-SEC-04", technicalProtocol: "Auditorium Anti-Piracy", floorAction: "Execute 1 infrared scan during feature runtime.", priority: "Medium", riskLevel: "Medium", consequence: "Content leak liability.", proof: "Patrol Log", cadence: "daily" },
                 { id: "C-SEC-05", technicalProtocol: "Visitor ID Capture", floorAction: "Verify 100% ID logging at staff entrance.", priority: "High", riskLevel: "Low", consequence: "Unauthorized intruder access.", proof: "Registry Audit", cadence: "daily" },
-                { id: "C-SEC-06", technicalProtocol: "Suspicious Object Sweep", floorAction: "Conduct 15-min foyer patrol between show waves.", priority: "High", riskLevel: "High", consequence: "Bomb threat liability.", proof: "Patrol Note", verificationRequired: true, cadence: "hourly" },
+                { id: "C-SEC-06", technicalProtocol: "Suspicious Object Sweep", floorAction: "Conduct 15-min foyer patrol pre-opening.", priority: "High", riskLevel: "High", consequence: "Bomb threat liability.", proof: "Patrol Note", verificationRequired: true, cadence: "hourly" },
                 { id: "C-SEC-07", technicalProtocol: "Intruder Gate Control", floorAction: "Test 100% of electromagnetic foyer locks.", priority: "Medium", riskLevel: "Medium", consequence: "Unauthorized crowd entry.", proof: "Test Note", cadence: "weekly" },
                 { id: "C-SEC-08", technicalProtocol: "Back-Alley Lighting", floorAction: "Verify 100% illumination of staff parking exit.", priority: "Low", riskLevel: "Low", consequence: "Assault risk.", proof: "Walkthrough", cadence: "daily" },
                 { id: "C-SEC-09", technicalProtocol: "Fire-Exit Perimeter", floorAction: "Verify external exit area is clear of vehicles/obstructions.", priority: "High", riskLevel: "High", consequence: "Blocked egress.", proof: "Visual Audit", verificationRequired: true, cadence: "daily" },
@@ -393,7 +392,7 @@ export const cinema_operations_pack: PremiumPack = {
             icon: "sparkles",
             tasks: [
                 { id: "C-HYG-01", technicalProtocol: "Restroom Odor Pulse", floorAction: "Audit 30-min cleaning logs for public zones.", priority: "High", riskLevel: "Low", consequence: "Primary guest rage driver.", proof: "Hourly Sheet", cadence: "hourly" },
-                { id: "C-HYG-02", technicalProtocol: "Waste Segregation Sync", floorAction: "Verify 100% separation of paper/plastic at bins.", priority: "Low", riskLevel: "Low", consequence: "ESG score drop.", proof: "Visual Audit", cadence: "daily" },
+                { id: "GR-FPM-10", technicalProtocol: "Waste Segregation Sync", floorAction: "Verify 100% separation of paper/plastic at bins.", priority: "Low", riskLevel: "Low", consequence: "ESG score drop.", proof: "Visual Audit", cadence: "daily" },
                 { id: "C-HYG-03", technicalProtocol: "Deep Carpet Extraction", floorAction: "Verify completion of row 1-5 steam cleaning.", priority: "Low", riskLevel: "Low", consequence: "Persistent theater odors.", proof: "Photo", cadence: "weekly" },
                 { id: "C-HYG-04", technicalProtocol: "Handwash Soap Flow", floorAction: "Refill 100% of sensors in public washrooms.", priority: "Medium", riskLevel: "Low", consequence: "Hygiene breakdown.", proof: "Visual Check", cadence: "daily" },
                 { id: "C-HYG-05", technicalProtocol: "Screen-Surface Inspection", floorAction: "Check 100% of screens for zero liquid splatter.", priority: "High", riskLevel: "Medium", consequence: "Visual artifacts / refund risk.", proof: "Walkthrough", cadence: "daily" },

@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const electronics_showroom_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const electronics_showroom_pack: PremiumPack = {
     competitorPriceUSD: 899,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/a05cb9ef-51b3-454a-a389-609b314b8338',
     category: "Retail",
     description: "The definitive Sovereign v18.0 engine for electronics and appliance retail. Hardening 180 technical control points across Serial Governance, Demo Asset Safety, and Warranty Fraud Prevention.",
     heroHeadline: "Command Your Device Integrity. Protect Your Inventory.",
@@ -105,7 +104,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "E-AHS-06", technicalProtocol: "TV Frame Parity", floorAction: "Verify 100% of 'Wall Units' display synchronized 4K content.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent visual impact.", proof: "Visual Audit", cadence: "daily" },
                 { id: "E-AHS-07", technicalProtocol: "Extended Warranty Upsell", floorAction: "Verify offer of 3-year AMC to all washing machine buyers.", priority: "Low", riskLevel: "Low", consequence: "Lower LTV capture.", proof: "POS Record", cadence: "daily" },
                 { id: "E-AHS-08", technicalProtocol: "Large Item Load Safety", floorAction: "Clear stacking areas of any unstable or triple-stacked units.", priority: "High", riskLevel: "High", consequence: "Crush injury and inventory damage.", proof: "Walkthrough", verificationRequired: true, cadence: "daily" },
-                { id: "E-AHS-09", technicalProtocol: "Demo Fragrance Logic", floorAction: "Check scent beads/cleanliness inside demo laundry units.", priority: "Low", riskLevel: "Low", consequence: "Fusty odor in appliances.", proof: "Visual Check", cadence: "daily" },
+                { id: "E-AHS-09", technicalProtocol: "Demo Fragrance Logic", floorAction: "Check scent beads/cleanliness inside demo laundry units.", priority: "Low", riskLevel: "Low", consequence: "Infactory odor in appliances.", proof: "Visual Check", cadence: "daily" },
                 { id: "E-AHS-10", technicalProtocol: "EOD Unplug Witness", floorAction: "Physically witness shutdown of non-essential appliance power.", priority: "High", riskLevel: "High", consequence: "Fire risk in high-voltage demo wall.", proof: "Closure Log", verificationRequired: true, cadence: "daily" }
             ]
         },
@@ -183,7 +182,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "E-ERO-04", technicalProtocol: "Refund Override Witness", floorAction: "Execute manager double-sign for 100% cash refunds.", priority: "High", riskLevel: "High", consequence: "Fictitious refund fraud.", proof: "Dual Sign", verificationRequired: true, cadence: "daily" },
                 { id: "E-ERO-05", technicalProtocol: "Price Protection Audit", floorAction: "Reconcile refunds against recent brand price drops.", priority: "Medium", riskLevel: "Low", consequence: "Margin erosion.", proof: "Registry Note", cadence: "weekly" },
                 { id: "E-ERO-06", technicalProtocol: "Resell Tag Integrity", floorAction: "Apply 'Open-Box' clear tags to 100% of validated returns.", priority: "Low", riskLevel: "Low", consequence: "Customer disputes over 'New' status.", proof: "Visual Audit", cadence: "daily" },
-                { id: "E-ERO-07", technicalProtocol: "Liquid Damage Indicator", floorAction: "Check device internal sensors for zero moisture contact.", priority: "High", riskLevel: "High", consequence: "Accepting water-damaged stock.", proof: "Visual Check", verificationRequired: true, cadence: "daily" },
+                { id: "E-ERO-07", technicalProtocol: "Liquid Damage Indicator", floorAction: "Check device internal sensors for zero moisture contact.", priority: "High", riskLevel: "High", consequence: "Accepting water-damaged stock.", proof: "Visual Check", cadence: "daily" },
                 { id: "E-ERO-08", technicalProtocol: "Gift-with-Purchase Return", floorAction: "Verify return of free accessories (cases/buds) with device.", priority: "Low", riskLevel: "Low", consequence: "Revenue leakage of freebies.", proof: "Stock Match", cadence: "daily" },
                 { id: "E-ERO-09", technicalProtocol: "IMEI Blacklist Sync", floorAction: "Verify 100% of returns are NOT on the police stolen-list.", priority: "High", riskLevel: "High", consequence: "Fencing stolen property.", proof: "Portal Check", verificationRequired: true, cadence: "weekly" },
                 { id: "E-ERO-10", technicalProtocol: "EOD Returns summary", floorAction: "Final piece count of today's reversed inventory.", priority: "Medium", riskLevel: "Low", consequence: "Loss of fiscal control.", proof: "Signed Sheet", cadence: "daily" }
@@ -245,7 +244,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "E-CSH-06", technicalProtocol: "Chargeback Response", floorAction: "Answer bank billing disputes < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Financial bad debt.", proof: "Comms Log", cadence: "daily" },
                 { id: "E-CSH-07", technicalProtocol: "EDC Battery Check", floorAction: "Ensure 100% of handheld units are online and charged.", priority: "Low", riskLevel: "Low", consequence: "Checkout friction during peak.", proof: "Visual Check", cadence: "daily" },
                 { id: "E-CSH-08", technicalProtocol: "Tax Compliance Scan", floorAction: "Verify GST % per category (Accessories vs Devices).", priority: "High", riskLevel: "Medium", consequence: "Statutory penalties.", proof: "Sample Check", verificationRequired: true, cadence: "daily" },
-                { id: "E-CSH-09", technicalProtocol: "POS Touch Hygiene", floorAction: "Sanitize screen and high-touch areas twice daily.", priority: "Low", riskLevel: "Medium", consequence: "Disease spread among staff.", proof: "Cleaning Note", cadence: "daily" },
+                { id: "E-CSH-09", technicalProtocol: "POS Touch Hygiene", floorAction: "Sanitize screen and high-touch areas twice daily.", priority: "Low", riskLevel: "Medium", consequence: "Staff disease spread.", proof: "Cleaning Note", cadence: "daily" },
                 { id: "E-CSH-10", technicalProtocol: "EOD Cash-Drop Seal", floorAction: "Witness dual-person seal of bank deposit bag.", priority: "High", riskLevel: "High", consequence: "Untraceable transit theft.", proof: "Seal Number", verificationRequired: true, cadence: "daily" }
             ]
         },

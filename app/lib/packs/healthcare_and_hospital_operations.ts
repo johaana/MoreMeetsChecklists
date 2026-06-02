@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const healthcare_and_hospital_operations: PremiumPack = {
@@ -9,7 +8,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     competitorPriceUSD: 1500,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
     description: "The definitive Sovereign v17.9 clinical command engine for multi-specialty hospitals. Hardening 218 technical control points across 24 specialized clinical and administrative roles.",
     heroHeadline: "Zero-Error Clinical Command. Life-Critical Governance.",
@@ -193,7 +192,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Patient sedation safety and recovery monitoring.",
             icon: "droplet",
             tasks: [
-                { id: "H-ANE-01", technicalProtocol: "Pre-Anesthesia Assessment (PAC)", floorAction: "Verify NPO status and airway grading for 100% of surgical list.", priority: "High", riskLevel: "High", consequence: "Aspiration and anesthetic death.", proof: "PAC Form", verificationRequired: true, cadence: "incident-based" },
+                { id: "H-ANE-01", technicalProtocol: "Pre-Anesthesia Assessment (PAC)", floorAction: "Verify NPO status and airway grading for 100% of surgical list.", priority: "High", riskLevel: "High", consequence: "Anesthetic death.", proof: "PAC Form", verificationRequired: true, cadence: "incident-based" },
                 { id: "H-ANE-02", technicalProtocol: "Vaporizer Calibration", floorAction: "Verify Sevoflurane levels and zero-leakage on active circuits.", priority: "High", riskLevel: "High", consequence: "Inadequate sedation or toxic exposure.", proof: "Calibration Log", cadence: "daily" },
                 { id: "H-ANE-03", technicalProtocol: "Difficult Airway Kit", floorAction: "Physically confirm presence of LMA and bougie in OT cart.", priority: "High", riskLevel: "High", consequence: "Inability to secure airway (Fatal).", proof: "Visual Check", verificationRequired: true, cadence: "daily" },
                 { id: "H-ANE-04", technicalProtocol: "Recovery Vitals Scan", floorAction: "Monitor SpO2 and consciousness scores for post-op transfers.", priority: "High", riskLevel: "Medium", consequence: "Post-operative hypoxia.", proof: "Recovery Log", cadence: "hourly" },
@@ -362,7 +361,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-AMB-01", technicalProtocol: "Ambulance ACLS Inventory", floorAction: "Check Oxygen and Cardiac drugs in all active units.", priority: "High", riskLevel: "High", consequence: "En-route resuscitation failure.", proof: "Kit Seal", verificationRequired: true, cadence: "daily" },
                 { id: "H-AMB-02", technicalProtocol: "Driver Sobriety Pulse", floorAction: "Execute random breathalyzer test pre-dispatch.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash liability.", proof: "Test Note", verificationRequired: true, cadence: "daily" },
                 { id: "H-AMB-03", technicalProtocol: "Oxygen Manifold Pressure", floorAction: "Confirm 4.2 bar output to ambulance supply points.", priority: "High", riskLevel: "High", consequence: "Supply failure during transit.", proof: "Gauge Log", verificationRequired: true, cadence: "daily" },
-                { id: "H-AMB-04", technicalProtocol: "GPS Signal Validation", floorAction: "Verify live tracking for 100% of fleet.", priority: "Medium", riskLevel: "Low", consequence: "Inability to direct team.", proof: "System Screen", cadence: "daily" },
+                { id: "H-AMB-04", technicalProtocol: "GPS Signal Validation", floorAction: "Verify live tracking is online for 100% of fleet.", priority: "Medium", riskLevel: "Low", consequence: "Inability to direct team.", proof: "System Screen", cadence: "daily" },
                 { id: "H-AMB-05", technicalProtocol: "Ambulance Hygiene", floorAction: "Sanitize patient bay with 1% hypochlorite post-transfer.", priority: "High", riskLevel: "Medium", consequence: "Infection transmission.", proof: "Cleaning Sheet", cadence: "incident-based" },
                 { id: "H-AMB-06", technicalProtocol: "Tyre & Fluid Pulse", floorAction: "Check oil and tread on all ALS/BLS vehicles.", priority: "Medium", riskLevel: "Medium", consequence: "Breakdown during transfer.", proof: "Visual Check", cadence: "daily" },
                 { id: "H-AMB-07", technicalProtocol: "Siren/PA Functionality", floorAction: "Test emergency warning systems.", priority: "Low", riskLevel: "Low", consequence: "Traffic delays.", proof: "Test Note", cadence: "daily" },

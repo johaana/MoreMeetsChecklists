@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const school_operations_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const school_operations_pack: PremiumPack = {
     competitorPriceUSD: 899,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/e74bd8ac-23cb-4993-bdeb-bac9dbe9cd67',
     category: "Education",
     description: "The definitive Sovereign v18.0 engine for K-12 and multi-campus institutions. Hardening 200 technical control points across Student Safety, Academic Continuity, and Statutory Compliance. [Frozen Verification Candidate]",
     heroHeadline: "Protect Your Students. Secure Your Institution.",
@@ -179,7 +178,7 @@ export const school_operations_pack: PremiumPack = {
             tasks: [
                 { id: "S-BRS-01", technicalProtocol: "Boarding ID Match", floorAction: "Verify 100% of student IDs match the route master list.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized student on board.", proof: "Registry Entry", verificationRequired: true, cadence: "daily" },
                 { id: "S-BRS-02", technicalProtocol: "Attendance SMS Pulse", floorAction: "Log boarding status; verify automated parent alerts sent.", priority: "Medium", riskLevel: "Low", consequence: "Parental anxiety.", proof: "System Sync", cadence: "daily" },
-                { id: "S-BRS-03", technicalProtocol: "Emergency Kit Check", floorAction: "Verify presence of medicine box and functional fire extinguisher.", priority: "High", riskLevel: "High", consequence: "Inability to treat injury.", proof: "Visual Check", verificationRequired: true, cadence: "daily" },
+                { id: "S-BRS-03", technicalProtocol: "Emergency Kit Check", floorAction: "Verify presence of medicine box and functional fire extinguisher.", priority: "High", riskLevel: "High", consequence: "Inability to treat injury.", proof: "Visual Check", cadence: "daily" },
                 { id: "S-BRS-04", technicalProtocol: "Safe-Stop Adherence", floorAction: "Confirm 100% of drops occur at designated yellow zones.", priority: "High", riskLevel: "High", consequence: "Accident during de-boarding.", proof: "Supervisor Obs", verificationRequired: true, cadence: "daily" },
                 { id: "S-BRS-05", technicalProtocol: "No-Child-Left-Behind", floorAction: "Physically touch the back seat of the bus post-route.", priority: "High", riskLevel: "High", consequence: "[Fatal: Entrapment never-event].", proof: "Walkthrough Log", verificationRequired: true, cadence: "daily" },
                 { id: "S-BRS-06", technicalProtocol: "Female Attendant Presence", floorAction: "Confirm on-board position of designated matron.", priority: "High", riskLevel: "High", consequence: "Legal non-compliance.", proof: "Visual Audit", verificationRequired: true, cadence: "daily" },

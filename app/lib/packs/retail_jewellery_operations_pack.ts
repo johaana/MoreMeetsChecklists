@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const retail_jewellery_operations_pack: PremiumPack = {
@@ -9,7 +8,7 @@ export const retail_jewellery_operations_pack: PremiumPack = {
     competitorPriceUSD: 1500,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/bf8a35c9-991d-4471-95f6-e0c7ce285981',
     category: "Retail",
     description: "The definitive Sovereign v19.2 custody-chain engine for high-value retail. Hardening 198 technical control points across Vault Governance, Transaction Integrity, and Hallmark Compliance.",
     heroHeadline: "Protect Your Inventory. Secure Your Custody Chain.",
@@ -226,7 +225,7 @@ export const retail_jewellery_operations_pack: PremiumPack = {
             summary: "Hardens the perimeter and prevents in-store shrinkage.",
             icon: "shield-alert",
             tasks: [
-                { id: "J-LP-01", technicalProtocol: "EAS Gate Sensitivity", floorAction: "Test entry gates with active RFID/Security tag.", priority: "High", riskLevel: "High", consequence: "Undetected tag-theft at exit.", proof: "Test Log", cadence: "daily" },
+                { id: "J-LP-01", technicalProtocol: "EAS Gate Sensitivity", floorAction: "Test entry gates with active security tag.", priority: "High", riskLevel: "High", consequence: "Undetected tag-theft at exit.", proof: "Test Log", cadence: "daily" },
                 { id: "J-LP-02", technicalProtocol: "Tag Tamper Sweep", floorAction: "Walk showcases; check for loosened security strings.", priority: "High", riskLevel: "High", consequence: "Swap theft prep.", proof: "Patrol Log", cadence: "hourly" },
                 { id: "J-LP-03", technicalProtocol: "Fitting-Room Scan", floorAction: "Check mirrors/vents for discarded tags or concealment.", priority: "High", riskLevel: "High", consequence: "Boutique theft hotspot.", proof: "Log Entry", verificationRequired: true, cadence: "hourly" },
                 { id: "J-LP-04", technicalProtocol: "Staff Bag-Search", floorAction: "Perform random check of 5 staff bags at EOD.", priority: "Medium", riskLevel: "Medium", consequence: "Internal pilferage.", proof: "Registry Note", cadence: "daily" },

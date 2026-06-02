@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const fashion_and_apparel_retail: PremiumPack = {
@@ -9,7 +8,7 @@ export const fashion_and_apparel_retail: PremiumPack = {
     competitorPriceUSD: 599,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/checkout/buy/35c743f7-333a-4fe6-9866-3334172e144b',
     category: "Retail",
     description: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 180 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
     heroHeadline: "Command Your Inventory. Protect Your Brand Standards.",
@@ -101,12 +100,11 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-TRS-02", technicalProtocol: "Reject Pile Analysis", floorAction: "Log top 3 reasons for garment rejection (Fit/Color/Quality).", priority: "Medium", riskLevel: "Low", consequence: "Zero operational feedback on stock.", proof: "Feedback Note", cadence: "daily" },
                 { id: "F-TRS-03", technicalProtocol: "Hygiene Cycle", floorAction: "Wipe benches and remove discarded tissues every 60 mins.", priority: "Medium", riskLevel: "Low", consequence: "Poor brand perception.", proof: "Hourly Sheet", cadence: "hourly" },
                 { id: "F-TRS-04", technicalProtocol: "Abandoned Recovery", floorAction: "Return rejected garments to floor < 15 mins.", priority: "Medium", riskLevel: "Low", consequence: "Stock hidden in back-rooms.", proof: "Recovery Log", cadence: "hourly" },
-                { id: "F-TRS-05", technicalProtocol: "Queue Wait TAT", floorAction: "Log peak wait time; target < 10 mins.", priority: "Low", riskLevel: "Low", consequence: "Trial abandonment / lost sales.", proof: "TAT Note", cadence: "daily" },
-                { id: "F-TRS-06", technicalProtocol: "Token Match Pulse", floorAction: "Verify entry piece count matches exit piece count.", priority: "High", riskLevel: "High", consequence: "Direct theft window.", proof: "Token Registry", verificationRequired: true, cadence: "hourly" },
-                { id: "F-TRS-07", technicalProtocol: "Steam Ironing Assist", floorAction: "Flag crumpled garments for immediate steaming pre-return.", priority: "Low", riskLevel: "Low", consequence: "Poor presentation.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-TRS-08", technicalProtocol: "Hanger Re-orientation", floorAction: "Ensure 100% of returned items are on correct branded hangers.", priority: "Low", riskLevel: "Low", consequence: "Floor disorganization.", proof: "Visual Audit", cadence: "hourly" },
-                { id: "F-TRS-09", technicalProtocol: "Makeup Protection", floorAction: "Offer face-shields to 100% of guests trying white tops.", priority: "Medium", riskLevel: "Low", consequence: "Damaged/unsaleable stock.", proof: "Supervisor Obs", cadence: "hourly" },
-                { id: "F-TRS-10", technicalProtocol: "EOD Fitting Room Reset", floorAction: "Confirm 100% of stalls are empty and locked.", priority: "High", riskLevel: "Medium", consequence: "After-hours hiding window.", proof: "Signed Sheet", cadence: "daily" }
+                { id: "F-TRS-05", technicalProtocol: "Token Match Pulse", floorAction: "Verify entry piece count matches exit piece count.", priority: "High", riskLevel: "High", consequence: "Direct theft window.", proof: "Token Registry", verificationRequired: true, cadence: "hourly" },
+                { id: "F-TRS-06", technicalProtocol: "Steam Ironing Assist", floorAction: "Flag crumpled garments for immediate steaming pre-return.", priority: "Low", riskLevel: "Low", consequence: "Poor presentation.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-TRS-07", technicalProtocol: "Hanger Re-orientation", floorAction: "Ensure 100% of returned items are on correct branded hangers.", priority: "Low", riskLevel: "Low", consequence: "Floor disorganization.", proof: "Visual Audit", cadence: "hourly" },
+                { id: "F-TRS-08", technicalProtocol: "Makeup Protection", floorAction: "Offer face-shields to 100% of guests trying white tops.", priority: "Medium", riskLevel: "Low", consequence: "Damaged/unsaleable stock.", proof: "Supervisor Obs", cadence: "hourly" },
+                { id: "F-TRS-09", technicalProtocol: "EOD Fitting Room Reset", floorAction: "Confirm 100% of stalls are empty and locked.", priority: "High", riskLevel: "Medium", consequence: "After-hours hiding window.", proof: "Signed Sheet", cadence: "daily" }
             ]
         },
         {
