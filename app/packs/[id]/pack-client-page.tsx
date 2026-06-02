@@ -153,7 +153,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     return (
         <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-primary/20">
             
-            {/* --- HERO SECTION: THE DAYLIGHT COMMAND --- */}
+            {/* --- HERO SECTION: THE INSTITUTIONAL COMMAND --- */}
             <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                 
                 {/* --- MOBILE ARCHITECTURE --- */}
@@ -217,7 +217,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
 
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center">
-                        <div className="max-w-4xl space-y-10 w-full">
+                        <div className="max-w-4xl space-y-10 w-full relative">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
@@ -445,7 +445,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <item.i className="w-6 h-6" style={{ color: i % 2 === 0 ? BRAND_GOLD : '#10B981' }} />
                                 </div>
                                 <div className="space-y-2">
-                                    <h4 className="text-lg font-black uppercase italic text-white leading-tight text-left">{item.t}</h4>
+                                    <h4 className="font-black uppercase italic text-white leading-tight text-left">{item.t}</h4>
                                     <p className="text-zinc-400 text-[11px] font-bold italic uppercase leading-relaxed text-left">{item.d}</p>
                                 </div>
                             </div>
