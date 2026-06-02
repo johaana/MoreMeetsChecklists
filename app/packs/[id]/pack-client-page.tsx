@@ -39,11 +39,9 @@ const BRAND_GREEN = "#1F3A34";
 const BRAND_GOLD = "#B89B5E";
 
 const SECTOR_METADATA: Record<string, {
-    marquee: string[];
     sustainability: { t: string; d: string; i: any }[];
 }> = {
     'restaurants': {
-        marquee: ["HACCP_SWEEP_COMPLETE", "FRYER_TEMP_VARIANCE_STABLE", "COLD_STORAGE_ALERT", "OPENING_LINE_CHECK_ACTIVE", "EXPIRY_LOG_VALIDATED", "WASTE_YIELD_MONITORING", "GAS_SHUTDOWN_CONFIRMATION", "ALLERGEN_STATION_VERIFIED", "SHIFT_COMPLIANCE_100%", "ROI_ENGINE_ACTIVE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied zones stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
@@ -52,7 +50,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'hotels_and_resorts': {
-        marquee: ["ROOM_RELEASE_VERIFIED", "LINEN_CYCLE_TRACKING", "HVAC_RESPONSE_PENDING", "POOL_CHEMISTRY_LOG_ACTIVE", "GUEST_COMPLAINT_ESCALATION", "FIRE_PANEL_HEALTH_STABLE", "NIGHT_AUDIT_COMPLETE", "PRIVACY_SWEEP_100%", "MASTER_KEY_AUDIT_STABLE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Automated HVAC setback protocols for vacant rooms reduce energy overheads significantly.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Daily water meter parity checks detect underground plumbing leaks before they damage infrastructure.", i: Leaf },
@@ -61,7 +58,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'healthcare_and_hospital_operations': {
-        marquee: ["CRASH_CART_SEAL_VERIFIED", "MEDICATION_SIGNOFF_PENDING", "SHARPS_DISPOSAL_TRACKING", "OXYGEN_LINE_STATUS_STABLE", "INFECTION_CONTROL_SWEEP", "ICU_HANDOVER_COMPLETE", "SANITIZATION_AUDIT_ACTIVE", "NABH_INDICATOR_SYNC_100%", "AIR_AMBULANCE_READY"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water TDS monitoring and RO system backwash cycles ensure resource purity and efficiency.", i: Leaf },
@@ -70,7 +66,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'school_operations_pack': {
-        marquee: ["BUS_DISPATCH_VERIFIED", "POCSO_LOG_CONFIRMATION", "CAMPUS_SWEEP_COMPLETE", "ATTENDANCE_VARIANCE_FLAGGED", "CAFETERIA_TEMP_CHECK_CHECK", "VISITOR_GATE_VALIDATION", "PLAYGROUND_STRUCTURE_AUDIT", "NO_CHILD_LEFT_BEHIND_SWEEP"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Potable water point hygiene and plumbing leak patrols reduce campus utility wastage.", i: Leaf },
@@ -79,7 +74,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'franchise_operations_pack': {
-        marquee: ["UNIT_COMPLIANCE_SYNC", "BRAND_STANDARD_AUDIT", "MULTI_SITE_VARIANCE_ALERT", "SOP_VERSION_VALIDATED", "TRAINING_COMPLETION_PENDING", "DAILY_REPORTING_GAP", "ROYALTY_SHIELD_ACTIVE", "NETWORK_DRIFT_MONITORING"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water meter logging and leak detection protocols enforced across the entire network.", i: Leaf },
@@ -88,7 +82,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'facility_management_blueprint': {
-        marquee: ["DG_RUNTIME_MONITORING", "BMS_PANEL_ALERT", "WATER_TANK_LEVEL_STABLE", "CHILLER_RESPONSE_DELAY", "AMC_COMPLIANCE_TRACKING", "PREVENTIVE_MAINTENANCE_DUE", "UPTIME_99.9%", "ELECTRICAL_HOTSPOT_SCAN"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "STP/WTP effluent pulse monitoring and tank overflow logic prevent water wastage.", i: Leaf },
@@ -97,7 +90,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'retail_operations_system': {
-        marquee: ["OPENING_AUDIT_COMPLETE", "CASH_VARIANCE_REVIEW", "VISUAL_MERCH_SWEEP", "SHRINKAGE_MONITORING_ACTIVE", "FLOOR_READINESS_CONFIRMED", "STOCK_ROOM_ACCESS_PENDING", "LEGAL_METROLOGY_SYNC", "FITTING_ROOM_SWEEP_ACTIVE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and pill kit readiness reduce chemical waste.", i: Leaf },
@@ -106,7 +98,6 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'cinema_operations_pack': {
-        marquee: ["DCP_SYNC_CONFIRMED", "SUBTITLE_TRACK_VALIDATED", "PROJECTOR_LAMP_HOURS_MONITORED", "AUDIO_CHANNEL_CALIBRATION_ACTIVE", "SCREEN_TEMP_RANGE_STABLE", "KDM_EXPIRY_WARNING", "VOID_BILL_AUDIT_ACTIVE", "POPCORN_YIELD_1:40_STABLE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
@@ -116,7 +107,6 @@ const SECTOR_METADATA: Record<string, {
     }
 };
 
-const DEFAULT_MARQUEE = ["OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"];
 const DEFAULT_SUSTAINABILITY = [
     { t: "ENERGY DISCIPLINE", d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", i: Zap },
     { t: "RESOURCE CONSERVATION", d: "Resource vitals logging and overnight leak detection through digital checks.", i: Leaf },
@@ -142,16 +132,6 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
     );
 }
 
-function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
-    return (
-        <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[11px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
-                {text}
-            </span>
-        </div>
-    );
-}
-
 export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { pack: PremiumPack, backgroundUrl: string, squircleUrl: string }) {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -159,7 +139,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     if (!mounted) return null;
 
     const res = packResolutions[pack.id] || defaultResolution;
-    const sectorData = SECTOR_METADATA[pack.id] || { marquee: DEFAULT_MARQUEE, sustainability: DEFAULT_SUSTAINABILITY };
+    const sectorData = SECTOR_METADATA[pack.id] || { sustainability: DEFAULT_SUSTAINABILITY };
     
     const getVerticalParts = (p: PremiumPack) => {
         const displayTitle = getDisplayTitle(p.id, p.title);
@@ -237,98 +217,56 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
 
                     <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center">
-                        <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                            <div className="space-y-10 w-full">
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
-                                        <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                            SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
-                                        </span>
-                                    </div>
-
-                                    <h1 className="text-[32px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em]" style={{ color: BRAND_GREEN }}>
-                                        {titleParts[0]} <br/> 
-                                        {titleParts[1]} <br/>
-                                        {titleParts[2]}
-                                    </h1>
-                                    
-                                    <div className="space-y-4">
-                                        <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                            {res.heroSubline} <br/>
-                                            <span className="text-zinc-500 text-base">{res.strategicParagraph}</span>
-                                        </p>
-                                    </div>
-                                    
-                                    <div className="grid grid-cols-2 gap-x-10 gap-y-4 pt-4">
-                                        {[
-                                            { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
-                                            { t: "PHOTO-BACKED VERIFICATION", i: Camera },
-                                            { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCap },
-                                            { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
-                                        ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3">
-                                                <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                    <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
-                                                </div>
-                                                <span className="text-[12px] font-bold text-[#111111] uppercase tracking-wide">{item.t}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                        <div className="max-w-4xl space-y-10 w-full">
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
+                                    <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
+                                        SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
+                                    </span>
                                 </div>
 
-                                <div className="flex flex-col items-start gap-4">
-                                    <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
-                                        <Link href="#pricing" className="flex items-center justify-center gap-3">
-                                            DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                        </Link>
-                                    </button>
-                                    <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
-                                        ONE-TIME PURCHASE • OWN FOREVER • FULLY EDITABLE
+                                <h1 className="text-[32px] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em]" style={{ color: BRAND_GREEN }}>
+                                    {titleParts[0]} <br/> 
+                                    {titleParts[1]} <br/>
+                                    {titleParts[2]}
+                                </h1>
+                                
+                                <div className="space-y-4">
+                                    <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
+                                        {res.heroSubline} <br/>
+                                        <span className="text-zinc-500 text-base">{res.strategicParagraph}</span>
                                     </p>
                                 </div>
+                                
+                                <div className="grid grid-cols-2 gap-x-10 gap-y-4 pt-4">
+                                    {[
+                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
+                                        { t: "PHOTO-BACKED VERIFICATION", i: Camera },
+                                        { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCap },
+                                        { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                <Check className="w-2.5 h-2.5 text-[#2E7D5A]" />
+                                            </div>
+                                            <span className="text-[12px] font-bold text-[#111111] uppercase tracking-wide">{item.t}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            
-                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
-                                 <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                                 <div className="flex flex-col gap-3 md:gap-5 lg:gap-6">
-                                     {res.risks.slice(0, 4).map((risk, i) => (
-                                        <PulsatingStressText key={i} text={risk.title} delay={`${i * 0.2}s`} />
-                                     ))}
-                                 </div>
+
+                            <div className="flex flex-col items-start gap-4">
+                                <button className="h-16 px-10 rounded-[16px] bg-primary text-black font-black uppercase text-[11px] md:text-[13px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all hover:translate-y-[-2px] hover:shadow-[0_20px_40px_rgba(184,155,94,0.3)] group" style={{ backgroundColor: BRAND_GOLD }}>
+                                    <Link href="#pricing" className="flex items-center justify-center gap-3">
+                                        DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </Link>
+                                </button>
+                                <p className="text-[10px] font-black text-[#8B6B3F] uppercase tracking-[0.3em] pl-2 italic">
+                                    ONE-TIME PURCHASE • OWN FOREVER • FULLY EDITABLE
+                                </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                {/* --- TELEMETRY MARQUEE: COMMAND RED --- */}
-                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
-                    <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                        {sectorData.marquee.map((signal, i) => {
-                            const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
-                            const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
-                            return (
-                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
-                                    {isVerified && <span className="text-[#B89B5E]">[✓]</span>}
-                                    {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
-                                    <span className="opacity-90">{signal}</span>
-                                </span>
-                            );
-                        })}
-                        {/* Duplicate for seamless loop */}
-                        {sectorData.marquee.map((signal, i) => {
-                            const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
-                            const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
-                            return (
-                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
-                                    {isVerified && <span className="text-[#B89B5E]">[✓]</span>}
-                                    {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
-                                    <span className="opacity-90">{signal}</span>
-                                </span>
-                            );
-                        })}
                     </div>
                 </div>
             </section>
@@ -489,7 +427,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
-            {/* --- 6. OPERATIONAL SUSTAINABILITY (NEW SECTION ABOVE CTA) --- */}
+            {/* --- 6. OPERATIONAL SUSTAINABILITY --- */}
             <Section className="bg-[#1F3A34] text-white py-20 md:py-32" noSpine>
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
