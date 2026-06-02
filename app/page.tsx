@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { FaqSection } from '@/components/layout/faq-section';
-import { WhySopsSection } from '@/components/layout/why-sops';
 import { 
     Check, 
     ArrowRight, 
@@ -52,12 +51,31 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const PROOF_STRIP = "EXCEL & SHEETS • OWN FOREVER • NO SaaS";
 
 const BRAND_GREEN = "#1F3A34";
 const BRAND_GOLD = "#B89B5E";
 
+const ELITE_INDUSTRIES = [
+    { name: "Restaurant Operations", id: "restaurants", icon: Utensils },
+    { name: "Hotel Operations", id: "hotels_and_resorts", icon: Building },
+    { name: "Hospital Operations", id: "healthcare_and_hospital_operations", icon: Hospital },
+    { name: "School Operations", id: "school_operations_pack", icon: School },
+    { name: "Franchise Operations", id: "franchise_operations_pack", icon: Store },
+    { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
+    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
+];
+
+const SYSTEM_SPECS = [
+    "120+ PRE-BUILT SOPs",
+    "WORKS DURING INTERNET DISRUPTIONS",
+    "LIVE DASHBOARD",
+    "NO SaaS. OWN YOUR DATA."
+];
+
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-20 md:py-32 relative overflow-hidden", className)}>
+    <section id={id} className={cn("w-full py-16 md:py-28 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-black/[0.03] z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
@@ -77,14 +95,7 @@ const SectionEyebrow = ({ text }: { text: string }) => (
 const LedgerSimulation = () => (
     <div className="relative group max-w-[1250px] mx-auto">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none" />
-        
-        <div className="absolute -top-12 left-0 z-20">
-            <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 italic">
-                Verifiable operational records.
-            </p>
-        </div>
-        
-        <div className="relative z-10 w-full bg-zinc-950 rounded-[2.5rem] md:rounded-[4rem] border-[10px] md:border-[16px] border-zinc-900 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.6)] overflow-hidden ring-1 ring-white/10">
+        <div className="relative z-10 w-full bg-zinc-950 rounded-[2rem] md:rounded-[3rem] border-[8px] md:border-[12px] border-zinc-900 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.6)] overflow-hidden ring-1 ring-white/10">
             <div className="bg-[#22C55E] text-white py-2 md:py-3 px-8 flex items-center justify-between gap-4 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
@@ -98,7 +109,6 @@ const LedgerSimulation = () => (
                     <MoreVertical className="w-3.5 h-3.5" />
                 </div>
             </div>
-
             <div className="w-full relative overflow-hidden bg-white">
                 <img 
                     src="https://i.postimg.cc/5y3hF93d/Screenshot-2026-05-28-202324.png" 
@@ -106,13 +116,12 @@ const LedgerSimulation = () => (
                     className="w-full h-auto object-cover"
                 />
             </div>
-            
             <div className="bg-white border-t border-zinc-100 h-10 flex items-center justify-between px-8 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
                 </div>
-                <span className="text-[9px] font-black text-primary uppercase tracking-widest italic">AUTOMATIC_AUDIT_ACTIVE</span>
+                <span className="text-[9px] font-black text-[#B89B5E] uppercase tracking-widest italic">AUTOMATIC_AUDIT_ACTIVE</span>
             </div>
         </div>
     </div>
@@ -130,10 +139,8 @@ export default function HomePage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE CINEMATIC HERO --- */}
+                {/* --- HERO SECTION --- */}
                 <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
-                    
-                    {/* --- MOBILE ARCHITECTURE --- */}
                     <div className="md:hidden flex flex-col bg-[#F8F6F2]">
                         <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                              <iframe 
@@ -149,7 +156,7 @@ export default function HomePage() {
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
                                     <span className="text-[7.5px] font-black uppercase tracking-[0.15em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                        SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
+                                        REDUCE DEPENDENCY ON MEMORY
                                     </span>
                                 </div>
                                 <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
@@ -161,7 +168,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
+                                Stop the daily struggle of chasing updates. Deploy industry-specific instructions and systems that your team will actually follow.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -179,16 +186,15 @@ export default function HomePage() {
                             </div>
                             <div className="pt-2">
                                 <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
-                                    <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499 / $29</Link>
+                                    <Link href="/library">EXPLORE SYSTEMS • ₹2,499 / $29</Link>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    {/* --- DESKTOP ARCHITECTURE --- */}
                     <div className="hidden md:block relative w-full h-[100svh] min-h-[700px]">
                         <div className="absolute inset-0 z-0">
-                            <div className="w-full h-full animate-[zoom_20s_ease-in-out_infinite_alternate]">
+                            <div className="w-full h-full">
                                 <iframe 
                                     src={VIMEO_URL} 
                                     className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.4] pointer-events-none"
@@ -211,7 +217,7 @@ export default function HomePage() {
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
                                         <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                            SPREADSHEET-NATIVE OPERATIONAL INFRASTRUCTURE
+                                            REDUCE DEPENDENCY ON MEMORY
                                         </span>
                                     </div>
 
@@ -224,7 +230,7 @@ export default function HomePage() {
                                     </h1>
                                     
                                     <p className="text-[16px] md:text-[18px] font-medium leading-[1.5] text-zinc-800 max-w-3xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                        MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
+                                        Stop the daily struggle of chasing updates. Deploy industry-specific instructions and systems that your team will actually follow.
                                     </p>
                                     
                                     <div className="flex flex-col gap-2.5 pt-1">
@@ -258,142 +264,267 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* --- STATUTORY TRUST STRIP --- */}
-                <div className="w-full bg-white py-12 border-b border-zinc-100 relative z-40">
-                    <div className="container mx-auto px-6">
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-                            <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.4em] font-headline">STATUTORY ALIGNMENT</span>
-                            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-30 grayscale">
-                                {[
-                                    { label: "ISO 9001", icon: ShieldCheck },
-                                    { label: "HACCP", icon: Activity },
-                                    { label: "FSSAI", icon: Scale },
-                                    { label: "OSHA", icon: HardHat },
-                                    { label: "NABH", icon: Award },
-                                    { label: "JCI", icon: Landmark }
-                                ].map((standard) => (
-                                    <div key={standard.label} className="flex items-center gap-2">
-                                        <standard.icon className="w-4 h-4" />
-                                        <span className="text-xs font-black uppercase italic tracking-tighter">{standard.label}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- 2. WHY SOPS SECTION --- */}
-                <WhySopsSection />
-
-                {/* --- 3. THE MORNING REALITY (STORY) --- */}
-                <Section className="bg-[#F8F6F2]" noSpine>
+                {/* --- SECTION 1: WHAT IS AN SOP? --- */}
+                <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-4xl mx-auto space-y-12">
-                        <div className="text-center space-y-4">
-                            <SectionEyebrow text="FROM CHAOS TO CLARITY" />
-                            <h2 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">THE MORNING REALITY</h2>
+                        <div className="text-center space-y-6">
+                            <SectionEyebrow text="THE BASICS" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                What is an SOP and why does every business need one?
+                            </h2>
+                            <p className="text-lg md:text-xl text-zinc-600 font-medium italic leading-relaxed">
+                                Every business runs on a set of instructions. Whether written down properly or not, every business follows some version of them every day.
+                            </p>
                         </div>
-                        <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-zinc-200 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
-                                <Activity className="w-64 h-64" />
-                            </div>
-                            <div className="space-y-8 italic relative z-10">
-                                <p className="text-lg md:text-xl text-zinc-700 leading-tight text-center">
-                                    "A restaurant owner with 3 branches used to spend every morning calling managers for updates. 
-                                    'Was stock checked?' 'Did housekeeping finish?' 'Did the freezer temperature get logged?'"
-                                </p>
-                                <div className="h-px w-20 bg-zinc-200 mx-auto" />
-                                <p className="text-lg md:text-xl text-zinc-900 font-bold leading-tight text-center">
-                                    Now the team updates one live operational ledger from their phones. <br/><br/>
-                                    <span className="text-emerald-600 uppercase">Managers stop chasing. Teams stop guessing. The owner sees live execution instantly.</span>
-                                </p>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {[
+                                "Open the store", "Check the stock", "Clean equipment", "Log temperatures",
+                                "Lock premises", "Serve customers", "Handle complaints", "Train employees"
+                            ].map((task, i) => (
+                                <div key={i} className="p-4 bg-zinc-50 border border-zinc-100 rounded-xl flex items-center gap-3">
+                                    <CheckCircle2 className="w-4 h-4 text-[#B89B5E]" />
+                                    <span className="text-[10px] font-black uppercase tracking-tight text-zinc-900 italic">{task}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="max-w-2xl mx-auto text-center space-y-6 pt-8">
+                            <p className="text-lg text-zinc-700 italic">
+                                These instructions are called <strong>Standard Operating Procedures (SOPs)</strong>. 
+                                An SOP is simply the agreed way of doing a task.
+                            </p>
+                            <div className="p-8 bg-[#F8F6F2] rounded-3xl border border-[#B89B5E]/20 space-y-4">
+                                <h3 className="text-lg font-black uppercase text-zinc-950 italic">Without SOPs:</h3>
+                                <ul className="grid sm:grid-cols-2 gap-4">
+                                    {[
+                                        "Every employee does things differently",
+                                        "Quality becomes inconsistent",
+                                        "Mistakes increase daily",
+                                        "Training becomes difficult",
+                                        "Managers waste time correcting problems"
+                                    ].map((point, i) => (
+                                        <li key={i} className="flex items-center gap-2 text-xs font-bold text-zinc-600 italic">
+                                            <X className="w-3.5 h-3.5 text-red-500" /> {point}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 4. INSIDE THE SYSTEM (LEDGER SCREENSHOT) --- */}
-                <Section id="inside" className="bg-white" noSpine>
-                    <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
-                        <div className="text-center max-w-3xl mx-auto space-y-6">
-                            <SectionEyebrow text="THE SYSTEM IS THE PRODUCT" />
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                INSTITUTIONAL GRADE.
+                {/* --- SECTION 2: THE STRUGGLE --- */}
+                <Section className="bg-zinc-50/50">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="THE CHALLENGE" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                Then why do businesses still struggle?
                             </h2>
-                            <p className="text-zinc-600 text-lg md:text-xl font-medium italic mx-auto text-center">
-                                Instead of buying another SaaS subscription, you deploy a practical operational system your team can actually use from Day 1.
+                            <p className="text-lg md:text-xl text-zinc-600 font-medium italic">
+                                Because having instructions is not the same as following them.
                             </p>
-                            <div className="flex justify-center pt-4">
-                                <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black hover:bg-primary/90 transition-all font-black uppercase italic text-xs tracking-widest gap-4 group shadow-xl">
-                                    <Link href="https://gamma.app/public/MoreMeets-Operational-SOP-Systems-5i5z5v5z5v5z5v5" target="_blank">
-                                        <Presentation className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                                        Download MoreMeets Presentation
-                                    </Link>
-                                </Button>
-                            </div>
                         </div>
 
-                        <div className="flex flex-col gap-20">
-                            <div className="w-full relative">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="space-y-6">
+                                <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">In many businesses:</h4>
+                                <div className="space-y-4">
+                                    {[
+                                        { t: "WhatsApp Chaos", d: "Instructions live in chat messages and groups." },
+                                        { t: "Old Documents", d: "Instructions live in files nobody opens." },
+                                        { t: "Memory Dependency", d: "Instructions live only in people's memory." },
+                                        { t: "Verbal Passing", d: "Different employees follow different versions." }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex gap-4 p-4 bg-white rounded-2xl border border-zinc-100 shadow-sm">
+                                            <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
+                                            <div className="space-y-1">
+                                                <p className="text-sm font-black uppercase text-zinc-950 italic">{item.t}</p>
+                                                <p className="text-xs text-zinc-500 font-bold italic uppercase">{item.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="bg-zinc-950 text-white p-8 md:p-12 rounded-[2.5rem] space-y-6 shadow-2xl">
+                                <h4 className="text-xl font-black uppercase italic text-emerald-500">As you grow:</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Tasks get missed",
+                                        "Checks are forgotten",
+                                        "Managers keep chasing updates",
+                                        "Owners lose visibility",
+                                        "Knowledge leaves when staff resign"
+                                    ].map((p, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-sm font-bold italic uppercase text-zinc-300">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                            {p}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 3: THE REAL PROBLEM --- */}
+                <Section className="bg-white">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="text-center space-y-6">
+                            <SectionEyebrow text="THE TRUTH ABOUT GROWTH" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                The real problem is not writing SOPs.
+                            </h2>
+                            <p className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-3xl mx-auto">
+                                The real problem is making sure they are followed every day. 
+                                Most businesses do not fail because nobody knows what to do. They fail because there is no simple system that ensures the right things happen consistently.
+                            </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-3 gap-6">
+                            {[
+                                { t: "Suggestions", d: "Instructions without accountability", i: Target },
+                                { t: "Assumptions", d: "Instructions without proof", i: ShieldAlert },
+                                { t: "Guesswork", d: "Instructions without visibility", i: HelpCircle }
+                            ].map((item, i) => (
+                                <div key={i} className="p-8 border border-zinc-100 bg-zinc-50/50 rounded-[2rem] text-center space-y-3">
+                                    <item.i className="w-8 h-8 text-red-500 mx-auto opacity-40" />
+                                    <p className="text-xs font-black text-zinc-400 uppercase tracking-widest">{item.d}</p>
+                                    <p className="text-2xl font-black uppercase italic text-zinc-950">Become {item.t}.</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 4: THE SOLUTION (MOREMEETS) --- */}
+                <Section className="bg-[#F8F6F2]" noSpine>
+                    <div className="max-w-6xl mx-auto space-y-16">
+                        <div className="grid lg:grid-cols-[1fr,1.2fr] gap-12 md:gap-20 items-center">
+                            <div className="space-y-8">
+                                <div className="space-y-4">
+                                    <SectionEyebrow text="THE SOLUTION" />
+                                    <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                        This is where <br/> MoreMeets helps.
+                                    </h2>
+                                    <p className="text-lg text-zinc-700 italic font-medium leading-relaxed">
+                                        MoreMeets provides industry-specific SOP systems that are already structured and ready to use. 
+                                        Instead of starting from a blank page, you receive a complete system built around real business workflows.
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
+                                    <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.4em]">EVERY TASK HAS:</p>
+                                    <div className="grid gap-3">
+                                        {[
+                                            "What needs to be done",
+                                            "When it needs to be done",
+                                            "How it should be done",
+                                            "Proof that it was completed"
+                                        ].map((text, i) => (
+                                            <div key={i} className="flex items-center gap-3">
+                                                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                                                    <Check className="w-3 h-3 text-white" strokeWidth={4} />
+                                                </div>
+                                                <span className="text-sm font-black uppercase text-zinc-900 italic tracking-tight">{text}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="pt-4">
+                                    <Button asChild size="lg" className="h-16 px-10 rounded-xl bg-zinc-950 text-white font-black uppercase italic tracking-widest shadow-xl">
+                                        <Link href="/library">Explore Systems Hub <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="relative">
                                 <div className="absolute -inset-10 bg-emerald-500/5 rounded-[5rem] blur-3xl opacity-50"></div>
                                 <LedgerSimulation />
                             </div>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pt-8">
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 5: SOFTWARE FAILURE --- */}
+                <Section className="bg-white border-y border-zinc-100">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="THE ADOPTION PROBLEM" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                Why most business software fails
+                            </h2>
+                            <p className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-2xl mx-auto">
+                                Most software assumes employees want another app. Reality is different.
+                            </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                { t: "Password Fatigue", d: "People forget logins and avoid using the system.", i: Lock },
+                                { t: "Learning Curve", d: "Teams resist learning complex new interfaces.", i: GraduationCap },
+                                { t: "Usage Drop-off", d: "Teams stop using new apps after a few weeks.", i: Activity },
+                                { t: "The Chase", d: "Managers end up chasing updates manually anyway.", i: History }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col gap-4 p-6 bg-zinc-50 border border-zinc-100 rounded-2xl group hover:bg-white hover:shadow-xl transition-all">
+                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-red-500 transition-colors" />
+                                    <div className="space-y-1">
+                                        <p className="text-sm font-black uppercase text-zinc-950 italic">{item.t}</p>
+                                        <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest leading-tight">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- SECTION 6: THE ADVANTAGE --- */}
+                <Section className="bg-zinc-950 text-white" noSpine>
+                    <div className="max-w-4xl mx-auto space-y-16">
+                        <div className="text-center space-y-6">
+                            <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 px-8 py-2 uppercase font-black tracking-[0.5em] text-[10px] rounded-none italic mb-4">THE DEPLOYMENT LAYER</Badge>
+                            <h2 className="text-3xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-none">
+                                Why MoreMeets runs on <br/> <span className="text-emerald-500">Google Sheets.</span>
+                            </h2>
+                            <p className="text-xl md:text-2xl text-zinc-500 font-medium italic max-w-2xl mx-auto">
+                                Because your team already knows how to use it.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="space-y-8">
                                 {[
-                                    { t: "NO APP ADOPTION BATTLE", d: "Staff use existing phones and tools they understand. Zero friction for the front-line.", i: Smartphone },
-                                    { t: "AUTOMATIC AUDIT", d: "Timestamps and optional photo evidence create verifiable operational records.", i: Activity },
-                                    { t: "VISUAL VERIFICATION", d: "Managers attach reference images and request photo proof for critical tasks.", i: Eye },
-                                    { t: "BUILT-IN COACHING", d: "Actionable instructions embedded in every task.", i: GraduationCap }
-                                ].map((feat, i) => (
-                                    <div key={i} className="flex flex-col gap-5 text-left group">
-                                        <div className="w-14 h-14 rounded-2xl bg-[#F8F6F2] border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:bg-[#111111] group-hover:border-emerald-500/30">
-                                            <feat.i className="w-7 h-7 text-zinc-400 group-hover:text-emerald-500 transition-colors" />
+                                    { t: "Zero Training", d: "No instruction manuals or sessions required." },
+                                    { t: "No App Downloads", d: "Works directly in your existing workspace." },
+                                    { t: "Offline Ready", d: "Execution happens first. Sync happens later." },
+                                    { t: "No Adoption Battle", d: "The goal is to make sure the system actually gets used." }
+                                ].map((point, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-emerald-500" strokeWidth={5} />
                                         </div>
-                                        <div className="space-y-2">
-                                            <p className="text-lg font-black uppercase text-zinc-950 italic">{feat.t}</p>
-                                            <p className="text-[12px] text-zinc-500 font-bold uppercase tracking-widest leading-tight">{feat.d}</p>
+                                        <div className="space-y-1">
+                                            <p className="text-lg font-black uppercase italic tracking-tighter text-white">{point.t}</p>
+                                            <p className="text-sm text-zinc-500 font-bold italic leading-relaxed">{point.d}</p>
                                         </div>
                                     </div>
                                 ))}
+                            </div>
+                            <div className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/10 flex flex-col justify-center space-y-6 text-center md:text-left">
+                                <Smartphone className="w-12 h-12 text-emerald-500 mb-2 opacity-50" />
+                                <p className="text-lg md:text-xl font-bold italic leading-tight text-white/80">
+                                    "The goal is not to introduce another tool. The goal is to make sure the right things happen every day."
+                                </p>
                             </div>
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 5. OPERATIONAL CONTINUITY (OFFLINE) --- */}
-                <div className="w-full bg-[#111111] py-20 md:py-32 text-white relative overflow-hidden border-y border-white/5">
-                    <div className="absolute inset-0 opacity-10">
-                        <Wifi className="w-full h-full text-white rotate-12 scale-150" />
-                    </div>
-                    <div className="container mx-auto px-6 relative z-10 text-center space-y-10">
-                        <div className="space-y-4">
-                            <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 px-8 py-2 uppercase font-black tracking-[0.5em] text-[10px] rounded-none italic">OPERATIONAL CONTINUITY</Badge>
-                            <h2 className="text-3xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-none">
-                                WORKS EVEN WITHOUT <span className="text-emerald-500">INTERNET.</span>
-                            </h2>
-                        </div>
-                        <div className="max-w-2xl mx-auto space-y-8">
-                            <p className="text-xl md:text-[26px] font-bold italic leading-tight text-white/40">
-                                Basements. Kitchens. Warehouses. Remote sites.
-                            </p>
-                            <div className="space-y-2">
-                                <p className="text-lg md:text-2xl font-black text-white uppercase italic">
-                                    Execution happens first. Sync happens later.
-                                </p>
-                                <p className="text-sm md:text-lg text-zinc-500 font-medium italic max-w-lg mx-auto">
-                                    Even during internet disruptions, teams can continue logging tasks. Sync happens automatically later when connection stabilizes.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- 6. DEPLOYMENT PROTOCOL (NUMBERED FRAMEWORK) --- */}
-                <Section className="bg-white border-b border-zinc-100" noSpine>
+                {/* --- DEPLOYMENT PROTOCOL --- */}
+                <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
                             <SectionEyebrow text="DEPLOYMENT PROTOCOL" />
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
                                 Go live in 10 minutes
                             </h2>
                         </div>
@@ -415,36 +546,6 @@ export default function HomePage() {
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 7. OWNERSHIP & EDITABILITY --- */}
-                <Section className="bg-[#F8F6F2]/50" noSpine>
-                    <div className="max-w-5xl mx-auto space-y-16 md:space-y-32">
-                        <div className="grid md:grid-cols-2 gap-16 md:gap-32">
-                            <div className="space-y-8">
-                                <SectionEyebrow text="DATA OWNERSHIP" />
-                                <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">You own your data. <br/> Not us.</h3>
-                                <p className="text-zinc-500 text-lg italic leading-relaxed font-medium">
-                                    Your operational history stays in your own Google or Excel environment. No dependency on proprietary platforms. You own the system and the audit trail forever.
-                                </p>
-                                <div className="flex items-center gap-4 text-emerald-600 font-black italic uppercase">
-                                    <Database className="w-6 h-6 opacity-40" />
-                                    <span>Permanent access. Zero SaaS dependency.</span>
-                                </div>
-                            </div>
-                            <div className="space-y-8">
-                                <SectionEyebrow text="CUSTOMIZATION" />
-                                <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">Fully editable for <br/> your business.</h3>
-                                <p className="text-zinc-500 text-lg italic leading-relaxed font-medium">
-                                    Owners fear rigid software. We provide the globally benchmarked structure, and you can easily add, remove, or modify tasks to fit your unique local protocols.
-                                </p>
-                                <div className="flex items-center gap-4 text-primary font-black italic uppercase">
-                                    <MousePointer2 className="w-6 h-6 opacity-40" />
-                                    <span>No code required. Just Excel proficiency.</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </Section>
@@ -478,13 +579,12 @@ export default function HomePage() {
             </main>
             
             <Footer />
-
-            <style jsx global>{`
-                @keyframes zoom {
-                    from { transform: scale(1); }
-                    to { transform: scale(1.06); }
-                }
-            `}</style>
         </div>
     );
 }
+
+const HelpCircle = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>
+    </svg>
+);
