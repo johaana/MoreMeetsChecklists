@@ -102,7 +102,7 @@ const LedgerSimulation = () => (
             <div className="w-full relative overflow-hidden bg-white">
                 <img 
                     src="https://i.postimg.cc/5y3hF93d/Screenshot-2026-05-28-202324.png" 
-                    alt="MoreMeets Operational Ledger" 
+                    alt="MoreMeets™ Operational Ledger" 
                     className="w-full h-auto object-cover"
                 />
             </div>
@@ -161,7 +161,7 @@ export default function HomePage() {
                                 </h1>
                             </div>
                             <p className="text-[13px] font-medium leading-[1.5] text-zinc-800 italic">
-                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                                MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
                             </p>
                             <div className="flex flex-col gap-2.5">
                                 {[
@@ -180,9 +180,6 @@ export default function HomePage() {
                             <div className="pt-2 space-y-4">
                                 <button className="h-14 px-8 rounded-2xl text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_10px_30px_rgba(0,0,0,0.12)] active:scale-95 transition-all w-full" style={{ backgroundColor: BRAND_GOLD }}>
                                     <Link href="/library">DEPLOY IN 10 MINUTES • ₹2,499 / $29</Link>
-                                </button>
-                                <button className="w-full text-[11px] font-black uppercase tracking-[0.2em] text-zinc-950 flex items-center justify-center gap-3 group italic">
-                                    <Link href="#inside" className="flex items-center gap-2">WATCH TEAMS OPERATE <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" /></Link>
                                 </button>
                             </div>
                         </div>
@@ -227,7 +224,7 @@ export default function HomePage() {
                                     </h1>
                                     
                                     <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
-                                        MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution - so standards are followed even when managers are absent.
+                                        MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
                                     </p>
                                     
                                     <div className="flex flex-col gap-2.5 pt-1">
@@ -326,9 +323,9 @@ export default function HomePage() {
                                 Instead of buying another SaaS subscription, you deploy a practical operational system your team can actually use from Day 1.
                             </p>
                             <div className="flex justify-center pt-4">
-                                <Button asChild variant="outline" className="h-14 px-8 rounded-xl border-[#B89B5E]/30 text-[#B89B5E] hover:bg-[#B89B5E] hover:text-white transition-all font-black uppercase italic text-xs tracking-widest gap-3 group">
+                                <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black hover:bg-primary/90 transition-all font-black uppercase italic text-xs tracking-widest gap-4 group shadow-xl">
                                     <Link href="https://gamma.app/public/MoreMeets-Operational-SOP-Systems-5i5z5v5z5v5z5v5" target="_blank">
-                                        <Presentation className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                        <Presentation className="w-6 h-6 group-hover:scale-110 transition-transform" />
                                         See Full System Walkthrough
                                     </Link>
                                 </Button>
