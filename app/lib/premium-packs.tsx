@@ -15,7 +15,7 @@ export type ChecklistTask = {
     role?: string;
     frequency?: string;
     verificationRequired?: boolean; 
-    cadence?: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'incident-based';
+    cadence?: 'hourly' | 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'incident-based';
 };
 
 export type Checklist = {
