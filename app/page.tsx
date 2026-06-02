@@ -138,7 +138,7 @@ export default function HomePage() {
                         <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                              <iframe 
                                 src={VIMEO_URL} 
-                                className="absolute inset-0 w-full h-full scale-[1.2] brightness-[0.9]" 
+                                className="absolute inset-0 w-full h-full scale-[1.5] translate-y-[-10%] brightness-[0.9]" 
                                 frameBorder="0" 
                                 allow="autoplay; fullscreen" 
                              />
@@ -206,7 +206,7 @@ export default function HomePage() {
                         </div>
 
                         <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
-                            <div className="max-w-[850px] space-y-10">
+                            <div className="max-w-[1100px] space-y-10">
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
@@ -215,15 +215,15 @@ export default function HomePage() {
                                         </span>
                                     </div>
 
-                                    <h1 className="text-[2.2rem] md:text-[58px] font-bold font-headline leading-[1.05] uppercase tracking-[-0.04em] max-w-4xl" style={{ color: BRAND_GREEN }}>
-                                        YOUR BUSINESS <br />
+                                    <h1 className="text-[2.2rem] md:text-[62px] font-bold font-headline leading-[1.1] uppercase tracking-[-0.04em]" style={{ color: BRAND_GREEN }}>
+                                        YOUR BUSINESS SHOULD NOT <br />
                                         <span className="relative inline-block mt-1">
-                                            SHOULD NOT <br/> DEPEND ON MEMORY.
+                                            DEPEND ON MEMORY.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                         </span>
                                     </h1>
                                     
-                                    <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
+                                    <p className="text-[16px] md:text-[18px] font-medium leading-[1.5] text-zinc-800 max-w-3xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
                                         MoreMeets™ provides pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, photo verification, and timestamped proof of execution.
                                     </p>
                                     

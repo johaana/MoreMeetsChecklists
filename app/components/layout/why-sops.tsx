@@ -33,7 +33,7 @@ export const WhySopsSection = () => {
             <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
                 <div className="max-w-4xl mx-auto space-y-16 md:space-y-24">
                     
-                    {/* SOP EDUCATION BLOCK */}
+                    {/* SYSTEM ANATOMY */}
                     <div className="space-y-6 text-center">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px] italic mb-2">SYSTEM ANATOMY</Badge>
                         <h2 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
@@ -66,7 +66,7 @@ export const WhySopsSection = () => {
                         </div>
                     </div>
 
-                    {/* THE BRIDGE */}
+                    {/* THE DEPLOYMENT LAYER */}
                     <div className="space-y-12 pt-12 border-t border-zinc-100">
                         <div className="space-y-4 text-center md:text-left">
                             <h3 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
@@ -126,7 +126,7 @@ export const WhySopsSection = () => {
                         </div>
                     </div>
 
-                    {/* WHY GOOGLE SHEETS */}
+                    {/* WHY GOOGLE SHEETS? */}
                     <div className="space-y-12 pt-12 border-t border-zinc-100">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div className="space-y-6">
