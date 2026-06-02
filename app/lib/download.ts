@@ -42,8 +42,7 @@ function onEdit(e) {
     // Only react to DONE BY (E) or VERIFIED BY (F) edits
     if (endCol < 5 || startCol > 6) return;
 
-    SpreadsheetApp.flush();
-    let stamped = 0;
+    SpreadsheetApp.flush();    let stamped = 0;
 
     // Process every edited row in the range
     for (let i = 0; i < numRows; i++) {
@@ -95,7 +94,7 @@ const sanitizeRisk = (text: string) => {
     return text.replace(/\[?Risk:\s?\[?/gi, "").replace(/\]/g, "").trim();
 };
 
-export const handleDownload = (item: PremiumPack) => {
+export const handleDownload = (item: PremiumPack, type?: string) => {
     try {
         if (!item) {
             throw new Error("Operational data not found.");

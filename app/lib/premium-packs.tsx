@@ -43,6 +43,8 @@ export type PremiumPack = {
     listId?: number; 
     updatedAt?: string;
     category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise" | "Master Access";
+    family?: string;
+    sub_type?: string;
     description: string;
     shortDescription?: string;
     heroHeadline?: string;
