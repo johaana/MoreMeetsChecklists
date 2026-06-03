@@ -14,13 +14,19 @@ export const FaqSection = () => (
                     <AccordionItem value="item-1" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-8">
-                            <p>Some businesses have SOPs.</p>
-                            <p>Some have incomplete SOPs.</p>
-                            <p>Some have outdated SOPs.</p>
-                            <p>Some have instructions scattered across documents, WhatsApp chats, and employee memory.</p>
-                            <p>The challenge is not simply creating instructions.</p>
-                            <p>The challenge is making sure they are followed consistently every day.</p>
-                            <p>MoreMeets combines industry-specific SOPs with daily execution tracking, accountability, timestamps, and verification so standards are followed even when managers are not physically present.</p>
+                            <p>Many businesses already have some form of SOPs.</p>
+                            <p>The question is not whether instructions exist.</p>
+                            <p>The question is whether they are complete, up to date, easy for staff to follow, and actually used every day.</p>
+                            <p>Many SOPs are:</p>
+                            <p>
+                                • outdated<br />
+                                • difficult for frontline staff to understand<br />
+                                • missing accountability<br />
+                                • missing verification<br />
+                                • stored in documents that nobody opens
+                            </p>
+                            <p>MoreMeets combines industry-specific SOP intelligence with daily execution tracking, built-in instructions, accountability, timestamps, and proof of completion.</p>
+                            <p>So instead of relying on memory, follow-ups, or assumptions, managers can see what was completed, what was missed, and what needs attention.</p>
                         </AccordionContent>
                     </AccordionItem>
 
