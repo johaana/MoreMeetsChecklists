@@ -24,6 +24,53 @@ const descriptions: Record<string, string> = {
   'supermarket_grocery_retail_pack': "Sovereign grocery operations system. Command cold chain integrity, monitor expiry sweeps, stop checkout variance, and manage high-volume FMCG logistics.",
 };
 
+const assetMap: Record<string, { bg: string, squircle: string }> = {
+    'restaurants': {
+        bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
+        squircle: "https://i.postimg.cc/Kj54VkD2/chef-preparing-recipe.jpg"
+    },
+    'hotels_and_resorts': {
+        bg: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp",
+        squircle: "https://i.postimg.cc/2yjC1Hnm/hotel-manager-operation.webp"
+    },
+    'healthcare_and_hospital_operations': {
+        bg: "https://i.postimg.cc/zvDqydKt/healthcare.jpg",
+        squircle: "https://i.postimg.cc/2885y5xp/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
+    },
+    'school_operations_pack': {
+        bg: "https://i.postimg.cc/pXGLFt00/school-safety.webp",
+        squircle: "https://i.postimg.cc/g2xkyBQY/Schools-school-safety.jpg"
+    },
+    'franchise_operations_pack': {
+        bg: "https://i.postimg.cc/pd8W45PK/franchise-2.jpg",
+        squircle: "https://i.postimg.cc/vBsYs8mS/Franchise-operations.jpg"
+    },
+    'facility_management_blueprint': {
+        bg: "https://i.postimg.cc/9MhmhXMR/facilities-management1.png",
+        squircle: "https://i.postimg.cc/gjy6WBdD/mid-adult-engineer-male-worker-wearing-face-masks-while-examining-paperwork-woodworking-factory.jpg"
+    },
+    'cinema_operations_pack': {
+        bg: "https://i.postimg.cc/VsXtn5MJ/view-3d-cinema-theatre-room.jpg",
+        squircle: "https://i.postimg.cc/g0fw6P0G/3d-rendering-cinema-movie-theater.jpg"
+    },
+    'retail_operations_system': {
+        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+        squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
+    },
+    'fashion_and_apparel_retail': {
+        bg: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp",
+        squircle: "https://i.postimg.cc/tg1ZTgp4/cinema-interval.avif"
+    },
+    'electronics_showroom_pack': {
+        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+        squircle: "https://i.postimg.cc/Hx9psGc2/multiplex2.avif"
+    },
+    'supermarket_grocery_retail_pack': {
+        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+        squircle: "https://i.postimg.cc/66z9kXNJ/Back-of-House-BOH-Operations-restaurant.png"
+    }
+};
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
@@ -45,7 +92,9 @@ export async function generateMetadata(
   
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  const ogImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
+  // DYNAMIC IMAGE LOGIC: Pull correct hero background from assetMap
+  const fallbackImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
+  const ogImage = assetMap[id]?.bg || fallbackImage;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -82,53 +131,6 @@ export default async function Page({ params }: Props) {
   if (!pack) {
     notFound();
   }
-
-  const assetMap: Record<string, { bg: string, squircle: string }> = {
-      'restaurants': {
-          bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
-          squircle: "https://i.postimg.cc/Kj54VkD2/chef-preparing-recipe.jpg"
-      },
-      'hotels_and_resorts': {
-          bg: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp",
-          squircle: "https://i.postimg.cc/2yjC1Hnm/hotel-manager-operation.webp"
-      },
-      'healthcare_and_hospital_operations': {
-          bg: "https://i.postimg.cc/zvDqydKt/healthcare.jpg",
-          squircle: "https://i.postimg.cc/2885y5xp/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
-      },
-      'school_operations_pack': {
-          bg: "https://i.postimg.cc/pXGLFt00/school-safety.webp",
-          squircle: "https://i.postimg.cc/g2xkyBQY/Schools-school-safety.jpg"
-      },
-      'franchise_operations_pack': {
-          bg: "https://i.postimg.cc/pd8W45PK/franchise-2.jpg",
-          squircle: "https://i.postimg.cc/vBsYs8mS/Franchise-operations.jpg"
-      },
-      'facility_management_blueprint': {
-          bg: "https://i.postimg.cc/9MhmhXMR/facilities-management1.png",
-          squircle: "https://i.postimg.cc/gjy6WBdD/mid-adult-engineer-male-worker-wearing-face-masks-while-examining-paperwork-woodworking-factory.jpg"
-      },
-      'cinema_operations_pack': {
-          bg: "https://i.postimg.cc/VsXtn5MJ/view-3d-cinema-theatre-room.jpg",
-          squircle: "https://i.postimg.cc/g0fw6P0G/3d-rendering-cinema-movie-theater.jpg"
-      },
-      'retail_operations_system': {
-          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-          squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
-      },
-      'fashion_and_apparel_retail': {
-          bg: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp",
-          squircle: "https://i.postimg.cc/tg1ZTgp4/cinema-interval.avif"
-      },
-      'electronics_showroom_pack': {
-          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-          squircle: "https://i.postimg.cc/Hx9psGc2/multiplex2.avif"
-      },
-      'supermarket_grocery_retail_pack': {
-          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-          squircle: "https://i.postimg.cc/66z9kXNJ/Back-of-House-BOH-Operations-restaurant.png"
-      }
-  };
 
   const assets = assetMap[id] || { 
       bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
