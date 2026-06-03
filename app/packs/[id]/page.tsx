@@ -59,15 +59,15 @@ const assetMap: Record<string, { bg: string, squircle: string }> = {
     },
     'fashion_and_apparel_retail': {
         bg: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp",
-        squircle: "https://i.postimg.cc/tg1ZTgp4/cinema-interval.avif"
+        squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
     },
     'electronics_showroom_pack': {
         bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-        squircle: "https://i.postimg.cc/Hx9psGc2/multiplex2.avif"
+        squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
     },
     'supermarket_grocery_retail_pack': {
         bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-        squircle: "https://i.postimg.cc/66z9kXNJ/Back-of-House-BOH-Operations-restaurant.png"
+        squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
     }
 };
 
@@ -86,13 +86,11 @@ export async function generateMetadata(
   
   const siteUrl = 'https://www.moremeets.com';
   
-  // CLEAN TITLE FOR METADATA: Strips version numbers (e.g., v19.2) and marketing suffixes for cleaner SEO
   const cleanTitle = pack.title.split(/v\d+/)[0].trim();
   const title = `${cleanTitle} | MoreMeets™`;
   
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  // DYNAMIC IMAGE LOGIC: Pull correct hero background from assetMap
   const fallbackImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
   const ogImage = assetMap[id]?.bg || fallbackImage;
 

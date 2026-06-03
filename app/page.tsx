@@ -133,7 +133,7 @@ export default function HomePage() {
                 
                 {/* --- HERO SECTION --- */}
                 <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
-                    <div className="md:hidden flex flex-col bg-[#F8F6F2]">
+                    <div className="md:hidden flex flex-col bg-[#F8F6F2] pt-[72px]">
                         <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                              <iframe 
                                 src={VIMEO_URL} 
@@ -203,7 +203,7 @@ export default function HomePage() {
                             />
                         </div>
 
-                        <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-24">
+                        <div className="relative z-30 container mx-auto max-w-[1200px] px-6 h-full flex items-center pt-[72px]">
                             <div className="max-w-[1100px] space-y-10">
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-4">
@@ -413,7 +413,6 @@ export default function HomePage() {
                                     </p>
                                 </div>
 
-                                {/* WHAT DO YOU ACTUALLY RECEIVE SECTION */}
                                 <div className="p-8 bg-white rounded-3xl border border-black/5 space-y-6 shadow-sm">
                                     <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">
                                         What do you actually receive?

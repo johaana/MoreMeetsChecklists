@@ -157,12 +157,12 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <section className="relative w-full overflow-hidden bg-[#F8F6F2]">
                 
                 {/* --- MOBILE ARCHITECTURE --- */}
-                <div className="md:hidden flex flex-col bg-[#F8F6F2]">
+                <div className="md:hidden flex flex-col bg-[#F8F6F2] pt-[72px]">
                     <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                         <img 
                             src={squircleUrl} 
                             alt={pack.title} 
-                            className="absolute inset-0 w-full h-full object-cover grayscale-[0.2] brightness-[0.9]" 
+                            className="absolute inset-0 w-full h-full object-cover object-top grayscale-[0.2] brightness-[0.9]" 
                         />
                         <div className="absolute inset-0 bg-black/5" />
                     </div>
@@ -206,12 +206,12 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
 
                 {/* --- DESKTOP ARCHITECTURE --- */}
-                <div className="hidden md:block relative w-full min-h-[700px] pt-24 pb-12">
+                <div className="hidden md:block relative w-full min-h-[700px] pt-[120px] pb-12">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={backgroundUrl} 
                             alt="" 
-                            className="w-full h-full object-cover opacity-30 grayscale-[0.2] brightness-[1.1]" 
+                            className="w-full h-full object-cover object-top opacity-30 grayscale-[0.2] brightness-[1.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#F8F6F2] via-[#F8F6F2]/90 to-transparent pointer-events-none z-10" />
                     </div>
