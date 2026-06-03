@@ -36,8 +36,9 @@ import {
     Camera,
     ChevronRight,
     FileSpreadsheet,
-    ClipboardCheck
-} from 'lucide-react';
+    ClipboardCheck,
+    UserCheck
+} from "lucide-react";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -65,7 +66,7 @@ const SYSTEM_SPECS = [
 
 const PROOF_STRIP = "EXCEL & SHEETS • OWN FOREVER • NO SaaS";
 
-const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
+const HomeSection = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-28 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-black/[0.03] z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
@@ -256,7 +257,7 @@ export default function HomePage() {
                 </section>
 
                 {/* --- SECTION 1: WHAT IS AN SOP? --- */}
-                <Section className="bg-white border-b border-zinc-100">
+                <HomeSection className="bg-white border-b border-zinc-100">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-6">
                             <SectionEyebrow text="THE BASICS" />
@@ -303,10 +304,10 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- SECTION 2: THE STRUGGLE --- */}
-                <Section className="bg-zinc-50/50">
+                <HomeSection className="bg-zinc-50/50">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-4">
                             <SectionEyebrow text="THE CHALLENGE" />
@@ -357,10 +358,10 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- SECTION 3: THE REAL PROBLEM --- */}
-                <Section className="bg-white">
+                <HomeSection className="bg-white">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-6">
                             <SectionEyebrow text="THE TRUTH ABOUT GROWTH" />
@@ -387,13 +388,13 @@ export default function HomePage() {
                             ))}
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- SECTION 4: THE SOLUTION (MOREMEETS) --- */}
-                <Section className="bg-[#F8F6F2]" noSpine>
+                <HomeSection className="bg-[#F8F6F2]" noSpine>
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="grid lg:grid-cols-[1fr,1.2fr] gap-12 md:gap-20 items-center">
-                            <div className="space-y-8">
+                            <div className="space-y-8 text-left">
                                 <div className="space-y-4">
                                     <SectionEyebrow text="THE SOLUTION" />
                                     <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
@@ -405,7 +406,7 @@ export default function HomePage() {
                                     </p>
                                 </div>
 
-                                {/* DELIVERABLES SECTION */}
+                                {/* WHAT DO YOU ACTUALLY RECEIVE SECTION */}
                                 <div className="p-8 bg-white rounded-3xl border border-black/5 space-y-6 shadow-sm">
                                     <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">
                                         What do you actually receive?
@@ -467,10 +468,10 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- SECTION 5: SOFTWARE FAILURE --- */}
-                <Section className="bg-white border-y border-zinc-100">
+                <HomeSection className="bg-white border-y border-zinc-100">
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-4">
                             <SectionEyebrow text="THE ADOPTION PROBLEM" />
@@ -499,10 +500,10 @@ export default function HomePage() {
                             ))}
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- SECTION 6: WHY TEAMS ACTUALLY USE THIS --- */}
-                <Section className="bg-zinc-950 text-white" noSpine>
+                <HomeSection className="bg-zinc-950 text-white" noSpine>
                     <div className="max-w-4xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
                             <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 px-8 py-2 uppercase font-black tracking-[0.5em] text-[10px] rounded-none italic mb-4">WHY TEAMS ACTUALLY USE THIS</Badge>
@@ -541,10 +542,10 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 {/* --- DEPLOYMENT PROTOCOL --- */}
-                <Section className="bg-white border-b border-zinc-100">
+                <HomeSection className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
                             <SectionEyebrow text="SETUP PROTOCOL" />
@@ -572,12 +573,12 @@ export default function HomePage() {
                             ))}
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
                 <FaqSection />
 
                 {/* --- FINAL CTA --- */}
-                <Section className="bg-[#F8F6F2] py-32 md:py-60 border-t border-black/5" noSpine>
+                <HomeSection className="bg-[#F8F6F2] py-32 md:py-60 border-t border-black/5" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16 text-center">
                         <div className="space-y-6">
                             <h2 className="text-[38px] md:text-[88px] font-extrabold leading-[0.85] tracking-tighter uppercase italic font-headline text-[#111111]">
@@ -598,7 +599,7 @@ export default function HomePage() {
                             </p>
                         </div>
                     </div>
-                </Section>
+                </HomeSection>
 
             </main>
             
