@@ -156,7 +156,7 @@ export default function HomePage() {
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
                                     <span className="text-[7.5px] font-black uppercase tracking-[0.15em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                        REDUCE DEPENDENCY ON MEMORY
+                                        OPERATIONAL INTELLIGENCE
                                     </span>
                                 </div>
                                 <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
@@ -217,7 +217,7 @@ export default function HomePage() {
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
                                         <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                            REDUCE DEPENDENCY ON MEMORY
+                                            OPERATIONAL INTELLIGENCE
                                         </span>
                                     </div>
 
@@ -386,7 +386,7 @@ export default function HomePage() {
                             {[
                                 { t: "Suggestions", d: "Instructions without accountability", i: Target },
                                 { t: "Assumptions", d: "Instructions without proof", i: ShieldAlert },
-                                { t: "Guesswork", d: "Instructions without visibility", i: HelpCircle }
+                                { t: "Guesswork", d: "Instructions without visibility", i: GraduationCap }
                             ].map((item, i) => (
                                 <div key={i} className="p-8 border border-zinc-100 bg-zinc-50/50 rounded-[2rem] text-center space-y-3">
                                     <item.i className="w-8 h-8 text-red-500 mx-auto opacity-40" />
@@ -530,14 +530,14 @@ export default function HomePage() {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
                             {[
-                                { t: "Purchase", d: "Instant access to your industry master engine." },
-                                { t: "Receive System", d: "Direct download link delivered via secure email." },
-                                { t: "Import to Sheets", d: "Upload to Drive for live multi-user collaboration." },
+                                { t: "Purchase", d: "Instant access to your industry-specific SOP system." },
+                                { t: "Receive Your SOP System", d: "Direct download link delivered via secure email." },
+                                { t: "Open in Google Sheets", d: "Upload to Drive for live multi-user collaboration." },
                                 { t: "Assign Teams", d: "Map staff names to roles in the central hub." },
                                 { t: "Start Daily Execution", d: "Standards are followed via live, verifiable logs." }
                             ].map((step, i) => (
                                 <div className="space-y-6 group text-left" key={i}>
-                                    <div className="text-4xl md:text-6xl font-black italic text-zinc-100 group-hover:text-[#B89B5E] transition-colors leading-none">
+                                    <div className="text-4xl md:text-6xl font-black italic text-primary/10 group-hover:text-[#B89B5E] transition-colors leading-none">
                                         0{i+1}
                                     </div>
                                     <div className="space-y-2">
@@ -582,9 +582,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-const HelpCircle = ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>
-    </svg>
-);
