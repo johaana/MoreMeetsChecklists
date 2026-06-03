@@ -160,9 +160,9 @@ export default function HomePage() {
                                     </span>
                                 </div>
                                 <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
-                                    YOUR BUSINESS <br />
+                                    WHERE SOPS <br />
                                     <span className="relative inline-block mt-1">
-                                        SHOULD NOT <br/> DEPEND ON MEMORY.
+                                        MEET EXECUTION.
                                         <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#B89B5E]/30 rounded-full" />
                                     </span>
                                 </h1>
@@ -222,9 +222,9 @@ export default function HomePage() {
                                     </div>
 
                                     <h1 className="text-[2.2rem] md:text-[62px] font-bold font-headline leading-[1.1] uppercase tracking-[-0.04em]" style={{ color: BRAND_GREEN }}>
-                                        YOUR BUSINESS SHOULD NOT <br />
+                                        WHERE SOPS <br />
                                         <span className="relative inline-block mt-1">
-                                            DEPEND ON MEMORY.
+                                            MEET EXECUTION.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                         </span>
                                     </h1>
@@ -463,7 +463,7 @@ export default function HomePage() {
                                         ].map((text, i) => (
                                             <div key={i} className="flex items-center gap-3">
                                                 <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
-                                                    <Check className="w-3 h-3 text-white" strokeWidth={4} />
+                                                    <Check className="w-3.5 h-3.5 text-white" strokeWidth={4} />
                                                 </div>
                                                 <span className="text-sm font-black uppercase text-zinc-900 italic tracking-tight">{text}</span>
                                             </div>
@@ -659,14 +659,14 @@ export default function HomePage() {
                     <div className="max-w-5xl mx-auto space-y-16 text-center">
                         <div className="space-y-6">
                             <h2 className="text-[38px] md:text-[88px] font-extrabold leading-[0.85] tracking-tighter uppercase italic font-headline text-[#111111]">
-                                RUN ON SYSTEMS — <br/> <span className="text-emerald-600">NOT MEMORY.</span>
+                                WHERE SOPS MEET — <br/> <span className="text-emerald-600">EXECUTION.</span>
                             </h2>
                             <p className="text-lg md:text-[28px] text-[#5F6368] font-medium italic leading-tight max-w-2xl mx-auto">
                                 Start using your SOP system in the next 10 minutes.
                             </p>
                         </div>
                         <div className="flex flex-col items-center gap-10">
-                            <button className="h-16 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group" style={{ backgroundColor: BRAND_GOLD, color: '#000' }}>
+                            <button className="h-14 md:h-24 px-12 md:px-24 rounded-[2rem] bg-[#111111] text-white font-bold uppercase text-[12px] md:text-[14px] tracking-widest shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] transition-all hover:translate-y-[-4px] hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] border-none group" style={{ backgroundColor: BRAND_GOLD, color: '#000' }}>
                                 <Link href="/library" className="flex items-center gap-6">
                                     DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-3" />
                                 </Link>

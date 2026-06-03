@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
                             letterSpacing: '-0.04em',
                             textTransform: 'uppercase'
                         }}>
-                            YOUR BUSINESS SHOULD NOT DEPEND ON MEMORY.
+                            WHERE SOPS MEET EXECUTION.
                         </div>
                         
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
