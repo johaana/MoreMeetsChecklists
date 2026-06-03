@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X, FileText, ShieldAlert } from 'lucide-react';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X, FileText, ShieldAlert, Clock, User } from 'lucide-react';
 import React from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
@@ -62,7 +62,7 @@ function SubscriptionForm() {
 
   if (submitted) {
     return (
-        <div className="flex items-center justify-center p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary">
+        <div className="flex items-center justify-center p-4 rounded-lg bg-[#1F3A34] border border-[#B89B5E]/20 text-[#B89B5E]">
             <CheckCircle className="w-5 h-5 mr-3" />
             <p className="font-black uppercase text-xs tracking-widest">Protocol Accepted. Welcome to the hub.</p>
         </div>
@@ -106,7 +106,10 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                  <Button
                     variant={activeFilter === null ? 'default' : 'outline'}
                     onClick={() => setActiveFilter(null)}
-                    className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6"
+                    className={cn(
+                        "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6",
+                        activeFilter === null ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white"
+                    )}
                 >
                     All Reports
                 </Button>
@@ -115,28 +118,31 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         key={tag}
                         variant={activeFilter === tag ? 'default' : 'outline'}
                         onClick={() => setActiveFilter(tag)}
-                        className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6"
+                        className={cn(
+                            "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6",
+                            activeFilter === tag ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white"
+                        )}
                     >
                         {tag}
                     </Button>
                 ))}
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6">
+                        <Button variant="outline" className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6 border-white/10 text-white/60">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "Operational Intelligence"}
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="max-h-[50vh] overflow-y-auto bg-alternate-background border-white/10">
+                    <DropdownMenuContent className="max-h-[50vh] overflow-y-auto bg-[#0a1210] border-white/10">
                         {secondaryTags.map(tag => (
-                             <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)} className="font-black uppercase text-[9px] tracking-widest p-3">
+                             <DropdownMenuItem key={tag} onSelect={() => setActiveFilter(tag)} className="font-black uppercase text-[9px] tracking-widest p-3 text-white/60 focus:bg-[#1F3A34] focus:text-[#B89B5E]">
                                 {tag}
                             </DropdownMenuItem>
                         ))}
                     </DropdownMenuContent>
                 </DropdownMenu>
                  {activeFilter && (
-                    <Button variant="ghost" size="sm" onClick={() => setActiveFilter(null)} className="rounded-full text-primary font-black uppercase text-[9px] tracking-widest">
+                    <Button variant="ghost" size="sm" onClick={() => setActiveFilter(null)} className="rounded-full text-[#B89B5E] font-black uppercase text-[9px] tracking-widest">
                         <X className="w-3 h-3 mr-2" />
                         Reset
                     </Button>
@@ -150,9 +156,9 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         size="sm" 
                         variant="secondary" 
                         onClick={() => setActiveFilter(null)} 
-                        className="rounded-full shadow-2xl h-12 px-6 font-black uppercase text-[10px] tracking-widest bg-black border border-white/10"
+                        className="rounded-full shadow-2xl h-12 px-6 font-black uppercase text-[10px] tracking-widest bg-[#0a1210] border border-white/10"
                     >
-                        <X className="w-4 h-4 mr-1 text-primary" />
+                        <X className="w-4 h-4 mr-1 text-[#B89B5E]" />
                         Reset
                     </Button>
                 )}
@@ -162,9 +168,9 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                             <Filter className="w-6 h-6" />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="bottom" className="rounded-t-[2rem] bg-alternate-background border-t border-white/10">
+                    <SheetContent side="bottom" className="rounded-t-[2rem] bg-[#0a1210] border-t border-white/10">
                         <SheetHeader className="mb-6">
-                            <SheetTitle className="uppercase font-black tracking-widest text-xs">Technical Verticals</SheetTitle>
+                            <SheetTitle className="uppercase font-black tracking-widest text-xs text-[#B89B5E]">Technical Verticals</SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="h-[50vh]">
                             <div className="flex flex-col gap-2 pr-4 pb-8">
@@ -195,7 +201,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 }
 
 const BlogCard = ({ post }: { post: BlogPost }) => (
-    <Card className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black group/card">
+    <Card className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-[#B89B5E]/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl group/card">
         <Link href={`/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
             {post.imageUrl ? (
                 <img
@@ -209,7 +215,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => (
                 </div>
             )}
             <div className="absolute top-4 left-4">
-                <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
                     Protocol: {post.protocol || "Standard"}
                 </Badge>
             </div>
@@ -225,16 +231,16 @@ const BlogCard = ({ post }: { post: BlogPost }) => (
                     </Link>
                 </CardTitle>
             </div>
-            <CardDescription className="text-zinc-100 line-clamp-3 italic font-medium text-sm leading-relaxed">
+            <CardDescription className="text-zinc-200 line-clamp-3 italic font-medium text-sm leading-relaxed">
                 {post.description}
             </CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0 mt-auto">
-            <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/40">
-                <p>{formatDate(post.publishedDate)}</p>
-                <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+            <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-[#B89B5E]/60">
+                <p className="flex items-center gap-2"><CalendarDays className="w-3 h-3" /> {formatDate(post.publishedDate)}</p>
+                <span className="flex items-center gap-2"><Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} min read</span>
             </div>
-            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-white/5 text-white hover:bg-[#1F3A34] hover:text-white rounded-xl border border-white/5 transition-all">
+            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-[#B89B5E] text-black hover:bg-[#B89B5E]/90 rounded-xl border-none transition-all">
                 <Link href={`/blog/${post.slug}`}>Review Analysis <ArrowRight className="ml-2 h-3.5 w-3.5" /></Link>
             </Button>
         </CardFooter>
@@ -283,17 +289,17 @@ export default function BlogClientPage() {
   if (!mounted) return null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-[#0a1210] text-foreground">
       <SiteHeader />
       <main className="flex-1">
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Intelligence Hub</Badge>
+                    <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px] bg-[#1F3A34]/50">Forensic Intelligence Hub</Badge>
                     <h1 className="text-4xl md:text-7xl font-black tracking-tighter font-headline text-[#B89B5E] italic uppercase">
                         Black Box Debrief
                     </h1>
-                    <p className="max-w-[800px] text-zinc-200 text-lg md:text-xl font-medium italic border-l-2 border-[#B89B5E]/20 pl-6 mx-auto">
+                    <p className="max-w-[800px] text-zinc-100 text-lg md:text-xl font-medium italic border-l-2 border-[#B89B5E]/20 pl-6 mx-auto">
                         Forensic deconstructions of operational failures to build high-gravity institutional infrastructure.
                     </p>
                 </div>
@@ -302,7 +308,7 @@ export default function BlogClientPage() {
                 {currentFeaturedPost && (
                     <div className="mb-20">
                         <Link href={`/blog/${currentFeaturedPost.slug}`} className="block group">
-                             <Card className="overflow-hidden rounded-[2rem] shadow-2xl hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black">
+                             <Card className="overflow-hidden rounded-[2rem] shadow-2xl hover:shadow-[#B89B5E]/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl">
                                 <div className="md:hidden">
                                     <div className="relative w-full h-auto aspect-[16/9] overflow-hidden">
                                      {currentFeaturedPost.imageUrl && (
@@ -314,7 +320,7 @@ export default function BlogClientPage() {
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                                     <div className="absolute top-4 left-4">
-                                        <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                                        <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
                                             Protocol: {currentFeaturedPost.protocol || "Standard"}
                                         </Badge>
                                     </div>
@@ -327,7 +333,7 @@ export default function BlogClientPage() {
                                             <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
                                         </div>
                                         <CardDescription className="text-zinc-100 italic line-clamp-3">{currentFeaturedPost.description}</CardDescription>
-                                        <Button variant="outline" className="mt-4 border-white/10 text-black bg-[#B89B5E] font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl hover:bg-[#B89B5E]/90 border-none transition-all">
+                                        <Button variant="outline" className="mt-4 border-none text-black bg-[#B89B5E] font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl hover:bg-[#B89B5E]/90 transition-all">
                                             Initiate Full Debrief <ArrowRight className="ml-2 h-4 w-4 text-black" />
                                         </Button>
                                     </div>
@@ -343,14 +349,14 @@ export default function BlogClientPage() {
                                                     className="absolute inset-0 object-cover w-full h-full grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                                                 />
                                             )}
-                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/60" />
                                             <div className="absolute top-8 left-8">
-                                                <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[9px] font-black uppercase tracking-widest px-4 py-1.5">
+                                                <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[9px] font-black uppercase tracking-widest px-4 py-1.5 shadow-2xl">
                                                     Protocol: {currentFeaturedPost.protocol || "Standard"}
                                                 </Badge>
                                             </div>
                                         </div>
-                                        <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-black">
+                                        <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-[#0a1210]/95">
                                             <div className="space-y-4">
                                                 <div className="space-y-1">
                                                     <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#B89B5E]">
@@ -365,9 +371,9 @@ export default function BlogClientPage() {
                                                 </p>
                                             </div>
                                             
-                                            <div className="flex items-center gap-8 text-[10px] font-black text-white/40 uppercase tracking-[0.3em] pt-4">
-                                                <span>{formatDate(currentFeaturedPost.publishedDate)}</span>
-                                                <span>{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
+                                            <div className="flex items-center gap-8 text-[10px] font-black text-[#B89B5E]/60 uppercase tracking-[0.3em] pt-4">
+                                                <span className="flex items-center gap-2"><CalendarDays className="w-3.5 h-3.5" /> {formatDate(currentFeaturedPost.publishedDate)}</span>
+                                                <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5" /> {Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             
                                             <Button variant="outline" className="bg-[#B89B5E] text-black border-none hover:bg-[#B89B5E]/90 transition-all font-black uppercase tracking-[0.2em] text-[11px] h-14 w-fit px-10 rounded-xl mt-4">
@@ -391,12 +397,12 @@ export default function BlogClientPage() {
                     ))}
                 </div>
 
-                 <div className="max-w-2xl mx-auto mt-32 flex flex-col items-center gap-6 p-12 border border-white/5 rounded-[2.5rem] bg-alternate-background relative overflow-hidden text-center">
+                 <div className="max-w-2xl mx-auto mt-32 flex flex-col items-center gap-6 p-12 border border-white/5 rounded-[2.5rem] bg-[#1F3A34]/20 relative overflow-hidden text-center backdrop-blur-sm">
                     <div className="absolute top-0 right-0 p-10 opacity-5">
                         <ShieldAlert className="w-48 h-48 text-[#B89B5E]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.2em] font-black text-[9px]">Intel Subscription</Badge>
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.2em] font-black text-[9px] bg-[#1F3A34]">Intel Subscription</Badge>
                         <h3 className="text-2xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Get the analysis behind the headlines.</h3>
                         <p className="text-zinc-200 max-w-md mx-auto italic font-medium">Join 5,000+ COOs and Founders receiving bi-weekly forensic debriefs on operational risk.</p>
                     </div>
@@ -411,3 +417,6 @@ export default function BlogClientPage() {
     </div>
   );
 }
+
+import { cn } from '@/lib/utils';
+import { CalendarDays } from 'lucide-react';
