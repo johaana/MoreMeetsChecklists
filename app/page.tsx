@@ -54,7 +54,7 @@ const ELITE_INDUSTRIES = [
     { name: "School Operations", id: "school_operations_pack", icon: School },
     { name: "Franchise Operations", id: "franchise_operations_pack", icon: Store },
     { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
-    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
+    { name: "Multiplex Operations", id: "cinema_operations_pack", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
 const SYSTEM_SPECS = [
@@ -365,13 +365,21 @@ export default function HomePage() {
                     <div className="max-w-4xl mx-auto space-y-12">
                         <div className="text-center space-y-6">
                             <SectionEyebrow text="THE TRUTH ABOUT GROWTH" />
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
-                                The real problem is not writing SOPs.
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight text-center">
+                                Good SOPs matter. <br/> Following them matters even more.
                             </h2>
-                            <p className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-3xl mx-auto">
-                                The real problem is making sure they are followed every day. 
-                                Most businesses do not fail because nobody knows what to do. They fail because there is no simple system that ensures the right things happen consistently.
-                            </p>
+                            <div className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-3xl mx-auto space-y-6 text-center">
+                                <p>Many businesses operate with SOPs that are outdated, incomplete, difficult to understand, or never used consistently.</p>
+                                <p>Some instructions live in old documents.</p>
+                                <p>Some were copied from generic templates.</p>
+                                <p>Some are written for auditors but not for the people actually doing the work.</p>
+                                <p>Some only exist in someone's memory.</p>
+                                <p>Building good SOPs from scratch also takes significant time, research, and operational knowledge.</p>
+                                <p>As businesses grow, these small gaps become expensive mistakes.</p>
+                                <p>The strongest businesses have two things:</p>
+                                <p className="text-zinc-950 font-black uppercase tracking-tight">Clear instructions.</p>
+                                <p>And a simple way to make sure those instructions are followed every day.</p>
+                            </div>
                         </div>
 
                         <div className="grid sm:grid-cols-3 gap-6">
@@ -398,10 +406,9 @@ export default function HomePage() {
                                 <div className="space-y-4">
                                     <SectionEyebrow text="THE SOLUTION" />
                                     <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
-                                        This is where <br/> MoreMeets helps.
+                                        MoreMeets gives you ready-to-use SOP systems built for your industry.
                                     </h2>
                                     <p className="text-lg text-zinc-700 italic font-medium leading-relaxed">
-                                        MoreMeets gives you ready-to-use SOP systems built for your industry. 
                                         Instead of creating everything from scratch, you start with a complete system that is already organized and ready to use.
                                     </p>
                                 </div>
