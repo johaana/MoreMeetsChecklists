@@ -26,12 +26,12 @@ const descriptions: Record<string, string> = {
 
 const assetMap: Record<string, { bg: string, squircle: string }> = {
     'restaurants': {
-        bg: "https://i.postimg.cc/d3DRJSmZ/restaurant-operations-1.png",
-        squircle: "https://i.postimg.cc/d3DRJSmZ/restaurant-operations-1.png"
+        bg: "https://i.postimg.cc/RFSQD0WR/restaurant-food-standard-operating-procedures.jpg",
+        squircle: "https://i.postimg.cc/RFSQD0WR/restaurant-food-standard-operating-procedures.jpg"
     },
     'hotels_and_resorts': {
-        bg: "https://i.postimg.cc/N0wxRDBY/hotel-ops-1.webp",
-        squircle: "https://i.postimg.cc/N0wxRDBY/hotel-ops-1.webp"
+        bg: "https://i.postimg.cc/KYrDfT8Z/housekeeping-hotel-1.avif",
+        squircle: "https://i.postimg.cc/KYrDfT8Z/housekeeping-hotel-1.avif"
     },
     'healthcare_and_hospital_operations': {
         bg: "https://i.postimg.cc/RFw5XXnH/Hospital-Levels-of-Care.jpg",
@@ -66,8 +66,8 @@ const assetMap: Record<string, { bg: string, squircle: string }> = {
         squircle: "https://i.postimg.cc/L5z9gmVW/electronics-retail.jpg"
     },
     'retail_jewellery_operations_pack': {
-        bg: "https://i.postimg.cc/VL8LQbfL/jewelry-retail.jpg",
-        squircle: "https://i.postimg.cc/VL8LQbfL/jewelry-retail.jpg"
+        bg: "https://i.postimg.cc/Nj86Z8by/pexels-ranamatloob567-33257666.jpg",
+        squircle: "https://i.postimg.cc/Nj86Z8by/pexels-ranamatloob567-33257666.jpg"
     }
 };
 
