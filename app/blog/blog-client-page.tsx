@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -48,7 +47,7 @@ function SubscriptionForm() {
     if (result.success) {
       setSubmitted(true);
        toast({
-        title: "Subscribed!",
+        title: "Protocol Accepted!",
         description: "You are now enrolled in the Black Box Debrief.",
       });
     } else {
@@ -80,7 +79,7 @@ function SubscriptionForm() {
         required
         className="flex-1 bg-black/40 border-white/10"
       />
-      <Button type="submit" disabled={loading} className="w-full sm:w-auto font-black uppercase tracking-widest text-xs h-10">
+      <Button type="submit" disabled={loading} className="w-full sm:w-auto font-black uppercase tracking-widest text-xs h-10 bg-[#B89B5E] text-black hover:bg-[#B89B5E]/90 border-none">
         {loading ? (
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (
@@ -159,7 +158,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 )}
                  <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button size="icon" className="rounded-full w-14 h-14 shadow-2xl bg-primary text-black">
+                        <Button size="icon" className="rounded-full w-14 h-14 shadow-2xl bg-[#B89B5E] text-black">
                             <Filter className="w-6 h-6" />
                         </Button>
                     </SheetTrigger>
@@ -217,25 +216,25 @@ const BlogCard = ({ post }: { post: BlogPost }) => (
         </Link>
         <CardHeader className="space-y-3 p-8">
             <div className="space-y-1">
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary">
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#B89B5E]">
                     Sector: {post.tags[0]}
                 </p>
                 <CardTitle className="text-xl font-headline leading-tight italic uppercase tracking-tighter">
-                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-primary transition-colors">
+                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-[#B89B5E] transition-colors">
                         {post.title}
                     </Link>
                 </CardTitle>
             </div>
-            <CardDescription className="text-secondary-text line-clamp-3 italic font-medium text-sm leading-relaxed">
+            <CardDescription className="text-zinc-100 line-clamp-3 italic font-medium text-sm leading-relaxed">
                 {post.description}
             </CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0 mt-auto">
-            <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/20">
+            <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/40">
                 <p>{formatDate(post.publishedDate)}</p>
                 <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
             </div>
-            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-white/5 text-white hover:bg-primary hover:text-black rounded-xl border border-white/5">
+            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-white/5 text-white hover:bg-[#1F3A34] hover:text-white rounded-xl border border-white/5 transition-all">
                 <Link href={`/blog/${post.slug}`}>Review Analysis <ArrowRight className="ml-2 h-3.5 w-3.5" /></Link>
             </Button>
         </CardFooter>
@@ -290,11 +289,11 @@ export default function BlogClientPage() {
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Intelligence Hub</Badge>
-                    <h1 className="text-4xl md:text-7xl font-black tracking-tighter font-headline text-primary italic uppercase">
+                    <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Intelligence Hub</Badge>
+                    <h1 className="text-4xl md:text-7xl font-black tracking-tighter font-headline text-[#B89B5E] italic uppercase">
                         Black Box Debrief
                     </h1>
-                    <p className="max-w-[800px] text-secondary-text text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 mx-auto">
+                    <p className="max-w-[800px] text-zinc-200 text-lg md:text-xl font-medium italic border-l-2 border-[#B89B5E]/20 pl-6 mx-auto">
                         Forensic deconstructions of operational failures to build high-gravity institutional infrastructure.
                     </p>
                 </div>
@@ -322,14 +321,14 @@ export default function BlogClientPage() {
                                     </div>
                                     <div className="p-8 space-y-4">
                                         <div className="space-y-1">
-                                            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary">
+                                            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#B89B5E]">
                                                 Sector: {currentFeaturedPost.tags[0]}
                                             </p>
                                             <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
                                         </div>
-                                        <CardDescription className="text-secondary-text italic line-clamp-3">{currentFeaturedPost.description}</CardDescription>
-                                        <Button variant="outline" className="mt-4 border-white/10 text-white font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl">
-                                            Initiate Full Debrief <ArrowRight className="ml-2 h-4 w-4 text-primary" />
+                                        <CardDescription className="text-zinc-100 italic line-clamp-3">{currentFeaturedPost.description}</CardDescription>
+                                        <Button variant="outline" className="mt-4 border-white/10 text-black bg-[#B89B5E] font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl hover:bg-[#B89B5E]/90 border-none transition-all">
+                                            Initiate Full Debrief <ArrowRight className="ml-2 h-4 w-4 text-black" />
                                         </Button>
                                     </div>
                                 </div>
@@ -354,24 +353,24 @@ export default function BlogClientPage() {
                                         <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-black">
                                             <div className="space-y-4">
                                                 <div className="space-y-1">
-                                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#B89B5E]">
                                                         Sector: {currentFeaturedPost.tags[0]}
                                                     </p>
                                                     <CardTitle className="text-4xl lg:text-5xl font-headline text-white italic uppercase tracking-tighter leading-[1.05]">
                                                         {currentFeaturedPost.title}
                                                     </CardTitle>
                                                 </div>
-                                                <p className="text-xl text-secondary-text font-medium italic border-l-2 border-primary/20 pl-8 leading-relaxed">
+                                                <p className="text-xl text-zinc-100 font-medium italic border-l-2 border-[#B89B5E]/20 pl-8 leading-relaxed">
                                                     {currentFeaturedPost.description}
                                                 </p>
                                             </div>
                                             
-                                            <div className="flex items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-4">
+                                            <div className="flex items-center gap-8 text-[10px] font-black text-white/40 uppercase tracking-[0.3em] pt-4">
                                                 <span>{formatDate(currentFeaturedPost.publishedDate)}</span>
                                                 <span>{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             
-                                            <Button variant="outline" className="bg-white/5 text-white border-white/10 hover:bg-primary hover:text-black transition-all font-black uppercase tracking-[0.2em] text-[11px] h-14 w-fit px-10 rounded-xl mt-4">
+                                            <Button variant="outline" className="bg-[#B89B5E] text-black border-none hover:bg-[#B89B5E]/90 transition-all font-black uppercase tracking-[0.2em] text-[11px] h-14 w-fit px-10 rounded-xl mt-4">
                                                 Read The Full story <ArrowRight className="ml-2 h-4 w-4" />
                                             </Button>
                                         </div>
@@ -394,12 +393,12 @@ export default function BlogClientPage() {
 
                  <div className="max-w-2xl mx-auto mt-32 flex flex-col items-center gap-6 p-12 border border-white/5 rounded-[2.5rem] bg-alternate-background relative overflow-hidden text-center">
                     <div className="absolute top-0 right-0 p-10 opacity-5">
-                        <ShieldAlert className="w-48 h-48 text-primary" />
+                        <ShieldAlert className="w-48 h-48 text-[#B89B5E]" />
                     </div>
                     <div className="relative z-10 space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.2em] font-black text-[9px]">Intel Subscription</Badge>
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.2em] font-black text-[9px]">Intel Subscription</Badge>
                         <h3 className="text-2xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Get the analysis behind the headlines.</h3>
-                        <p className="text-secondary-text max-w-md mx-auto italic font-medium">Join 5,000+ COOs and Founders receiving bi-weekly forensic debriefs on operational risk.</p>
+                        <p className="text-zinc-200 max-w-md mx-auto italic font-medium">Join 5,000+ COOs and Founders receiving bi-weekly forensic debriefs on operational risk.</p>
                     </div>
                     <div className="relative z-10 w-full flex justify-center pt-2">
                         <SubscriptionForm />

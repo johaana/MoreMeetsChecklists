@@ -151,14 +151,14 @@ export default async function BlogPostPage({ params }: Props) {
           <header className="w-full pt-12 pb-12 md:pt-16 md:pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
-                <Link href="/blog" className="inline-flex items-center text-primary/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-primary transition-colors">
+                <Link href="/blog" className="inline-flex items-center text-[#B89B5E]/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-[#B89B5E] transition-colors">
                     <ChevronLeft className="w-3 h-3 mr-1" /> Back to Intelligence Hub
                 </Link>
                 
                 <div className="grid lg:grid-cols-[1fr,550px] gap-16 items-center">
                   <div className="space-y-8">
                     <div className="space-y-2">
-                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#B89B5E]">
                         Sector: {post.tags[0]}
                       </p>
                       <div className="flex items-center gap-4">
@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
                           Protocol: {post.protocol || "Operational Standard"}
                         </Badge>
                         <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
-                          <ShieldAlert className="w-3 h-3 text-primary" /> Technical Analysis
+                          <ShieldAlert className="w-3 h-3 text-[#B89B5E]" /> Technical Analysis
                         </span>
                       </div>
                     </div>
@@ -175,9 +175,9 @@ export default async function BlogPostPage({ params }: Props) {
                       {post.title}
                     </h1>
                     
-                    <div className="flex items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-6">
-                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
-                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
+                    <div className="flex items-center gap-8 text-[10px] font-black text-white/40 uppercase tracking-[0.3em] pt-6">
+                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><User className="w-3 h-3 text-[#B89B5E]" /> {post.author}</span>
+                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><Clock className="w-3 h-3 text-[#B89B5E]" /> {readingTime} MIN READ</span>
                        <span>{formatDate(post.publishedDate)}</span>
                     </div>
                   </div>
@@ -203,10 +203,10 @@ export default async function BlogPostPage({ params }: Props) {
               <div 
                 className="prose-custom max-w-none 
                   [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
-                  [&_h3]:font-headline [&_h3]:text-primary [&_h3]:font-black [&_h3]:uppercase [&_h3]:text-xl [&_h3]:tracking-widest [&_h3]:mt-16 [&_h3]:mb-6
-                  [&_p]:text-secondary-text [&_p]:leading-[1.8] [&_p]:mb-12 [&_p]:text-lg
+                  [&_h3]:font-headline [&_h3]:text-[#B89B5E] [&_h3]:font-black [&_h3]:uppercase [&_h3]:text-xl [&_h3]:tracking-widest [&_h3]:mt-16 [&_h3]:mb-6
+                  [&_p]:text-zinc-100 [&_p]:leading-[1.8] [&_p]:mb-12 [&_p]:text-lg
                   [&_strong]:text-primary-text [&_strong]:font-black
-                  [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:bg-white/[0.02] [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-primary-text [&_blockquote]:my-24 [&_blockquote]:font-medium
+                  [&_blockquote]:border-l-4 [&_blockquote]:border-[#B89B5E] [&_blockquote]:bg-white/[0.02] [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-primary-text [&_blockquote]:my-24 [&_blockquote]:font-medium
                   "
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
@@ -216,7 +216,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-[2.5rem] relative z-10 shadow-2xl">
                       <div className="p-8 md:p-16 text-center space-y-12">
                         <div className="space-y-6 max-w-2xl mx-auto">
-                            <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
+                            <Badge variant="outline" className="text-[10px] font-black border-[#B89B5E]/30 text-[#B89B5E] uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                                 OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                             </h2>
@@ -230,7 +230,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 <Button 
                                     asChild 
                                     variant="secondary" 
-                                    className="h-auto py-5 px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-2xl shadow-inner group/btn hover:shadow-[0_0_30px_-5px_rgba(245,166,35,0.3)]"
+                                    className="h-auto py-5 px-10 bg-[#B89B5E] text-black transition-all rounded-2xl shadow-inner group/btn border-none"
                                 >
                                     <Link 
                                         href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
@@ -241,10 +241,10 @@ export default async function BlogPostPage({ params }: Props) {
                                     </Link>
                                 </Button>
                                 
-                                <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-lg mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
+                                <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-lg mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
                                     {["No SaaS lock-in", "Editable formats", "Immediate deployment", "Expert customization"].map(item => (
                                         <div key={item} className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-primary/40" /> {item}
+                                            <Check className="w-3.5 h-3.5 text-[#B89B5E]/60" /> {item}
                                         </div>
                                     ))}
                                 </div>
@@ -254,8 +254,8 @@ export default async function BlogPostPage({ params }: Props) {
                       
                       <div className="bg-white/[0.03] border-t border-white/5 py-6 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-12 no-scrollbar">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/30 tracking-[0.15em] shrink-0 whitespace-nowrap">
-                                <item.icon className="w-4 h-4 text-primary/40" /> {item.label}
+                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.15em] shrink-0 whitespace-nowrap">
+                                <item.icon className="w-4 h-4 text-[#B89B5E]/60" /> {item.label}
                             </div>
                         ))}
                       </div>
