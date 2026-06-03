@@ -401,8 +401,8 @@ export default function HomePage() {
                                         This is where <br/> MoreMeets helps.
                                     </h2>
                                     <p className="text-lg text-zinc-700 italic font-medium leading-relaxed">
-                                        MoreMeets provides industry-specific SOP systems that are already structured and ready to use. 
-                                        Instead of starting from a blank page, you receive a complete operational system built around real business workflows.
+                                        MoreMeets gives you ready-to-use SOP systems built for your industry. 
+                                        Instead of creating everything from scratch, you start with a complete system that is already organized and ready to use.
                                     </p>
                                 </div>
 
@@ -585,7 +585,7 @@ export default function HomePage() {
                                 RUN ON SYSTEMS — <br/> <span className="text-emerald-600">NOT MEMORY.</span>
                             </h2>
                             <p className="text-lg md:text-[28px] text-[#5F6368] font-medium italic leading-tight max-w-2xl mx-auto">
-                                Deploy your operational execution system in the next 10 minutes.
+                                Start using your SOP system in the next 10 minutes.
                             </p>
                         </div>
                         <div className="flex flex-col items-center gap-10">
