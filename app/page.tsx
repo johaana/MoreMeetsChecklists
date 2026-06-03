@@ -60,9 +60,9 @@ const ELITE_INDUSTRIES = [
     { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
     { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn },
     { name: "Fashion Operations", id: "fashion_and_apparel_retail", icon: Building2 },
-    { name: "Grocery Operations", id: "supermarket_grocery_retail_pack", icon: Building2 },
-    { name: "Electronics Operations", id: "electronics_showroom_pack", icon: Building2 },
-    { name: "Jewellery Operations", id: "retail_jewellery_operations_pack", icon: Building2 }
+    { name: "Grocery Operations", id: "supermarket_grocery_retail_pack", id2: "grocery", icon: Building2 },
+    { name: "Electronics Operations", id: "electronics_showroom_pack", id2: "electronics", icon: Building2 },
+    { name: "Jewellery Operations", id: "retail_jewellery_operations_pack", id2: "jewelry", icon: Building2 }
 ];
 
 const SYSTEM_SPECS = [
@@ -145,6 +145,7 @@ export default function HomePage() {
                         <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
                              <iframe 
                                 src={VIMEO_URL} 
+                                title="Hero Video"
                                 className="absolute inset-0 w-full h-full scale-[1.5] translate-y-[-10%] brightness-[0.9]" 
                                 frameBorder="0" 
                                 allow="autoplay; fullscreen" 
@@ -160,9 +161,9 @@ export default function HomePage() {
                                     </span>
                                 </div>
                                 <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
-                                    WHERE SOPS <br />
+                                    YOUR BUSINESS <br />
                                     <span className="relative inline-block mt-1">
-                                        MEET EXECUTION.
+                                        SHOULD NOT DEPEND ON MEMORY.
                                         <div className="absolute -bottom-1 left-0 w-full h-[4px] bg-[#B89B5E]/30 rounded-full" />
                                     </span>
                                 </h1>
@@ -197,6 +198,7 @@ export default function HomePage() {
                             <div className="w-full h-full">
                                 <iframe 
                                     src={VIMEO_URL} 
+                                    title="Hero Video Desktop"
                                     className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] -translate-x-1/2 -translate-y-1/2 scale-[1.4] pointer-events-none"
                                     frameBorder="0" 
                                     allow="autoplay; fullscreen" 
@@ -222,9 +224,9 @@ export default function HomePage() {
                                     </div>
 
                                     <h1 className="text-[2.2rem] md:text-[62px] font-bold font-headline leading-[1.1] uppercase tracking-[-0.04em]" style={{ color: BRAND_GREEN }}>
-                                        WHERE SOPS <br />
+                                        YOUR BUSINESS <br />
                                         <span className="relative inline-block mt-1">
-                                            MEET EXECUTION.
+                                            SHOULD NOT DEPEND ON MEMORY.
                                             <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-[#B89B5E]/30 rounded-full" />
                                         </span>
                                     </h1>
