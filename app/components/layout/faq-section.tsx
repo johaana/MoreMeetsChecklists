@@ -94,16 +94,20 @@ export const FaqSection = () => (
                     <AccordionItem value="item-training" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Do employees need technical training?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>Very minimal. Most teams start using it immediately.</p>
-                            <p>Because it runs inside Google Sheets on their phones, the behavior is intuitive. Each task includes step-by-step instructions and reference images, acting as an on-the-job coach. Tasks can still be logged during unstable connectivity and sync automatically once internet resumes.</p>
+                            <p>No specialized training is required.</p>
+                            <p>The system runs inside Google Sheets, which most teams already know how to use.</p>
+                            <p>Each task includes clear instructions, expected actions, and completion logs, making it easy for staff to follow the process consistently.</p>
+                            <p>Most teams can begin using the system with a short walkthrough from a supervisor.</p>
                         </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="item-multi" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can this work across multiple branches?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>Yes. MoreMeets™ is engineered for <strong>multi-location operational control.</strong></p>
-                            <p>Management can track completion rates and incidents across several outlets from a single master dashboard, maintaining a group-wide standard of excellence.</p>
+                            <p>Yes.</p>
+                            <p>The systems can be used across multiple locations and teams.</p>
+                            <p>Because everything runs inside Google Sheets, managers can review activity, completion records, and operational logs without collecting updates manually from every branch.</p>
+                            <p>The exact reporting and oversight available depends on the specific system being used.</p>
                         </AccordionContent>
                     </AccordionItem>
 
