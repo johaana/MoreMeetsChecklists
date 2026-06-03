@@ -6,8 +6,8 @@ export const FaqSection = () => (
     <section id="faq" className="w-full py-16 md:py-24 bg-white border-t border-zinc-100">
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
-                <SectionEyebrow text="COMMON INQUIRIES" />
-                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-zinc-950 tracking-tighter">FAQS</h2>
+                <SectionEyebrow text="COMMON QUESTIONS" />
+                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-zinc-950 tracking-tighter">QUESTIONS BEFORE YOU BUY</h2>
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
