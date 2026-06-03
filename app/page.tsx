@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -37,7 +38,8 @@ import {
     ChevronRight,
     FileSpreadsheet,
     ClipboardCheck,
-    UserCheck
+    UserCheck,
+    Leaf
 } from "lucide-react";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -544,6 +546,38 @@ export default function HomePage() {
                                 <Smartphone className="w-12 h-12 text-emerald-500 mb-2 opacity-50" />
                                 <p className="text-lg md:text-xl font-bold italic leading-tight text-white/80">
                                     "The goal is not to introduce another tool. The goal is to make sure the right things happen every day."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </HomeSection>
+
+                {/* --- SECTION 7: ESG & COMPLIANCE --- */}
+                <HomeSection className="bg-white border-t border-zinc-100">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="text-center space-y-6">
+                            <SectionEyebrow text="GOVERNANCE & SUSTAINABILITY" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                ESG starts with execution
+                            </h2>
+                            <div className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-3xl mx-auto space-y-6">
+                                <p>Strong ESG performance depends on consistent daily actions.</p>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8 py-4 text-left max-w-2xl mx-auto">
+                                    {[
+                                        "Safety checks", "Maintenance routines", "Waste management",
+                                        "Energy monitoring", "Compliance records", "Audit trails"
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#B89B5E]" />
+                                            <span className="text-[10px] font-black uppercase text-zinc-900 tracking-widest italic">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p>
+                                    MoreMeets helps organizations create accountability, maintain documentation, and ensure operational standards are followed consistently across teams and locations.
+                                </p>
+                                <p className="text-zinc-950 font-black uppercase tracking-tight pt-4 border-t border-zinc-100">
+                                    Because sustainability, governance and compliance are not achieved through policies alone. They are achieved through execution.
                                 </p>
                             </div>
                         </div>
