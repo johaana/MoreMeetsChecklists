@@ -7,7 +7,7 @@ import { LayoutScript } from '@/components/layout/layout-script';
 import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'YOUR BUSINESS SHOULD NOT DEPEND ON MEMORY | MoreMeets™';
+const siteTitle = 'Where SOPs Meet Execution | MoreMeets™';
 const siteDescription = 'Industry-specific SOP systems with daily tasks, built-in instructions, accountability tracking, and proof of completion.';
 const ogImageUrl = `${siteUrl}/api/og?type=homepage`;
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'MoreMeets - Systems over Memory',
+        alt: 'MoreMeets - Where SOPs Meet Execution',
       },
     ],
   },
