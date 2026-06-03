@@ -8,7 +8,7 @@ import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'Where SOPs Meet Execution | MoreMeets™';
-const siteDescription = 'Industry-specific SOP systems with daily tasks, built-in instructions, accountability tracking, and proof of completion.';
+const siteDescription = 'Pre-built SOPs and live operational systems for hospitals, hotels, restaurants and retail teams. Includes instructions, accountability, timestamps and proof of completion. Works offline. Built for single-unit and multi-location operations. One-time purchase. No SaaS subscriptions.';
 const ogImageUrl = 'https://i.postimg.cc/NfGGj9nC/pexels-pavel-danilyuk-7519003.jpg';
 
 export const metadata: Metadata = {
