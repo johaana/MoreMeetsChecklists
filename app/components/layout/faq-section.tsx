@@ -83,11 +83,19 @@ export const FaqSection = () => (
                     <AccordionItem value="item-ai" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not generate SOPs with AI?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p><strong>AI can generate instructions.</strong></p>
-                            <p>The challenge is knowing what instructions should exist, how often tasks should happen, what proof should be collected, and what managers should verify.</p>
-                            <p>MoreMeets systems are built around real operational workflows, accountability, and daily execution.</p>
-                            <p>AI can help write text.</p>
-                            <p>Operations require structure, consistency, and follow-through.</p>
+                            <p>AI can help write instructions.</p>
+                            <p>But someone still needs to decide:</p>
+                            <p>
+                                • what tasks should exist<br />
+                                • how often they should happen<br />
+                                • what employees should record<br />
+                                • what managers should verify<br />
+                                • what proof should be collected<br />
+                                • what happens when standards are missed
+                            </p>
+                            <p>Building a complete SOP system takes time, operational experience, and constant refinement.</p>
+                            <p>MoreMeets gives you a ready-to-use system with industry-specific SOPs, task schedules, accountability, and execution tracking already built in.</p>
+                            <p>Instead of starting from a blank page, you start with a system that is ready to use and fully editable.</p>
                         </AccordionContent>
                     </AccordionItem>
 
