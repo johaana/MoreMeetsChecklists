@@ -9,16 +9,16 @@ import { FaqSection } from '@/components/layout/faq-section';
 import { 
     Check, 
     ArrowRight, 
-    Activity, 
+    Activity as ActivityIcon, 
     CheckCircle2, 
-    Users, 
-    History, 
+    Users as UsersIcon, 
+    History as HistoryIcon, 
     ShieldCheck, 
     Smartphone, 
-    LayoutGrid, 
+    LayoutGrid as LayoutGridIcon, 
     Lock, 
-    GraduationCap, 
-    Zap, 
+    GraduationCap as GraduationCapIcon, 
+    Zap as ZapIcon, 
     AlertTriangle, 
     Building, 
     Utensils, 
@@ -27,11 +27,11 @@ import {
     Store, 
     Building2, 
     Popcorn, 
-    Target,
-    X,
-    Search,
+    Target as TargetIcon,
+    X as XIcon,
+    Search as SearchIcon,
     MoreVertical,
-    Share2,
+    Share2 as Share2Icon,
     ShieldAlert,
     Camera,
     ChevronRight,
@@ -54,7 +54,7 @@ const ELITE_INDUSTRIES = [
     { name: "School Operations", id: "school_operations_pack", icon: School },
     { name: "Franchise Operations", id: "franchise_operations_pack", icon: Store },
     { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
-    { name: "Multiplex Operations", id: "cinema_operations_pack", id: "cinema_operations_pack", icon: Popcorn }
+    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
 const SYSTEM_SPECS = [
@@ -96,8 +96,8 @@ const LedgerSimulation = () => (
                     <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">DAILY_TASK_SYSTEM_V18.5</span>
                 </div>
                 <div className="flex items-center gap-5 opacity-80">
-                    <Search className="w-3.5 h-3.5" />
-                    <Share2 className="w-3.5 h-3.5" />
+                    <SearchIcon className="w-3.5 h-3.5" />
+                    <Share2Icon className="w-3.5 h-3.5" />
                     <MoreVertical className="w-3.5 h-3.5" />
                 </div>
             </div>
@@ -297,7 +297,7 @@ export default function HomePage() {
                                         "Managers waste time correcting problems"
                                     ].map((point, i) => (
                                         <li key={i} className="flex items-center gap-2 text-xs font-bold text-zinc-600 italic">
-                                            <X className="w-3.5 h-3.5 text-red-500" /> {point}
+                                            <XIcon className="w-3.5 h-3.5 text-red-500" /> {point}
                                         </li>
                                     ))}
                                 </ul>
@@ -384,9 +384,9 @@ export default function HomePage() {
 
                         <div className="grid sm:grid-cols-3 gap-6">
                             {[
-                                { t: "Suggestions", d: "Instructions without accountability", i: Target },
+                                { t: "Suggestions", d: "Instructions without accountability", i: TargetIcon },
                                 { t: "Assumptions", d: "Instructions without proof", i: ShieldAlert },
-                                { t: "Guesswork", d: "Instructions without visibility", i: GraduationCap }
+                                { t: "Guesswork", d: "Instructions without visibility", i: GraduationCapIcon }
                             ].map((item, i) => (
                                 <div key={i} className="p-8 border border-zinc-100 bg-zinc-50/50 rounded-[2rem] text-center space-y-3">
                                     <item.i className="w-8 h-8 text-red-500 mx-auto opacity-40" />
@@ -424,8 +424,8 @@ export default function HomePage() {
                                     <div className="grid sm:grid-cols-2 gap-4">
                                         {[
                                             { t: "Industry-specific SOPs", i: ClipboardCheck },
-                                            { t: "Daily task schedules", i: History },
-                                            { t: "Built-in instructions", i: GraduationCap },
+                                            { t: "Daily task schedules", i: HistoryIcon },
+                                            { t: "Built-in instructions", i: GraduationCapIcon },
                                             { t: "Accountability tracking", i: UserCheck },
                                             { t: "Photo verification workflows", i: Camera },
                                             { t: "Audit-ready records", i: ShieldCheck },
@@ -493,9 +493,9 @@ export default function HomePage() {
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                             {[
                                 { t: "Password Fatigue", d: "People forget logins and avoid using the system.", i: Lock },
-                                { t: "Learning Curve", d: "Teams resist learning complex new interfaces.", i: GraduationCap },
-                                { t: "Usage Drop-off", d: "Teams stop using new apps after a few weeks.", i: Activity },
-                                { t: "The Chase", d: "Managers end up chasing updates manually anyway.", i: History }
+                                { t: "Learning Curve", d: "Teams resist learning complex new interfaces.", i: GraduationCapIcon },
+                                { t: "Usage Drop-off", d: "Teams stop using new apps after a few weeks.", i: ActivityIcon },
+                                { t: "The Chase", d: "Managers end up chasing updates manually anyway.", i: HistoryIcon }
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col gap-4 p-6 bg-zinc-50 border border-zinc-100 rounded-2xl group hover:bg-white hover:shadow-xl transition-all">
                                     <item.i className="w-8 h-8 text-zinc-300 group-hover:text-red-500 transition-colors" />
