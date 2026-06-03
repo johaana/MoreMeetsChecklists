@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -39,7 +38,10 @@ import {
     FileSpreadsheet,
     ClipboardCheck,
     UserCheck,
-    Leaf
+    Leaf,
+    Recycle,
+    Thermometer,
+    Wrench
 } from "lucide-react";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -56,7 +58,11 @@ const ELITE_INDUSTRIES = [
     { name: "School Operations", id: "school_operations_pack", icon: School },
     { name: "Franchise Operations", id: "franchise_operations_pack", icon: Store },
     { name: "Facilities Operations", id: "facility_management_blueprint", icon: Building2 },
-    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
+    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn },
+    { name: "Fashion Operations", id: "fashion_and_apparel_retail", icon: Building2 },
+    { name: "Grocery Operations", id: "supermarket_grocery_retail_pack", icon: Building2 },
+    { name: "Electronics Operations", id: "electronics_showroom_pack", icon: Building2 },
+    { name: "Jewellery Operations", id: "retail_jewellery_operations_pack", icon: Building2 }
 ];
 
 const SYSTEM_SPECS = [
@@ -558,28 +564,59 @@ export default function HomePage() {
                         <div className="text-center space-y-6">
                             <SectionEyebrow text="GOVERNANCE & SUSTAINABILITY" />
                             <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
-                                ESG starts with execution
+                                ESG STARTS WITH DAILY EXECUTION
                             </h2>
                             <div className="text-lg md:text-xl text-zinc-600 font-medium italic max-w-3xl mx-auto space-y-6">
-                                <p>Strong ESG performance depends on consistent daily actions.</p>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8 py-4 text-left max-w-2xl mx-auto">
+                                <p>Policies do not create compliance. Daily actions do.</p>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-4 text-left">
                                     {[
-                                        "Safety checks", "Maintenance routines", "Waste management",
-                                        "Energy monitoring", "Compliance records", "Audit trails"
+                                        { t: "Safety checks", i: ShieldAlert },
+                                        { t: "Maintenance routines", i: Wrench },
+                                        { t: "Waste management", i: Recycle },
+                                        { t: "Energy monitoring", i: ZapIcon },
+                                        { t: "Compliance records", i: ClipboardCheck },
+                                        { t: "Audit trails", i: TargetIcon }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#B89B5E]" />
-                                            <span className="text-[10px] font-black uppercase text-zinc-900 tracking-widest italic">{item}</span>
+                                            <div className="w-8 h-8 rounded-lg bg-zinc-50 border border-zinc-100 flex items-center justify-center text-[#B89B5E] shadow-sm">
+                                                <item.i className="w-4 h-4" />
+                                            </div>
+                                            <span className="text-[10px] font-black uppercase text-zinc-900 tracking-widest italic">{item.t}</span>
                                         </div>
                                     ))}
                                 </div>
                                 <p>
-                                    MoreMeets helps organizations create accountability, maintain documentation, and ensure operational standards are followed consistently across teams and locations.
+                                    Organizations improve sustainability, governance, and compliance when these activities happen consistently—not occasionally.
                                 </p>
                                 <p className="text-zinc-950 font-black uppercase tracking-tight pt-4 border-t border-zinc-100">
-                                    Because sustainability, governance and compliance are not achieved through policies alone. They are achieved through execution.
+                                    MoreMeets™ helps teams turn standards into daily habits.
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </HomeSection>
+
+                {/* --- SECTION: BUILT FOR REAL OPERATIONS --- */}
+                <HomeSection className="bg-zinc-50/30 border-t border-zinc-100" id="industries">
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <SectionEyebrow text="SECTOR SPECIFIC" />
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                Built for real operations.
+                            </h2>
+                            <p className="text-lg text-zinc-600 font-medium italic">
+                                Pre-built data engines for high-stakes industries.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {ELITE_INDUSTRIES.map((ind) => (
+                                <Link key={ind.id} href={`/packs/${ind.id}`} className="p-6 rounded-2xl bg-white border border-zinc-100 flex flex-col items-center gap-4 group hover:border-[#B89B5E]/30 hover:shadow-xl transition-all">
+                                    <div className="w-12 h-12 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-[#B89B5E] shadow-sm group-hover:bg-[#B89B5E] group-hover:text-white transition-all">
+                                        <ind.icon className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase text-zinc-950 tracking-widest text-center">{ind.name}</span>
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </HomeSection>

@@ -3,6 +3,7 @@ export type PackResolution = {
     heroSubline: string;
     strategicParagraph: string;
     whyExecutionBreaksParagraph: string;
+    narrative?: string;
     blueprint?: string[];
     risks: { title: string; description: string; }[];
     consequences?: { title: string; fallout: string; }[];
@@ -23,6 +24,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Freshness. Protect Your Margins.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for grocery and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance.",
         whyExecutionBreaksParagraph: "Grocery retail fails when cold storage vitals are unlogged, expiry sweeps are inconsistent, and cashier variance goes unmonitored by management.",
+        narrative: "A well-run grocery store does not rely on assumptions about freshness. It follows a repeatable operating rhythm that reduces wastage, improves stock availability, and creates a consistent customer experience. Receiving protocols ensure supply chain quality from the dock. Freshness checks and expiry monitoring protect perishable margins. Temperature logs maintain cold-chain integrity 24/7. Shelf replenishment routines ensure product availability during peak traffic waves.",
         blueprint: ["Receiving deliveries", "Freshness checks", "Expiry monitoring", "Shelf replenishment", "Temperature logs", "Inventory counts", "Opening checks", "Closing procedures"],
         risks: [
             { title: "Cold Chain Breach", description: "Unmonitored temp spikes in chillers/freezers leading to massive pathogen growth and total stock loss." },
@@ -61,6 +63,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Device Integrity. Protect Your Inventory.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for electronics retail. Hardening 180 technical control points across Serial Governance, Demo Asset Safety, and Warranty Fraud Prevention.",
         whyExecutionBreaksParagraph: "Electronics retail fails when unique serial IDs are unmonitored, demo units become fire hazards, and warranty fraud goes undetected at the return counter.",
+        narrative: "A well-run electronics showroom does not rely on verbal serial tracking. It follows a repeatable operating rhythm that protects device integrity and inventory security. Unique ID (IMEI/Serial) verification ensures accurate delivery and warranty validity. Demo asset safety checks prevent technical hazards and battery risks. Warranty claim validation stops return fraud at the counter. Data wipe certifications protect customer privacy during repairs and resets. Technical uptime audits ensure the floor is ready for live demonstrations.",
         blueprint: ["Unique ID (IMEI/Serial) verification", "Demo asset safety", "Warranty claim validation", "Customer data wipes", "Battery thermal logs", "E-waste segregation", "High-value inventory counts", "Installation TAT"],
         risks: [
             { title: "Serial Mismatch", description: "Inaccurate IMEI/Serial tracking leading to voided manufacturer warranties and untraceable stock loss." },
@@ -97,6 +100,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Inventory Velocity. Protect Your Brand Standards.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 182 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
         whyExecutionBreaksParagraph: "Fashion retail fails when visual standards become suggestions, size-curves are ignored, and return-fraud goes unmonitored by the management tier.",
+        narrative: "A well-run fashion store does not rely on visual intuition alone. It follows a repeatable operating rhythm that protects inventory velocity and brand standards. Visual standards audits ensure mannequin and display consistency. Inventory velocity tracking prevents dead-stock accumulation and optimizes floor space. Size-curve audits maintain stock availability for core customers. Return-fraud prevention protocols protect net margins from swap abuse. Seasonal launch readiness ensures the floor is prepared for peak sales waves.",
         blueprint: ["Visual standards audits", "Inventory velocity", "Size-curve availability", "Trial room hygiene", "Return-fraud prevention", "Tag-tamper sweeps", "POS deletions", "Seasonal launch readiness"],
         risks: [
             { title: "Inventory Shrinkage", description: "Internal pilferage and shoplifting masked by poor cycle-count discipline and trial-room gaps." },
@@ -133,6 +137,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.",
         strategicParagraph: "Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
         whyExecutionBreaksParagraph: "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory.",
+        narrative: "A well-run school does not rely on verbal follow-ups. It follows a repeatable operating rhythm that protects student safety and ensures administrative continuity. Student arrival and dispersal protocols manage perimeter security during rush hours. Transport safety checks ensure a zero-fail commute. Classroom readiness checks maintain high-quality learning environments. Maintenance logs protect campus infrastructure and student welfare daily.",
         blueprint: ["Student arrival and dispersal", "Transport safety checks", "Classroom readiness", "Maintenance logs", "Attendance procedures", "Incident reporting", "Campus security sweeps", "Exam paper security"],
         risks: [
             { title: "Playground safety checks becoming assumed", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
@@ -169,6 +174,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Stop operational drift before it reaches the guest experience.",
         strategicParagraph: "Built for high-volume groups where consistency and food safety cannot be left to shift-lead coordination alone.",
         whyExecutionBreaksParagraph: "Service standards rarely collapse during slow hours. They break when high compression removes the time to verify critical steps.",
+        narrative: "A well-run restaurant does not rely on managers remembering tasks. It follows a repeatable operating rhythm that maintains food safety, service consistency, and operational discipline. Opening checks ensure equipment, hygiene standards, and stock levels are ready before service begins. Food preparation procedures reduce waste and maintain recipe parity. Temperature logs protect HACCP standards. Cleaning schedules ensure compliance and customer confidence every shift. Shift handovers prevent information from being lost between teams.",
         blueprint: ["Opening checks", "Food preparation standards", "Temperature logs", "Cleaning schedules", "Inventory counts", "Shift handovers", "Closing procedures", "Customer complaints"],
         risks: [
             { title: "Revenue Leakage", description: "Void bills, uncontrolled portioning, and unverified ingredient yields silently erode net margins every shift." },
@@ -209,6 +215,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Zero-drift operational governance for hotels, resorts, and hospitality groups.",
         strategicParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
         whyExecutionBreaksParagraph: "Luxury standards decay when execution depends on memory instead of verification.",
+        narrative: "A well-run hotel does not rely on memory or verbal instructions. It follows a repeatable operating rhythm that delivers a consistent guest experience across every room and shift. Room inspections ensure luxury standards are met before guest arrival. Housekeeping protocols maintain hygiene and presentation. Maintenance requests are tracked for asset uptime. Shift handovers ensure seamless continuity between teams. Guest complaint recovery is documented for institutional learning.",
         blueprint: ["Room inspections", "Housekeeping standards", "Guest check-ins", "Maintenance requests", "Safety checks", "Shift handovers", "Guest complaints", "Service recovery"],
         risks: [
             { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
@@ -249,6 +256,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Protect brand parity, royalty integrity, and operational control across every franchise unit.",
         strategicParagraph: "Built for franchisors where one weak unit damages the entire network.",
         whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. This Network Drift starts small and ends in total brand dilution.",
+        narrative: "A well-run franchise network does not rely on local improvisation. It follows a repeatable operating rhythm that protects brand parity and royalty integrity across every unit. Brand audits verify visual and service consistency. Royalty reconciliations prevent revenue leakage. Standardized opening checks ensure a zero-drift start to every shift. Inventory movement tracking maintains supply chain visibility and network health. Quality scorecards provide the network with objective performance data.",
         blueprint: ["Brand parity audits", "Royalty reconciliation", "Standardized opening checks", "Inventory movement", "Quality scorecards", "Training completion", "Local marketing compliance", "Multi-unit reporting"],
         risks: [
             { title: "Royalty Leakage", description: "Voided bills, aggregator mismatches, and off-book sales silently erode royalty visibility and franchisor revenue." },
@@ -289,6 +297,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
         strategicParagraph: "Built for hospitals where patient safety, surgical discipline, and clinical accountability cannot depend on memory.",
         whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
+        narrative: "A well-run healthcare facility does not rely on individual memory. It follows a repeatable operating rhythm that protects patient safety and maintains regulatory compliance. Patient intake procedures ensure accurate record-keeping. Clinical safety checks reduce medical errors. Equipment sterilization is verified through audit trails. Medication logs prevent dispensing errors. Shift briefings ensure zero-gap care transitions for patient welfare. These routines provide clinical teams with a structured framework for excellence.",
         blueprint: ["Patient intake and consent", "Clinical safety checks", "Equipment sterilization", "Medication logs", "Bed management", "Shift briefings", "Infection control", "Statutory documentation"],
         risks: [
             { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of clinical error." },
@@ -327,6 +336,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
         strategicParagraph: "Buildings don’t fail suddenly. They fail after weeks of invisible neglect. When maintenance becomes verbal, infrastructure becomes unstable.",
         whyExecutionBreaksParagraph: "Buildings fail when routine maintenance moves from scheduled execution into 'firefighting' once a fault occurs.",
+        narrative: "A well-run facility does not rely on firefighting. It follows a repeatable operating rhythm that protects MEP assets and ensures life safety compliance. MEP vitals are logged for predictive maintenance. Vendor SLA audits ensure service delivery. Energy intensity monitoring reduces operational waste. Fire safety audits protect occupants and legal standing. Permit-to-work checks govern high-risk contractor activities.",
         blueprint: ["MEP asset vitals", "Preventive maintenance", "Vendor SLA compliance", "Energy intensity logs", "Fire safety audits", "Permit-to-work checks", "Water purity levels", "Campus security sweeps"],
         builtFor: [
             "Commercial Towers", "Malls & Retail", "Hospitals", "Schools & Universities", "Hotels & Resorts", "Industrial Sites", "Corporate Campuses"
@@ -377,6 +387,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Technical command for show readiness, crowd flow, and concession yield.",
         strategicParagraph: "Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.",
         whyExecutionBreaksParagraph: "Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.",
+        narrative: "A well-run cinema does not rely on technical guesswork. It follows a repeatable operating rhythm that protects show readiness and concession yields. Technical show checks ensure zero-fail projection and sound. Concession yield counts prevent margin leakage. Interval wave management ensures crowd safety and flow. Emergency egress checks protect audience welfare and institutional safety memory. These routines ensure the audience never sees the complexity behind the scenes.",
         blueprint: ["Technical show readiness", "Concession yield counts", "Interval wave management", "Auditorium hygiene", "Projection & sound calibration", "Emergency egress checks", "Ticketing reconciliation", "VIP lounge standards"],
         risks: [
             { title: "Expired KDM Keys", description: "Unverified digital decryption keys lead to show cancellations during blockbuster openings." },
@@ -453,6 +464,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Protect Your Inventory. Secure Your Custody Chain.",
         strategicParagraph: "The definitive Sovereign v19.2 custody-chain engine for high-value retail. Hardening 198 technical control points across Vault Governance, Transaction Integrity, and Hallmark Compliance.",
         whyExecutionBreaksParagraph: "Jewellery stores fail when dual-custody discipline is bypassed, swap thefts go undetected during peak waves, and gram-variance is ignored.",
+        narrative: "A well-run jewellery store does not rely on memory, individual experience, or verbal instructions. It follows a repeatable operating rhythm that protects inventory, maintains compliance, and preserves customer trust. Vault access is controlled through dual-authorization procedures. Inventory movements are verified through gram-weight reconciliation. Hallmark and certification checks reduce compliance risk. Trial-piece controls help prevent substitution losses. Transaction reviews ensure accountability for high-value sales. These routines help convert tribal knowledge into permanent operational infrastructure.",
         blueprint: ["Vault dual-authorization", "Gram-weight reconciliation", "Trial piece substitution checks", "Empty-holder anomaly scans", "Hallmark verification", "Diamond certificate mapping", "High-value transaction vetting", "Security panic tests"],
         risks: [
             { title: "Sophisticated Swap Theft", description: "Counter-substitution of high-value diamonds with fakes during trial sessions due to single-piece handling lapses." },

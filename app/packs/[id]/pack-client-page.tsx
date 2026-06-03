@@ -153,9 +153,15 @@ const BlueprintSection = ({ packId, verticalName }: { packId: string, verticalNa
                     <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
                         What do SOPs look like in a well-run {verticalName}?
                     </h2>
-                    <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
-                        A well-run {verticalName.toLowerCase()} doesn't operate on luck. It operates on a set of consistent, verifiable routines that maintain standards even when managers aren't on the floor.
-                    </p>
+                    {res.narrative ? (
+                        <p className="text-lg md:text-xl text-zinc-800 font-medium italic leading-relaxed border-l-2 border-[#B89B5E]/30 pl-6 py-2">
+                            {res.narrative}
+                        </p>
+                    ) : (
+                        <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
+                            A well-run {verticalName.toLowerCase()} doesn't operate on luck. It operates on a set of consistent, verifiable routines that maintain standards even when managers aren't on the floor.
+                        </p>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 bg-[#F8F6F2] p-8 md:p-12 rounded-[2.5rem] border border-[#B89B5E]/10 relative overflow-hidden">
@@ -307,7 +313,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 </h1>
                                 
                                 <div className="space-y-4">
-                                    <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-2xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
+                                    <p className="text-[16px] md:text-[20px] font-medium leading-[1.5] text-zinc-800 max-w-3xl border-l-[3px] border-[#B89B5E]/20 pl-8 italic">
                                         {res.heroSubline} <br/>
                                         <span className="text-zinc-500 text-base">{res.strategicParagraph}</span>
                                     </p>
@@ -315,9 +321,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 
                                 <div className="grid grid-cols-2 gap-x-10 gap-y-4 pt-4">
                                     {[
-                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
+                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: TargetIcon },
                                         { t: "PHOTO-BACKED VERIFICATION", i: Camera },
-                                        { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCap },
+                                        { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCapIcon },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
@@ -444,7 +450,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-white border-t border-zinc-100" noSpine>
                 <div className="max-w-5xl mx-auto p-8 md:p-16 rounded-[2.5rem] border border-zinc-200 bg-zinc-50/50 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-12 opacity-5 hidden md:block">
-                        <History className="w-64 h-64 text-zinc-950" />
+                        <HistoryIcon className="w-64 h-64 text-zinc-950" />
                     </div>
                     <div className="flex flex-col md:flex-row gap-12 items-center relative z-10 text-left">
                         <div className="space-y-6 flex-1">
@@ -483,11 +489,11 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                         {[
-                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
-                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
-                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
+                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCapIcon },
+                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: HistoryIcon },
+                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: UsersIcon },
                             { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared dashboard daily.", i: CheckCircle2 },
-                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
+                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: ZapIcon },
                             { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">

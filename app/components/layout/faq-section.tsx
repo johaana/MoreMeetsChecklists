@@ -130,6 +130,47 @@ export const FaqSection = () => (
                             <p>The goal is to make sure important knowledge stays with the business.</p>
                         </AccordionContent>
                     </AccordionItem>
+
+                    <AccordionItem value="item-records" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can I download reports and records?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Yes.</p>
+                            <p>Because MoreMeets™ operates inside your own Google Sheets environment, operational records remain fully accessible to your business.</p>
+                            <p>You can export, print, archive, review, filter, or share records whenever required.</p>
+                            <p>This includes task completion records, timestamps, accountability logs, verification records, and audit evidence maintained inside the system.</p>
+                            <p>Your data remains under your control.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-internet" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">What happens if internet connectivity is unstable?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Operations should not stop because connectivity drops.</p>
+                            <p>Team members can continue completing tasks even when internet access is unstable or temporarily unavailable.</p>
+                            <p>Each task can still be marked as completed, and the actual completion time is recorded so managers can see when the work was truly done—not simply when the device reconnects.</p>
+                            <p>Once connectivity returns, updates synchronize automatically.</p>
+                            <p>The goal is operational continuity, accountability, and accurate records, even in environments where internet access is unreliable.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-lockin" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Is my data locked into MoreMeets™?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>No.</p>
+                            <p>Unlike traditional software subscriptions, your operational system remains fully editable and accessible.</p>
+                            <p>You own the file, the structure, the SOPs, and the records.</p>
+                            <p>There is no vendor lock-in.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-multi-loc" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can managers monitor multiple locations?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>Yes.</p>
+                            <p>The systems are designed to support multi-location operations.</p>
+                            <p>Businesses can maintain consistent standards across outlets, branches, properties, or facilities while maintaining visibility over execution records and daily completion activity.</p>
+                        </AccordionContent>
+                    </AccordionItem>
                 </Accordion>
             </div>
         </div>
