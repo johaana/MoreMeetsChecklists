@@ -26,48 +26,48 @@ const descriptions: Record<string, string> = {
 
 const assetMap: Record<string, { bg: string, squircle: string }> = {
     'restaurants': {
-        bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
-        squircle: "https://i.postimg.cc/Kj54VkD2/chef-preparing-recipe.jpg"
+        bg: "https://i.postimg.cc/d3DRJSmZ/restaurant-operations-1.png",
+        squircle: "https://i.postimg.cc/d3DRJSmZ/restaurant-operations-1.png"
     },
     'hotels_and_resorts': {
-        bg: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp",
-        squircle: "https://i.postimg.cc/2yjC1Hnm/hotel-manager-operation.webp"
+        bg: "https://i.postimg.cc/N0wxRDBY/hotel-ops-1.webp",
+        squircle: "https://i.postimg.cc/N0wxRDBY/hotel-ops-1.webp"
     },
     'healthcare_and_hospital_operations': {
-        bg: "https://i.postimg.cc/zvDqydKt/healthcare.jpg",
-        squircle: "https://i.postimg.cc/2885y5xp/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
+        bg: "https://i.postimg.cc/RFw5XXnH/Hospital-Levels-of-Care.jpg",
+        squircle: "https://i.postimg.cc/RFw5XXnH/Hospital-Levels-of-Care.jpg"
     },
     'school_operations_pack': {
-        bg: "https://i.postimg.cc/pXGLFt00/school-safety.webp",
-        squircle: "https://i.postimg.cc/g2xkyBQY/Schools-school-safety.jpg"
+        bg: "https://i.postimg.cc/zfcX9tv5/download.webp",
+        squircle: "https://i.postimg.cc/zfcX9tv5/download.webp"
     },
     'franchise_operations_pack': {
-        bg: "https://i.postimg.cc/pd8W45PK/franchise-2.jpg",
-        squircle: "https://i.postimg.cc/vBsYs8mS/Franchise-operations.jpg"
+        bg: "https://i.postimg.cc/MT12ddjp/Franchise-operations.jpg",
+        squircle: "https://i.postimg.cc/MT12ddjp/Franchise-operations.jpg"
     },
     'facility_management_blueprint': {
-        bg: "https://i.postimg.cc/9MhmhXMR/facilities-management1.png",
-        squircle: "https://i.postimg.cc/gjy6WBdD/mid-adult-engineer-male-worker-wearing-face-masks-while-examining-paperwork-woodworking-factory.jpg"
+        bg: "https://i.postimg.cc/4dpkBBhK/facilities-management1.png",
+        squircle: "https://i.postimg.cc/4dpkBBhK/facilities-management1.png"
     },
     'cinema_operations_pack': {
-        bg: "https://i.postimg.cc/VsXtn5MJ/view-3d-cinema-theatre-room.jpg",
-        squircle: "https://i.postimg.cc/g0fw6P0G/3d-rendering-cinema-movie-theater.jpg"
-    },
-    'retail_operations_system': {
-        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-        squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
+        bg: "https://i.postimg.cc/KzTFCmCT/view-3d-cinema-theatre-room.jpg",
+        squircle: "https://i.postimg.cc/KzTFCmCT/view-3d-cinema-theatre-room.jpg"
     },
     'fashion_and_apparel_retail': {
-        bg: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp",
-        squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
-    },
-    'electronics_showroom_pack': {
-        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-        squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
+        bg: "https://i.postimg.cc/JnjVPPB3/fashion-retail.webp",
+        squircle: "https://i.postimg.cc/JnjVPPB3/fashion-retail.webp"
     },
     'supermarket_grocery_retail_pack': {
-        bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-        squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
+        bg: "https://i.postimg.cc/KYHvdqzt/grocery-retail.jpg",
+        squircle: "https://i.postimg.cc/KYHvdqzt/grocery-retail.jpg"
+    },
+    'electronics_showroom_pack': {
+        bg: "https://i.postimg.cc/L5z9gmVW/electronics-retail.jpg",
+        squircle: "https://i.postimg.cc/L5z9gmVW/electronics-retail.jpg"
+    },
+    'retail_jewellery_operations_pack': {
+        bg: "https://i.postimg.cc/VL8LQbfL/jewelry-retail.jpg",
+        squircle: "https://i.postimg.cc/VL8LQbfL/jewelry-retail.jpg"
     }
 };
 
@@ -91,7 +91,7 @@ export async function generateMetadata(
   
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  const fallbackImage = "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg";
+  const fallbackImage = "https://i.postimg.cc/Px7pQfYk/businesspeople-having-problems-office.jpg";
   const ogImage = assetMap[id]?.bg || fallbackImage;
 
   return {
@@ -105,7 +105,14 @@ export async function generateMetadata(
       title: title,
       description: description,
       url: `${siteUrl}/packs/${pack.id}`,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images: [
+        { 
+          url: ogImage, 
+          width: 1200, 
+          height: 630, 
+          alt: title 
+        }
+      ],
     },
      twitter: {
       card: 'summary_large_image',
@@ -131,8 +138,8 @@ export default async function Page({ params }: Props) {
   }
 
   const assets = assetMap[id] || { 
-      bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
-      squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
+      bg: "https://i.postimg.cc/Px7pQfYk/businesspeople-having-problems-office.jpg",
+      squircle: "https://i.postimg.cc/Px7pQfYk/businesspeople-having-problems-office.jpg"
   };
 
   return (
