@@ -14,8 +14,13 @@ export const FaqSection = () => (
                     <AccordionItem value="item-1" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-8">
-                            <p>Most businesses already have SOPs. The problem is execution.</p>
-                            <p>Instructions become verbal. Managers lose visibility. Accountability disappears. MoreMeets converts SOPs into <strong>live daily execution systems</strong> with timestamps and audit-ready proof, so standards are followed even when you're absent. Reference images help standardize execution across teams and locations.</p>
+                            <p>Some businesses have SOPs.</p>
+                            <p>Some have incomplete SOPs.</p>
+                            <p>Some have outdated SOPs.</p>
+                            <p>Some have instructions scattered across documents, WhatsApp chats, and employee memory.</p>
+                            <p>The challenge is not simply creating instructions.</p>
+                            <p>The challenge is making sure they are followed consistently every day.</p>
+                            <p>MoreMeets combines industry-specific SOPs with daily execution tracking, accountability, timestamps, and verification so standards are followed even when managers are not physically present.</p>
                         </AccordionContent>
                     </AccordionItem>
 

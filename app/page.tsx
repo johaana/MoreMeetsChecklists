@@ -27,32 +27,21 @@ import {
     Store, 
     Building2, 
     Popcorn, 
-    Gem,
     Target,
-    Database,
     X,
-    Wifi,
-    Clock,
     Search,
     MoreVertical,
     Share2,
     ShieldAlert,
     Camera,
-    Eye,
     ChevronRight,
-    MousePointer2,
-    Award,
-    HardHat,
-    Scale,
-    Landmark,
-    Presentation
+    FileSpreadsheet,
+    ClipboardCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const VIMEO_URL = "https://player.vimeo.com/video/1194885765?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&background=1&muted=1&loop=1";
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
-const PROOF_STRIP = "EXCEL & SHEETS • OWN FOREVER • NO SaaS";
 
 const BRAND_GREEN = "#1F3A34";
 const BRAND_GOLD = "#B89B5E";
@@ -73,6 +62,8 @@ const SYSTEM_SPECS = [
     "LIVE DASHBOARD",
     "NO SaaS. OWN YOUR DATA."
 ];
+
+const PROOF_STRIP = "EXCEL & SHEETS • OWN FOREVER • NO SaaS";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-28 relative overflow-hidden", className)}>
@@ -101,7 +92,7 @@ const LedgerSimulation = () => (
                     <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
                         <Check className="w-3.5 h-3.5" strokeWidth={5} />
                     </div>
-                    <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">DAILY_EXECUTION_LEDGER_V18.5</span>
+                    <span className="text-[9px] md:text-[11px] font-black tracking-tight uppercase">DAILY_TASK_SYSTEM_V18.5</span>
                 </div>
                 <div className="flex items-center gap-5 opacity-80">
                     <Search className="w-3.5 h-3.5" />
@@ -112,14 +103,14 @@ const LedgerSimulation = () => (
             <div className="w-full relative overflow-hidden bg-white">
                 <img 
                     src="https://i.postimg.cc/5y3hF93d/Screenshot-2026-05-28-202324.png" 
-                    alt="MoreMeets™ Operational Ledger" 
+                    alt="MoreMeets™ Daily Task System" 
                     className="w-full h-auto object-cover"
                 />
             </div>
             <div className="bg-white border-t border-zinc-100 h-10 flex items-center justify-between px-8 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">LIVE_ENGINE_STABLE</span>
+                    <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">LIVE_SYSTEM_STABLE</span>
                 </div>
                 <span className="text-[9px] font-black text-[#B89B5E] uppercase tracking-widest italic">AUTOMATIC_AUDIT_ACTIVE</span>
             </div>
@@ -134,7 +125,7 @@ export default function HomePage() {
     if (!mounted) return null;
 
     return (
-        <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#B89B5E]/10">
+        <div className="bg-[#F8F6F2] text-[#111111] font-sans antialiased selection:bg-[#B89B5E]/10 overflow-x-hidden">
             <SiteHeader forceTheme="light" />
 
             <main className="flex-1">
@@ -156,7 +147,7 @@ export default function HomePage() {
                                 <div className="flex items-center gap-2">
                                     <div className="w-6 h-px bg-[#B89B5E] opacity-60 shrink-0" />
                                     <span className="text-[7.5px] font-black uppercase tracking-[0.15em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                        OPERATIONAL INTELLIGENCE
+                                        WHERE SOPS MEET EXECUTION
                                     </span>
                                 </div>
                                 <h1 className="text-[1.8rem] font-bold font-headline leading-[1.0] uppercase italic tracking-tighter" style={{ color: BRAND_GREEN }}>
@@ -217,7 +208,7 @@ export default function HomePage() {
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
                                         <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#B89B5E] font-headline whitespace-nowrap">
-                                            OPERATIONAL INTELLIGENCE
+                                            WHERE SOPS MEET EXECUTION
                                         </span>
                                     </div>
 
@@ -413,6 +404,39 @@ export default function HomePage() {
                                         Instead of starting from a blank page, you receive a complete operational system built around real business workflows.
                                     </p>
                                 </div>
+
+                                {/* DELIVERABLES SECTION */}
+                                <div className="p-8 bg-white rounded-3xl border border-black/5 space-y-6 shadow-sm">
+                                    <h3 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">
+                                        What do you actually receive?
+                                    </h3>
+                                    <p className="text-sm font-bold text-zinc-500 italic uppercase tracking-wider">
+                                        When you purchase a MoreMeets system, you receive:
+                                    </p>
+                                    <div className="grid sm:grid-cols-2 gap-4">
+                                        {[
+                                            { t: "Industry-specific SOPs", i: ClipboardCheck },
+                                            { t: "Daily task schedules", i: History },
+                                            { t: "Built-in instructions", i: GraduationCap },
+                                            { t: "Accountability tracking", i: UserCheck },
+                                            { t: "Photo verification workflows", i: Camera },
+                                            { t: "Audit-ready records", i: ShieldCheck },
+                                            { t: "Fully editable Google Sheets", i: FileSpreadsheet }
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-center gap-3">
+                                                <item.i className="w-4 h-4 text-[#B89B5E]" />
+                                                <span className="text-[11px] font-black uppercase text-zinc-800 italic tracking-tight">{item.t}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="pt-4 border-t border-zinc-100">
+                                        <p className="text-[10px] font-bold text-emerald-600 uppercase italic">
+                                            Everything is ready to use from Day 1. <br/>
+                                            No need to build systems from scratch.
+                                        </p>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-4">
                                     <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.4em]">EVERY TASK HAS:</p>
                                     <div className="grid gap-3">
@@ -477,11 +501,11 @@ export default function HomePage() {
                     </div>
                 </Section>
 
-                {/* --- SECTION 6: THE ADVANTAGE --- */}
+                {/* --- SECTION 6: WHY TEAMS ACTUALLY USE THIS --- */}
                 <Section className="bg-zinc-950 text-white" noSpine>
                     <div className="max-w-4xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
-                            <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 px-8 py-2 uppercase font-black tracking-[0.5em] text-[10px] rounded-none italic mb-4">THE DEPLOYMENT LAYER</Badge>
+                            <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 px-8 py-2 uppercase font-black tracking-[0.5em] text-[10px] rounded-none italic mb-4">WHY TEAMS ACTUALLY USE THIS</Badge>
                             <h2 className="text-3xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-none">
                                 Why MoreMeets runs on <br/> <span className="text-emerald-500">Google Sheets.</span>
                             </h2>
@@ -523,7 +547,7 @@ export default function HomePage() {
                 <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
-                            <SectionEyebrow text="DEPLOYMENT PROTOCOL" />
+                            <SectionEyebrow text="SETUP PROTOCOL" />
                             <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
                                 Go live in 10 minutes
                             </h2>

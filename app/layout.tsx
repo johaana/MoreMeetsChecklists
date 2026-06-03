@@ -7,8 +7,8 @@ import { LayoutScript } from '@/components/layout/layout-script';
 import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'MoreMeets™ | Spreadsheet-Native Operational Infrastructure';
-const siteDescription = 'MoreMeets™: Spreadsheet-native operational infrastructure for real-world businesses. Deploy audit-ready SOPs and live dashboards in 10 minutes. No SaaS fees.';
+const siteTitle = 'MoreMeets™ | Practical SOP Systems & Daily Task Tools';
+const siteDescription = 'MoreMeets™: Practical SOP systems and daily execution tools for real-world businesses. Deploy audit-ready SOPs and live dashboards in 10 minutes. No SaaS fees.';
 const socialImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
 
 export const metadata: Metadata = {

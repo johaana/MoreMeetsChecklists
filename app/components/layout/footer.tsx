@@ -12,7 +12,7 @@ export function Footer() {
                     </Link>
                     <div className="space-y-1 pt-2">
                         <p className="text-xs text-zinc-500 max-w-xs font-bold italic leading-relaxed">
-                            Spreadsheet-Native Operational Infrastructure™ for real-world businesses. 
+                            Practical SOP systems and daily execution tools for real-world businesses. 
                         </p>
                         <p className="text-[10px] text-zinc-400 font-medium italic">
                             Audit-ready daily execution systems built for operations leaders.
