@@ -7,12 +7,12 @@ export const FaqSection = () => (
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <SectionEyebrow text="COMMON INQUIRIES" />
-                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-zinc-950 tracking-tighter">OPERATIONAL QUESTIONS</h2>
+                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-zinc-950 tracking-tighter">FAQS</h2>
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
                     <AccordionItem value="item-1" className="border-zinc-200">
-                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. How is this different?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-8">
                             <p>Many businesses already have some form of SOPs.</p>
                             <p>The question is not whether instructions exist.</p>
@@ -33,32 +33,61 @@ export const FaqSection = () => (
                     <AccordionItem value="item-sheets" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why Google Sheets instead of dedicated software?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>Software often fails in the real world because of "app fatigue" and the friction of learning new interfaces.</p>
-                            <p>Google Sheets is a tool your team already knows. It works offline, supports real-time collaboration, and integrates perfectly with your existing workspace. It ensures the system is actually followed, which is the only thing that matters in operations.</p>
+                            <p><strong>Because most teams already know how to use it.</strong></p>
+                            <p>Many business software tools fail because employees stop using them after a few weeks.</p>
+                            <p>People forget passwords.</p>
+                            <p>People avoid learning new systems.</p>
+                            <p>Managers end up chasing updates again.</p>
+                            <p>Google Sheets removes that problem.</p>
+                            <p>There are no app downloads, no training sessions, and no adoption battle.</p>
+                            <p>The goal is not to introduce another tool.</p>
+                            <p>The goal is to make sure important work gets done every day.</p>
                         </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="item-templates" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Are these just spreadsheet templates?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>No. MoreMeets delivers complete <strong>operational systems</strong>.</p>
-                            <p>A template is a static document; a MoreMeets system includes technical protocols, frequency mapping, accountability structures, and built-in audit trails. We are selling the engineering of your operations; Google Sheets is just the layer where that engineering lives.</p>
+                            <p><strong>No.</strong></p>
+                            <p>A template gives you a blank structure.</p>
+                            <p>MoreMeets gives you a complete system.</p>
+                            <p>Each pack includes:</p>
+                            <p>
+                                • industry-specific SOPs<br />
+                                • daily task schedules<br />
+                                • built-in instructions<br />
+                                • accountability tracking<br />
+                                • verification workflows<br />
+                                • audit-ready records
+                            </p>
+                            <p>Instead of building everything from scratch, you start with a system that is already organized and ready to use.</p>
                         </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="item-excel" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can I use Excel instead of Google Sheets?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>Yes. Our systems are delivered in Excel (.xlsx) format.</p>
-                            <p>While we recommend Google Sheets for its superior real-time collaboration and mobile ease-of-use, the system remains fully functional in desktop Excel or other spreadsheet environments.</p>
+                            <p><strong>Our systems are designed to run in Google Sheets.</strong></p>
+                            <p>You will receive the file in Excel format, but the recommended setup is to upload it to Google Drive and use it in Google Sheets.</p>
+                            <p>Google Sheets makes it easier to:</p>
+                            <p>
+                                • collaborate with your team<br />
+                                • access the system from mobile devices<br />
+                                • work across multiple locations<br />
+                                • keep everyone on the latest version
+                            </p>
+                            <p>The setup takes only a few minutes and instructions are included inside the file.</p>
                         </AccordionContent>
                     </AccordionItem>
 
                     <AccordionItem value="item-ai" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not generate SOPs with AI?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>AI is excellent at writing general text, but it lacks the <strong>forensic operational experience</strong> to build a fail-safe execution system.</p>
-                            <p>Our SOPs are engineered from 30 years of high-stakes field exposure. We define the consequences of failure, the specific proof required for an audit, and the exact floor actions needed—details that generic AI cannot reliably produce for real-world risk management.</p>
+                            <p><strong>AI can generate instructions.</strong></p>
+                            <p>The challenge is knowing what instructions should exist, how often tasks should happen, what proof should be collected, and what managers should verify.</p>
+                            <p>MoreMeets systems are built around real operational workflows, accountability, and daily execution.</p>
+                            <p>AI can help write text.</p>
+                            <p>Operations require structure, consistency, and follow-through.</p>
                         </AccordionContent>
                     </AccordionItem>
 
