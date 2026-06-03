@@ -1,9 +1,9 @@
-
 export type PackResolution = {
     heroTitle?: string;
     heroSubline: string;
     strategicParagraph: string;
     whyExecutionBreaksParagraph: string;
+    blueprint?: string[];
     risks: { title: string; description: string; }[];
     consequences?: { title: string; fallout: string; }[];
     compliance?: string[];
@@ -23,6 +23,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Freshness. Protect Your Margins.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for grocery and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance.",
         whyExecutionBreaksParagraph: "Grocery retail fails when cold storage vitals are unlogged, expiry sweeps are inconsistent, and cashier variance goes unmonitored by management.",
+        blueprint: ["Receiving deliveries", "Freshness checks", "Expiry monitoring", "Shelf replenishment", "Temperature logs", "Inventory counts", "Opening checks", "Closing procedures"],
         risks: [
             { title: "Cold Chain Breach", description: "Unmonitored temp spikes in chillers/freezers leading to massive pathogen growth and total stock loss." },
             { title: "Expiry Slip-ups", description: "Expired perishables remaining on shelves due to lack of daily FEFO (First-Expiry-First-Out) audits." },
@@ -60,6 +61,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Device Integrity. Protect Your Inventory.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for electronics retail. Hardening 180 technical control points across Serial Governance, Demo Asset Safety, and Warranty Fraud Prevention.",
         whyExecutionBreaksParagraph: "Electronics retail fails when unique serial IDs are unmonitored, demo units become fire hazards, and warranty fraud goes undetected at the return counter.",
+        blueprint: ["Unique ID (IMEI/Serial) verification", "Demo asset safety", "Warranty claim validation", "Customer data wipes", "Battery thermal logs", "E-waste segregation", "High-value inventory counts", "Installation TAT"],
         risks: [
             { title: "Serial Mismatch", description: "Inaccurate IMEI/Serial tracking leading to voided manufacturer warranties and untraceable stock loss." },
             { title: "Demo Battery Fire", description: "Overheating lithium-ion batteries in bloated demo units causing catastrophic showroom fire incidents." },
@@ -95,6 +97,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Command Your Inventory Velocity. Protect Your Brand Standards.",
         strategicParagraph: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 182 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
         whyExecutionBreaksParagraph: "Fashion retail fails when visual standards become suggestions, size-curves are ignored, and return-fraud goes unmonitored by the management tier.",
+        blueprint: ["Visual standards audits", "Inventory velocity", "Size-curve availability", "Trial room hygiene", "Return-fraud prevention", "Tag-tamper sweeps", "POS deletions", "Seasonal launch readiness"],
         risks: [
             { title: "Inventory Shrinkage", description: "Internal pilferage and shoplifting masked by poor cycle-count discipline and trial-room gaps." },
             { title: "Visual Standards Drift", description: "Mannequin non-compliance and poor lighting maintenance destroying premium brand authority." },
@@ -130,6 +133,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.",
         strategicParagraph: "Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
         whyExecutionBreaksParagraph: "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory.",
+        blueprint: ["Student arrival and dispersal", "Transport safety checks", "Classroom readiness", "Maintenance logs", "Attendance procedures", "Incident reporting", "Campus security sweeps", "Exam paper security"],
         risks: [
             { title: "Playground safety checks becoming assumed", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
             { title: "Visitor verification skipped during rush hours", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
@@ -165,6 +169,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Stop operational drift before it reaches the guest experience.",
         strategicParagraph: "Built for high-volume groups where consistency and food safety cannot be left to shift-lead coordination alone.",
         whyExecutionBreaksParagraph: "Service standards rarely collapse during slow hours. They break when high compression removes the time to verify critical steps.",
+        blueprint: ["Opening checks", "Food preparation standards", "Temperature logs", "Cleaning schedules", "Inventory counts", "Shift handovers", "Closing procedures", "Customer complaints"],
         risks: [
             { title: "Revenue Leakage", description: "Void bills, uncontrolled portioning, and unverified ingredient yields silently erode net margins every shift." },
             { title: "HACCP Lapses", description: "Critical temperature logs are often back-filled at the end of shifts instead of being recorded during active receiving." },
@@ -204,6 +209,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Zero-drift operational governance for hotels, resorts, and hospitality groups.",
         strategicParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
         whyExecutionBreaksParagraph: "Luxury standards decay when execution depends on memory instead of verification.",
+        blueprint: ["Room inspections", "Housekeeping standards", "Guest check-ins", "Maintenance requests", "Safety checks", "Shift handovers", "Guest complaints", "Service recovery"],
         risks: [
             { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
             { title: "Privacy Exposure", description: "Weak master-keycard governance and lack of hidden camera sweeps create critical guest security windows." },
@@ -243,6 +249,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Protect brand parity, royalty integrity, and operational control across every franchise unit.",
         strategicParagraph: "Built for franchisors where one weak unit damages the entire network.",
         whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. This Network Drift starts small and ends in total brand dilution.",
+        blueprint: ["Brand parity audits", "Royalty reconciliation", "Standardized opening checks", "Inventory movement", "Quality scorecards", "Training completion", "Local marketing compliance", "Multi-unit reporting"],
         risks: [
             { title: "Royalty Leakage", description: "Voided bills, aggregator mismatches, and off-book sales silently erode royalty visibility and franchisor revenue." },
             { title: "Brand Adulteration", description: "Local improvisation slowly destroys the consistency customers expect from the brand standard." },
@@ -282,6 +289,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
         strategicParagraph: "Built for hospitals where patient safety, surgical discipline, and clinical accountability cannot depend on memory.",
         whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
+        blueprint: ["Patient intake and consent", "Clinical safety checks", "Equipment sterilization", "Medication logs", "Bed management", "Shift briefings", "Infection control", "Statutory documentation"],
         risks: [
             { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of clinical error." },
             { title: "Infection Outbreaks", description: "Hygiene frequency drift in ICUs and poor CSSD indicator tracking lead to hospital-acquired infection spikes." },
@@ -319,6 +327,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
         strategicParagraph: "Buildings don’t fail suddenly. They fail after weeks of invisible neglect. When maintenance becomes verbal, infrastructure becomes unstable.",
         whyExecutionBreaksParagraph: "Buildings fail when routine maintenance moves from scheduled execution into 'firefighting' once a fault occurs.",
+        blueprint: ["MEP asset vitals", "Preventive maintenance", "Vendor SLA compliance", "Energy intensity logs", "Fire safety audits", "Permit-to-work checks", "Water purity levels", "Campus security sweeps"],
         builtFor: [
             "Commercial Towers", "Malls & Retail", "Hospitals", "Schools & Universities", "Hotels & Resorts", "Industrial Sites", "Corporate Campuses"
         ],
@@ -368,6 +377,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Technical command for show readiness, crowd flow, and concession yield.",
         strategicParagraph: "Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.",
         whyExecutionBreaksParagraph: "Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.",
+        blueprint: ["Technical show readiness", "Concession yield counts", "Interval wave management", "Auditorium hygiene", "Projection & sound calibration", "Emergency egress checks", "Ticketing reconciliation", "VIP lounge standards"],
         risks: [
             { title: "Expired KDM Keys", description: "Unverified digital decryption keys lead to show cancellations during blockbuster openings." },
             { title: "Concession Yield Leakage", description: "Lack of raw-corn-to-bucket yield logic creates massive internal profit theft at the counter." },
@@ -405,6 +415,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroSubline: "Margin Protection Infrastructure. Not Store Management.",
         strategicParagraph: "Protect your margin, stock, and store control daily with forensic protocols for Loss Prevention, Compliance, and Duty of Care.",
         whyExecutionBreaksParagraph: "Stores fail when visual standards become suggestions and inventory control depends on trust instead of verifiable logic.",
+        blueprint: ["Inventory tracking", "Opening readiness", "Metrology calibration", "Fitting room patrols", "Staff grooming", "Cash reconciliation", "Loss prevention sweeps", "Safety exit checks"],
         risks: [
             { title: "Inventory Shrinkage", description: "Weak cycle-count discipline and unverified POS deletions enable systemic internal and external theft." },
             { title: "Visual Standards Drift", description: "Planogram non-compliance and poor lighting maintenance lead to a slow decline in premium brand authority." },
@@ -436,6 +447,42 @@ export const packResolutions: Record<string, PackResolution> = {
         ],
         reassuranceTrustTitle: "STATION DISCIPLINE",
         reassuranceTrustDescription: "Operational consistency customers notice across every zone."
+    },
+    'retail_jewellery_operations_pack': {
+        heroTitle: "JEWELLERY OPERATIONS SYSTEM",
+        heroSubline: "Protect Your Inventory. Secure Your Custody Chain.",
+        strategicParagraph: "The definitive Sovereign v19.2 custody-chain engine for high-value retail. Hardening 198 technical control points across Vault Governance, Transaction Integrity, and Hallmark Compliance.",
+        whyExecutionBreaksParagraph: "Jewellery stores fail when dual-custody discipline is bypassed, swap thefts go undetected during peak waves, and gram-variance is ignored.",
+        blueprint: ["Vault dual-authorization", "Gram-weight reconciliation", "Trial piece substitution checks", "Empty-holder anomaly scans", "Hallmark verification", "Diamond certificate mapping", "High-value transaction vetting", "Security panic tests"],
+        risks: [
+            { title: "Sophisticated Swap Theft", description: "Counter-substitution of high-value diamonds with fakes during trial sessions due to single-piece handling lapses." },
+            { title: "Internal Pilferage", description: "Gram-level inventory exfiltration hidden by weak vault-return weighing protocols and collusion." },
+            { title: "Hallmark Non-Compliance", description: "Selling unvetted or improperly hallmarked goods leading to BIS regulatory sealing and mass penalties." },
+            { title: "Transaction Fraud", description: "Unauthorized discount overrides and unvetted buyback valuations eroding high-value net margins." }
+        ],
+        whatChangesDaily: [
+            "Vault access requires dual-sign digital seals",
+            "Trial pieces are weighed pre-and-post presentation",
+            "Gram-variance is reconciled shift-wise",
+            "BIS Hallmark validity is verified for inward stock",
+            "Security panic pulses are tested daily",
+            "High-value discounts require technical auth"
+        ],
+        mondayMorning: [
+            "Vault opening witness log is signed by 9 AM",
+            "Showcase piece counts match morning issue slips",
+            "Precision scales are calibrated to standard weight",
+            "Loose gem inventory is double-blind counted",
+            "Night security CCTV footage is reviewed for gaps",
+            "The group standard is visible to the head office"
+        ],
+        outcomes: [
+            "Swap theft neutralized",
+            "Gram leakage plugged",
+            "BIS compliance secured",
+            "Transaction integrity verified",
+            "Luxury brand authority protected"
+        ]
     }
 };
 
@@ -443,6 +490,7 @@ export const defaultResolution: PackResolution = {
     heroSubline: "Reduce operational dependence on memory. Bring structure to daily execution.",
     strategicParagraph: "Built for elite leadership where operational discipline and duty of care cannot depend on verbal follow-ups.",
     whyExecutionBreaksParagraph: "Operations rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal and dependent on memory.",
+    blueprint: ["Standardized opening checks", "Routine safety sweeps", "Inventory tracking", "Shift handovers", "Cleaning schedules", "Closing procedures", "Statutory documentation", "Team briefings"],
     risks: [
         { title: "Verbal Assumptions", description: "Critical tasks lead to verbal check-ins instead of physical verification and route mapping." },
         { title: "Perimeter Gaps", description: "Verification becomes inconsistent during peak arrival and dispersal surges." },

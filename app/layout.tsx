@@ -7,9 +7,9 @@ import { LayoutScript } from '@/components/layout/layout-script';
 import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'MoreMeets™ | Practical SOP Systems & Daily Task Tools';
-const siteDescription = 'MoreMeets™: Practical SOP systems and daily execution tools for real-world businesses. Deploy audit-ready SOPs and live dashboards in 10 minutes. No SaaS fees.';
-const socialImage = 'https://i.postimg.cc/Px7pQfYk/businesspeople-having-problems-office.jpg';
+const siteTitle = 'YOUR BUSINESS SHOULD NOT DEPEND ON MEMORY | MoreMeets™';
+const siteDescription = 'Industry-specific SOP systems with daily tasks, built-in instructions, accountability tracking, and proof of completion.';
+const ogImageUrl = `${siteUrl}/api/og?type=homepage`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: socialImage,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'Operational Challenges - MoreMeets™ Systems',
+        alt: 'MoreMeets - Systems over Memory',
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: [socialImage],
+    images: [ogImageUrl],
   },
 };
 

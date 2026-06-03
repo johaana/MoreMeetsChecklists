@@ -132,6 +132,79 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
     );
 }
 
+const SectionEyebrow = ({ text }: { text: string }) => (
+    <div className="flex items-center gap-3 md:gap-4 mb-6">
+        <div className="w-8 md:w-12 h-px bg-[#B89B5E] opacity-40 shrink-0" />
+        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-[#B89B5E] font-headline whitespace-nowrap">
+            {text}
+        </span>
+    </div>
+);
+
+const BlueprintSection = ({ packId, verticalName }: { packId: string, verticalName: string }) => {
+    const res = packResolutions[packId] || defaultResolution;
+    if (!res.blueprint) return null;
+
+    return (
+        <Section className="bg-white border-b border-zinc-100">
+            <div className="max-w-4xl mx-auto space-y-12">
+                <div className="space-y-4 text-center md:text-left">
+                    <SectionEyebrow text="SYSTEM ANATOMY" />
+                    <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                        What do SOPs look like in a well-run {verticalName}?
+                    </h2>
+                    <p className="text-lg text-zinc-600 font-medium italic leading-relaxed">
+                        A well-run {verticalName.toLowerCase()} doesn't operate on luck. It operates on a set of consistent, verifiable routines that maintain standards even when managers aren't on the floor.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 bg-[#F8F6F2] p-8 md:p-12 rounded-[2.5rem] border border-[#B89B5E]/10 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
+                        <LayoutGrid className="w-64 h-64" />
+                    </div>
+                    <div className="space-y-6 relative z-10">
+                        <p className="text-[10px] font-black text-[#B89B5E] uppercase tracking-[0.4em] italic font-headline">CORE TRACKING NODES</p>
+                        <div className="grid gap-4">
+                            {res.blueprint.map((item, i) => (
+                                <div key={i} className="flex items-center gap-4 group">
+                                    <div className="w-8 h-8 rounded-lg bg-white shadow-sm border border-zinc-100 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors">
+                                        <Check className="w-4 h-4 text-emerald-500" strokeWidth={4} />
+                                    </div>
+                                    <span className="text-base md:text-lg font-black text-zinc-900 uppercase italic tracking-tight">{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="space-y-8 relative z-10 flex flex-col justify-center">
+                        <div className="p-6 bg-zinc-950 rounded-2xl border-l-4 border-emerald-500 shadow-xl">
+                            <p className="text-white text-sm md:text-base font-bold italic leading-relaxed">
+                                "These routines help maintain safety, service consistency, and operational discipline by converting tribal knowledge into permanent organizational infrastructure."
+                            </p>
+                        </div>
+                        <div className="space-y-4">
+                            <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em]">IMPACT SUMMARY</p>
+                            <div className="grid gap-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    <span className="text-[11px] font-black text-zinc-900 uppercase italic">Reduced Dependence on Memory</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    <span className="text-[11px] font-black text-zinc-900 uppercase italic">Audit-Ready Documentation</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    <span className="text-[11px] font-black text-zinc-900 uppercase italic">Faster Team Onboarding</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Section>
+    );
+};
+
 export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { pack: PremiumPack, backgroundUrl: string, squircleUrl: string }) {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -141,6 +214,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     const res = packResolutions[pack.id] || defaultResolution;
     const sectorData = SECTOR_METADATA[pack.id] || { sustainability: DEFAULT_SUSTAINABILITY };
     
+    const verticalName = getDisplayTitle(pack.id, pack.title);
     const getVerticalParts = (p: PremiumPack) => {
         const displayTitle = getDisplayTitle(p.id, p.title);
         const parts = displayTitle.toUpperCase().split(' ');
@@ -270,6 +344,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
                 </div>
             </section>
+
+            {/* --- NEW SECTION: SYSTEM ANATOMY (BLUEPRINT) --- */}
+            <BlueprintSection packId={pack.id} verticalName={verticalName} />
 
             {/* --- 2. WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
@@ -498,7 +575,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 </p>
                             </div>
                             
-                            <div className="flex flex-col items-center lg:items-start gap-4">
+                            <div className="flex flex-col items-center gap-4">
                                 <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center" style={{ backgroundColor: "#B89B5E" }}>
                                     <Link href="#pricing" className="flex items-center gap-3">
                                         DEPLOY IN 10 MINUTES • ₹2,499 / $29 <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
