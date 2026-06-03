@@ -114,8 +114,12 @@ export const FaqSection = () => (
                     <AccordionItem value="item-staffleave" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">What happens when key staff leave?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                          <p>The <strong>System stays.</strong></p>
-                          <p>Their operational knowledge remains embedded in the master ledger and library. MoreMeets™ ensures your standards are owned by the business, not the individual.</p>
+                            <p>Important knowledge often leaves with them.</p>
+                            <p>Procedures become inconsistent.</p>
+                            <p>New employees receive different instructions.</p>
+                            <p>Managers spend time rebuilding processes that already existed.</p>
+                            <p>MoreMeets helps document tasks, instructions, and expected standards in one place, so your business is less dependent on individual employees and more dependent on a repeatable system.</p>
+                            <p>The goal is to make sure important knowledge stays with the business.</p>
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
