@@ -62,7 +62,7 @@ export const HeroSection = () => (
                     <div className="flex flex-col space-y-4 pr-6">
                         <div className="space-y-2">
                             <h1 className="text-[2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
-                                CAPTURE <br/><span className="text-primary">MEMORY.</span>
+                                WHERE SOPS <br/><span className="text-primary">MEET EXECUTION.</span>
                             </h1>
                             <p className="text-[10px] text-white/40 italic font-medium">
                                 Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
@@ -129,7 +129,11 @@ export const HeroSection = () => (
             <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">
                 <div className="space-y-12">
                     <div className="space-y-6">
-                        <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">CAPTURE<br /><span className="text-primary">MEMORY.</span></h1>
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-8 h-px bg-primary/40" />
+                            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-primary italic">WHERE SOPS MEET EXECUTION</span>
+                        </div>
+                        <h1 className="text-7xl font-black font-headline text-white leading-[0.95] uppercase italic tracking-tighter">YOUR BUSINESS<br />SHOULD NOT<br /><span className="text-primary">DEPEND ON MEMORY.</span></h1>
                         <p className="text-xl text-white/40 italic font-medium max-w-2xl border-l border-white/20 pl-10 leading-relaxed">
                             Get pre-built, industry-specific, fully editable SOP systems with daily tasks, built-in instructions, and proof of completion so important work gets done consistently, even when you're not there.
                         </p>
@@ -144,7 +148,7 @@ export const HeroSection = () => (
                     </div>
                     <div className="space-y-4">
                         <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic text-sm tracking-widest transition-all active:scale-[0.98]">
-                            <Link href="/library" className="flex items-center justify-center gap-2">GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" /></Link>
+                            <Link href="/library" className="flex items-center justify-center gap-2">GO LIVE IN 10 MINUTES: ₹2499 <ArrowRight className="h-5 w-5" /></Link>
                         </Button>
                         <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">{PROOF_STRIP} • NO SaaS</p>
                     </div>
