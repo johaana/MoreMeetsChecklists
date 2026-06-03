@@ -84,7 +84,7 @@ export default function BespokePage() {
                                     <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">WHAT'S INCLUDED:</span>
                                     <ul className="space-y-3 text-[11px] font-bold text-white/40 uppercase tracking-widest">
                                         <li className="flex items-center gap-3"><ShieldCheck className="w-4 h-4 text-primary" /> Sector-Specific Logic</li>
-                                        <li className="flex items-center gap-3"><Maximize2 className="w-4 h-4 text-primary" /> Multi-Branch Architecture</li>
+                                        <li className="flex items-center gap-3"><Maximize2 className="w-4 h-4 text-primary" /> Operational Architecture</li>
                                         <li className="flex items-center gap-3"><History className="w-4 h-4 text-primary" /> Custom Trainer's Notes</li>
                                         <li className="flex items-center gap-3"><Lock className="w-4 h-4 text-primary" /> Sovereign IP Ownership</li>
                                     </ul>

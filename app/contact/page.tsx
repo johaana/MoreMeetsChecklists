@@ -56,7 +56,7 @@ export default function ContactUsPage() {
                                     <div className="flex flex-wrap gap-4 text-[9px] font-black uppercase text-white/20 tracking-widest">
                                         <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Tailored Logic</span>
                                         <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Brand-Specific SOPs</span>
-                                        <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Multi-Branch Mapping</span>
+                                        <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Station & Branch Mapping</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-4">

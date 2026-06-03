@@ -113,7 +113,7 @@ export const WhySopsSection = () => {
                                             "request photo proof",
                                             "attach reference images",
                                             "verify execution timestamps",
-                                            "standardize across branches"
+                                            "standardize across stations or branches"
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-center gap-3 text-sm font-bold italic text-white/80 uppercase">
                                                 <div className="w-1 h-1 rounded-full bg-[#B89B5E]" />

@@ -166,9 +166,8 @@ export const FaqSection = () => (
                     <AccordionItem value="item-multi-loc" className="border-zinc-200">
                         <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can managers monitor multiple locations?</AccordionTrigger>
                         <AccordionContent className="text-zinc-600 leading-relaxed font-bold italic space-y-4 pb-6">
-                            <p>Yes.</p>
-                            <p>The systems are designed to support multi-location operations.</p>
-                            <p>Businesses can maintain consistent standards across outlets, branches, properties, or facilities while maintaining visibility over execution records and daily completion activity.</p>
+                            <p>Yes. The systems are designed to support single-unit and multi-location operations.</p>
+                            <p>Businesses can maintain consistent standards across departments, stations, outlets, or branches while maintaining visibility over execution records and daily completion activity.</p>
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
