@@ -548,22 +548,22 @@ export default function HomePage() {
                 <HomeSection className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
-                            <SectionEyebrow text="SETUP PROTOCOL" />
+                            <SectionEyebrow text="DEPLOYMENT PROTOCOL" />
                             <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
-                                Go live in 10 minutes
+                                READY TO USE IN 10 MINUTES
                             </h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
                             {[
-                                { t: "Purchase", d: "Instant access to your industry-specific SOP system." },
-                                { t: "Receive Your SOP System", d: "Direct download link delivered via secure email." },
-                                { t: "Open in Google Sheets", d: "Upload to Drive for live multi-user collaboration." },
-                                { t: "Assign Teams", d: "Map staff names to roles in the central hub." },
-                                { t: "Start Daily Execution", d: "Standards are followed via live, verifiable logs." }
+                                { t: "PURCHASE", d: "Download your industry-specific SOP system instantly." },
+                                { t: "DOWNLOAD FILE", d: "Save the master Excel file to your computer." },
+                                { t: "OPEN IN GOOGLE SHEETS", d: "Upload the file to Google Drive and open it in Google Sheets. Simple setup instructions are already included inside the file." },
+                                { t: "CUSTOMIZE IF NEEDED", d: "Add team names, adjust tasks, and make any changes you want. Everything is fully editable." },
+                                { t: "SHARE & START USING", d: "Share it with your team and begin daily tracking immediately." }
                             ].map((step, i) => (
                                 <div className="space-y-6 group text-left" key={i}>
-                                    <div className="text-4xl md:text-6xl font-black italic text-primary/10 group-hover:text-[#B89B5E] transition-colors leading-none">
-                                        0{i+1}
+                                    <div className="text-4xl md:text-6xl font-black italic text-primary/20 group-hover:text-[#B89B5E] transition-colors leading-none">
+                                        {i+1}
                                     </div>
                                     <div className="space-y-2">
                                         <h4 className="font-black text-sm uppercase italic leading-tight font-headline text-zinc-950">{step.t}</h4>
