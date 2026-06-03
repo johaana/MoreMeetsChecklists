@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X, FileText, ShieldAlert, Clock, User } from 'lucide-react';
+import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X, FileText, ShieldAlert, Clock, User, CalendarDays } from 'lucide-react';
 import React from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
@@ -16,6 +16,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { subscribeToBlog } from './actions';
+import { cn } from '@/lib/utils';
 
 const primaryTags = [
     "Hotel & Resort Operations", 
@@ -77,7 +78,7 @@ function SubscriptionForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="flex-1 bg-black/40 border-white/10"
+        className="flex-1 bg-black/40 border-white/10 text-white"
       />
       <Button type="submit" disabled={loading} className="w-full sm:w-auto font-black uppercase tracking-widest text-xs h-10 bg-[#B89B5E] text-black hover:bg-[#B89B5E]/90 border-none">
         {loading ? (
@@ -107,8 +108,8 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                     variant={activeFilter === null ? 'default' : 'outline'}
                     onClick={() => setActiveFilter(null)}
                     className={cn(
-                        "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6",
-                        activeFilter === null ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white"
+                        "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6 transition-all",
+                        activeFilter === null ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white hover:bg-white/5"
                     )}
                 >
                     All Reports
@@ -119,8 +120,8 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                         variant={activeFilter === tag ? 'default' : 'outline'}
                         onClick={() => setActiveFilter(tag)}
                         className={cn(
-                            "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6",
-                            activeFilter === tag ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white"
+                            "rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6 transition-all",
+                            activeFilter === tag ? "bg-[#B89B5E] text-black border-none" : "border-white/10 text-white/60 hover:text-white hover:bg-white/5"
                         )}
                     >
                         {tag}
@@ -128,7 +129,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 ))}
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6 border-white/10 text-white/60">
+                        <Button variant="outline" className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6 border-white/10 text-white/60 hover:bg-white/5">
                            {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "Operational Intelligence"}
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
@@ -201,7 +202,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 }
 
 const BlogCard = ({ post }: { post: BlogPost }) => (
-    <Card className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-[#B89B5E]/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl group/card">
+    <Card className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-[#B89B5E]/10 transition-all duration-500 border border-white/5 bg-[#1F3A34]/20 backdrop-blur-xl group/card">
         <Link href={`/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
             {post.imageUrl ? (
                 <img
@@ -215,7 +216,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => (
                 </div>
             )}
             <div className="absolute top-4 left-4">
-                <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1 shadow-2xl">
                     Protocol: {post.protocol || "Standard"}
                 </Badge>
             </div>
@@ -237,10 +238,10 @@ const BlogCard = ({ post }: { post: BlogPost }) => (
         </CardHeader>
         <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0 mt-auto">
             <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-[#B89B5E]/60">
-                <p className="flex items-center gap-2"><CalendarDays className="w-3 h-3" /> {formatDate(post.publishedDate)}</p>
-                <span className="flex items-center gap-2"><Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} min read</span>
+                <p className="flex items-center gap-2"><CalendarDays className="w-3 h-3 text-[#B89B5E]" /> {formatDate(post.publishedDate)}</p>
+                <span className="flex items-center gap-2"><Clock className="w-3 h-3 text-[#B89B5E]" /> {Math.ceil(post.content.split(' ').length / 200)} min read</span>
             </div>
-            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-[#B89B5E] text-black hover:bg-[#B89B5E]/90 rounded-xl border-none transition-all">
+            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-[#B89B5E] text-black hover:bg-[#B89B5E]/90 rounded-xl border-none transition-all shadow-lg">
                 <Link href={`/blog/${post.slug}`}>Review Analysis <ArrowRight className="ml-2 h-3.5 w-3.5" /></Link>
             </Button>
         </CardFooter>
@@ -308,7 +309,7 @@ export default function BlogClientPage() {
                 {currentFeaturedPost && (
                     <div className="mb-20">
                         <Link href={`/blog/${currentFeaturedPost.slug}`} className="block group">
-                             <Card className="overflow-hidden rounded-[2rem] shadow-2xl hover:shadow-[#B89B5E]/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl">
+                             <Card className="overflow-hidden rounded-[2rem] shadow-2xl hover:shadow-[#B89B5E]/10 transition-all duration-500 border border-white/10 bg-[#1F3A34]/30 backdrop-blur-xl">
                                 <div className="md:hidden">
                                     <div className="relative w-full h-auto aspect-[16/9] overflow-hidden">
                                      {currentFeaturedPost.imageUrl && (
@@ -318,9 +319,9 @@ export default function BlogClientPage() {
                                             className="object-cover w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                                         />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1210] via-transparent to-transparent" />
                                     <div className="absolute top-4 left-4">
-                                        <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                                        <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1 shadow-2xl">
                                             Protocol: {currentFeaturedPost.protocol || "Standard"}
                                         </Badge>
                                     </div>
@@ -333,7 +334,7 @@ export default function BlogClientPage() {
                                             <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
                                         </div>
                                         <CardDescription className="text-zinc-100 italic line-clamp-3">{currentFeaturedPost.description}</CardDescription>
-                                        <Button variant="outline" className="mt-4 border-none text-black bg-[#B89B5E] font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl hover:bg-[#B89B5E]/90 transition-all">
+                                        <Button variant="outline" className="mt-4 border-none text-black bg-[#B89B5E] font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl hover:bg-[#B89B5E]/90 transition-all shadow-xl">
                                             Initiate Full Debrief <ArrowRight className="ml-2 h-4 w-4 text-black" />
                                         </Button>
                                     </div>
@@ -349,14 +350,14 @@ export default function BlogClientPage() {
                                                     className="absolute inset-0 object-cover w-full h-full grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                                                 />
                                             )}
-                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/60" />
+                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0a1210]/80" />
                                             <div className="absolute top-8 left-8">
                                                 <Badge className="bg-[#1F3A34] text-[#B89B5E] border-white/10 text-[9px] font-black uppercase tracking-widest px-4 py-1.5 shadow-2xl">
                                                     Protocol: {currentFeaturedPost.protocol || "Standard"}
                                                 </Badge>
                                             </div>
                                         </div>
-                                        <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-[#0a1210]/95">
+                                        <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-[#0a1210]/95 border-l border-white/5">
                                             <div className="space-y-4">
                                                 <div className="space-y-1">
                                                     <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#B89B5E]">
@@ -372,11 +373,11 @@ export default function BlogClientPage() {
                                             </div>
                                             
                                             <div className="flex items-center gap-8 text-[10px] font-black text-[#B89B5E]/60 uppercase tracking-[0.3em] pt-4">
-                                                <span className="flex items-center gap-2"><CalendarDays className="w-3.5 h-3.5" /> {formatDate(currentFeaturedPost.publishedDate)}</span>
-                                                <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5" /> {Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
+                                                <span className="flex items-center gap-2"><CalendarDays className="w-3.5 h-3.5 text-[#B89B5E]" /> {formatDate(currentFeaturedPost.publishedDate)}</span>
+                                                <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-[#B89B5E]" /> {Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             
-                                            <Button variant="outline" className="bg-[#B89B5E] text-black border-none hover:bg-[#B89B5E]/90 transition-all font-black uppercase tracking-[0.2em] text-[11px] h-14 w-fit px-10 rounded-xl mt-4">
+                                            <Button variant="outline" className="bg-[#B89B5E] text-black border-none hover:bg-[#B89B5E]/90 transition-all shadow-2xl font-black uppercase tracking-[0.2em] text-[11px] h-14 w-fit px-10 rounded-xl mt-4">
                                                 Read The Full story <ArrowRight className="ml-2 h-4 w-4" />
                                             </Button>
                                         </div>
@@ -397,13 +398,13 @@ export default function BlogClientPage() {
                     ))}
                 </div>
 
-                 <div className="max-w-2xl mx-auto mt-32 flex flex-col items-center gap-6 p-12 border border-white/5 rounded-[2.5rem] bg-[#1F3A34]/20 relative overflow-hidden text-center backdrop-blur-sm">
+                 <div className="max-w-3xl mx-auto mt-32 flex flex-col items-center gap-6 p-12 border border-white/10 rounded-[2.5rem] bg-[#1F3A34]/30 relative overflow-hidden text-center shadow-2xl backdrop-blur-sm">
                     <div className="absolute top-0 right-0 p-10 opacity-5">
                         <ShieldAlert className="w-48 h-48 text-[#B89B5E]" />
                     </div>
                     <div className="relative z-10 space-y-4">
                         <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.2em] font-black text-[9px] bg-[#1F3A34]">Intel Subscription</Badge>
-                        <h3 className="text-2xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Get the analysis behind the headlines.</h3>
+                        <h3 className="text-2xl md:text-4xl font-black font-headline italic uppercase tracking-tighter text-white leading-tight">Get the analysis <br/> behind the headlines.</h3>
                         <p className="text-zinc-200 max-w-md mx-auto italic font-medium">Join 5,000+ COOs and Founders receiving bi-weekly forensic debriefs on operational risk.</p>
                     </div>
                     <div className="relative z-10 w-full flex justify-center pt-2">
@@ -417,6 +418,3 @@ export default function BlogClientPage() {
     </div>
   );
 }
-
-import { cn } from '@/lib/utils';
-import { CalendarDays } from 'lucide-react';

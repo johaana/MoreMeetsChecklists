@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: Props) {
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-24 md:pb-32">
-          <header className="w-full pt-12 pb-12 md:pt-16 md:pb-16 border-b border-white/5 bg-[#1F3A34]/20 backdrop-blur-sm">
+          <header className="w-full pt-12 pb-12 md:pt-20 md:pb-20 border-b border-white/5 bg-[#1F3A34]/20 backdrop-blur-sm">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
                 <Link href="/blog" className="inline-flex items-center text-[#B89B5E]/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-[#B89B5E] transition-colors">
@@ -163,11 +163,11 @@ export default async function BlogPostPage({ params }: Props) {
                         Sector: {post.tags[0]}
                       </p>
                       <div className="flex items-center gap-4">
-                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/20 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full bg-[#1F3A34]">
+                        <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full bg-[#1F3A34]/80">
                           Protocol: {post.protocol || "Operational Standard"}
                         </Badge>
-                        <span className="text-[10px] font-bold text-[#B89B5E]/40 uppercase tracking-[0.2em] flex items-center gap-2">
-                          <ShieldAlert className="w-3 h-3 text-[#B89B5E]" /> Technical Analysis
+                        <span className="text-[10px] font-bold text-[#B89B5E]/60 uppercase tracking-[0.2em] flex items-center gap-2">
+                          <ShieldAlert className="w-3.5 h-3.5 text-[#B89B5E]" /> Technical Analysis
                         </span>
                       </div>
                     </div>
@@ -199,53 +199,55 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          <div className="container px-4 md:px-6 mt-24 relative z-20">
+          <div className="container px-4 md:px-6 mt-16 md:mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
-              <div 
-                className="prose-custom max-w-none 
-                  [&_h2]:font-headline [&_h2]:text-white [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
-                  [&_h3]:font-headline [&_h3]:text-[#B89B5E] [&_h3]:font-black [&_h3]:uppercase [&_h3]:text-xl [&_h3]:tracking-widest [&_h3]:mt-16 [&_h3]:mb-6
-                  [&_p]:text-zinc-100 [&_p]:leading-[1.8] [&_p]:mb-12 [&_p]:text-lg
-                  [&_strong]:text-white [&_strong]:font-black
-                  [&_blockquote]:border-l-4 [&_blockquote]:border-[#B89B5E] [&_blockquote]:bg-[#1F3A34]/10 [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-zinc-100 [&_blockquote]:my-24 [&_blockquote]:font-medium
-                  "
-                dangerouslySetInnerHTML={{ __html: post.content }} 
-              />
+              <div className="bg-[#1F3A34]/10 border border-white/5 p-8 md:p-16 rounded-[2.5rem] shadow-inner mb-24">
+                <div 
+                  className="prose-custom max-w-none 
+                    [&_h2]:font-headline [&_h2]:text-white [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
+                    [&_h3]:font-headline [&_h3]:text-[#B89B5E] [&_h3]:font-black [&_h3]:uppercase [&_h3]:text-xl [&_h3]:tracking-widest [&_h3]:mt-16 [&_h3]:mb-6
+                    [&_p]:text-zinc-100 [&_p]:leading-[1.8] [&_p]:mb-12 [&_p]:text-lg
+                    [&_strong]:text-white [&_strong]:font-black
+                    [&_blockquote]:border-l-4 [&_blockquote]:border-[#B89B5E] [&_blockquote]:bg-[#1F3A34]/20 [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-zinc-100 [&_blockquote]:my-24 [&_blockquote]:font-medium shadow-2xl
+                    "
+                  dangerouslySetInnerHTML={{ __html: post.content }} 
+                />
+              </div>
 
               <div className="mt-24 pt-12 relative group" id="resolution-protocol">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#B89B5E]/20 to-[#1F3A34]/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                  <Card className="overflow-hidden bg-[#0a1210] border border-white/10 rounded-[2.5rem] relative z-10 shadow-2xl">
-                      <div className="p-8 md:p-16 text-center space-y-12">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#B89B5E]/30 to-[#1F3A34]/30 rounded-[2.6rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                  <Card className="overflow-hidden bg-[#1F3A34]/20 border border-white/10 rounded-[2.5rem] relative z-10 shadow-2xl backdrop-blur-md">
+                      <div className="p-8 md:p-20 text-center space-y-12">
                         <div className="space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-[#B89B5E]/30 text-[#B89B5E] uppercase tracking-[0.2em] rounded-none px-4 py-1 bg-[#1F3A34]">Resolution Protocol</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight text-white uppercase italic leading-[1.15]">
                                 OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                             </h2>
-                            <p className="text-base font-bold text-[#B89B5E]/80 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
+                            <p className="text-base md:text-xl font-bold text-[#B89B5E] italic pt-4 border-t border-white/5 max-w-lg mx-auto">
                                 "{currentCta.bridge}"
                             </p>
                         </div>
 
                         <div className="flex flex-col items-center gap-6">
-                            <div className="space-y-6 w-full flex flex-col items-center">
+                            <div className="space-y-8 w-full flex flex-col items-center">
                                 <Button 
                                     asChild 
                                     variant="secondary" 
-                                    className="h-auto py-5 px-10 bg-[#B89B5E] text-black transition-all rounded-2xl shadow-inner group/btn border-none"
+                                    className="h-auto py-6 px-12 bg-[#B89B5E] text-black transition-all rounded-2xl shadow-2xl group/btn border-none hover:scale-105"
                                 >
                                     <Link 
                                         href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
-                                        className="inline-flex items-center gap-3 text-lg md:text-2xl font-black tracking-tight leading-tight whitespace-nowrap"
+                                        className="inline-flex items-center gap-4 text-xl md:text-3xl font-black tracking-tight leading-tight whitespace-nowrap"
                                     >
                                         <span>{currentCta.button}</span>
-                                        <ArrowRight className="shrink-0 w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                                        <ArrowRight className="shrink-0 w-7 h-7 transition-transform group-hover/btn:translate-x-2" />
                                     </Link>
                                 </Button>
                                 
-                                <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-lg mx-auto text-[10px] font-black uppercase text-[#B89B5E]/40 tracking-widest text-left">
+                                <div className="grid grid-cols-2 gap-x-12 gap-y-6 max-w-lg mx-auto text-[10px] font-black uppercase text-[#B89B5E]/60 tracking-widest text-left">
                                     {["No SaaS lock-in", "Editable formats", "Immediate deployment", "Expert customization"].map(item => (
-                                        <div key={item} className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-[#B89B5E]/60" /> {item}
+                                        <div key={item} className="flex items-center gap-3">
+                                            <div className="w-1 h-1 rounded-full bg-[#B89B5E]" /> {item}
                                         </div>
                                     ))}
                                 </div>
@@ -253,10 +255,10 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      <div className="bg-[#1F3A34]/20 border-t border-white/5 py-6 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-12 no-scrollbar">
+                      <div className="bg-[#1F3A34]/40 border-t border-white/10 py-8 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-16 no-scrollbar">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-[#B89B5E]/60 tracking-[0.15em] shrink-0 whitespace-nowrap">
-                                <item.icon className="w-4 h-4 text-[#B89B5E]/60" /> {item.label}
+                            <div key={item.label} className="flex items-center gap-3 text-[10px] font-black uppercase text-[#B89B5E]/80 tracking-[0.2em] shrink-0 whitespace-nowrap">
+                                <item.icon className="w-5 h-5 text-[#B89B5E]" /> {item.label}
                             </div>
                         ))}
                       </div>
