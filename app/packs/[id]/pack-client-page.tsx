@@ -321,9 +321,9 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                 
                                 <div className="grid grid-cols-2 gap-x-10 gap-y-4 pt-4">
                                     {[
-                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: TargetIcon },
+                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
                                         { t: "PHOTO-BACKED VERIFICATION", i: Camera },
-                                        { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCapIcon },
+                                        { t: "EXCEL MASTER • GOOGLE SHEETS READY", i: GraduationCap },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
@@ -450,7 +450,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-white border-t border-zinc-100" noSpine>
                 <div className="max-w-5xl mx-auto p-8 md:p-16 rounded-[2.5rem] border border-zinc-200 bg-zinc-50/50 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-12 opacity-5 hidden md:block">
-                        <HistoryIcon className="w-64 h-64 text-zinc-950" />
+                        <History className="w-64 h-64 text-zinc-950" />
                     </div>
                     <div className="flex flex-col md:flex-row gap-12 items-center relative z-10 text-left">
                         <div className="space-y-6 flex-1">
@@ -489,11 +489,11 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                         {[
-                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCapIcon },
-                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: HistoryIcon },
-                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: UsersIcon },
+                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
+                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
+                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
                             { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared dashboard daily.", i: CheckCircle2 },
-                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: ZapIcon },
+                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
                             { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
@@ -545,7 +545,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
-                        <Sparkles className="w-48 h-48 text-[#B89B5E]" />
+                        <SparklesIcon className="w-48 h-48 text-[#B89B5E]" />
                     </div>
                     <div className="relative z-10 space-y-3">
                         <Badge variant="outline" className="text-[#B89B5E] border-[#B89B5E]/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
@@ -620,7 +620,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     );
 }
 
-const Sparkles = ({ className }: { className?: string }) => (
+const SparklesIcon = ({ className }: { className?: string }) => (
     <svg 
         viewBox="0 0 24 24" 
         fill="none" 
