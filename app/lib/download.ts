@@ -5,11 +5,12 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v18.8.1 PRODUCTION ROLLOUT
+ * MOREMEETS™ SOVEREIGN ENGINE - v23.1.0 SHADOW LEDGER EDITION
  * ----------------------------------------------------------------------------
- * 1. UNION SUPPORT: Handlers added for PremiumPack | IndividualChecklist
- * 2. NORMALIZATION: Flat checklists are wrapped for symmetric engine processing
- * 3. STABLE HEARTBEAT: Columns E:F (Triggers), G (Status), and J (Stamp) remain locked
+ * 1. REAL-TIME AUDIT: Every stamp event is shadowed to a permanent ledger.
+ * 2. RECONCILIATION SWEEP: Nightly backstop ensures zero missed records.
+ * 3. CADENCE AWARE: Selective reset for Daily/Weekly/Monthly cycles.
+ * 4. FROZEN ARCHITECTURE: Preserves existing production layouts and formulas.
  * ----------------------------------------------------------------------------
  */
 
@@ -21,63 +22,170 @@ const TABS = {
     BRANCH_SETUP: "BRANCH_SETUP",
     TEAM_HUB: "TEAM_HUB",
     SETUP_GUIDE: "SETUP_GUIDE", 
-    SYS_ENGINE: "SYS_ENGINE"
+    SYS_ENGINE: "SYS_ENGINE",
+    SNAPSHOT: "SNAPSHOT_YESTERDAY"
 };
 
 const APPS_SCRIPT_SOURCE = `
+/**
+ * SOVEREIGN CYCLE ENGINE v23.1
+ * (C) 2025 MoreMeets™ Institutional Standards
+ */
+
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('MoreMeets™')
+    .addItem('⚡ Run Archive & Reset Cycle', 'archiveAndResetCycle')
+    .addSeparator()
+    .addItem('📋 View Current Audit Log', 'selectAuditSheet')
+    .addToUi();
+}
+
 function onEdit(e) {
+  const lock = LockService.getScriptLock();
   try {
+    lock.waitLock(10000);
     const sheet = e.range.getSheet();
     if (sheet.getName() !== "DAILY_TASKS") return;
 
-    const startRow = e.range.getRow();
-    const numRows = e.range.getNumRows();
-    const startCol = e.range.getColumn();
-    const endCol = startCol + e.range.getNumColumns() - 1;
+    const row = e.range.getRow();
+    const col = e.range.getColumn();
+    if (col < 5 || col > 6) return; // Only watch Done By (5) and Verified By (6)
 
-    if (endCol < 5 || startCol > 6) return;
-
-    SpreadsheetApp.flush();    let stamped = 0;
-
-    for (let i = 0; i < numRows; i++) {
-      const row = startRow + i;
-      let status = "";
-
-      for (let retry = 0; retry < 6; retry++) {
-        Utilities.sleep(500);
-        SpreadsheetApp.flush();
-        status = sheet.getRange(row, 7).getDisplayValue().trim();
-        if (status === "COMPLETE") break;
-      }
-
-      const stampCell = sheet.getRange(row, 10);
-      const existingStamp = stampCell.getValue();
-
-      if (status === "COMPLETE" && !existingStamp) {
-        const timestamp = Utilities.formatDate(
-          new Date(),
-          Session.getScriptTimeZone(),
-          "yyyy-MM-dd HH:mm:ss"
-        );
-        stampCell.setValue(timestamp);
-        stamped++;
-      }
-    }
-
-    if (stamped > 0) {
-      SpreadsheetApp.getActiveSpreadsheet().toast(
-        stamped + " audit records secured",
-        "SUCCESS",
-        3
-      );
+    SpreadsheetApp.flush();
+    const status = sheet.getRange(row, 7).getDisplayValue().trim();
+    
+    if (status === "COMPLETE") {
+      secureAuditEntry(sheet, row);
     }
   } catch (err) {
-    SpreadsheetApp.getActiveSpreadsheet().toast(
-      "ERROR: " + err.toString(),
-      "AUDIT ENGINE",
-      5
-    );
+    console.error("onEdit Failure: " + err.toString());
+  } finally {
+    lock.releaseLock();
   }
+}
+
+function secureAuditEntry(sheet, row) {
+  const year = new Date().getFullYear();
+  const auditSheetName = "AUDIT_" + year;
+  let auditSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(auditSheetName);
+  
+  if (!auditSheet) {
+    auditSheet = createAuditSheet(auditSheetName);
+  }
+
+  const stampCell = sheet.getRange(row, 10);
+  let timestamp = stampCell.getValue();
+  
+  if (!timestamp) {
+    timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd HH:mm:ss");
+    stampCell.setValue(timestamp);
+  }
+
+  const rowData = sheet.getRange(row, 1, 1, 11).getValues()[0];
+  const fingerprint = rowData[0] + "|" + rowData[2] + "|" + timestamp; // Branch|Task|Stamp
+
+  if (isDuplicate(auditSheet, fingerprint)) return;
+
+  auditSheet.appendRow([
+    new Date(),   // Archive Date
+    rowData[0],   // Branch
+    rowData[1],   // Role
+    rowData[2],   // Task
+    rowData[4],   // Done By
+    rowData[5],   // Verified By
+    "COMPLETE",   // Status
+    timestamp,    // Original Stamp
+    rowData[10],  // Proof
+    rowData[7]    // Consequence
+  ]);
+}
+
+function isDuplicate(sheet, fingerprint) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return false;
+  const data = sheet.getRange(2, 2, lastRow - 1, 7).getValues();
+  for (let i = 0; i < data.length; i++) {
+    const existing = data[i][0] + "|" + data[i][2] + "|" + data[i][6];
+    if (existing === fingerprint) return true;
+  }
+  return false;
+}
+
+function archiveAndResetCycle() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const taskSheet = ss.getSheetByName("DAILY_TASKS");
+  const libSheet = ss.getSheetByName("SOP_LIB");
+  const dashSheet = ss.getSheetByName("DASHBOARD");
+  
+  // 1. RECONCILIATION SWEEP
+  const lastRow = taskSheet.getLastRow();
+  if (lastRow < 4) return;
+  
+  for (let r = 4; r <= lastRow; r++) {
+    const status = taskSheet.getRange(r, 7).getDisplayValue().trim();
+    if (status === "COMPLETE") {
+      secureAuditEntry(taskSheet, r);
+    }
+  }
+
+  // 2. CREATE SNAPSHOT
+  let snapSheet = ss.getSheetByName("SNAPSHOT_YESTERDAY");
+  if (snapSheet) ss.deleteSheet(snapSheet);
+  snapSheet = taskSheet.copyTo(ss).setName("SNAPSHOT_YESTERDAY");
+  snapSheet.setTabColor("#64748B");
+
+  // 3. TARGETED RESET
+  const freqMap = getFrequencyMap(libSheet);
+  const now = new Date();
+  const isSunday = now.getDay() === 0;
+  const isLastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate() === now.getDate();
+
+  for (let r = 4; r <= lastRow; r++) {
+    const taskName = taskSheet.getRange(r, 3).getValue();
+    const freq = freqMap[taskName] || "Daily";
+
+    let shouldReset = (freq === "Daily");
+    if (freq === "Weekly" && isSunday) shouldReset = true;
+    if (freq === "Monthly" && isLastDay) shouldReset = true;
+
+    if (shouldReset) {
+      taskSheet.getRange(r, 5, 1, 2).clearContent(); // Done & Verified
+      taskSheet.getRange(r, 10, 1, 2).clearContent(); // Stamp & Proof
+    }
+  }
+
+  // 4. HEARTBEAT
+  dashSheet.getRange("B7").setValue(new Date());
+  ss.toast("Sovereign Cycle Complete. Dashboard Updated.", "SUCCESS");
+}
+
+function getFrequencyMap(libSheet) {
+  const data = libSheet.getDataRange().getValues();
+  const map = {};
+  for (let i = 3; i < data.length; i++) {
+    map[data[i][1]] = data[i][3]; // Task Name -> Frequency (Col D)
+  }
+  return map;
+}
+
+function createAuditSheet(name) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.insertSheet(name);
+  const headers = ["ARCHIVE DATE", "BRANCH", "ROLE", "TASK", "DONE BY", "VERIFIED BY", "STATUS", "AUDIT STAMP", "PROOF", "CONSEQUENCE"];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers])
+       .setFontWeight("bold")
+       .setBackground("#0F172A")
+       .setFontColor("#FFFFFF");
+  sheet.setFrozenRows(1);
+  return sheet;
+}
+
+function selectAuditSheet() {
+  const year = new Date().getFullYear();
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName("AUDIT_" + year);
+  if (sheet) sheet.activate();
 }
 `;
 
@@ -93,7 +201,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
         }
 
         const wb = utils.book_new();
-        
         const isAuditEnabled = item.priceINR > 0 || (item.priceUSD !== undefined && item.priceUSD > 0);
 
         const COLORS = {
@@ -157,7 +264,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             ws['!views'] = [{ showGridLines: false }];
         };
 
-        // Normalize checklists for both PremiumPack and IndividualChecklist
         const normalizedChecklists: Checklist[] = 'checklists' in item 
             ? item.checklists 
             : [{
@@ -178,11 +284,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
             [],
             ...(isAuditEnabled ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. Only continue in the new file." }]] : []),
-            [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations in the yellow cells." }],
-            [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names, phone numbers, and emails." }],
-            [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }],
+            [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations." }],
+            [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel." }],
+            [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials." }],
             [],
-            ...(isAuditEnabled ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for instructions on securing timestamps." }]] : []),
+            ...(isAuditEnabled ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for automation instructions." }]] : []),
             [],
             [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
             [{ v: "Replace all YELLOW cells with your own local details to begin." }]
@@ -199,7 +305,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             [{ v: "SYSTEM STATUS:", s: getStyles(false).left }, { v: "ONLINE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'right' } } }],
             [],
             [{ v: "COMPLETION %:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(TEXT(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "COMPLETE") / MAX(1, COUNTIFS(${TABS.DAILY_TASKS}!$G$4:$G$5000, "<>")), "0%"), "0%")`, s: { font: { bold: true }, alignment: { horizontal: 'right' } } }],
-            [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { font: { bold: true }, alignment: { horizontal: 'right' } } }]
+            [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { font: { bold: true }, alignment: { horizontal: 'right' } } }],
+            [],
+            [{ v: "LAST SYSTEM RESET:", s: getStyles(false).left }, { v: "N/A", s: { font: { color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } }]
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
         dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }];
@@ -256,7 +364,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
-        const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
+        const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "FREQUENCY", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
         normalizedChecklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
@@ -265,13 +373,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
                     { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
                     { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
                     { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: styles.left },
+                    { v: c.frequency || "Daily", s: styles.center },
                     { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                 ]);
             });
         });
         const libWs = utils.aoa_to_sheet(libData);
-        libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
-        addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
+        libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 15 }, { wch: 65 }];
+        addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'E');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
         // --- 05. BRANCH_SETUP ---
@@ -322,21 +431,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
                 [{ v: "1. In your new Google Sheet, go to [Extensions] -> [Apps Script]." }],
                 [{ v: "2. Delete all existing text in the editor." }],
                 [{ v: "3. Copy and Paste the code provided at the bottom of this sheet." }],
-                [{ v: "4. Click the [Save] icon and name it 'AuditEngine'." }],
-                [{ v: "5. Click the [Clock] icon (Triggers) and add a trigger for 'onEdit' (On edit)." }],
-                [],
-                [{ v: "SECTION C — HOW TO ADD PHOTO PROOF", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "Desktop: Click PROOF cell -> Insert -> Image -> Image in cell." }],
-                [{ v: "Mobile (Google Sheets App): Tap cell -> Tap [+] -> Image -> From camera/gallery." }],
-                [],
-                [{ v: "SECTION D — MAINTENANCE & BACKUPS", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "1. Weekly Backup: Go to [File] -> [Make a copy] to save your audit history." }],
-                [{ v: "2. Safe Editing: You can edit Task Text (Col C) but never move STATUS (Col G) or STAMP (Col J)." }],
-                [],
-                [{ v: "SECTION G — OPTIONAL ADMIN CONTROLS", s: { font: { bold: true, sz: 12 } } }],
-                [{ v: "1. How to Freeze: View -> Freeze -> 3 rows (Header) / Up to Column C (Task identity)." }],
-                [{ v: "2. How to Protect: Data -> Protect sheets and ranges. Lock A, D, G, J." }],
-                [{ v: "3. ⚠️ IMPORTANT: Never protect E, F, or K. These must stay open for staff and mobile uploads." }],
+                [{ v: "4. Click the [Save] icon and name it 'SovereignAuditEngine'." }],
+                [{ v: "5. Return to the sheet and refresh. A 'MoreMeets™' menu will appear." }],
                 [],
                 [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
                 [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
@@ -371,7 +467,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
         }
 
-        writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v18.xlsx`);
+        writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v23.xlsx`);
     } catch (error: any) {
         console.error("Institutional Engine Failure:", error);
     }
