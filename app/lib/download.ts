@@ -6,12 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v23.3.0 REFined AUDIT EDITION
+ * MOREMEETS™ SOVEREIGN ENGINE - v23.4.0 CLEANUP EDITION
  * ----------------------------------------------------------------------------
- * 1. PERSISTENT PROOF: Uses copyTo to preserve images/links in Audit.
- * 2. POSITIONING: Audit sheet automatically moves to far-right (last position).
- * 3. SIMPLIFIED LOG: Removed Consequence (stored in LIB), added Source Sheet.
- * 4. REAL-TIME AUDIT: Every stamp event is shadowed immediately.
+ * 1. CENTRALIZED SOP: Move Reference Image to SOP_LIB as single source of truth.
+ * 2. LEAN DAILY: DAILY_TASKS focused on execution; A-K columns frozen for script parity.
+ * 3. COMPATIBILITY: Zero changes to audit/reset logic or formula chains.
  * ----------------------------------------------------------------------------
  */
 
@@ -285,7 +284,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             };
         };
 
-        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'L') => {
+        const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'K') => {
             const headerData = [
                 [{ v: `📋 ${title.replace('_', ' ')} — ${instruction}`, s: bannerStyle }],
                 [] 
@@ -354,8 +353,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
             { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle },
             { v: "STAMP", s: headerStyle },
-            { v: "PROOF / EVIDENCE", s: headerStyle },
-            { v: "REFERENCE IMAGE", s: headerStyle }
+            { v: "PROOF / EVIDENCE", s: headerStyle }
         ];
 
         const taskData: any[][] = [[], [], taskHeaders];
@@ -383,21 +381,28 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
                         { v: "", s: isV ? styles.input : styles.locked }, 
                         { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
                         { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                        { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } },
+                        { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } },
                         { v: "", s: styles.locked },
-                        { v: "", s: styles.input },  
-                        { v: "", s: styles.input }   
+                        { v: "", s: styles.input }
                     ]);
                 });
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25, 30, 30].map(w => ({ wch: w }));
-        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'L');
+        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65, 25, 30].map(w => ({ wch: w }));
+        addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'K');
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
         // --- 04. SOP_LIB ---
-        const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "FREQUENCY", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
+        const libHeaders = [
+            { v: "ROLE", s: headerStyle }, 
+            { v: "TECHNICAL TASK", s: headerStyle }, 
+            { v: "FREQUENCY", s: headerStyle }, 
+            { v: "CONSEQUENCE", s: headerStyle }, 
+            { v: "FLOOR INSTRUCTIONS", s: headerStyle },
+            { v: "TRAINER NOTES", s: headerStyle },
+            { v: "REFERENCE IMAGE", s: headerStyle }
+        ];
         const libData: any[][] = [[], [], libHeaders];
         normalizedChecklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
@@ -405,15 +410,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
                 libData.push([
                     { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
                     { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
-                    { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: styles.left },
                     { v: c.frequency || "Daily", s: styles.center },
-                    { v: t.floorAction || t.description || t.trainerNotes || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                    { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: styles.left },
+                    { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } },
+                    { v: t.trainerNotes || "", s: styles.left },
+                    { v: "", s: styles.input } 
                 ]);
             });
         });
         const libWs = utils.aoa_to_sheet(libData);
-        libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 15 }, { wch: 65 }];
-        addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'E');
+        libWs['!cols'] = [{ wch: 25 }, { wch: 45 }, { wch: 15 }, { wch: 45 }, { wch: 65 }, { wch: 65 }, { wch: 30 }];
+        addSheetHeader(libWs, TABS.SOP_LIB, "Permanent source of truth for institutional standards.", 'G');
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
         // --- 05. BRANCH_SETUP ---
