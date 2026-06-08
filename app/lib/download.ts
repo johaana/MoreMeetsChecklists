@@ -6,12 +6,12 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v23.2.0 SHADOW LEDGER EDITION
+ * MOREMEETS™ SOVEREIGN ENGINE - v23.3.0 REFined AUDIT EDITION
  * ----------------------------------------------------------------------------
- * 1. REAL-TIME AUDIT: Every stamp event is shadowed to a permanent ledger.
- * 2. RECONCILIATION SWEEP: Pre-reset backstop ensures zero missed records.
- * 3. CADENCE AWARE: Selective reset for Daily/Weekly/Monthly cycles.
- * 4. FROZEN ARCHITECTURE: Preserves existing production layouts and formulas.
+ * 1. PERSISTENT PROOF: Uses copyTo to preserve images/links in Audit.
+ * 2. POSITIONING: Audit sheet automatically moves to far-right (last position).
+ * 3. SIMPLIFIED LOG: Removed Consequence (stored in LIB), added Source Sheet.
+ * 4. REAL-TIME AUDIT: Every stamp event is shadowed immediately.
  * ----------------------------------------------------------------------------
  */
 
@@ -30,7 +30,7 @@ const TABS = {
 
 const APPS_SCRIPT_SOURCE = `
 /**
- * SOVEREIGN CYCLE ENGINE v23.2
+ * SOVEREIGN CYCLE ENGINE v23.3
  * (C) 2025 MoreMeets™ Institutional Standards
  */
 
@@ -84,6 +84,9 @@ function secureAuditEntry(sheet, row, forcedStatus) {
     auditSheet = createAuditSheet(auditSheetName);
   }
 
+  const lastRow = auditSheet.getLastRow();
+  const destRow = lastRow + 1;
+  
   const rowData = sheet.getRange(row, 1, 1, 11).getValues()[0];
   let timestamp = rowData[9]; // Column J
   
@@ -99,7 +102,8 @@ function secureAuditEntry(sheet, row, forcedStatus) {
   // Duplicate Prevention
   if (!forcedStatus && isDuplicate(auditSheet, fingerprint)) return;
 
-  auditSheet.appendRow([
+  // 1. Write metadata & execution data
+  auditSheet.getRange(destRow, 1, 1, 8).setValues([[
     new Date(),   // Archive Date
     rowData[0],   // Branch (Col A)
     rowData[1],   // Role (Col B)
@@ -107,15 +111,21 @@ function secureAuditEntry(sheet, row, forcedStatus) {
     rowData[4],   // Done By (Col E)
     rowData[5],   // Verified By (Col F)
     finalStatus,  // Status
-    timestamp,    // Original Stamp (Col J)
-    rowData[10],  // Proof (Col K)
-    rowData[7]    // Consequence (Col H)
-  ]);
+    timestamp     // Original Stamp (Col J)
+  ]]);
+
+  // 2. REQUIREMENT 2: Proof Preservation (Column K in DAILY_TASKS -> Column 9 in AUDIT)
+  // Preserves images (Insert-in-cell) and hyperlinks.
+  sheet.getRange(row, 11).copyTo(auditSheet.getRange(destRow, 9));
+
+  // 3. REQUIREMENT 3: Source Reference (Column 10 in AUDIT)
+  auditSheet.getRange(destRow, 10).setValue(sheet.getName());
 }
 
 function isDuplicate(sheet, fingerprint) {
   const lastRow = sheet.getLastRow();
   if (lastRow < 2) return false;
+  // Branch is Col 2, Task is Col 4, Stamp is Col 8
   const data = sheet.getRange(Math.max(2, lastRow - 100), 2, Math.min(lastRow, 101), 7).getValues();
   for (let i = 0; i < data.length; i++) {
     const existing = data[i][0] + "|" + data[i][2] + "|" + data[i][6];
@@ -126,7 +136,6 @@ function isDuplicate(sheet, fingerprint) {
 
 /**
  * NIGHTLY JANITOR & SWEEP
- * Performs reconciliation, creates snapshot, and resets board.
  */
 function archiveAndResetCycle() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -137,11 +146,11 @@ function archiveAndResetCycle() {
   const lastRow = taskSheet.getLastRow();
   if (lastRow < 4) return;
   
-  // 1. RECONCILIATION SWEEP & MISSED LOGGING
+  // 1. RECONCILIATION SWEEP
   for (let r = 4; r <= lastRow; r++) {
     const status = taskSheet.getRange(r, 7).getDisplayValue().trim();
     if (status === "COMPLETE") {
-      secureAuditEntry(taskSheet, r); // Ensure every completion is secured
+      secureAuditEntry(taskSheet, r);
     }
   }
 
@@ -167,11 +176,9 @@ function archiveAndResetCycle() {
     if (freq === "Monthly" && isLastDay) shouldReset = true;
 
     if (shouldReset) {
-      // Log missed tasks before wiping
       if (status !== "COMPLETE") {
         secureAuditEntry(taskSheet, r, "MISSED");
       }
-      // Reset only specific input cells (Done, Verified, Stamp, Proof)
       taskSheet.getRange(r, 5, 1, 2).clearContent(); // E, F
       taskSheet.getRange(r, 10, 1, 2).clearContent(); // J, K
     }
@@ -179,22 +186,26 @@ function archiveAndResetCycle() {
 
   // 4. SYSTEM HEARTBEAT
   dashSheet.getRange("B7").setValue(new Date());
-  ss.toast("Sovereign Cycle Complete. Dashboard Updated.", "SUCCESS");
+  ss.toast("Sovereign Cycle Complete.", "SUCCESS");
 }
 
 function getFrequencyMap(libSheet) {
   const data = libSheet.getDataRange().getValues();
   const map = {};
   for (let i = 3; i < data.length; i++) {
-    map[data[i][1]] = data[i][3]; // Task Name (Col B) -> Frequency (Col D)
+    map[data[i][1]] = data[i][3]; 
   }
   return map;
 }
 
+/**
+ * REQUIREMENT 1 & 3: Audit Creation & Positioning
+ */
 function createAuditSheet(name) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.insertSheet(name);
-  const headers = ["ARCHIVE DATE", "BRANCH", "ROLE", "TASK", "DONE BY", "VERIFIED BY", "STATUS", "AUDIT STAMP", "PROOF", "CONSEQUENCE"];
+  // Insert at the far right
+  const sheet = ss.insertSheet(name, ss.getSheets().length); 
+  const headers = ["ARCHIVE DATE", "BRANCH", "ROLE", "TASK", "DONE BY", "VERIFIED BY", "STATUS", "AUDIT STAMP", "PROOF", "SOURCE"];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers])
        .setFontWeight("bold")
        .setBackground("#0F172A")
