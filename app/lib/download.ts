@@ -40,7 +40,7 @@ function onOpen() {
   
   if (!triggerActive) {
     // Priority item for non-technical users
-    menu.addItem('⚠ Activate Daily Reset', 'setupAutomation');
+    menu.addItem('⚠️ Activate Daily Reset', 'setupAutomation');
     // Non-blocking toast warning
     SpreadsheetApp.getActiveSpreadsheet().toast('Automation is NOT active. Click MoreMeets > Activate Daily Reset.', 'System Health', 15);
   } else {
@@ -233,7 +233,7 @@ function getFrequencyMap(libSheet) {
   const data = libSheet.getDataRange().getValues();
   const map = {};
   for (let i = 3; i < data.length; i++) {
-    map[data[i][1]] = data[i][3]; 
+    map[data[i][1]] = data[i][2]; // Updated to Column C index for Frequency
   }
   return map;
 }
