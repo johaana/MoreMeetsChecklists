@@ -6,11 +6,12 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v23.5.0 AUTOMATION EDITION
+ * MOREMEETS™ SOVEREIGN ENGINE - v23.5.0 STABILITY EDITION
  * ----------------------------------------------------------------------------
- * 1. CENTRALIZED SOP: Move Reference Image to SOP_LIB as single source of truth.
- * 2. LEAN DAILY: DAILY_TASKS focused on execution; A-K columns frozen for script parity.
- * 3. SELF-ACTIVATING: Added idempotent trigger creation and on-open health check.
+ * 1. CENTRALIZED SOP: Metadata (Image/Notes) in SOP_LIB.
+ * 2. LEAN DAILY: DAILY_TASKS (A-K) focused on execution and audit.
+ * 3. SELF-AWARE: Automation health check and one-click activation via menu.
+ * 4. FROZEN ARCHITECTURE: Stable indices for triggers and formulas.
  * ----------------------------------------------------------------------------
  */
 
@@ -355,12 +356,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
             [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
             [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
             [],
-            ...(isAuditEnabled ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. Only continue in the new file." }]] : []),
+            ...(isAuditEnabled ? [[{ v: "⚠️ MANDATORY STEP 0: SAVE AS GOOGLE SHEETS", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Go to File -> Save as Google Sheets. This activates scripts and automation." }]] : []),
             [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCH_SETUP] tab and name your locations." }],
             [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel." }],
             [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials." }],
             [],
-            ...(isAuditEnabled ? [[{ v: "STEP 4: ACTIVATE AUDIT HEARTBEAT", s: { font: { bold: true } } }, { v: "Go to the [SETUP_GUIDE] tab for automation instructions." }]] : []),
+            ...(isAuditEnabled ? [[{ v: "STEP 4: ACTIVATE AUTOMATION", s: { font: { bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } } } }, { v: "Click 'MoreMeets™' in the top menu bar, then 'Activate Daily Reset'." }]] : []),
             [],
             [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
             [{ v: "Replace all YELLOW cells with your own local details to begin." }]
@@ -504,15 +505,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type?: s
                 [{ v: "🛠️ SYSTEM SETUP & AUDIT ENGINE ACTIVATION", s: bannerStyle }],
                 [],
                 [{ v: "SECTION A — MANDATORY CONVERSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RISK_RED } } } }],
-                [{ v: "1. Click [File] -> [Save as Google Sheets]. This is required for automation." }],
-                [{ v: "2. Close this tab. Only work in the NEW file." }],
+                [{ v: "1. Click [File] -> [Save as Google Sheets]. This is required for all automation." }],
+                [{ v: "2. Close this tab. Only work in the NEW Google Sheets file." }],
                 [],
-                [{ v: "SECTION B — ACTIVATE THE AUDIT HEARTBEAT", s: { font: { bold: true, sz: 12 } } }],
+                [{ v: "SECTION B — ONE-CLICK ACTIVATION", s: { font: { bold: true, sz: 12 } } }],
                 [{ v: "1. In your new Google Sheet, go to [Extensions] -> [Apps Script]." }],
-                [{ v: "2. Delete all existing text in the editor." }],
+                [{ v: "2. Delete all existing text in the editor window." }],
                 [{ v: "3. Copy and Paste the code provided at the bottom of this sheet." }],
-                [{ v: "4. Click the [Save] icon and name it 'SovereignAuditEngine'." }],
-                [{ v: "5. Return to the sheet and refresh. A 'MoreMeets™' menu will appear." }],
+                [{ v: "4. Click the [Save] icon. Name the project 'SovereignEngine'." }],
+                [{ v: "5. Return to your Google Sheet and Refresh the page." }],
+                [{ v: "6. A new 'MoreMeets™' menu will appear. Click 'Activate Daily Reset'." }],
                 [],
                 [{ v: "APPS SCRIPT SOURCE (COPY ALL):", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
                 [{ v: APPS_SCRIPT_SOURCE, s: { font: { sz: 8, name: "Courier New" }, alignment: { wrapText: true } } }]
