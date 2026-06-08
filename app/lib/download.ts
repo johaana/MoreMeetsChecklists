@@ -6,11 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import type { IndividualChecklist } from "@/lib/individual-checklists";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v23.4.0 CLEANUP EDITION
+ * MOREMEETS™ SOVEREIGN ENGINE - v23.5.0 AUTOMATION EDITION
  * ----------------------------------------------------------------------------
  * 1. CENTRALIZED SOP: Move Reference Image to SOP_LIB as single source of truth.
  * 2. LEAN DAILY: DAILY_TASKS focused on execution; A-K columns frozen for script parity.
- * 3. COMPATIBILITY: Zero changes to audit/reset logic or formula chains.
+ * 3. SELF-ACTIVATING: Added idempotent trigger creation and on-open health check.
  * ----------------------------------------------------------------------------
  */
 
@@ -29,17 +29,60 @@ const TABS = {
 
 const APPS_SCRIPT_SOURCE = `
 /**
- * SOVEREIGN CYCLE ENGINE v23.3
+ * SOVEREIGN CYCLE ENGINE v23.5
  * (C) 2025 MoreMeets™ Institutional Standards
  */
 
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
-  ui.createMenu('MoreMeets™')
-    .addItem('⚡ Run Archive & Reset Cycle', 'archiveAndResetCycle')
-    .addSeparator()
-    .addItem('📋 View Current Audit Log', 'selectAuditSheet')
-    .addToUi();
+  const triggerActive = isTriggerActive('archiveAndResetCycle');
+  const menu = ui.createMenu('MoreMeets™');
+  
+  if (!triggerActive) {
+    // Priority item for non-technical users
+    menu.addItem('⚠ Activate Daily Reset', 'setupAutomation');
+    // Non-blocking toast warning
+    SpreadsheetApp.getActiveSpreadsheet().toast('Automation is NOT active. Click MoreMeets > Activate Daily Reset.', 'System Health', 15);
+  } else {
+    menu.addItem('⚡ Run Manual Archive & Reset', 'archiveAndResetCycle');
+  }
+
+  menu.addSeparator()
+      .addItem('📋 View Current Audit Log', 'selectAuditSheet')
+      .addToUi();
+}
+
+/**
+ * IDEMPOTENT TRIGGER ACTIVATION
+ * Programmatically creates the 3:00 AM reset cycle without manual console work.
+ */
+function setupAutomation() {
+  const funcName = 'archiveAndResetCycle';
+  if (isTriggerActive(funcName)) {
+    SpreadsheetApp.getUi().alert('Automation is already active.');
+    return;
+  }
+  
+  // Create daily 3:00 AM trigger (Local Time)
+  ScriptApp.newTrigger(funcName)
+    .timeBased()
+    .everyDays(1)
+    .atHour(3)
+    .create();
+    
+  SpreadsheetApp.getUi().alert('SUCCESS: Daily 3:00 AM reset cycle has been activated.');
+}
+
+/**
+ * INTERNAL HEALTH CHECK
+ * Verifies trigger existence to prevent Day-2 operational failures.
+ */
+function isTriggerActive(funcName) {
+  const triggers = ScriptApp.getProjectTriggers();
+  for (let i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === funcName) return true;
+  }
+  return false;
 }
 
 /**
@@ -113,18 +156,16 @@ function secureAuditEntry(sheet, row, forcedStatus) {
     timestamp     // Original Stamp (Col J)
   ]]);
 
-  // 2. REQUIREMENT 2: Proof Preservation (Column K in DAILY_TASKS -> Column 9 in AUDIT)
-  // Preserves images (Insert-in-cell) and hyperlinks.
+  // 2. Proof Preservation (Column K in DAILY_TASKS -> Column 9 in AUDIT)
   sheet.getRange(row, 11).copyTo(auditSheet.getRange(destRow, 9));
 
-  // 3. REQUIREMENT 3: Source Reference (Column 10 in AUDIT)
+  // 3. Source Reference (Column 10 in AUDIT)
   auditSheet.getRange(destRow, 10).setValue(sheet.getName());
 }
 
 function isDuplicate(sheet, fingerprint) {
   const lastRow = sheet.getLastRow();
   if (lastRow < 2) return false;
-  // Branch is Col 2, Task is Col 4, Stamp is Col 8
   const data = sheet.getRange(Math.max(2, lastRow - 100), 2, Math.min(lastRow, 101), 7).getValues();
   for (let i = 0; i < data.length; i++) {
     const existing = data[i][0] + "|" + data[i][2] + "|" + data[i][6];
@@ -198,11 +239,10 @@ function getFrequencyMap(libSheet) {
 }
 
 /**
- * REQUIREMENT 1 & 3: Audit Creation & Positioning
+ * REQUIREMENT: Audit Creation & Positioning
  */
 function createAuditSheet(name) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  // Insert at the far right
   const sheet = ss.insertSheet(name, ss.getSheets().length); 
   const headers = ["ARCHIVE DATE", "BRANCH", "ROLE", "TASK", "DONE BY", "VERIFIED BY", "STATUS", "AUDIT STAMP", "PROOF", "SOURCE"];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers])
